@@ -56,6 +56,32 @@ export function parseAreaSqm(input: string | null | undefined): number | null {
   return m ? Number(m[1]) : null;
 }
 
+/** 1坪あたりの㎡（計量法上の定義 400/121 ㎡ の近似。業界の慣用値） */
+export const SQM_PER_TSUBO = 3.30579;
+
+/** "27.48坪" / "２７．４８ 坪" → 27.48。坪表記がなければ null */
+export function parseTsubo(input: string | null | undefined): number | null {
+  if (input == null) return null;
+  const m = clean(input).match(/(\d+(?:\.\d+)?)坪/);
+  return m ? Number(m[1]) : null;
+}
+
+/** 坪 → ㎡（小数第2位で四捨五入） */
+export function tsuboToSqm(tsubo: number): number {
+  return Math.round(tsubo * SQM_PER_TSUBO * 100) / 100;
+}
+
+/**
+ * 事業用物件の面積表記を㎡に。㎡の併記があればそれを優先し（サイトの実測値どおり）、
+ * 坪だけなら換算する。"27.48坪 (90.84㎡)" → 90.84、"30.3坪" → 100.16
+ */
+export function parseAreaSqmOrTsubo(input: string | null | undefined): number | null {
+  const sqm = parseAreaSqm(input);
+  if (sqm != null) return sqm;
+  const tsubo = parseTsubo(input);
+  return tsubo != null && tsubo > 0 ? tsuboToSqm(tsubo) : null;
+}
+
 /** "１ＬＤＫ" / "1sldk" / "ワンルーム" → "1LDK" / "1SLDK" / "1R" */
 export function parseLayout(input: string | null | undefined): string | null {
   if (input == null) return null;

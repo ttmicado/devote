@@ -4,6 +4,7 @@ import {
   extractFeatures,
   type NormalizedListingInput,
   parseAreaSqm,
+  parseAreaSqmOrTsubo,
   parseBuiltYearMonth,
   parseFloor,
   parseLayout,
@@ -15,12 +16,13 @@ import {
   type TransactionMode,
 } from "@devote/core";
 import * as cheerio from "cheerio";
-import { defineAdapter, type ListItem, type SearchQuery } from "../../adapter.js";
+import { defineAdapter, type ListItem, type RawDetail, type SearchQuery } from "../../adapter.js";
 import { parseJpDate, parseStructure, parseTotalFloors, withPrefecture } from "./helpers.js";
 
 /**
  * ケン・コーポレーション（https://www.kencorp.co.jp/housing/）— 都心の高級賃貸・売買。
- * 賃貸（/housing/rent/）と売買（/housing/buy/）の両方を 1 アダプターで巡回する（dealType は詳細で判定）。
+ * 賃貸（/housing/rent/）と売買（/housing/buy/）、事業用賃貸（/office/rent/。事務所・店舗）を
+ * 1 アダプターで巡回する（dealType・usage は詳細で判定）。
  *
  * - 検索結果ページは JS 描画（jQuery が /_api/search/result/ を叩いて描画）。
  *   一覧は内部 JSON API を直接取得する（ブラウザ不要。buildListUrl が API の URL を返し、parseList は JSON を読む）
@@ -29,21 +31,34 @@ import { parseJpDate, parseStructure, parseTotalFloors, withPrefecture } from ".
  *   - bldg_count（建物数）と prop_count（部屋数）を返す。totalCount には prop_count を使う
  *   - 売買の price は万円単位、賃貸は円
  * - 詳細 /housing/properties/{建物コード}/{物件コード}/ は SSR。sourceListingId は物件コード（10桁）
+ *
+ * 事業用（search_type=office）:
+ * - 同じ検索APIで search_type=office。区コードは住居と共通だが、エリアコードは別体系
+ *   （住居の ginwan01/02 は office では無視されて全件が返る。office は rinkai03=晴海・勝どき、rinkai02=豊洲・東雲）
+ * - 部屋ごとの office_usefor が用途コード（1=事務所, 2=店舗, 4=SOHO, 8=倉庫・工場, 9=その他。最大3つ）。
+ *   事務所か店舗を含む区画だけを取り込む（SOHO・倉庫・その他のみは除外）
+ * - API の price は「月額費用」（賃料＋共益費、税込）。賃料非公開の「相談」「未定」が多く、価格のない物件は
+ *   取り込めないため一覧で除外する。除外があるので office の totalCount は返さない（件数照合しない）
+ * - 詳細 /office/properties/{建物コード}/{物件コード}/ は SSR。項目は「賃料」「共益費」「敷金・保証金 / 礼金」
+ *   「面積（坪と㎡。「ネット面積」の物件もある）」「用途」「階数（建物/所在階）」など。物件コードは住居と重複しない
  */
 const BASE_URL = "https://www.kencorp.co.jp";
 const SOURCE_ID = "kencorp";
 const PER_PAGE = 50;
 
 /** 区（districts）とエリア（areas）のコード。賃貸・売買で共通 */
-const AREAS: { key: string; by: "district" | "area"; value: string }[] = [
+const AREAS: { key: string; by: "district" | "area"; value: string; officeValue?: string }[] = [
   { key: "minato", by: "district", value: "12" },
   { key: "shibuya", by: "district", value: "2" },
   { key: "chiyoda", by: "district", value: "14" },
   { key: "shinagawa", by: "district", value: "17" },
   // 区単位だと広すぎる中央区・江東区はエリアで絞る（後段で isInTargetArea により勝どき・豊洲に絞る）
-  { key: "tsukishima-kachidoki-harumi", by: "area", value: "ginwan01" },
-  { key: "toyosu-ariake", by: "area", value: "ginwan02" },
+  { key: "tsukishima-kachidoki-harumi", by: "area", value: "ginwan01", officeValue: "rinkai03" },
+  { key: "toyosu-ariake", by: "area", value: "ginwan02", officeValue: "rinkai02" },
 ];
+
+/** 事業用で取り込む用途コード（1=事務所, 2=店舗） */
+const OFFICE_USES: Record<string, string> = { "1": "事務所", "2": "店舗" };
 
 const TRANSACTION_MODES: Record<string, TransactionMode> = {
   貸主: "owner",
@@ -59,13 +74,16 @@ const TRANSACTION_MODES: Record<string, TransactionMode> = {
 interface ApiProperty {
   code: string;
   url: string;
-  price: string | null;
+  /** 賃貸は円・売買は万円。事業用は月額費用（円）で、数値のことも「相談」「未定」のこともある */
+  price: string | number | null;
   admin_cost?: string | null;
   layout?: string | null;
   footprint?: string | null;
   floor?: string | null;
   room?: string | null;
   pending?: string | null;
+  /** 事業用のみ: 用途コード（3枠。"0" は空き） */
+  office_usefor?: string[];
 }
 interface ApiResult {
   error_code: string;
@@ -83,6 +101,15 @@ const splitPair = (s: string | undefined): [string | undefined, string | undefin
   const [a, b] = (s ?? "").split(/\s*[／/]\s*/);
   return [a?.trim() || undefined, b?.trim() || undefined];
 };
+/** "453,420円 /月" / "453,420円（税込）" → "453,420円" */
+const stripPerMonth = (s: string | undefined) => stripMonthly(s)?.replace(/\s*\/\s*月\s*$/, "");
+
+/** 用途コードに事務所（1）か店舗（2）を含むか */
+export const isOfficeOrShop = (uses: string[] | undefined) =>
+  (uses ?? []).some((u) => u in OFFICE_USES);
+
+/** 詳細URLが事業用（/office/properties/...）か */
+const isOfficeUrl = (url: string) => new URL(url).pathname.startsWith("/office/");
 
 export default defineAdapter({
   meta: {
@@ -93,14 +120,18 @@ export default defineAdapter({
     requiresLogin: false,
     rateLimit: { minIntervalMs: 2000, maxConcurrency: 1 },
     schedule: { listCron: "30 */3 * * *", detailRevisitHours: 48 },
-    parserVersion: "1",
+    parserVersion: "2",
   },
 
   queries: (): SearchQuery[] =>
-    (["rent", "buy"] as const).flatMap((type) =>
+    (["rent", "buy", "office"] as const).flatMap((type) =>
       AREAS.map((a) => ({
         key: `${type}-${a.key}`,
-        params: { search_type: type, search_by: a.by, value: a.value },
+        params: {
+          search_type: type,
+          search_by: a.by,
+          value: type === "office" ? (a.officeValue ?? a.value) : a.value,
+        },
       })),
     ),
 
@@ -127,19 +158,41 @@ export default defineAdapter({
     if (!Array.isArray(data.buildings)) throw new Error(`検索APIの応答に buildings がない: ${url}`);
 
     const u = new URL(url);
-    const isSale = u.searchParams.get("search_type") === "buy";
+    const searchType = u.searchParams.get("search_type");
+    const isSale = searchType === "buy";
+    const isOffice = searchType === "office";
     const items: ListItem[] = data.buildings.flatMap((b) =>
-      (b.properties ?? []).map((p) => {
+      (b.properties ?? []).flatMap((p) => {
         if (!p.code || !p.url) throw new Error(`物件コード/URL が取れない: ${JSON.stringify(p)}`);
-        const raw = p.price != null && /^\d+(\.\d+)?$/.test(p.price) ? Number(p.price) : null;
-        return {
-          sourceListingId: p.code,
-          detailUrl: new URL(p.url, BASE_URL).toString(),
-          listHash: sha1(
-            [p.price, p.admin_cost, p.layout, p.footprint, p.floor, p.room, p.pending].join("|"),
-          ),
-          price: raw == null ? undefined : Math.round(isSale ? raw * 10_000 : raw),
-        };
+        const raw =
+          p.price != null && /^\d+(\.\d+)?$/.test(String(p.price)) ? Number(p.price) : null;
+        let price = raw == null ? undefined : Math.round(isSale ? raw * 10_000 : raw);
+        if (isOffice) {
+          // 賃料非公開（相談・未定）と、事務所・店舗を含まない区画（SOHO・倉庫・その他のみ）は取り込まない
+          if (price == null || !isOfficeOrShop(p.office_usefor)) return [];
+          // 月額費用（賃料＋共益費）→ 賃料
+          const fee = parseYen(String(p.admin_cost ?? ""));
+          if (fee != null && fee < price) price -= fee;
+        }
+        return [
+          {
+            sourceListingId: p.code,
+            detailUrl: new URL(p.url, BASE_URL).toString(),
+            listHash: sha1(
+              [
+                p.price,
+                p.admin_cost,
+                p.layout,
+                p.footprint,
+                p.floor,
+                p.room,
+                p.pending,
+                ...(isOffice ? [p.office_usefor?.join(",")] : []),
+              ].join("|"),
+            ),
+            price,
+          },
+        ];
       }),
     );
 
@@ -150,7 +203,8 @@ export default defineAdapter({
       u.searchParams.set("page", String(page + 1));
       nextPageUrl = u.toString();
     }
-    return { items, nextPageUrl, totalCount: data.prop_count ?? null };
+    // 事業用は価格非公開などを一覧で除外するため、prop_count と取得件数は一致しない
+    return { items, nextPageUrl, totalCount: isOffice ? null : (data.prop_count ?? null) };
   },
 
   parseDetail(html, url) {
@@ -175,17 +229,39 @@ export default defineAdapter({
         .filter(Boolean)
         .join("\n");
     });
+    // 事業用の詳細は「月額費用」「面積」「募集区画」を表ではなく上部の概要リストに出す（表の行はコメントアウト）
+    $(".bl-001_37__list__item").each((_, li) => {
+      const key = squash($(li).find(".bl-001_37__list__item__title").first().text()).replace(
+        /\s/g,
+        "",
+      );
+      if (!key || fields[key]) return;
+      fields[key] = squash($(li).find(".bl-001_37__list__item__text").first().text());
+    });
     if (!fields.賃料 && !fields["賃料/管理費"] && !fields.価格) {
       throw new Error(`物件情報テーブルに賃料/価格がない: ${url}`);
     }
 
-    const heading = squash($(".co-011_01__main-title").first().text());
+    const title = $(".co-011_01__main-title").first().clone();
+    // 事業用の見出しは "<建物名> <募集区画><span>(27.48坪 / 港区西新橋)</span>"
+    title.find(".co-013_02__text").remove();
+    const heading = squash(title.text());
     fields.見出し = heading;
-    // "テラス神田猿楽町  3階 2LDK" / "恵比寿3丁目一戸建 2LDK+S" → 建物名
-    fields.建物名 = heading
-      .replace(/\s+\d+(?:[SLDKR]+|ルーム)[^\s]*$/i, "")
-      .replace(/\s+(?:地下)?\d+階$/, "")
-      .trim();
+    if (isOfficeUrl(url)) {
+      // "TORANOGATE 1階 7-1号" → 募集区画（"1階 7-1号"）を除いて建物名
+      const section = fields.募集区画 ?? "";
+      fields.建物名 = (
+        section && heading.endsWith(section)
+          ? heading.slice(0, -section.length)
+          : heading.replace(/\s+(?:地下)?[\d-]+階.*$/, "")
+      ).trim();
+    } else {
+      // "テラス神田猿楽町  3階 2LDK" / "恵比寿3丁目一戸建 2LDK+S" → 建物名
+      fields.建物名 = heading
+        .replace(/\s+\d+(?:[SLDKR]+|ルーム)[^\s]*$/i, "")
+        .replace(/\s+(?:地下)?\d+階$/, "")
+        .trim();
+    }
     fields.種別タグ = squash($(".co-014_04__head-tag").first().text());
 
     const urls: string[] = [];
@@ -199,6 +275,7 @@ export default defineAdapter({
   },
 
   normalize(raw): NormalizedListingInput {
+    if (isOfficeUrl(raw.url)) return normalizeOffice(raw);
     const f = raw.fields;
     const isSale = f.価格 != null || f.種別タグ === "売買";
 
@@ -313,3 +390,89 @@ export default defineAdapter({
     };
   },
 });
+
+/**
+ * 事業用（事務所・店舗）の詳細を正規化する。
+ * - 賃料と共益費は別項目（"453,420円 /月"、共益費 "込 /月" は賃料に含む＝0円）
+ * - 「敷金・保証金 / 礼金」の月数は賃料（共益費を除く）基準で円にする
+ * - 面積は "27.48坪 (90.84㎡)"（㎡を優先し、坪のみなら換算）
+ * - 間取りの概念はないため layout は null。用途・坪単価・償却などは extra に表記どおり残す
+ */
+function normalizeOffice(raw: RawDetail): NormalizedListingInput {
+  const f = raw.fields;
+  // "事務所\n/\n店舗" → "事務所・店舗"
+  const use = (f.用途 ?? "")
+    .split(/\s*[\n/／]\s*/)
+    .filter(Boolean)
+    .join("・");
+  if (!/事務所|店舗/.test(use)) {
+    // 一覧で除外しているはず（SOHO・倉庫・その他のみの区画）
+    throw new Error(`事務所・店舗以外の用途は取り込まない: ${use || "（用途なし）"} ${raw.url}`);
+  }
+  const price = parseYen(stripPerMonth(f.賃料));
+  if (price == null || price <= 0) throw new Error(`賃料が解釈できない: ${f.賃料}`);
+  const feeText = stripPerMonth(f.共益費);
+  const managementFee = feeText && /^込/.test(feeText.trim()) ? 0 : parseYen(feeText);
+
+  const [depositText, keyMoneyText] = splitPair(f["敷金・保証金/礼金"] ?? f["敷金/礼金"]);
+  const [totalText, floorText] = splitPair(f.階数);
+  const stations = (f["交通/駅徒歩*"] ?? f["交通/駅徒歩"] ?? f.交通 ?? "")
+    .split("\n")
+    .map((line) => parseStationAccess(line))
+    .filter((s): s is StationAccess => s != null);
+  const addressRaw = withPrefecture(f.住所 ?? "");
+  const featureText = [f.特徴, f.設備, f["建物設備・施設"], f.入居諸条件].join("、");
+
+  const extraKeys = [
+    "見出し",
+    "月額費用",
+    "坪単価",
+    "面積",
+    "ネット面積",
+    "敷金・保証金/礼金",
+    "償却",
+    "更新料",
+    "再契約料",
+    "募集区画",
+    "入居時期",
+    "契約形態",
+    "契約期間（期日）",
+    "次回更新予定日",
+  ];
+  const extra: Record<string, string> = Object.fromEntries(
+    extraKeys.filter((k) => f[k]).map((k) => [k, f[k] as string]),
+  );
+  extra.用途 = use;
+
+  return {
+    source: SOURCE_ID,
+    sourceListingId: raw.sourceListingId,
+    url: raw.url,
+    dealType: "rent",
+    usage: "business",
+    title: f.建物名 || null,
+    address: { ...splitAddress(addressRaw), raw: addressRaw },
+    stations,
+    price,
+    managementFee,
+    deposit: parseMonthsOrYen(depositText, price),
+    keyMoney: parseMonthsOrYen(keyMoneyText, price),
+    layout: null,
+    // 「面積」のほか「ネット面積」（共用部を除く実面積）表記の物件がある
+    areaSqm: parseAreaSqmOrTsubo(f.面積 ?? f.ネット面積),
+    builtYearMonth: parseBuiltYearMonth(f.竣工 ?? f.築年月),
+    floor: floorText ? parseFloor(floorText).floor : null,
+    totalFloors: parseTotalFloors(totalText),
+    structure: parseStructure(f.構造),
+    direction: null,
+    features: [...new Set(extractFeatures(featureText))],
+    transactionMode: TRANSACTION_MODES[f.取引形態?.trim() ?? ""] ?? "unknown",
+    adAllowed: null,
+    agencyName: "ケン・コーポレーション",
+    imageUrls: raw.imageUrls,
+    sourceUpdatedAt: parseJpDate(f.情報更新日),
+    repairReserveFee: null,
+    propertyType: "other",
+    extra,
+  };
+}

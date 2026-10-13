@@ -32,8 +32,8 @@ description: 不動産サイト（レインズ、業者間サイト、不動産�
 | `sumitomo-residence` / `sumitomo-latour` | 住友不動産 ラ・トゥール（2サイト・共通実装） | HTTP（建物→空室ページを束ねる） |
 | `mori-living` | 森ビル | 内部JSON API＋詳細HTML |
 | `rf12` | REIT FIND | HTTP（SSR） |
-| `kencorp` | ケン・コーポレーション（賃貸＋売買） | 一覧は内部JSON API、詳細はSSR |
-| `axel-home` | アクセルホーム | HTTP（SSR） |
+| `kencorp` | ケン・コーポレーション（賃貸＋売買＋事業用賃貸） | 一覧は内部JSON API（事業用は `search_type=office`、賃料「相談」は除外）、詳細はSSR |
+| `axel-home` | アクセルホーム（賃貸＋事業用賃貸） | HTTP（SSR）。事業用は一覧・詳細URLの `?usage=business` で判定 |
 | `reins` / `atbb` / `itandi-bb` | 会員サイト | Playwright（未検証。`docs/member-sites.md`） |
 
 ## レート制御・マナー

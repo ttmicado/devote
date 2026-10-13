@@ -2,12 +2,15 @@ import { describe, expect, it } from "vitest";
 import {
   buildingAgeYears,
   parseAreaSqm,
+  parseAreaSqmOrTsubo,
   parseBuiltYearMonth,
   parseFloor,
   parseLayout,
   parseMonthsOrYen,
   parseStationAccess,
+  parseTsubo,
   parseYen,
+  tsuboToSqm,
   walkMinutesFromMeters,
 } from "./normalize";
 
@@ -46,6 +49,34 @@ describe("parseAreaSqm", () => {
     ["不明", null],
   ])("%s → %s", (input, expected) => {
     expect(parseAreaSqm(input)).toBe(expected);
+  });
+});
+
+describe("parseTsubo / tsuboToSqm / parseAreaSqmOrTsubo", () => {
+  it.each([
+    ["27.48坪", 27.48],
+    ["２７．４８ 坪", 27.48],
+    ["30.3坪 (100.16㎡)", 30.3],
+    ["90.84㎡", null],
+    [null, null],
+  ])("parseTsubo(%s) → %s", (input, expected) => {
+    expect(parseTsubo(input)).toBe(expected);
+  });
+
+  it("1坪 = 3.30579㎡ で換算し、小数第2位で丸める", () => {
+    expect(tsuboToSqm(1)).toBe(3.31);
+    expect(tsuboToSqm(30.3)).toBe(100.17);
+    expect(tsuboToSqm(437.77)).toBe(1447.18);
+  });
+
+  it.each([
+    ["27.48坪 (90.84㎡)", 90.84], // ㎡の併記を優先
+    ["30.3坪", 100.17],
+    ["82.64m²", 82.64],
+    ["0坪", null],
+    ["相談", null],
+  ])("parseAreaSqmOrTsubo(%s) → %s", (input, expected) => {
+    expect(parseAreaSqmOrTsubo(input)).toBe(expected);
   });
 });
 

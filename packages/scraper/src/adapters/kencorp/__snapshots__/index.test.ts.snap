@@ -215,3 +215,63 @@ exports[`kencorp normalize > 賃貸の詳細を正規化する 1`] = `
   "usage": "residential",
 }
 `;
+
+exports[`kencorp 事業用（事務所・店舗） > 事務所: 「453,420円 /月」「共益費 込」「6ヶ月 / なし」「27.48坪 (90.84㎡)」 1`] = `
+{
+  "adAllowed": null,
+  "address": {
+    "city": "港区",
+    "prefecture": "東京都",
+    "raw": "東京都港区西新橋1-14-12",
+    "town": "西新橋",
+  },
+  "agencyName": "ケン・コーポレーション",
+  "areaSqm": 90.84,
+  "builtYearMonth": "1987-04",
+  "dealType": "rent",
+  "deposit": 2720520,
+  "direction": null,
+  "extra": {
+    "償却": "なし",
+    "入居時期": "即",
+    "募集区画": "2階",
+    "坪単価": "16,500円（税込）
+坪賃料：16,500円/共益費：込",
+    "契約期間（期日）": "2年",
+    "敷金・保証金/礼金": "6ヶ月 / なし",
+    "更新料": "なし",
+    "月額費用": "453,420円（税込）",
+    "用途": "事務所",
+    "見出し": "イーグル西新橋ビル 2階",
+    "面積": "27.48坪 (90.84㎡)",
+  },
+  "features": [],
+  "floor": 2,
+  "imageUrls": [
+    "https://www.kencorp.co.jp/images/office/building/101445/bldg_101445_p1.jpg",
+  ],
+  "keyMoney": 0,
+  "layout": null,
+  "managementFee": 0,
+  "price": 453420,
+  "propertyType": "other",
+  "repairReserveFee": null,
+  "source": "kencorp",
+  "sourceListingId": "1014450005",
+  "sourceUpdatedAt": "2026-09-10T15:00:00.000Z",
+  "stations": [
+    {
+      "busMinutes": null,
+      "line": "都営三田線",
+      "station": "内幸町",
+      "walkMinutes": 2,
+    },
+  ],
+  "structure": "RC",
+  "title": "イーグル西新橋ビル",
+  "totalFloors": 7,
+  "transactionMode": "unknown",
+  "url": "https://www.kencorp.co.jp/office/properties/101445/1014450005/",
+  "usage": "business",
+}
+`;

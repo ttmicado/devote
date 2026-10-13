@@ -2,7 +2,7 @@ import { createHash } from "node:crypto";
 import {
   extractFeatures,
   type NormalizedListingInput,
-  parseAreaSqm,
+  parseAreaSqmOrTsubo,
   parseBuiltYearMonth,
   parseFloor,
   parseLayout,
@@ -14,26 +14,35 @@ import {
   type TransactionMode,
 } from "@devote/core";
 import * as cheerio from "cheerio";
-import { defineAdapter, type ListItem } from "../../adapter.js";
+import { defineAdapter, type ListItem, type SearchQuery } from "../../adapter.js";
 import { parseJpDate, parseStructure, parseTotalFloors } from "./helpers.js";
 
 /**
  * アクセルホーム（https://www.axel-home.com/）— 都心の賃貸仲介（千代田・月島・代々木店）。
- * 売買ページ（/buy/, /sale/）は相談窓口のみで物件検索がないため、賃貸（住居）のみ対象。
+ * 売買ページ（/buy/, /sale/）は相談窓口のみで物件検索がないため、賃貸（住居・事業用）のみ対象。
  *
  * - 一覧・詳細ともに SSR（Laravel + Vite）→ fetchMode は http
- * - 一覧: 区ページ /areas/{minato|shibuya|chiyoda|shinagawa}?usage=residence、
- *         町名で絞る場合は /areas/result?usage=residence&city_ids[0]={町ID}（勝どき=175, 豊洲=2）
+ * - 一覧: 区ページ /areas/{minato|shibuya|chiyoda|shinagawa}?usage={residence|business}、
+ *         町名で絞る場合は /areas/result?usage=...&city_ids[0]={町ID}（勝どき=175, 豊洲=2）
  *   1ページ12棟。各建物の下に空室カード（.js-lines-result-card）が全件並ぶ
  * - 「計N件」は建物数（空室0の建物を含む）なので totalCount には使わない
  * - 空室のある建物が先、空室0の建物が後ろに並ぶ。空室0の建物が出たページで巡回を打ち切る
  *   （港区は全151ページのうち空室ありは十数ページ）
  * - 詳細は部屋単位 /property/{物件番号}/outline/{部屋ID}。sourceListingId は部屋ID（"r44026"）
+ *
+ * 事業用（事務所・店舗）:
+ * - 用途はURLの usage で切り替わる（residence=住居、business=事務所・店舗）。詳細ページの本文は
+ *   どちらでも同じで、用途を示すのは一覧から引き継いだ詳細URLの ?usage= だけ。normalize はこれで判定する
+ * - 事業用の一覧には「SOHO・事務所可」の住居も並ぶ（住居の一覧と同じ部屋IDで重複する）。
+ *   事業用の一覧では、建物タグに「SOHO」がある建物と、間取りが K/DK/LDK の部屋（住戸）を除外する（isResidentialLike）
+ * - 事業用のクエリを先、住居のクエリを後に並べる。ランナーは同じ部屋IDを後のクエリの詳細URLで上書きするため、
+ *   除外をすり抜けた重複があっても住居の一覧にある部屋は住居として取り込まれる
+ * - 事業用の詳細は「敷金/礼金」の代わりに「保証金/礼金」のことがある。間取り欄は「1R」「ワンフロア」
  */
 const BASE_URL = "https://www.axel-home.com";
 const SOURCE_ID = "axel-home";
 
-const AREA_QUERIES: { key: string; params: Record<string, string> }[] = [
+const AREAS: { key: string; params: Record<string, string> }[] = [
   { key: "minato", params: { path: "/areas/minato" } },
   { key: "shibuya", params: { path: "/areas/shibuya" } },
   { key: "chiyoda", params: { path: "/areas/chiyoda" } },
@@ -41,6 +50,29 @@ const AREA_QUERIES: { key: string; params: Record<string, string> }[] = [
   { key: "chuo-kachidoki", params: { path: "/areas/result", city_id: "175" } },
   { key: "koto-toyosu", params: { path: "/areas/result", city_id: "2" } },
 ];
+
+/** サイトの usage パラメータ。事業用を先に巡回する（上のコメント参照） */
+const USAGES = [
+  { usage: "business", keyPrefix: "business-" },
+  { usage: "residence", keyPrefix: "" },
+] as const;
+
+const AREA_QUERIES: SearchQuery[] = USAGES.flatMap(({ usage, keyPrefix }) =>
+  AREAS.map((a) => ({ key: `${keyPrefix}${a.key}`, params: { ...a.params, usage } })),
+);
+
+/** 一覧・詳細のURLが事業用（?usage=business）か */
+const isBusinessUrl = (url: string) => new URL(url).searchParams.get("usage") === "business";
+
+/**
+ * 事業用の一覧・詳細に混ざる住居かどうか。
+ * - 建物タグに「SOHO」（SOHO・事務所利用可のマンション。住居の一覧にも同じ部屋が出る）
+ * - 間取りが K/DK/LDK（住戸の間取り。事務所・店舗は「1R」「ワンフロア」表記）
+ */
+export function isResidentialLike(tags: string[], layoutText: string | undefined): boolean {
+  if (tags.some((t) => /SOHO/i.test(t))) return true;
+  return /K$/.test(parseLayout(layoutText) ?? "");
+}
 
 const TRANSACTION_MODES: Record<string, TransactionMode> = {
   貸主: "owner",
@@ -64,14 +96,14 @@ export default defineAdapter({
     requiresLogin: false,
     rateLimit: { minIntervalMs: 2000, maxConcurrency: 1 },
     schedule: { listCron: "45 */3 * * *", detailRevisitHours: 48 },
-    parserVersion: "1",
+    parserVersion: "2",
   },
 
   queries: () => AREA_QUERIES,
 
   buildListUrl: (q) => {
     const u = new URL(String(q.params.path), BASE_URL);
-    u.searchParams.set("usage", "residence");
+    u.searchParams.set("usage", String(q.params.usage ?? "residence"));
     if (q.params.city_id) u.searchParams.set("city_ids[0]", String(q.params.city_id));
     return u.toString();
   },
@@ -80,12 +112,21 @@ export default defineAdapter({
     const $ = cheerio.load(html);
     const items: ListItem[] = [];
     let sawEmptyBuilding = false;
+    const business = isBusinessUrl(url);
 
     $("section.js-lines-result-result-item").each((_, sec) => {
       const cards = $(sec).find(".js-lines-result-card");
       if (cards.length === 0) sawEmptyBuilding = true;
+      const tags = $(sec)
+        .find(".c-result-section__tag")
+        .toArray()
+        .map((el) => squash($(el).text()));
       cards.each((__, card) => {
         const $card = $(card);
+        // 事業用の一覧に並ぶ SOHO 可の住居は取り込まない（"3階/1LDK/78.83m²" の間取り部分で判定）
+        const spec = squash($card.find(".c-result-section__card-spec").text());
+        const layoutText = spec.split("/").find((p) => !/階|m²|㎡/.test(p));
+        if (business && isResidentialLike(tags, layoutText)) return;
         const id = $card.attr("data-room-id");
         const href = $card.find("a.c-result-section__card-link").attr("href");
         if (!id || !href) throw new Error(`一覧のカードから ID/リンクが取れない: ${$card.html()}`);
@@ -190,7 +231,16 @@ export default defineAdapter({
     const price = parseYen(f.賃料);
     if (price == null || price <= 0) throw new Error(`賃料が解釈できない: ${f.賃料}`);
 
-    const [depositText, keyMoneyText] = (f["敷金/礼金"] ?? "").split(/[／/]/);
+    // 用途は詳細URLの ?usage= で決まる（本文は住居・事業用で同じ）
+    const tags = (f.タグ ?? "").split("、").filter(Boolean);
+    const business = isBusinessUrl(raw.url);
+    if (business && isResidentialLike(tags, f.間取り)) {
+      // 一覧で除外しているはず。保存済みスナップショットの再パースなどで来たら住居を事業用にしない
+      throw new Error(`SOHO可の住居は事業用として取り込まない: ${raw.url}`);
+    }
+
+    // 事業用は「保証金/礼金」表記のことがある（保証金は敷金と同じく deposit に入れ、表記は extra に残す）
+    const [depositText, keyMoneyText] = (f["敷金/礼金"] ?? f["保証金/礼金"] ?? "").split(/[／/]/);
     const stations = (f.交通 ?? "")
       .split("\n")
       .map((line) => parseStationAccess(line))
@@ -214,8 +264,18 @@ export default defineAdapter({
       "学区",
       "タグ",
       "通信関係",
+      "保証金/礼金",
+      "償却",
     ];
-    const extra = Object.fromEntries(extraKeys.filter((k) => f[k]).map((k) => [k, f[k] as string]));
+    const extra: Record<string, string> = Object.fromEntries(
+      extraKeys.filter((k) => f[k]).map((k) => [k, f[k] as string]),
+    );
+    if (business) {
+      // 事業用は「1R」「ワンフロア」など区画の表記で間取りの概念がないため、表記どおり extra に残す
+      if (f.間取り) extra.間取り表記 = f.間取り;
+      const uses = tags.filter((t) => t === "事務所" || t === "店舗");
+      if (uses.length > 0) extra.用途 = uses.join("・");
+    }
 
     return {
       source: SOURCE_ID,
@@ -229,8 +289,8 @@ export default defineAdapter({
       managementFee: parseYen(f.管理費),
       deposit: parseMonthsOrYen(depositText, price),
       keyMoney: parseMonthsOrYen(keyMoneyText, price),
-      layout: parseLayout(f.間取り),
-      areaSqm: parseAreaSqm(f.面積 ?? f.専有面積),
+      layout: business ? null : parseLayout(f.間取り),
+      areaSqm: parseAreaSqmOrTsubo(f.面積 ?? f.専有面積),
       builtYearMonth: parseBuiltYearMonth(f.築年月),
       floor,
       totalFloors: parseTotalFloors(f.構造),
@@ -243,7 +303,8 @@ export default defineAdapter({
       imageUrls: raw.imageUrls,
       sourceUpdatedAt: parseJpDate(f.最終更新日),
       repairReserveFee: null,
-      propertyType: "mansion",
+      propertyType: business ? "other" : "mansion",
+      usage: business ? "business" : "residential",
       extra,
     };
   },
