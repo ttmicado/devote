@@ -405,7 +405,7 @@ export default defineAdapter({
       minRunIntervalMinutes: 120,
       activeHoursJst: [7, 23],
     },
-    // 月間の検索・物件詳細・図面はそれぞれ 6,000 件を超えると課金（ミカド社確認、2026-10）。
+    // 月間の検索・物件詳細・図面はそれぞれ 6,000 件まで無料・超過分は1件3円（ミカド社確認、2026-10）。
     // 既定では 6,000 件を上限にして日割りで配分する（REINS_MONTHLY_*_LIMIT で変更可）
     monthlyQuota: {
       list: Number(process.env.REINS_MONTHLY_SEARCH_LIMIT ?? 6000),

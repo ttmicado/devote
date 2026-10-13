@@ -46,7 +46,7 @@ Vercel の画面から作ると、接続情報（`DATABASE_URL` など）が Ver
 3. https://developers.line.biz/console/ で、作成されたチャネルを開く
    - チャネル基本設定 → **チャネルシークレット** → `LINE_CHANNEL_SECRET`
    - Messaging API設定 → **チャネルアクセストークン（長期）** を発行 → `LINE_CHANNEL_ACCESS_TOKEN`
-   - Messaging API設定 → **Webhook URL** に `https://devote-inc.jp/api/line/webhook` を設定し、「Webhookの利用」をオン（手順 5 の後で設定）
+   - Messaging API設定 → **Webhook URL** に `https://app.devote-inc.jp/api/line/webhook` を設定し、「Webhookの利用」をオン（手順 5 の後で設定）
    - 「応答メッセージ」「あいさつメッセージ」は Official Account Manager でオフにする（Devote が返信するため）
 4. 友だち追加URL（`https://lin.ee/xxxx`）→ `NEXT_PUBLIC_LINE_ADD_FRIEND_URL`
 
@@ -70,7 +70,7 @@ Vercel の画面から作ると、接続情報（`DATABASE_URL` など）が Ver
 | 変数 | 値 |
 |---|---|
 | `DATABASE_URL` | （Storage から Neon を作れば自動で入る） |
-| `APP_URL` | `https://devote-inc.jp` |
+| `APP_URL` | `https://app.devote-inc.jp` |
 | `SESSION_SECRET` | ランダムな32文字以上（`openssl rand -base64 32`） |
 | `ADMIN_USER` / `ADMIN_PASSWORD` | 管理画面のID・パスワード |
 | `ANTHROPIC_API_KEY` | 手順2 |
@@ -79,10 +79,9 @@ Vercel の画面から作ると、接続情報（`DATABASE_URL` など）が Ver
 | `RESEND_API_KEY` / `MAIL_FROM` | 手順4 |
 
 5. Deploy
-6. Settings → **Domains** で `devote-inc.jp`（と `www.devote-inc.jp`）を追加し、表示される DNS レコード
-   （`A 76.76.21.21` と `CNAME cname.vercel-dns.com` など、画面の指示どおり）を DNS に登録する
-   - devote-inc.jp を会社のホームページで使う予定なら、アプリは `app.devote-inc.jp` にして `APP_URL` もそれに合わせる
-7. LINE の Webhook URL に `https://devote-inc.jp/api/line/webhook` を設定し、「検証」で成功することを確認する
+6. Settings → **Domains** で **`app.devote-inc.jp`** を追加し、表示される DNS レコード
+   （`app` の CNAME → `cname.vercel-dns.com` など、画面の指示どおり）を devote-inc.jp の DNS に登録する
+7. LINE の Webhook URL に `https://app.devote-inc.jp/api/line/webhook` を設定し、「検証」で成功することを確認する
 
 ### 6. GitHub（巡回・マイグレーション）
 リポジトリ → Settings → Secrets and variables → Actions
@@ -93,7 +92,7 @@ Vercel の画面から作ると、接続情報（`DATABASE_URL` など）が Ver
 |---|---|
 | `DATABASE_URL` | Neon の pooled 接続文字列（手順 1-4） |
 | `DATABASE_URL_UNPOOLED` | Neon の direct 接続文字列（マイグレーション用） |
-| `APP_URL` | `https://devote-inc.jp` |
+| `APP_URL` | `https://app.devote-inc.jp` |
 | `LINE_CHANNEL_ACCESS_TOKEN` | 手順3 |
 | `RESEND_API_KEY` / `MAIL_FROM` | 手順4 |
 | `REINS_USER_ID` / `REINS_PASSWORD` | レインズ |
@@ -103,15 +102,17 @@ Vercel の画面から作ると、接続情報（`DATABASE_URL` など）が Ver
 **Variables**（任意）
 - `ENABLE_UNVERIFIED_SOURCES` = `1` … 動作確認前の会員サイトのアダプターも巡回する（確認が済むまでは空のまま）
 - `DEVOTE_SOURCES` … 巡回するソースを絞る（例: 会員サイトは国内マシンで動かす場合）
-- `REINS_MONTHLY_SEARCH_LIMIT` / `REINS_MONTHLY_DETAIL_LIMIT` … レインズの月間上限（既定 6,000。課金が始まる件数）
+- `REINS_MONTHLY_SEARCH_LIMIT` / `REINS_MONTHLY_DETAIL_LIMIT` … レインズの月間上限（既定 6,000 = 無料枠。超えた分は1件3円。
+  例: 9,000 にすると最大で月 3,000件×3円 = 9,000円/種別）
 
 その後:
 1. Actions → **DB Migrate** → Run workflow（Neon にテーブルを作る。以後 main へのマージで自動実行）
 2. Actions → **Crawl & Notify** → Run workflow（初回の巡回。以後30分ごとに自動実行）
-3. `https://devote-inc.jp/admin` で「巡回ソースの状況」に結果が出ることを確認する
+3. `https://app.devote-inc.jp/admin` で「巡回ソースの状況」に結果が出ることを確認する
 
 ### レインズの利用上限について
-レインズは月間の検索・物件詳細検索・図面がそれぞれ 6,000 件を超えると課金されるため、Devote は次のように制御します。
+レインズは月間の検索・物件詳細検索・図面がそれぞれ **6,000 件まで無料、超えた分は1件3円**（ミカド社確認）のため、
+Devote は無料枠の範囲に収まるよう次のように制御します。
 - 月 6,000 件を上限に、**月末までの残り日数で日割り**して使う（例: 月初は1日約193件まで）
 - 提供時間（7:00〜23:00）のみ、2時間ごとに巡回
 - 実際に行った検索・詳細表示の回数は `source_usage` に記録し、管理画面の「今月の利用量」に表示
