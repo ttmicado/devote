@@ -4,8 +4,8 @@
  */
 
 export const BRAND = {
-  promise: "あなたの時間には手をつけず、住まい探しのすべてを引き受けます。",
-  tagline: "住まい探しに、献身を。",
+  promise: "あなたの時間には手をつけず、物件探しのすべてを引き受けます。",
+  tagline: "物件探しに、献身を。",
 } as const;
 
 export const NAV = [
@@ -13,9 +13,14 @@ export const NAV = [
   { href: "/matches", en: "Selections", ja: "ご提案" },
   { href: "/inquiries", en: "Viewings", ja: "内見のご依頼" },
   { href: "/settings", en: "Preferences", ja: "お届け設定" },
+  { href: "/account", en: "Account", ja: "アカウント" },
 ] as const;
 
-export const HEADER_CTA = { guest: "物件探しを任せる", member: "最新のご提案" } as const;
+export const HEADER_CTA = {
+  guest: "物件探しを任せる",
+  member: "最新のご提案",
+  short: "依頼する",
+} as const;
 
 export const AREAS = [
   { ja: "港区", en: "Minato" },
@@ -499,4 +504,44 @@ export const PREFERENCES = {
   briefTitle: "承っているご希望",
   briefEdit: "コンシェルジュと見直す",
   noCondition: "先にコンシェルジュとご希望を整えてください。",
+} as const;
+
+export const ACCOUNT = {
+  eyebrow: "Account",
+  title: "アカウント",
+  lead: "ほかの端末やブラウザからも、同じご希望・ご提案をご覧いただけるようにします。",
+  createTitle: "アカウントを作る",
+  createLead: "いまご相談いただいている内容は、そのまま引き継ぎます。",
+  manageTitle: "アカウント",
+  nickname: "お呼びする名前",
+  nicknameNote: "コンシェルジュやお知らせで「○○様」とお呼びします。",
+  loginId: "ログインID",
+  loginIdNote: "英数字4文字以上。メールアドレスでも構いません。",
+  password: "パスワード",
+  passwordNote: "8文字以上",
+  newPassword: "新しいパスワード（変更する場合のみ）",
+  create: "アカウントを作る",
+  save: "保存する",
+  created: "アカウントを作りました。ほかの端末からは、ログインIDとパスワードでお入りください。",
+  saved: "保存しました。",
+  logout: "この端末からログアウト",
+  haveAccount: "すでにアカウントをお持ちの方",
+  toLogin: "ログインする",
+  errors: {
+    nickname: "お呼びする名前をお知らせください。",
+    loginId: "ログインIDは英数字4文字以上でお決めください（メールアドレスでも構いません）。",
+    password: "パスワードは8文字以上でお決めください。",
+    taken: "このログインIDはすでに使われています。別のIDをお決めください。",
+  },
+  login: {
+    eyebrow: "Sign In",
+    title: "ログイン",
+    lead: "ほかの端末で作ったアカウントでお入りください。",
+    submit: "ログインする",
+    noAccount: "アカウントをお持ちでない方は、ご相談から始められます。",
+    errors: {
+      invalid: "ログインIDかパスワードが違います。",
+      locked: "続けて失敗したため、15分ほどログインを止めています。少し置いてお試しください。",
+    },
+  },
 } as const;

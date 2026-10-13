@@ -130,7 +130,7 @@ function verificationEmailHtml(link: string) {
 <table role="presentation" width="100%" style="max-width:520px;margin:0 auto;border-collapse:collapse">
 <tr><td style="padding:8px 0 24px;text-align:center;border-bottom:1px solid #e3d4b9">
   <div style="font:300 30px/1 Georgia,'Times New Roman',serif;color:#142821">Devote</div>
-  <div style="font:500 8px/1 Helvetica,Arial,sans-serif;letter-spacing:.42em;color:#7f6d51;margin-top:6px">RESIDENCE CONCIERGE</div>
+  <div style="font:500 8px/1 Helvetica,Arial,sans-serif;letter-spacing:.42em;color:#7f6d51;margin-top:6px">PROPERTY CONCIERGE</div>
 </td></tr>
 <tr><td style="padding:28px 0">
   <div style="font:500 20px/1.6 'Hiragino Mincho ProN','Yu Mincho',serif;color:#142821">メールアドレスのご確認</div>

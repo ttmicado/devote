@@ -66,6 +66,17 @@ export function SiteHeader() {
           </div>
           <Logo tone={tone} />
           <div className="flex items-center justify-end gap-6">
+            {/* スマホ: 小さな CTA（右上） */}
+            <Link
+              href="/chat"
+              className={`inline-flex min-h-11 items-center rounded-full px-4 font-sans text-[12px] tracking-[0.12em] sm:hidden ${
+                tone === "dark"
+                  ? "border border-sand-200/50 text-sand-100"
+                  : "bg-evergreen-800 text-sand-50"
+              }`}
+            >
+              {HEADER_CTA.short}
+            </Link>
             <Link
               href="/settings"
               className={`eyebrow hidden transition-opacity hover:opacity-60 lg:inline ${

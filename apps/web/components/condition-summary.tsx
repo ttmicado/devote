@@ -12,7 +12,13 @@ const featureLabel = (f: string) =>
 export function conditionLines(c: SearchCondition): [string, string][] {
   const h = c.hard;
   const t = c.tolerance;
-  const lines: [string, string][] = [["種別", c.dealType === "rent" ? "賃貸" : "購入"]];
+  const kind =
+    c.usage === "business"
+      ? "賃貸（オフィス・店舗）"
+      : c.dealType === "rent"
+        ? "賃貸（お住まい）"
+        : "購入";
+  const lines: [string, string][] = [["種別", kind]];
   const areas = [...c.areas.cities, ...c.areas.stations.map((s) => `${s}駅`)];
   if (areas.length) lines.push(["エリア", areas.join("・")]);
   if (h.maxPrice != null)

@@ -31,12 +31,13 @@ const featureText = [
   "south_facing=南向き",
 ].join(", ");
 
-const SYSTEM = `あなたは不動産会社「Devote」の住まい探しコンシェルジュです。都心の賃貸・売買仲介で10年以上の経験を持つ営業担当として、お客様と会話しながら「住みたい条件」を一緒に固めます。
+const SYSTEM = `あなたは不動産会社「Devote」の物件探しのコンシェルジュです。都心の賃貸・売買仲介（お住まい・オフィスや店舗）で10年以上の経験を持つ営業担当として、お客様と会話しながら「求める条件」を一緒に固めます。
 
 # サービスについて
 - Devote は不動産会社の業者間サイトや各社の自社サイトを巡回し、条件に合う新着物件を最速で LINE / メールでお届けします。
 - 対象エリアは ${areaText} です。対象外のエリアを希望されたら、正直に対象外であることを伝え、近い対象エリアを提案してください。
-- 賃貸・売買の両方に対応しています。
+- お住まいの賃貸・売買に加え、オフィス・店舗などの事業用の賃貸にも対応しています（事業用の売買は対象外）。
+- 最初に、お住まいか事業用か、賃貸か購入かを確かめます（会話から明らかなら聞き直さない）。事業用なら usage を business にし、広さは坪で伺って㎡に換算して記録します（1坪 = 3.30579㎡）。事業用では間取りは伺わず、用途（事務所・店舗）や必要な席数・天井高・駅からの距離などを伺います。
 
 # 進め方
 - 質問は一度に一つ。まず「賃貸か購入か」「予算」「エリア（通勤先・よく行く場所）」「広さ・間取り」「入居（購入）時期」を優先し、細部は後から伺います。
@@ -54,6 +55,7 @@ const SYSTEM = `あなたは不動産会社「Devote」の住まい探しコン�
 
 # 話し方
 お相手は時間の限られた経営者です。ホテルのコンシェルジュのように、控えめで確かな応対をします。
+- current_state の nickname がある場合は、その名前に「様」を付けてお呼びします（多用はしない）。
 - 一人称は「私」。呼びかけは控えめにし、お名前が分かれば「○○様」とお呼びします。
 - 一度の返答は3文程度まで。結論を先に、理由は一言で添えます。長い前置きをしません。
 - 丁寧語・尊敬語を中心にします。「させていただく」の多用や二重敬語は避けます。
@@ -83,6 +85,12 @@ const TOOLS: Anthropic.Beta.BetaTool[] = [
       type: "object",
       properties: {
         dealType: { type: "string", enum: ["rent", "sale"], description: "賃貸=rent / 購入=sale" },
+        usage: {
+          type: "string",
+          enum: ["residential", "business"],
+          description:
+            "お住まい=residential / オフィス・店舗などの事業用=business（事業用は賃貸のみ）",
+        },
         areas: {
           type: "object",
           properties: {
@@ -172,6 +180,7 @@ export function emptyCondition(): SearchCondition {
 
 type Patch = Partial<{
   dealType: "rent" | "sale";
+  usage: "residential" | "business";
   areas: Partial<SearchCondition["areas"]>;
   hard: Partial<SearchCondition["hard"]>;
   tolerance: Partial<SearchCondition["tolerance"]>;
@@ -184,6 +193,9 @@ export function applyPatch(draft: SearchCondition, patch: Patch) {
   const merged = {
     ...draft,
     ...(patch.dealType ? { dealType: patch.dealType } : {}),
+    ...(patch.usage ? { usage: patch.usage } : {}),
+    // 事業用は賃貸のみ対応
+    ...((patch.usage ?? draft.usage) === "business" ? { dealType: "rent" as const } : {}),
     areas: { ...draft.areas, ...patch.areas },
     hard: { ...draft.hard, ...patch.hard },
     tolerance: { ...draft.tolerance, ...patch.tolerance },
@@ -211,7 +223,7 @@ export async function loadChat(userId: string) {
     .from(chatMessages)
     .where(eq(chatMessages.userId, userId))
     .orderBy(asc(chatMessages.id));
-  return { state, rows };
+  return { state, rows, nickname: u?.nickname ?? null };
 }
 
 /** 画面表示用: ユーザーの発言と AI のテキストだけを取り出す */
@@ -247,7 +259,7 @@ export async function draftPreview(draft: SearchCondition) {
 
 export async function runChatTurn(userId: string, userText: string) {
   const db = getDb();
-  const { state, rows } = await loadChat(userId);
+  const { state, rows, nickname } = await loadChat(userId);
   const history: Anthropic.Beta.BetaMessageParam[] = rows.map((r) => ({
     role: r.role as "user" | "assistant",
     content: r.content as Anthropic.Beta.BetaMessageParam["content"],
@@ -264,7 +276,7 @@ export async function runChatTurn(userId: string, userText: string) {
       { type: "text", text: userText },
       {
         type: "text",
-        text: `<current_state>\n${JSON.stringify({ phase: state.phase, draft: state.draft })}\n</current_state>`,
+        text: `<current_state>\n${JSON.stringify({ nickname, phase: state.phase, draft: state.draft })}\n</current_state>`,
       },
     ],
   });

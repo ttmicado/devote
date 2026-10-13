@@ -1,3 +1,5 @@
+import { getDb, users } from "@devote/db";
+import { eq } from "drizzle-orm";
 import {
   disconnectChannel,
   issueLineLinkCode,
@@ -10,6 +12,7 @@ import { ButtonLink, Eyebrow, Notice, PageHeader, Toast } from "@/components/ui"
 import { PREFERENCES as T } from "@/lib/copy";
 import { latestCondition, userChannelList } from "@/lib/data";
 import { currentUserId } from "@/lib/session";
+import { LineLinkWatcher } from "./line-link-watcher";
 
 export const dynamic = "force-dynamic";
 
@@ -18,12 +21,21 @@ const PHASE_ORDER = ["exploring", "considering", "ready"] as const;
 export default async function SettingsPage({
   searchParams,
 }: {
-  searchParams: Promise<{ lineCode?: string; email?: string; saved?: string; welcome?: string }>;
+  searchParams: Promise<{
+    lineCode?: string;
+    email?: string;
+    saved?: string;
+    welcome?: string;
+    linked?: string;
+  }>;
 }) {
-  const { lineCode, email, saved, welcome } = await searchParams;
+  const { lineCode, email, saved, welcome, linked } = await searchParams;
   const userId = await currentUserId();
   const condition = userId ? await latestCondition(userId) : null;
   const channels = userId ? await userChannelList(userId) : [];
+  const [me] = userId
+    ? await getDb().select({ loginId: users.loginId }).from(users).where(eq(users.id, userId))
+    : [];
   const active = channels.filter((c) => c.active);
   const lineLinked = active.some((c) => c.channel === "line");
   const friendUrl = process.env.NEXT_PUBLIC_LINE_ADD_FRIEND_URL;
@@ -41,7 +53,17 @@ export default async function SettingsPage({
           </Toast>
         )}
         {saved && <Toast>{T.saved}</Toast>}
+        {linked && <Toast>LINE と連携しました。ご希望に適う物件を、LINE にお届けします。</Toast>}
       </div>
+
+      {!me?.loginId && (
+        <p className="mt-8 flex flex-wrap items-center gap-x-4 gap-y-2 border-y border-ink-900/15 py-4 text-sm leading-7 text-ink-500">
+          ほかの端末やブラウザからも同じ内容をご覧いただくには、アカウントをお作りください。
+          <ButtonLink href="/account" variant="ghost" arrow>
+            アカウントを作る
+          </ButtonLink>
+        </p>
+      )}
 
       {/* 受け取り方 */}
       <section className="mt-14" aria-labelledby="channels">
@@ -136,6 +158,17 @@ export default async function SettingsPage({
                         {lineCode}
                       </p>
                       <p className="mt-3 text-xs leading-6 text-sand-300">{T.line.codeNote}</p>
+                      {friendUrl && (
+                        <a
+                          href={friendUrl}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="mt-4 inline-flex min-h-11 items-center rounded-full border border-sand-200/50 px-5 text-xs tracking-[0.12em] text-sand-100 hover:bg-sand-100/10"
+                        >
+                          {T.line.addFriend} →
+                        </a>
+                      )}
+                      <LineLinkWatcher />
                     </div>
                   ) : (
                     <form action={issueLineLinkCode} className="mt-8">

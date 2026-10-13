@@ -62,3 +62,9 @@ export async function setSessionCookie(userId: string) {
 export function appUrl(): string {
   return (process.env.APP_URL ?? "http://localhost:3000").replace(/\/$/, "");
 }
+
+/** ログアウト（この端末のセッションを消す） */
+export async function clearSessionCookie() {
+  const store = await cookies();
+  store.delete(COOKIE);
+}

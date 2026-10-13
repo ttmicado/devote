@@ -1,6 +1,14 @@
 import { randomUUID } from "node:crypto";
 import { type NormalizedListing, PHASE_GATE, type SearchPhase } from "@devote/core";
-import { type Db, matches, notifications, properties, sentLedger, userChannels } from "@devote/db";
+import {
+  type Db,
+  matches,
+  notifications,
+  properties,
+  sentLedger,
+  userChannels,
+  users,
+} from "@devote/db";
 import { and, asc, desc, eq, gt, gte, inArray, sql } from "drizzle-orm";
 import { personalLink } from "../link-token";
 import { activeConditions } from "../match";
@@ -59,6 +67,10 @@ export async function sendPropertiesToUser(
   error?: string;
 }> {
   const channels = await channelsFor(db, args.userId);
+  const [person] = await db
+    .select({ nickname: users.nickname })
+    .from(users)
+    .where(eq(users.id, args.userId));
   if (channels.length === 0 || args.items.length === 0) return { status: "skipped", count: 0 };
 
   const notificationId = randomUUID();
@@ -105,6 +117,7 @@ export async function sendPropertiesToUser(
           notificationId,
           kind: args.kind,
           userId: args.userId,
+          nickname: person?.nickname,
           settingsUrl: personalLink(base, "/settings", args.userId),
         });
         await sendEmail({

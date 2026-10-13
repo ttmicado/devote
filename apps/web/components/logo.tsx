@@ -20,7 +20,7 @@ export function Logo({ tone = "light" }: { tone?: "light" | "dark" }) {
           tone === "dark" ? "text-sand-300" : "text-sand-600"
         }`}
       >
-        Residence Concierge
+        Property Concierge
       </span>
     </Link>
   );

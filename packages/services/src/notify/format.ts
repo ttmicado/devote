@@ -204,9 +204,16 @@ export function buildLineMessages(
 /** メール: 件名・HTML・テキスト */
 export function buildEmail(
   items: NotifyItem[],
-  opts: LinkOpts & { kind?: NotifyKind; heading?: string; settingsUrl: string },
+  opts: LinkOpts & {
+    kind?: NotifyKind;
+    heading?: string;
+    settingsUrl: string;
+    /** お呼びする名前（あれば冒頭で「○○様」） */
+    nickname?: string | null;
+  },
 ) {
-  const copy = notifyCopy(opts.kind ?? "new", items.length);
+  const base = notifyCopy(opts.kind ?? "new", items.length);
+  const copy = opts.nickname ? { ...base, intro: `${opts.nickname}様\n${base.intro}` } : base;
   const heading = opts.heading ?? copy.heading;
   const cards = items
     .map((item) => {
@@ -236,7 +243,7 @@ export function buildEmail(
 <table role="presentation" width="100%" style="max-width:560px;margin:0 auto;border-collapse:collapse">
 <tr><td style="padding:8px 0 24px;text-align:center;border-bottom:1px solid ${BRAND.sandLine}">
   <div style="font:300 30px/1 Georgia,'Times New Roman',serif;color:${BRAND.evergreenDark}">Devote</div>
-  <div style="font:500 8px/1 Helvetica,Arial,sans-serif;letter-spacing:.42em;color:${BRAND.label};margin-top:6px">RESIDENCE CONCIERGE</div>
+  <div style="font:500 8px/1 Helvetica,Arial,sans-serif;letter-spacing:.42em;color:${BRAND.label};margin-top:6px">PROPERTY CONCIERGE</div>
 </td></tr>
 <tr><td style="padding:28px 0 4px">
   <div style="font:500 20px/1.6 'Hiragino Mincho ProN','Yu Mincho',serif;color:${BRAND.evergreenDark}">${escapeHtml(heading)}</div>

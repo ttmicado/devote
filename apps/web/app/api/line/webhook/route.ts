@@ -28,15 +28,28 @@ export async function POST(req: Request) {
   const db = getDb();
 
   for (const ev of events) {
+    try {
+      await handleEvent(ev, db);
+    } catch (e) {
+      console.error(
+        `[line] ${ev.type} の処理に失敗: ${e instanceof Error ? e.message : String(e)}`,
+      );
+    }
+  }
+  return Response.json({ ok: true });
+}
+
+async function handleEvent(ev: LineEvent, db: ReturnType<typeof getDb>) {
+  {
     const lineUserId = ev.source?.userId;
-    if (!lineUserId) continue;
+    if (!lineUserId) return;
 
     if (ev.type === "unfollow") {
       await db
         .update(userChannels)
         .set({ active: false, updatedAt: new Date() })
         .where(and(eq(userChannels.channel, "line"), eq(userChannels.address, lineUserId)));
-      continue;
+      return;
     }
 
     if (ev.type === "follow" && ev.replyToken) {
@@ -46,7 +59,7 @@ export async function POST(req: Request) {
           text: `Devote のコンシェルジュです。ご登録ありがとうございます。\nお届け設定（${appUrl()}/settings）に表示される6桁の連携コードを、このトークにお送りください。ご希望に適う物件を、ここでお届けします。`,
         },
       ]);
-      continue;
+      return;
     }
 
     if (ev.type === "message" && ev.message?.type === "text" && ev.replyToken) {
@@ -58,7 +71,7 @@ export async function POST(req: Request) {
             text: `ご連絡ありがとうございます。ご希望の見直しは、こちらのコンシェルジュが承ります。\n${appUrl()}/chat\n内見は、お届けした物件のページからご依頼いただけます。`,
           },
         ]);
-        continue;
+        return;
       }
       const [token] = await db
         .select()
@@ -78,7 +91,7 @@ export async function POST(req: Request) {
             text: "連携コードの有効期限（30分）が切れているようです。お手数ですが、お届け設定で新しいコードを発行してください。",
           },
         ]);
-        continue;
+        return;
       }
       await db
         .insert(userChannels)
@@ -99,5 +112,4 @@ export async function POST(req: Request) {
       ]);
     }
   }
-  return Response.json({ ok: true });
 }

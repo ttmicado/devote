@@ -1,4 +1,4 @@
-import { headlinePrice, keyFacts, type NormalizedListing } from "@devote/core";
+import { dealKindLabel, headlinePrice, keyFacts, type NormalizedListing } from "@devote/core";
 import Link from "next/link";
 import { Fragment } from "react";
 import { SELECTIONS } from "@/lib/copy";
@@ -43,7 +43,7 @@ export function splitAmount(amount: string): [string, string] {
   return m ? [m[1] ?? amount, m[2] ?? ""] : [amount, ""];
 }
 
-export const dealEyebrow = (l: NormalizedListing) => (l.dealType === "rent" ? "Rent" : "Sale");
+export const dealEyebrow = (l: NormalizedListing) => dealKindLabel(l).en;
 
 /** 大きな総額（賃貸は管理費込みの月額、売買は価格）と内訳の注記 */
 export function PriceFigure({

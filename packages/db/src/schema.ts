@@ -129,6 +129,14 @@ export const changeEvents = pgTable(
 export const users = pgTable("users", {
   id: uuid("id").primaryKey().defaultRandom(),
   displayName: text("display_name"),
+  /** お呼びする名前（AIや通知で「○○様」） */
+  nickname: text("nickname"),
+  /** ログインID（小文字で保存。メールアドレスでも可） */
+  loginId: text("login_id").unique(),
+  /** scrypt のハッシュ（apps/web/lib/password.ts） */
+  passwordHash: text("password_hash"),
+  failedLogins: smallint("failed_logins").notNull().default(0),
+  lockedUntil: timestamp("locked_until", { withTimezone: true }),
   /** AIチャットで編集中（未確定）の条件 */
   draftCondition: jsonb("draft_condition"),
   draftPhase: text("draft_phase", { enum: ["exploring", "considering", "ready"] }),

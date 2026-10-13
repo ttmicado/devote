@@ -47,3 +47,10 @@ describe("toDisplay", () => {
     ]);
   });
 });
+
+describe("事業用", () => {
+  it("事業用にすると賃貸に固定する", () => {
+    const r = applyPatch(emptyCondition(), { dealType: "sale", usage: "business" });
+    expect(r.data).toMatchObject({ dealType: "rent", usage: "business" });
+  });
+});
