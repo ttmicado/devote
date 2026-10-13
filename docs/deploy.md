@@ -4,8 +4,8 @@
 
 | 役割 | サービス | 動くもの |
 |---|---|---|
-| Web（AIチャット・物件一覧・問い合わせ・管理画面・LINE Webhook） | **Vercel**（東京リージョン hnd1） | `apps/web` |
-| DB | **Neon**（PostgreSQL + pgvector、リージョンは AWS Tokyo） | `packages/db` |
+| Web（AIチャット・物件一覧・問い合わせ・管理画面・LINE Webhook） | **Vercel**（関数はシンガポール sin1。DB と同じ地域に置く） | `apps/web` |
+| DB | **Neon**（PostgreSQL + pgvector、リージョンは AWS Singapore） | `packages/db` |
 | AI | **Anthropic Claude API** | `apps/web/lib/ai.ts` |
 | 巡回 → マッチング → 通知（30分ごと） | **GitHub Actions** | `.github/workflows/crawl.yml` |
 | 通知 | LINE 公式アカウント（Messaging API）／ Resend（メール） | `packages/services/src/notify` |
@@ -21,7 +21,9 @@ Vercel の画面から作ると、接続情報（`DATABASE_URL` など）が Ver
 
 1. 先に手順 5 の Import まで済ませる（プロジェクトがあると紐づけが楽）
 2. Vercel のプロジェクト → **Storage** → **Create Database** → **Neon** を選ぶ
-   - Region: **Tokyo（aws-ap-northeast-1）**（Vercel の関数も東京 hnd1 で動かすため）
+   - Region: **Singapore（aws-ap-southeast-1）**（Vercel 経由の Neon には東京がないため）
+   - Vercel の関数も `apps/web/vercel.json` でシンガポール（sin1）に固定している。1画面で DB に何度も問い合わせるので、
+     関数と DB を同じ地域に置く方が、東京の関数から毎回シンガポールの DB に行くより速い
    - 環境: Production / Preview / Development すべてにチェック
 3. 作成後、プロジェクトの Settings → Environment Variables に次が自動で追加される
    - `DATABASE_URL`（pooled 接続。アプリはこれを使う）
