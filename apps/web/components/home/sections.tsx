@@ -147,42 +147,30 @@ export function SourcesSection() {
     <Section surface="light">
       <div className="grid gap-14 lg:grid-cols-[1fr_1.3fr] lg:gap-24">
         <SectionHead eyebrow={S.eyebrow} title={S.title} body={S.body} index="v." />
-        <div className="grid gap-14">
-          {S.groups.map((g, gi) => {
-            const pending = Boolean(g.note);
-            return (
+        <div>
+          <div className="border-t border-ink-900/25">
+            {S.groups.map((g, gi) => (
               <Reveal key={g.en} delay={gi * 140}>
-                <div className="flex items-end justify-between gap-4 border-b border-ink-900/25 pb-4">
+                <div className="grid gap-3 border-b border-ink-900/15 py-8 sm:grid-cols-[3rem_1fr] sm:gap-6">
+                  <span className="font-serif text-sm text-ink-500 italic tabular-nums">
+                    {String(gi + 1).padStart(2, "0")}
+                  </span>
                   <div>
                     <Eyebrow>{g.en}</Eyebrow>
                     <p className="mt-2 font-mincho text-xl text-evergreen-900">{g.ja}</p>
+                    <p className="mt-3 text-[14px] leading-7 text-ink-500">{g.body}</p>
                   </div>
-                  <p className="flex items-center gap-2 text-[12px] whitespace-nowrap text-ink-500">
-                    <span
-                      aria-hidden
-                      className={`size-1.5 rounded-full ${pending ? "border border-ink-500" : "animate-pulse-dot bg-evergreen-700"}`}
-                    />
-                    {pending ? g.note : HOME.live.crawling}
-                  </p>
                 </div>
-                <ul className="grid sm:grid-cols-2 sm:gap-x-10">
-                  {g.items.map((name, i) => (
-                    <li
-                      key={name}
-                      className={`flex items-baseline gap-5 border-b py-4 ${pending ? "border-dashed border-ink-900/15" : "border-ink-900/10"}`}
-                    >
-                      <span className="font-serif text-sm text-ink-500 italic tabular-nums">
-                        {String(i + 1).padStart(2, "0")}
-                      </span>
-                      <span className={`text-[15px] ${pending ? "text-ink-500" : "text-ink-900"}`}>
-                        {name}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
               </Reveal>
-            );
-          })}
+            ))}
+          </div>
+          <p className="mt-6 flex items-center gap-2 text-[12px] text-ink-500">
+            <span
+              aria-hidden
+              className="size-1.5 animate-pulse-dot rounded-full bg-evergreen-700"
+            />
+            {S.note}
+          </p>
         </div>
       </div>
     </Section>

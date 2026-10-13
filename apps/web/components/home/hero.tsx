@@ -53,7 +53,6 @@ function LiveBand({ crawl }: { crawl: CrawlSummary | null }) {
   const live = crawl && (crawl.activeProperties > 0 || crawl.checkedToday > 0);
   const items = live
     ? [
-        { value: nf(crawl.sourcesToday), unit: "か所", label: L.sources },
         { value: nf(crawl.checkedToday), unit: "件", label: L.checked },
         { value: nf(crawl.newToday), unit: "件", label: L.newToday },
         { value: nf(crawl.activeProperties), unit: "件", label: L.active },

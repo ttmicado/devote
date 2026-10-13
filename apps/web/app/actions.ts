@@ -105,13 +105,38 @@ export async function requestEmailVerification(formData: FormData) {
       expiresAt: new Date(Date.now() + 24 * 3600_000),
     });
   const link = `${appUrl()}/api/email/verify?token=${token}`;
-  await sendEmail({
-    to: email,
-    subject: "【Devote】メールアドレスの確認",
-    text: `以下のリンクを開くと、Devote の物件通知をこのメールアドレスで受け取れるようになります。\n${link}\n\n心当たりがない場合はこのメールを破棄してください。`,
-    html: `<p>以下のリンクを開くと、Devote の物件通知をこのメールアドレスで受け取れるようになります。</p><p><a href="${link}">メールアドレスを確認する</a></p><p style="color:#888">心当たりがない場合はこのメールを破棄してください。</p>`,
-  });
-  redirect("/settings?email=sent");
+  let failed = false;
+  try {
+    await sendEmail({
+      to: email,
+      subject: "【Devote】メールアドレスのご確認",
+      text: `Devote のコンシェルジュです。\n以下のリンクを開くと、物件のお届けをこのメールアドレスで受け取れるようになります（24時間有効）。\n${link}\n\nお心当たりがない場合は、このメールを破棄してください。`,
+      html: verificationEmailHtml(link),
+      idempotencyKey: token,
+    });
+  } catch (e) {
+    // 送信できなかったときは画面を壊さず案内を出す。原因（APIキー・送信ドメイン未認証など）はログに残す
+    console.error(`[email] 確認メールの送信に失敗: ${e instanceof Error ? e.message : String(e)}`);
+    await getDb().delete(verificationTokens).where(eq(verificationTokens.token, token));
+    failed = true;
+  }
+  redirect(failed ? "/settings?email=failed" : "/settings?email=sent");
+}
+
+function verificationEmailHtml(link: string) {
+  return `<!doctype html><html lang="ja"><body style="margin:0;background:#f7efe2;padding:24px 12px;font-family:'Hiragino Sans','Yu Gothic',sans-serif;color:#26221e">
+<table role="presentation" width="100%" style="max-width:520px;margin:0 auto;border-collapse:collapse">
+<tr><td style="padding:8px 0 24px;text-align:center;border-bottom:1px solid #e3d4b9">
+  <div style="font:300 30px/1 Georgia,'Times New Roman',serif;color:#142821">Devote</div>
+  <div style="font:500 8px/1 Helvetica,Arial,sans-serif;letter-spacing:.42em;color:#7f6d51;margin-top:6px">RESIDENCE CONCIERGE</div>
+</td></tr>
+<tr><td style="padding:28px 0">
+  <div style="font:500 20px/1.6 'Hiragino Mincho ProN','Yu Mincho',serif;color:#142821">メールアドレスのご確認</div>
+  <p style="font-size:14px;line-height:1.9;color:#675e53;margin:12px 0 24px">Devote のコンシェルジュです。<br>下のボタンを押すと、物件のお届けをこのメールアドレスで受け取れるようになります（24時間有効）。</p>
+  <a href="${link}" style="display:inline-block;padding:13px 30px;border-radius:999px;background:#1b3a2e;color:#f7efe2;font:500 13px Helvetica,Arial,sans-serif;letter-spacing:.14em;text-decoration:none">メールアドレスを確認する</a>
+  <p style="font-size:12px;line-height:1.8;color:#a39886;margin-top:28px">お心当たりがない場合は、このメールを破棄してください。</p>
+</td></tr>
+</table></body></html>`;
 }
 
 /** LINE 連携コード（6桁）を発行。ユーザーは公式アカウントにこのコードを送る */

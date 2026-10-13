@@ -113,7 +113,7 @@ export function ReportPanel({ report, now = new Date() }: { report: Report; now?
           </p>
         </div>
         <div className="grid grid-cols-3 content-end border-t border-sand-100/10 pt-6 lg:border-t-0 lg:pt-0">
-          <SmallStat value={crawl.sourcesToday} unit="サイト" label={R.sources} />
+          <SmallStat value={crawl.activeProperties} unit="件" label={R.sources} />
           <SmallStat value={crawl.checkedToday} unit="件" label={R.checked} />
           <SmallStat value={crawl.newToday} unit="件" label={R.newToday} />
         </div>

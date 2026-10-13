@@ -48,7 +48,7 @@ export const HOME = {
     fallback: [
       { value: "30", unit: "分ごと", label: "昼夜を問わず巡回" },
       { value: "6", unit: "エリア", label: "よく知る街に絞って" },
-      { value: "6", unit: "社", label: "の自社サイトを巡回中" },
+      { value: "隅々", unit: "まで", label: "見落としのないよう巡回" },
     ],
   },
   problem: {
@@ -87,8 +87,8 @@ export const HOME = {
         en: "Thorough",
         ja: "くまなく",
         title: "ポータルに出ない物件まで。",
-        body: "大手デベロッパーや管理会社の自社サイトに加えて、業者間の物件情報も見て回ります。探す場所を、もう選ばなくて構いません。",
-        stat: { value: "6", unit: "社", label: "の自社サイトを巡回中" },
+        body: "ポータルに並ぶ前の情報が出る場所を、隅々まで見て回ります。探す場所を、もう選ばなくて構いません。",
+        stat: { value: "隅々", unit: "まで", label: "見落としのないよう巡回" },
       },
     ],
   },
@@ -132,28 +132,25 @@ export const HOME = {
   sources: {
     eyebrow: "Our Sources",
     title: "情報が最初に出る場所を、見ています。",
-    body: "大手デベロッパー・管理会社の自社サイトと、不動産会社だけが見られる業者間の情報網。ポータルに出る前の物件も、ここから見つかります。",
+    body: "良い物件の情報は、ポータルに並ぶずっと前に、限られた場所に出ます。Devote は、その場所を静かに見続けています。",
     groups: [
       {
-        en: "Developers & Managers",
-        ja: "自社サイト",
-        items: [
-          "住友不動産",
-          "住友不動産 ラ・トゥール",
-          "森ビル",
-          "ケン・コーポレーション",
-          "REIT FIND",
-          "アクセルホーム",
-        ],
-        note: null,
+        en: "Before the Portals",
+        ja: "ポータルに並ぶ前の情報",
+        body: "広く公開される前、不動産会社の間で最初に共有される物件情報。",
       },
       {
-        en: "Member Networks",
-        ja: "業者間の物件情報",
-        items: ["レインズ", "ATBB", "ITANDI BB"],
-        note: "順次接続します",
+        en: "Direct from the Source",
+        ja: "貸主・売主に近い場所",
+        body: "名の知れたデベロッパーや管理会社が、自らの窓口だけで募集する物件。",
+      },
+      {
+        en: "Every Corner",
+        ja: "街の隅々まで",
+        body: "エリアを絞っているからこそ、小さな募集まで見落としません。",
       },
     ],
+    note: "見ている場所は、これからも広げていきます。",
   },
   curation: {
     eyebrow: "Curation",
@@ -270,7 +267,7 @@ export const SELECTIONS = {
   report: {
     matched: "ご希望に適う物件",
     matchedNote: "掲載中のもの",
-    sources: "本日確認したサイト",
+    sources: "見守っている物件",
     checked: "本日確認した物件",
     newToday: "本日の新着",
     lastChecked: "最終確認",
@@ -387,6 +384,8 @@ export const PREFERENCES = {
       verified: "メールアドレスを確認しました。",
       invalid: "メールアドレスの形式をご確認ください。",
       expired: "確認の期限が切れています。もう一度お送りください。",
+      failed:
+        "確認のメールをお送りできませんでした。恐れ入りますが、時間をおいて再度お試しいただくか、LINE をご利用ください。",
     },
   },
   disconnect: "連携を解除する",
