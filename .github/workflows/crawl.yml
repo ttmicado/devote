@@ -11,6 +11,10 @@ on:
         description: "巡回するソースID（カンマ区切り。空なら全て）"
         required: false
         default: ""
+      max_details:
+        description: "1サイトあたりの詳細取得の上限（初回の一括取得では大きくする）"
+        required: false
+        default: "300"
 
 concurrency:
   group: crawl
@@ -35,6 +39,7 @@ jobs:
       ENABLE_UNVERIFIED_SOURCES: ${{ vars.ENABLE_UNVERIFIED_SOURCES }}
       # 会員サイトを国内のセルフホストランナーで回す場合は、こちらでは公開サイトだけに絞る
       DEVOTE_SOURCES: ${{ inputs.sources || vars.DEVOTE_SOURCES }}
+      DEVOTE_MAX_DETAILS_PER_SOURCE: ${{ inputs.max_details || '300' }}
       DEVOTE_STORAGE_DIR: ${{ github.workspace }}/storage
     steps:
       - uses: actions/checkout@v4

@@ -1,7 +1,10 @@
 import type { SiteAdapter } from "./adapter.js";
+import atbb, { VERIFIED as ATBB_VERIFIED } from "./adapters/atbb/index.js";
 import axelHome from "./adapters/axel-home/index.js";
+import itandiBb, { VERIFIED as ITANDI_VERIFIED } from "./adapters/itandi-bb/index.js";
 import kencorp from "./adapters/kencorp/index.js";
 import moriLiving from "./adapters/mori-living/index.js";
+import reins, { VERIFIED as REINS_VERIFIED } from "./adapters/reins/index.js";
 import rf12 from "./adapters/rf12/index.js";
 import sampleRealtor from "./adapters/sample-realtor/index.js";
 import sumitomoLatour from "./adapters/sumitomo-latour/index.js";
@@ -25,6 +28,11 @@ const registrations: Registration[] = [
   { adapter: rf12, production: true, verified: true },
   { adapter: kencorp, production: true, verified: true },
   { adapter: axelHome, production: true, verified: true },
+  // 業者間の会員サイト（ログイン後の画面は未確認。docs/member-sites.md）
+  // レインズは検索が従量課金の可能性、ITANDI BB は規約で大量の自動取得を控えるよう求めているため要判断
+  { adapter: reins, production: true, verified: REINS_VERIFIED },
+  { adapter: atbb, production: true, verified: ATBB_VERIFIED },
+  { adapter: itandiBb, production: true, verified: ITANDI_VERIFIED },
 ];
 
 export const adapters: Record<string, SiteAdapter> = Object.fromEntries(
