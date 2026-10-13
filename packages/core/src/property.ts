@@ -77,6 +77,21 @@ export const NormalizedListing = z.object({
   usage: PropertyUse.default("residential"),
   /** 構造化しきれないサイト固有の値（表記どおり） */
   extra: z.record(z.string(), z.string()).default({}),
+  /**
+   * 入居可能時期。"YYYY-MM"（年月が分かる場合）か、表記どおりの文字列（"即入居可" "相談" など）。
+   * 正規化は parseAvailableFrom。「即入居可」は "即入居可" に寄せる
+   */
+  availableFrom: z.string().nullable().default(null),
+  /** 契約形態: 普通借家 / 定期借家。不明は null */
+  contractType: z.enum(["normal", "fixed_term"]).nullable().default(null),
+  /** 契約期間（月）。「2年」→ 24 */
+  contractTermMonths: z.number().int().positive().nullable().default(null),
+  /** 更新料（表記どおり。例: "新賃料の1ヶ月"） */
+  renewalFee: z.string().nullable().default(null),
+  /** 駐車場の表記（空き状況・料金。例: "有 1台 27,500円"） */
+  parkingNote: z.string().nullable().default(null),
+  /** 総戸数 */
+  totalUnits: z.number().int().positive().nullable().default(null),
 });
 export type NormalizedListing = z.infer<typeof NormalizedListing>;
 /** アダプターの normalize が返す型（default 付き項目は省略可） */

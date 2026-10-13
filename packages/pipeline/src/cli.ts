@@ -3,7 +3,7 @@
  *
  *   pnpm worker crawl [sourceId...]   巡回（省略時は有効な全ソース）
  *   pnpm worker match                 マッチング
- *   pnpm worker notify                通知
+ *   pnpm worker notify                通知（送信に失敗した分があれば終了コード 1）
  *   pnpm worker all                   巡回 → マッチング → 通知
  *   pnpm worker sources               有効なソース一覧
  */
@@ -39,24 +39,34 @@ async function crawl(ids: string[]) {
   return results;
 }
 
+/** 通知を送り、送信に失敗した分があればジョブを失敗にして気づけるようにする */
+async function notify() {
+  const summary = await runNotifications(db);
+  console.log(JSON.stringify(summary));
+  if (summary.failed > 0) process.exitCode = 1;
+}
+
 try {
   switch (command) {
     case "sources":
       for (const a of enabledAdapters()) console.log(`${a.meta.id}\t${a.meta.displayName}`);
       break;
-    case "crawl":
-      await crawl(args);
+    case "crawl": {
+      const results = await crawl(args);
+      // 失敗したソースがあればジョブを失敗にする（GitHub Actions では、その後の notify ジョブは続けて動く）
+      if (results.some((r) => !r.ok)) process.exitCode = 1;
       break;
+    }
     case "match":
       console.log(JSON.stringify(await runMatching(db)));
       break;
     case "notify":
-      console.log(JSON.stringify(await runNotifications(db)));
+      await notify();
       break;
     case "all": {
       const results = await crawl(args);
       console.log(JSON.stringify(await runMatching(db)));
-      console.log(JSON.stringify(await runNotifications(db)));
+      await notify();
       // 失敗したソースがあればジョブを失敗にして気づけるようにする（他のソースの結果は反映済み）
       if (results.some((r) => !r.ok)) process.exitCode = 1;
       break;

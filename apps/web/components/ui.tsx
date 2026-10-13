@@ -9,19 +9,26 @@ export type Tone = "light" | "dark";
 
 const cx = (...c: (string | false | null | undefined)[]) => c.filter(Boolean).join(" ");
 
+/**
+ * 英字ラベル。英字だけのラベルには lang="en" を渡す（読み上げを英語にする）。
+ * 物件の所在地など和文が混ざるラベルでは渡さない。
+ */
 export function Eyebrow({
   children,
   tone = "light",
   rule = false,
+  lang,
   className,
 }: {
   children: ReactNode;
   tone?: Tone;
   rule?: boolean;
+  lang?: string;
   className?: string;
 }) {
   return (
     <p
+      lang={lang}
       className={cx(
         "eyebrow flex items-center gap-3",
         tone === "dark" ? "text-sand-300" : "text-sand-600",
@@ -186,7 +193,9 @@ export function PageHeader({
   return (
     <header className="flex flex-col gap-6 border-b border-ink-900/15 pb-8 sm:flex-row sm:items-end sm:justify-between">
       <div className="animate-rise">
-        <Eyebrow rule>{eyebrow}</Eyebrow>
+        <Eyebrow rule lang="en">
+          {eyebrow}
+        </Eyebrow>
         <h1 className="display mt-4 font-mincho text-3xl text-evergreen-900 sm:text-[2.6rem]">
           {title}
         </h1>

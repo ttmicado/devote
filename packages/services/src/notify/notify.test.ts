@@ -67,3 +67,75 @@ describe("verifyLineSignature", () => {
     expect(verifyLineSignature(`${body} `, sig)).toBe(false);
   });
 });
+
+describe("適合度の表示", async () => {
+  const { scoreText } = await import("./format");
+  const item = { propertyId: "p", listing, score: 90, reasons: [] as string[] };
+  it("100点、または soft 条件がないときは出さない", () => {
+    expect(scoreText(item)).toBe("適合度 90");
+    expect(scoreText({ ...item, score: 100 })).toBeNull();
+    expect(scoreText({ ...item, showScore: false })).toBeNull();
+  });
+  it("出さないときは「ご希望をすべて満たしています」を添える", () => {
+    const m = buildEmail([{ ...item, showScore: false }], {
+      appUrl: "https://app",
+      notificationId: "n1",
+      settingsUrl: "https://app/settings",
+    });
+    expect(m.html).not.toContain("適合度");
+    expect(m.html).toContain("ご希望をすべて満たしています");
+  });
+});
+
+describe("メールのフッター", () => {
+  it("配信停止リンクと送信者情報を入れる", () => {
+    const m = buildEmail(items.slice(0, 1), {
+      appUrl: "https://app",
+      notificationId: "n1",
+      settingsUrl: "https://app/settings",
+      unsubscribeUrl: "https://app/api/unsubscribe?t=abc",
+    });
+    expect(m.html).toContain("https://app/api/unsubscribe?t=abc");
+    expect(m.text).toContain("配信停止: https://app/api/unsubscribe?t=abc");
+    expect(m.text).toContain("Devote Inc.");
+    // 値のない項目（null）は出さない
+    expect(m.text).not.toContain("null");
+  });
+});
+
+describe("値下げのお知らせ", async () => {
+  const { priceDropSentence } = await import("./dispatch");
+  const { notifyCopy } = await import("./format");
+  it("総額の改定を1文で伝える", () => {
+    const line = priceDropSentence("テストタワー", { beforeTotal: 980_000, afterTotal: 920_000 });
+    expect(line).toBe("先日お届けした『テストタワー』の総額が 98万円 → 92万円 に改定されました");
+    expect(notifyCopy("price_down", 1, line).heading).toBe(line);
+  });
+});
+
+describe("LINE の恒久的な失敗", async () => {
+  const { LineApiError, isPermanentLineFailure } = await import("./line");
+  it("ブロック・存在しないユーザーは恒久的、429・5xx・認証エラーは一時的", () => {
+    expect(
+      isPermanentLineFailure(
+        new LineApiError(
+          "/message/push",
+          400,
+          "The property, 'to', in the request body is invalid",
+        ),
+      ),
+    ).toBe(true);
+    expect(
+      isPermanentLineFailure(new LineApiError("/message/push", 403, "The user has blocked")),
+    ).toBe(true);
+    expect(isPermanentLineFailure(new LineApiError("/message/push", 404, "Not found"))).toBe(true);
+    expect(isPermanentLineFailure(new LineApiError("/message/push", 429, "rate limit"))).toBe(
+      false,
+    );
+    expect(isPermanentLineFailure(new LineApiError("/message/push", 500, ""))).toBe(false);
+    expect(
+      isPermanentLineFailure(new LineApiError("/message/push", 401, "Authentication failed")),
+    ).toBe(false);
+    expect(isPermanentLineFailure(new Error("network"))).toBe(false);
+  });
+});

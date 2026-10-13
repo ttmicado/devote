@@ -17,9 +17,9 @@ exports[`sample-realtor normalize > 詳細ページを NormalizedListing に正�
   "direction": "南",
   "features": [
     "auto_lock",
+    "delivery_box",
     "separate_bath_toilet",
     "independent_washbasin",
-    "delivery_box",
     "south_facing",
   ],
   "floor": 4,

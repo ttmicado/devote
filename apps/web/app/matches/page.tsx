@@ -7,6 +7,7 @@ import { ReportPanel } from "@/components/report-panel";
 import { ButtonLink, Eyebrow, Notice, PageHeader, Toast } from "@/components/ui";
 import { SELECTIONS } from "@/lib/copy";
 import { userMatches } from "@/lib/data";
+import { groupByBuilding } from "@/lib/listing-view";
 import { currentUserId } from "@/lib/session";
 import { userReport } from "@/lib/stats";
 
@@ -24,9 +25,12 @@ export default async function MatchesPage({
     : [{ condition: null, items: [] }, null];
 
   // 検討段階のゲージで「今回の厳選」を絞る（比較検討中なら8件）。残りは希望者だけに
+  // 同じ建物の部屋は1枚にまとめる（並びは userMatches の順: 適合度 → 新しさ → 総額）
   const gate = condition ? PHASE_GATE[condition.phase] : null;
-  const shown = all || !gate ? items : items.slice(0, gate.maxItems);
-  const rest = items.length - shown.length;
+  const groups = groupByBuilding(items);
+  const shown = all || !gate ? groups : groups.slice(0, gate.maxItems);
+  const rest = groups.length - shown.length;
+  const now = new Date();
 
   return (
     <PageShell>
@@ -129,13 +133,16 @@ export default async function MatchesPage({
                 </p>
               </div>
               <div className="mt-8 grid gap-x-10 gap-y-16 border-t border-ink-900/15 pt-10 sm:grid-cols-2 lg:grid-cols-3">
-                {shown.map((m) => (
+                {shown.map(({ lead: m, others }) => (
                   <PropertyCard
                     key={m.propertyId}
                     id={m.propertyId}
                     listing={m.listing}
                     score={m.score}
                     reasons={m.reasons}
+                    firstSeen={m.firstSeen}
+                    now={now}
+                    siblings={others.map((o) => ({ id: o.propertyId, listing: o.listing }))}
                   />
                 ))}
               </div>

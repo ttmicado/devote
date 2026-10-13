@@ -9,7 +9,32 @@ import {
   similarSuggestions,
   userChannels,
 } from "@devote/db";
-import { and, desc, eq } from "drizzle-orm";
+import { and, desc, eq, sql } from "drizzle-orm";
+
+/**
+ * 業者間の会員サイト（広く公開してはいけない情報源）。
+ * packages/scraper/src/registry.ts の memberOnly: true と同じ並び（Web は scraper を import しないため写しを持つ）。
+ */
+export const MEMBER_ONLY_SOURCES: readonly string[] = ["reins", "atbb", "itandi-bb"];
+
+/**
+ * 一般公開してよい物件か。広告不可、または会員サイトにしか載っていない物件は、
+ * ご提案を受けた会員にだけ見せる。
+ */
+export function isPubliclyListable(
+  listing: Pick<NormalizedListing, "adAllowed">,
+  sources: { source: string; adAllowed?: boolean | null }[],
+) {
+  if (listing.adAllowed === false) return false;
+  if (sources.some((s) => s.adAllowed === false)) return false;
+  if (sources.length > 0 && sources.every((s) => MEMBER_ONLY_SOURCES.includes(s.source)))
+    return false;
+  return true;
+}
+
+/** 管理費込みの総額（賃料の比較に使う） */
+const totalOf = (l: NormalizedListing) =>
+  l.price + (l.dealType === "rent" ? (l.managementFee ?? 0) : 0);
 
 export async function latestCondition(userId: string) {
   const [c] = await getDb()
@@ -45,14 +70,20 @@ export async function userMatches(userId: string, limit = 60) {
     )
     .orderBy(desc(matches.score), desc(properties.createdAt))
     .limit(limit);
-  return {
-    condition: c,
-    items: rows.map((r) => ({
+  // 並び: 適合度の高い順 → 新しい順 → 総額の低い順
+  const items = rows
+    .map((r) => ({
       ...r,
       listing: r.data as NormalizedListing,
       reasons: (r.reasons as string[]) ?? [],
-    })),
-  };
+    }))
+    .sort(
+      (a, b) =>
+        b.score - a.score ||
+        b.firstSeen.getTime() - a.firstSeen.getTime() ||
+        totalOf(a.listing) - totalOf(b.listing),
+    );
+  return { condition: c, items };
 }
 
 export async function propertyWithSources(id: string) {
@@ -64,11 +95,74 @@ export async function propertyWithSources(id: string) {
       source: listings.source,
       url: listings.url,
       status: listings.status,
+      adAllowed: listings.adAllowed,
       firstSeenAt: listings.firstSeenAt,
+      lastSeenAt: listings.lastSeenAt,
     })
     .from(listings)
     .where(eq(listings.propertyId, id));
-  return { ...p, listing: p.data as NormalizedListing, sources };
+  const listing = p.data as NormalizedListing;
+  // 掲載元で最後に確かめた時刻（どの情報源でも、いちばん新しいもの）
+  const lastSeenAt = sources.reduce<Date | null>(
+    (m, s) => (m == null || s.lastSeenAt > m ? s.lastSeenAt : m),
+    null,
+  );
+  return {
+    ...p,
+    listing,
+    sources,
+    lastSeenAt,
+    publiclyListable: isPubliclyListable(listing, sources),
+  };
+}
+
+/** この物件をご提案した（どの条件版でも）か、内見を依頼済みか。会員限定の物件を見せてよいかの判定に使う */
+export async function userCanSeeProperty(userId: string, propertyId: string) {
+  const db = getDb();
+  const [m] = await db
+    .select({ n: sql<number>`1` })
+    .from(matches)
+    .where(and(eq(matches.userId, userId), eq(matches.propertyId, propertyId)))
+    .limit(1);
+  if (m) return true;
+  const [q] = await db
+    .select({ n: sql<number>`1` })
+    .from(inquiries)
+    .where(and(eq(inquiries.userId, userId), eq(inquiries.propertyId, propertyId)))
+    .limit(1);
+  return Boolean(q);
+}
+
+/** 内見依頼フォームの初期値: 前回のご依頼の連絡先と、確認済みのメールアドレス */
+export async function inquiryPrefill(userId: string) {
+  const db = getDb();
+  const [last] = await db
+    .select({
+      name: inquiries.contactName,
+      phone: inquiries.contactPhone,
+      email: inquiries.contactEmail,
+    })
+    .from(inquiries)
+    .where(eq(inquiries.userId, userId))
+    .orderBy(desc(inquiries.createdAt))
+    .limit(1);
+  const [mail] = await db
+    .select({ address: userChannels.address })
+    .from(userChannels)
+    .where(
+      and(
+        eq(userChannels.userId, userId),
+        eq(userChannels.channel, "email"),
+        eq(userChannels.active, true),
+      ),
+    )
+    .orderBy(desc(userChannels.createdAt))
+    .limit(1);
+  return {
+    name: last?.name ?? "",
+    phone: last?.phone ?? "",
+    email: last?.email ?? mail?.address ?? "",
+  };
 }
 
 export async function userInquiries(userId: string) {

@@ -1,3 +1,5 @@
+import { COMPANY } from "@devote/core";
+import { ContactBlock } from "@/components/contact-block";
 import { PageShell } from "@/components/page-shell";
 import { ButtonLink, PageHeader } from "@/components/ui";
 import { ACCOUNT, HEADER_CTA } from "@/lib/copy";
@@ -62,14 +64,29 @@ export default async function LoginPage({
             {L.submit}
           </button>
         </form>
-        <aside className="h-fit border border-ink-900/15 bg-sand-100/60 p-8">
-          <p className="text-sm leading-7 text-ink-500">{L.noAccount}</p>
-          <div className="mt-6">
-            <ButtonLink href="/chat" arrow>
-              {HEADER_CTA.guest}
-            </ButtonLink>
-          </div>
-        </aside>
+        <div className="space-y-6">
+          <aside className="h-fit border border-ink-900/15 bg-sand-100/60 p-8">
+            <p className="text-sm leading-7 text-ink-500">{L.noAccount}</p>
+            <div className="mt-6">
+              <ButtonLink href="/chat" arrow>
+                {HEADER_CTA.guest}
+              </ButtonLink>
+            </div>
+          </aside>
+          <section aria-labelledby="forgot" className="border-t border-ink-900/15 pt-6">
+            <h2 id="forgot" className="font-mincho text-lg text-evergreen-900">
+              {L.forgotTitle}
+            </h2>
+            <p className="mt-2 text-sm leading-7 text-ink-500">
+              {COMPANY.email || COMPANY.phone ? L.forgotContact : L.forgotLine}
+            </p>
+            {(COMPANY.email || COMPANY.phone) && (
+              <div className="mt-4">
+                <ContactBlock />
+              </div>
+            )}
+          </section>
+        </div>
       </div>
     </PageShell>
   );

@@ -15,26 +15,48 @@ function secret(): string {
   return s;
 }
 
-function sign(id: string): string {
-  return `${id}.${createHmac("sha256", secret()).update(id).digest("base64url")}`;
+const mac = (payload: string) => createHmac("sha256", secret()).update(payload).digest("base64url");
+
+/** Cookie の値: `<userId>.<sessionVersion>.<hmac>` */
+function sign(id: string, version: number): string {
+  const payload = `${id}.${version}`;
+  return `${payload}.${mac(payload)}`;
 }
 
-function verify(value: string | undefined): string | null {
+function safeEqual(a: string, b: string): boolean {
+  const x = Buffer.from(a);
+  const y = Buffer.from(b);
+  return x.length === y.length && timingSafeEqual(x, y);
+}
+
+/** 署名を確かめて userId と世代を取り出す。旧形式（`<userId>.<hmac>`）は世代 0 として扱う */
+export function verifySessionValue(
+  value: string | undefined,
+): { id: string; version: number } | null {
   if (!value) return null;
-  const [id, sig] = value.split(".");
-  if (!id || !sig) return null;
-  const expected = Buffer.from(sign(id).split(".")[1] ?? "");
-  const given = Buffer.from(sig);
-  return expected.length === given.length && timingSafeEqual(expected, given) ? id : null;
+  const parts = value.split(".");
+  if (parts.length === 2) {
+    const [id, sig] = parts;
+    return id && sig && safeEqual(mac(id), sig) ? { id, version: 0 } : null;
+  }
+  if (parts.length === 3) {
+    const [id, v, sig] = parts;
+    if (!id || !v || !sig || !/^\d{1,9}$/.test(v)) return null;
+    return safeEqual(mac(`${id}.${v}`), sig) ? { id, version: Number(v) } : null;
+  }
+  return null;
 }
 
-/** Server Component から読む（Cookie が無ければ null） */
+/** Server Component から読む（Cookie が無い・世代が古い（パスワード変更済み）なら null） */
 export async function currentUserId(): Promise<string | null> {
   const store = await cookies();
-  const id = verify(store.get(COOKIE)?.value);
-  if (!id) return null;
-  const [u] = await getDb().select({ id: users.id }).from(users).where(eq(users.id, id));
-  return u?.id ?? null;
+  const s = verifySessionValue(store.get(COOKIE)?.value);
+  if (!s) return null;
+  const [u] = await getDb()
+    .select({ id: users.id, sessionVersion: users.sessionVersion })
+    .from(users)
+    .where(eq(users.id, s.id));
+  return u && u.sessionVersion === s.version ? u.id : null;
 }
 
 /** Route Handler / Server Action から呼ぶ（無ければユーザーを作って Cookie を発行） */
@@ -43,14 +65,22 @@ export async function ensureUserId(): Promise<string> {
   if (existing) return existing;
   const id = randomUUID();
   await getDb().insert(users).values({ id });
-  await setSessionCookie(id);
+  await setSessionCookie(id, 0);
   return id;
 }
 
-/** 指定ユーザーとしてログインした状態にする（通知の署名付きリンクから） */
-export async function setSessionCookie(userId: string) {
+/** 指定ユーザーとしてログインした状態にする。version を省略すると DB の現在の世代を使う */
+export async function setSessionCookie(userId: string, version?: number) {
+  let v = version;
+  if (v === undefined) {
+    const [u] = await getDb()
+      .select({ sessionVersion: users.sessionVersion })
+      .from(users)
+      .where(eq(users.id, userId));
+    v = u?.sessionVersion ?? 0;
+  }
   const store = await cookies();
-  store.set(COOKIE, sign(userId), {
+  store.set(COOKIE, sign(userId, v), {
     httpOnly: true,
     sameSite: "lax",
     secure: process.env.NODE_ENV === "production",

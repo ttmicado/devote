@@ -58,8 +58,57 @@ function Line({ label, children }: { label: string; children: ReactNode }) {
   );
 }
 
-/** ご提案画面の上部「本日のご報告」。数字はすべて userReport の実データ */
+/**
+ * ご提案画面の上部「本日のご報告」。数字はすべて userReport の実データ。
+ * スマホは一行の帯（本日の新着 · 次回のお届け · 最終確認）にして、詳細は開いて見る。
+ */
 export function ReportPanel({ report, now = new Date() }: { report: Report; now?: Date }) {
+  const { crawl } = report;
+  const cond = report.condition;
+  const channels: string[] = ("channels" in report && report.channels) || [];
+  const channel = CHANNEL_ORDER.find((c) => channels.includes(c));
+  const next = !cond
+    ? null
+    : !cond.active
+      ? R.paused
+      : channel
+        ? nextDeliveryText(cond.frequency, cond.sendHour, now)
+        : R.noChannel;
+  return (
+    <>
+      <details className="group/report bg-evergreen-900 text-sand-100 sm:hidden">
+        <summary className="flex min-h-14 cursor-pointer list-none items-center gap-4 px-5 py-3 [&::-webkit-details-marker]:hidden">
+          <span className="sr-only">{SELECTIONS.reportTitle}</span>
+          <span className="flex min-w-0 flex-1 flex-wrap gap-x-4 gap-y-0.5 text-[12px] leading-6 text-sand-200">
+            <span className="whitespace-nowrap text-sand-100">{R.newShort(crawl.newToday)}</span>
+            {next && (
+              <span className="whitespace-nowrap">
+                {R.next} {next}
+              </span>
+            )}
+            <span className="whitespace-nowrap">
+              {crawl.lastCheckedAt
+                ? `${R.lastChecked} ${formatJst(crawl.lastCheckedAt)}`
+                : R.notYet}
+            </span>
+          </span>
+          <span
+            aria-hidden
+            className="relative size-3 flex-none before:absolute before:inset-x-0 before:top-1/2 before:h-px before:bg-sand-200 after:absolute after:inset-y-0 after:left-1/2 after:w-px after:bg-sand-200 after:transition-transform after:duration-500 group-open/report:after:scale-y-0"
+          />
+        </summary>
+        <div className="border-t border-sand-100/10">
+          <ReportBody report={report} now={now} titleId="report-title-m" />
+        </div>
+      </details>
+      <div className="hidden sm:block">
+        <ReportBody report={report} now={now} titleId="report-title" />
+      </div>
+    </>
+  );
+}
+
+function ReportBody({ report, now, titleId }: { report: Report; now: Date; titleId: string }) {
   const { crawl } = report;
   const cond = report.condition;
   const channels: string[] = ("channels" in report && report.channels) || [];
@@ -69,7 +118,7 @@ export function ReportPanel({ report, now = new Date() }: { report: Report; now?
 
   return (
     <section
-      aria-labelledby="report-title"
+      aria-labelledby={titleId}
       className="animate-rise bg-evergreen-900 px-6 py-10 text-sand-100 [animation-delay:120ms] sm:px-12 sm:py-12"
     >
       <div className="flex flex-wrap items-center justify-between gap-x-6 gap-y-3">
@@ -77,7 +126,7 @@ export function ReportPanel({ report, now = new Date() }: { report: Report; now?
           <Eyebrow tone="dark" rule>
             {SELECTIONS.reportEyebrow}
           </Eyebrow>
-          <h2 id="report-title" className="display mt-3 font-mincho text-2xl text-sand-100">
+          <h2 id={titleId} className="display mt-3 font-mincho text-2xl text-sand-100">
             {SELECTIONS.reportTitle}
           </h2>
         </div>

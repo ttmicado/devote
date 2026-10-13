@@ -6,6 +6,7 @@ import { findSimilarProperties, loadNotifyItems, sendPropertiesToUser } from "@d
 import { eq } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
+import { assertAdmin } from "@/lib/admin-auth";
 
 const STATUSES = [
   "new",
@@ -18,6 +19,7 @@ const STATUSES = [
 const REASONS = ["broker_refused", "already_applied", "condition_mismatch", "other"] as const;
 
 export async function updateInquiryStatus(formData: FormData) {
+  await assertAdmin();
   const id = String(formData.get("inquiryId"));
   const status = String(formData.get("status")) as (typeof STATUSES)[number];
   const reason = String(formData.get("reason") ?? "") as (typeof REASONS)[number];
@@ -66,6 +68,7 @@ export async function updateInquiryStatus(formData: FormData) {
 
 /** 管理者が選んだ類似物件をユーザーに送る。選ばなかった候補は「却下」として記録（学習データ） */
 export async function sendSimilarSuggestions(formData: FormData) {
+  await assertAdmin();
   const inquiryId = String(formData.get("inquiryId"));
   const approved = new Set(formData.getAll("approve").map(String));
   const db = getDb();

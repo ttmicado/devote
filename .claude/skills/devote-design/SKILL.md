@@ -21,18 +21,22 @@ description: Devote の Web 画面（apps/web）の UI/UX・ビジュアルデ�
 | `sand-50` | 基本の背景（生成り） |
 | `sand-100/200` | カード・帯の背景、暗い面の上の文字（`sand-100` 本文、`sand-200` ボタン） |
 | `sand-300/400` | 暗い面の上の補助文字・英字ラベル |
-| `sand-500/600` | 明るい面の上の英字ラベル・罫線のアクセント（本文には使わない: コントラスト不足） |
+| `sand-500` | 罫線・装飾のアクセントのみ（文字には使わない: コントラスト不足） |
+| `sand-600` | 明るい面の上の英字ラベル・小さな番号（`#6b5b43`、sand-50 上で 5.7:1） |
 | `ink-900/700/500` | 明るい面の上の文字（見出し・本文・補助） |
 | `signal` | 価格・注意（落ち着いた朱）。多用しない |
 
-- コントラスト: 本文は WCAG AA（4.5:1）以上。`sand-500` を明るい面の本文に使わない。暗い面の本文は `sand-100`、補助は `sand-300` まで
+- コントラスト: 本文は WCAG AA（4.5:1）以上。`sand-500` を明るい面の文字に使わない。暗い面の本文は `sand-100`、補助は `sand-300` まで
+- 入力欄のプレースホルダーは `ink-500`（`ink-300` は 2.5:1 で読めない）
+- フォーカスの輪郭: 明るい面は `evergreen-700`、暗い面（`bg-evergreen-800/900/950` の中、または `data-tone="dark"`）は `sand-200`。globals.css で自動的に切り替わる
 - 純白・純黒・彩度の高い色（青・緑のボタン、赤い警告）は使わない
 
 ## 書体
+`app/layout.tsx` の `next/font/google` で自己ホストし、CSS 変数（`--font-cormorant` 等）を `globals.css` の `--font-*` に渡す。Google Fonts の `<link>` は使わない。使うウエイトを増やすときは layout.tsx に足す（Cormorant 300/400＋イタリック、Jost 400/500、Shippori Mincho 400、Zen Kaku Gothic New 400/500）。
 - 欧文の見出し・数字: **Cormorant Garamond**（`font-serif`、300〜500）
 - 和文の見出し: **Shippori Mincho**（`font-mincho`）
 - 本文・UI: **Jost**（欧文）＋ **Zen Kaku Gothic New**（和文）（`font-sans`）
-- 英字ラベル: `.eyebrow`（11px・大文字・字間 0.28em）を日本語見出しの上に添える（例: `CONCIERGE` / コンシェルジュ）
+- 英字ラベル: `.eyebrow`（11px・大文字・字間 0.28em）を日本語見出しの上に添える（例: `CONCIERGE` / コンシェルジュ）。英字だけのラベルには `lang="en"`（`<Eyebrow lang="en">`）
 - 大見出し: `.display`（行間 1.08、字間 -0.02em）。和文の大見出しは `font-mincho` を併用
 - 和文の本文は行間を広く（`leading-7` 以上）、1行 35〜40 字以内
 
@@ -51,12 +55,14 @@ description: Devote の Web 画面（apps/web）の UI/UX・ビジュアルデ�
 - `SpecList` 罫線区切りの定義リスト（物件の仕様など）
 - `Notice` 空状態、`Toast` 完了メッセージ
 - フォームは下線だけの入力欄（`.field` / `.field-label`）
-- ヘッダー（`site-header.tsx`）: 左 MENU、中央ロゴ、右 CTA。トップのヒーロー上では透過
+- ヘッダー（`site-header.tsx`）: 左 MENU、中央ロゴ、右 CTA。トップのヒーロー上では透過。全画面メニューはネイティブの `<dialog>`（showModal）。ボタンの見える文字（Menu）は読み上げ名にも含める（`aria-label` で上書きせず、`sr-only` で和文を補う）
+- メインの領域は `id="main"`（`PageShell` が付ける）。ルートレイアウトのスキップリンク「本文へ」の飛び先
 
 ## モーション
 - `animate-rise`（下から 24px フェードイン、1.1s、`--ease-luxe`）を見出しに。遅延は 80〜120ms 刻み
+- ファーストビューの最大の文字（ヒーローの h1・リード）は `animate-rise-soft`（位置だけ動かし、透明から始めない）。LCP を遅らせないため
 - ホバーは 500〜700ms のゆっくりした変化。跳ねる・回る動きは使わない
-- `prefers-reduced-motion` で無効化済み
+- `prefers-reduced-motion` で無効化済み（遅延も 0 にする）
 
 ## 文言のトーン（`apps/web/lib/copy.ts` に集約）
 - 敬語は丁寧だが短く。「〜いたします」「〜でございます」の多用は避け、「〜します」「〜です」を基本に

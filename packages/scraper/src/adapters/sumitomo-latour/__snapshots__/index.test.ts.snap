@@ -27,7 +27,12 @@ exports[`sumitomo-latour normalize > 部屋ページ＋建物概要を Normalize
     "部屋": "3601号室/1R",
   },
   "features": [
+    "parking",
     "pet_ok",
+    "concierge",
+    "gym",
+    "lounge",
+    "view",
   ],
   "floor": 36,
   "imageUrls": [

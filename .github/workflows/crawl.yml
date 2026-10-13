@@ -55,10 +55,31 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - name: Install Chromium for Playwright
         run: pnpm --filter @devote/scraper exec playwright install --with-deps chromium
-      - name: Restore login sessions
-        uses: actions/cache@v4
+      # 会員サイトのログインセッション（storage/sessions）は actions/cache に保存しない。
+      # キャッシュは同じリポジトリの他のワークフロー・ブランチからも読めるため、Cookie の置き場所として不適切。
+      # 毎回ログインし直す（現状の巡回頻度では許容範囲）。詳しくは docs/member-sites.md
+      - run: pnpm worker crawl
+
+  # 巡回が失敗・タイムアウトしても、取り込めた分のマッチングと通知は必ず行う
+  notify:
+    needs: crawl
+    if: always()
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      DATABASE_URL: ${{ secrets.DATABASE_URL }}
+      APP_URL: ${{ secrets.APP_URL }}
+      # 通知リンクの署名（Vercel の SESSION_SECRET と同じ値）
+      SESSION_SECRET: ${{ secrets.SESSION_SECRET }}
+      LINE_CHANNEL_ACCESS_TOKEN: ${{ secrets.LINE_CHANNEL_ACCESS_TOKEN }}
+      RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+      MAIL_FROM: ${{ secrets.MAIL_FROM }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
         with:
-          path: storage/sessions
-          key: sessions-${{ github.run_id }}
-          restore-keys: sessions-
-      - run: pnpm worker all
+          node-version-file: .nvmrc
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm worker match && pnpm worker notify

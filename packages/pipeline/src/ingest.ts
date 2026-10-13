@@ -1,6 +1,7 @@
 import { createHash } from "node:crypto";
 import {
   dedupeBlockKey,
+  deriveContractFacts,
   isInTargetArea,
   type NormalizedListing,
   sameUnitLikelihood,
@@ -25,6 +26,42 @@ export interface IngestStats {
 function contentHash(l: NormalizedListing): string {
   const { sourceUpdatedAt: _ignored, ...rest } = l;
   return createHash("sha1").update(JSON.stringify(rest)).digest("hex");
+}
+
+/** 比較に使う総額（賃貸は管理費込み） */
+function totalOf(l: NormalizedListing): number {
+  return l.price + (l.dealType === "rent" ? (l.managementFee ?? 0) : 0);
+}
+
+/** change_events に残す価格・条件のスナップショット */
+function priceSnapshot(l: NormalizedListing) {
+  return {
+    price: l.price,
+    managementFee: l.managementFee,
+    total: totalOf(l),
+    keyMoney: l.keyMoney,
+    freeRent: l.features.includes("free_rent"),
+  };
+}
+
+/**
+ * 掲載の変化の種類。
+ * - 賃貸は管理費込みの総額で値下げ・値上げを判定する（賃料が下がっても管理費が上がれば値下げではない）
+ * - 総額が同じでも、礼金が下がった・フリーレントが付いたなどは「条件の改善」（field_changed, after.improved = true）
+ */
+export function classifyChange(
+  before: NormalizedListing,
+  after: NormalizedListing,
+): { type: "price_down" | "price_up" | "field_changed"; improved: boolean } {
+  const b = totalOf(before);
+  const a = totalOf(after);
+  if (a < b) return { type: "price_down", improved: true };
+  if (a > b) return { type: "price_up", improved: false };
+  const keyMoneyDown =
+    before.keyMoney != null && after.keyMoney != null && after.keyMoney < before.keyMoney;
+  const freeRentAdded =
+    !(before.features ?? []).includes("free_rent") && after.features.includes("free_rent");
+  return { type: "field_changed", improved: keyMoneyDown || freeRentAdded };
 }
 
 function propertyColumns(l: NormalizedListing) {
@@ -85,7 +122,9 @@ export async function ingestCrawl(
   };
   const now = new Date();
 
-  for (const l of result.listings) {
+  for (const raw of result.listings) {
+    // extra の表記から入居時期・契約形態・駐車場などを埋める（アダプター共通の後処理）
+    const l = deriveContractFacts(raw, now);
     if (!isInTargetArea(l.address.raw || `${l.address.city ?? ""}${l.address.town ?? ""}`))
       continue;
     stats.inArea++;
@@ -154,19 +193,13 @@ export async function ingestCrawl(
         updatedAt: now,
       })
       .where(eq(listings.id, existing.id));
-    const type = relisted
-      ? "relisted"
-      : l.price < before.price
-        ? "price_down"
-        : l.price > before.price
-          ? "price_up"
-          : "field_changed";
+    const change = classifyChange(before, l);
     await db.insert(changeEvents).values({
       listingId: existing.id,
       propertyId,
-      type,
-      before: { price: before.price },
-      after: { price: l.price },
+      type: relisted ? "relisted" : change.type,
+      before: priceSnapshot(before),
+      after: { ...priceSnapshot(l), improved: change.improved },
     });
     stats.updatedCount++;
   }

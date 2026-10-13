@@ -15,6 +15,33 @@ function token(): string {
   return t;
 }
 
+/** LINE API のエラー（HTTP ステータスと本文を保持し、恒久的な失敗かを判定できるようにする） */
+export class LineApiError extends Error {
+  constructor(
+    readonly path: string,
+    readonly status: number,
+    readonly body: string,
+  ) {
+    super(`LINE API ${path} ${status}: ${body}`);
+    this.name = "LineApiError";
+  }
+}
+
+/**
+ * 再送しても届かない失敗か（友だち解除・ブロック・存在しないユーザー）。
+ * この場合は LINE のチャネルを無効にして、以後はメールなどほかのチャネルで届ける。
+ * 一時的な失敗（429・5xx）や、こちらの設定の問題（401・認可のない 403）は含めない。
+ */
+export function isPermanentLineFailure(e: unknown): boolean {
+  if (!(e instanceof LineApiError)) return false;
+  const userIssue =
+    /not\s*found|blocked|unfollow|not\s*(a\s*)?friend|invalid\s*(user|to)|property,\s*'to'|the\s*user/i.test(
+      e.body,
+    );
+  if (e.status === 404) return true;
+  return (e.status === 400 || e.status === 403) && userIssue;
+}
+
 async function call(path: string, body: unknown, retryKey?: string): Promise<void> {
   const res = await fetch(`${API}${path}`, {
     method: "POST",
@@ -28,7 +55,7 @@ async function call(path: string, body: unknown, retryKey?: string): Promise<voi
   });
   // 409 = 同じ retry key で送信済み
   if (!res.ok && res.status !== 409) {
-    throw new Error(`LINE API ${path} ${res.status}: ${await res.text()}`);
+    throw new LineApiError(path, res.status, await res.text());
   }
 }
 

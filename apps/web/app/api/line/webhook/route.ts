@@ -1,6 +1,8 @@
 import { getDb, userChannels, verificationTokens } from "@devote/db";
 import { replyLine, verifyLineSignature } from "@devote/services";
 import { and, eq, gt, isNull } from "drizzle-orm";
+import { SECURITY_COPY } from "@/lib/copy";
+import { hit } from "@/lib/rate-limit";
 import { appUrl } from "@/lib/session";
 
 export const runtime = "nodejs";
@@ -73,9 +75,15 @@ async function handleEvent(ev: LineEvent, db: ReturnType<typeof getDb>) {
         ]);
         return;
       }
+      // 6桁コードの総当たりを防ぐ（LINE ユーザーごとに1時間5回まで）
+      if (!(await hit(`line-code:${lineUserId}`, 5, 3600))) {
+        await replyLine(ev.replyToken, [{ type: "text", text: SECURITY_COPY.rateLimit.lineCode }]);
+        return;
+      }
+      // 同じコードが同時に届いても1回だけ通るよう、「未使用かつ期限内」を条件に使用済みにする
       const [token] = await db
-        .select()
-        .from(verificationTokens)
+        .update(verificationTokens)
+        .set({ usedAt: new Date() })
         .where(
           and(
             eq(verificationTokens.token, `line:${code}`),
@@ -83,7 +91,8 @@ async function handleEvent(ev: LineEvent, db: ReturnType<typeof getDb>) {
             isNull(verificationTokens.usedAt),
             gt(verificationTokens.expiresAt, new Date()),
           ),
-        );
+        )
+        .returning();
       if (!token) {
         await replyLine(ev.replyToken, [
           {
@@ -93,17 +102,26 @@ async function handleEvent(ev: LineEvent, db: ReturnType<typeof getDb>) {
         ]);
         return;
       }
-      await db
-        .insert(userChannels)
-        .values({ userId: token.userId, channel: "line", address: lineUserId, priority: 0 })
-        .onConflictDoUpdate({
-          target: [userChannels.channel, userChannels.address],
-          set: { userId: token.userId, active: true, updatedAt: new Date() },
-        });
-      await db
-        .update(verificationTokens)
-        .set({ usedAt: new Date() })
-        .where(eq(verificationTokens.token, token.token));
+      const [existing] = await db
+        .select()
+        .from(userChannels)
+        .where(and(eq(userChannels.channel, "line"), eq(userChannels.address, lineUserId)));
+      if (existing) {
+        // 別のアカウントで有効に使われている連携は奪わない（無効化済みなら引き継ぐ）
+        if (existing.userId !== token.userId && existing.active) {
+          await replyLine(ev.replyToken, [{ type: "text", text: SECURITY_COPY.lineLink.taken }]);
+          return;
+        }
+        await db
+          .update(userChannels)
+          .set({ userId: token.userId, active: true, updatedAt: new Date() })
+          .where(eq(userChannels.id, existing.id));
+      } else {
+        await db
+          .insert(userChannels)
+          .values({ userId: token.userId, channel: "line", address: lineUserId, priority: 0 })
+          .onConflictDoNothing();
+      }
       await replyLine(ev.replyToken, [
         {
           type: "text",

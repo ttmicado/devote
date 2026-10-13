@@ -30,6 +30,19 @@ const BUILDINGS: [x: number, w: number, h: number, floors?: number][] = [
 
 export function Skyline({ className }: ArtProps) {
   const H = 400;
+  // 外形は1本のパス、階の線は2階ごとに1本のパスへまとめる（HTML を軽くする）
+  const outlines = BUILDINGS.map(([x, w, h]) => `M${x}.5 ${H}V${H - h}h${w}V${H}`).join("");
+  const floors = BUILDINGS.flatMap(([x, w, h, n]) =>
+    n
+      ? Array.from({ length: Math.ceil(n / 2) }, (_, i) => {
+          const y = Math.round(H - h + 12 + i * 2 * ((h - 18) / n));
+          return `M${x + 6} ${y}h${w - 12}`;
+        })
+      : [],
+  ).join("");
+  const masts = BUILDINGS.filter(([, , , n]) => n && n > 20)
+    .map(([x, w, h]) => `M${x + w / 2} ${H - h}v-40`)
+    .join("");
   return (
     <svg
       viewBox={`0 0 1200 ${H}`}
@@ -38,26 +51,8 @@ export function Skyline({ className }: ArtProps) {
       aria-hidden
     >
       <g fill="none" stroke="currentColor" strokeWidth="1" vectorEffect="non-scaling-stroke">
-        {BUILDINGS.map(([x, w, h, floors]) => (
-          <g key={x}>
-            <rect x={x + 0.5} y={H - h} width={w} height={h} />
-            {floors &&
-              Array.from({ length: floors }, (_, i) => (
-                <line
-                  key={i}
-                  x1={x + 6}
-                  x2={x + w - 6}
-                  y1={H - h + 12 + i * ((h - 18) / floors)}
-                  y2={H - h + 12 + i * ((h - 18) / floors)}
-                  strokeOpacity="0.45"
-                />
-              ))}
-            {floors && floors > 20 && (
-              <line x1={x + w / 2} x2={x + w / 2} y1={H - h} y2={H - h - 40} />
-            )}
-          </g>
-        ))}
-        <line x1="0" x2="1200" y1={H - 0.5} y2={H - 0.5} />
+        <path d={`${outlines}${masts}M0 ${H - 0.5}H1200`} />
+        <path d={floors} strokeOpacity="0.45" />
       </g>
     </svg>
   );
@@ -66,8 +61,8 @@ export function Skyline({ className }: ArtProps) {
 /** 等高線のような曲線 */
 function contourPath(i: number, cx: number, cy: number, base: number) {
   const pts: string[] = [];
-  const N = 72;
-  for (let k = 0; k <= N; k++) {
+  const N = 36;
+  for (let k = 0; k < N; k++) {
     const t = (k / N) * Math.PI * 2;
     const r =
       base *
@@ -75,7 +70,7 @@ function contourPath(i: number, cx: number, cy: number, base: number) {
         0.09 * Math.sin(3 * t + i * 0.45) +
         0.05 * Math.cos(5 * t - i * 0.3) +
         0.03 * Math.sin(7 * t));
-    pts.push(`${(cx + r * Math.cos(t) * 1.35).toFixed(1)},${(cy + r * Math.sin(t)).toFixed(1)}`);
+    pts.push(`${Math.round(cx + r * Math.cos(t) * 1.35)} ${Math.round(cy + r * Math.sin(t))}`);
   }
   return `M${pts.join("L")}Z`;
 }
@@ -113,6 +108,15 @@ export function FloorPlan({ className }: ArtProps) {
   );
 }
 
+/** 窓の格子（12段×5列）。lit は強調する窓だけ */
+function windows(lit: boolean) {
+  let d = "";
+  for (let r = 0; r < 12; r++)
+    for (let c = 0; c < 5; c++)
+      if (((r * 5 + c) % 7 === 0) === lit) d += `M${14 + c * 36} ${12 + r * 24}h28v16h-28z`;
+  return d;
+}
+
 /** 窓の格子（ファサード） */
 export function Facade({ className }: ArtProps) {
   return (
@@ -123,18 +127,8 @@ export function Facade({ className }: ArtProps) {
       aria-hidden
     >
       <g fill="none" stroke="currentColor" strokeWidth="1" vectorEffect="non-scaling-stroke">
-        {Array.from({ length: 12 }, (_, r) =>
-          Array.from({ length: 5 }, (_, c) => (
-            <rect
-              key={`${r}-${c}`}
-              x={14 + c * 36}
-              y={12 + r * 24}
-              width="28"
-              height="16"
-              strokeOpacity={(r * 5 + c) % 7 === 0 ? 1 : 0.35}
-            />
-          )),
-        )}
+        <path d={windows(false)} strokeOpacity="0.35" />
+        <path d={windows(true)} />
       </g>
     </svg>
   );

@@ -25,9 +25,16 @@ exports[`sumitomo-residence normalize > 部屋ページ＋建物概要を Normal
   },
   "features": [
     "delivery_box",
-    "bathroom_dryer",
     "air_conditioner",
+    "seismic",
+    "parking",
+    "bathroom_dryer",
     "pet_ok",
+    "staffed_24h",
+    "inner_corridor",
+    "floor_heating",
+    "dishwasher",
+    "gym",
   ],
   "floor": 34,
   "imageUrls": [

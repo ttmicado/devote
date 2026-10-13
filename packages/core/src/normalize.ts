@@ -194,3 +194,72 @@ export function buildingAgeYears(builtYearMonth: string, now: Date = new Date())
   const months = (now.getFullYear() - y) * 12 + (now.getMonth() + 1 - m);
   return Math.max(0, Math.floor(months / 12));
 }
+
+/**
+ * 入居可能時期を正規化する。
+ * - "即入居可" "即日" "即" → "即入居可"
+ * - "相談" "要相談" → "相談"
+ * - "2026年11月下旬" "空室予定（退去予定：2026年11月）" "令和8年11月" → "2026-11"
+ * - 年のない "11月中旬" は基準日から見て次に来るその月（過ぎていれば翌年）
+ * - それ以外は表記どおり（長すぎる場合は切り詰める）。空なら null
+ */
+export function parseAvailableFrom(
+  input: string | null | undefined,
+  now: Date = new Date(),
+): string | null {
+  if (input == null) return null;
+  const s = clean(input);
+  if (s === "" || /^(-|－|ー|—)$/.test(s)) return null;
+  const ym = s.match(/(\d{4})[年/.-](\d{1,2})月?/);
+  if (ym?.[1] && ym[2]) {
+    const m = Number(ym[2]);
+    if (m >= 1 && m <= 12) return `${ym[1]}-${String(m).padStart(2, "0")}`;
+  }
+  const era = s.match(/(平成|令和|[HR])(\d{1,2}|元)年(\d{1,2})月/);
+  if (era?.[1] && era[2] && era[3]) {
+    const built = parseBuiltYearMonth(`${era[1]}${era[2]}年${era[3]}月`);
+    if (built) return built;
+  }
+  if (/即/.test(s)) return "即入居可";
+  const monthOnly = s.match(/^(?:入居)?(\d{1,2})月(上旬|中旬|下旬|頃|予定)?/);
+  if (monthOnly?.[1]) {
+    const m = Number(monthOnly[1]);
+    if (m >= 1 && m <= 12) {
+      const jst = new Date(now.getTime() + 9 * 3600_000);
+      const y = jst.getUTCFullYear() + (m < jst.getUTCMonth() + 1 ? 1 : 0);
+      return `${y}-${String(m).padStart(2, "0")}`;
+    }
+  }
+  if (/相談/.test(s)) return "相談";
+  const raw = input.normalize("NFKC").replace(/\s+/g, " ").trim();
+  return raw.length > 40 ? `${raw.slice(0, 40)}…` : raw;
+}
+
+/**
+ * 契約形態と契約期間（賃貸のみ。売買の「定借」は定期借地権のことなので使わない）。
+ * "定期借家契約（2年）" → { contractType: "fixed_term", termMonths: 24 }
+ * "普通借家契約" → { contractType: "normal", termMonths: null }
+ * "2年" → { contractType: null, termMonths: 24 }
+ */
+export function parseContractType(input: string | null | undefined): {
+  contractType: "normal" | "fixed_term" | null;
+  termMonths: number | null;
+} {
+  if (input == null) return { contractType: null, termMonths: null };
+  const s = clean(input);
+  const contractType = /定期借家|定借|定期建物賃貸借/.test(s)
+    ? "fixed_term"
+    : /普通(借家|建物賃貸借|賃貸借)/.test(s)
+      ? "normal"
+      : null;
+  let termMonths: number | null = null;
+  // 「2028年3月まで」のような日付は期間として扱わない
+  const years = s.match(/(?<![\d.])(\d{1,2}(?:\.\d+)?)年(?!\d|\d{0,2}月)/);
+  const months = s.match(/(?<![\d年])(\d{1,3})(?:ヶ|ケ|ヵ|カ|か|ヶ)?月(?!\d*日)/);
+  if (years?.[1] && Number(years[1]) > 0 && Number(years[1]) <= 50) {
+    termMonths = Math.round(Number(years[1]) * 12);
+  } else if (months?.[1] && Number(months[1]) > 0 && /(ヶ|ケ|ヵ|カ|か)月/.test(s)) {
+    termMonths = Number(months[1]);
+  }
+  return { contractType, termMonths };
+}

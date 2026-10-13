@@ -32,6 +32,12 @@ const base: NormalizedListing = {
   propertyType: "mansion",
   extra: {},
   usage: "residential",
+  availableFrom: null,
+  contractType: null,
+  contractTermMonths: null,
+  renewalFee: null,
+  parkingNote: null,
+  totalUnits: null,
 };
 
 describe("propertySimilarity", () => {
@@ -48,6 +54,16 @@ describe("propertySimilarity", () => {
     };
     expect(propertySimilarity(base, near)).toBeGreaterThan(0.85);
     expect(propertySimilarity(base, far)).toBeLessThan(0.4);
+  });
+
+  it("生活圏: 同じ町 > 同じ駅 > 同じ区", () => {
+    const other = { line: null, station: "麻布十番", walkMinutes: 5, busMinutes: null };
+    const sameTown = { ...base, stations: [other] };
+    const sameStation = { ...base, address: { ...base.address, town: "西麻布" } };
+    const sameCity = { ...base, address: { ...base.address, town: "西麻布" }, stations: [other] };
+    const s = (l: NormalizedListing) => propertySimilarity(base, l);
+    expect(s(sameTown)).toBeGreaterThan(s(sameStation));
+    expect(s(sameStation)).toBeGreaterThan(s(sameCity));
   });
 
   it("賃貸と売買は比較しない", () => {
@@ -114,7 +130,7 @@ describe("事業用の賃貸", async () => {
     const cond = {
       dealType: "rent" as const,
       usage: "residential" as const,
-      areas: { stations: [], cities: ["港区"] },
+      areas: { stations: [], cities: ["港区"], towns: [], excludeTowns: [] },
       hard: {
         maxPrice: null,
         minAreaSqm: null,
@@ -123,6 +139,10 @@ describe("事業用の賃貸", async () => {
         maxBuildingAgeYears: null,
         minFloor: null,
         requiredFeatures: [],
+        minRooms: null,
+        moveInBy: null,
+        contract: { corporate: "either" as const, fixedTerm: "ok" as const },
+        parking: { count: 0, note: null },
       },
       tolerance: { price: 0, areaSqm: 0, walkMinutes: 0, buildingAgeYears: 0 },
       soft: [],

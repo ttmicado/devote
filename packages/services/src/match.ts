@@ -1,12 +1,15 @@
 import {
+  areaOnlyCondition,
+  compareRank,
   type NormalizedListing,
   PHASE_GATE,
   type SearchCondition,
   SearchCondition as SearchConditionSchema,
   scoreListing,
+  totalPrice,
 } from "@devote/core";
 import { type Db, matches, properties, searchConditions } from "@devote/db";
-import { and, desc, eq, sql } from "drizzle-orm";
+import { desc, eq, sql } from "drizzle-orm";
 
 /** マッチとして保存する最低点（exploring の閾値より少し下まで保存しておく） */
 const MIN_STORE_SCORE = Math.min(...Object.values(PHASE_GATE).map((g) => g.minScore)) - 10;
@@ -66,9 +69,13 @@ export async function runMatching(db: Db, now = new Date(), opts: { userId?: str
 
 export interface PreviewResult {
   total: number;
+  /** 掲載中の物件の総数（種別・エリアを問わない）。0 なら「まだ取り込みが済んでいない」 */
+  totalActive: number;
+  /** 希望のエリア・用途・取引種別に掲載中の物件数（ほかの条件は問わない） */
+  activeInAreas: number;
   /** 許容幅のおかげで残っている（理想からは外れる）件数 */
   withCompromise: number;
-  /** 除外理由の上位（条件を緩める相談に使う） */
+  /** 除外理由の上位（条件を緩める相談に使う。エリア外は数えない） */
   topExclusions: { reason: string; count: number }[];
   samples: { id: string; score: number; summary: string; reasons: string[] }[];
 }
@@ -78,33 +85,52 @@ export async function previewMatches(
   db: Db,
   cond: SearchCondition,
   summarize: (l: NormalizedListing) => string,
+  now = new Date(),
 ): Promise<PreviewResult> {
   const props = await db
-    .select({ id: properties.id, data: properties.data })
+    .select({ id: properties.id, data: properties.data, createdAt: properties.createdAt })
     .from(properties)
-    .where(and(eq(properties.status, "active"), eq(properties.dealType, cond.dealType)));
+    .where(eq(properties.status, "active"));
+  const areaCond = areaOnlyCondition(cond);
   const exclusions = new Map<string, number>();
-  const hits: PreviewResult["samples"] = [];
+  const hits: (PreviewResult["samples"][number] & { createdAt: Date; totalPrice: number })[] = [];
   let withCompromise = 0;
+  let activeInAreas = 0;
   for (const p of props) {
     const l = p.data as NormalizedListing;
-    const m = scoreListing(l, cond);
+    if (scoreListing(l, areaCond, now).excluded) continue;
+    activeInAreas++;
+    const m = scoreListing(l, cond, now);
     if (m.excluded) {
       const r = m.reasons[0] ?? "除外";
       exclusions.set(r, (exclusions.get(r) ?? 0) + 1);
       continue;
     }
     if (m.reasons.length > 0) withCompromise++;
-    hits.push({ id: p.id, score: m.score, summary: summarize(l), reasons: m.reasons });
+    hits.push({
+      id: p.id,
+      score: m.score,
+      summary: summarize(l),
+      reasons: m.reasons,
+      createdAt: p.createdAt,
+      totalPrice: totalPrice(l),
+    });
   }
-  hits.sort((a, b) => b.score - a.score);
+  hits.sort(compareRank);
   return {
     total: hits.length,
+    totalActive: props.length,
+    activeInAreas,
     withCompromise,
     topExclusions: [...exclusions.entries()]
       .sort((a, b) => b[1] - a[1])
       .slice(0, 5)
       .map(([reason, count]) => ({ reason, count })),
-    samples: hits.slice(0, 5),
+    samples: hits.slice(0, 5).map(({ id, score, summary, reasons }) => ({
+      id,
+      score,
+      summary,
+      reasons,
+    })),
   };
 }

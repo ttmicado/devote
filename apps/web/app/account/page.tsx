@@ -2,7 +2,7 @@ import { getDb, users } from "@devote/db";
 import { eq } from "drizzle-orm";
 import { PageShell } from "@/components/page-shell";
 import { ButtonLink, PageHeader, Toast } from "@/components/ui";
-import { ACCOUNT as A } from "@/lib/copy";
+import { ACCOUNT as A, SECURITY_COPY } from "@/lib/copy";
 import { MIN_PASSWORD } from "@/lib/password";
 import { currentUserId } from "@/lib/session";
 import { logout, saveAccount } from "./actions";
@@ -18,7 +18,13 @@ export default async function AccountPage({
   const userId = await currentUserId();
   const [me] = userId ? await getDb().select().from(users).where(eq(users.id, userId)) : [];
   const hasAccount = Boolean(me?.loginId);
-  const errorText = error ? A.errors[error as keyof typeof A.errors] : null;
+  const hasPassword = Boolean(me?.passwordHash);
+  const errorText =
+    error === "currentPassword"
+      ? SECURITY_COPY.account.errors.currentPassword
+      : error
+        ? (A.errors[error as keyof typeof A.errors] ?? null)
+        : null;
 
   return (
     <PageShell>
@@ -82,6 +88,24 @@ export default async function AccountPage({
                 </>
               )}
             </div>
+
+            {hasAccount && hasPassword && (
+              <div>
+                <label htmlFor="currentPassword" className="field-label">
+                  {SECURITY_COPY.account.currentPassword}
+                </label>
+                <input
+                  id="currentPassword"
+                  name="currentPassword"
+                  type="password"
+                  autoComplete="current-password"
+                  className="field"
+                />
+                <p className="mt-2 text-xs leading-6 text-ink-500">
+                  {SECURITY_COPY.account.currentPasswordNote}
+                </p>
+              </div>
+            )}
 
             <div>
               <label htmlFor="password" className="field-label">

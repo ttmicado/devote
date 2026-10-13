@@ -16,6 +16,11 @@ interface Registration {
   production: boolean;
   /** 実サイト（ログイン後の画面を含む）で動作確認済みか */
   verified: boolean;
+  /**
+   * 業者間の会員サイト（レインズ・ATBB・ITANDI BB）。ここだけに載る物件は一般公開せず、
+   * ご提案を受けた会員にだけ見せる（apps/web/lib/data.ts の MEMBER_ONLY_SOURCES と揃える）
+   */
+  memberOnly?: boolean;
 }
 
 /** 新しいソースはここに登録する */
@@ -30,9 +35,9 @@ const registrations: Registration[] = [
   { adapter: axelHome, production: true, verified: true },
   // 業者間の会員サイト（ログイン後の画面は未確認。docs/member-sites.md）
   // レインズは検索が従量課金の可能性、ITANDI BB は規約で大量の自動取得を控えるよう求めているため要判断
-  { adapter: reins, production: true, verified: REINS_VERIFIED },
-  { adapter: atbb, production: true, verified: ATBB_VERIFIED },
-  { adapter: itandiBb, production: true, verified: ITANDI_VERIFIED },
+  { adapter: reins, production: true, verified: REINS_VERIFIED, memberOnly: true },
+  { adapter: atbb, production: true, verified: ATBB_VERIFIED, memberOnly: true },
+  { adapter: itandiBb, production: true, verified: ITANDI_VERIFIED, memberOnly: true },
 ];
 
 export const adapters: Record<string, SiteAdapter> = Object.fromEntries(
@@ -40,6 +45,11 @@ export const adapters: Record<string, SiteAdapter> = Object.fromEntries(
 );
 
 export const sourceRegistrations: readonly Registration[] = registrations;
+
+/** 会員サイト（一般公開してはいけない情報源）の ID */
+export const memberOnlySourceIds: readonly string[] = registrations
+  .filter((r) => r.memberOnly)
+  .map((r) => r.adapter.meta.id);
 
 /**
  * 定期巡回の対象。

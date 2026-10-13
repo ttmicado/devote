@@ -1,35 +1,69 @@
-import { FEATURE_DICTIONARY, formatYen, headlinePrice } from "@devote/core";
+import { COMPANY, FEATURE_DICTIONARY, formatYen, headlinePrice } from "@devote/core";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
 import { PageShell } from "@/components/page-shell";
 import { DifferenceList, dealEyebrow, FactsLine, PriceFigure } from "@/components/property-card";
-import { ButtonLink, Eyebrow, SpecList } from "@/components/ui";
+import { ButtonLink, Eyebrow, Notice, SpecList } from "@/components/ui";
 import { PROPERTY, SELECTIONS } from "@/lib/copy";
-import { propertyMatchForUser, propertyWithSources } from "@/lib/data";
+import {
+  inquiryPrefill,
+  propertyMatchForUser,
+  propertyWithSources,
+  userCanSeeProperty,
+} from "@/lib/data";
+import { estimateMoveInCost, monthsOfRent } from "@/lib/estimate";
+import { areaText } from "@/lib/listing-view";
 import { currentUserId } from "@/lib/session";
+import { formatJst } from "@/lib/stats";
+import { EstimatePanel } from "./estimate";
 import { Gallery } from "./gallery";
 import { ClosedPanel, InquiryForm } from "./inquiry-form";
 
 export const dynamic = "force-dynamic";
 
+const S = PROPERTY.spec;
+
 const featureLabel = (f: string) =>
   FEATURE_DICTIONARY[f]?.label ?? (f === "south_facing" ? "南向き" : f);
-const TRANSACTION: Record<string, string> = {
-  owner: "貸主・売主",
-  agent: "代理",
-  exclusive_agency: "専任媒介",
-  general_agency: "一般媒介",
-  brokerage: "仲介",
+
+/** "2026年10月13日"（JST） */
+const dateJst = (d: Date) =>
+  d.toLocaleDateString("ja-JP", {
+    timeZone: "Asia/Tokyo",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+
+/** "2026-12" → "2026年12月"。それ以外（"即入居可" "相談" など）は表記どおり */
+const availableText = (v: string | null | undefined) => {
+  if (!v) return null;
+  const m = v.match(/^(\d{4})-(\d{2})$/);
+  return m ? `${m[1]}年${Number(m[2])}月` : v;
 };
 
-const hostOf = (url: string) => {
-  try {
-    return new URL(url).hostname.replace(/^www\./, "");
-  } catch {
-    return null;
-  }
+/** 敷金・礼金: 金額と、賃料の何ヶ月分か */
+const depositText = (yen: number | null | undefined, rent: number) => {
+  if (yen == null) return null;
+  if (yen === 0) return S.none;
+  const months = monthsOfRent(yen, rent);
+  return `${formatYen(yen)}${months ? S.ofRent(months) : ""}`;
 };
+
+function BackLink() {
+  return (
+    <Link
+      href="/matches"
+      className="group inline-flex min-h-11 items-center gap-2 text-xs tracking-[0.12em] text-ink-500 transition-colors duration-500 hover:text-ink-900"
+    >
+      <span aria-hidden className="transition-transform duration-500 group-hover:-translate-x-1">
+        ←
+      </span>
+      {PROPERTY.back}
+    </Link>
+  );
+}
 
 export default async function PropertyPage({
   params,
@@ -42,48 +76,91 @@ export default async function PropertyPage({
   const { inquiry } = await searchParams;
   if (!/^[0-9a-f-]{36}$/.test(id)) notFound();
   const userId = await currentUserId();
-  const [p, match] = await Promise.all([
-    propertyWithSources(id),
-    userId ? propertyMatchForUser(userId, id) : Promise.resolve(null),
-  ]);
+  const p = await propertyWithSources(id);
   if (!p) notFound();
+
+  // 広告不可・会員サイトだけに載る物件は、ご提案を受けた方にだけ見せる
+  const canSee = p.publiclyListable || (userId ? await userCanSeeProperty(userId, id) : false);
+  if (!canSee) {
+    const M = PROPERTY.membersOnly;
+    return (
+      <PageShell>
+        <BackLink />
+        <div className="mt-6">
+          <Notice
+            title={M.title}
+            action={
+              <div className="flex flex-wrap items-center justify-center gap-3">
+                <ButtonLink href="/chat" arrow>
+                  {M.cta}
+                </ButtonLink>
+                {!userId && (
+                  <ButtonLink href={`/login?next=/properties/${id}`} variant="ghost">
+                    {M.login}
+                  </ButtonLink>
+                )}
+              </div>
+            }
+          >
+            {M.body}
+          </Notice>
+        </div>
+      </PageShell>
+    );
+  }
+
+  const [match, prefill] = await Promise.all([
+    userId ? propertyMatchForUser(userId, id) : Promise.resolve(null),
+    userId ? inquiryPrefill(userId) : Promise.resolve({ name: "", phone: "", email: "" }),
+  ]);
   const l = p.listing;
   const title = l.title ?? "物件";
   const closed = p.status === "closed";
   const isRent = l.dealType === "rent";
+  const updated = l.sourceUpdatedAt ? new Date(l.sourceUpdatedAt) : p.updatedAt;
 
-  const rows: [string, string | null][] = [
-    [isRent ? "賃料" : "価格", formatYen(l.price)],
-    ["管理費", l.managementFee ? formatYen(l.managementFee) : null],
-    ["修繕積立金", l.repairReserveFee ? formatYen(l.repairReserveFee) : null],
+  const contract =
+    l.contractType === "normal"
+      ? S.contractNormal
+      : l.contractType === "fixed_term"
+        ? S.contractFixed(l.contractTermMonths ?? null)
+        : null;
+
+  const rows: [string, string | null | undefined][] = [
+    [isRent ? S.rent : S.price, formatYen(l.price)],
+    [S.managementFee, l.managementFee ? formatYen(l.managementFee) : null],
+    [S.repairReserveFee, l.repairReserveFee ? formatYen(l.repairReserveFee) : null],
+    [S.deposit, isRent ? depositText(l.deposit, l.price) : null],
+    [S.keyMoney, isRent ? depositText(l.keyMoney, l.price) : null],
+    [S.address, l.address.raw],
+    [S.layout, l.layout],
+    [S.area, areaText(l)],
+    [S.built, l.builtYearMonth ? `${l.builtYearMonth.replace("-", "年")}月` : null],
     [
-      "敷金／礼金",
-      isRent
-        ? `${l.deposit != null ? formatYen(l.deposit) : "—"}／${l.keyMoney != null ? formatYen(l.keyMoney) : "—"}`
-        : null,
-    ],
-    ["所在地", l.address.raw],
-    ["間取り", l.layout],
-    ["専有面積", l.areaSqm != null ? `${l.areaSqm}㎡` : null],
-    ["築年月", l.builtYearMonth ? `${l.builtYearMonth.replace("-", "年")}月` : null],
-    [
-      "階",
+      S.floor,
       l.floor != null
         ? `${l.floor < 0 ? `地下${-l.floor}` : l.floor}階${l.totalFloors ? `／${l.totalFloors}階建` : ""}`
         : null,
     ],
-    ["構造", l.structure],
-    ["向き", l.direction],
-    ["設備・条件", l.features.map(featureLabel).join("、") || null],
-    ["取引態様", TRANSACTION[l.transactionMode] ?? null],
+    [S.totalUnits, l.totalUnits ? `${l.totalUnits.toLocaleString("ja-JP")}戸` : null],
+    [S.structure, l.structure],
+    [S.direction, l.direction],
+    [S.availableFrom, availableText(l.availableFrom)],
+    [S.contract, isRent ? contract : null],
+    [S.renewalFee, isRent ? l.renewalFee : null],
+    [S.parking, l.parkingNote],
+    [S.features, l.features.map(featureLabel).join("、") || null],
+    // 取引態様は常に Devote の立場（掲載元の取引態様は出さない）
+    [S.transactionMode, COMPANY.transactionMode],
+    [S.updated, dateJst(updated)],
   ];
   const specRows: [string, ReactNode][] = rows.filter(
     (r): r is [string, string] => r[1] != null && r[1] !== "",
   );
   // 交通は路線と駅・徒歩分を途中で折り返さない
   if (l.stations.length > 0) {
-    specRows.splice(specRows.findIndex(([k]) => k === "所在地") + 1, 0, [
-      "交通",
+    specRows.splice(specRows.findIndex(([k]) => k === S.address) + 1, 0, [
+      S.access,
       <span key="st" className="block whitespace-normal">
         {l.stations.map((s) => (
           <span key={`${s.line}-${s.station}`} className="block">
@@ -102,25 +179,12 @@ export default async function PropertyPage({
     ]);
   }
 
-  const sourceLinks = p.sources
-    .filter((s) => s.status === "active" && s.url)
-    .map((s) => ({ url: s.url as string, host: hostOf(s.url as string) }))
-    .filter((s): s is { url: string; host: string } => s.host != null)
-    .filter((s, i, a) => a.findIndex((x) => x.host === s.host) === i);
-
   const price = headlinePrice(l);
+  const estimate = closed ? null : estimateMoveInCost(l);
 
   return (
     <PageShell>
-      <Link
-        href="/matches"
-        className="group inline-flex min-h-11 items-center gap-2 text-xs tracking-[0.12em] text-ink-500 transition-colors duration-500 hover:text-ink-900"
-      >
-        <span aria-hidden className="transition-transform duration-500 group-hover:-translate-x-1">
-          ←
-        </span>
-        {PROPERTY.back}
-      </Link>
+      <BackLink />
 
       {/* 物件名と総額（数十秒で判断できるよう、写真より先に置く） */}
       <header className="mt-6 grid animate-rise gap-8 border-b border-ink-900/15 pb-8 lg:grid-cols-[1fr_auto] lg:items-end lg:gap-16">
@@ -140,6 +204,15 @@ export default async function PropertyPage({
         </div>
         <div className="lg:text-right">
           <PriceFigure listing={l} size="lg" />
+          {p.lastSeenAt && !closed && (
+            <p className="mt-3 inline-flex items-center gap-2 text-xs tracking-[0.06em] text-ink-500">
+              <span aria-hidden className="inline-block size-1.5 rounded-full bg-evergreen-700" />
+              {PROPERTY.lastChecked}
+              <span className="font-serif text-sm text-ink-700 tabular-nums lining-nums">
+                {formatJst(p.lastSeenAt, true)}
+              </span>
+            </p>
+          )}
         </div>
       </header>
 
@@ -156,12 +229,14 @@ export default async function PropertyPage({
                 <h2 id="diff-title" className="display font-mincho text-2xl text-evergreen-900">
                   {SELECTIONS.differences}
                 </h2>
-                <p className="text-xs tracking-[0.08em] text-ink-500">
-                  {SELECTIONS.fitLabel}
-                  <span className="ml-2 font-serif text-lg text-ink-700 tabular-nums lining-nums">
-                    {match.score}
-                  </span>
-                </p>
+                {match.score < 100 && (
+                  <p className="text-xs tracking-[0.08em] text-ink-500">
+                    {SELECTIONS.fitLabel}
+                    <span className="ml-2 font-serif text-lg text-ink-700 tabular-nums lining-nums">
+                      {match.score}
+                    </span>
+                  </p>
+                )}
               </div>
               <DifferenceList reasons={match.reasons} className="mt-5 text-sm leading-7" />
             </section>
@@ -176,32 +251,23 @@ export default async function PropertyPage({
               {PROPERTY.specTitle}
             </h2>
             <SpecList rows={specRows} />
-            {sourceLinks.length > 0 && (
-              <ul className="mt-5 flex flex-wrap gap-x-6 gap-y-1 text-xs text-ink-500">
-                {sourceLinks.map((s) => (
-                  <li key={s.url}>
-                    <a
-                      href={s.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex min-h-11 items-center gap-1.5 border-b border-transparent transition-colors duration-500 hover:text-ink-900 sm:min-h-0"
-                    >
-                      {PROPERTY.source}
-                      <span className="text-ink-500/80">（{s.host}）</span>
-                      <span aria-hidden>↗</span>
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            )}
           </section>
+
+          {estimate && <EstimatePanel estimate={estimate} />}
         </div>
 
         <aside className="min-w-0">
           {closed ? (
             <ClosedPanel />
           ) : (
-            <InquiryForm propertyId={p.id} invalid={inquiry === "invalid"} />
+            <InquiryForm
+              propertyId={p.id}
+              isRent={isRent}
+              prefill={prefill}
+              error={
+                inquiry === "invalid" ? "invalid" : inquiry === "ratelimited" ? "ratelimited" : null
+              }
+            />
           )}
         </aside>
       </div>

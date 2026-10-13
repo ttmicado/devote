@@ -6,6 +6,7 @@ export const dynamic = "force-dynamic";
 /**
  * 本番の設定診断（/admin 配下なので Basic 認証が必要）。
  * 環境変数は「設定されているか」だけを返し、値は返さない。
+ * LINE から Webhook を実際に呼ぶテストは `?test=1` のときだけ行う（開くたびに LINE を呼ばない）。
  */
 const REQUIRED = [
   "DATABASE_URL",
@@ -34,7 +35,8 @@ const TABLES = [
   "source_usage",
 ];
 
-export async function GET() {
+export async function GET(req: Request) {
+  const runWebhookTest = new URL(req.url).searchParams.get("test") === "1";
   const env = Object.fromEntries(
     [...REQUIRED, ...OPTIONAL].map((k) => [k, Boolean(process.env[k])]),
   );
@@ -74,6 +76,8 @@ export async function GET() {
     domains: { name: string; status: string }[];
     fromDomain: string | null;
     error?: string;
+    restricted?: boolean;
+    note?: string;
   } | null = null;
   if (process.env.RESEND_API_KEY) {
     const fromDomain = process.env.MAIL_FROM?.match(/@([^>\s]+)/)?.[1]?.toLowerCase() ?? null;
@@ -85,12 +89,22 @@ export async function GET() {
         data?: { name: string; status: string }[];
         message?: string;
       };
-      resend = res.ok
+      // 送信専用（Sending access）のキーはドメイン一覧を読めない。推奨の設定なので問題扱いしない
+      const restricted =
+        res.status === 401 && /restricted to only send emails/i.test(json.message ?? "");
+      resend = restricted
         ? {
-            domains: (json.data ?? []).map((d) => ({ name: d.name, status: d.status })),
+            domains: [],
             fromDomain,
+            restricted: true,
+            note: "送信専用キーのためドメイン確認は省略",
           }
-        : { domains: [], fromDomain, error: `${res.status}: ${json.message ?? ""}` };
+        : res.ok
+          ? {
+              domains: (json.data ?? []).map((d) => ({ name: d.name, status: d.status })),
+              fromDomain,
+            }
+          : { domains: [], fromDomain, error: `${res.status}: ${json.message ?? ""}` };
     } catch (e) {
       resend = { domains: [], fromDomain, error: e instanceof Error ? e.message : String(e) };
     }
@@ -98,7 +112,7 @@ export async function GET() {
   const sendingDomain = resend?.domains.find((d) => d.name === resend?.fromDomain);
 
   // LINE: トークン・Webhook の設定・LINE から実際に Webhook を呼んだテスト
-  const line = await checkLine();
+  const line = await checkLine(runWebhookTest);
 
   const problems = [
     ...REQUIRED.filter((k) => !env[k]).map((k) => `環境変数 ${k} が未設定です`),
@@ -110,7 +124,7 @@ export async function GET() {
       ? ["メール送信の設定（RESEND_API_KEY / MAIL_FROM）が未設定です"]
       : []),
     ...(resend?.error ? [`Resend の API に接続できません（${resend.error}）`] : []),
-    ...(resend && !resend.error && !sendingDomain
+    ...(resend && !resend.error && !resend.restricted && !sendingDomain
       ? [`MAIL_FROM のドメイン（${resend.fromDomain ?? "不明"}）が Resend に登録されていません`]
       : []),
     ...(sendingDomain && sendingDomain.status !== "verified"
@@ -119,14 +133,30 @@ export async function GET() {
         ]
       : []),
     ...line.problems,
-    ...(db.connected && db.missingTables.length === 0 && !db.lastCrawl
-      ? ["まだ巡回が実行されていません（GitHub Actions の Crawl & Notify を確認）"]
-      : []),
+    ...crawlProblems(db),
   ];
   return Response.json({ ok: problems.length === 0, problems, env, db, resend, line: line.info });
 }
 
-async function checkLine() {
+/** 巡回がまだ・物件が0件のときの案内（物件0件なら GitHub Actions の実行手順を添える） */
+function crawlProblems(db: {
+  connected: boolean;
+  missingTables: string[];
+  properties?: number;
+  lastCrawl?: string | null;
+}): string[] {
+  if (!db.connected || db.missingTables.length > 0) return [];
+  const hint =
+    db.properties === 0
+      ? "。GitHub Actions の「Crawl & Notify」を実行してください（GitHub の Secrets に DATABASE_URL・APP_URL・SESSION_SECRET などを設定したうえで、Actions タブから Run workflow）"
+      : "";
+  if (!db.lastCrawl)
+    return [`まだ巡回が実行されていません（GitHub Actions の Crawl & Notify を確認）${hint}`];
+  if (db.properties === 0) return [`巡回は実行されていますが、物件が0件です${hint}`];
+  return [];
+}
+
+async function checkLine(runWebhookTest: boolean) {
   const token = process.env.LINE_CHANNEL_ACCESS_TOKEN;
   const problems: string[] = [];
   const info: Record<string, unknown> = {};
@@ -172,7 +202,11 @@ async function checkLine() {
           "LINE の「Webhookの利用」がオフです。LINE Developers の Messaging API 設定でオンにしてください",
         );
       }
-      // LINE から実際に Webhook を呼んでもらう（署名の検証まで含めて確認できる）
+      // LINE から実際に Webhook を呼んでもらう（署名の検証まで含めて確認できる）。?test=1 のときだけ
+      if (!runWebhookTest) {
+        info.webhookTest = "省略（?test=1 で実行）";
+        return { problems, info };
+      }
       const t = await fetch("https://api.line.me/v2/bot/channel/webhook/test", {
         method: "POST",
         headers,

@@ -17,7 +17,7 @@ describe("署名付きリンク", () => {
     const t = signUserLink("user-1", 1_000);
     const forged = `${Buffer.from("user-2.zzzzzz").toString("base64url")}.${t.split(".")[1]}`;
     expect(verifyUserLink(forged, 2_000)).toBeNull();
-    expect(verifyUserLink(t, 1_000 + 15 * 24 * 3600_000)).toBeNull();
+    expect(verifyUserLink(t, 1_000 + 4 * 24 * 3600_000)).toBeNull();
   });
   it("通知リンクは claim を経由する", () => {
     expect(personalLink("https://app", "/properties/p1?nid=n", "user-1")).toMatch(

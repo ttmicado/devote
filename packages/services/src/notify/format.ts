@@ -1,4 +1,10 @@
-import { headlinePrice, keyFacts, type NormalizedListing } from "@devote/core";
+import {
+  COMPANY,
+  companyRows,
+  headlinePrice,
+  keyFacts,
+  type NormalizedListing,
+} from "@devote/core";
 import { personalLink } from "../link-token";
 import type { LineMessage } from "./line";
 
@@ -7,12 +13,31 @@ export interface NotifyItem {
   listing: NormalizedListing;
   score: number | null;
   reasons: string[];
+  /**
+   * 適合度を見せるか。soft 条件（あれば嬉しい条件）がない場合は点数に意味がないので false にする。
+   * 省略時は表示（ただし 100 点は「ご希望をすべて満たしています」とだけ書く）
+   */
+  showScore?: boolean;
 }
 
 /** 通知の種類ごとの文言（apps/web/lib/copy.ts とトーンを合わせる） */
-export type NotifyKind = "new" | "similar";
+export type NotifyKind = "new" | "similar" | "price_down";
 
-export function notifyCopy(kind: NotifyKind, count: number) {
+/**
+ * @param detail 値下げ通知の1文（「先日お届けした『○○』の総額が 98万円 → 92万円 に改定されました」）
+ */
+export function notifyCopy(kind: NotifyKind, count: number, detail?: string) {
+  if (kind === "price_down") {
+    const line = detail ?? `先日お届けした物件のうち${count}件の総額が改定されました`;
+    return {
+      heading: line,
+      subject:
+        count === 1
+          ? "【Devote】お届けした物件の総額が改定されました"
+          : `【Devote】お届けした${count}件の総額が改定されました`,
+      intro: `Devote のコンシェルジュです。\n${line}。ご検討の材料になれば幸いです。`,
+    };
+  }
   return kind === "new"
     ? {
         heading: `ご希望に適う物件が見つかりました（${count}件）`,
@@ -60,6 +85,12 @@ function detailUrl(opts: LinkOpts, item: NotifyItem, hash = "") {
   );
 }
 
+/** 適合度の表示（出さないときは null）。100点・soft 条件なしでは出さない */
+export function scoreText(item: NotifyItem): string | null {
+  if (item.score == null || item.showScore === false || item.score >= 100) return null;
+  return `適合度 ${item.score}`;
+}
+
 function differenceLine(item: NotifyItem): string {
   if (item.reasons.length > 0) return item.reasons.slice(0, 2).join(" ／ ");
   return item.score != null ? "ご希望をすべて満たしています" : "";
@@ -68,9 +99,9 @@ function differenceLine(item: NotifyItem): string {
 /** LINE: Flex Message の Carousel を1メッセージで送る（無料通数の節約） */
 export function buildLineMessages(
   items: NotifyItem[],
-  opts: LinkOpts & { kind?: NotifyKind; heading?: string },
+  opts: LinkOpts & { kind?: NotifyKind; heading?: string; detail?: string },
 ): LineMessage[] {
-  const copy = notifyCopy(opts.kind ?? "new", items.length);
+  const copy = notifyCopy(opts.kind ?? "new", items.length, opts.detail);
   const bubbles: Record<string, unknown>[] = items.slice(0, 11).map((item) => {
     const l = item.listing;
     const hero = l.imageUrls.find((u) => u.startsWith("https://"));
@@ -98,7 +129,7 @@ export function buildLineMessages(
         contents: [
           {
             type: "text",
-            text: `${dealLabel(l)}${item.score != null ? `  ·  適合度 ${item.score}` : ""}`,
+            text: `${dealLabel(l)}${scoreText(item) ? `  ·  ${scoreText(item)}` : ""}`,
             size: "xxs",
             color: BRAND.label,
             weight: "bold",
@@ -201,6 +232,16 @@ export function buildLineMessages(
   ];
 }
 
+/** メールの送信者表示（特定電子メール法: 送信者の名称・住所・連絡先）。値のない項目は出さない */
+export function senderLines(): string[] {
+  const rows = companyRows().map(([k, v]) => `${k}: ${v}`);
+  return [
+    `${COMPANY.service}（${COMPANY.name}）`,
+    ...rows.filter((r) => !r.startsWith("商号")),
+    COMPANY.url,
+  ].filter((v): v is string => Boolean(v));
+}
+
 /** メール: 件名・HTML・テキスト */
 export function buildEmail(
   items: NotifyItem[],
@@ -208,11 +249,15 @@ export function buildEmail(
     kind?: NotifyKind;
     heading?: string;
     settingsUrl: string;
+    /** 配信停止（ワンクリック）の URL。List-Unsubscribe ヘッダーと同じもの */
+    unsubscribeUrl?: string;
     /** お呼びする名前（あれば冒頭で「○○様」） */
     nickname?: string | null;
+    /** 値下げ通知の1文 */
+    detail?: string;
   },
 ) {
-  const base = notifyCopy(opts.kind ?? "new", items.length);
+  const base = notifyCopy(opts.kind ?? "new", items.length, opts.detail);
   const copy = opts.nickname ? { ...base, intro: `${opts.nickname}様\n${base.intro}` } : base;
   const heading = opts.heading ?? copy.heading;
   const cards = items
@@ -225,7 +270,7 @@ export function buildEmail(
       return `
 <tr><td style="padding:28px 0;border-bottom:1px solid ${BRAND.sandLine}">
   ${img ? `<a href="${url}"><img src="${escapeHtml(img)}" width="520" style="display:block;width:100%;max-width:520px;height:auto" alt=""></a>` : ""}
-  <div style="font:600 10px/1.6 Helvetica,Arial,sans-serif;letter-spacing:.24em;color:${BRAND.label};margin-top:16px">${dealLabel(l)}${item.score != null ? ` &nbsp;·&nbsp; 適合度 ${item.score}` : ""}</div>
+  <div style="font:600 10px/1.6 Helvetica,Arial,sans-serif;letter-spacing:.24em;color:${BRAND.label};margin-top:16px">${dealLabel(l)}${scoreText(item) ? ` &nbsp;·&nbsp; ${scoreText(item)}` : ""}</div>
   <div style="font:500 19px/1.5 'Hiragino Mincho ProN','Yu Mincho',serif;margin-top:6px"><a href="${url}" style="color:${BRAND.ink};text-decoration:none">${escapeHtml(l.title ?? "物件")}</a></div>
   <div style="margin-top:8px;color:${BRAND.evergreen};font:600 22px/1.4 Georgia,serif">${escapeHtml(price.amount)} <span style="font:400 11px Helvetica,Arial,sans-serif;color:${BRAND.inkSoft}">${escapeHtml(price.label)}</span></div>
   ${price.note ? `<div style="font-size:12px;color:${BRAND.inkSoft}">${escapeHtml(price.note)}</div>` : ""}
@@ -251,8 +296,13 @@ export function buildEmail(
 </td></tr>
 ${cards}
 <tr><td style="padding-top:28px;font-size:12px;line-height:1.8;color:${BRAND.inkSoft}">
-  お届けの頻度・件数は <a href="${opts.settingsUrl}" style="color:${BRAND.evergreen}">お届け設定</a> からいつでも変更できます。<br>
+  お届けの頻度・件数は <a href="${escapeHtml(opts.settingsUrl)}" style="color:${BRAND.evergreen}">お届け設定</a> からいつでも変更できます。${opts.unsubscribeUrl ? `<br>メールでのお届けを止める場合は <a href="${escapeHtml(opts.unsubscribeUrl)}" style="color:${BRAND.evergreen}">配信停止</a> へ。` : ""}<br>
   掲載情報は各情報源の内容に基づきます。最新の募集状況は内見のご依頼時に確認します。
+</td></tr>
+<tr><td style="padding-top:20px;margin-top:20px;border-top:1px solid ${BRAND.sandLine};font-size:11px;line-height:1.8;color:${BRAND.inkSoft}">
+  ${senderLines()
+    .map((line) => escapeHtml(line))
+    .join("<br>")}
 </td></tr>
 </table></body></html>`;
   const text = [
@@ -266,6 +316,10 @@ ${cards}
     ),
     "",
     `お届け設定: ${opts.settingsUrl}`,
+    ...(opts.unsubscribeUrl ? [`配信停止: ${opts.unsubscribeUrl}`] : []),
+    "",
+    "――",
+    ...senderLines(),
   ].join("\n");
   return { subject: copy.subject, html, text };
 }

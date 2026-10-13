@@ -90,7 +90,7 @@ export function SectionHead({
             {index}
           </span>
         )}
-        <Eyebrow tone={tone} rule>
+        <Eyebrow tone={tone} rule lang="en">
           {eyebrow}
         </Eyebrow>
       </div>

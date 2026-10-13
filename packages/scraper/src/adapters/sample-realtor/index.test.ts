@@ -31,7 +31,8 @@ describe("sample-realtor normalize", () => {
       adapter.parseDetail(fixture("detail-R-10002.html"), `${BASE}/rent/R-10002`),
     );
     expect(n2).toMatchObject({ price: 98_000, layout: "1K", deposit: 98_000, keyMoney: 98_000 });
-    expect(n2.features).toContain("pet_ok");
+    // 「ペット相談」は要相談タグ
+    expect(n2.features).toContain("pet_negotiable");
 
     const n3 = adapter.normalize(
       adapter.parseDetail(fixture("detail-R-10003.html"), `${BASE}/rent/R-10003`),

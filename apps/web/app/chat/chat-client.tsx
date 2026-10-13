@@ -9,10 +9,11 @@ import {
   type SearchCondition,
   type SearchPhase,
 } from "@devote/core";
+import Link from "next/link";
 import { useEffect, useLayoutEffect, useRef, useState, useTransition } from "react";
 import { ConditionBrief } from "@/components/condition-summary";
 import { Button, Eyebrow } from "@/components/ui";
-import { CHAT } from "@/lib/copy";
+import { CHAT, CONTACT, LEGAL } from "@/lib/copy";
 import { confirmCondition } from "../actions";
 import { BriefBar } from "./brief-bar";
 import { AssistantLine, StarterChips, ThinkingLine, UserLine } from "./messages";
@@ -129,7 +130,7 @@ export function ChatClient({
   );
 
   return (
-    <main className="flex h-dvh flex-col pt-[76px]">
+    <main id="main" tabIndex={-1} className="flex h-dvh flex-col pt-[76px] outline-none">
       <div className="mx-auto flex min-h-0 w-full max-w-[1200px] flex-1 lg:grid lg:grid-cols-[minmax(0,1fr)_24rem] lg:px-10 xl:grid-cols-[minmax(0,1fr)_26rem]">
         {/* 対話 */}
         <section
@@ -193,7 +194,7 @@ export function ChatClient({
           )}
 
           <form
-            className="flex items-end gap-3 border-t border-ink-900/15 px-5 pt-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] transition-colors duration-500 focus-within:border-evergreen-700 sm:px-10 lg:mr-14 lg:px-0 lg:pt-4 lg:pb-8"
+            className="flex items-end gap-3 border-t border-ink-900/15 px-5 pt-3 pb-1 transition-colors duration-500 focus-within:border-evergreen-700 sm:px-10 lg:mr-14 lg:px-0 lg:pt-4"
             onSubmit={(e) => {
               e.preventDefault();
               send(input);
@@ -236,6 +237,7 @@ export function ChatClient({
               </span>
             </button>
           </form>
+          <ChatFootnote />
 
           {/* スマホ: 依頼書の展開パネル */}
           {briefOpen && (
@@ -251,6 +253,7 @@ export function ChatClient({
                 </Button>
               </div>
               <p className="mt-5 text-[12px] leading-6 text-ink-500">{CHAT.confirmNote}</p>
+              <DirectLink className="mt-2" />
             </div>
           )}
         </section>
@@ -266,10 +269,46 @@ export function ChatClient({
           <div className="shrink-0 border-t border-ink-900/15 pt-5 pb-8">
             {confirmButton()}
             <p className="mt-3 text-[12px] leading-6 text-ink-500">{CHAT.confirmNote}</p>
+            <DirectLink className="mt-2" />
           </div>
         </aside>
       </div>
     </main>
+  );
+}
+
+/** 入力欄の下: 対話の内容の使い道と、担当者への直接の相談 */
+function ChatFootnote() {
+  return (
+    <p className="flex flex-wrap items-baseline gap-x-3 px-5 pb-[max(0.5rem,env(safe-area-inset-bottom))] text-[11px] leading-6 text-ink-500 sm:px-10 lg:mr-14 lg:px-0 lg:pb-6">
+      <span>
+        {LEGAL.consent.chat}
+        <Link
+          href="/privacy"
+          className="ml-1 underline decoration-ink-900/30 underline-offset-4 transition-colors duration-500 hover:text-ink-900"
+        >
+          {LEGAL.consent.link}
+        </Link>
+      </span>
+      <DirectLink className="lg:hidden" />
+    </p>
+  );
+}
+
+/** 「担当者に直接相談する」（会社概要のお問い合わせへ） */
+function DirectLink({ className }: { className?: string }) {
+  return (
+    <Link
+      href="/company#contact"
+      className={`group inline-flex items-center gap-1.5 text-[12px] tracking-[0.06em] text-evergreen-800 transition-colors duration-500 hover:text-evergreen-900 ${className ?? ""}`}
+    >
+      <span className="border-b border-evergreen-800/30 group-hover:border-evergreen-800">
+        {CONTACT.direct}
+      </span>
+      <span aria-hidden className="transition-transform duration-500 group-hover:translate-x-0.5">
+        →
+      </span>
+    </Link>
   );
 }
 
@@ -301,7 +340,7 @@ function MatchVolume({
       <p className="mt-1 font-mincho text-[15px] leading-7 text-evergreen-900">
         {V.count(preview.total)}
       </p>
-      <p className={`mt-1 text-[12px] leading-6 ${many ? "text-signal" : "text-ink-500"}`}>
+      <p className={`mt-1 text-[12px] leading-6 ${many ? "text-ink-700" : "text-ink-500"}`}>
         {preview.total === 0 ? V.none : many ? V.many : V.fine}
       </p>
       <p className="text-[12px] leading-6 text-ink-500">{V.cap(PHASE_GATE[phase].maxItems)}</p>

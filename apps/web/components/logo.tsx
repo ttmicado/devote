@@ -16,7 +16,7 @@ export function Logo({ tone = "light" }: { tone?: "light" | "dark" }) {
         Devote
       </span>
       <span
-        className={`mt-1 font-sans text-[8.5px] uppercase tracking-[0.42em] ${
+        className={`mt-1 font-sans text-[8.5px] whitespace-nowrap uppercase tracking-[0.42em] ${
           tone === "dark" ? "text-sand-300" : "text-sand-600"
         }`}
       >

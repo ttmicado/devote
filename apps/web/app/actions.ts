@@ -12,10 +12,17 @@ import {
   verificationTokens,
 } from "@devote/db";
 import { runMatching, sendEmail } from "@devote/services";
-import { and, desc, eq, gt, isNull } from "drizzle-orm";
+import { and, desc, eq, isNotNull, lt, or } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
+import { headers } from "next/headers";
 import { redirect } from "next/navigation";
+import { PROPERTY } from "@/lib/copy";
+import { clientIp, hit } from "@/lib/rate-limit";
 import { appUrl, currentUserId, ensureUserId } from "@/lib/session";
+
+const HOUR = 3600;
+const DAY = 24 * HOUR;
+const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 
 /** チャットで固めた下書き条件を確定し、通知対象にする */
 export async function confirmCondition() {
@@ -95,7 +102,16 @@ export async function requestEmailVerification(formData: FormData) {
   const email = String(formData.get("email") ?? "")
     .trim()
     .toLowerCase();
-  if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) redirect("/settings?email=invalid");
+  if (email.length > 254 || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
+    redirect("/settings?email=invalid");
+  }
+  // 確認メールを他人宛てに大量に送らせない（ユーザー・宛先・接続元ごとに上限）
+  const ip = clientIp(await headers());
+  const allowed =
+    (await hit(`email:user:${userId}`, 3, HOUR)) &&
+    (await hit(`email:to:${email}`, 3, DAY)) &&
+    (await hit(`email:ip:${ip}`, 10, HOUR));
+  if (!allowed) redirect("/settings?email=ratelimited");
   const token = randomBytes(24).toString("base64url");
   await getDb()
     .insert(verificationTokens)
@@ -145,33 +161,27 @@ function verificationEmailHtml(link: string) {
 export async function issueLineLinkCode() {
   const userId = await ensureUserId();
   const db = getDb();
+  const expiresAt = () => new Date(Date.now() + 30 * 60_000);
+  // 他の人の有効なコードは上書きしない。使用済み・期限切れのコードだけ再利用する
   let code = "";
-  for (let i = 0; i < 5; i++) {
-    code = String(randomInt(100000, 1000000));
-    const [dup] = await db
-      .select()
-      .from(verificationTokens)
-      .where(
-        and(
-          eq(verificationTokens.token, `line:${code}`),
-          isNull(verificationTokens.usedAt),
-          gt(verificationTokens.expiresAt, new Date()),
+  for (let i = 0; i < 8 && !code; i++) {
+    const candidate = String(randomInt(100000, 1000000));
+    const [row] = await db
+      .insert(verificationTokens)
+      .values({ token: `line:${candidate}`, userId, purpose: "line_link", expiresAt: expiresAt() })
+      .onConflictDoUpdate({
+        target: verificationTokens.token,
+        set: { userId, purpose: "line_link", expiresAt: expiresAt(), usedAt: null },
+        setWhere: or(
+          isNotNull(verificationTokens.usedAt),
+          lt(verificationTokens.expiresAt, new Date()),
         ),
-      );
-    if (!dup) break;
+      })
+      .returning({ token: verificationTokens.token });
+    if (row) code = candidate;
   }
-  await db
-    .insert(verificationTokens)
-    .values({
-      token: `line:${code}`,
-      userId,
-      purpose: "line_link",
-      expiresAt: new Date(Date.now() + 30 * 60_000),
-    })
-    .onConflictDoUpdate({
-      target: verificationTokens.token,
-      set: { userId, expiresAt: new Date(Date.now() + 30 * 60_000), usedAt: null },
-    });
+  // 6桁の大半が使われている状態は想定外（8回続けて衝突する確率は無視できる）
+  if (!code) throw new Error("LINE 連携コードを発行できませんでした");
   // 公式アカウントの ID があれば、コード入力済みのトーク画面を直接開く（友だち追加もLINE内で完結）
   const oaId = process.env.NEXT_PUBLIC_LINE_OA_ID;
   if (oaId) redirect(`https://line.me/R/oaMessage/${encodeURIComponent(oaId)}/?${code}`);
@@ -189,23 +199,55 @@ export async function disconnectChannel(formData: FormData) {
   revalidatePath("/settings");
 }
 
+/** 内見フォームの選択項目（契約名義・入居時期・連絡窓口・確認したいこと）を担当向けの本文にまとめる */
+const V = PROPERTY.viewing;
+const INQUIRY_CHOICES = {
+  contractName: V.contractNameOptions,
+  moveIn: V.moveInOptions,
+  contactVia: V.contactViaOptions,
+} as const;
+const INQUIRY_CHECKS: string[] = V.checksOptions.map((o) => o.label);
+
+function inquiryMessage(formData: FormData, free: string) {
+  const pick = (name: keyof typeof INQUIRY_CHOICES) => {
+    const v = String(formData.get(name) ?? "");
+    return (INQUIRY_CHOICES[name] as readonly string[]).includes(v) ? v : null;
+  };
+  const checks = formData
+    .getAll("checks")
+    .map(String)
+    .filter((c) => INQUIRY_CHECKS.includes(c));
+  const lines = [
+    pick("contractName") && `${V.contractName}: ${pick("contractName")}`,
+    pick("moveIn") && `${V.moveIn}: ${pick("moveIn")}`,
+    pick("contactVia") && `${V.contactVia}: ${pick("contactVia")}`,
+    checks.length > 0 && `確認したいこと: ${checks.join("、")}`,
+  ].filter(Boolean);
+  return [lines.join("\n"), free].filter(Boolean).join("\n\n");
+}
+
 /** 内見の問い合わせ */
 export async function createInquiry(formData: FormData) {
+  const propertyId = String(formData.get("propertyId") ?? "");
+  if (!UUID_RE.test(propertyId)) redirect("/matches");
   const userId = await ensureUserId();
-  const propertyId = String(formData.get("propertyId"));
-  const contactName = String(formData.get("name") ?? "").trim();
-  const contactPhone = String(formData.get("phone") ?? "").trim();
+  const field = (name: string, max: number) =>
+    String(formData.get(name) ?? "")
+      .trim()
+      .slice(0, max);
+  const contactName = field("name", 100);
+  const contactPhone = field("phone", 30);
   const contactEmail = String(formData.get("email") ?? "").trim();
   // 担当から連絡できない依頼は受け付けない
-  if (!contactName || (!contactPhone && !contactEmail)) {
+  if (!contactName || (!contactPhone && !contactEmail) || contactEmail.length > 254) {
     redirect(`/properties/${propertyId}?inquiry=invalid#inquiry`);
   }
-  const dates = [
-    String(formData.get("dates") ?? "").trim(),
-    String(formData.get("datesNote") ?? "").trim(),
-  ]
-    .filter(Boolean)
-    .join("／");
+  // いたずらの大量依頼を防ぐ（ユーザーごと・接続元ごとに上限）
+  const ip = clientIp(await headers());
+  const allowed =
+    (await hit(`inquiry:user:${userId}`, 10, DAY)) && (await hit(`inquiry:ip:${ip}`, 20, HOUR));
+  if (!allowed) redirect(`/properties/${propertyId}?inquiry=ratelimited#inquiry`);
+  const dates = [field("dates", 200), field("datesNote", 200)].filter(Boolean).join("／");
   const db = getDb();
   const [p] = await db
     .select({ id: properties.id })
@@ -219,7 +261,7 @@ export async function createInquiry(formData: FormData) {
     contactPhone: contactPhone || null,
     contactEmail: contactEmail || null,
     preferredDates: dates || null,
-    message: String(formData.get("message") ?? "").trim() || null,
+    message: inquiryMessage(formData, field("message", 2000)) || null,
   });
   redirect("/inquiries?created=1");
 }

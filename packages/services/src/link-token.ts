@@ -4,9 +4,9 @@ import { createHmac, timingSafeEqual } from "node:crypto";
  * 通知のリンクに付ける署名付きトークン。
  * LINE のアプリ内ブラウザは Safari / Chrome と Cookie を共有しないため、
  * 通知から開いたときに「別人」扱いにならないよう、リンクからセッションを引き継ぐ。
- * 転送されたときのリスクを抑えるため有効期限を短めにする（本格公開時は LINE ログインに置き換える）。
+ * 転送されたときのリスクを抑えるため有効期限は3日と短めにする。パスワードを設定済みのアカウントはリンクだけではログインさせない（本格公開時は LINE ログインに置き換える）。
  */
-const TTL_MS = 14 * 24 * 3600_000;
+const TTL_MS = 3 * 24 * 3600_000;
 
 function secret(): string {
   const s = process.env.SESSION_SECRET;

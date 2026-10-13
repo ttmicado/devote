@@ -9,9 +9,10 @@ import {
 import { ConditionSummary } from "@/components/condition-summary";
 import { PageShell } from "@/components/page-shell";
 import { ButtonLink, Eyebrow, Notice, PageHeader, Toast } from "@/components/ui";
-import { PREFERENCES as T } from "@/lib/copy";
+import { SECURITY_COPY, PREFERENCES as T } from "@/lib/copy";
 import { latestCondition, userChannelList } from "@/lib/data";
 import { currentUserId } from "@/lib/session";
+import { DisconnectButton } from "./disconnect-button";
 import { LineLinkWatcher } from "./line-link-watcher";
 
 export const dynamic = "force-dynamic";
@@ -40,195 +41,227 @@ export default async function SettingsPage({
   const lineLinked = active.some((c) => c.channel === "line");
   const friendUrl = process.env.NEXT_PUBLIC_LINE_ADD_FRIEND_URL;
   const oneTap = Boolean(process.env.NEXT_PUBLIC_LINE_OA_ID);
-  const emailMessage = email ? T.email.messages[email as keyof typeof T.email.messages] : null;
+  const emailMessage =
+    email === "ratelimited"
+      ? SECURITY_COPY.rateLimit.email
+      : email
+        ? (T.email.messages[email as keyof typeof T.email.messages] ?? null)
+        : null;
+  const emailOk = email === "sent" || email === "verified";
+  const channelLabel = (ch: string) => (ch === "line" ? T.channelLine : T.channelEmail);
 
   return (
     <PageShell>
       <PageHeader eyebrow={T.eyebrow} title={T.title} lead={T.lead} />
 
       <div className="mt-8 space-y-4" aria-live="polite">
-        {welcome && (
-          <Toast>
-            承りました。合う物件が見つかり次第お届けします。最後に、受け取り方をお選びください。
-          </Toast>
-        )}
+        {welcome && <Toast>{T.welcome}</Toast>}
         {saved && <Toast>{T.saved}</Toast>}
-        {linked && <Toast>LINE と連携しました。ご希望に適う物件を、LINE にお届けします。</Toast>}
+        {linked && <Toast>{T.linked}</Toast>}
       </div>
 
-      {!me?.loginId && (
-        <p className="mt-8 flex flex-wrap items-center gap-x-4 gap-y-2 border-y border-ink-900/15 py-4 text-sm leading-7 text-ink-500">
-          ほかの端末やブラウザからも同じ内容をご覧いただくには、アカウントをお作りください。
-          <ButtonLink href="/account" variant="ghost" arrow>
-            アカウントを作る
-          </ButtonLink>
-        </p>
+      {condition && (
+        <section className="mt-14" aria-labelledby="brief">
+          <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+            <h2 id="brief" className="display font-mincho text-2xl text-evergreen-900">
+              {T.briefTitle}
+            </h2>
+            <ButtonLink href="/chat" variant="ghost" arrow className="-ml-6 sm:ml-0">
+              {T.briefEdit}
+            </ButtonLink>
+          </div>
+          <div className="mt-6">
+            <ConditionSummary condition={condition.condition} />
+          </div>
+        </section>
       )}
-
       {/* 受け取り方 */}
-      <section className="mt-14" aria-labelledby="channels">
-        <div className="flex items-baseline justify-between gap-4">
-          <h2 id="channels" className="display font-mincho text-2xl text-evergreen-900">
+      <section className="mt-14 border-t border-ink-900/15 pt-12" aria-labelledby="channels">
+        <div className="flex flex-col gap-2 sm:flex-row sm:items-baseline sm:gap-6">
+          <h2 id="channels" className="display shrink-0 font-mincho text-2xl text-evergreen-900">
             {T.channelsTitle}
           </h2>
-          {active.length === 0 && <p className="text-sm text-sand-600">{T.noChannel}</p>}
+          {active.length === 0 && <p className="text-sm leading-7 text-ink-500">{T.noChannel}</p>}
         </div>
 
-        {active.length > 0 && (
-          <ul className="mt-6 divide-y divide-ink-900/10 border-y border-ink-900/15">
-            {active.map((c) => (
-              <li key={c.id} className="flex items-center justify-between gap-4 py-4">
-                <div>
-                  <p className="eyebrow text-sand-600">{c.channel === "line" ? "LINE" : "Email"}</p>
-                  <p className="mt-1 text-sm text-ink-900">
-                    {c.channel === "line" ? "LINE にお届けします" : c.address}
-                  </p>
-                </div>
-                <form action={disconnectChannel}>
-                  <input type="hidden" name="channelId" value={c.id} />
-                  <button
-                    type="submit"
-                    className="min-h-11 rounded-full border border-ink-900/20 px-5 text-xs tracking-[0.12em] text-ink-700 transition-colors hover:border-ink-900 hover:text-ink-900"
-                  >
-                    {T.disconnect}
-                  </button>
-                </form>
-              </li>
-            ))}
-          </ul>
-        )}
-
-        <div className="mt-8 grid gap-px border border-ink-900/15 bg-ink-900/15 md:grid-cols-[1.15fr_1fr]">
-          {/* LINE（おすすめ） */}
-          <div className="relative overflow-hidden bg-evergreen-900 p-8 text-sand-100 sm:p-10">
-            <div
-              aria-hidden
-              className="pointer-events-none absolute -top-24 -right-24 size-72 rounded-full bg-evergreen-700/40 blur-3xl"
-            />
-            <div className="relative">
-              <div className="flex items-center gap-3">
-                <Eyebrow tone="dark">LINE</Eyebrow>
-                <span className="eyebrow rounded-full border border-sand-200/40 px-2.5 py-0.5 text-[10px] text-sand-200">
-                  {T.line.recommended}
-                </span>
-              </div>
-              <h3 className="display mt-4 font-mincho text-2xl text-sand-50">{T.line.title}</h3>
-
-              {lineLinked ? (
-                <p className="mt-6 text-sm leading-7 text-sand-200">LINE と連携済みです。</p>
-              ) : oneTap ? (
-                <>
-                  <p className="mt-4 text-sm leading-7 text-sand-200">
-                    ボタンを押すと LINE が開きます。そのまま送信すると連携が完了します。
-                  </p>
-                  <form action={issueLineLinkCode} className="mt-8">
-                    <button
-                      type="submit"
-                      className="inline-flex min-h-14 w-full items-center justify-center gap-3 rounded-full bg-sand-200 px-8 text-sm tracking-[0.12em] text-evergreen-900 transition-colors duration-500 hover:bg-sand-50"
-                    >
-                      {T.line.oneTap} →
-                    </button>
+        {/* 連携済みなら1行にまとめ、変更するときだけ開く */}
+        <ChannelsWrap
+          collapsed={active.length > 0}
+          open={Boolean(lineCode || email)}
+          summary={
+            <span className="flex min-w-0 flex-1 flex-wrap items-baseline gap-x-3 gap-y-1">
+              <span className="eyebrow flex-none text-ink-500">{T.connected}</span>
+              <span className="min-w-0 text-sm text-ink-900">
+                {active
+                  .map((c) =>
+                    c.channel === "line" ? T.channelLine : `${T.channelEmail}（${c.address}）`,
+                  )
+                  .join(" · ")}
+              </span>
+            </span>
+          }
+          changeLabel={T.change}
+          closeLabel={T.changeClose}
+        >
+          {active.length > 0 && (
+            <ul className="mt-2 divide-y divide-ink-900/10 border-b border-ink-900/15">
+              {active.map((c) => (
+                <li key={c.id} className="flex items-center justify-between gap-4 py-4">
+                  <div className="min-w-0">
+                    <p className="eyebrow text-sand-600">
+                      {c.channel === "line" ? "LINE" : "Email"}
+                    </p>
+                    <p className="mt-1 truncate text-sm text-ink-900">
+                      {c.channel === "line" ? T.lineDelivers : c.address}
+                    </p>
+                  </div>
+                  <form action={disconnectChannel}>
+                    <input type="hidden" name="channelId" value={c.id} />
+                    <DisconnectButton
+                      label={T.disconnect}
+                      confirmText={T.disconnectConfirm(channelLabel(c.channel))}
+                    />
                   </form>
-                </>
-              ) : (
-                <>
-                  <ol className="mt-6 space-y-3">
-                    {T.line.steps.map((s, i) => (
-                      <li key={s} className="flex gap-4 text-sm leading-7 text-sand-200">
-                        <span className="font-serif text-lg leading-7 text-sand-300">0{i + 1}</span>
-                        {i === 0 && friendUrl ? (
+                </li>
+              ))}
+            </ul>
+          )}
+
+          <div className="mt-8 grid gap-px border border-ink-900/15 bg-ink-900/15 md:grid-cols-[1.15fr_1fr]">
+            {/* LINE（おすすめ） */}
+            <div className="relative overflow-hidden bg-evergreen-900 p-8 text-sand-100 sm:p-10">
+              <div
+                aria-hidden
+                className="pointer-events-none absolute -top-24 -right-24 size-72 rounded-full bg-evergreen-700/40 blur-3xl"
+              />
+              <div className="relative">
+                <div className="flex items-center gap-3">
+                  <Eyebrow tone="dark">LINE</Eyebrow>
+                  <span className="eyebrow rounded-full border border-sand-200/40 px-2.5 py-0.5 text-[10px] text-sand-200">
+                    {T.line.recommended}
+                  </span>
+                </div>
+                <h3 className="display mt-4 font-mincho text-2xl text-sand-50">{T.line.title}</h3>
+
+                {lineLinked ? (
+                  <p className="mt-6 text-sm leading-7 text-sand-200">{T.line.linked}</p>
+                ) : oneTap ? (
+                  <>
+                    <p className="mt-4 text-sm leading-7 text-sand-200">{T.line.oneTapNote}</p>
+                    <form action={issueLineLinkCode} className="mt-8">
+                      <button
+                        type="submit"
+                        className="inline-flex min-h-14 w-full items-center justify-center gap-3 rounded-full bg-sand-200 px-8 text-sm tracking-[0.12em] text-evergreen-900 transition-colors duration-500 hover:bg-sand-50"
+                      >
+                        {T.line.oneTap} →
+                      </button>
+                    </form>
+                  </>
+                ) : (
+                  <>
+                    <ol className="mt-6 space-y-3">
+                      {T.line.steps.map((s, i) => (
+                        <li key={s} className="flex gap-4 text-sm leading-7 text-sand-200">
+                          <span className="font-serif text-lg leading-7 text-sand-300">
+                            0{i + 1}
+                          </span>
+                          {i === 0 && friendUrl ? (
+                            <a
+                              href={friendUrl}
+                              target="_blank"
+                              rel="noreferrer"
+                              className="underline decoration-sand-300/60 underline-offset-4 hover:text-sand-50"
+                            >
+                              {s}
+                            </a>
+                          ) : (
+                            s
+                          )}
+                        </li>
+                      ))}
+                    </ol>
+                    {lineCode ? (
+                      <div className="mt-8 border-t border-sand-100/15 pt-6">
+                        <p className="eyebrow text-sand-300">{T.line.codeLabel}</p>
+                        <p className="mt-2 font-serif text-6xl tracking-[0.18em] text-sand-50">
+                          {lineCode}
+                        </p>
+                        <p className="mt-3 text-xs leading-6 text-sand-300">{T.line.codeNote}</p>
+                        {friendUrl && (
                           <a
                             href={friendUrl}
                             target="_blank"
                             rel="noreferrer"
-                            className="underline decoration-sand-300/60 underline-offset-4 hover:text-sand-50"
+                            className="mt-4 inline-flex min-h-11 items-center rounded-full border border-sand-200/50 px-5 text-xs tracking-[0.12em] text-sand-100 hover:bg-sand-100/10"
                           >
-                            {s}
+                            {T.line.addFriend} →
                           </a>
-                        ) : (
-                          s
                         )}
-                      </li>
-                    ))}
-                  </ol>
-                  {lineCode ? (
-                    <div className="mt-8 border-t border-sand-100/15 pt-6">
-                      <p className="eyebrow text-sand-300">Link Code</p>
-                      <p className="mt-2 font-serif text-6xl tracking-[0.18em] text-sand-50">
-                        {lineCode}
-                      </p>
-                      <p className="mt-3 text-xs leading-6 text-sand-300">{T.line.codeNote}</p>
-                      {friendUrl && (
-                        <a
-                          href={friendUrl}
-                          target="_blank"
-                          rel="noreferrer"
-                          className="mt-4 inline-flex min-h-11 items-center rounded-full border border-sand-200/50 px-5 text-xs tracking-[0.12em] text-sand-100 hover:bg-sand-100/10"
+                        <LineLinkWatcher />
+                      </div>
+                    ) : (
+                      <form action={issueLineLinkCode} className="mt-8">
+                        <button
+                          type="submit"
+                          className="inline-flex min-h-12 w-full items-center justify-center rounded-full bg-sand-200 px-8 text-sm tracking-[0.12em] text-evergreen-900 transition-colors duration-500 hover:bg-sand-50"
                         >
-                          {T.line.addFriend} →
-                        </a>
-                      )}
-                      <LineLinkWatcher />
-                    </div>
-                  ) : (
-                    <form action={issueLineLinkCode} className="mt-8">
-                      <button
-                        type="submit"
-                        className="inline-flex min-h-12 w-full items-center justify-center rounded-full bg-sand-200 px-8 text-sm tracking-[0.12em] text-evergreen-900 transition-colors duration-500 hover:bg-sand-50"
-                      >
-                        {T.line.issue}
-                      </button>
-                    </form>
-                  )}
-                </>
+                          {T.line.issue}
+                        </button>
+                      </form>
+                    )}
+                  </>
+                )}
+              </div>
+            </div>
+
+            {/* メール */}
+            <div className="bg-sand-50 p-8 sm:p-10">
+              <Eyebrow>Email</Eyebrow>
+              <h3 className="display mt-4 font-mincho text-2xl text-evergreen-900">
+                {T.email.title}
+              </h3>
+              <p className="mt-4 text-sm leading-7 text-ink-500">{T.email.note}</p>
+              <form action={requestEmailVerification} className="mt-6">
+                <label htmlFor="email" className="field-label">
+                  {T.email.label}
+                </label>
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  required
+                  autoComplete="email"
+                  placeholder={T.email.placeholder}
+                  className="field"
+                />
+                <button
+                  type="submit"
+                  className="mt-6 inline-flex min-h-12 w-full items-center justify-center rounded-full border border-ink-900/30 px-8 text-sm tracking-[0.12em] text-ink-900 transition-colors duration-500 hover:border-ink-900 hover:bg-ink-900/5"
+                >
+                  {T.email.submit}
+                </button>
+              </form>
+              {emailMessage && (
+                <p
+                  className={`mt-4 text-sm leading-7 ${emailOk ? "text-evergreen-700" : "border-l-2 border-signal pl-4 text-ink-700"}`}
+                  role="status"
+                >
+                  {emailMessage}
+                </p>
               )}
             </div>
           </div>
-
-          {/* メール */}
-          <div className="bg-sand-50 p-8 sm:p-10">
-            <Eyebrow>Email</Eyebrow>
-            <h3 className="display mt-4 font-mincho text-2xl text-evergreen-900">
-              {T.email.title}
-            </h3>
-            <p className="mt-4 text-sm leading-7 text-ink-500">{T.email.note}</p>
-            <form action={requestEmailVerification} className="mt-6">
-              <label htmlFor="email" className="field-label">
-                {T.email.label}
-              </label>
-              <input
-                id="email"
-                name="email"
-                type="email"
-                required
-                autoComplete="email"
-                placeholder={T.email.placeholder}
-                className="field"
-              />
-              <button
-                type="submit"
-                className="mt-6 inline-flex min-h-12 w-full items-center justify-center rounded-full border border-ink-900/30 px-8 text-sm tracking-[0.12em] text-ink-900 transition-colors duration-500 hover:border-ink-900 hover:bg-ink-900/5"
-              >
-                {T.email.submit}
-              </button>
-            </form>
-            {emailMessage && (
-              <p className="mt-4 text-sm leading-7 text-evergreen-700" role="status">
-                {emailMessage}
-              </p>
-            )}
-          </div>
-        </div>
+        </ChannelsWrap>
       </section>
 
       {/* 頻度と検討段階 */}
-      <section className="mt-20" aria-labelledby="cadence">
+      <section className="mt-20 border-t border-ink-900/15 pt-12" aria-labelledby="cadence">
         {!condition ? (
           <Notice
             title={T.noCondition}
             action={
               <ButtonLink href="/chat" arrow>
-                ご相談をはじめる
+                {T.startCta}
               </ButtonLink>
             }
           />
@@ -277,7 +310,7 @@ export default async function SettingsPage({
                 </select>
               </div>
               <p className="mt-3 text-xs leading-6 text-ink-500 hidden group-has-[input[name=frequency][value=instant]:checked]/form:block">
-                夜間（22時〜8時）に見つかった物件は、朝8時にまとめてお届けします。
+                {T.nightNote}
               </p>
             </fieldset>
 
@@ -324,8 +357,11 @@ export default async function SettingsPage({
               </div>
             </fieldset>
 
-            <div className="flex flex-col gap-6 border-t border-ink-900/15 pt-8 sm:flex-row sm:items-center sm:justify-between">
-              <label className="flex min-h-11 cursor-pointer items-center gap-3 text-sm text-ink-900">
+            <fieldset>
+              <legend className="display font-mincho text-2xl text-evergreen-900">
+                {T.pauseTitle}
+              </legend>
+              <label className="mt-5 flex min-h-11 cursor-pointer items-center gap-3 text-sm text-ink-900">
                 <input
                   type="checkbox"
                   name="active"
@@ -334,6 +370,12 @@ export default async function SettingsPage({
                 />
                 {T.active}
               </label>
+              <p className="mt-1 text-[13px] leading-6 text-ink-500">
+                {condition.active ? T.activeNote : T.paused}
+              </p>
+            </fieldset>
+
+            <div className="flex flex-col gap-6 border-t border-ink-900/15 pt-8 sm:flex-row sm:items-center sm:justify-end">
               <button
                 type="submit"
                 className="inline-flex min-h-14 items-center justify-center rounded-full bg-evergreen-800 px-10 text-sm tracking-[0.12em] text-sand-50 transition-colors duration-500 hover:bg-evergreen-900"
@@ -345,21 +387,50 @@ export default async function SettingsPage({
         )}
       </section>
 
-      {condition && (
-        <section className="mt-20 border-t border-ink-900/15 pt-12" aria-labelledby="brief">
-          <div className="flex items-baseline justify-between gap-4">
-            <h2 id="brief" className="display font-mincho text-2xl text-evergreen-900">
-              {T.briefTitle}
-            </h2>
-            <ButtonLink href="/chat" variant="ghost" arrow>
-              {T.briefEdit}
-            </ButtonLink>
-          </div>
-          <div className="mt-6">
-            <ConditionSummary condition={condition.condition} />
-          </div>
-        </section>
+      {!me?.loginId && (
+        <p className="mt-20 flex flex-col gap-2 border-y border-ink-900/15 py-5 text-sm leading-7 text-ink-500 sm:flex-row sm:items-center sm:justify-between sm:gap-6">
+          {T.accountNote}
+          <ButtonLink
+            href="/account"
+            variant="ghost"
+            arrow
+            className="-ml-6 self-start sm:ml-0 sm:self-auto"
+          >
+            {T.accountCta}
+          </ButtonLink>
+        </p>
       )}
     </PageShell>
+  );
+}
+
+/** 連携済みのときは「お届け先 LINE · メール　変更する」の1行に畳む */
+function ChannelsWrap({
+  collapsed,
+  open,
+  summary,
+  changeLabel,
+  closeLabel,
+  children,
+}: {
+  collapsed: boolean;
+  open: boolean;
+  summary: React.ReactNode;
+  changeLabel: string;
+  closeLabel: string;
+  children: React.ReactNode;
+}) {
+  if (!collapsed) return <>{children}</>;
+  return (
+    <details open={open} className="group/ch mt-6 border-t border-ink-900/15">
+      <summary className="flex min-h-14 cursor-pointer list-none items-center gap-4 border-b border-ink-900/15 py-3 [&::-webkit-details-marker]:hidden">
+        {summary}
+        <span className="flex-none border-b border-evergreen-800/40 pb-0.5 text-[13px] tracking-[0.12em] text-evergreen-800">
+          <span className="group-open/ch:hidden">{changeLabel}</span>
+          <span className="hidden group-open/ch:inline">{closeLabel}</span>
+        </span>
+      </summary>
+      {children}
+    </details>
   );
 }

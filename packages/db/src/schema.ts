@@ -8,6 +8,7 @@ import {
   jsonb,
   pgEnum,
   pgTable,
+  primaryKey,
   real,
   smallint,
   text,
@@ -137,6 +138,10 @@ export const users = pgTable("users", {
   passwordHash: text("password_hash"),
   failedLogins: smallint("failed_logins").notNull().default(0),
   lockedUntil: timestamp("locked_until", { withTimezone: true }),
+  /** セッション Cookie の世代。パスワード変更で上げると、他の端末のセッションが無効になる */
+  sessionVersion: integer("session_version").notNull().default(0),
+  /** AIチャットの同時実行防止（応答中はこの時刻まで次のメッセージを受け付けない） */
+  chatLockedUntil: timestamp("chat_locked_until", { withTimezone: true }),
   /** AIチャットで編集中（未確定）の条件 */
   draftCondition: jsonb("draft_condition"),
   draftPhase: text("draft_phase", { enum: ["exploring", "considering", "ready"] }),
@@ -154,6 +159,17 @@ export const verificationTokens = pgTable("verification_tokens", {
   expiresAt: timestamp("expires_at", { withTimezone: true }).notNull(),
   usedAt: timestamp("used_at", { withTimezone: true }),
 });
+
+/** 固定ウィンドウのレート制限（key: 用途と識別子、例 "chat:ip:203.0.113.1"） */
+export const rateLimits = pgTable(
+  "rate_limits",
+  {
+    key: text("key").notNull(),
+    windowStart: timestamp("window_start", { withTimezone: true }).notNull(),
+    n: integer("n").notNull().default(0),
+  },
+  (t) => [primaryKey({ columns: [t.key, t.windowStart] })],
+);
 
 /** 従量課金・無料枠のあるソースの日別利用量（kind: list=検索, detail=物件詳細, drawing=図面） */
 export const sourceUsage = pgTable(

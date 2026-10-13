@@ -1,5 +1,9 @@
 import Anthropic from "@anthropic-ai/sdk";
+import { getDb, users } from "@devote/db";
+import { and, eq, isNull, lt, or, sql } from "drizzle-orm";
 import { draftPreview, loadChat, runChatTurn, toDisplay } from "@/lib/ai";
+import { SECURITY_COPY } from "@/lib/copy";
+import { clientIp, hit } from "@/lib/rate-limit";
 import { ensureUserId } from "@/lib/session";
 
 export const runtime = "nodejs";
@@ -61,8 +65,33 @@ export async function POST(req: Request) {
     return Response.json({ error: "メッセージが長すぎます" }, { status: 400 });
   }
 
+  let lockedUserId: string | null = null;
   try {
+    // AI の利用料を守るため、接続元ごと（1時間30回）・ユーザーごと（1日60回）に上限を設ける
+    if (!(await hit(`chat:ip:${clientIp(req.headers)}`, 30, 3600))) {
+      return Response.json({ error: SECURITY_COPY.rateLimit.chat }, { status: 429 });
+    }
     const userId = await ensureUserId();
+    if (!(await hit(`chat:user:${userId}`, 60, 24 * 3600))) {
+      return Response.json({ error: SECURITY_COPY.rateLimit.chat }, { status: 429 });
+    }
+    // 同じユーザーの応答を同時に走らせない（履歴の順序が崩れるため）。
+    // 途中で落ちてもロックが残り続けないよう、maxDuration より少し長い期限を付ける
+    const db = getDb();
+    const [lock] = await db
+      .update(users)
+      .set({ chatLockedUntil: sql`now() + interval '130 seconds'` })
+      .where(
+        and(
+          eq(users.id, userId),
+          or(isNull(users.chatLockedUntil), lt(users.chatLockedUntil, sql`now()`)),
+        ),
+      )
+      .returning({ id: users.id });
+    if (!lock) {
+      return Response.json({ error: SECURITY_COPY.rateLimit.chatBusy }, { status: 409 });
+    }
+    lockedUserId = userId;
     const state = await runChatTurn(userId, text);
     const { rows } = await loadChat(userId);
     const preview = await draftPreview(state.draft);
@@ -76,5 +105,15 @@ export async function POST(req: Request) {
     const c = classify(e);
     console.error(`[chat] ${c.log}`);
     return Response.json({ error: c.error }, { status: c.status });
+  } finally {
+    if (lockedUserId) {
+      await getDb()
+        .update(users)
+        .set({ chatLockedUntil: null })
+        .where(eq(users.id, lockedUserId))
+        .catch((e) =>
+          console.error(`[chat] ロックの解除に失敗: ${e instanceof Error ? e.message : e}`),
+        );
+    }
   }
 }

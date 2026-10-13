@@ -31,3 +31,15 @@ export function normalizeLoginId(raw: string): string | null {
 
 /** パスワードは 8 文字以上 */
 export const MIN_PASSWORD = 8;
+
+let dummyHash: Promise<string> | null = null;
+
+/**
+ * 存在しないログインIDでも、本物と同じだけ scrypt の計算をする（応答時間の差から ID の有無を推測させない）。
+ * 結果は常に false。
+ */
+export async function verifyDummyPassword(password: string): Promise<false> {
+  dummyHash ??= hashPassword("devote-dummy-password");
+  await verifyPassword(password, await dummyHash);
+  return false;
+}

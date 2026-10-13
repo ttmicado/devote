@@ -149,7 +149,9 @@ describe("kencorp normalize", () => {
       builtYearMonth: "2026-09",
       address: { prefecture: "東京都", city: "千代田区", town: "神田猿楽町" },
     });
-    expect(n.features).toEqual(expect.arrayContaining(["pet_ok", "corner_room", "south_facing"]));
+    expect(n.features).toEqual(
+      expect.arrayContaining(["pet_negotiable", "corner_room", "south_facing"]),
+    );
     expect(isInTargetArea(n.address.raw)).toBe(true);
   });
 

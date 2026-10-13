@@ -33,6 +33,10 @@ exports[`mori-living normalize > 詳細ページ＋建物ページを Normalized
   "features": [
     "delivery_box",
     "pet_ok",
+    "floor_heating",
+    "dishwasher",
+    "lounge",
+    "guest_room",
   ],
   "floor": 6,
   "imageUrls": [

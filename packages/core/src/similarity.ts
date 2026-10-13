@@ -1,3 +1,4 @@
+import { townMatches } from "./matching";
 import type { NormalizedListing } from "./property";
 
 /**
@@ -36,10 +37,13 @@ export function propertySimilarity(a: NormalizedListing, b: NormalizedListing): 
       ? 1
       : closeness(roomsOf(a.layout), roomsOf(b.layout), 2);
 
+  // 生活圏: 同じ町 1 → 同じ駅 0.9 → 同じ区 0.4 → それ以外 0.1
   const stationsA = new Set(a.stations.map((s) => s.station));
   const sharedStation = b.stations.some((s) => stationsA.has(s.station));
   const sameCity = a.address.city != null && a.address.city === b.address.city;
-  const location = sharedStation ? 1 : sameCity ? 0.6 : 0.2;
+  const sameTown =
+    sameCity && a.address.town != null && townMatches(b.address.town, a.address.town);
+  const location = sameTown ? 1 : sharedStation ? 0.9 : sameCity ? 0.4 : 0.1;
 
   const yearOf = (l: NormalizedListing) =>
     l.builtYearMonth ? Number(l.builtYearMonth.slice(0, 4)) : null;
