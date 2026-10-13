@@ -15,6 +15,13 @@
       "when": 1791883864074,
       "tag": "0001_web_app",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1791886117494,
+      "tag": "0002_source_usage",
+      "breakpoints": true
     }
   ]
 }

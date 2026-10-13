@@ -22,7 +22,20 @@ export interface SourceMeta {
   /** 1リクエストあたりの最小間隔(ms)と同時実行数。会員サイトは同時実行1固定 */
   rateLimit: { minIntervalMs: number; maxConcurrency: number };
   /** 一覧巡回の cron（JST）と詳細の再確認間隔 */
-  schedule: { listCron: string; detailRevisitHours: number };
+  schedule: {
+    listCron: string;
+    detailRevisitHours: number;
+    /** 前回の巡回からこの分数が経つまでは巡回しない（定期実行は30分ごとに全ソースを起動する） */
+    minRunIntervalMinutes?: number;
+    /** 巡回してよい時間帯（JST、[開始時, 終了時)）。例: レインズは [7, 23] */
+    activeHoursJst?: [number, number];
+  };
+  /**
+   * 月間の利用上限（従量課金・無料枠のあるサイト用）。
+   * list = 検索（一覧ページの表示1回で1件）、detail = 物件詳細の表示1回で1件。
+   * 上限は月末まで日割りで配分し、月の前半に使い切らないようにする。
+   */
+  monthlyQuota?: { list?: number; detail?: number };
   /** パーサ改修ごとに上げる。raw_snapshots.parser_version と比較して再パースする */
   parserVersion: string;
 }

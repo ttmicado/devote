@@ -43,7 +43,8 @@ import {
  * - 提供時間 7:00〜23:00（12/28〜1/3 休止）。時間外はスケジュールしないこと
  * - 検索は「物件種別１」＋「所在地/沿線」のいずれかが必須。結果は最大500件。
  *   公開マニュアル（近畿）では「検索結果が表示された時点で課金」「件数事前確認は無課金」とある。
- *   東日本の課金体系は未確認 → 巡回頻度を決める前に Myレインズ「精算履歴照会」で要確認
+ *   ミカド社の確認では、月間の検索・図面・物件詳細検索がそれぞれ 6,000 件を超えると課金
+ *   → meta.monthlyQuota で上限管理（図面の一括取得を実装するときは kind "drawing" で記録すること）
  * - 画像は物件詳細でのみ閲覧可（公式に「保存できません」と注意書き）。図面は一覧で最大20件を
  *   1つのPDFにまとめて「図面一括取得」できる
  */
@@ -397,8 +398,19 @@ export default defineAdapter({
     requiresLogin: true,
     // 課金・負荷の両面から控えめに。会員サイトは同時実行1固定
     rateLimit: { minIntervalMs: 5000, maxConcurrency: 1 },
-    // 提供時間 7:00〜23:00 の範囲で。TODO(verify): 課金体系を確認してから頻度を決める
-    schedule: { listCron: "15 8,12,17,21 * * *", detailRevisitHours: 72 },
+    // 提供時間 7:00〜23:00。2時間ごと（1回 = 12検索＋ページ送り）
+    schedule: {
+      listCron: "15 7-22/2 * * *",
+      detailRevisitHours: 72,
+      minRunIntervalMinutes: 120,
+      activeHoursJst: [7, 23],
+    },
+    // 月間の検索・物件詳細・図面はそれぞれ 6,000 件を超えると課金（ミカド社確認、2026-10）。
+    // 既定では 6,000 件を上限にして日割りで配分する（REINS_MONTHLY_*_LIMIT で変更可）
+    monthlyQuota: {
+      list: Number(process.env.REINS_MONTHLY_SEARCH_LIMIT ?? 6000),
+      detail: Number(process.env.REINS_MONTHLY_DETAIL_LIMIT ?? 6000),
+    },
     parserVersion: "0-unverified",
   },
 

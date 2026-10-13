@@ -49,6 +49,8 @@ function result(ls: NormalizedListing[], seen = ls.map((l) => l.sourceListingId)
     seenIds: seen,
     listHashes: Object.fromEntries(seen.map((s) => [s, `h-${s}`])),
     deferred: 0,
+    listRequests: 0,
+    detailRequests: 0,
   };
 }
 

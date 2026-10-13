@@ -8,8 +8,9 @@ import {
   type FetchContext,
   type SiteAdapter,
 } from "@devote/scraper";
-import { and, eq, isNotNull } from "drizzle-orm";
+import { and, desc, eq, isNotNull } from "drizzle-orm";
 import { ingestCrawl } from "./ingest.js";
+import { budgetForRun, isWithinActiveHours, jstCalendar, recordUsage } from "./quota.js";
 
 /** 1ソースを巡回して DB に反映し、crawl_runs に結果を残す */
 const MAX_DETAILS = Number(process.env.DEVOTE_MAX_DETAILS_PER_SOURCE ?? 300);
@@ -20,12 +21,35 @@ export async function runSource(
   opts: { maxPages?: number; maxDetails?: number } = {},
 ) {
   const source = adapter.meta.id;
+  const now = new Date();
+  const skip = (reason: string) => ({ source, ok: true as const, skipped: reason });
+
+  // 提供時間外・前回から間もない・従量課金の枠を使い切った場合は巡回しない
+  if (!isWithinActiveHours(adapter.meta.schedule.activeHoursJst, jstCalendar(now).hour)) {
+    return skip("提供時間外");
+  }
+  const minInterval = adapter.meta.schedule.minRunIntervalMinutes;
+  if (minInterval) {
+    const [last] = await db
+      .select({ startedAt: crawlRuns.startedAt })
+      .from(crawlRuns)
+      .where(eq(crawlRuns.source, source))
+      .orderBy(desc(crawlRuns.startedAt))
+      .limit(1);
+    if (last && now.getTime() - last.startedAt.getTime() < minInterval * 60_000) {
+      return skip(`前回から${minInterval}分経っていない`);
+    }
+  }
+  const budget = await budgetForRun(db, adapter.meta, now);
+  if (budget.list === 0) return skip("本日分の検索枠を使い切った");
+
   const [run] = await db.insert(crawlRuns).values({ source, status: "running" }).returning();
   if (!run) throw new Error("crawl_runs insert failed");
 
   const usesBrowser =
     adapter.meta.fetchMode.list === "browser" || adapter.meta.fetchMode.detail === "browser";
   let browser: BrowserFetchContext | null = null;
+  const counters = { list: 0, detail: 0 };
   try {
     let ctx: FetchContext;
     if (usesBrowser) {
@@ -54,7 +78,12 @@ export async function runSource(
     const result = await crawlSource(adapter, ctx, {
       knownListHashes: new Map(known.map((k) => [k.id, k.hash as string])),
       maxPages: opts.maxPages,
-      maxDetails: opts.maxDetails ?? MAX_DETAILS,
+      maxDetails: Math.min(
+        opts.maxDetails ?? MAX_DETAILS,
+        budget.detail ?? Number.POSITIVE_INFINITY,
+      ),
+      maxListRequests: budget.list,
+      counters,
     });
     await browser?.saveSession();
     const stats = await ingestCrawl(db, source, result);
@@ -88,5 +117,7 @@ export async function runSource(
     return { source, ok: false as const, error: message };
   } finally {
     await browser?.close();
+    // 失敗した場合も、実際に行った検索・詳細表示の回数は必ず記録する（課金対象のため）
+    if (adapter.meta.monthlyQuota) await recordUsage(db, source, counters);
   }
 }

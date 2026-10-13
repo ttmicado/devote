@@ -16,10 +16,25 @@
 
 ## あなたにお願いしたい作業（上から順に）
 
-### 1. Neon（DB）
-1. https://console.neon.tech でプロジェクトを作成する（Region: **AWS Asia Pacific (Tokyo)**、Postgres 16 以上）
-2. Dashboard → Connect で **Pooled connection** の接続文字列をコピーする（`postgresql://...-pooler...neon.tech/neondb?sslmode=require`）
-3. これが `DATABASE_URL` になります（手順 5・6 で使います）
+### 1. Neon（DB）— Vercel の Storage から作成（推奨）
+Vercel の画面から作ると、接続情報（`DATABASE_URL` など）が Vercel の環境変数に自動で入るので手間が減ります。
+
+1. 先に手順 5 の Import まで済ませる（プロジェクトがあると紐づけが楽）
+2. Vercel のプロジェクト → **Storage** → **Create Database** → **Neon** を選ぶ
+   - Region: **Tokyo（aws-ap-northeast-1）**（Vercel の関数も東京 hnd1 で動かすため）
+   - 環境: Production / Preview / Development すべてにチェック
+3. 作成後、プロジェクトの Settings → Environment Variables に次が自動で追加される
+   - `DATABASE_URL`（pooled 接続。アプリはこれを使う）
+   - `DATABASE_URL_UNPOOLED`（直接接続。マイグレーションに使う）
+   - そのほか `PG*` / `POSTGRES_*`（使わないが、そのままでよい）
+4. GitHub Actions（手順 6）にも同じ値が必要なので、Neon のコンソール（Storage → 作成したDB → Open in Neon）の
+   Connect から `DATABASE_URL`（pooled）と `DATABASE_URL_UNPOOLED`（direct）をコピーしておく
+
+> 補足
+> - 料金は Vercel の請求にまとまります（Vercel 経由の Neon。無料枠あり）。
+> - Preview デプロイごとに Neon の DB ブランチ（本番データのコピー）が自動で作られます。本番に影響しないので便利ですが、
+>   不要なら Neon 側の設定で無効にできます。
+> - 直接 https://console.neon.tech で作っても構いません。その場合は接続文字列を手動で Vercel に登録します。
 
 ### 2. Anthropic（AI）
 1. https://console.anthropic.com → API Keys でキーを発行する → `ANTHROPIC_API_KEY`
@@ -31,7 +46,7 @@
 3. https://developers.line.biz/console/ で、作成されたチャネルを開く
    - チャネル基本設定 → **チャネルシークレット** → `LINE_CHANNEL_SECRET`
    - Messaging API設定 → **チャネルアクセストークン（長期）** を発行 → `LINE_CHANNEL_ACCESS_TOKEN`
-   - Messaging API設定 → **Webhook URL** に `https://<Vercel のドメイン>/api/line/webhook` を設定し、「Webhookの利用」をオン（手順 5 の後で設定）
+   - Messaging API設定 → **Webhook URL** に `https://devote-inc.jp/api/line/webhook` を設定し、「Webhookの利用」をオン（手順 5 の後で設定）
    - 「応答メッセージ」「あいさつメッセージ」は Official Account Manager でオフにする（Devote が返信するため）
 4. 友だち追加URL（`https://lin.ee/xxxx`）→ `NEXT_PUBLIC_LINE_ADD_FRIEND_URL`
 
@@ -40,18 +55,22 @@
 
 ### 4. Resend（メール）
 1. https://resend.com でアカウントを作成する → API Keys → `RESEND_API_KEY`
-2. Domains で送信用ドメイン（例: `mail.micado.jp`）を追加し、表示される DNS レコード（SPF/DKIM）を登録する
-3. `MAIL_FROM` を `Devote <notify@mail.micado.jp>` のように設定する
+2. Domains → Add Domain で **`mail.devote-inc.jp`** を追加し、表示される DNS レコード（MX / SPF の TXT / DKIM の TXT）を
+   devote-inc.jp の DNS（お名前.com 等、ドメインを管理しているサービス）に登録する → Verify
+   - 送信専用のサブドメインにしておくと、会社のメール（@devote-inc.jp）の到達率に影響しません
+3. `MAIL_FROM` = `Devote <notify@mail.devote-inc.jp>`
+4. （推奨）DMARC: `_dmarc.mail.devote-inc.jp` に TXT `v=DMARC1; p=none;` を追加
 
 ### 5. Vercel（Web）
 1. https://vercel.com/new で GitHub リポジトリ `ttmicado/devote` を Import する
 2. **Root Directory を `apps/web`** にする（Framework は Next.js が自動で選ばれます）
-3. Environment Variables に以下を設定する
+3. 手順 1 の Storage → Neon をここで作成する（`DATABASE_URL` が自動で入る）
+4. Environment Variables に以下を設定する
 
 | 変数 | 値 |
 |---|---|
-| `DATABASE_URL` | Neon の pooled 接続文字列 |
-| `APP_URL` | `https://<プロジェクト名>.vercel.app`（独自ドメインを使うならそちら） |
+| `DATABASE_URL` | （Storage から Neon を作れば自動で入る） |
+| `APP_URL` | `https://devote-inc.jp` |
 | `SESSION_SECRET` | ランダムな32文字以上（`openssl rand -base64 32`） |
 | `ADMIN_USER` / `ADMIN_PASSWORD` | 管理画面のID・パスワード |
 | `ANTHROPIC_API_KEY` | 手順2 |
@@ -59,7 +78,11 @@
 | `NEXT_PUBLIC_LINE_ADD_FRIEND_URL` | 手順3 |
 | `RESEND_API_KEY` / `MAIL_FROM` | 手順4 |
 
-4. Deploy → 完了したら LINE の Webhook URL を設定し、「検証」ボタンで成功することを確認する
+5. Deploy
+6. Settings → **Domains** で `devote-inc.jp`（と `www.devote-inc.jp`）を追加し、表示される DNS レコード
+   （`A 76.76.21.21` と `CNAME cname.vercel-dns.com` など、画面の指示どおり）を DNS に登録する
+   - devote-inc.jp を会社のホームページで使う予定なら、アプリは `app.devote-inc.jp` にして `APP_URL` もそれに合わせる
+7. LINE の Webhook URL に `https://devote-inc.jp/api/line/webhook` を設定し、「検証」で成功することを確認する
 
 ### 6. GitHub（巡回・マイグレーション）
 リポジトリ → Settings → Secrets and variables → Actions
@@ -68,8 +91,9 @@
 
 | 名前 | 値 |
 |---|---|
-| `DATABASE_URL` | Neon の接続文字列 |
-| `APP_URL` | Vercel のURL |
+| `DATABASE_URL` | Neon の pooled 接続文字列（手順 1-4） |
+| `DATABASE_URL_UNPOOLED` | Neon の direct 接続文字列（マイグレーション用） |
+| `APP_URL` | `https://devote-inc.jp` |
 | `LINE_CHANNEL_ACCESS_TOKEN` | 手順3 |
 | `RESEND_API_KEY` / `MAIL_FROM` | 手順4 |
 | `REINS_USER_ID` / `REINS_PASSWORD` | レインズ |
@@ -79,11 +103,18 @@
 **Variables**（任意）
 - `ENABLE_UNVERIFIED_SOURCES` = `1` … 動作確認前の会員サイトのアダプターも巡回する（確認が済むまでは空のまま）
 - `DEVOTE_SOURCES` … 巡回するソースを絞る（例: 会員サイトは国内マシンで動かす場合）
+- `REINS_MONTHLY_SEARCH_LIMIT` / `REINS_MONTHLY_DETAIL_LIMIT` … レインズの月間上限（既定 6,000。課金が始まる件数）
 
 その後:
 1. Actions → **DB Migrate** → Run workflow（Neon にテーブルを作る。以後 main へのマージで自動実行）
 2. Actions → **Crawl & Notify** → Run workflow（初回の巡回。以後30分ごとに自動実行）
-3. Vercel の `/admin` で「巡回ソースの状況」に結果が出ることを確認する
+3. `https://devote-inc.jp/admin` で「巡回ソースの状況」に結果が出ることを確認する
+
+### レインズの利用上限について
+レインズは月間の検索・物件詳細検索・図面がそれぞれ 6,000 件を超えると課金されるため、Devote は次のように制御します。
+- 月 6,000 件を上限に、**月末までの残り日数で日割り**して使う（例: 月初は1日約193件まで）
+- 提供時間（7:00〜23:00）のみ、2時間ごとに巡回
+- 実際に行った検索・詳細表示の回数は `source_usage` に記録し、管理画面の「今月の利用量」に表示
 
 ### 7. 会員サイト（レインズ・ATBB・ITANDI BB）の認証情報を Claude に渡す
 ログイン後の画面構造を確認してアダプターを仕上げるため、**この開発環境（Claude Code on the web）にも**認証情報が必要です。

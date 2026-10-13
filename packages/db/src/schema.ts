@@ -2,6 +2,7 @@ import { sql } from "drizzle-orm";
 import {
   bigserial,
   boolean,
+  date,
   index,
   integer,
   jsonb,
@@ -145,6 +146,18 @@ export const verificationTokens = pgTable("verification_tokens", {
   expiresAt: timestamp("expires_at", { withTimezone: true }).notNull(),
   usedAt: timestamp("used_at", { withTimezone: true }),
 });
+
+/** 従量課金・無料枠のあるソースの日別利用量（kind: list=検索, detail=物件詳細, drawing=図面） */
+export const sourceUsage = pgTable(
+  "source_usage",
+  {
+    source: text("source").notNull(),
+    day: date("day").notNull(), // JST の日付
+    kind: text("kind", { enum: ["list", "detail", "drawing"] }).notNull(),
+    count: integer("count").notNull().default(0),
+  },
+  (t) => [uniqueIndex("source_usage_uq").on(t.source, t.day, t.kind)],
+);
 
 /** 巡回の実行ログ（管理画面のソース状況表示・構造変化の検知） */
 export const crawlRuns = pgTable(

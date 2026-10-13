@@ -14,6 +14,9 @@ export interface CrawlResult {
   countMismatch: boolean;
   /** maxDetails を超えたため次回に回した詳細の件数 */
   deferred: number;
+  /** 実際に行った一覧ページ・詳細ページの取得回数（従量課金サイトの利用量の記録用） */
+  listRequests: number;
+  detailRequests: number;
 }
 
 export interface CrawlOptions {
@@ -25,6 +28,10 @@ export interface CrawlOptions {
    * 上限を超えた分は次回以降に回す（未取得の物件は listHash が未登録なので次回また対象になる）。
    */
   maxDetails?: number;
+  /** 取得回数をリアルタイムに書き込む（途中で例外になっても呼び出し側が利用量を記録できるように） */
+  counters?: { list: number; detail: number };
+  /** 1回の巡回で取得する一覧ページの上限（従量課金サイト用）。超えたら一覧の巡回を打ち切る */
+  maxListRequests?: number;
   /** 取得した生HTMLの保存フック（raw_snapshots） */
   onSnapshot?: (kind: "list" | "detail", url: string, body: string) => Promise<void> | void;
 }
@@ -42,12 +49,15 @@ export async function crawlSource(
     knownListHashes = new Map(),
     maxPages = 100,
     maxDetails = Number.POSITIVE_INFINITY,
+    maxListRequests = Number.POSITIVE_INFINITY,
     onSnapshot,
   } = opts;
+  const counters = opts.counters ?? { list: 0, detail: 0 };
   const listings: NormalizedListing[] = [];
   const errors: CrawlResult["errors"] = [];
   const seen = new Map<string, ListItem>();
   let listCompleted = true;
+  let listRequests = 0;
   let countMismatch = false;
 
   if (adapter.login) await adapter.login(ctx);
@@ -57,6 +67,9 @@ export async function crawlSource(
     let totalCount: number | null = null;
     let found = 0;
     for (let page = 0; url && page < maxPages; page++) {
+      if (listRequests >= maxListRequests) break;
+      listRequests++;
+      counters.list++;
       const html = adapter.fetchList
         ? await adapter.fetchList(ctx, url)
         : (await ctx.get(url)).body;
@@ -68,7 +81,7 @@ export async function crawlSource(
       for (const item of result.items) seen.set(item.sourceListingId, item);
       url = result.nextPageUrl;
     }
-    if (url) listCompleted = false; // maxPages で打ち切った
+    if (url) listCompleted = false; // maxPages / maxListRequests で打ち切った
     if (totalCount != null && totalCount !== found) countMismatch = true;
   }
 
@@ -81,6 +94,8 @@ export async function crawlSource(
       continue;
     }
     detailCount++;
+    counters.detail++;
+    // 取得を試みた時点で1件と数える（失敗しても相手側では表示・課金されている可能性がある）
     try {
       const html = adapter.fetchDetail
         ? await adapter.fetchDetail(ctx, item)
@@ -101,5 +116,7 @@ export async function crawlSource(
     listHashes: Object.fromEntries([...seen.values()].map((i) => [i.sourceListingId, i.listHash])),
     countMismatch,
     deferred,
+    listRequests,
+    detailRequests: detailCount,
   };
 }

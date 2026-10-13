@@ -129,6 +129,8 @@ console.log(
     seenIds: listings.map((l) => l.sourceListingId),
     listHashes: {},
     deferred: 0,
+    listRequests: 0,
+    detailRequests: 0,
   }),
 );
 process.exit(0);

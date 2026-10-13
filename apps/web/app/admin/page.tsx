@@ -4,10 +4,11 @@ import {
   inquiries,
   properties,
   searchConditions,
+  sourceUsage,
   userChannels,
   users,
 } from "@devote/db";
-import { count, desc, eq, sql } from "drizzle-orm";
+import { count, desc, eq, gte, sql } from "drizzle-orm";
 import Link from "next/link";
 
 export const dynamic = "force-dynamic";
@@ -38,6 +39,18 @@ export default async function AdminPage() {
     .selectDistinctOn([crawlRuns.source])
     .from(crawlRuns)
     .orderBy(crawlRuns.source, desc(crawlRuns.startedAt));
+  // 今月（JST）の従量課金ソースの利用量
+  const jstNow = new Date(Date.now() + 9 * 3600_000);
+  const monthStart = `${jstNow.getUTCFullYear()}-${String(jstNow.getUTCMonth() + 1).padStart(2, "0")}-01`;
+  const usage = await db
+    .select({
+      source: sourceUsage.source,
+      kind: sourceUsage.kind,
+      n: sql<number>`sum(${sourceUsage.count})::int`,
+    })
+    .from(sourceUsage)
+    .where(gte(sourceUsage.day, monthStart))
+    .groupBy(sourceUsage.source, sourceUsage.kind);
   const recent = await db
     .select({ q: inquiries, data: properties.data })
     .from(inquiries)
@@ -100,6 +113,20 @@ export default async function AdminPage() {
           </table>
         </div>
       </section>
+
+      {usage.length > 0 && (
+        <section>
+          <h2 className="mb-2 font-bold">今月の利用量（従量課金のあるソース）</h2>
+          <ul className="space-y-1 rounded-xl border border-stone-200 bg-white p-4 text-sm">
+            {usage.map((u) => (
+              <li key={`${u.source}-${u.kind}`}>
+                {u.source}：{u.kind === "list" ? "検索" : u.kind === "detail" ? "物件詳細" : "図面"}{" "}
+                <span className="font-bold">{u.n.toLocaleString()}</span> / 6,000 件
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
 
       <section>
         <h2 className="mb-2 font-bold">巡回ソースの状況</h2>
