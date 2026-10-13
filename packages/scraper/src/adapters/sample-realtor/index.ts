@@ -2,7 +2,7 @@ import { createHash } from "node:crypto";
 import {
   directionFeatures,
   extractFeatures,
-  type NormalizedListing,
+  type NormalizedListingInput,
   parseAreaSqm,
   parseBuiltYearMonth,
   parseFloor,
@@ -107,7 +107,7 @@ export default defineAdapter({
     };
   },
 
-  normalize(raw): NormalizedListing {
+  normalize(raw): NormalizedListingInput {
     const f = raw.fields;
     const price = parseYen(f.賃料);
     if (price == null || price <= 0) throw new Error(`賃料が解釈できない: ${f.賃料}`);

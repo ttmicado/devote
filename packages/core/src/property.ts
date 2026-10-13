@@ -65,5 +65,13 @@ export const NormalizedListing = z.object({
   agencyName: z.string().nullable(), // 掲載業者（元付）
   imageUrls: z.array(z.string().url()),
   sourceUpdatedAt: z.string().datetime().nullable(),
+  /** 売買: 修繕積立金（円/月） */
+  repairReserveFee: z.number().int().nonnegative().nullable().default(null),
+  /** 物件種別（売買で使う。賃貸は "mansion" 扱いでよい） */
+  propertyType: z.enum(["mansion", "house", "land", "other"]).nullable().default(null),
+  /** 構造化しきれないサイト固有の値（表記どおり） */
+  extra: z.record(z.string(), z.string()).default({}),
 });
 export type NormalizedListing = z.infer<typeof NormalizedListing>;
+/** アダプターの normalize が返す型（default 付き項目は省略可） */
+export type NormalizedListingInput = z.input<typeof NormalizedListing>;

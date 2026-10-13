@@ -1,4 +1,4 @@
-import type { NormalizedListing } from "@devote/core";
+import type { NormalizedListingInput } from "@devote/core";
 
 /**
  * サイトごとのアダプター（プラグイン）。
@@ -68,7 +68,7 @@ export interface SiteAdapter {
   buildListUrl(q: SearchQuery): string;
   parseList(html: string, url: string): ListPageResult;
   parseDetail(html: string, url: string): RawDetail;
-  normalize(raw: RawDetail): NormalizedListing;
+  normalize(raw: RawDetail): NormalizedListingInput;
 
   /** ログインが必要なサイトのみ */
   login?(ctx: FetchContext): Promise<void>;

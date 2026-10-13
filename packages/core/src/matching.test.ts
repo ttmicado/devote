@@ -30,6 +30,9 @@ const base: NormalizedListing = {
   agencyName: null,
   imageUrls: [],
   sourceUpdatedAt: null,
+  repairReserveFee: null,
+  propertyType: "mansion",
+  extra: {},
 };
 
 const cond: SearchCondition = {
