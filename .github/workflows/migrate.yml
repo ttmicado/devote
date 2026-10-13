@@ -1,9 +1,9 @@
 name: DB Migrate
 
-# main への push で Neon にマイグレーションを適用する（手動実行も可）
+# 通常は Vercel のビルド時に自動でマイグレーションする（apps/web の build）。
+# こちらは手動実行用と、マイグレーションを含む push 時の保険
 on:
   push:
-    branches: [main]
     paths: ["packages/db/drizzle/**"]
   workflow_dispatch:
 
