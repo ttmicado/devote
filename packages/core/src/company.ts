@@ -4,26 +4,30 @@
  */
 export const COMPANY = {
   /** 商号 */
-  name: "Devote Inc.",
+  name: "株式会社Devote",
   /** サービス名 */
   service: "Devote",
   /** 宅地建物取引業の免許番号（例: 東京都知事(1)第000000号） */
-  license: null as string | null,
+  license: "東京都知事免許（2）第104045号" as string | null,
   /** 所属団体（例: 公益社団法人 東京都宅地建物取引業協会） */
-  association: null as string | null,
+  association: "公益社団法人全日本不動産協会、公益社団法人首都圏不動産公正取引協議会" as
+    | string
+    | null,
   /** 保証協会（例: 公益社団法人 全国宅地建物取引業保証協会） */
-  guaranty: null as string | null,
+  guaranty: "公益社団法人不動産保証協会" as string | null,
   /** 本店所在地 */
-  address: null as string | null,
+  address: "〒108-0014 東京都港区芝5-32-12 シャーメゾンステージ田町6階" as string | null,
   /** 代表者 */
-  representative: null as string | null,
+  representative: "代表取締役社長 大橋卓弥" as string | null,
   /** 電話番号と受付時間 */
-  phone: null as string | null,
+  phone: "03-6822-7441" as string | null,
   hours: null as string | null,
   /** お問い合わせ用メールアドレス */
   email: null as string | null,
   /** コーポレートサイト */
   url: "https://devote-inc.jp",
+  /** お問い合わせフォーム（コーポレートサイト） */
+  contactUrl: "https://devote-inc.jp/contact/" as string | null,
   /** 取引態様（お客様向けの表示は常に Devote の立場） */
   transactionMode: "仲介（媒介）",
 } as const;

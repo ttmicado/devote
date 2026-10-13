@@ -97,7 +97,7 @@ describe("メールのフッター", () => {
     });
     expect(m.html).toContain("https://app/api/unsubscribe?t=abc");
     expect(m.text).toContain("配信停止: https://app/api/unsubscribe?t=abc");
-    expect(m.text).toContain("Devote Inc.");
+    expect(m.text).toContain("株式会社Devote");
     // 値のない項目（null）は出さない
     expect(m.text).not.toContain("null");
   });

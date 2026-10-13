@@ -697,6 +697,8 @@ export const CONTACT = {
   lead: "物件のこと、ご契約のこと、このサービスのこと。担当者がお答えします。",
   email: "メール",
   phone: "電話",
+  form: "フォーム",
+  formLabel: "お問い合わせフォーム",
   line: "LINE のトークから、担当者に直接ご相談いただけます。",
   lineCta: "LINE で相談する",
   lineSettings: "LINE を連携する",

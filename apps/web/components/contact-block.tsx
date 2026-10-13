@@ -16,6 +16,7 @@ export function ContactBlock() {
       `tel:${COMPANY.phone.replace(/[^\d+]/g, "")}`,
     ]);
   if (COMPANY.email) rows.push([CONTACT.email, COMPANY.email, `mailto:${COMPANY.email}`]);
+  if (COMPANY.contactUrl) rows.push([CONTACT.form, CONTACT.formLabel, COMPANY.contactUrl]);
   return (
     <div className="text-sm leading-7 text-ink-700">
       {rows.length > 0 && (
@@ -26,6 +27,7 @@ export function ContactBlock() {
               <dd>
                 <a
                   href={href}
+                  {...(href.startsWith("http") ? { target: "_blank", rel: "noreferrer" } : {})}
                   className="border-b border-ink-900/30 transition-colors duration-500 hover:border-ink-900"
                 >
                   {v}
