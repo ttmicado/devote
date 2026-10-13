@@ -2,26 +2,26 @@ import { createHash } from "node:crypto";
 import {
   directionFeatures,
   extractFeatures,
+  findDirection,
   type NormalizedListingInput,
   parseAreaSqm,
   parseBuiltYearMonth,
+  parseFeeLoose,
   parseFloor,
+  parseFloorLabel,
+  parseLayoutLoose,
+  parseMonthsLoose,
   parseStationAccess,
+  parseStructure,
+  parseTotalFloors,
+  parseYenWithSymbol,
   type StationAccess,
   splitAddress,
 } from "@devote/core";
 import * as cheerio from "cheerio";
 import { defineAdapter, type FetchContext, type ListItem } from "../../adapter.js";
-import {
-  findDirection,
-  parseFeeLoose,
-  parseLayoutLoose,
-  parseMainStructure,
-  parseMonthsLoose,
-  parseTotalFloors,
-  parseYenWithSymbol,
-  pickBuildingLine,
-} from "./helpers.js";
+import { bundle, collectImages, extractMain, SRCSET_FIRST } from "../../html.js";
+import { pickBuildingLine } from "./helpers.js";
 
 /**
  * 森ビル MORI LIVING（https://www.moriliving.com/ja/residence/）の賃貸・分譲レジデンス。
@@ -51,8 +51,6 @@ interface MoriListJson {
 
 const sha1 = (s: string) => createHash("sha1").update(s).digest("hex");
 const squash = (s: string) => s.replace(/\s+/g, " ").trim();
-/** 束ねるときに捨てる要素（パースに不要で大きいもの） */
-const STRIP = "script, style, noscript, svg, iframe, select";
 
 /** "/ja/vacancy/0101/A610.html" → "0101-A610"（部屋単位で一意） */
 export function listingIdFromUrl(url: string): string {
@@ -70,26 +68,6 @@ async function getOk(ctx: FetchContext, url: string) {
   return res;
 }
 
-function extractMain(html: string): string {
-  const $ = cheerio.load(html);
-  const main = $("main").first();
-  const scope = main.length ? main : $("body");
-  scope.find(STRIP).remove();
-  return scope.html() ?? "";
-}
-
-function bundle(pages: { url: string; kind: string; html: string }[]) {
-  const attr = (s: string) => s.replace(/&/g, "&amp;").replace(/"/g, "&quot;");
-  return [
-    "<devote-bundle>",
-    ...pages.map(
-      (p) =>
-        `<devote-page data-kind="${p.kind}" data-url="${attr(p.url)}">\n${p.html}\n</devote-page>`,
-    ),
-    "</devote-bundle>",
-  ].join("\n");
-}
-
 // cheerio の要素型（domhandler）を直接 import しないための別名
 type Sel = cheerio.Cheerio<any>;
 
@@ -103,34 +81,6 @@ function multiline($: cheerio.CheerioAPI, el: Sel): string {
     .map((l) => squash(l))
     .filter(Boolean)
     .join("\n");
-}
-
-/** img / source の src・data-src・srcset（先頭=最大のURL）・背景画像を絶対URLで集める */
-function collectImages($: cheerio.CheerioAPI, scope: Sel, pageUrl: string): string[] {
-  const urls: string[] = [];
-  scope.find("img, source").each((_, el) => {
-    const $el = $(el);
-    for (const attr of ["data-srcset", "srcset", "data-src", "data-lazy", "data-original", "src"]) {
-      const v = $el.attr(attr)?.trim();
-      if (!v || v.startsWith("data:")) continue;
-      urls.push(attr.endsWith("srcset") ? (v.split(",")[0]?.trim().split(/\s+/)[0] ?? "") : v);
-      break;
-    }
-  });
-  scope.find("[style*='background-image']").each((_, el) => {
-    const m = ($(el).attr("style") ?? "").match(/url\(\s*['"]?([^'")]+)['"]?\s*\)/);
-    if (m?.[1]) urls.push(m[1]);
-  });
-  return urls
-    .filter((u) => u !== "" && !u.includes("${"))
-    .map((u) => {
-      try {
-        return new URL(u, pageUrl).toString();
-      } catch {
-        return null;
-      }
-    })
-    .filter((u): u is string => u != null);
 }
 
 /** 部屋ページで写真として扱わない画像（ダミー間取り・バナー等） */
@@ -233,8 +183,10 @@ export default defineAdapter({
     if (owner?.[1]) fields.取引態様 = owner[1];
     if (owner?.[2]) fields.広告主 = owner[2];
 
-    const roomImages = collectImages($, room, roomUrl).filter((u) => !NOT_ROOM_PHOTO.test(u));
-    const bldgImages = collectImages($, bldg, bldgUrl).filter(
+    const roomImages = collectImages($, room, roomUrl, SRCSET_FIRST).filter(
+      (u) => !NOT_ROOM_PHOTO.test(u),
+    );
+    const bldgImages = collectImages($, bldg, bldgUrl, SRCSET_FIRST).filter(
       (u) => /\/assets\/images\/(?:common|pc)\/residence\//.test(u) && !/\/sp\//.test(u),
     );
     return {
@@ -291,8 +243,9 @@ export default defineAdapter({
       areaSqm: parseAreaSqm(f.専有面積),
       builtYearMonth: parseBuiltYearMonth(builtLine),
       floor: parseFloor((f.所在階 ?? "").replace(/^(\d+)F$/i, "$1階")).floor,
-      totalFloors: parseTotalFloors(floorsLine),
-      structure: parseMainStructure(structureLine),
+      // 建物概要の「階数」欄なので、"43階" だけの表記も総階数として扱う
+      totalFloors: parseTotalFloors(floorsLine) ?? parseFloorLabel(floorsLine),
+      structure: parseStructure(structureLine),
       direction,
       features: [...new Set([...extractFeatures(featureText), ...directionFeatures(direction)])],
       transactionMode:

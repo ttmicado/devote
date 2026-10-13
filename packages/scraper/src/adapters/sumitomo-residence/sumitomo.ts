@@ -4,8 +4,11 @@ import {
   type NormalizedListingInput,
   parseAreaSqm,
   parseBuiltYearMonth,
+  parseFloorLabel,
   parseLayout,
   parseStationAccess,
+  parseStructure,
+  parseTotalFloors,
   parseYen,
   type StationAccess,
   splitAddress,
@@ -18,13 +21,8 @@ import {
   type SearchQuery,
   type SiteAdapter,
 } from "../../adapter.js";
-import {
-  parseDepositLike,
-  parseFloorLabel,
-  parseMainStructure,
-  parseTotalFloors,
-  splitFeeLine,
-} from "./helpers.js";
+import { bundle, collectImages, DEFAULT_STRIP, extractMain } from "../../html.js";
+import { parseDepositLike, splitFeeLine } from "./helpers.js";
 
 /**
  * 住友不動産の賃貸サイト共通実装。
@@ -60,33 +58,12 @@ const squash = (s: string) => s.replace(/\s+/g, " ").trim();
 const BUILDING_PATH = /^\/buildlist\/([^/]+)\/([^/]+)\/(?:unit_empty\/)?$/;
 const ROOM_PATH = /^\/buildlist\/[^/]+\/[^/]+\/(\d+)\/?$/;
 /** 束ねるときに捨てる要素（パースに不要で大きいもの） */
-const STRIP = "script, style, noscript, svg, iframe, select, .navLayout_nav, #nav_search_form";
+const STRIP = `${DEFAULT_STRIP}, .navLayout_nav, #nav_search_form`;
 
 async function getOk(ctx: FetchContext, url: string) {
   const res = await ctx.get(url);
   if (res.status !== 200) throw new Error(`HTTP ${res.status}: ${url}`);
   return res;
-}
-
-/** ページの <main> だけを抜き出し、不要要素を除いた HTML */
-export function extractMain(html: string): string {
-  const $ = cheerio.load(html);
-  const main = $("main").first();
-  const scope = main.length ? main : $("body");
-  scope.find(STRIP).remove();
-  return scope.html() ?? "";
-}
-
-export function bundle(sourceUrl: string, pages: { url: string; kind: string; html: string }[]) {
-  const attr = (s: string) => s.replace(/&/g, "&amp;").replace(/"/g, "&quot;");
-  return [
-    `<devote-bundle data-source-url="${attr(sourceUrl)}">`,
-    ...pages.map(
-      (p) =>
-        `<devote-page data-kind="${p.kind}" data-url="${attr(p.url)}">\n${p.html}\n</devote-page>`,
-    ),
-    "</devote-bundle>",
-  ].join("\n");
 }
 
 /**
@@ -123,34 +100,6 @@ function byClassSuffix($: cheerio.CheerioAPI, scope: Sel, suffix: string) {
   return scope
     .find(`[class*="${suffix}"]`)
     .filter((_, el) => ($(el).attr("class") ?? "").split(/\s+/).some((c) => c.endsWith(suffix)));
-}
-
-/** img / source の src・data-src・srcset（先頭のURL）・背景画像を絶対URLで集める */
-function collectImages($: cheerio.CheerioAPI, scope: Sel, pageUrl: string) {
-  const urls: string[] = [];
-  scope.find("img, source").each((_, el) => {
-    const $el = $(el);
-    for (const attr of ["data-src", "data-lazy", "data-original", "src", "data-srcset", "srcset"]) {
-      const v = $el.attr(attr)?.trim();
-      if (!v || v.startsWith("data:")) continue;
-      urls.push(attr.endsWith("srcset") ? (v.split(",")[0]?.trim().split(/\s+/)[0] ?? "") : v);
-      break;
-    }
-  });
-  scope.find("[style*='background-image']").each((_, el) => {
-    const m = ($(el).attr("style") ?? "").match(/url\(\s*['"]?([^'")]+)['"]?\s*\)/);
-    if (m?.[1]) urls.push(m[1]);
-  });
-  return urls
-    .filter((u) => u !== "")
-    .map((u) => {
-      try {
-        return new URL(u, pageUrl).toString();
-      } catch {
-        return null;
-      }
-    })
-    .filter((u): u is string => u != null);
 }
 
 function textWithBreaks($: cheerio.CheerioAPI, el: Sel, sep = "\n") {
@@ -192,14 +141,14 @@ export function createSumitomoAdapter(cfg: SumitomoSiteConfig): SiteAdapter {
       const pages: { url: string; kind: string; html: string }[] = [];
       for (const u of extractBuildingUrls(index.body, index.url, cfg.defaultAreas)) {
         const res = await getOk(ctx, u);
-        pages.push({ url: res.url, kind: "unit_empty", html: extractMain(res.body) });
+        pages.push({ url: res.url, kind: "unit_empty", html: extractMain(res.body, STRIP) });
       }
-      return bundle(url, pages);
+      return bundle(pages, { sourceUrl: url });
     },
 
     async fetchDetail(ctx, item) {
       const room = await getOk(ctx, item.detailUrl);
-      const pages = [{ url: room.url, kind: "room", html: extractMain(room.body) }];
+      const pages = [{ url: room.url, kind: "room", html: extractMain(room.body, STRIP) }];
       const buildingUrl = new URL("../", room.url).toString();
       const cached = buildingCache.get(buildingUrl);
       if (cached && Date.now() - cached.at < BUILDING_TTL_MS) {
@@ -207,12 +156,12 @@ export function createSumitomoAdapter(cfg: SumitomoSiteConfig): SiteAdapter {
       } else {
         const res = await ctx.get(buildingUrl);
         if (res.status === 200) {
-          const html = extractMain(res.body);
+          const html = extractMain(res.body, STRIP);
           buildingCache.set(buildingUrl, { at: Date.now(), html });
           pages.push({ url: buildingUrl, kind: "building", html });
         }
       }
-      return bundle(item.detailUrl, pages);
+      return bundle(pages, { sourceUrl: item.detailUrl });
     },
 
     parseList(html, url) {
@@ -342,7 +291,7 @@ export function createSumitomoAdapter(cfg: SumitomoSiteConfig): SiteAdapter {
         builtYearMonth: parseBuiltYearMonth(f.竣工年月),
         floor: parseFloorLabel(f.階数),
         totalFloors: parseTotalFloors(f.構造規模),
-        structure: parseMainStructure(f.構造規模),
+        structure: parseStructure(f.構造規模),
         direction: null,
         features: extractFeatures([f.建物設備, f.その他].filter(Boolean).join("、")),
         transactionMode: "owner",

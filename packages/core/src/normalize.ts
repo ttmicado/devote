@@ -263,3 +263,133 @@ export function parseContractType(input: string | null | undefined): {
   }
   return { contractType, termMonths };
 }
+
+/** 構造の判定表（上から順に評価。"SRC" は "RC" を含むので先に見る） */
+const STRUCTURES: [RegExp, string][] = [
+  [/鉄骨鉄筋|SRC/, "SRC"],
+  [/鉄筋コンクリート|RC|PC造|プレキャスト/, "RC"],
+  [/軽量鉄骨/, "LGS"],
+  [/鉄骨|^S造?$/, "S"],
+  [/木造/, "W"],
+];
+
+/**
+ * 構造を "SRC" / "RC" / "LGS" / "S" / "W" に。判定できなければ null。
+ * "鉄骨造、一部鉄筋コンクリート造　地上43階" のように主構造＋一部構造が併記されるので、
+ * 区切りごとに前から見て最初に構造と分かった語（＝主構造）を採る。「一部〜」は主構造にしない。
+ * "地上15階 地下1階 SRC造" のように階数が先に来る表記も受け付ける。
+ */
+export function parseStructure(input: string | null | undefined): string | null {
+  if (input == null) return null;
+  const tokens = toHalfWidth(input)
+    .toUpperCase()
+    .split(/[、,，\s/／（）()・]+/)
+    .filter((t) => t !== "" && !t.startsWith("一部"));
+  for (const token of tokens) {
+    const hit = STRUCTURES.find(([re]) => re.test(token));
+    if (hit) return hit[1];
+  }
+  return null;
+}
+
+/**
+ * 建物の地上階数だけを取る。"地上32階 地下1階建" / "鉄骨造　地上43階　地下2階" / "１０階建て" → 32 / 43 / 10
+ * 所在階しか書かれていない "3階" は総階数とみなさない（null）。
+ */
+export function parseTotalFloors(input: string | null | undefined): number | null {
+  return parseFloor(input).totalFloors;
+}
+
+/** "36F" / "B1F" / "地下1階" / "36階" → 所在階（地下は負数）。階の表記だけの文字列に使う */
+export function parseFloorLabel(input: string | null | undefined): number | null {
+  if (input == null) return null;
+  const s = clean(input).toUpperCase();
+  const basement = s.match(/^(?:B|地下)(\d+)(?:F|階)?$/);
+  if (basement) return -Number(basement[1]);
+  const m = s.match(/^(\d+)(?:F|階)$/);
+  return m ? Number(m[1]) : null;
+}
+
+/**
+ * "2026年10月13日" / "2026/10/13" / "最終更新日: 2026.10.3" → JST 0時の ISO 文字列（UTC表記）。
+ * 存在しない日付（2月30日など）は null。
+ */
+export function parseJpDate(input: string | null | undefined): string | null {
+  if (input == null) return null;
+  const m = toHalfWidth(input).match(/(\d{4})\s*[年/.-]\s*(\d{1,2})\s*[月/.-]\s*(\d{1,2})/);
+  if (!m?.[1] || !m[2] || !m[3]) return null;
+  const [y, mo, d] = [Number(m[1]), Number(m[2]), Number(m[3])];
+  const utc = new Date(Date.UTC(y, mo - 1, d));
+  if (utc.getUTCFullYear() !== y || utc.getUTCMonth() !== mo - 1 || utc.getUTCDate() !== d) {
+    return null;
+  }
+  return new Date(utc.getTime() - 9 * 3600_000).toISOString();
+}
+
+const TOKYO_23_WARDS =
+  "千代田区|中央区|港区|新宿区|文京区|台東区|墨田区|江東区|品川区|目黒区|大田区|世田谷区|渋谷区|中野区|杉並区|豊島区|北区|荒川区|板橋区|練馬区|足立区|葛飾区|江戸川区";
+
+/**
+ * 都道府県が省略された住所（"千代田区神田猿楽町２"）に都道府県を補う。
+ * 東京23区と一部の市（東京都下・神奈川県）だけを補い、判断できなければそのまま返す。
+ */
+export function withPrefecture(address: string): string {
+  const s = address.normalize("NFKC").replace(/\s+/g, "");
+  if (/^(東京都|北海道|(?:京都|大阪)府|.{2,3}県)/.test(s)) return s;
+  if (new RegExp(`^(${TOKYO_23_WARDS})`).test(s)) return `東京都${s}`;
+  if (/^(武蔵野市|三鷹市|調布市|府中市|八王子市|立川市)/.test(s)) return `東京都${s}`;
+  if (/^(横浜市|川崎市|相模原市|鎌倉市|藤沢市|逗子市|茅ヶ崎市)/.test(s)) return `神奈川県${s}`;
+  return s;
+}
+
+/** "¥510,000" / "￥1,200,000（税込）" / "51万円" → 円。"お問い合わせ" などは null */
+export function parseYenWithSymbol(input: string | null | undefined): number | null {
+  if (input == null) return null;
+  const s = toHalfWidth(input)
+    .replace(/[¥￥]/g, "")
+    .replace(/\(税込\)|\/月/g, "");
+  return parseYen(s);
+}
+
+/**
+ * 敷金・礼金の自由記述。"原則賃料の4ヶ月分" / "賃料の2ヵ月" / "なし" / "1,000,000円" → 円（賃料基準）
+ */
+export function parseMonthsLoose(input: string | null | undefined, rentYen: number): number | null {
+  if (input == null) return null;
+  const s = toHalfWidth(input).replace(/\s+/g, "");
+  if (s === "") return null;
+  if (/^(なし|無し|無|-|ー|0|0円|賃料込み?)$/.test(s)) return 0;
+  const months = s.match(/(\d+(?:\.\d+)?)(?:ヶ|ケ|ヵ|カ|か|箇)?月/);
+  if (months) return Math.round(Number(months[1]) * rentYen);
+  const yen = s.match(/[¥￥]?([\d,]+(?:\.\d+)?万?[\d,]*)円?/);
+  return yen ? parseYenWithSymbol(yen[0]) : null;
+}
+
+/** 管理費・共益費・修繕積立金: "賃料込み" / "なし" → 0、"20,000円" / "¥20,000" → 20000 */
+export function parseFeeLoose(input: string | null | undefined): number | null {
+  if (input == null) return null;
+  const s = toHalfWidth(input).replace(/\s+/g, "");
+  if (/込/.test(s) || /^(なし|無し|-)$/.test(s)) return 0;
+  return parseYenWithSymbol(s);
+}
+
+/**
+ * 英語圏の間取り表記も受け付ける parseLayout。"1BR" → "1LDK"、"3BR+S" → "3SLDK"、"STUDIO" → "1R"。
+ * BR（ベッドルーム）+ リビング・ダイニング・キッチンが前提の高級賃貸で使われるため nBR = nLDK とみなす。
+ * 日本式の表記（"2LDK" など）は parseLayout にそのまま渡す。
+ */
+export function parseLayoutLoose(input: string | null | undefined): string | null {
+  if (input == null) return null;
+  const s = toHalfWidth(input).replace(/\s+/g, "").toUpperCase();
+  if (/^STUDIO$/.test(s)) return "1R";
+  const br = s.match(/^(\d+)(?:BR|BED(?:ROOMS?)?)(\+S)?/);
+  if (br) return `${br[1]}${br[2] ? "SLDK" : "LDK"}`;
+  return parseLayout(s);
+}
+
+/** "南向き" / "バルコニー：南東向き" などの文中から主採光の方位 */
+export function findDirection(text: string | null | undefined): string | null {
+  if (!text) return null;
+  const m = text.match(/(南東|南西|北東|北西|東|西|南|北)向き/);
+  return m?.[1] ?? null;
+}

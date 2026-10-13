@@ -1,15 +1,9 @@
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
-import { NormalizedListing } from "@devote/core";
+import { NormalizedListing, parseFloorLabel, parseStructure, parseTotalFloors } from "@devote/core";
 import { describe, expect, it } from "vitest";
 import type { FetchContext } from "../../adapter.js";
-import {
-  parseDepositLike,
-  parseFloorLabel,
-  parseMainStructure,
-  parseTotalFloors,
-  splitFeeLine,
-} from "./helpers.js";
+import { parseDepositLike, splitFeeLine } from "./helpers.js";
 import adapter from "./index.js";
 import { extractBuildingUrls } from "./sumitomo.js";
 
@@ -130,11 +124,9 @@ describe("表記揺れ", () => {
   });
 
   it("構造は「一部〜造」ではなく主構造を取る", () => {
-    expect(parseMainStructure("鉄骨造、一部鉄筋コンクリート造　地上43階　地下2階")).toBe("S");
-    expect(parseMainStructure("鉄筋コンクリート造　一部　鉄骨造、鉄骨鉄筋コンクリート造")).toBe(
-      "RC",
-    );
-    expect(parseMainStructure("鉄骨鉄筋コンクリート造　地上23階/地下1階")).toBe("SRC");
+    expect(parseStructure("鉄骨造、一部鉄筋コンクリート造　地上43階　地下2階")).toBe("S");
+    expect(parseStructure("鉄筋コンクリート造　一部　鉄骨造、鉄骨鉄筋コンクリート造")).toBe("RC");
+    expect(parseStructure("鉄骨鉄筋コンクリート造　地上23階/地下1階")).toBe("SRC");
     expect(parseTotalFloors("鉄骨鉄筋コンクリート造　地上23階/地下1階")).toBe(23);
     expect(parseTotalFloors("ＲＣ造　１０階建")).toBe(10);
   });

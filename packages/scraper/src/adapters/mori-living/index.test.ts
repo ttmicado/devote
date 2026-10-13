@@ -1,16 +1,16 @@
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
-import { NormalizedListing } from "@devote/core";
-import { describe, expect, it } from "vitest";
-import { crawlSource } from "../../runner.js";
-import { fixtureFetcher } from "../../testing.js";
 import {
+  NormalizedListing,
   parseFeeLoose,
   parseLayoutLoose,
   parseMonthsLoose,
   parseYenWithSymbol,
-  pickBuildingLine,
-} from "./helpers.js";
+} from "@devote/core";
+import { describe, expect, it } from "vitest";
+import { crawlSource } from "../../runner.js";
+import { fixtureFetcher } from "../../testing.js";
+import { pickBuildingLine } from "./helpers.js";
 import adapter, { listingIdFromUrl } from "./index.js";
 
 const dir = join(import.meta.dirname, "__fixtures__");

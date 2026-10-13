@@ -6,17 +6,29 @@ import {
   parseAreaSqm,
   parseBuiltYearMonth,
   parseFloor,
+  parseJpDate,
   parseLayout,
   parseMonthsOrYen,
   parseStationAccess,
+  parseStructure,
+  parseTotalFloors,
   parseYen,
   type StationAccess,
   splitAddress,
   type TransactionMode,
+  toHalfWidth,
 } from "@devote/core";
 import * as cheerio from "cheerio";
 import { defineAdapter, type ListItem } from "../../adapter.js";
-import { parseJpDate, parseMonths, parseStructure, parseTotalFloors } from "./helpers.js";
+
+/** フリーレント欄の "1ヶ月" / "0.5ヶ月" → 月数。月数表記で始まらなければ null */
+function parseMonths(input: string | null | undefined): number | null {
+  if (!input) return null;
+  const m = toHalfWidth(input)
+    .replace(/\s+/g, "")
+    .match(/^(\d+(?:\.\d+)?)(?:ヶ|ケ|ヵ|カ|か)?月/);
+  return m ? Number(m[1]) : null;
+}
 
 /**
  * REIT FIND（https://rf12.jp/）— 株式会社SOLPIR が運営する、REIT系・ブランド賃貸マンション専門の

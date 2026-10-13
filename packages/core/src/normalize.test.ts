@@ -1,17 +1,27 @@
 import { describe, expect, it } from "vitest";
 import {
   buildingAgeYears,
+  findDirection,
   parseAreaSqm,
   parseAreaSqmOrTsubo,
   parseBuiltYearMonth,
+  parseFeeLoose,
   parseFloor,
+  parseFloorLabel,
+  parseJpDate,
   parseLayout,
+  parseLayoutLoose,
+  parseMonthsLoose,
   parseMonthsOrYen,
   parseStationAccess,
+  parseStructure,
+  parseTotalFloors,
   parseTsubo,
   parseYen,
+  parseYenWithSymbol,
   tsuboToSqm,
   walkMinutesFromMeters,
+  withPrefecture,
 } from "./normalize";
 
 describe("parseYen", () => {
@@ -158,5 +168,173 @@ describe("buildingAgeYears", () => {
   it("満年数", () => {
     expect(buildingAgeYears("2015-03", new Date("2026-10-13"))).toBe(11);
     expect(buildingAgeYears("2015-11", new Date("2026-10-13"))).toBe(10);
+  });
+});
+
+describe("parseStructure", () => {
+  it.each([
+    ["鉄筋コンクリート造", "RC"],
+    ["ＲＣ造　１０階建", "RC"],
+    ["rc造", "RC"],
+    ["PC造", "RC"],
+    ["地上15階 地下1階 SRC造", "SRC"],
+    ["鉄骨鉄筋コンクリート造　地上23階/地下1階", "SRC"],
+    ["SRC造（CFT柱）、SRC造・RC造（地下）", "SRC"],
+    ["軽量鉄骨造", "LGS"],
+    ["S造", "S"],
+    ["鉄骨造　地上43階　地下2階", "S"],
+    // 主構造＋一部構造: 先に書かれた主構造を採る
+    ["鉄骨造、一部鉄筋コンクリート造　地上43階　地下2階", "S"],
+    ["鉄筋コンクリート造　一部　鉄骨造、鉄骨鉄筋コンクリート造", "RC"],
+    ["一部鉄骨造 木造", "W"],
+    ["木造", "W"],
+    ["その他", null],
+    ["", null],
+    [null, null],
+  ])("%s → %s", (input, expected) => {
+    expect(parseStructure(input)).toBe(expected);
+  });
+});
+
+describe("parseTotalFloors", () => {
+  it.each([
+    ["地上32階 地下1階建", 32],
+    ["地上３階　地下１階 RC造", 3],
+    ["鉄骨造、一部鉄筋コンクリート造　地上43階　地下2階", 43],
+    ["地上43階・地下2階", 43],
+    ["10階建て", 10],
+    ["ＲＣ造　１０階建", 10],
+    ["3階", null],
+    ["", null],
+    [null, null],
+  ])("%s → %s", (input, expected) => {
+    expect(parseTotalFloors(input)).toBe(expected);
+  });
+});
+
+describe("parseFloorLabel", () => {
+  it.each([
+    ["36F", 36],
+    ["３６Ｆ", 36],
+    ["36階", 36],
+    ["B1F", -1],
+    ["b2", -2],
+    ["地下1階", -1],
+    ["36", null],
+    ["3階/10階建", null],
+    [null, null],
+  ])("%s → %s", (input, expected) => {
+    expect(parseFloorLabel(input)).toBe(expected);
+  });
+});
+
+describe("parseJpDate", () => {
+  it.each([
+    ["2026年10月13日", "2026-10-12T15:00:00.000Z"],
+    ["2026/10/13", "2026-10-12T15:00:00.000Z"],
+    ["最終更新日: 2026/10/3", "2026-10-02T15:00:00.000Z"],
+    ["２０２６．１０．１３", "2026-10-12T15:00:00.000Z"],
+    ["2026年 1月 1日", "2025-12-31T15:00:00.000Z"],
+    ["2026年2月30日", null],
+    ["2026年13月1日", null],
+    ["2026年10月", null],
+    ["", null],
+    [null, null],
+  ])("%s → %s", (input, expected) => {
+    expect(parseJpDate(input)).toBe(expected);
+  });
+});
+
+describe("withPrefecture", () => {
+  it.each([
+    ["千代田区神田猿楽町２", "東京都千代田区神田猿楽町2"],
+    ["港区 南麻布 1-2-3", "東京都港区南麻布1-2-3"],
+    ["北区赤羽", "東京都北区赤羽"],
+    ["武蔵野市吉祥寺本町", "東京都武蔵野市吉祥寺本町"],
+    ["横浜市中区山手町", "神奈川県横浜市中区山手町"],
+    ["東京都港区赤坂", "東京都港区赤坂"],
+    ["大阪府大阪市北区梅田", "大阪府大阪市北区梅田"],
+    ["埼玉県さいたま市", "埼玉県さいたま市"],
+    ["名古屋市中区", "名古屋市中区"],
+  ])("%s → %s", (input, expected) => {
+    expect(withPrefecture(input)).toBe(expected);
+  });
+});
+
+describe("parseYenWithSymbol", () => {
+  it.each([
+    ["¥510,000", 510_000],
+    ["￥1,230,000", 1_230_000],
+    ["¥1,230,000（税込）", 1_230_000],
+    ["¥510,000/月", 510_000],
+    ["51万円", 510_000],
+    ["お問い合わせ", null],
+    [null, null],
+  ])("%s → %s", (input, expected) => {
+    expect(parseYenWithSymbol(input)).toBe(expected);
+  });
+});
+
+describe("parseMonthsLoose", () => {
+  it.each([
+    ["原則賃料の4ヶ月分", 2_000_000],
+    ["賃料の2ヵ月", 1_000_000],
+    ["1.5ヶ月", 750_000],
+    ["2箇月", 1_000_000],
+    ["なし", 0],
+    ["賃料込み", 0],
+    ["1,000,000円", 1_000_000],
+    ["¥300,000", 300_000],
+    ["", null],
+    ["要相談", null],
+    [null, null],
+  ])("%s → %s", (input, expected) => {
+    expect(parseMonthsLoose(input, 500_000)).toBe(expected);
+  });
+});
+
+describe("parseFeeLoose", () => {
+  it.each([
+    ["賃料込み", 0],
+    ["賃料に含む（込み）", 0],
+    ["なし", 0],
+    ["-", 0],
+    ["¥30,000", 30_000],
+    ["20,000円", 20_000],
+    ["お問い合わせ", null],
+    [null, null],
+  ])("%s → %s", (input, expected) => {
+    expect(parseFeeLoose(input)).toBe(expected);
+  });
+});
+
+describe("parseLayoutLoose", () => {
+  it.each([
+    ["1BR", "1LDK"],
+    ["2 BR", "2LDK"],
+    ["3BR+S", "3SLDK"],
+    ["3BR+F", "3LDK"],
+    ["2BEDROOMS", "2LDK"],
+    ["STUDIO", "1R"],
+    ["Studio", "1R"],
+    ["２ＬＤＫ", "2LDK"],
+    ["ワンルーム", "1R"],
+    ["お問い合わせ", null],
+    [null, null],
+  ])("%s → %s", (input, expected) => {
+    expect(parseLayoutLoose(input)).toBe(expected);
+  });
+});
+
+describe("findDirection", () => {
+  it.each([
+    ["南向き", "南"],
+    ["バルコニー：南東向き、角部屋", "南東"],
+    ["北西向きのルーフバルコニー", "北西"],
+    ["眺望良好", null],
+    ["", null],
+    [null, null],
+  ])("%s → %s", (input, expected) => {
+    expect(findDirection(input)).toBe(expected);
   });
 });

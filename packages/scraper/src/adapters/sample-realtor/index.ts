@@ -9,6 +9,7 @@ import {
   parseLayout,
   parseMonthsOrYen,
   parseStationAccess,
+  parseStructure,
   parseYen,
   type StationAccess,
   type TransactionMode,
@@ -32,14 +33,6 @@ const TRANSACTION_MODES: Record<string, TransactionMode> = {
   仲介: "brokerage",
   媒介: "brokerage",
 };
-
-const STRUCTURES: [RegExp, string][] = [
-  [/鉄骨鉄筋|SRC/i, "SRC"],
-  [/鉄筋コンクリート|RC/i, "RC"],
-  [/軽量鉄骨/, "LGS"],
-  [/鉄骨|^S造?$/, "S"],
-  [/木造/, "W"],
-];
 
 const sha1 = (s: string) => createHash("sha1").update(s).digest("hex");
 
@@ -145,7 +138,7 @@ export default defineAdapter({
       builtYearMonth: parseBuiltYearMonth(f.築年月),
       floor,
       totalFloors,
-      structure: STRUCTURES.find(([re]) => re.test(f.構造 ?? ""))?.[1] ?? null,
+      structure: parseStructure(f.構造),
       direction,
       features: [...extractFeatures(f["設備・条件"] ?? ""), ...directionFeatures(direction)],
       transactionMode: TRANSACTION_MODES[f.取引態様?.trim() ?? ""] ?? "unknown",

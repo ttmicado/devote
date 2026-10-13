@@ -7,9 +7,11 @@ import {
   parseAreaSqm,
   parseBuiltYearMonth,
   parseFloor,
+  parseJpDate,
   parseLayout,
   parseMonthsOrYen,
   parseStationAccess,
+  parseStructure,
   parseYen,
   type StationAccess,
   splitAddress,
@@ -307,22 +309,6 @@ const TRANSACTION_MODES: [RegExp, TransactionMode][] = [
   [/媒介|仲介/, "brokerage"],
 ];
 
-const STRUCTURES: [RegExp, string][] = [
-  [/鉄骨鉄筋|SRC/i, "SRC"],
-  [/鉄筋コンクリート|RC/i, "RC"],
-  [/軽量鉄骨/, "LGS"],
-  [/鉄骨|^S造?$/, "S"],
-  [/木造/, "W"],
-];
-
-function parseJpDate(v: string | undefined): string | null {
-  const m = v?.normalize("NFKC").match(/(\d{4})[年/.-](\d{1,2})[月/.-](\d{1,2})/);
-  if (!m?.[1] || !m[2] || !m[3]) return null;
-  return new Date(
-    `${m[1]}-${m[2].padStart(2, "0")}-${m[3].padStart(2, "0")}T00:00:00+09:00`,
-  ).toISOString();
-}
-
 export default defineAdapter({
   meta: {
     id: SOURCE_ID,
@@ -492,8 +478,7 @@ export default defineAdapter({
       builtYearMonth: parseBuiltYearMonth(pick(f, ["築年月", "完成時期(築年月)"])),
       floor,
       totalFloors,
-      structure:
-        STRUCTURES.find(([re]) => re.test(pick(f, ["構造", "建物構造"]) ?? ""))?.[1] ?? null,
+      structure: parseStructure(pick(f, ["構造", "建物構造"])),
       direction,
       features: [
         ...extractFeatures(pick(f, ["設備", "設備・条件", "条件等", "備考"]) ?? ""),
