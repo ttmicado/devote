@@ -41,6 +41,13 @@ export function headlinePrice(l: NormalizedListing): {
   amount: string;
   note: string | null;
 } {
+  if (l.dealType === "rent" && l.usage === "business") {
+    // 事業用は坪単価で比べるのが慣習（1坪 = 3.30579㎡）
+    const total = l.price + (l.managementFee ?? 0);
+    const tsubo = l.areaSqm && l.areaSqm > 0 ? l.areaSqm / 3.30579 : null;
+    const note = tsubo ? `坪単価 ${formatYen(Math.round(total / tsubo))}（共益費込み）` : null;
+    return { label: "総額／月", amount: formatYen(total), note };
+  }
   if (l.dealType === "rent") {
     const total = l.price + (l.managementFee ?? 0);
     const note = l.managementFee
@@ -72,4 +79,13 @@ export function keyFacts(l: NormalizedListing, now: Date = new Date()): string[]
     age,
     l.floor != null ? (l.floor < 0 ? `地下${-l.floor}階` : `${l.floor}階`) : null,
   ].filter((v): v is string => Boolean(v));
+}
+
+/** 種別の表示: 住まいの賃貸 / 売買 / 事業用の賃貸 */
+export function dealKindLabel(l: {
+  dealType: "rent" | "sale";
+  usage?: "residential" | "business";
+}) {
+  if (l.usage === "business") return { en: "Business", ja: "事業用賃貸" };
+  return l.dealType === "rent" ? { en: "Rent", ja: "賃貸" } : { en: "Sale", ja: "売買" };
 }

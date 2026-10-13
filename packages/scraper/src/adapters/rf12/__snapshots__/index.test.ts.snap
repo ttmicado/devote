@@ -93,5 +93,6 @@ exports[`rf12 normalize > 部屋詳細を NormalizedListing に正規化する 1
   "totalFloors": 3,
   "transactionMode": "brokerage",
   "url": "https://rf12.jp/building/4462/222736/",
+  "usage": "residential",
 }
 `;

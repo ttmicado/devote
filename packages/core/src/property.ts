@@ -4,6 +4,10 @@ import { z } from "zod";
 export const DealType = z.enum(["rent", "sale"]);
 export type DealType = z.infer<typeof DealType>;
 
+/** 用途: 住まい（居住用）か、オフィス・店舗などの事業用か */
+export const PropertyUse = z.enum(["residential", "business"]);
+export type PropertyUse = z.infer<typeof PropertyUse>;
+
 /** 取引態様（元付=貸主/代理/専任媒介/一般媒介、客付=仲介） */
 export const TransactionMode = z.enum([
   "owner", // 貸主・売主
@@ -69,6 +73,8 @@ export const NormalizedListing = z.object({
   repairReserveFee: z.number().int().nonnegative().nullable().default(null),
   /** 物件種別（売買で使う。賃貸は "mansion" 扱いでよい） */
   propertyType: z.enum(["mansion", "house", "land", "other"]).nullable().default(null),
+  /** 用途（事業用の賃貸はオフィス・店舗・事務所など）。既定は居住用 */
+  usage: PropertyUse.default("residential"),
   /** 構造化しきれないサイト固有の値（表記どおり） */
   extra: z.record(z.string(), z.string()).default({}),
 });

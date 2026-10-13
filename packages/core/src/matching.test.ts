@@ -33,10 +33,12 @@ const base: NormalizedListing = {
   repairReserveFee: null,
   propertyType: "mansion",
   extra: {},
+  usage: "residential",
 };
 
 const cond: SearchCondition = {
   dealType: "rent",
+  usage: "residential",
   areas: { stations: ["中目黒"], cities: [] },
   hard: {
     maxPrice: 200_000,
@@ -105,5 +107,22 @@ describe("selectForPhase", () => {
 
   it("情報収集段階（exploring）は広く見せる", () => {
     expect(selectForPhase(items, "exploring")).toHaveLength(5);
+  });
+});
+
+describe("missingEssentials", async () => {
+  const { missingEssentials } = await import("./condition");
+  it("エリア・予算・広さ（間取り）がそろえば確定できる", () => {
+    expect(missingEssentials(cond)).toEqual([]);
+  });
+  it("足りない項目を返す", () => {
+    expect(
+      missingEssentials({
+        ...cond,
+        areas: { stations: [], cities: [] },
+        hard: { ...cond.hard, maxPrice: null, minAreaSqm: null, layouts: [] },
+      }),
+    ).toEqual(["area", "budget", "size"]);
+    expect(missingEssentials({ ...cond, hard: { ...cond.hard, minAreaSqm: null } })).toEqual([]);
   });
 });

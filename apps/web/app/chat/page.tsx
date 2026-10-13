@@ -1,4 +1,4 @@
-import { emptyCondition, loadChat, toDisplay } from "@/lib/ai";
+import { draftPreview, emptyCondition, loadChat, toDisplay } from "@/lib/ai";
 import { currentUserId } from "@/lib/session";
 import { ChatClient } from "./chat-client";
 
@@ -24,13 +24,15 @@ export default async function ChatPage({
   const { error } = await searchParams;
   const userId = await currentUserId();
   const chat = userId ? await loadChat(userId) : null;
+  const preview = chat ? await draftPreview(chat.state.draft).catch(() => null) : null;
   return (
     <ChatClient
       initialMessages={chat ? toDisplay(chat.rows) : []}
       initialDraft={chat?.state.draft ?? emptyCondition()}
       initialPhase={chat?.state.phase ?? "exploring"}
       date={todayInTokyo()}
-      confirmFailed={error === "condition"}
+      initialPreview={preview}
+      confirmFailed={error === "condition" || error === "incomplete"}
     />
   );
 }

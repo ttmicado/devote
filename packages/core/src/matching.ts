@@ -43,6 +43,9 @@ export function scoreListing(
   });
 
   if (listing.dealType !== cond.dealType) return exclude("取引種別が異なる");
+  if ((listing.usage ?? "residential") !== (cond.usage ?? "residential")) {
+    return exclude("用途（住まい／事業用）が異なる");
+  }
 
   const { stations, cities } = cond.areas;
   if (stations.length > 0 || cities.length > 0) {

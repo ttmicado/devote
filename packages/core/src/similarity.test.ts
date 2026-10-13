@@ -31,6 +31,7 @@ const base: NormalizedListing = {
   repairReserveFee: null,
   propertyType: "mansion",
   extra: {},
+  usage: "residential",
 };
 
 describe("propertySimilarity", () => {
@@ -88,5 +89,46 @@ describe("headlinePrice / keyFacts", async () => {
       "築11年",
       "10階",
     ]);
+  });
+});
+
+describe("事業用の賃貸", async () => {
+  const { headlinePrice, dealKindLabel } = await import("./format");
+  const { scoreListing } = await import("./matching");
+  const office = {
+    ...base,
+    usage: "business" as const,
+    price: 1_000_000,
+    managementFee: 100_000,
+    areaSqm: 99.17,
+    layout: null,
+  };
+  it("坪単価（共益費込み）を添える", () => {
+    expect(headlinePrice(office)).toMatchObject({
+      amount: "110万円",
+      note: "坪単価 3.7万円（共益費込み）",
+    });
+    expect(dealKindLabel(office)).toEqual({ en: "Business", ja: "事業用賃貸" });
+  });
+  it("住まいの条件に事業用の物件は出さない", () => {
+    const cond = {
+      dealType: "rent" as const,
+      usage: "residential" as const,
+      areas: { stations: [], cities: ["港区"] },
+      hard: {
+        maxPrice: null,
+        minAreaSqm: null,
+        maxWalkMinutes: null,
+        layouts: [],
+        maxBuildingAgeYears: null,
+        minFloor: null,
+        requiredFeatures: [],
+      },
+      tolerance: { price: 0, areaSqm: 0, walkMinutes: 0, buildingAgeYears: 0 },
+      soft: [],
+      notes: "",
+    };
+    expect(scoreListing(office, cond).excluded).toBe(true);
+    expect(scoreListing(office, { ...cond, usage: "business" }).excluded).toBe(false);
   });
 });

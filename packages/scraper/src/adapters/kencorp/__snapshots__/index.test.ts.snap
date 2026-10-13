@@ -106,6 +106,7 @@ exports[`kencorp normalize > 売買（マンション）の詳細を正規化す
   "totalFloors": 32,
   "transactionMode": "brokerage",
   "url": "https://www.kencorp.co.jp/housing/properties/183198/2026095145/",
+  "usage": "residential",
 }
 `;
 
@@ -211,5 +212,6 @@ exports[`kencorp normalize > 賃貸の詳細を正規化する 1`] = `
   "totalFloors": 20,
   "transactionMode": "unknown",
   "url": "https://www.kencorp.co.jp/housing/properties/158244/2008051357/",
+  "usage": "residential",
 }
 `;

@@ -1,6 +1,7 @@
 import Anthropic from "@anthropic-ai/sdk";
 import {
   FEATURE_DICTIONARY,
+  missingEssentials,
   SearchCondition,
   type SearchPhase,
   summarizeListing,
@@ -44,7 +45,10 @@ const SYSTEM = `あなたは不動産会社「Devote」の住まい探しコン�
 - ペット可・楽器可などの入居条件は絶対条件（hard.requiredFeatures）として扱います。
 - 「できれば欲しい」設備は soft に重み 0〜1 で入れます。
 - 条件が分かったら、そのたびに update_criteria を呼んで下書きを更新してください。会話で触れていない項目を勝手に埋めないでください。
-- ある程度条件が揃ったら preview_matches で現在の掲載件数を確認し、0件や極端に少ない場合は件数を根拠に「どの条件を緩めると何件になりそうか」を相談します。緩める順番の目安は 築年数 → 駅徒歩 → 設備 → 広さ → エリア → 予算 です。
+- エリア・ご予算・広さか間取りの3点は、確定の前に必ず伺います（そろわないと確定できません）。
+- 3点がそろったら preview_matches で現在の掲載件数を確かめ、件数を添えて状況をお伝えします（例: 「この条件で、いま12件が掲載中です」）。
+- 掲載中の件数が30件を超える場合は、お届けが多すぎて煩わしくならないよう、絞り込みを一つずつ提案します（例: 駅からの距離、築年数、階数、こだわりの設備）。お客様が「多めで構わない」と言えば、それ以上は求めません。
+- 0件や極端に少ない場合は、件数を根拠に「どの条件を緩めると何件になりそうか」を相談します。緩める順番の目安は 築年数 → 駅徒歩 → 設備 → 広さ → エリア → 予算 です。
 - お客様の検討段階（情報収集中／比較検討中／内見済みで決めたい）を会話から推定し、update_criteria の phase で設定します。決めたい段階のお客様には厳選した物件だけを届けると伝えます。
 - 条件がそろったら要点を短く復唱し、画面の「この条件でお任せする」で確定できると案内します。
 
@@ -234,6 +238,13 @@ export function toDisplay(rows: { role: string; content: unknown }[]) {
 }
 
 /** 1ターン分の会話を進める（ツール実行を含む）。保存は append-only */
+/** 依頼書に添える「この条件で掲載中 ○件」。確定に必要な条件がそろうまでは出さない */
+export async function draftPreview(draft: SearchCondition) {
+  if (missingEssentials(draft).length > 0) return null;
+  const p = await previewMatches(getDb(), draft, summarizeListing);
+  return { total: p.total, withCompromise: p.withCompromise };
+}
+
 export async function runChatTurn(userId: string, userText: string) {
   const db = getDb();
   const { state, rows } = await loadChat(userId);

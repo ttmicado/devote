@@ -1,6 +1,14 @@
 "use client";
 
-import type { SearchCondition, SearchPhase } from "@devote/core";
+import {
+  ESSENTIAL_LABELS,
+  type Essential,
+  MANY_MATCHES,
+  missingEssentials,
+  PHASE_GATE,
+  type SearchCondition,
+  type SearchPhase,
+} from "@devote/core";
 import { useEffect, useLayoutEffect, useRef, useState, useTransition } from "react";
 import { ConditionBrief } from "@/components/condition-summary";
 import { Button, Eyebrow } from "@/components/ui";
@@ -23,7 +31,9 @@ export function ChatClient({
   initialPhase,
   date,
   confirmFailed = false,
+  initialPreview = null,
 }: {
+  initialPreview?: Preview | null;
   initialMessages: Msg[];
   initialDraft: SearchCondition;
   initialPhase: SearchPhase;
@@ -32,6 +42,7 @@ export function ChatClient({
 }) {
   const [messages, setMessages] = useState<Msg[]>(initialMessages);
   const [draft, setDraft] = useState(initialDraft);
+  const [preview, setPreview] = useState<Preview | null>(initialPreview);
   const [phase, setPhase] = useState(initialPhase);
   const [input, setInput] = useState("");
   const [sending, setSending] = useState(false);
@@ -82,6 +93,7 @@ export function ChatClient({
       setMessages(json.messages);
       setDraft(json.draft);
       setPhase(json.phase);
+      setPreview(json.preview ?? null);
     } catch (e) {
       setError(e instanceof Error && e.message ? e.message : CHAT.error);
       // 送れなかった文面は入力欄に戻す
@@ -91,11 +103,10 @@ export function ChatClient({
     }
   }
 
-  const hasArea = draft.areas.cities.length + draft.areas.stations.length > 0;
-  // 確定できる最低限（エリアか予算のどちらか）
-  const canConfirm = hasArea || draft.hard.maxPrice != null;
-  // スマホで確定ボタンを常時出すのは、エリアと予算の両方が伺えてから
-  const ready = hasArea && draft.hard.maxPrice != null;
+  // エリア・ご予算・広さ（間取り）がそろうまで確定しない（物件が大量に届くのを防ぐ）
+  const missing = missingEssentials(draft);
+  const canConfirm = missing.length === 0;
+  const ready = canConfirm;
 
   const confirm = () =>
     startConfirm(async () => {
@@ -103,15 +114,18 @@ export function ChatClient({
     });
 
   const confirmButton = (className?: string) => (
-    <Button
-      size="lg"
-      arrow={!confirming}
-      disabled={!canConfirm || confirming}
-      onClick={confirm}
-      className={`w-full ${className ?? ""}`}
-    >
-      {confirming ? CHAT.confirming : CHAT.confirm}
-    </Button>
+    <>
+      <MatchVolume preview={preview} missing={missing} phase={phase} />
+      <Button
+        size="lg"
+        arrow={!confirming}
+        disabled={!canConfirm || confirming}
+        onClick={confirm}
+        className={`w-full ${className ?? ""}`}
+      >
+        {confirming ? CHAT.confirming : CHAT.confirm}
+      </Button>
+    </>
   );
 
   return (
@@ -256,5 +270,41 @@ export function ChatClient({
         </aside>
       </div>
     </main>
+  );
+}
+
+type Preview = { total: number; withCompromise: number };
+
+/** 依頼書の下に「この条件で掲載中 ○件」と、多すぎる・足りない場合の案内を出す */
+function MatchVolume({
+  preview,
+  missing,
+  phase,
+}: {
+  preview: Preview | null;
+  missing: Essential[];
+  phase: SearchPhase;
+}) {
+  const V = CHAT.volume;
+  if (missing.length > 0) {
+    return (
+      <p className="mb-4 text-[13px] leading-6 text-ink-500">
+        {V.missing(missing.map((m) => ESSENTIAL_LABELS[m]).join("・"))}
+      </p>
+    );
+  }
+  if (!preview) return null;
+  const many = preview.total > MANY_MATCHES;
+  return (
+    <div className="mb-4" aria-live="polite">
+      <p className="eyebrow text-sand-600">{V.eyebrow}</p>
+      <p className="mt-1 font-mincho text-[15px] leading-7 text-evergreen-900">
+        {V.count(preview.total)}
+      </p>
+      <p className={`mt-1 text-[12px] leading-6 ${many ? "text-signal" : "text-ink-500"}`}>
+        {preview.total === 0 ? V.none : many ? V.many : V.fine}
+      </p>
+      <p className="text-[12px] leading-6 text-ink-500">{V.cap(PHASE_GATE[phase].maxItems)}</p>
+    </div>
   );
 }

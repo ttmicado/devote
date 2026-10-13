@@ -1,7 +1,7 @@
 "use server";
 
 import { randomBytes, randomInt } from "node:crypto";
-import { SearchCondition } from "@devote/core";
+import { missingEssentials, SearchCondition } from "@devote/core";
 import {
   getDb,
   inquiries,
@@ -24,6 +24,8 @@ export async function confirmCondition() {
   const [u] = await db.select().from(users).where(eq(users.id, userId));
   const parsed = SearchCondition.safeParse(u?.draftCondition);
   if (!parsed.success) redirect("/chat?error=condition");
+  // エリア・ご予算・広さ（間取り）がそろわないまま確定すると、物件が大量に届いてしまう
+  if (missingEssentials(parsed.data).length > 0) redirect("/chat?error=incomplete");
   const [prev] = await db
     .select()
     .from(searchConditions)

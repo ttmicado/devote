@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { DealType } from "./property";
+import { DealType, PropertyUse } from "./property";
 
 /**
  * AIヒアリングで固めた希望条件。
@@ -10,6 +10,8 @@ import { DealType } from "./property";
  */
 export const SearchCondition = z.object({
   dealType: DealType,
+  /** 住まいか事業用（オフィス・店舗）か。事業用は賃貸のみ対応 */
+  usage: PropertyUse.default("residential"),
   areas: z.object({
     stations: z.array(z.string()), // 希望駅（正規化済み駅名）
     cities: z.array(z.string()), // 希望市区町村
@@ -53,3 +55,28 @@ export const PHASE_GATE: Record<SearchPhase, { minScore: number; maxItems: numbe
   considering: { minScore: 70, maxItems: 8 },
   ready: { minScore: 85, maxItems: 3 },
 };
+
+/**
+ * 確定に必要な最低限の条件。これがそろわないまま確定すると、物件が大量に届いてしまう。
+ * - エリア（区または駅）
+ * - ご予算（上限）
+ * - 広さか間取り
+ */
+export type Essential = "area" | "budget" | "size";
+
+export const ESSENTIAL_LABELS: Record<Essential, string> = {
+  area: "エリア",
+  budget: "ご予算",
+  size: "広さか間取り",
+};
+
+export function missingEssentials(c: SearchCondition): Essential[] {
+  const missing: Essential[] = [];
+  if (c.areas.cities.length + c.areas.stations.length === 0) missing.push("area");
+  if (c.hard.maxPrice == null) missing.push("budget");
+  if (c.hard.minAreaSqm == null && c.hard.layouts.length === 0) missing.push("size");
+  return missing;
+}
+
+/** 掲載中の該当件数がこれを超えたら「多め」として、絞り込みを提案する */
+export const MANY_MATCHES = 30;

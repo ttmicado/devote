@@ -70,13 +70,96 @@ export function ProblemSection() {
   );
 }
 
+/* ───────── ご自身で探す場合との比較 ───────── */
+
+export function CompareSection() {
+  const C = HOME.compare;
+  return (
+    <Section surface="paper">
+      <SectionHead eyebrow={C.eyebrow} title={C.title} index="ii." size="xl" />
+      <Reveal delay={120} className="mt-16 lg:mt-24">
+        {/* モバイルの凡例（デスクトップは表の見出し） */}
+        <p aria-hidden className="mb-8 flex flex-col gap-1 md:hidden">
+          <span className="text-[13px] text-ink-500">{C.self}</span>
+          <span className="font-mincho text-base text-evergreen-900">→ {C.devote}</span>
+        </p>
+        <table className="w-full border-collapse text-left">
+          <caption className="sr-only">
+            {C.self} / {C.devote}
+          </caption>
+          <thead className="hidden md:table-header-group">
+            <tr className="border-b border-ink-900/25">
+              <th scope="col" className="w-[9rem] pb-5 lg:w-[12rem]">
+                <span className="sr-only">項目</span>
+              </th>
+              <th scope="col" className="pb-5 pr-10 font-normal">
+                <span className="eyebrow text-ink-500">Yourself</span>
+                <span className="mt-2 block font-mincho text-base text-ink-700">{C.self}</span>
+              </th>
+              <th
+                scope="col"
+                className="relative w-[48%] border-l border-ink-900/15 pb-5 pl-10 font-normal"
+              >
+                <span
+                  aria-hidden
+                  className="absolute -bottom-px left-0 h-px w-24 bg-evergreen-800"
+                />
+                <span className="eyebrow text-sand-600">With Devote</span>
+                <span className="mt-2 block font-mincho text-base text-evergreen-900">
+                  {C.devote}
+                </span>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {C.rows.map((r, i) => (
+              <tr
+                key={r.en}
+                className="grid border-b border-ink-900/15 py-7 first:border-t first:border-ink-900/25 md:table-row md:py-0 md:first:border-t-0"
+              >
+                <th
+                  scope="row"
+                  className="flex items-baseline gap-3 font-normal md:table-cell md:py-9 md:align-baseline"
+                >
+                  <span className="font-serif text-sm text-sand-600 italic tabular-nums">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <span className="eyebrow text-ink-500 md:mt-2 md:block">{r.en}</span>
+                </th>
+                <td className="mt-4 text-[14px] leading-7 text-ink-500 md:table-cell md:py-9 md:pr-10 md:align-baseline md:text-[15px]">
+                  {r.self}
+                </td>
+                <td className="mt-3 md:table-cell md:border-l md:border-ink-900/15 md:py-9 md:pl-10 md:align-baseline">
+                  <span className="flex items-baseline gap-3">
+                    <span aria-hidden className="text-evergreen-800 md:hidden">
+                      →
+                    </span>
+                    <span className="font-mincho text-[19px] leading-8 text-evergreen-900 [word-break:auto-phrase] sm:text-[1.5rem] sm:leading-9">
+                      <Phrase text={r.devote} />
+                    </span>
+                  </span>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </Reveal>
+      <Reveal delay={160} className="mt-14 flex justify-start">
+        <ButtonLink href="/chat" arrow>
+          {HOME.hero.primary}
+        </ButtonLink>
+      </Reveal>
+    </Section>
+  );
+}
+
 /* ───────── 3つの約束 ───────── */
 
 export function PromiseSection() {
   const P = HOME.promise;
   return (
     <Section surface="dark">
-      <SectionHead eyebrow={P.eyebrow} title={P.title} tone="dark" index="ii." size="xl" />
+      <SectionHead eyebrow={P.eyebrow} title={P.title} tone="dark" index="iii." size="xl" />
       <div className="mt-16 border-b border-sand-100/10 lg:mt-24">
         {P.items.map((it, i) => (
           <Reveal key={it.no} delay={i * 100}>
@@ -114,7 +197,7 @@ export function FlowSection() {
   return (
     <Section surface="paper">
       <div className="flex flex-col gap-10 lg:flex-row lg:items-end lg:justify-between">
-        <SectionHead eyebrow={F.eyebrow} title={F.title} index="iii." className="max-w-3xl" />
+        <SectionHead eyebrow={F.eyebrow} title={F.title} index="iv." className="max-w-3xl" />
         <Reveal delay={120}>
           <ButtonLink href="/chat" arrow>
             {F.cta}
@@ -146,7 +229,7 @@ export function SourcesSection() {
   return (
     <Section surface="light">
       <div className="grid gap-14 lg:grid-cols-[1fr_1.3fr] lg:gap-24">
-        <SectionHead eyebrow={S.eyebrow} title={S.title} body={S.body} index="v." />
+        <SectionHead eyebrow={S.eyebrow} title={S.title} body={S.body} index="vi." />
         <div>
           <div className="border-t border-ink-900/25">
             {S.groups.map((g, gi) => (
@@ -196,7 +279,7 @@ export function CurationSection() {
   return (
     <Section surface="deep">
       <div className="grid gap-10 lg:grid-cols-[1fr_1fr] lg:items-end lg:gap-24">
-        <SectionHead eyebrow={C.eyebrow} title={C.title} tone="dark" index="vi." />
+        <SectionHead eyebrow={C.eyebrow} title={C.title} tone="dark" index="vii." />
         <Reveal delay={120}>
           <p className="max-w-[34em] text-[15px] leading-8 text-sand-100/85">{C.body}</p>
         </Reveal>
@@ -222,7 +305,10 @@ export function CurationSection() {
                 ))}
               </div>
               <p className="mt-10 flex items-baseline gap-2 text-sand-100">
-                {p.prefix && <span className="font-mincho text-sm text-sand-300">{p.prefix}</span>}
+                <span className="font-mincho text-sm text-sand-300">
+                  {C.perDay}
+                  {p.prefix}
+                </span>
                 <span className="font-serif text-6xl leading-none font-light lining-nums sm:text-7xl">
                   {p.value}
                 </span>
@@ -234,6 +320,21 @@ export function CurationSection() {
         ))}
       </div>
       <p className="mt-6 text-[12px] text-sand-300">{C.note}</p>
+      {/* 届きすぎないための仕組み */}
+      <ul className="mt-16 grid border-t border-sand-100/15 md:mt-20 md:grid-cols-3">
+        {C.assurances.map((a, i) => (
+          <li
+            key={a.en}
+            className="border-b border-sand-100/10 py-8 md:border-b-0 md:py-10 md:pr-10 md:[&+li]:border-l md:[&+li]:border-sand-100/10 md:[&+li]:pl-10"
+          >
+            <Reveal delay={i * 100}>
+              <Eyebrow tone="dark">{a.en}</Eyebrow>
+              <p className="mt-4 font-mincho text-xl text-sand-100">{a.title}</p>
+              <p className="mt-3 max-w-[26em] text-[14px] leading-7 text-sand-100/80">{a.body}</p>
+            </Reveal>
+          </li>
+        ))}
+      </ul>
     </Section>
   );
 }
@@ -246,7 +347,7 @@ export function ViewingSection() {
     <Section surface="light">
       <div className="grid gap-16 lg:grid-cols-[1.15fr_1fr] lg:gap-24">
         <div>
-          <SectionHead eyebrow={V.eyebrow} title={V.title} body={V.body} index="vii." />
+          <SectionHead eyebrow={V.eyebrow} title={V.title} body={V.body} index="viii." />
           <Reveal delay={140}>
             <ol className="relative mt-14 grid grid-cols-5" aria-label={VIEWINGS.title}>
               <span
@@ -298,7 +399,7 @@ export function AreasSection() {
       }
     >
       <div className="grid gap-10 lg:grid-cols-[1fr_1fr] lg:items-end lg:gap-24">
-        <SectionHead eyebrow={A.eyebrow} title={A.title} tone="dark" index="viii." />
+        <SectionHead eyebrow={A.eyebrow} title={A.title} tone="dark" index="ix." />
         <Reveal delay={120}>
           <p className="max-w-[34em] text-[15px] leading-8 text-sand-100/85">{A.body}</p>
         </Reveal>
@@ -334,7 +435,7 @@ export function FaqSection() {
     <Section surface="light">
       <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-24">
         <div className="lg:sticky lg:top-32 lg:self-start">
-          <SectionHead eyebrow={Q.eyebrow} title={Q.title} index="ix." />
+          <SectionHead eyebrow={Q.eyebrow} title={Q.title} index="x." />
         </div>
         <div className="border-t border-ink-900/20">
           {Q.items.map((it, i) => (
@@ -397,7 +498,7 @@ export function ClosingSection() {
             {C.cta}
           </ButtonLink>
           <CircleLink href="/chat" className="hidden sm:flex">
-            {C.eyebrow} →
+            {HOME.hero.circle} →
           </CircleLink>
         </div>
         <p className="mt-16 font-mincho text-sm text-sand-300">

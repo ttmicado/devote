@@ -4,6 +4,7 @@ import { ReportSection } from "@/components/home/report";
 import {
   AreasSection,
   ClosingSection,
+  CompareSection,
   CurationSection,
   FaqSection,
   FlowSection,
@@ -23,8 +24,9 @@ export default async function Home() {
   const { crawl, samples } = await loadHomeData();
   return (
     <main>
-      <Hero crawl={crawl} />
+      <Hero crawl={crawl} samples={samples} />
       <ProblemSection />
+      <CompareSection />
       <PromiseSection />
       <FlowSection />
       <ReportSection samples={samples} />

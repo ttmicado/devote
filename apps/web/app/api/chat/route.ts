@@ -1,5 +1,5 @@
 import Anthropic from "@anthropic-ai/sdk";
-import { loadChat, runChatTurn, toDisplay } from "@/lib/ai";
+import { draftPreview, loadChat, runChatTurn, toDisplay } from "@/lib/ai";
 import { ensureUserId } from "@/lib/session";
 
 export const runtime = "nodejs";
@@ -65,7 +65,13 @@ export async function POST(req: Request) {
     const userId = await ensureUserId();
     const state = await runChatTurn(userId, text);
     const { rows } = await loadChat(userId);
-    return Response.json({ messages: toDisplay(rows), draft: state.draft, phase: state.phase });
+    const preview = await draftPreview(state.draft);
+    return Response.json({
+      messages: toDisplay(rows),
+      draft: state.draft,
+      phase: state.phase,
+      preview,
+    });
   } catch (e) {
     const c = classify(e);
     console.error(`[chat] ${c.log}`);

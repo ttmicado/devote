@@ -26,6 +26,7 @@ function roomsOf(layout: string | null): number | null {
 
 export function propertySimilarity(a: NormalizedListing, b: NormalizedListing): number {
   if (a.dealType !== b.dealType) return 0;
+  if ((a.usage ?? "residential") !== (b.usage ?? "residential")) return 0;
   const totalA = a.price + (a.dealType === "rent" ? (a.managementFee ?? 0) : 0);
   const totalB = b.price + (b.dealType === "rent" ? (b.managementFee ?? 0) : 0);
   const price = closeness(totalA, totalB, totalA * 0.3);

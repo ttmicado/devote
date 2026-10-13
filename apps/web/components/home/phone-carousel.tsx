@@ -29,7 +29,16 @@ function Marker({ n }: { n: number }) {
 }
 
 /** スマホ枠の中のカルーセル（スクロールスナップ＋位置の点） */
-export function PhoneCarousel({ cards, cta }: { cards: PhoneCard[]; cta: string }) {
+export function PhoneCarousel({
+  cards,
+  cta,
+  markers = true,
+}: {
+  cards: PhoneCard[];
+  cta: string;
+  /** 注記の番号の印を出すか（ヒーローの見本では出さない） */
+  markers?: boolean;
+}) {
   const ref = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState(0);
 
@@ -73,7 +82,7 @@ export function PhoneCarousel({ cards, cta }: { cards: PhoneCard[]; cta: string 
                 <span className="font-serif text-[22px] leading-none text-signal lining-nums">
                   {c.amount}
                 </span>
-                {i === 0 && <Marker n={1} />}
+                {markers && i === 0 && <Marker n={1} />}
               </div>
               <p className="mt-1 h-4 truncate text-[9.5px] text-ink-500">{c.priceNote}</p>
               <p className="mt-2 line-clamp-2 h-[34px] text-[10.5px] leading-[17px] text-ink-700">
@@ -86,13 +95,13 @@ export function PhoneCarousel({ cards, cta }: { cards: PhoneCard[]; cta: string 
                 >
                   {c.fit}
                 </p>
-                {i === 0 && <Marker n={2} />}
+                {markers && i === 0 && <Marker n={2} />}
               </div>
               <div className="relative mt-3">
                 <span className="flex h-9 items-center justify-center rounded-full bg-evergreen-800 text-[11px] tracking-[0.12em] text-sand-50">
                   {cta}
                 </span>
-                {i === 0 && <Marker n={3} />}
+                {markers && i === 0 && <Marker n={3} />}
               </div>
             </div>
           </article>

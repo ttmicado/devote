@@ -107,5 +107,6 @@ exports[`axel-home normalize > 部屋詳細を NormalizedListing に正規化す
   "totalFloors": 10,
   "transactionMode": "brokerage",
   "url": "https://www.axel-home.com/property/1365/outline/r44026?usage=residence",
+  "usage": "residential",
 }
 `;

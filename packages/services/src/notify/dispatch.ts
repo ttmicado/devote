@@ -1,7 +1,7 @@
 import { randomUUID } from "node:crypto";
 import { type NormalizedListing, PHASE_GATE, type SearchPhase } from "@devote/core";
 import { type Db, matches, notifications, properties, sentLedger, userChannels } from "@devote/db";
-import { and, asc, desc, eq, gt, inArray, sql } from "drizzle-orm";
+import { and, asc, desc, eq, gt, gte, inArray, sql } from "drizzle-orm";
 import { personalLink } from "../link-token";
 import { activeConditions } from "../match";
 import { sendEmail } from "./email";
@@ -12,6 +12,12 @@ type Reason = "new" | "price_down" | "similar";
 
 function appUrl(): string {
   return (process.env.APP_URL ?? "http://localhost:3000").replace(/\/$/, "");
+}
+
+/** JST の今日 0:00 */
+function startOfTodayJst(now: Date) {
+  const d = new Date(now.getTime() + 9 * 3600_000);
+  return new Date(Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate()) - 9 * 3600_000);
 }
 
 /** JST の時・曜日 */
@@ -177,6 +183,22 @@ export async function runNotifications(db: Db, now = new Date()) {
     summary.due++;
 
     const gate = PHASE_GATE[c.phase as SearchPhase];
+    // 「すぐに」でも1日に届く件数は検討段階ごとの上限まで（煩わしくならないように）
+    const [today] = await db
+      .select({ n: sql<number>`count(*)::int` })
+      .from(sentLedger)
+      .where(
+        and(
+          eq(sentLedger.userId, c.userId),
+          eq(sentLedger.reason, "new"),
+          gte(sentLedger.sentAt, startOfTodayJst(now)),
+        ),
+      );
+    const remainingToday = gate.maxItems - (today?.n ?? 0);
+    if (remainingToday <= 0) {
+      summary.skipped++;
+      continue;
+    }
     const rows = await db
       .select({
         propertyId: matches.propertyId,
@@ -196,7 +218,7 @@ export async function runNotifications(db: Db, now = new Date()) {
         ),
       )
       .orderBy(desc(matches.score))
-      .limit(gate.maxItems);
+      .limit(remainingToday);
     if (rows.length === 0) {
       summary.skipped++;
       continue;
