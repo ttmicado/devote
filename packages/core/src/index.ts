@@ -1,4 +1,5 @@
 export * from "./areas";
+export * from "./company";
 export * from "./condition";
 export * from "./dedupe";
 export * from "./features";
