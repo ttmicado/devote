@@ -51,6 +51,7 @@ function result(ls: NormalizedListing[], seen = ls.map((l) => l.sourceListingId)
     deferred: 0,
     listRequests: 0,
     detailRequests: 0,
+    warnings: [],
   };
 }
 

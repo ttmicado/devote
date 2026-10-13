@@ -53,6 +53,14 @@ description: 不動産サイト（レインズ、業者間サイト、不動産�
 - ランナーの `countMismatch`（表示総件数と取得件数のずれ）と `errors` の増加が構造変化の兆候
 - 壊れたら: 現行HTMLをフィクスチャとして追加 → テストが落ちることを確認 → パーサを修正 → `parserVersion` を上げる
 - `listCompleted` が false の回は掲載終了の判定をしないこと
+- ブロック・チャレンジページ（Cloudflare 等の WAF、海外IP制限）は 200 で返ることがあり、そのままパースすると「0件」になる。
+  ランナーは一覧・詳細の本文を `detectBlockPage`（`src/block.ts`）で判定し、一覧なら警告＋`listCompleted=false`、
+  詳細なら errors に「ブロック・チャレンジの可能性」と記録する（3回続いたらその回の詳細取得を打ち切る）。
+  `fetchList` / `fetchDetail` を自前で実装するアダプターも、取得直後に `detectBlockPage` で判定して throw する
+- 0件のクエリ・全体で0件の回は `CrawlResult.warnings` に出る。インデックス→個別ページを束ねるアダプターは、
+  インデックスの構造（リンク）が取れないときは「空室0」と区別してエラーにする（例: 住友不動産の `countBuildingLinks`）
+- バッチのログの `inArea` / `newCount` は「今回詳細を取得した物件」の数。一覧の `listHash` が前回と同じ物件は
+  詳細を取得しないので、変化が無い回は 0 になるのが正常（`seen` と `unchanged` で確認する）
 
 ## Playwright の注意
 

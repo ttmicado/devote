@@ -18,6 +18,7 @@ import {
   type SearchQuery,
   type SiteAdapter,
 } from "../../adapter.js";
+import { describeBody, detectBlockPage } from "../../block.js";
 import {
   parseDepositLike,
   parseFloorLabel,
@@ -64,6 +65,9 @@ const STRIP = "script, style, noscript, svg, iframe, select, .navLayout_nav, #na
 
 async function getOk(ctx: FetchContext, url: string) {
   const res = await ctx.get(url);
+  const blocked = detectBlockPage(res.body, res.status);
+  if (blocked)
+    throw new Error(`ブロック・チャレンジの可能性（${blocked}）: ${url} ${describeBody(res.body)}`);
   if (res.status !== 200) throw new Error(`HTTP ${res.status}: ${url}`);
   return res;
 }
@@ -94,6 +98,21 @@ export function bundle(sourceUrl: string, pages: { url: string; kind: string; ht
  * 「公開空室0室」「公開空室無し」と明示されている建物は取得しない。
  */
 export function extractBuildingUrls(html: string, indexUrl: string, defaultAreas: string[]) {
+  return [...scanBuildings(html, indexUrl, defaultAreas).entries()]
+    .filter(([, v]) => v)
+    .map(([root]) => `${root}unit_empty/`);
+}
+
+/**
+ * インデックスページに載っている対象エリアの建物（空室の有無を問わない）の数。
+ * 0 ならブロックページ・構造変化・リダイレクト先の誤りで、空室0とは区別する。
+ */
+export function countBuildingLinks(html: string, indexUrl: string, defaultAreas: string[]) {
+  return scanBuildings(html, indexUrl, defaultAreas).size;
+}
+
+/** 建物のルートURL → 空室ありか（不明は true） */
+function scanBuildings(html: string, indexUrl: string, defaultAreas: string[]) {
   const $ = cheerio.load(html);
   const base = new URL(indexUrl);
   const indexArea = base.pathname.match(/^\/buildlist\/([^/]+)\/$/)?.[1];
@@ -115,7 +134,7 @@ export function extractBuildingUrls(html: string, indexUrl: string, defaultAreas
     const hasVacancy = count == null ? true : /^\d+$/.test(count) && Number(count) > 0;
     roots.set(root, (roots.get(root) ?? true) && hasVacancy);
   });
-  return [...roots.entries()].filter(([, v]) => v).map(([root]) => `${root}unit_empty/`);
+  return roots;
 }
 
 /** class 属性のいずれかのトークンが suffix で終わる要素 */
@@ -189,6 +208,13 @@ export function createSumitomoAdapter(cfg: SumitomoSiteConfig): SiteAdapter {
 
     async fetchList(ctx, url) {
       const index = await getOk(ctx, url);
+      // 建物リンクが1件も無いインデックスは「空室0」ではなく異常（ブロック・構造変化）。
+      // 黙って0件の一覧にせず、エラーにしてログに残す
+      if (countBuildingLinks(index.body, index.url, cfg.defaultAreas) === 0) {
+        throw new Error(
+          `建物一覧に対象エリアの建物リンクが無い（ブロック・構造変化の可能性）: ${index.url} ${describeBody(index.body)}`,
+        );
+      }
       const pages: { url: string; kind: string; html: string }[] = [];
       for (const u of extractBuildingUrls(index.body, index.url, cfg.defaultAreas)) {
         const res = await getOk(ctx, u);

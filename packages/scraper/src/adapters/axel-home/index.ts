@@ -29,6 +29,7 @@ import { parseJpDate, parseStructure, parseTotalFloors } from "./helpers.js";
  * - 空室のある建物が先、空室0の建物が後ろに並ぶ。空室0の建物が出たページで巡回を打ち切る
  *   （港区は全151ページのうち空室ありは十数ページ）
  * - 詳細は部屋単位 /property/{物件番号}/outline/{部屋ID}。sourceListingId は部屋ID（"r44026"）
+ * - 賃料が非公開の部屋（事業用に多い「＊未公開情報あり」等）は一覧で除外する（詳細にも賃料が無い）
  *
  * 事業用（事務所・店舗）:
  * - 用途はURLの usage で切り替わる（residence=住居、business=事務所・店舗）。詳細ページの本文は
@@ -96,7 +97,7 @@ export default defineAdapter({
     requiresLogin: false,
     rateLimit: { minIntervalMs: 2000, maxConcurrency: 1 },
     schedule: { listCron: "45 */3 * * *", detailRevisitHours: 48 },
-    parserVersion: "2",
+    parserVersion: "3",
   },
 
   queries: () => AREA_QUERIES,
@@ -131,6 +132,10 @@ export default defineAdapter({
         const href = $card.find("a.c-result-section__card-link").attr("href");
         if (!id || !href) throw new Error(`一覧のカードから ID/リンクが取れない: ${$card.html()}`);
         const priceText = squash($card.find(".c-result-section__card-price").text());
+        // 賃料が非公開の部屋（「＊未公開情報あり」「（未公開住戸あり）」「-」）は詳細にも賃料が無く取り込めない。
+        // 詳細を取りに行くと毎回エラーになり件数上限も消費するので一覧で除外する。
+        // 数字を含むのに解釈できない表記は除外せず、詳細の normalize で throw させて構造変化に気づけるようにする
+        if (!/\d/.test(priceText)) return;
         const rent = priceText.match(/^([\d,]+)\s*円/)?.[1];
         items.push({
           sourceListingId: id,

@@ -2,6 +2,7 @@ import { join } from "node:path";
 import { crawlRuns, type Db, listings } from "@devote/db";
 import {
   type BrowserFetchContext,
+  type CrawlResult,
   crawlSource,
   createBrowserFetchContext,
   createHttpFetcher,
@@ -11,6 +12,24 @@ import {
 import { and, desc, eq, isNotNull } from "drizzle-orm";
 import { ingestCrawl } from "./ingest.js";
 import { budgetForRun, isWithinActiveHours, jstCalendar, recordUsage } from "./quota.js";
+
+/**
+ * 巡回結果のうちログに出す件数。
+ * - seen: 一覧で見えた物件数
+ * - unchanged: 一覧の主要値（listHash）が前回と同じで詳細取得を省略した物件数
+ * - detailRequests: 詳細の取得を試みた件数（= fetched + errors）
+ * - deferred: 件数上限で次回に回した物件数
+ */
+export function summarizeCrawl(result: CrawlResult) {
+  return {
+    seen: result.seenIds.length,
+    unchanged: result.seenIds.length - result.detailRequests - result.deferred,
+    detailRequests: result.detailRequests,
+    fetched: result.listings.length,
+    deferred: result.deferred,
+    listCompleted: result.listCompleted,
+  };
+}
 
 /** 1ソースを巡回して DB に反映し、crawl_runs に結果を残す */
 const MAX_DETAILS = Number(process.env.DEVOTE_MAX_DETAILS_PER_SOURCE ?? 300);
@@ -88,6 +107,7 @@ export async function runSource(
     await browser?.saveSession();
     const stats = await ingestCrawl(db, source, result);
     const warnings = [
+      ...result.warnings,
       ...stats.warnings,
       ...(result.deferred > 0 ? [`詳細 ${result.deferred} 件は件数上限のため次回に取得`] : []),
       ...result.errors.slice(0, 20).map((e) => `${e.item.sourceListingId}: ${e.error}`),
@@ -107,7 +127,16 @@ export async function runSource(
         finishedAt: new Date(),
       })
       .where(eq(crawlRuns.id, run.id));
-    return { source, ok: true as const, ...stats, errors: result.errors.length };
+    // バッチのログ（GitHub Actions）だけで状況が分かるように、一覧の件数・詳細の内訳・警告を出す。
+    // inArea / newCount は「今回詳細を取得した物件」の数なので、変化が無い回は 0 になるのが正常
+    return {
+      source,
+      ok: true as const,
+      ...summarizeCrawl(result),
+      ...stats,
+      warnings,
+      errors: result.errors.length,
+    };
   } catch (e) {
     const message = e instanceof Error ? e.message : String(e);
     await db
