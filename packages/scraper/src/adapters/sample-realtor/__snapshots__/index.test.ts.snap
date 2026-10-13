@@ -1,0 +1,57 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`sample-realtor normalize > 詳細ページを NormalizedListing に正規化する 1`] = `
+{
+  "adAllowed": null,
+  "address": {
+    "city": "目黒区",
+    "prefecture": "東京都",
+    "raw": "東京都目黒区上目黒２丁目",
+    "town": "上目黒",
+  },
+  "agencyName": "サンプル不動産",
+  "areaSqm": 70.12,
+  "builtYearMonth": "2016-04",
+  "dealType": "rent",
+  "deposit": 180000,
+  "direction": "南",
+  "features": [
+    "auto_lock",
+    "separate_bath_toilet",
+    "independent_washbasin",
+    "delivery_box",
+    "south_facing",
+  ],
+  "floor": 4,
+  "imageUrls": [
+    "https://sample-realtor.example/img/R-10001/1.jpg",
+    "https://sample-realtor.example/img/R-10001/2.jpg",
+  ],
+  "keyMoney": 0,
+  "layout": "2LDK",
+  "managementFee": 10000,
+  "price": 180000,
+  "source": "sample-realtor",
+  "sourceListingId": "R-10001",
+  "sourceUpdatedAt": "2026-10-11T15:00:00.000Z",
+  "stations": [
+    {
+      "busMinutes": null,
+      "line": "東急東横線",
+      "station": "中目黒",
+      "walkMinutes": 6,
+    },
+    {
+      "busMinutes": null,
+      "line": "東京メトロ日比谷線",
+      "station": "中目黒",
+      "walkMinutes": 7,
+    },
+  ],
+  "structure": "RC",
+  "title": "パークサイド中目黒 402",
+  "totalFloors": 8,
+  "transactionMode": "general_agency",
+  "url": "https://sample-realtor.example/rent/R-10001",
+}
+`;

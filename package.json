@@ -1,0 +1,30 @@
+{
+  "name": "devote",
+  "private": true,
+  "version": "0.0.0",
+  "description": "あなたにピッタリ合う物件を、最速で・手間なく・くまなく提案してくれるAI",
+  "type": "module",
+  "packageManager": "pnpm@10.28.0",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "build": "pnpm -r build",
+    "typecheck": "pnpm -r typecheck",
+    "test": "vitest run",
+    "lint": "biome check .",
+    "format": "biome format --write .",
+    "db:up": "docker compose up -d db",
+    "db:down": "docker compose down",
+    "db:generate": "pnpm --filter @devote/db generate",
+    "db:migrate": "pnpm --filter @devote/db migrate",
+    "scrape": "pnpm --filter @devote/scraper scrape"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.2.0",
+    "@types/node": "^22.18.0",
+    "tsx": "^4.20.0",
+    "typescript": "^5.9.0",
+    "vitest": "^3.2.0"
+  }
+}

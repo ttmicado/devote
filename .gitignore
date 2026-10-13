@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.env
+.env.local
+*.log
+coverage/
+# Crawlee のローカルストレージ / 生HTMLスナップショット
+storage/
+.DS_Store
