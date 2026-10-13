@@ -1,0 +1,82 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`sumitomo-latour normalize > 部屋ページ＋建物概要を NormalizedListing に正規化する 1`] = `
+{
+  "adAllowed": null,
+  "address": {
+    "city": "港区",
+    "prefecture": "東京都",
+    "raw": "東京都港区三田三丁目5番27号",
+    "town": "三田",
+  },
+  "agencyName": "住友不動産",
+  "areaSqm": 55,
+  "builtYearMonth": "2006-09",
+  "dealType": "rent",
+  "deposit": 1320000,
+  "direction": null,
+  "extra": {
+    "その他": "近隣ビルにて大型ハイルーフ駐車場契約可。東京湾・レインボーブリッジを望む眺望",
+    "入居時期": "即入居可 ※諸手続き完了次第",
+    "契約形態": "定期借家契約（2年）",
+    "建物設備": "24時間コンシェルジュサービス、パーティールーム(有料)、フィットネスルーム、トランクルーム(有料)、駐車場あり※1、バイク置き場あり※1、駐輪場あり※1、大型犬相談可※2、ペット可（一部住戸除く）※2、災害用備蓄品",
+    "戸数": "総戸数109戸、賃貸戸数109戸
+32Fー42F（公開空室6室）
+43F（公開空室無し）",
+    "賃料備考": "敷金3ヶ月/礼金0/共益費0",
+    "部屋": "3601号室/1R",
+  },
+  "features": [
+    "pet_ok",
+  ],
+  "floor": 36,
+  "imageUrls": [
+    "https://www.sumitomo-latour.jp/bldg/imgfile.php?id1=25185&id2=A&id3=1R&id4=1994",
+    "https://www.sumitomo-latour.jp/bldg/25185/unit/A-M/photo/1.jpg",
+    "https://www.sumitomo-latour.jp/bldg/25185/unit/A-M/photo/2.jpg",
+    "https://www.sumitomo-latour.jp/bldg/25185/unit/A-M/photo/4.jpg",
+    "https://www.sumitomo-latour.jp/bldg/25185/unit/A-M/photo/5.jpg",
+    "https://www.sumitomo-latour.jp/bldg/25185/unit/A-M/photo/7.jpg",
+    "https://www.sumitomo-latour.jp/bldg/25185/img/top/1.jpg",
+    "https://www.sumitomo-latour.jp/bldg/25185/img/top/3.jpg",
+    "https://www.sumitomo-latour.jp/bldg/25185/img/top/4.jpg",
+    "https://www.sumitomo-latour.jp/bldg/25185/img/top/5.jpg",
+    "https://www.sumitomo-latour.jp/bldg/25185/img/top/6.jpg",
+    "https://www.sumitomo-latour.jp/bldg/25185/img/top/9.jpg",
+    "https://www.sumitomo-latour.jp/bldg/25185/img/service/img_service.jpg",
+  ],
+  "keyMoney": 0,
+  "layout": "1R",
+  "managementFee": 0,
+  "price": 440000,
+  "propertyType": "mansion",
+  "source": "sumitomo-latour",
+  "sourceListingId": "1994",
+  "sourceUpdatedAt": "2026-10-12T15:00:00.000Z",
+  "stations": [
+    {
+      "busMinutes": null,
+      "line": "都営三田線・浅草線",
+      "station": "三田",
+      "walkMinutes": 8,
+    },
+    {
+      "busMinutes": null,
+      "line": "JR山手線・京浜東北線",
+      "station": "田町",
+      "walkMinutes": 9,
+    },
+    {
+      "busMinutes": null,
+      "line": "都営浅草線",
+      "station": "泉岳寺",
+      "walkMinutes": 6,
+    },
+  ],
+  "structure": "S",
+  "title": "ラ・トゥール三田",
+  "totalFloors": 43,
+  "transactionMode": "owner",
+  "url": "https://www.sumitomo-latour.jp/buildlist/minato_area/latour-mita/1994/",
+}
+`;

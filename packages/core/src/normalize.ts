@@ -27,7 +27,7 @@ const EMPTY_MARKERS = /^(-|－|なし|無|無し|0|0円|ー|—)$/;
  */
 export function parseYen(input: string | null | undefined): number | null {
   if (input == null) return null;
-  const s = clean(input);
+  const s = clean(input).replace(/^(月額|税込|価格)/, "");
   if (s === "") return null;
   if (EMPTY_MARKERS.test(s)) return 0;
   const m = s.match(/^(?:(\d+(?:\.\d+)?)億)?(?:(\d+(?:\.\d+)?)万)?(\d+)?円?$/);
@@ -148,13 +148,18 @@ export function parseFloor(input: string | null | undefined): {
 } {
   if (input == null) return { floor: null, totalFloors: null };
   const s = clean(input);
-  const total = s.match(/(\d+)階建/);
-  const basement = s.match(/地下(\d+)階(?!建)/);
-  const above = s.replace(/(?:地上)?\d+階建/, "").match(/(\d+)階/);
+  // 総階数は「地上N階」を優先（「地上32階地下1階建」の「1階建」を総階数と誤認しない）
+  const total = s.match(/地上(\d+)階/)?.[1] ?? s.match(/(?<!地下)(\d+)階建/)?.[1];
+  const rest = s
+    .replace(/地上\d+階(建)?/g, "")
+    .replace(/地下\d+階建/g, "")
+    .replace(/\d+階建/g, "");
+  const basement = rest.match(/地下(\d+)階/);
+  const above = rest.match(/(\d+)階/);
   let floor: number | null = null;
   if (basement) floor = -Number(basement[1]);
   else if (above) floor = Number(above[1]);
-  return { floor, totalFloors: total ? Number(total[1]) : null };
+  return { floor, totalFloors: total ? Number(total) : null };
 }
 
 /** 築年数（基準日時点、満年数） */

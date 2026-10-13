@@ -1,0 +1,89 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`mori-living normalize > 詳細ページ＋建物ページを NormalizedListing に正規化する 1`] = `
+{
+  "adAllowed": null,
+  "address": {
+    "city": "港区",
+    "prefecture": "東京都",
+    "raw": "東京都港区六本木6丁目12-1",
+    "town": "六本木",
+  },
+  "agencyName": "森ビル",
+  "areaSqm": 47.58,
+  "builtYearMonth": "2003-04",
+  "dealType": "rent",
+  "deposit": 2040000,
+  "direction": null,
+  "extra": {
+    "その他": "賃借人は、退去時の清掃費用として、貸室面積1㎡当たり1,500円（税別）を負担するものとする。",
+    "入居可能年月": "原状回復次第随時。詳しくはお問い合わせください。",
+    "契約形態": "定期借家契約（原則3年）",
+    "広告主": "森ビル株式会社",
+    "更新料": "なし",
+    "総戸数": "レジデンスA／35戸
+レジデンスB／333戸
+レジデンスC／198戸",
+    "耐震構造": "レジデンスA／耐震構造
+レジデンスB／制振構造
+レジデンスC／制振構造",
+    "部屋番号": "A610",
+    "間取り": "1BR",
+  },
+  "features": [
+    "delivery_box",
+    "pet_ok",
+  ],
+  "floor": 6,
+  "imageUrls": [
+    "https://www.moriliving.com/assets/images/layout/000601_01_RHA_610.svg",
+    "https://www.moriliving.com/assets/images/pc/residence/roppongihills/fvl.webp",
+    "https://www.moriliving.com/assets/images/common/residence/roppongihills/image01l.webp",
+    "https://www.moriliving.com/assets/images/common/residence/roppongihills/image02l.webp",
+    "https://www.moriliving.com/assets/images/common/residence/roppongihills/image03l.webp",
+    "https://www.moriliving.com/assets/images/common/residence/roppongihills/broadimage01l.webp",
+    "https://www.moriliving.com/assets/images/common/residence/roppongihills/image04l.webp",
+    "https://www.moriliving.com/assets/images/common/residence/roppongihills/image05l.webp",
+    "https://www.moriliving.com/assets/images/common/residence/roppongihills/image06l.webp",
+    "https://www.moriliving.com/assets/images/common/residence/roppongihills/broadimage02l.webp",
+    "https://www.moriliving.com/assets/images/common/residence/roppongihills/image07l.webp",
+    "https://www.moriliving.com/assets/images/common/residence/roppongihills/image08l.webp",
+    "https://www.moriliving.com/assets/images/common/residence/roppongihills/image09l.webp",
+    "https://www.moriliving.com/assets/images/common/residence/roppongihills/broadimage03l.webp",
+  ],
+  "keyMoney": 0,
+  "layout": "1LDK",
+  "managementFee": 0,
+  "price": 510000,
+  "propertyType": "mansion",
+  "repairReserveFee": null,
+  "source": "mori-living",
+  "sourceListingId": "0101-A610",
+  "sourceUpdatedAt": null,
+  "stations": [
+    {
+      "busMinutes": null,
+      "line": "東京メトロ日比谷線",
+      "station": "六本木",
+      "walkMinutes": 6,
+    },
+    {
+      "busMinutes": null,
+      "line": "都営地下鉄大江戸線",
+      "station": "六本木",
+      "walkMinutes": 10,
+    },
+    {
+      "busMinutes": null,
+      "line": "東京メトロ南北線/都営地下鉄大江戸線",
+      "station": "麻布十番",
+      "walkMinutes": 10,
+    },
+  ],
+  "structure": "RC",
+  "title": "六本木ヒルズレジデンスＡ",
+  "totalFloors": 6,
+  "transactionMode": "owner",
+  "url": "https://www.moriliving.com/ja/vacancy/0101/A610.html",
+}
+`;

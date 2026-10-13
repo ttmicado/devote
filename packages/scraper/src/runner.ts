@@ -12,12 +12,19 @@ export interface CrawlResult {
   listHashes: Record<string, string>;
   /** 一覧の表示総件数と実際に拾えた件数のずれ（構造変化の兆候） */
   countMismatch: boolean;
+  /** maxDetails を超えたため次回に回した詳細の件数 */
+  deferred: number;
 }
 
 export interface CrawlOptions {
   /** 既知の listHash（sourceListingId → hash）。一致する物件は詳細取得を省略する */
   knownListHashes?: Map<string, string>;
   maxPages?: number;
+  /**
+   * 1回の巡回で取得する詳細ページの上限。初回は物件数が多いサイト（数百〜千件）があるため、
+   * 上限を超えた分は次回以降に回す（未取得の物件は listHash が未登録なので次回また対象になる）。
+   */
+  maxDetails?: number;
   /** 取得した生HTMLの保存フック（raw_snapshots） */
   onSnapshot?: (kind: "list" | "detail", url: string, body: string) => Promise<void> | void;
 }
@@ -31,7 +38,12 @@ export async function crawlSource(
   ctx: FetchContext,
   opts: CrawlOptions = {},
 ): Promise<CrawlResult> {
-  const { knownListHashes = new Map(), maxPages = 100, onSnapshot } = opts;
+  const {
+    knownListHashes = new Map(),
+    maxPages = 100,
+    maxDetails = Number.POSITIVE_INFINITY,
+    onSnapshot,
+  } = opts;
   const listings: NormalizedListing[] = [];
   const errors: CrawlResult["errors"] = [];
   const seen = new Map<string, ListItem>();
@@ -60,8 +72,15 @@ export async function crawlSource(
     if (totalCount != null && totalCount !== found) countMismatch = true;
   }
 
+  let detailCount = 0;
+  let deferred = 0;
   for (const item of seen.values()) {
     if (knownListHashes.get(item.sourceListingId) === item.listHash) continue;
+    if (detailCount >= maxDetails) {
+      deferred++;
+      continue;
+    }
+    detailCount++;
     try {
       const html = adapter.fetchDetail
         ? await adapter.fetchDetail(ctx, item)
@@ -81,5 +100,6 @@ export async function crawlSource(
     seenIds: [...seen.keys()],
     listHashes: Object.fromEntries([...seen.values()].map((i) => [i.sourceListingId, i.listHash])),
     countMismatch,
+    deferred,
   };
 }

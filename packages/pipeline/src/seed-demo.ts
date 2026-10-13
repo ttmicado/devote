@@ -1,0 +1,134 @@
+/**
+ * ローカル確認用のデモデータ投入（本番では使わない）。
+ *   pnpm --filter @devote/pipeline exec tsx src/seed-demo.ts
+ */
+import { NormalizedListing } from "@devote/core";
+import { createDb } from "@devote/db";
+import { ingestCrawl } from "./ingest";
+
+const db = createDb();
+const base = {
+  dealType: "rent" as const,
+  deposit: null,
+  keyMoney: null,
+  structure: "RC",
+  direction: "南",
+  transactionMode: "general_agency" as const,
+  adAllowed: true,
+  agencyName: "デモ不動産",
+  sourceUpdatedAt: null,
+};
+const demo = [
+  {
+    id: "D1",
+    title: "デモタワー六本木 1204",
+    city: "港区",
+    town: "六本木",
+    st: "六本木",
+    walk: 4,
+    price: 320_000,
+    fee: 20_000,
+    layout: "2LDK",
+    area: 70.2,
+    built: "2016-03",
+    floor: 12,
+    features: ["auto_lock", "delivery_box", "separate_bath_toilet"],
+  },
+  {
+    id: "D2",
+    title: "デモレジデンス麻布十番 501",
+    city: "港区",
+    town: "麻布十番",
+    st: "麻布十番",
+    walk: 6,
+    price: 305_000,
+    fee: 15_000,
+    layout: "2LDK",
+    area: 69.5,
+    built: "2012-09",
+    floor: 5,
+    features: ["auto_lock", "pet_ok"],
+  },
+  {
+    id: "D3",
+    title: "デモコート勝どき 2301",
+    city: "中央区",
+    town: "勝どき",
+    st: "勝どき",
+    walk: 3,
+    price: 280_000,
+    fee: 18_000,
+    layout: "2LDK",
+    area: 72.1,
+    built: "2018-01",
+    floor: 23,
+    features: ["auto_lock", "delivery_box"],
+  },
+  {
+    id: "D4",
+    title: "デモハイツ渋谷 302",
+    city: "渋谷区",
+    town: "神宮前",
+    st: "明治神宮前",
+    walk: 8,
+    price: 210_000,
+    fee: 10_000,
+    layout: "1LDK",
+    area: 45.3,
+    built: "2008-04",
+    floor: 3,
+    features: ["separate_bath_toilet"],
+  },
+  {
+    id: "D5",
+    title: "デモテラス豊洲 1503",
+    city: "江東区",
+    town: "豊洲",
+    st: "豊洲",
+    walk: 5,
+    price: 295_000,
+    fee: 20_000,
+    layout: "3LDK",
+    area: 80.4,
+    built: "2020-07",
+    floor: 15,
+    features: ["auto_lock", "delivery_box", "pet_ok"],
+  },
+];
+const listings = demo.map((d) =>
+  NormalizedListing.parse({
+    ...base,
+    source: "demo",
+    sourceListingId: d.id,
+    url: `https://example.com/${d.id}`,
+    title: d.title,
+    address: {
+      prefecture: "東京都",
+      city: d.city,
+      town: d.town,
+      raw: `東京都${d.city}${d.town}1丁目`,
+    },
+    stations: [{ line: null, station: d.st, walkMinutes: d.walk, busMinutes: null }],
+    price: d.price,
+    managementFee: d.fee,
+    layout: d.layout,
+    areaSqm: d.area,
+    builtYearMonth: d.built,
+    floor: d.floor,
+    totalFloors: d.floor + 10,
+    features: d.features,
+    imageUrls: [],
+  }),
+);
+console.log(
+  await ingestCrawl(db, "demo", {
+    listings,
+    errors: [],
+    listCompleted: true,
+    countMismatch: false,
+    seenIds: listings.map((l) => l.sourceListingId),
+    listHashes: {},
+    deferred: 0,
+  }),
+);
+process.exit(0);

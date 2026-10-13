@@ -1,5 +1,11 @@
 import type { SiteAdapter } from "./adapter.js";
+import axelHome from "./adapters/axel-home/index.js";
+import kencorp from "./adapters/kencorp/index.js";
+import moriLiving from "./adapters/mori-living/index.js";
+import rf12 from "./adapters/rf12/index.js";
 import sampleRealtor from "./adapters/sample-realtor/index.js";
+import sumitomoLatour from "./adapters/sumitomo-latour/index.js";
+import sumitomoResidence from "./adapters/sumitomo-residence/index.js";
 
 interface Registration {
   adapter: SiteAdapter;
@@ -12,6 +18,13 @@ interface Registration {
 /** 新しいソースはここに登録する */
 const registrations: Registration[] = [
   { adapter: sampleRealtor, production: false, verified: true },
+  // 不動産会社の自社サイト（レインズに載せない傾向の会社）
+  { adapter: sumitomoResidence, production: true, verified: true },
+  { adapter: sumitomoLatour, production: true, verified: true },
+  { adapter: moriLiving, production: true, verified: true },
+  { adapter: rf12, production: true, verified: true },
+  { adapter: kencorp, production: true, verified: true },
+  { adapter: axelHome, production: true, verified: true },
 ];
 
 export const adapters: Record<string, SiteAdapter> = Object.fromEntries(

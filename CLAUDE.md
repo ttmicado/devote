@@ -18,14 +18,23 @@ pnpm db:up         # docker compose で Postgres + pgvector を起動（ロー�
 pnpm db:migrate    # DATABASE_URL に対してマイグレーションを実行
 pnpm db:generate   # packages/db/src/schema.ts の変更からマイグレーションを生成
 pnpm scrape sample-realtor --fixtures   # スクレイパーのオフラインデモ
+pnpm dev                       # Web（apps/web, http://localhost:3000）。apps/web/.env.local に環境変数
+pnpm worker crawl [sourceId]   # 巡回 → DB 取り込み（省略時は有効な全ソース）
+pnpm worker all                # 巡回 → マッチング → 通知（GitHub Actions が30分ごとに実行）
 ```
+
+デプロイ構成と手順は `docs/deploy.md`、会員サイト（レインズ・ATBB・ITANDI BB）は `docs/member-sites.md`。
 
 ## 構成
 
 - `packages/core` — ドメイン型・正規化・マッチング（純粋関数のみ。I/O を持たない）
 - `packages/db` — Drizzle スキーマとマイグレーション
-- `packages/scraper` — アダプター基盤と各サイトのアダプター
-- `apps/*` — Phase 1 で追加する（web: Next.js、worker: pg-boss）
+- `packages/scraper` — アダプター基盤と各サイトのアダプター（登録は `src/registry.ts`）
+- `packages/services` — マッチング、類似物件、通知（LINE / メール）。Web とバッチの両方から使う
+- `packages/pipeline` — 巡回結果の取り込み（差分検知・名寄せ・掲載終了）とバッチ CLI
+- `apps/web` — Next.js 16（AIチャット、物件、問い合わせ、通知設定、管理画面 /admin、LINE Webhook）
+
+Web から import するパッケージ（core / db / services）は Turbopack のため**拡張子なしの相対 import** にする（`./foo`、`./foo.js` は不可）。
 
 ## 規約
 

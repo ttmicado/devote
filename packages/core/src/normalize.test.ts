@@ -19,6 +19,7 @@ describe("parseYen", () => {
     ["1億2,980万円", 129_800_000],
     ["4980万円", 49_800_000],
     ["なし", 0],
+    ["月額30,020円", 30_020],
     ["-", 0],
     ["お問い合わせ", null],
     ["", null],
@@ -115,6 +116,8 @@ describe("parseFloor", () => {
     ["10階建の3階", { floor: 3, totalFloors: 10 }],
     ["地下1階/地上5階建", { floor: -1, totalFloors: 5 }],
     ["2階", { floor: 2, totalFloors: null }],
+    ["地上32階 地下1階建", { floor: null, totalFloors: 32 }],
+    ["15階／地上32階地下1階建", { floor: 15, totalFloors: 32 }],
   ])("%s", (input, expected) => {
     expect(parseFloor(input)).toEqual(expected);
   });

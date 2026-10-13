@@ -22,14 +22,20 @@ async function crawl(ids: string[]) {
     const known = all.map((a) => a.meta.id).join(", ");
     throw new Error(`不明または無効なソース: ${ids.join(", ")}（有効: ${known}）`);
   }
-  const results = [];
-  // サイトごとに順番に（同じサイトへの同時アクセスを避ける。サイト間の並列化は今後）
-  for (const a of targets) {
-    console.log(`▶ crawl ${a.meta.id}`);
-    const r = await runSource(db, a);
-    console.log(JSON.stringify(r));
-    results.push(r);
-  }
+  // サイト間は並列（同じサイトへのアクセスは各アダプターのレート制御で直列）
+  const parallel = Number(process.env.DEVOTE_CRAWL_PARALLEL ?? 3);
+  const queue = [...targets];
+  const results: Awaited<ReturnType<typeof runSource>>[] = [];
+  await Promise.all(
+    Array.from({ length: Math.min(parallel, queue.length) }, async () => {
+      for (let a = queue.shift(); a; a = queue.shift()) {
+        console.log(`▶ crawl ${a.meta.id}`);
+        const r = await runSource(db, a);
+        console.log(JSON.stringify(r));
+        results.push(r);
+      }
+    }),
+  );
   return results;
 }
 

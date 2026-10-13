@@ -33,8 +33,11 @@
 | `packages/core` | ドメイン型（Zod）、表記揺れの正規化、設備タグ辞書、マッチングスコア、名寄せキー | 実装・テスト済み |
 | `packages/db` | Drizzle スキーマ、マイグレーション（`drizzle/`） | 実装済み・適用確認済み |
 | `packages/scraper` | アダプターのインターフェース、HTTPフェッチャー（レート制御・リトライ）、巡回ランナー、CLI、リファレンスアダプター | 実装・テスト済み |
-| `apps/web` | Next.js: AIチャット、条件確認、管理画面 | Phase 1 |
-| `apps/worker` | pg-boss: スケジューラ、収集パイプライン、マッチャー、通知 | Phase 1 |
+| `packages/services` | マッチング、類似物件、LINE / メール通知、二重送信防止 | 実装・テスト済み |
+| `packages/pipeline` | 巡回結果の取り込み（差分・名寄せ・掲載終了）、バッチ CLI | 実装・DB結合テスト済み |
+| `apps/web` | Next.js 16: AIチャット、おすすめ物件、物件詳細・内見問い合わせ、通知設定、管理画面、LINE Webhook | 実装・ブラウザで通し確認済み |
+
+定期実行は pg-boss ではなく **GitHub Actions の cron（30分ごと）** で `pnpm worker all` を動かす構成にした（Vercel の関数は Playwright を動かすには制限が大きいため）。
 
 ## 技術選定
 
@@ -44,11 +47,11 @@
 | パッケージ | pnpm workspaces | モノレポ |
 | DB | PostgreSQL 16 + pgvector | 類似物件推薦・名寄せのベクトル検索。キューも Postgres に寄せる |
 | ORM | Drizzle | 型安全、`vector()` 型に対応 |
-| キュー | pg-boss（初期） | Redis が不要。規模が大きくなったら BullMQ へ |
+| 定期実行 | GitHub Actions cron | 追加インフラ不要。会員サイトに国内IPが必要ならセルフホストランナー |
 | スクレイピング | cheerio（静的HTML）／Playwright（JS・ログイン） | アダプターごとに `fetchMode` で選ぶ |
-| AI | Claude API（`@anthropic-ai/sdk`） | 会話は Sonnet 5.5、要約・通知文は Haiku 5.5、難しい判断は Opus 5.5 |
+| AI | Claude API（`@anthropic-ai/sdk`） | 会話は `claude-opus-5-5`（`DEVOTE_CHAT_MODEL` で変更可） |
 | 埋め込み | Voyage AI 等（未決） | Claude API には埋め込みモデルがない |
-| 通知 | LINE Messaging API、Resend、Instagram Messaging API | Instagram は24時間ウィンドウの制約があるため会話型の利用のみ |
+| 通知 | LINE Messaging API（フリープラン）、Resend | Instagram は24時間ウィンドウの制約のため見送り |
 | Lint/Format | Biome | 1ツールで済む |
 | テスト | Vitest | パーサはフィクスチャHTMLのスナップショットテストで固定する |
 

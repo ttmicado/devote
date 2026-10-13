@@ -22,8 +22,19 @@ description: 不動産サイト（レインズ、業者間サイト、不動産�
    - 想定外の構造では黙って null を返すのではなく、必須項目（ID・賃料/価格）が取れなければ throw する（ランナーが errors に集計する）
    - `meta.parserVersion` はパーサを変えるたびに上げる
 4. **テスト** `index.test.ts`: parseList（件数・次ページ・総件数）、normalize のスナップショット、表記揺れのケース
-5. **登録**: `packages/scraper/src/registry.ts` に追加
-6. **確認**: `pnpm test`、`pnpm typecheck`、`pnpm lint`。実サイトでは `pnpm scrape <id>` で少量を確認する
+5. **登録**: `packages/scraper/src/registry.ts` に追加（`production` / `verified` フラグ。未検証は `ENABLE_UNVERIFIED_SOURCES=1` のときだけ巡回）
+6. **確認**: `pnpm test`、`pnpm typecheck`、`pnpm lint`。実サイトでは `DEVOTE_MAX_DETAILS_PER_SOURCE=5 pnpm worker crawl <id>`（ローカルDBに取り込み）で確認する
+
+## 実装済みのソース
+
+| ID | サイト | 取得方式 |
+|---|---|---|
+| `sumitomo-residence` / `sumitomo-latour` | 住友不動産 ラ・トゥール（2サイト・共通実装） | HTTP（建物→空室ページを束ねる） |
+| `mori-living` | 森ビル | 内部JSON API＋詳細HTML |
+| `rf12` | REIT FIND | HTTP（SSR） |
+| `kencorp` | ケン・コーポレーション（賃貸＋売買） | 一覧は内部JSON API、詳細はSSR |
+| `axel-home` | アクセルホーム | HTTP（SSR） |
+| `reins` / `atbb` / `itandi-bb` | 会員サイト | Playwright（未検証。`docs/member-sites.md`） |
 
 ## レート制御・マナー
 

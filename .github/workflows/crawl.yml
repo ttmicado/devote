@@ -19,7 +19,7 @@ concurrency:
 jobs:
   crawl:
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    timeout-minutes: 55
     env:
       DATABASE_URL: ${{ secrets.DATABASE_URL }}
       APP_URL: ${{ secrets.APP_URL }}

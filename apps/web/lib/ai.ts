@@ -130,7 +130,11 @@ const TOOLS: Anthropic.Beta.BetaTool[] = [
   },
 ];
 
-const client = new Anthropic();
+let client: Anthropic | null = null;
+const anthropic = () => {
+  client ??= new Anthropic();
+  return client;
+};
 
 export function emptyCondition(): SearchCondition {
   return SearchCondition.parse({
@@ -244,7 +248,7 @@ export async function runChatTurn(userId: string, userText: string) {
   });
 
   for (let round = 0; round < MAX_TOOL_ROUNDS; round++) {
-    const response = await client.beta.messages.create({
+    const response = await anthropic().beta.messages.create({
       model: MODEL,
       max_tokens: 16000,
       betas: ["server-side-fallback-2026-07-01"],

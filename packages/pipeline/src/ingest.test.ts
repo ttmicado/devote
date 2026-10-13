@@ -48,6 +48,7 @@ function result(ls: NormalizedListing[], seen = ls.map((l) => l.sourceListingId)
     countMismatch: false,
     seenIds: seen,
     listHashes: Object.fromEntries(seen.map((s) => [s, `h-${s}`])),
+    deferred: 0,
   };
 }
 

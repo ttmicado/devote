@@ -12,7 +12,13 @@ import { and, eq, isNotNull } from "drizzle-orm";
 import { ingestCrawl } from "./ingest.js";
 
 /** 1ソースを巡回して DB に反映し、crawl_runs に結果を残す */
-export async function runSource(db: Db, adapter: SiteAdapter, opts: { maxPages?: number } = {}) {
+const MAX_DETAILS = Number(process.env.DEVOTE_MAX_DETAILS_PER_SOURCE ?? 300);
+
+export async function runSource(
+  db: Db,
+  adapter: SiteAdapter,
+  opts: { maxPages?: number; maxDetails?: number } = {},
+) {
   const source = adapter.meta.id;
   const [run] = await db.insert(crawlRuns).values({ source, status: "running" }).returning();
   if (!run) throw new Error("crawl_runs insert failed");
@@ -48,11 +54,13 @@ export async function runSource(db: Db, adapter: SiteAdapter, opts: { maxPages?:
     const result = await crawlSource(adapter, ctx, {
       knownListHashes: new Map(known.map((k) => [k.id, k.hash as string])),
       maxPages: opts.maxPages,
+      maxDetails: opts.maxDetails ?? MAX_DETAILS,
     });
     await browser?.saveSession();
     const stats = await ingestCrawl(db, source, result);
     const warnings = [
       ...stats.warnings,
+      ...(result.deferred > 0 ? [`詳細 ${result.deferred} 件は件数上限のため次回に取得`] : []),
       ...result.errors.slice(0, 20).map((e) => `${e.item.sourceListingId}: ${e.error}`),
     ];
     await db

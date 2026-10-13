@@ -1,0 +1,2136 @@
+{
+    "results": [
+        {
+            "meta": {
+                "residence": 6,
+                "residence_en": "Roppongi Hills Residence A",
+                "residence_kana": "ロッポンギヒルズレジデンス",
+                "layout": 2,
+                "area": 47.58,
+                "price": 510000,
+                "feature": [
+                    1,
+                    4
+                ],
+                "equipment": [
+                    2,
+                    4,
+                    8,
+                    11,
+                    13
+                ],
+                "facility": [
+                    2,
+                    13,
+                    3,
+                    15,
+                    6,
+                    12,
+                    5,
+                    7,
+                    9,
+                    4,
+                    1
+                ]
+            },
+            "id": "cc5ec8ea",
+            "new": 0,
+            "residence": "六本木ヒルズレジデンスＡ",
+            "room": "A610",
+            "spec": [
+                "47.58㎡",
+                "1BR",
+                "6F"
+            ],
+            "price": "¥510,000",
+            "details": [
+                {
+                    "name": "特徴",
+                    "description": "ペット可、低階層(6階以下)"
+                },
+                {
+                    "name": "眺望",
+                    "description": ""
+                },
+                {
+                    "name": "住居内設備",
+                    "description": "床暖房、ガスコンロ、食洗機、洗濯乾燥機、バルコニー"
+                },
+                {
+                    "name": "ペット",
+                    "description": "〇"
+                },
+                {
+                    "name": "施設",
+                    "description": "駐車場、トランクルーム、駐輪場、ペット足洗い場、ラウンジ、健康相談室、ゲストルーム、バイク置き場、コミュニティルーム、フィットネス施設、フロントデスク"
+                }
+            ],
+            "url": "\/ja\/vacancy\/0101\/A610.html",
+            "images": [
+                "\/assets\/images\/layout\/000601_01_RHA_610_TN.svg"
+            ]
+        },
+        {
+            "meta": {
+                "residence": 6,
+                "residence_en": "Roppongi Hills Residence B",
+                "residence_kana": "ロッポンギヒルズレジデンス",
+                "layout": 2,
+                "area": 65.29,
+                "price": 660000,
+                "feature": [
+                    1,
+                    2
+                ],
+                "equipment": [
+                    2,
+                    4,
+                    8,
+                    11,
+                    13
+                ],
+                "facility": [
+                    2,
+                    13,
+                    3,
+                    15,
+                    6,
+                    12,
+                    5,
+                    7,
+                    9,
+                    4,
+                    1
+                ]
+            },
+            "id": "4ca2670e",
+            "new": 0,
+            "residence": "六本木ヒルズレジデンスＢ",
+            "room": "B1405",
+            "spec": [
+                "65.29㎡",
+                "1BR",
+                "14F"
+            ],
+            "price": "¥660,000",
+            "details": [
+                {
+                    "name": "特徴",
+                    "description": "ペット可、南向き"
+                },
+                {
+                    "name": "眺望",
+                    "description": ""
+                },
+                {
+                    "name": "住居内設備",
+                    "description": "床暖房、ガスコンロ、食洗機、洗濯乾燥機、バルコニー"
+                },
+                {
+                    "name": "ペット",
+                    "description": "〇"
+                },
+                {
+                    "name": "施設",
+                    "description": "駐車場、トランクルーム、駐輪場、ペット足洗い場、ラウンジ、健康相談室、ゲストルーム、バイク置き場、コミュニティルーム、フィットネス施設、フロントデスク"
+                }
+            ],
+            "url": "\/ja\/vacancy\/0102\/B1405.html",
+            "images": [
+                "\/assets\/images\/layout\/000602_02_RHB_B1405_TN.svg"
+            ]
+        },
+        {
+            "meta": {
+                "residence": 6,
+                "residence_en": "Roppongi Hills Residence C",
+                "residence_kana": "ロッポンギヒルズレジデンス",
+                "layout": 3,
+                "area": 164.45,
+                "price": 1910000,
+                "feature": [
+                    1,
+                    6,
+                    2
+                ],
+                "equipment": [
+                    1,
+                    2,
+                    4,
+                    7,
+                    8,
+                    6,
+                    13
+                ],
+                "facility": [
+                    2,
+                    13,
+                    3,
+                    15,
+                    6,
+                    12,
+                    5,
+                    7,
+                    9,
+                    4,
+                    1
+                ]
+            },
+            "id": "42d3b421",
+            "new": 0,
+            "residence": "六本木ヒルズレジデンスＣ ",
+            "room": "C2704",
+            "spec": [
+                "164.45㎡",
+                "2BR",
+                "27F"
+            ],
+            "price": "¥1,910,000",
+            "details": [
+                {
+                    "name": "特徴",
+                    "description": "ペット可、南向き"
+                },
+                {
+                    "name": "眺望",
+                    "description": "富士山"
+                },
+                {
+                    "name": "住居内設備",
+                    "description": "フローリング（リビング・ダイニング他）、床暖房、ガスコンロ、ディスポーザー、食洗機、ガスオーブン、バルコニー"
+                },
+                {
+                    "name": "ペット",
+                    "description": "〇"
+                },
+                {
+                    "name": "施設",
+                    "description": "駐車場、トランクルーム、駐輪場、ペット足洗い場、ラウンジ、健康相談室、ゲストルーム、バイク置き場、コミュニティルーム、フィットネス施設、フロントデスク"
+                }
+            ],
+            "url": "\/ja\/vacancy\/0103\/C2704.html",
+            "images": [
+                "\/assets\/images\/layout\/000603_03_RHC_Mw-1_TN.svg"
+            ]
+        },
+        {
+            "meta": {
+                "residence": 6,
+                "residence_en": "Roppongi Hills Residence C",
+                "residence_kana": "ロッポンギヒルズレジデンス",
+                "layout": 3,
+                "area": 107.38,
+                "price": 1060000,
+                "feature": [
+                    1,
+                    3
+                ],
+                "equipment": [
+                    1,
+                    2,
+                    4,
+                    7,
+                    8,
+                    6,
+                    13
+                ],
+                "facility": [
+                    2,
+                    13,
+                    3,
+                    15,
+                    6,
+                    12,
+                    5,
+                    7,
+                    9,
+                    4,
+                    1
+                ]
+            },
+            "id": "da123561",
+            "new": 0,
+            "residence": "六本木ヒルズレジデンスＣ ",
+            "room": "C1206",
+            "spec": [
+                "107.38㎡",
+                "2BR",
+                "12F"
+            ],
+            "price": "¥1,060,000",
+            "details": [
+                {
+                    "name": "特徴",
+                    "description": "ペット可、角部屋"
+                },
+                {
+                    "name": "眺望",
+                    "description": ""
+                },
+                {
+                    "name": "住居内設備",
+                    "description": "フローリング（リビング・ダイニング他）、床暖房、ガスコンロ、ディスポーザー、食洗機、ガスオーブン、バルコニー"
+                },
+                {
+                    "name": "ペット",
+                    "description": "〇"
+                },
+                {
+                    "name": "施設",
+                    "description": "駐車場、トランクルーム、駐輪場、ペット足洗い場、ラウンジ、健康相談室、ゲストルーム、バイク置き場、コミュニティルーム、フィットネス施設、フロントデスク"
+                }
+            ],
+            "url": "\/ja\/vacancy\/0103\/C1206.html",
+            "images": [
+                "\/assets\/images\/layout\/000603_03_RHC_C2w_1206_TN.svg"
+            ]
+        },
+        {
+            "meta": {
+                "residence": 6,
+                "residence_en": "Roppongi Hills Residence C",
+                "residence_kana": "ロッポンギヒルズレジデンス",
+                "layout": 3,
+                "area": 94.09,
+                "price": 1090000,
+                "feature": [
+                    1,
+                    3
+                ],
+                "equipment": [
+                    1,
+                    2,
+                    4,
+                    7,
+                    8,
+                    6,
+                    13
+                ],
+                "facility": [
+                    2,
+                    13,
+                    3,
+                    15,
+                    6,
+                    12,
+                    5,
+                    7,
+                    9,
+                    4,
+                    1
+                ]
+            },
+            "id": "652731cf",
+            "new": 1,
+            "residence": "六本木ヒルズレジデンスＣ ",
+            "room": "C1501",
+            "spec": [
+                "94.09㎡",
+                "2BR",
+                "15F"
+            ],
+            "price": "¥1,090,000",
+            "details": [
+                {
+                    "name": "特徴",
+                    "description": "ペット可、角部屋"
+                },
+                {
+                    "name": "眺望",
+                    "description": ""
+                },
+                {
+                    "name": "住居内設備",
+                    "description": "フローリング（リビング・ダイニング他）、床暖房、ガスコンロ、ディスポーザー、食洗機、ガスオーブン、バルコニー"
+                },
+                {
+                    "name": "ペット",
+                    "description": "〇"
+                },
+                {
+                    "name": "施設",
+                    "description": "駐車場、トランクルーム、駐輪場、ペット足洗い場、ラウンジ、健康相談室、ゲストルーム、バイク置き場、コミュニティルーム、フィットネス施設、フロントデスク"
+                }
+            ],
+            "url": "\/ja\/vacancy\/0103\/C1501.html",
+            "images": [
+                "\/assets\/images\/layout\/000603_03_RHC_B1e_1501_TN.svg"
+            ]
+        },
+        {
+            "meta": {
+                "residence": 7,
+                "residence_en": "Roppongi Hills Gate Tower Residence",
+                "residence_kana": "ロッポンギヒルズゲートタワーレジデンス",
+                "layout": 2,
+                "area": 58.98,
+                "price": 570000,
+                "feature": [
+                    1,
+                    5
+                ],
+                "equipment": [
+                    1,
+                    2,
+                    4,
+                    7,
+                    8,
+                    6,
+                    11,
+                    13
+                ],
+                "facility": [
+                    2,
+                    13,
+                    3,
+                    7,
+                    1
+                ]
+            },
+            "id": "caac8070",
+            "new": 0,
+            "residence": "六本木ヒルズゲートタワーレジデンス",
+            "room": "1105",
+            "spec": [
+                "58.98㎡",
+                "1BR",
+                "11F"
+            ],
+            "price": "¥570,000",
+            "details": [
+                {
+                    "name": "特徴",
+                    "description": "ペット可"
+                },
+                {
+                    "name": "眺望",
+                    "description": "東京タワー"
+                },
+                {
+                    "name": "住居内設備",
+                    "description": "フローリング（リビング・ダイニング他）、床暖房、ガスコンロ、ディスポーザー、食洗機、ガスオーブン、洗濯乾燥機、バルコニー"
+                },
+                {
+                    "name": "ペット",
+                    "description": "〇"
+                },
+                {
+                    "name": "施設",
+                    "description": "駐車場、トランクルーム、駐輪場、バイク置き場、フロントデスク"
+                }
+            ],
+            "url": "\/ja\/vacancy\/0105\/1105.html",
+            "images": [
+                "\/assets\/images\/layout\/001402_06_GTR_B'-1105_TN.svg"
+            ]
+        },
+        {
+            "meta": {
+                "residence": 12,
+                "residence_en": "Atago Green Hills Forest Tower",
+                "residence_kana": "アタゴグリーンヒルズフォレストタワー",
+                "layout": 2,
+                "area": 67.67,
+                "price": 550000,
+                "feature": [
+                    1
+                ],
+                "equipment": [
+                    1,
+                    2,
+                    4,
+                    7,
+                    8,
+                    6,
+                    11,
+                    12,
+                    13
+                ],
+                "facility": [
+                    2,
+                    13,
+                    3,
+                    15,
+                    7,
+                    4,
+                    1
+                ]
+            },
+            "id": "6bf62e59",
+            "new": 1,
+            "residence": "愛宕グリーンヒルズフォレストタワー",
+            "room": "2008",
+            "spec": [
+                "67.67㎡",
+                "1BR",
+                "20F"
+            ],
+            "price": "¥550,000",
+            "details": [
+                {
+                    "name": "特徴",
+                    "description": "ペット可"
+                },
+                {
+                    "name": "眺望",
+                    "description": ""
+                },
+                {
+                    "name": "住居内設備",
+                    "description": "フローリング（リビング・ダイニング他）、床暖房、ガスコンロ、ディスポーザー、食洗機、ガスオーブン、洗濯乾燥機、浴室乾燥、バルコニー"
+                },
+                {
+                    "name": "ペット",
+                    "description": "〇"
+                },
+                {
+                    "name": "施設",
+                    "description": "駐車場、トランクルーム、駐輪場、ペット足洗い場、バイク置き場、フィットネス施設、フロントデスク"
+                }
+            ],
+            "url": "\/ja\/vacancy\/0301\/2008.html",
+            "images": [
+                "\/assets\/images\/layout\/002701_10_AGH_D'_TN.svg"
+            ]
+        },
+        {
+            "meta": {
+                "residence": 12,
+                "residence_en": "Atago Green Hills Forest Tower",
+                "residence_kana": "アタゴグリーンヒルズフォレストタワー",
+                "layout": 2,
+                "area": 67.67,
+                "price": 590000,
+                "feature": [],
+                "equipment": [
+                    1,
+                    2,
+                    4,
+                    7,
+                    8,
+                    6,
+                    11,
+                    12,
+                    13
+                ],
+                "facility": [
+                    2,
+                    13,
+                    3,
+                    15,
+                    7,
+                    4,
+                    1
+                ]
+            },
+            "id": "fef2f087",
+            "new": 1,
+            "residence": "愛宕グリーンヒルズフォレストタワー",
+            "room": "1704",
+            "spec": [
+                "67.67㎡",
+                "1BR",
+                "17F"
+            ],
+            "price": "¥590,000",
+            "details": [
+                {
+                    "name": "特徴",
+                    "description": ""
+                },
+                {
+                    "name": "眺望",
+                    "description": ""
+                },
+                {
+                    "name": "住居内設備",
+                    "description": "フローリング（リビング・ダイニング他）、床暖房、ガスコンロ、ディスポーザー、食洗機、ガスオーブン、洗濯乾燥機、浴室乾燥、バルコニー"
+                },
+                {
+                    "name": "ペット",
+                    "description": "-"
+                },
+                {
+                    "name": "施設",
+                    "description": "駐車場、トランクルーム、駐輪場、ペット足洗い場、バイク置き場、フィットネス施設、フロントデスク"
+                }
+            ],
+            "url": "\/ja\/vacancy\/0301\/1704.html",
+            "images": [
+                "\/assets\/images\/layout\/002701_10_AGH_D_1604_TN.svg"
+            ]
+        },
+        {
+            "meta": {
+                "residence": 12,
+                "residence_en": "Atago Green Hills Forest Tower",
+                "residence_kana": "アタゴグリーンヒルズフォレストタワー",
+                "layout": 4,
+                "area": 238.48,
+                "price": 2540000,
+                "feature": [
+                    1
+                ],
+                "equipment": [
+                    1,
+                    2,
+                    4,
+                    7,
+                    8,
+                    6,
+                    11,
+                    12,
+                    13
+                ],
+                "facility": [
+                    2,
+                    13,
+                    3,
+                    15,
+                    7,
+                    4,
+                    1
+                ]
+            },
+            "id": "c65b3b35",
+            "new": 0,
+            "residence": "愛宕グリーンヒルズフォレストタワー",
+            "room": "4003",
+            "spec": [
+                "238.48㎡",
+                "3BR+F",
+                "40F"
+            ],
+            "price": "¥2,540,000",
+            "details": [
+                {
+                    "name": "特徴",
+                    "description": "ペット可"
+                },
+                {
+                    "name": "眺望",
+                    "description": ""
+                },
+                {
+                    "name": "住居内設備",
+                    "description": "フローリング（リビング・ダイニング他）、床暖房、ガスコンロ、ディスポーザー、食洗機、ガスオーブン、洗濯乾燥機、浴室乾燥、バルコニー"
+                },
+                {
+                    "name": "ペット",
+                    "description": "〇"
+                },
+                {
+                    "name": "施設",
+                    "description": "駐車場、トランクルーム、駐輪場、ペット足洗い場、バイク置き場、フィットネス施設、フロントデスク"
+                }
+            ],
+            "url": "\/ja\/vacancy\/0301\/4003.html",
+            "images": [
+                "\/assets\/images\/layout\/002701_10_AGH_M_4003_TN.svg"
+            ]
+        },
+        {
+            "meta": {
+                "residence": 10,
+                "residence_en": "ARK Forest Terrace",
+                "residence_kana": "アークフォレストテラス",
+                "layout": 2,
+                "area": 83.52,
+                "price": 650000,
+                "feature": [
+                    1,
+                    4
+                ],
+                "equipment": [
+                    1,
+                    2,
+                    4,
+                    7,
+                    8,
+                    6,
+                    11,
+                    13
+                ],
+                "facility": [
+                    2,
+                    13,
+                    3,
+                    1,
+                    7,
+                    11
+                ]
+            },
+            "id": "65f6c468",
+            "new": 0,
+            "residence": "アークフォレストテラス",
+            "room": "305",
+            "spec": [
+                "83.52㎡",
+                "1BR",
+                "3F"
+            ],
+            "price": "¥650,000",
+            "details": [
+                {
+                    "name": "特徴",
+                    "description": "ペット可、低階層(6階以下)"
+                },
+                {
+                    "name": "眺望",
+                    "description": ""
+                },
+                {
+                    "name": "住居内設備",
+                    "description": "フローリング（リビング・ダイニング他）、床暖房、ガスコンロ、ディスポーザー、食洗機、ガスオーブン、洗濯乾燥機、バルコニー"
+                },
+                {
+                    "name": "ペット",
+                    "description": "〇"
+                },
+                {
+                    "name": "施設",
+                    "description": "駐車場、トランクルーム、駐輪場、フロントデスク、バイク置き場、BBQエリア"
+                }
+            ],
+            "url": "\/ja\/vacancy\/0405\/305.html",
+            "images": [
+                "\/assets\/images\/layout\/002501_14_AFT_A-305_TN.svg"
+            ]
+        },
+        {
+            "meta": {
+                "residence": 20,
+                "residence_en": "Akasaka Tameike Tower Residence",
+                "residence_kana": "アカサカタメイケタワーレジデンス",
+                "layout": 3,
+                "area": 142.38,
+                "price": 1140000,
+                "feature": [
+                    1,
+                    5,
+                    2,
+                    3
+                ],
+                "equipment": [
+                    1,
+                    2,
+                    4,
+                    7,
+                    8,
+                    11,
+                    12,
+                    13
+                ],
+                "facility": [
+                    2,
+                    13,
+                    3,
+                    1,
+                    7,
+                    4,
+                    11
+                ]
+            },
+            "id": "5c7634e8",
+            "new": 0,
+            "residence": "赤坂溜池タワーレジデンス",
+            "room": "1606",
+            "spec": [
+                "142.38㎡",
+                "2BR",
+                "16F"
+            ],
+            "price": "¥1,140,000",
+            "details": [
+                {
+                    "name": "特徴",
+                    "description": "ペット可、南向き、角部屋"
+                },
+                {
+                    "name": "眺望",
+                    "description": "東京タワー"
+                },
+                {
+                    "name": "住居内設備",
+                    "description": "フローリング（リビング・ダイニング他）、床暖房、ガスコンロ、ディスポーザー、食洗機、洗濯乾燥機、浴室乾燥、バルコニー"
+                },
+                {
+                    "name": "ペット",
+                    "description": "〇"
+                },
+                {
+                    "name": "施設",
+                    "description": "駐車場、トランクルーム、駐輪場、フロントデスク、バイク置き場、フィットネス施設、BBQエリア"
+                }
+            ],
+            "url": "\/ja\/vacancy\/0501\/1606.html",
+            "images": [
+                "\/assets\/images\/layout\/003202_16_ATT_F'_1606_TN.svg"
+            ]
+        },
+        {
+            "meta": {
+                "residence": 14,
+                "residence_en": "Forest Plaza Omotesando",
+                "residence_kana": "フォレストプラザオモテサンドウ",
+                "layout": 2,
+                "area": 89.92,
+                "price": 770000,
+                "feature": [
+                    1,
+                    4
+                ],
+                "equipment": [
+                    1,
+                    4,
+                    8,
+                    11,
+                    12,
+                    13
+                ],
+                "facility": [
+                    2,
+                    13,
+                    3,
+                    7
+                ]
+            },
+            "id": "3f6d1c0d",
+            "new": 0,
+            "residence": "フォレストプラザ表参道",
+            "room": "104",
+            "spec": [
+                "89.92㎡",
+                "1BR",
+                "1F"
+            ],
+            "price": "¥770,000",
+            "details": [
+                {
+                    "name": "特徴",
+                    "description": "ペット可、低階層(6階以下)"
+                },
+                {
+                    "name": "眺望",
+                    "description": ""
+                },
+                {
+                    "name": "住居内設備",
+                    "description": "フローリング（リビング・ダイニング他）、ガスコンロ、食洗機、洗濯乾燥機、浴室乾燥、バルコニー"
+                },
+                {
+                    "name": "ペット",
+                    "description": "〇"
+                },
+                {
+                    "name": "施設",
+                    "description": "駐車場、トランクルーム、駐輪場、バイク置き場"
+                }
+            ],
+            "url": "\/ja\/vacancy\/0602\/104.html",
+            "images": [
+                "\/assets\/images\/layout\/009801_21_FPO_104_TN.svg"
+            ]
+        },
+        {
+            "meta": {
+                "residence": 24,
+                "residence_en": "ARK Hills Executive Tower",
+                "residence_kana": "アークヒルズエグゼクティブタワー",
+                "layout": 1,
+                "area": 51.58,
+                "price": 360000,
+                "feature": [
+                    4
+                ],
+                "equipment": [
+                    5,
+                    13
+                ],
+                "facility": [
+                    2,
+                    13,
+                    10,
+                    1,
+                    6
+                ]
+            },
+            "id": "d3453bfb",
+            "new": 0,
+            "residence": "アークヒルズエグゼクティブタワー",
+            "room": "S203",
+            "spec": [
+                "51.58㎡",
+                "1R",
+                "2F"
+            ],
+            "price": "¥360,000",
+            "details": [
+                {
+                    "name": "特徴",
+                    "description": "低階層(6階以下)"
+                },
+                {
+                    "name": "眺望",
+                    "description": ""
+                },
+                {
+                    "name": "住居内設備",
+                    "description": "IHコンロ、バルコニー"
+                },
+                {
+                    "name": "ペット",
+                    "description": "-"
+                },
+                {
+                    "name": "施設",
+                    "description": "駐車場、トランクルーム、ミーティングルーム、フロントデスク、ラウンジ"
+                }
+            ],
+            "url": "\/ja\/vacancy\/0903\/S203.html",
+            "images": [
+                "\/assets\/images\/layout\/002301_26_AHE_S203(K)_TN.svg"
+            ]
+        },
+        {
+            "meta": {
+                "residence": 24,
+                "residence_en": "ARK Hills Executive Tower",
+                "residence_kana": "アークヒルズエグゼクティブタワー",
+                "layout": 2,
+                "area": 78.83,
+                "price": 590000,
+                "feature": [],
+                "equipment": [
+                    5,
+                    13
+                ],
+                "facility": [
+                    2,
+                    13,
+                    10,
+                    1,
+                    6
+                ]
+            },
+            "id": "815e5568",
+            "new": 0,
+            "residence": "アークヒルズエグゼクティブタワー",
+            "room": "S802",
+            "spec": [
+                "78.83㎡",
+                "1BR",
+                "8F"
+            ],
+            "price": "¥590,000",
+            "details": [
+                {
+                    "name": "特徴",
+                    "description": ""
+                },
+                {
+                    "name": "眺望",
+                    "description": ""
+                },
+                {
+                    "name": "住居内設備",
+                    "description": "IHコンロ、バルコニー"
+                },
+                {
+                    "name": "ペット",
+                    "description": "-"
+                },
+                {
+                    "name": "施設",
+                    "description": "駐車場、トランクルーム、ミーティングルーム、フロントデスク、ラウンジ"
+                }
+            ],
+            "url": "\/ja\/vacancy\/0903\/S802.html",
+            "images": [
+                "\/assets\/images\/layout\/002301_26_AHE_S802(P)_TN.svg"
+            ]
+        },
+        {
+            "meta": {
+                "residence": 25,
+                "residence_en": "Holland Hills Mori Tower RoP",
+                "residence_kana": "オランダヒルズモリタワー",
+                "layout": 2,
+                "area": 126.25,
+                "price": 1180000,
+                "feature": [],
+                "equipment": [
+                    4,
+                    8,
+                    6,
+                    11,
+                    13
+                ],
+                "facility": [
+                    2,
+                    13,
+                    3,
+                    15,
+                    10,
+                    7,
+                    6,
+                    1,
+                    11
+                ]
+            },
+            "id": "3afdd20f",
+            "new": 0,
+            "residence": "オランダヒルズ森タワーRoP",
+            "room": "1001",
+            "spec": [
+                "126.25㎡",
+                "1BR",
+                "10F"
+            ],
+            "price": "¥1,180,000",
+            "details": [
+                {
+                    "name": "特徴",
+                    "description": ""
+                },
+                {
+                    "name": "眺望",
+                    "description": ""
+                },
+                {
+                    "name": "住居内設備",
+                    "description": "ガスコンロ、食洗機、ガスオーブン、洗濯乾燥機、バルコニー"
+                },
+                {
+                    "name": "ペット",
+                    "description": "-"
+                },
+                {
+                    "name": "施設",
+                    "description": "駐車場、トランクルーム、駐輪場、ペット足洗い場、ミーティングルーム、バイク置き場、ラウンジ、フロントデスク、BBQエリア"
+                }
+            ],
+            "url": "\/ja\/vacancy\/0901\/1001.html",
+            "images": [
+                "\/assets\/003402_25_HHM_C-1001_TN.svg"
+            ]
+        },
+        {
+            "meta": {
+                "residence": 25,
+                "residence_en": "Holland Hills Mori Tower RoP",
+                "residence_kana": "オランダヒルズモリタワー",
+                "layout": 2,
+                "area": 58.49,
+                "price": 600000,
+                "feature": [
+                    1
+                ],
+                "equipment": [
+                    5,
+                    8,
+                    6,
+                    11,
+                    13
+                ],
+                "facility": [
+                    2,
+                    13,
+                    3,
+                    15,
+                    10,
+                    7,
+                    6,
+                    1,
+                    11
+                ]
+            },
+            "id": "3c4241da",
+            "new": 0,
+            "residence": "オランダヒルズ森タワーRoP",
+            "room": "1203",
+            "spec": [
+                "58.49㎡",
+                "1BR",
+                "12F"
+            ],
+            "price": "¥600,000",
+            "details": [
+                {
+                    "name": "特徴",
+                    "description": "ペット可"
+                },
+                {
+                    "name": "眺望",
+                    "description": ""
+                },
+                {
+                    "name": "住居内設備",
+                    "description": "IHコンロ、食洗機、ガスオーブン、洗濯乾燥機、バルコニー"
+                },
+                {
+                    "name": "ペット",
+                    "description": "〇"
+                },
+                {
+                    "name": "施設",
+                    "description": "駐車場、トランクルーム、駐輪場、ペット足洗い場、ミーティングルーム、バイク置き場、ラウンジ、フロントデスク、BBQエリア"
+                }
+            ],
+            "url": "\/ja\/vacancy\/0901\/1203.html",
+            "images": [
+                "\/assets\/images\/layout\/003402_25_HHM_A-1203_TN.svg"
+            ]
+        },
+        {
+            "meta": {
+                "residence": 6,
+                "residence_en": "Roppongi Hills Residence B",
+                "residence_kana": "ロッポンギヒルズレジデンス",
+                "layout": 3,
+                "area": 104.44,
+                "price": 1040000,
+                "feature": [
+                    1,
+                    6
+                ],
+                "equipment": [
+                    2,
+                    4,
+                    8,
+                    11,
+                    12,
+                    13
+                ],
+                "facility": [
+                    2,
+                    13,
+                    3,
+                    15,
+                    6,
+                    12,
+                    5,
+                    7,
+                    9,
+                    4,
+                    1
+                ]
+            },
+            "id": "86101576",
+            "new": 0,
+            "residence": "六本木ヒルズレジデンスＢ",
+            "room": "B3306",
+            "spec": [
+                "104.44㎡",
+                "2BR",
+                "33F"
+            ],
+            "price": "¥1,040,000",
+            "details": [
+                {
+                    "name": "特徴",
+                    "description": "ペット可"
+                },
+                {
+                    "name": "眺望",
+                    "description": "富士山"
+                },
+                {
+                    "name": "住居内設備",
+                    "description": "床暖房、ガスコンロ、食洗機、洗濯乾燥機、浴室乾燥、バルコニー"
+                },
+                {
+                    "name": "ペット",
+                    "description": "〇"
+                },
+                {
+                    "name": "施設",
+                    "description": "駐車場、トランクルーム、駐輪場、ペット足洗い場、ラウンジ、健康相談室、ゲストルーム、バイク置き場、コミュニティルーム、フィットネス施設、フロントデスク"
+                }
+            ],
+            "url": "\/ja\/vacancy\/0102\/B3306.html",
+            "images": [
+                "\/assets\/images\/layout\/000602_02_RHB_B3306_TN.svg"
+            ]
+        },
+        {
+            "meta": {
+                "residence": 9,
+                "residence_en": "ARK Towers East",
+                "residence_kana": "アークタワーズイースト",
+                "layout": 2,
+                "area": 64.16,
+                "price": 560000,
+                "feature": [
+                    1,
+                    3
+                ],
+                "equipment": [
+                    5,
+                    8
+                ],
+                "facility": [
+                    2,
+                    13,
+                    3,
+                    9,
+                    7,
+                    4,
+                    1
+                ]
+            },
+            "id": "48dfd01f",
+            "new": 0,
+            "residence": "アークタワーズイースト",
+            "room": "E2109",
+            "spec": [
+                "64.16㎡",
+                "1BR",
+                "21F"
+            ],
+            "price": "¥560,000",
+            "details": [
+                {
+                    "name": "特徴",
+                    "description": "ペット可、角部屋"
+                },
+                {
+                    "name": "眺望",
+                    "description": ""
+                },
+                {
+                    "name": "住居内設備",
+                    "description": "IHコンロ、食洗機"
+                },
+                {
+                    "name": "ペット",
+                    "description": "〇"
+                },
+                {
+                    "name": "施設",
+                    "description": "駐車場、トランクルーム、駐輪場、コミュニティルーム、バイク置き場、フィットネス施設、フロントデスク"
+                }
+            ],
+            "url": "\/ja\/vacancy\/0401\/E2109.html",
+            "images": [
+                "\/assets\/images\/layout\/001701_11_ATE_U3-2'_E2109_TN.svg"
+            ]
+        },
+        {
+            "meta": {
+                "residence": 8,
+                "residence_en": "ARK Hills Sengokuyama Residence",
+                "residence_kana": "アークヒルズ センゴクヤマレジデンス",
+                "layout": 1,
+                "area": 33.9,
+                "price": 400000,
+                "feature": [],
+                "equipment": [],
+                "facility": [
+                    2,
+                    13,
+                    3,
+                    15,
+                    6,
+                    5,
+                    9,
+                    4,
+                    1,
+                    7
+                ]
+            },
+            "id": "fa7aeb1e",
+            "new": 1,
+            "residence": "アークヒルズ 仙石山レジデンス",
+            "room": "1005",
+            "spec": [
+                "33.9㎡",
+                "1R",
+                "10F"
+            ],
+            "price": "¥400,000",
+            "details": [
+                {
+                    "name": "特徴",
+                    "description": ""
+                },
+                {
+                    "name": "眺望",
+                    "description": ""
+                },
+                {
+                    "name": "住居内設備",
+                    "description": ""
+                },
+                {
+                    "name": "ペット",
+                    "description": "-"
+                },
+                {
+                    "name": "施設",
+                    "description": "駐車場、トランクルーム、駐輪場、ペット足洗い場、ラウンジ、ゲストルーム、コミュニティルーム、フィットネス施設、フロントデスク、バイク置き場"
+                }
+            ],
+            "url": "\/ja\/vacancy\/0305\/1005.html",
+            "images": [
+                "\/assets\/images\/layout\/025602_35_SGY_30-A_TN.svg"
+            ]
+        },
+        {
+            "meta": {
+                "residence": 5,
+                "residence_en": "Toranomon Hills Residence",
+                "residence_kana": "トラノモンヒルズレジデンス",
+                "layout": 2,
+                "area": 58.87,
+                "price": 860000,
+                "feature": [],
+                "equipment": [
+                    1,
+                    2,
+                    4,
+                    7,
+                    8,
+                    11,
+                    12,
+                    13
+                ],
+                "facility": [
+                    2,
+                    13,
+                    3,
+                    15,
+                    1,
+                    7,
+                    9,
+                    4,
+                    6
+                ]
+            },
+            "id": "327ff4ad",
+            "new": 0,
+            "residence": "虎ノ門ヒルズレジデンス",
+            "room": "3815",
+            "spec": [
+                "58.87㎡",
+                "1BR",
+                "38F"
+            ],
+            "price": "¥860,000",
+            "details": [
+                {
+                    "name": "特徴",
+                    "description": ""
+                },
+                {
+                    "name": "眺望",
+                    "description": ""
+                },
+                {
+                    "name": "住居内設備",
+                    "description": "フローリング（リビング・ダイニング他）、床暖房、ガスコンロ、ディスポーザー、食洗機、洗濯乾燥機、浴室乾燥、バルコニー"
+                },
+                {
+                    "name": "ペット",
+                    "description": "-"
+                },
+                {
+                    "name": "施設",
+                    "description": "駐車場、トランクルーム、駐輪場、ペット足洗い場、フロントデスク、バイク置き場、コミュニティルーム、フィットネス施設、ラウンジ"
+                }
+            ],
+            "url": "\/ja\/vacancy\/0250\/3815.html",
+            "images": [
+                "\/assets\/images\/layout\/026002_37_THR_60-C-2type_3815_TN.svg"
+            ]
+        },
+        {
+            "meta": {
+                "residence": 12,
+                "residence_en": "Atago Green Hills Forest Tower",
+                "residence_kana": "アタゴグリーンヒルズフォレストタワー",
+                "layout": 2,
+                "area": 67.6,
+                "price": 560000,
+                "feature": [],
+                "equipment": [],
+                "facility": [
+                    2,
+                    13,
+                    3,
+                    15,
+                    7,
+                    4,
+                    1
+                ]
+            },
+            "id": "c02ef389",
+            "new": 1,
+            "residence": "愛宕グリーンヒルズフォレストタワー",
+            "room": "410",
+            "spec": [
+                "67.6㎡",
+                "1BR",
+                "4F"
+            ],
+            "price": "¥560,000",
+            "details": [
+                {
+                    "name": "特徴",
+                    "description": ""
+                },
+                {
+                    "name": "眺望",
+                    "description": ""
+                },
+                {
+                    "name": "住居内設備",
+                    "description": ""
+                },
+                {
+                    "name": "ペット",
+                    "description": "-"
+                },
+                {
+                    "name": "施設",
+                    "description": "駐車場、トランクルーム、駐輪場、ペット足洗い場、バイク置き場、フィットネス施設、フロントデスク"
+                }
+            ],
+            "url": "\/ja\/vacancy\/0301\/410.html",
+            "images": [
+                "\/assets\/002701_10_AGH_B1'_410_TN.svg"
+            ]
+        },
+        {
+            "meta": {
+                "residence": 4,
+                "residence_en": "Toranomon Hills Residential Tower",
+                "residence_kana": "トラノモンヒルズ  レジデンシャルタワー",
+                "layout": 2,
+                "area": 60.23,
+                "price": 730000,
+                "feature": [],
+                "equipment": [
+                    1,
+                    2,
+                    4,
+                    7,
+                    8,
+                    11,
+                    12,
+                    13
+                ],
+                "facility": [
+                    2,
+                    13,
+                    3,
+                    15,
+                    5,
+                    12,
+                    6,
+                    9,
+                    4,
+                    1,
+                    7
+                ]
+            },
+            "id": "6911912a",
+            "new": 0,
+            "residence": "虎ノ門ヒルズ レジデンシャルタワー",
+            "room": "1311",
+            "spec": [
+                "60.23㎡",
+                "1BR",
+                "13F"
+            ],
+            "price": "¥730,000",
+            "details": [
+                {
+                    "name": "特徴",
+                    "description": ""
+                },
+                {
+                    "name": "眺望",
+                    "description": ""
+                },
+                {
+                    "name": "住居内設備",
+                    "description": "フローリング（リビング・ダイニング他）、床暖房、ガスコンロ、ディスポーザー、食洗機、洗濯乾燥機、浴室乾燥、バルコニー"
+                },
+                {
+                    "name": "ペット",
+                    "description": "-"
+                },
+                {
+                    "name": "施設",
+                    "description": "駐車場、トランクルーム、駐輪場、ペット足洗い場、ゲストルーム、健康相談室、ラウンジ、コミュニティルーム、フィットネス施設、フロントデスク、バイク置き場"
+                }
+            ],
+            "url": "\/ja\/vacancy\/0251\/1311.html",
+            "images": [
+                "\/assets\/images\/layout\/026301_30_THRT_ST_60-A1'_TN.svg"
+            ]
+        },
+        {
+            "meta": {
+                "residence": 4,
+                "residence_en": "Toranomon Hills Residential Tower",
+                "residence_kana": "トラノモンヒルズ  レジデンシャルタワー",
+                "layout": 2,
+                "area": 56.56,
+                "price": 620000,
+                "feature": [],
+                "equipment": [
+                    1,
+                    2,
+                    4,
+                    7,
+                    8,
+                    11,
+                    12,
+                    13
+                ],
+                "facility": [
+                    2,
+                    13,
+                    3,
+                    15,
+                    5,
+                    12,
+                    6,
+                    9,
+                    4,
+                    1,
+                    7
+                ]
+            },
+            "id": "bd5eeb28",
+            "new": 1,
+            "residence": "虎ノ門ヒルズ レジデンシャルタワー",
+            "room": "1414",
+            "spec": [
+                "56.56㎡",
+                "1BR",
+                "14F"
+            ],
+            "price": "¥620,000",
+            "details": [
+                {
+                    "name": "特徴",
+                    "description": ""
+                },
+                {
+                    "name": "眺望",
+                    "description": ""
+                },
+                {
+                    "name": "住居内設備",
+                    "description": "フローリング（リビング・ダイニング他）、床暖房、ガスコンロ、ディスポーザー、食洗機、洗濯乾燥機、浴室乾燥、バルコニー"
+                },
+                {
+                    "name": "ペット",
+                    "description": "-"
+                },
+                {
+                    "name": "施設",
+                    "description": "駐車場、トランクルーム、駐輪場、ペット足洗い場、ゲストルーム、健康相談室、ラウンジ、コミュニティルーム、フィットネス施設、フロントデスク、バイク置き場"
+                }
+            ],
+            "url": "\/ja\/vacancy\/0251\/1414.html",
+            "images": [
+                "\/assets\/images\/layout\/026301_30_THRT_K_1414_TN.svg"
+            ]
+        },
+        {
+            "meta": {
+                "residence": 4,
+                "residence_en": "Toranomon Hills Residential Tower",
+                "residence_kana": "トラノモンヒルズ  レジデンシャルタワー",
+                "layout": 4,
+                "area": 170.3,
+                "price": 2120000,
+                "feature": [],
+                "equipment": [],
+                "facility": [
+                    2,
+                    13,
+                    3,
+                    15,
+                    5,
+                    12,
+                    6,
+                    9,
+                    4,
+                    1,
+                    7
+                ]
+            },
+            "id": "fd1d6d28",
+            "new": 0,
+            "residence": "虎ノ門ヒルズ レジデンシャルタワー",
+            "room": "3501",
+            "spec": [
+                "170.3㎡",
+                "3BR",
+                "35F"
+            ],
+            "price": "¥2,120,000",
+            "details": [
+                {
+                    "name": "特徴",
+                    "description": ""
+                },
+                {
+                    "name": "眺望",
+                    "description": ""
+                },
+                {
+                    "name": "住居内設備",
+                    "description": ""
+                },
+                {
+                    "name": "ペット",
+                    "description": "-"
+                },
+                {
+                    "name": "施設",
+                    "description": "駐車場、トランクルーム、駐輪場、ペット足洗い場、ゲストルーム、健康相談室、ラウンジ、コミュニティルーム、フィットネス施設、フロントデスク、バイク置き場"
+                }
+            ],
+            "url": "\/ja\/vacancy\/0251\/3501.html",
+            "images": [
+                "\/assets\/images\/layout\/026301_30_THRT_ST_170-B_TN.svg"
+            ]
+        },
+        {
+            "meta": {
+                "residence": 2,
+                "residence_en": "Azabudai Hills Residence B",
+                "residence_kana": "アザブダイヒルズレジデンス B",
+                "layout": 3,
+                "area": 108.46,
+                "price": 1230000,
+                "feature": [
+                    1
+                ],
+                "equipment": [
+                    1,
+                    2,
+                    4,
+                    7,
+                    8,
+                    6,
+                    11,
+                    12,
+                    13
+                ],
+                "facility": [
+                    1,
+                    2,
+                    7,
+                    3,
+                    4,
+                    5,
+                    6,
+                    9,
+                    10,
+                    11,
+                    13,
+                    8,
+                    14,
+                    15
+                ]
+            },
+            "id": "c452b2c6",
+            "new": 1,
+            "residence": "麻布台ヒルズレジデンス B",
+            "room": "2605",
+            "spec": [
+                "108.46㎡",
+                "2BR",
+                "26F"
+            ],
+            "price": "¥1,230,000",
+            "details": [
+                {
+                    "name": "特徴",
+                    "description": "ペット可"
+                },
+                {
+                    "name": "眺望",
+                    "description": ""
+                },
+                {
+                    "name": "住居内設備",
+                    "description": "フローリング（リビング・ダイニング他）、床暖房、ガスコンロ、ディスポーザー、食洗機、ガスオーブン、洗濯乾燥機、浴室乾燥、バルコニー"
+                },
+                {
+                    "name": "ペット",
+                    "description": "〇"
+                },
+                {
+                    "name": "施設",
+                    "description": "フロントデスク、駐車場、バイク置き場、駐輪場、フィットネス施設、ゲストルーム、ラウンジ、コミュニティルーム、ミーティングルーム、BBQエリア、トランクルーム、キッズルーム、シアタールーム、ペット足洗い場"
+                }
+            ],
+            "url": "\/ja\/vacancy\/0253\/2605.html",
+            "images": [
+                "\/assets\/images\/layout\/030101_43_AHB_100-D2_TN.svg"
+            ]
+        },
+        {
+            "meta": {
+                "residence": 2,
+                "residence_en": "Azabudai Hills Residence B",
+                "residence_kana": "アザブダイヒルズレジデンス B",
+                "layout": 2,
+                "area": 59.88,
+                "price": 660000,
+                "feature": [
+                    1
+                ],
+                "equipment": [
+                    1,
+                    2,
+                    4,
+                    7,
+                    8,
+                    6,
+                    11,
+                    12,
+                    13
+                ],
+                "facility": [
+                    1,
+                    2,
+                    7,
+                    3,
+                    4,
+                    5,
+                    6,
+                    9,
+                    10,
+                    11,
+                    13,
+                    8,
+                    14,
+                    15
+                ]
+            },
+            "id": "d1f3d837",
+            "new": 0,
+            "residence": "麻布台ヒルズレジデンス B",
+            "room": "2614",
+            "spec": [
+                "59.88㎡",
+                "1BR",
+                "26F"
+            ],
+            "price": "¥660,000",
+            "details": [
+                {
+                    "name": "特徴",
+                    "description": "ペット可"
+                },
+                {
+                    "name": "眺望",
+                    "description": ""
+                },
+                {
+                    "name": "住居内設備",
+                    "description": "フローリング（リビング・ダイニング他）、床暖房、ガスコンロ、ディスポーザー、食洗機、ガスオーブン、洗濯乾燥機、浴室乾燥、バルコニー"
+                },
+                {
+                    "name": "ペット",
+                    "description": "〇"
+                },
+                {
+                    "name": "施設",
+                    "description": "フロントデスク、駐車場、バイク置き場、駐輪場、フィットネス施設、ゲストルーム、ラウンジ、コミュニティルーム、ミーティングルーム、BBQエリア、トランクルーム、キッズルーム、シアタールーム、ペット足洗い場"
+                }
+            ],
+            "url": "\/ja\/vacancy\/0253\/2614.html",
+            "images": [
+                "\/assets\/images\/layout\/030101_43_AHB_50-B_W_TN.svg"
+            ]
+        },
+        {
+            "meta": {
+                "residence": 2,
+                "residence_en": "Azabudai Hills Residence B",
+                "residence_kana": "アザブダイヒルズレジデンス B",
+                "layout": 3,
+                "area": 108.46,
+                "price": 1240000,
+                "feature": [
+                    1
+                ],
+                "equipment": [
+                    1,
+                    2,
+                    4,
+                    7,
+                    8,
+                    6,
+                    11,
+                    12,
+                    13
+                ],
+                "facility": [
+                    1,
+                    2,
+                    7,
+                    3,
+                    4,
+                    5,
+                    6,
+                    9,
+                    10,
+                    11,
+                    13,
+                    8,
+                    14,
+                    15
+                ]
+            },
+            "id": "5ad99f87",
+            "new": 0,
+            "residence": "麻布台ヒルズレジデンス B",
+            "room": "2702",
+            "spec": [
+                "108.46㎡",
+                "2BR",
+                "27F"
+            ],
+            "price": "¥1,240,000",
+            "details": [
+                {
+                    "name": "特徴",
+                    "description": "ペット可"
+                },
+                {
+                    "name": "眺望",
+                    "description": ""
+                },
+                {
+                    "name": "住居内設備",
+                    "description": "フローリング（リビング・ダイニング他）、床暖房、ガスコンロ、ディスポーザー、食洗機、ガスオーブン、洗濯乾燥機、浴室乾燥、バルコニー"
+                },
+                {
+                    "name": "ペット",
+                    "description": "〇"
+                },
+                {
+                    "name": "施設",
+                    "description": "フロントデスク、駐車場、バイク置き場、駐輪場、フィットネス施設、ゲストルーム、ラウンジ、コミュニティルーム、ミーティングルーム、BBQエリア、トランクルーム、キッズルーム、シアタールーム、ペット足洗い場"
+                }
+            ],
+            "url": "\/ja\/vacancy\/0253\/2702.html",
+            "images": [
+                "\/assets\/images\/layout\/030101_43_AHB_100-E2_TN.svg"
+            ]
+        },
+        {
+            "meta": {
+                "residence": 2,
+                "residence_en": "Azabudai Hills Residence B",
+                "residence_kana": "アザブダイヒルズレジデンス B",
+                "layout": 2,
+                "area": 59.76,
+                "price": 770000,
+                "feature": [
+                    1
+                ],
+                "equipment": [
+                    1,
+                    2,
+                    4,
+                    7,
+                    8,
+                    6,
+                    11,
+                    12,
+                    13
+                ],
+                "facility": [
+                    1,
+                    2,
+                    7,
+                    3,
+                    4,
+                    5,
+                    6,
+                    9,
+                    10,
+                    11,
+                    13,
+                    8,
+                    14,
+                    15
+                ]
+            },
+            "id": "c947d6f3",
+            "new": 0,
+            "residence": "麻布台ヒルズレジデンス B",
+            "room": "3516",
+            "spec": [
+                "59.76㎡",
+                "1BR",
+                "35F"
+            ],
+            "price": "¥770,000",
+            "details": [
+                {
+                    "name": "特徴",
+                    "description": "ペット可"
+                },
+                {
+                    "name": "眺望",
+                    "description": ""
+                },
+                {
+                    "name": "住居内設備",
+                    "description": "フローリング（リビング・ダイニング他）、床暖房、ガスコンロ、ディスポーザー、食洗機、ガスオーブン、洗濯乾燥機、浴室乾燥、バルコニー"
+                },
+                {
+                    "name": "ペット",
+                    "description": "〇"
+                },
+                {
+                    "name": "施設",
+                    "description": "フロントデスク、駐車場、バイク置き場、駐輪場、フィットネス施設、ゲストルーム、ラウンジ、コミュニティルーム、ミーティングルーム、BBQエリア、トランクルーム、キッズルーム、シアタールーム、ペット足洗い場"
+                }
+            ],
+            "url": "\/ja\/vacancy\/0253\/3516.html",
+            "images": [
+                "\/assets\/images\/layout\/030101_43_AHB_50-A1_W_TN.svg"
+            ]
+        },
+        {
+            "meta": {
+                "residence": 2,
+                "residence_en": "Azabudai Hills Residence B",
+                "residence_kana": "アザブダイヒルズレジデンス B",
+                "layout": 3,
+                "area": 104.36,
+                "price": 1400000,
+                "feature": [
+                    1
+                ],
+                "equipment": [
+                    1,
+                    2,
+                    4,
+                    7,
+                    8,
+                    6,
+                    11,
+                    12,
+                    13
+                ],
+                "facility": [
+                    1,
+                    2,
+                    7,
+                    3,
+                    4,
+                    5,
+                    6,
+                    9,
+                    10,
+                    11,
+                    13,
+                    8,
+                    14,
+                    15
+                ]
+            },
+            "id": "1c7f36a2",
+            "new": 1,
+            "residence": "麻布台ヒルズレジデンス B",
+            "room": "3903",
+            "spec": [
+                "104.36㎡",
+                "2BR",
+                "39F"
+            ],
+            "price": "¥1,400,000",
+            "details": [
+                {
+                    "name": "特徴",
+                    "description": "ペット可"
+                },
+                {
+                    "name": "眺望",
+                    "description": ""
+                },
+                {
+                    "name": "住居内設備",
+                    "description": "フローリング（リビング・ダイニング他）、床暖房、ガスコンロ、ディスポーザー、食洗機、ガスオーブン、洗濯乾燥機、浴室乾燥、バルコニー"
+                },
+                {
+                    "name": "ペット",
+                    "description": "〇"
+                },
+                {
+                    "name": "施設",
+                    "description": "フロントデスク、駐車場、バイク置き場、駐輪場、フィットネス施設、ゲストルーム、ラウンジ、コミュニティルーム、ミーティングルーム、BBQエリア、トランクルーム、キッズルーム、シアタールーム、ペット足洗い場"
+                }
+            ],
+            "url": "\/ja\/vacancy\/0253\/3903.html",
+            "images": [
+                "\/assets\/images\/layout\/030101_43_AHB_100-B1_N_TN.svg"
+            ]
+        },
+        {
+            "meta": {
+                "residence": 2,
+                "residence_en": "Azabudai Hills Residence B",
+                "residence_kana": "アザブダイヒルズレジデンス B",
+                "layout": 3,
+                "area": 95.45,
+                "price": 890000,
+                "feature": [
+                    1
+                ],
+                "equipment": [
+                    1,
+                    2,
+                    4,
+                    7,
+                    8,
+                    6,
+                    11,
+                    12,
+                    13
+                ],
+                "facility": [
+                    1,
+                    2,
+                    7,
+                    3,
+                    4,
+                    5,
+                    6,
+                    9,
+                    10,
+                    11,
+                    13,
+                    8,
+                    14,
+                    15
+                ]
+            },
+            "id": "f7bbf669",
+            "new": 0,
+            "residence": "麻布台ヒルズレジデンス B",
+            "room": "622",
+            "spec": [
+                "95.45㎡",
+                "2BR",
+                "6F"
+            ],
+            "price": "¥890,000",
+            "details": [
+                {
+                    "name": "特徴",
+                    "description": "ペット可"
+                },
+                {
+                    "name": "眺望",
+                    "description": ""
+                },
+                {
+                    "name": "住居内設備",
+                    "description": "フローリング（リビング・ダイニング他）、床暖房、ガスコンロ、ディスポーザー、食洗機、ガスオーブン、洗濯乾燥機、浴室乾燥、バルコニー"
+                },
+                {
+                    "name": "ペット",
+                    "description": "〇"
+                },
+                {
+                    "name": "施設",
+                    "description": "フロントデスク、駐車場、バイク置き場、駐輪場、フィットネス施設、ゲストルーム、ラウンジ、コミュニティルーム、ミーティングルーム、BBQエリア、トランクルーム、キッズルーム、シアタールーム、ペット足洗い場"
+                }
+            ],
+            "url": "\/ja\/vacancy\/0253\/622.html",
+            "images": [
+                "\/assets\/images\/layout\/030101_43_AHB_A90-D1_W_TN.svg"
+            ]
+        },
+        {
+            "meta": {
+                "residence": 2,
+                "residence_en": "Azabudai Hills Residence B",
+                "residence_kana": "アザブダイヒルズレジデンス B",
+                "layout": 2,
+                "area": 53.7,
+                "price": 540000,
+                "feature": [
+                    1
+                ],
+                "equipment": [
+                    1,
+                    2,
+                    7,
+                    8,
+                    12,
+                    13,
+                    5
+                ],
+                "facility": [
+                    1,
+                    2,
+                    7,
+                    3,
+                    4,
+                    5,
+                    6,
+                    9,
+                    10,
+                    11,
+                    13,
+                    8,
+                    14,
+                    15
+                ]
+            },
+            "id": "63195eba",
+            "new": 0,
+            "residence": "麻布台ヒルズレジデンス B",
+            "room": "1018",
+            "spec": [
+                "53.7㎡",
+                "1BR",
+                "10F"
+            ],
+            "price": "¥540,000",
+            "details": [
+                {
+                    "name": "特徴",
+                    "description": "ペット可"
+                },
+                {
+                    "name": "眺望",
+                    "description": ""
+                },
+                {
+                    "name": "住居内設備",
+                    "description": "フローリング（リビング・ダイニング他）、床暖房、ディスポーザー、食洗機、浴室乾燥、バルコニー、IHコンロ"
+                },
+                {
+                    "name": "ペット",
+                    "description": "〇"
+                },
+                {
+                    "name": "施設",
+                    "description": "フロントデスク、駐車場、バイク置き場、駐輪場、フィットネス施設、ゲストルーム、ラウンジ、コミュニティルーム、ミーティングルーム、BBQエリア、トランクルーム、キッズルーム、シアタールーム、ペット足洗い場"
+                }
+            ],
+            "url": "\/ja\/vacancy\/0253\/1018.html",
+            "images": [
+                "\/assets\/images\/layout\/030101_43_AHB_A50-C_S_TN.svg"
+            ]
+        }
+    ]
+}

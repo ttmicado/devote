@@ -1,0 +1,1017 @@
+<!DOCTYPE html><html lang="ja"><head>
+
+
+
+
+
+
+
+
+
+
+
+<title>建物一覧 | 港エリア | 住友不動産の賃貸レジデンス</title>
+
+
+
+<!-- google font -->
+
+
+
+
+<!-- ./google font -->
+
+
+
+
+
+
+
+
+</head>
+
+<body class="buildlist">
+<header>
+  <div class="header_inner">
+    <h1 class="logo"><a href="/"><img src="/assets_renewal/images/img_logo.svg" alt="La Tour Luxury Apartment"></a></h1>
+    <div class="gnavi_btnWrap">
+      <ul class="gnavi_linkList">
+        <li><div class="wovn-translate-widget"></div></li>
+        <li>
+          <a class="gnavi_link disp-pc search jost" href="/search/newarea_search.php">Search</a>
+        </li>
+        <li>
+          <a class="gnavi_link disp-pc mylist jost" href="/mypage/mylist_unit.php"><span>My list</span><span class="count jost"></span></a>
+        </li>
+        <li>
+          <a class="gnavi_link disp-pc contact jost submitInquiry" href="/inquiry/"><span>Contact</span><span class="count jost"></span></a>
+        </li>
+        <li>
+          <a class="gnavi_link disp-pc login" href="/estate/login.php">不動産会社の皆様へ</a>
+        </li>
+      </ul>
+      <button id="gnaviBtn" aria-controls="globalnavi" aria-expanded="false"><span>メニューを開く</span></button>
+    </div>
+    <div id="globalnavi" aria-hidden="true">
+      <div class="globalnavi_inner">
+        <div class="gnaviLogo"><a href="/"><img src="/assets_renewal/images/img_logo.svg" alt="La Tour Luxury Apartment"></a></div>
+        <button id="gnaviClose" aria-controls="globalnavi" aria-expanded="false"><img src="/assets_renewal/images/btn_close_white.svg" alt="メニューを閉じる"></button>
+        <nav class="mainnav">
+          <div class="mainnav_lineup">
+            <a href="#" class="mainnav_category jost js-menuopen">Lineup</a>
+            <div class="mainnav_lineupList mainnav_sphide">
+              <a href="#" class="mainnav_category -backLink js-menuclose jost">Lineup</a>
+              <div class="mainnav_scrollwrap">
+                <ul>
+                  <li>
+                    <a href="/buildlist/shinjuku/">
+                      <span class="jost en">SHINJUKU / NAKANO</span>
+                      <span class="ja">新宿・中野エリア</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/buildlist/minato/">
+                      <span class="jost en">MINATO</span>
+                      <span class="ja">港エリア</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/buildlist/shibuya_meguro_setagaya/">
+                      <span class="jost en">SHIBUYA / MEGURO / SETAGAYA</span>
+                      <span class="ja">渋谷・目黒・世田谷エリア</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/buildlist/chiyoda/">
+                      <span class="jost en">CHIYODA</span>
+                      <span class="ja">千代田エリア</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/buildlist/chuo/">
+                      <span class="jost en">CHUO</span>
+                      <span class="ja">中央エリア</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/buildlist/bunkyo_toshima/">
+                      <span class="jost en">BUNKYO / TOSHIMA</span>
+                      <span class="ja">文京・豊島エリア</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/buildlist/shinagawa/">
+                      <span class="jost en">SHINAGAWA</span>
+                      <span class="ja">品川エリア</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/buildlist/taito/">
+                      <span class="jost en">TAITO</span>
+                      <span class="ja">台東エリア</span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="mainnav_column">
+            <!-- Search -->
+            <a href="#" class="mainnav_category js-menuopen jost">Search</a>
+            <div class="mainnav_spsec mainnav_sphide">
+              <a href="#" class="mainnav_category -backLink js-menuclose jost">Search</a>
+              <ul class="mainnav_navList">
+                <li><a href="/search/newarea_search.php">エリアから空室検索</a></li>
+                <li><a href="/search/line_search.php">沿線から空室検索</a></li>
+                <li>
+                  <span>フリーワードで空室検索</span><br>
+                  <form action="/search/doFreewordsSearch.php">
+                  <div class="mainnav_searchWrap">
+                    <input type="search" name="keyword" id="" placeholder="例）中野　1LDK">
+                    <button type="submit"><img src="/assets_renewal/images/icon_search.svg" alt="フリーワードで空室検索"></button>
+                  </div>
+                  </form>
+                </li>
+              </ul>
+            </div>
+            <!-- Campaign -->
+            <span class="mainnav_category noIcon jost">Campaign</span>
+            <ul class="mainnav_navList">
+              <li><a href="/campaign/campaign.php">キャンペーン物件</a></li>
+            </ul>
+            <!-- Renewal -->
+            <span class="mainnav_category noIcon jost">Renewal</span>
+            <ul class="mainnav_navList">
+              <li><a href="/campaign/renewal.php">リニューアル物件</a></li>
+            </ul>
+            <!-- Pick up -->
+            <span class="mainnav_category noIcon jost">Selection</span>
+            <ul class="mainnav_navList">
+              <li><a href="/lp-large/">ゆとり住戸</a></li>
+            </ul>
+            <!-- Contents -->
+            <!-- <span class="mainnav_category noIcon jost">Contents</span>
+            <ul class="mainnav_navList">
+              <li><a href="/campaign/renewal.php">リニューアル物件</a></li>
+              <li><a href="#">ピックアップ物件</a></li>
+            </ul> -->
+          </div>
+          <div class="mainnav_column linkList">
+            <div class="disp-pc mainnav_box">
+              <a href="/estate/login.php" class="mainnav_box_link">不動産会社の皆様へ</a>
+              <span class="mainnav_box_text">不動産会社専用番号</span>
+              <span class="mainnav_box_tel">050-3112-0335</span>
+            </div>
+            <div>
+              <!-- Concept -->
+              <span class="mainnav_category noIcon jost">Concept</span>
+              <ul class="mainnav_navList">
+                <li><a href="/about/">QUALITY</a></li>
+                <li><a href="/about/#multilineup">MULTI LINEUP</a></li>
+                <li><a href="/about/#operation">自社所有・運営</a></li>
+              </ul>
+              <ul class="mainnav_navList noPadding">
+                <li><a href="/faq/">よくある質問</a></li>
+                <li><a href="/flow/">契約までの流れ</a></li>
+              </ul>
+            </div>
+            <div class="subnav disp-pc">
+              <span class="subnav_tel">TEL：0120-041-256</span>
+              <span class="subnav_time">受付時間：9時〜18時</span>
+              <span class="subnav_small_tel_Lead">For English Service, Call</span>
+              <span class="subnav_small_tel"><span>Outside Japan</span> TEL： +81-3-3346-9510</span>
+              <span class="subnav_small_tel"><span>Inside Japan</span> TEL： 0120-770-507</span>
+            </div>
+          </div>
+        </nav>
+        <div class="subnav disp-sp">
+          <a href="/inquiry/" class="button button_white">お問合せ／見学予約</a>
+          <a href="tel:0120041256" class="subnav_tel">TEL：0120-041-256</a>
+          <span class="subnav_time">受付時間：9時〜18時</span>
+          <span class="subnav_small_tel_Lead">For English Service, Call</span>
+          <a href="tel:+81333469510" class="subnav_small_tel"><span>Outside Japan</span> TEL： +81-3-3346-9510</a>
+          <a href="tel:0120770507" class="subnav_small_tel"><span>Inside Japan</span> TEL： 0120-770-507</a>
+          <span class="subnav_time company">不動産会社専用番号</span>
+          <a href="tel:05031120335" class="subnav_tel company">TEL：050-3112-0335</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</header><div class="breadcrumb_wrap">
+  <ol class="breadcrumb disp-pc" aria-label="パンくずリスト">
+    <li><a href="/">HOME</a></li>
+    <li><a href="/buildlist/minato/" aria-current="page">港エリアの建物一覧</a></li>
+  </ol>
+</div>
+<main class="contents">
+  <h1 class="title">
+    <span class="ja">物件のご案内</span>
+    <span class="en jost">Lineup</span>
+  </h1>
+  <div class="buildlist_nav">
+    <nav class="buildlist_nav_list">
+      <span><a href="/buildlist/shinjuku/">新宿・中野</a></span>
+      <span><a href="/buildlist/minato/" class="current">港</a></span>
+      <span><a href="/buildlist/shibuya_meguro_setagaya/">渋谷・目黒・世田谷</a></span>
+      <span><a href="/buildlist/chiyoda/">千代田</a></span>
+      <span><a href="/buildlist/chuo/">中央</a></span>
+      <span><a href="/buildlist/bunkyo_toshima/">文京・豊島</a></span>
+      <span><a href="/buildlist/shinagawa/">品川</a></span>
+      <span><a href="/buildlist/taito/">台東</a></span>
+    </nav>
+    <p class="buildlist_nav_txt">建物をチェックしていただくと、最大10物件までまとめてお問合せが可能です。</p>
+    <div class="buildlist_nav_lead">
+      <span class="en jost">MINATO</span>
+      <span class="ja">港エリアの建物一覧</span>
+    </div>
+  </div>
+  <form action="" method="post">
+    <div class="buildlist_list">
+      <div class="buildlist_item">
+        <label for="lineup_001" class="buildlist_chk">
+          <input type="checkbox" class="js_chk" name="build[]" id="lineup_001" value="28164">
+          <span class="icon"></span>
+          <span class="text">プラティーヌ田町</span>
+        </label>
+        <a href="/buildlist/minato/platine-tamachi/" class="name jost">PLATINE TAMACHI</a>
+        <div class="buildlist_contents">
+          <div class="buildlist_flex">
+            <figure>
+              <a href="/buildlist/minato/platine-tamachi/">
+                <img src="/bldg/28164/1.jpg" alt="">
+              </a>
+            </figure>
+            <div class="buildlist_links">
+              <div>
+                <span>田町駅 徒歩6分</span>
+              </div>
+              <div>
+                <a class="disp-pc " href="/buildlist/minato/platine-tamachi/">建物詳細</a>
+                <a href="/buildlist/minato/platine-tamachi/unit_empty/" class="">公開空室7室</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="buildlist_item">
+        <label for="lineup_002" class="buildlist_chk">
+          <input type="checkbox" class="js_chk" name="build[]" id="lineup_002" value="25157">
+          <span class="icon"></span>
+          <span class="text">ヨコソーレインボータワーハイツ</span>
+        </label>
+        <a href="/buildlist/minato/yokoso-rainbowtower-heights/" class="name jost">YOKOSO RAINBOW TOWER HEIGHTS</a>
+        <div class="buildlist_contents">
+          <div class="buildlist_flex">
+            <figure>
+              <a href="/buildlist/minato/yokoso-rainbowtower-heights/">
+                <img src="/bldg/25157/1.jpg" alt="">
+              </a>
+            </figure>
+            <div class="buildlist_links">
+              <div>
+                <span>芝浦ふ頭駅 徒歩3分</span>
+              </div>
+              <div>
+                <a class="disp-pc " href="/buildlist/minato/yokoso-rainbowtower-heights/">建物詳細</a>
+                <a href="/buildlist/minato/yokoso-rainbowtower-heights/unit_empty/" class="">公開空室1室</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="buildlist_item">
+        <label for="lineup_003" class="buildlist_chk">
+          <input type="checkbox" class="js_chk" name="build[]" id="lineup_003" value="25149">
+          <span class="icon"></span>
+          <span class="text">六本木ビュータワー</span>
+        </label>
+        <a href="/buildlist/minato/roppongi-view-tower/" class="name jost">ROPPONGI VIEW TOWER</a>
+        <div class="buildlist_contents">
+          <div class="buildlist_flex">
+            <figure>
+              <a href="/buildlist/minato/roppongi-view-tower/">
+                <img src="/bldg/25149/1.jpg" alt="">
+              </a>
+            </figure>
+            <div class="buildlist_links">
+              <div>
+                <span>六本木一丁目駅 徒歩6分</span>
+              </div>
+              <div>
+                <a class="disp-pc " href="/buildlist/minato/roppongi-view-tower/">建物詳細</a>
+                <a href="/buildlist/minato/roppongi-view-tower/unit_empty/" class="">公開空室1室</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="buildlist_item">
+        <label for="lineup_004" class="buildlist_chk">
+          <input type="checkbox" class="js_chk" name="build[]" id="lineup_004" value="25166">
+          <span class="icon"></span>
+          <span class="text">芝公園レジデンス</span>
+        </label>
+        <a href="/buildlist/minato/shibakoen-residence/" class="name jost">SHIBAKOEN RESIDENCE</a>
+        <div class="buildlist_contents">
+          <div class="buildlist_flex">
+            <figure>
+              <a href="/buildlist/minato/shibakoen-residence/">
+                <img src="/bldg/25166/1.jpg" alt="">
+              </a>
+            </figure>
+            <div class="buildlist_links">
+              <div>
+                <span>芝公園駅 徒歩4分</span>
+              </div>
+              <div>
+                <a class="disp-pc " href="/buildlist/minato/shibakoen-residence/">建物詳細</a>
+                <a href="/buildlist/minato/shibakoen-residence/unit_empty/" class="">公開空室0室</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="buildlist_item">
+        <label for="lineup_005" class="buildlist_chk">
+          <input type="checkbox" class="js_chk" name="build[]" id="lineup_005" value="23345">
+          <span class="icon"></span>
+          <span class="text">アパートメンツ元麻布内田坂</span>
+        </label>
+        <a href="/buildlist/minato/motoazabuuchidazaka/" class="name jost">APARTMENTS MOTOAZABU UCHIDAZAKA</a>
+        <div class="buildlist_contents">
+          <div class="buildlist_flex">
+            <figure>
+              <a href="/buildlist/minato/motoazabuuchidazaka/">
+                <img src="/bldg/23345/1.jpg" alt="">
+              </a>
+            </figure>
+            <div class="buildlist_links">
+              <div>
+                <span>「六本木」駅 徒歩10分</span>
+              </div>
+              <div>
+                <a class="disp-pc " href="/buildlist/minato/motoazabuuchidazaka/">建物詳細</a>
+                <a href="/buildlist/minato/motoazabuuchidazaka/unit_empty/" class="">公開空室2室</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="buildlist_item">
+        <label for="lineup_006" class="buildlist_chk">
+          <input type="checkbox" class="js_chk" name="build[]" id="lineup_006" value="21162">
+          <span class="icon"></span>
+          <span class="text">芝大門ハイツ</span>
+        </label>
+        <a href="/buildlist/minato/shibadaimon-heights/" class="name jost">SHIBADAIMON HEIGHTS</a>
+        <div class="buildlist_contents">
+          <div class="buildlist_flex">
+            <figure>
+              <a href="/buildlist/minato/shibadaimon-heights/">
+                <img src="/bldg/21162/1.jpg" alt="">
+              </a>
+            </figure>
+            <div class="buildlist_links">
+              <div>
+                <span>大門駅 徒歩3分</span>
+              </div>
+              <div>
+                <a class="disp-pc " href="/buildlist/minato/shibadaimon-heights/">建物詳細</a>
+                <a href="/buildlist/minato/shibadaimon-heights/unit_empty/" class="">公開空室1室</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="buildlist_item">
+        <label for="lineup_007" class="buildlist_chk">
+          <input type="checkbox" class="js_chk" name="build[]" id="lineup_007" value="21168">
+          <span class="icon"></span>
+          <span class="text">芝ハイツ</span>
+        </label>
+        <a href="/buildlist/minato/shiba-heights/" class="name jost">SHIBA HEIGHTS</a>
+        <div class="buildlist_contents">
+          <div class="buildlist_flex">
+            <figure>
+              <a href="/buildlist/minato/shiba-heights/">
+                <img src="/bldg/21168/1.jpg" alt="">
+              </a>
+            </figure>
+            <div class="buildlist_links">
+              <div>
+                <span>浜松町駅 徒歩9分</span>
+              </div>
+              <div>
+                <a class="disp-pc " href="/buildlist/minato/shiba-heights/">建物詳細</a>
+                <a href="/buildlist/minato/shiba-heights/unit_empty/" class="">公開空室2室</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="buildlist_item">
+        <label for="lineup_008" class="buildlist_chk">
+          <input type="checkbox" class="js_chk" name="build[]" id="lineup_008" value="25280">
+          <span class="icon"></span>
+          <span class="text">三田聖坂ガーデンレジデンス</span>
+        </label>
+        <a href="/buildlist/minato/mitahijirizakagarden-residence/" class="name jost">MITAHIJIRIZAKA GARDEN RESIDENCE</a>
+        <div class="buildlist_contents">
+          <div class="buildlist_flex">
+            <figure>
+              <a href="/buildlist/minato/mitahijirizakagarden-residence/">
+                <img src="/bldg/25280/1.jpg" alt="">
+              </a>
+            </figure>
+            <div class="buildlist_links">
+              <div>
+                <span>三田駅 徒歩6分</span>
+              </div>
+              <div>
+                <a class="disp-pc " href="/buildlist/minato/mitahijirizakagarden-residence/">建物詳細</a>
+                <a href="/buildlist/minato/mitahijirizakagarden-residence/unit_empty/" class="">公開空室1室</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="buildlist_item">
+        <label for="lineup_009" class="buildlist_chk">
+          <input type="checkbox" class="js_chk" name="build[]" id="lineup_009" value="25198">
+          <span class="icon"></span>
+          <span class="text">プラティーヌ芝公園</span>
+        </label>
+        <a href="/buildlist/minato/platine-shibakoen/" class="name jost">PLATINE SHIBAKOEN</a>
+        <div class="buildlist_contents">
+          <div class="buildlist_flex">
+            <figure>
+              <a href="/buildlist/minato/platine-shibakoen/">
+                <img src="/bldg/25198/1.jpg" alt="">
+              </a>
+            </figure>
+            <div class="buildlist_links">
+              <div>
+                <span>浜松町駅 徒歩8分</span>
+              </div>
+              <div>
+                <a class="disp-pc " href="/buildlist/minato/platine-shibakoen/">建物詳細</a>
+                <a href="/buildlist/minato/platine-shibakoen/unit_empty/" class="">公開空室0室</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="buildlist_item">
+        <label for="lineup_010" class="buildlist_chk">
+          <input type="checkbox" class="js_chk" name="build[]" id="lineup_010" value="23304">
+          <span class="icon"></span>
+          <span class="text">南麻布レジデンス</span>
+        </label>
+        <a href="/buildlist/minato/minamiazabu-residence/" class="name jost">MINAMIAZABU RESIDENCE</a>
+        <div class="buildlist_contents">
+          <div class="buildlist_flex">
+            <figure>
+              <a href="/buildlist/minato/minamiazabu-residence/">
+                <img src="/bldg/23304/1.jpg" alt="">
+              </a>
+            </figure>
+            <div class="buildlist_links">
+              <div>
+                <span>広尾駅 徒歩1分</span>
+              </div>
+              <div>
+                <a class="disp-pc " href="/buildlist/minato/minamiazabu-residence/">建物詳細</a>
+                <a href="/buildlist/minato/minamiazabu-residence/unit_empty/" class="">公開空室0室</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="buildlist_item">
+        <label for="lineup_011" class="buildlist_chk">
+          <input type="checkbox" class="js_chk" name="build[]" id="lineup_011" value="25148">
+          <span class="icon"></span>
+          <span class="text">六本木ファーストプラザ</span>
+        </label>
+        <a href="/buildlist/minato/roppongi-firstplaza/" class="name jost">ROPPONGI FIRST PLAZA</a>
+        <div class="buildlist_contents">
+          <div class="buildlist_flex">
+            <figure>
+              <a href="/buildlist/minato/roppongi-firstplaza/">
+                <img src="/bldg/25148/1.jpg" alt="">
+              </a>
+            </figure>
+            <div class="buildlist_links">
+              <div>
+                <span>六本木一丁目駅 徒歩5分</span>
+              </div>
+              <div>
+                <a class="disp-pc " href="/buildlist/minato/roppongi-firstplaza/">建物詳細</a>
+                <a href="/buildlist/minato/roppongi-firstplaza/unit_empty/" class="">公開空室0室</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="buildlist_item">
+        <label for="lineup_012" class="buildlist_chk">
+          <input type="checkbox" class="js_chk" name="build[]" id="lineup_012" value="21164">
+          <span class="icon"></span>
+          <span class="text">芝浦ハイツ</span>
+        </label>
+        <a href="/buildlist/minato/shibaura-heights/" class="name jost">SHIBAURA HEIGHTS</a>
+        <div class="buildlist_contents">
+          <div class="buildlist_flex">
+            <figure>
+              <a href="/buildlist/minato/shibaura-heights/">
+                <img src="/bldg/21164/1.jpg" alt="">
+              </a>
+            </figure>
+            <div class="buildlist_links">
+              <div>
+                <span>田町駅 徒歩13分</span>
+              </div>
+              <div>
+                <a class="disp-pc " href="/buildlist/minato/shibaura-heights/">建物詳細</a>
+                <a href="/buildlist/minato/shibaura-heights/unit_empty/" class="">公開空室0室</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="buildlist_item">
+        <label for="lineup_013" class="buildlist_chk">
+          <input type="checkbox" class="js_chk" name="build[]" id="lineup_013" value="25163">
+          <span class="icon"></span>
+          <span class="text">浜松町レジデンス</span>
+        </label>
+        <a href="/buildlist/minato/hamamatsucho-residence/" class="name jost">HAMAMATSUCHO RESIDENCE</a>
+        <div class="buildlist_contents">
+          <div class="buildlist_flex">
+            <figure>
+              <a href="/buildlist/minato/hamamatsucho-residence/">
+                <img src="/bldg/25163/1.jpg" alt="">
+              </a>
+            </figure>
+            <div class="buildlist_links">
+              <div>
+                <span>浜松町駅 徒歩8分</span>
+              </div>
+              <div>
+                <a class="disp-pc " href="/buildlist/minato/hamamatsucho-residence/">建物詳細</a>
+                <a href="/buildlist/minato/hamamatsucho-residence/unit_empty/" class="">公開空室1室</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="buildlist_item">
+        <label for="lineup_014" class="buildlist_chk">
+          <input type="checkbox" class="js_chk" name="build[]" id="lineup_014" value="24141">
+          <span class="icon"></span>
+          <span class="text">芝園ハイツ</span>
+        </label>
+        <a href="/buildlist/minato/shibazono-heights/" class="name jost">SHIBAZONO HEIGHTS</a>
+        <div class="buildlist_contents">
+          <div class="buildlist_flex">
+            <figure>
+              <a href="/buildlist/minato/shibazono-heights/">
+                <img src="/bldg/24141/1.jpg" alt="">
+              </a>
+            </figure>
+            <div class="buildlist_links">
+              <div>
+                <span>芝公園駅 徒歩4分</span>
+              </div>
+              <div>
+                <a class="disp-pc " href="/buildlist/minato/shibazono-heights/">建物詳細</a>
+                <a href="/buildlist/minato/shibazono-heights/unit_empty/" class="">公開空室1室</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="buildlist_item">
+        <label for="lineup_015" class="buildlist_chk">
+          <input type="checkbox" class="js_chk" name="build[]" id="lineup_015" value="25259">
+          <span class="icon"></span>
+          <span class="text">新坂40ハウス</span>
+        </label>
+        <a href="/buildlist/minato/shinsaka40house/" class="name jost">SHINSAKA 40 HOUSE</a>
+        <div class="buildlist_contents">
+          <div class="buildlist_flex">
+            <figure>
+              <a href="/buildlist/minato/shinsaka40house/">
+                <img src="/bldg/25259/1.jpg" alt="">
+              </a>
+            </figure>
+            <div class="buildlist_links">
+              <div>
+                <span>青山一丁目駅 徒歩6分</span>
+              </div>
+              <div>
+                <a class="disp-pc " href="/buildlist/minato/shinsaka40house/">建物詳細</a>
+                <a href="/buildlist/minato/shinsaka40house/unit_empty/" class="">公開空室0室</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="buildlist_item">
+        <label for="lineup_016" class="buildlist_chk">
+          <input type="checkbox" class="js_chk" name="build[]" id="lineup_016" value="26185">
+          <span class="icon"></span>
+          <span class="text">麻布市兵衛町ホームズ</span>
+        </label>
+        <a href="/buildlist/minato/azabuichibeicho-homes/" class="name jost">AZABU ICHIBEICHO HOMES</a>
+        <div class="buildlist_contents">
+          <div class="buildlist_flex">
+            <figure>
+              <a href="/buildlist/minato/azabuichibeicho-homes/">
+                <img src="/bldg/26185/1.jpg" alt="">
+              </a>
+            </figure>
+            <div class="buildlist_links">
+              <div>
+                <span>六本木一丁目駅 徒歩2分</span>
+              </div>
+              <div>
+                <a class="disp-pc " href="/buildlist/minato/azabuichibeicho-homes/">建物詳細</a>
+                <a href="/buildlist/minato/azabuichibeicho-homes/unit_empty/" class="">公開空室0室</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="buildlist_item">
+        <label for="lineup_017" class="buildlist_chk">
+          <input type="checkbox" class="js_chk" name="build[]" id="lineup_017" value="25266">
+          <span class="icon"></span>
+          <span class="text">青山タウンハウスアネックス</span>
+        </label>
+        <a href="/buildlist/minato/aoyama-townhouse-annex/" class="name jost">AOYAMA TOWN HOUSE ANNEX</a>
+        <div class="buildlist_contents">
+          <div class="buildlist_flex">
+            <figure>
+              <a href="/buildlist/minato/aoyama-townhouse-annex/">
+                <img src="/bldg/25266/1.jpg" alt="">
+              </a>
+            </figure>
+            <div class="buildlist_links">
+              <div>
+                <span>青山一丁目駅 徒歩7分</span>
+              </div>
+              <div>
+                <a class="disp-pc " href="/buildlist/minato/aoyama-townhouse-annex/">建物詳細</a>
+                <a href="/buildlist/minato/aoyama-townhouse-annex/unit_empty/" class="">公開空室0室</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="buildlist_item">
+        <label for="lineup_018" class="buildlist_chk">
+          <input type="checkbox" class="js_chk" name="build[]" id="lineup_018" value="29180">
+          <span class="icon"></span>
+          <span class="text">プレミスト白金台</span>
+        </label>
+        <a href="/buildlist/minato/premist-shirokanedai/" class="name jost">PREMIST SHIROKANEDAI</a>
+        <div class="buildlist_contents">
+          <div class="buildlist_flex">
+            <figure>
+              <a href="/buildlist/minato/premist-shirokanedai/">
+                <img src="/bldg/29180/1.jpg" alt="">
+              </a>
+            </figure>
+            <div class="buildlist_links">
+              <div>
+                <span>白金台駅 徒歩2分</span>
+              </div>
+              <div>
+                <a class="disp-pc " href="/buildlist/minato/premist-shirokanedai/">建物詳細</a>
+                <a href="/buildlist/minato/premist-shirokanedai/unit_empty/" class="">公開空室0室</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="buildlist_item">
+        <label for="lineup_019" class="buildlist_chk">
+          <input type="checkbox" class="js_chk" name="build[]" id="lineup_019" value="11326">
+          <span class="icon"></span>
+          <span class="text">シティタワー麻布十番</span>
+        </label>
+        <a href="/buildlist/minato/citytower-azabujuban/" class="name jost">CITY TOWER AZABUJUBAN</a>
+        <div class="buildlist_contents">
+          <div class="buildlist_flex">
+            <figure>
+              <a href="/buildlist/minato/citytower-azabujuban/">
+                <img src="/bldg/11326/1.jpg" alt="">
+              </a>
+            </figure>
+            <div class="buildlist_links">
+              <div>
+                <span>「麻布十番駅」徒歩4分</span>
+              </div>
+              <div>
+                <a class="disp-pc " href="/buildlist/minato/citytower-azabujuban/">建物詳細</a>
+                <a href="/buildlist/minato/citytower-azabujuban/unit_empty/" class="">公開空室0室</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="buildlist_item">
+        <label for="lineup_020" class="buildlist_chk">
+          <input type="checkbox" class="js_chk" name="build[]" id="lineup_020" value="29194">
+          <span class="icon"></span>
+          <span class="text">グランドヒルズ白金台</span>
+        </label>
+        <a href="/buildlist/minato/grandhills-shirokanedai/" class="name jost">GRAND HILLS SHIROKANEDAI</a>
+        <div class="buildlist_contents">
+          <div class="buildlist_flex">
+            <figure>
+              <a href="/buildlist/minato/grandhills-shirokanedai/">
+                <img src="/bldg/29194/1.jpg" alt="">
+              </a>
+            </figure>
+            <div class="buildlist_links">
+              <div>
+                <span>白金台駅 徒歩3分</span>
+              </div>
+              <div>
+                <a class="disp-pc " href="/buildlist/minato/grandhills-shirokanedai/">建物詳細</a>
+                <a href="/buildlist/minato/grandhills-shirokanedai/unit_empty/" class="">公開空室0室</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="buildlist_item">
+        <label for="lineup_021" class="buildlist_chk">
+          <input type="checkbox" class="js_chk" name="build[]" id="lineup_021" value="29182">
+          <span class="icon"></span>
+          <span class="text">赤坂AIRレジデンス</span>
+        </label>
+        <a href="/buildlist/minato/akasaka-air-residence/" class="name jost">AKASAKA AIR RESIDENCE</a>
+        <div class="buildlist_contents">
+          <div class="buildlist_flex">
+            <figure>
+              <a href="/buildlist/minato/akasaka-air-residence/">
+                <img src="/bldg/29182/1.jpg" alt="">
+              </a>
+            </figure>
+            <div class="buildlist_links">
+              <div>
+                <span>溜池山王駅 徒歩3分</span>
+              </div>
+              <div>
+                <a class="disp-pc " href="/buildlist/minato/akasaka-air-residence/">建物詳細</a>
+                <a href="/buildlist/minato/akasaka-air-residence/unit_empty/" class="">公開空室0室</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="buildlist_item">
+        <label for="lineup_022" class="buildlist_chk">
+          <input type="checkbox" class="js_chk" name="build[]" id="lineup_022" value="23346">
+          <span class="icon"></span>
+          <span class="text">アルファ元麻布</span>
+        </label>
+        <a href="/buildlist/minato/alpha-motoazabu/" class="name jost">ALPHA&nbsp;MOTOAZABU</a>
+        <div class="buildlist_contents">
+          <div class="buildlist_flex">
+            <figure>
+              <a href="/buildlist/minato/alpha-motoazabu/">
+                <img src="/bldg/23346/1.jpg" alt="">
+              </a>
+            </figure>
+            <div class="buildlist_links">
+              <div>
+                <span>「麻布十番」駅 徒歩10分</span>
+              </div>
+              <div>
+                <a class="disp-pc " href="/buildlist/minato/alpha-motoazabu/">建物詳細</a>
+                <a href="/buildlist/minato/alpha-motoazabu/unit_empty/" class="">公開空室0室</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="buildlist_item">
+        <label for="lineup_023" class="buildlist_chk">
+          <input type="checkbox" class="js_chk" name="build[]" id="lineup_023" value="24195">
+          <span class="icon"></span>
+          <span class="text">東京ツインパークス</span>
+        </label>
+        <a href="/buildlist/minato/tokyo-twinparks/" class="name jost">TOKYO TWIN PARKS</a>
+        <div class="buildlist_contents">
+          <div class="buildlist_flex">
+            <figure>
+              <a href="/buildlist/minato/tokyo-twinparks/">
+                <img src="/bldg/24195/1.jpg" alt="">
+              </a>
+            </figure>
+            <div class="buildlist_links">
+              <div>
+                <span>浜松町駅 徒歩7分</span>
+              </div>
+              <div>
+                <a class="disp-pc " href="/buildlist/minato/tokyo-twinparks/">建物詳細</a>
+                <a href="/buildlist/minato/tokyo-twinparks/unit_empty/" class="">公開空室0室</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="buildlist_btnarea">
+      <p>チェックを入れた物件をまとめて<span>（最大10件まで）</span></p>
+      <button type="button" class="button button_white button_arrow submitInquiry">お問合せ／見学予約</button>
+    </div>
+  </form>
+</main>
+
+<!-- modal -->
+<div class="popup">
+  <section id="popup1" class="popup_sec">
+    <p class="popup_txt">一度にお問合せ／見学予約<br>できるのは最大10件までです。</p>
+  </section>
+</div>
+
+<div class="breadcrumb_wrap">
+  <ol class="breadcrumb disp-sp" aria-label="パンくずリスト">
+    <li><a href="/">HOME</a></li>
+    <li><a href="/buildlist/minato/" aria-current="page">港エリアの建物一覧</a></li>
+  </ol>
+</div>
+
+<form action="/inquiry/" method="get" name="inquiry"></form>
+
+<aside class="spCvNew">
+  <ul>
+    <li><a href="/search/newarea_search.php"><img src="/assets_renewal/images/icon_nav_search.svg" alt=""><span class="jost">search</span></a></li>
+    <li class="mylist"><a href="/mypage/mylist_unit.php"><img src="/assets_renewal/images/icon_nav_fav.svg" alt=""><span class="jost">mylist</span><span class="count jost"></span></a></li>
+    <li class="contact"><a href="/inquiry/" class="submitInquiry"><img src="/assets_renewal/images/icon_nav_mail.svg" alt=""><span class="jost">contact</span><span class="count jost"></span></a></li>
+    <li><a href="tel:0120041256"><img src="/assets_renewal/images/icon_nav_tell.svg" alt=""><span class="jost">tel</span></a></li>
+  </ul>
+</aside><div class="toTopBtnWrap">
+  <a href="#" class="toTopBtn">
+    <img src="/assets_renewal/images/icon_toTop.svg" alt="ページの先頭へ">
+  </a>
+</div><aside class="others">
+  <p>
+    <span>ラ・トゥールシリーズの物件も<br>ご覧いただけます。</span>
+    <a href="https://www.sumitomo-latour.jp/" class="button button_bkBlack button_arrow" target="_blank">La Tour サイトへ</a>
+  </p>
+</aside><footer class="footer">
+  <div class="footer_inner">
+    <ul class="sitelink">
+      <li><a href="/faq/" class="faq jost">FAQ</a></li>
+      <li><a href="https://www.facebook.com/sumitomolatour/" target="_blank" class="fb"><img src="/assets_renewal/images/icon_facebook.svg" alt="Facebook"></a></li>
+      <li><a href="https://www.instagram.com/sumifu_chintai/" target="_blank" class="fb"><img src="/assets_renewal/images/icon_instagram.svg" alt="Facebook"></a></li>
+      <li><a href="/inquiry/" class="mail"><img src="/assets_renewal/images/icon_mail.svg" alt="お問合せ"></a></li>
+    </ul>
+
+    <dl class="searchlink">
+      <div>
+        <dt class="jost">Lineup&nbsp;：</dt>
+        <dd>
+          <ul class="linklist">
+            <li><a href="/buildlist/shinjuku/">新宿・中野</a></li>
+            <li><a href="/buildlist/minato/">港</a></li>
+            <li><a href="/buildlist/shibuya_meguro_setagaya/">渋谷・目黒・世田谷</a></li>
+            <li><a href="/buildlist/chiyoda/">千代田</a></li>
+            <li><a href="/buildlist/chuo/">中央</a></li>
+            <li><a href="/buildlist/bunkyo_toshima/">文京・豊島</a></li>
+            <li><a href="/buildlist/shinagawa/">品川</a></li>
+            <li><a href="/buildlist/taito/">台東</a></li>
+          </ul>
+        </dd>
+      </div>
+      <div>
+        <dt class="jost">Search&nbsp;：</dt>
+        <dd>
+          <ul class="linklist">
+            <li><a href="/search/newarea_search.php">エリアから空室検索</a></li>
+            <li><a href="/search/line_search.php">沿線から空室検索</a></li>
+          </ul>
+        </dd>
+      </div>
+    </dl>
+
+    <div class="linklistBlock">
+      <ul class="linklist">
+        <li><a href="/lp-large/">ゆとり住戸</a></li>
+        <li><a href="/campaign/campaign.php">キャンペーン物件</a></li>
+      </ul>
+      <ul class="linklist">
+        <li><a href="/campaign/renewal.php">リニューアル物件</a></li>
+        <li><a href="/about/">コンセプト</a></li>
+      </ul>
+    </div>
+    <div class="linklistBlock">
+      <ul class="linklist">
+        <li><a href="/faq/">よくある質問</a></li>
+        <li><a href="/flow/">契約までの流れ</a></li>
+        <li><a href="/inquiry/">お問合せ／見学予約</a></li>
+      </ul>
+      <ul class="linklist">
+        <li class="disp-pc"><a href="/estate/login.php">不動産会社の皆様</a></li>
+      </ul>
+    </div>
+
+    <div class="linklistWrap">
+      <span class="listtitle">住友不動産の関連サイト</span>
+      <div class="linklistBlock">
+        <ul class="linklist">
+          <li><a href="https://www.sumitomo-rd.co.jp/" target="_blank" rel="noopener noreferrer">住友不動産トップ</a></li>
+          <li><a href="https://office.sumitomo-rd.co.jp/?_ga=2.98790238.1385066850.1691458026-1916887654.1630655911" target="_blank" rel="noopener noreferrer">オフィスビル</a></li>
+          <li><a href="https://www.bellesalle.co.jp/" target="_blank" rel="noopener noreferrer">イベントホール・貸会議室</a></li>
+        </ul>
+        <ul class="linklist">
+          <li><a href="https://www.sumitomo-rd.co.jp/tochi_other/" target="_blank" rel="noopener noreferrer">資産活用</a></li>
+          <li><a href="https://www.sumitomo-rd-mansion.jp/" target="_blank" rel="noopener noreferrer">新築・分譲マンション</a></li>
+          <li><a href="https://www.sumitomo-latour.jp/" target="_blank" rel="noopener noreferrer">賃貸マンション（ラ・トゥール）</a></li>
+        </ul>
+      </div>
+      <div class="linklistBlock">
+        <ul class="linklist">
+          <li><a href="https://www.j-urban.jp/" target="_blank" rel="noopener noreferrer">注文住宅</a></li>
+          <li><a href="https://www.j-urban.jp/apartment/" target="_blank" rel="noopener noreferrer">集合住宅</a></li>
+          <li><a href="https://www.sokkuri3.com/" target="_blank" rel="noopener noreferrer">リフォーム</a></li>
+          <li><a href="https://www.stepon.co.jp/" target="_blank" rel="noopener noreferrer">不動産仲介</a></li>
+        </ul>
+        <ul class="linklist">
+          <li><a href="https://www.hvf.jp/" target="_blank" rel="noopener noreferrer">ホテル</a></li>
+          <li><a href="https://www.esforta.co.jp/" target="_blank" rel="noopener noreferrer">フィットネスクラブ</a></li>
+          <li><a href="https://www.izumicc.com/" target="_blank" rel="noopener noreferrer">ゴルフ場</a></li>
+          <li><a href="https://www.sumifu-shogyo.co.jp/index.html" target="_blank" rel="noopener noreferrer">商業施設</a></li>
+        </ul>
+      </div>
+      <div class="linklistBlock">
+        <ul class="linklist">
+          
+          <li><a href="https://www.sumitate.co.jp/" target="_blank" rel="noopener noreferrer">マンションの管理・修繕等</a></li>
+          <li><a href="https://parking.sumitomo-rd.co.jp/parking/?_ga=2.192129002.1385066850.1691458026-1916887654.1630655911" target="_blank" rel="noopener noreferrer">月極駐車場</a></li>
+          <li><a href="https://www.sumitomo-syscon.com/" target="_blank" rel="noopener noreferrer">インテリア販売</a></li>
+        </ul>
+        <ul class="linklist">
+          <li><a href="https://www.izumi-rest.com/" target="_blank" rel="noopener noreferrer">レストラン</a></li>
+          <li><a href="https://izumihoken.co.jp/" target="_blank" rel="noopener noreferrer">保険</a></li>
+          <li><a href="https://sumifu-fureai.com/ResidentSite/s/" target="_blank" rel="noopener noreferrer">すまいとくらしの会員制サービス</a></li>
+        </ul>
+      </div>
+      <div class="linklistBlock">
+        <ul class="linklist">
+          <li><a href="https://www.sumitomo-rd.co.jp/okyakusama/" target="_blank" rel="noopener noreferrer">お客様センター</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="linklistBlock">
+      <ul class="linklist">
+        <li><a href="https://www.sumitomo-rd.co.jp/corporate/" target="_blank" rel="noopener noreferrer">会社概要</a></li>
+        <li><a href="https://www.sumitomo-rd.co.jp/privacy_policy/" target="_blank" rel="noopener noreferrer">個人情報保護方針</a></li>
+      </ul>
+      <ul class="linklist">
+        <li><a href="https://www.sumitomo-rd.co.jp/social_media/" target="_blank" rel="noopener noreferrer">ソーシャルメディアガイドライン</a></li>
+        <li><a href="https://www.sumitomo-rd.co.jp/security_policy/" target="_blank" rel="noopener noreferrer">情報セキュリティ基本方針</a></li>
+        <li><a href="https://www.sumitomo-rd.co.jp/security_policy/" target="_blank" rel="noopener noreferrer">カスタマーハラスメントに対する基本方針</a></li>
+      </ul>
+    </div>
+
+    <div class="linklistBlock text">
+      <ul class="linklist">
+        <li>すみふ賃貸</li>
+        <li>住友不動産&nbsp;賃貸</li>
+        <li>すみふ&nbsp;ハイツ</li>
+      </ul>
+      <ul class="linklist">
+        <li>住友不動産&nbsp;賃貸レジデンス</li>
+        <li>賃貸マンション</li>
+      </ul>
+    </div>
+
+    <div class="bnr">
+      <figure class="bnr_sumitomo">
+        <a href="https://www.sumitomo-rd.co.jp/" target="_blank" rel="noopener noreferrer"><img src="/assets_renewal/images/logo_sumitomo.svg" alt="信用と創造 住友不動産"></a>
+      </figure>
+      <div class="contact disp-pc">
+        <span class="tel">TEL：0120-041-256</span><span class="time">受付時間：9時〜18時</span>
+      </div>
+    </div>
+
+    <small class="jost">Copyright 2024 © <br class="disp-sp">Sumitomo Realty &amp; Development Co.,LTD. All Rights Reserved</small>
+    
+  </div>
+</footer>
+<!-- Google Tag Manager -->
+
+
+<!-- End Google Tag Manager -->
+
+</body></html>

@@ -1,6 +1,6 @@
 ---
 name: property-matching
-description: ユーザーの希望条件（SearchCondition）と物件のマッチング、検討フェーズのゲージ、AIチャットでの条件ヒアリング（Claude tool use）、類似物件推薦、通知（LINE/メール/Instagram）の設計・実装を行うときに使う。
+description: ユーザーの希望条件（SearchCondition）と物件のマッチング、検討フェーズのゲージ、AIチャットでの条件ヒアリング（Claude tool use）、類似物件推薦、通知（LINE/メール）の設計・実装を行うときに使う。
 ---
 
 # マッチング・AIヒアリング・通知
@@ -19,9 +19,10 @@ description: ユーザーの希望条件（SearchCondition）と物件のマッ�
 
 ## AIヒアリング（Claude API）
 
-- 会話: `claude-sonnet-5-5`、要約・通知文: `claude-haiku-5-5`、難しい判断: `claude-opus-5-5`（`.env` の `DEVOTE_*_MODEL` で切り替える）
-- ツール: `update_criteria`（差分と根拠の引用）、`ask_clarification`、`preview_matches`（件数を見て緩める・絞るを相談）、`confirm_criteria`
-- AIの推測だけで条件を確定させない。ユーザーが確認カードで承認したら `search_conditions` に新しい版として保存する
+- 実装は `apps/web/lib/ai.ts`。モデルは `DEVOTE_CHAT_MODEL`（既定 `claude-opus-5-5`）、深さは `DEVOTE_CHAT_EFFORT`
+- ツール: `update_criteria`（下書きに差分マージ）、`preview_matches`（件数・除外理由を見て緩める／絞るを相談）
+- AIの推測だけで条件を確定させない。ユーザーが画面の「この条件で通知を受け取る」を押したら `search_conditions` に新しい版として保存する
+- 会話履歴は append-only（Claude の応答は thinking ブロックを含めて加工せず保存・送り返す）
 - 物件の事実（賃料・面積・空室）をAIに生成させない。DBの値をテンプレートに差し込む
 - Claude API の実装前に `claude-api` スキルを読み込むこと
 
@@ -29,7 +30,8 @@ description: ユーザーの希望条件（SearchCondition）と物件のマッ�
 
 - **LINE がメイン**（Flex Message の Carousel、ダイジェストにまとめて通数を節約する、`X-Line-Retry-Key`）
 - メールは Resend（`EmailProvider` で抽象化しておく）
-- **Instagram は24時間ウィンドウの制約で定期プッシュ不可**。ユーザーからDMが来たら24時間以内に新着を返す会話型の利用に限る（`user_channels.last_inbound_at` で判定する）
+- 通知チャネルは LINE とメールのみ（Instagram は24時間ウィンドウの制約で定期プッシュ不可のため見送り）
+- LINE はフリープラン（月200通）。`LINE_MONTHLY_LIMIT` を超えるとメールに切り替える
 - 二重送信の防止: 送信前に `sent_ledger` へ `INSERT ... ON CONFLICT DO NOTHING`。値下げは `reason='price_down'` として別キー
 - 送る直前に掲載中か・対応不可になっていないかを再確認する
 
