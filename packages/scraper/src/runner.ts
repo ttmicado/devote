@@ -8,6 +8,8 @@ export interface CrawlResult {
   /** 一覧を最後のページまで正常に巡回できたか（掲載終了判定はこれが true のときだけ行う） */
   listCompleted: boolean;
   seenIds: string[];
+  /** 一覧で見えた物件の listHash（sourceListingId → hash） */
+  listHashes: Record<string, string>;
   /** 一覧の表示総件数と実際に拾えた件数のずれ（構造変化の兆候） */
   countMismatch: boolean;
 }
@@ -72,5 +74,12 @@ export async function crawlSource(
     }
   }
 
-  return { listings, errors, listCompleted, seenIds: [...seen.keys()], countMismatch };
+  return {
+    listings,
+    errors,
+    listCompleted,
+    seenIds: [...seen.keys()],
+    listHashes: Object.fromEntries([...seen.values()].map((i) => [i.sourceListingId, i.listHash])),
+    countMismatch,
+  };
 }

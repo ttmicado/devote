@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { DealType } from "./property.js";
+import { DealType } from "./property";
 
 /**
  * AIヒアリングで固めた希望条件。

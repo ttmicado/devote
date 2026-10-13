@@ -55,6 +55,8 @@ export const listings = pgTable(
     /** NormalizedListing（@devote/core）をそのまま保持 */
     data: jsonb("data").notNull(),
     contentHash: text("content_hash").notNull(),
+    /** 一覧で取れる値のハッシュ。変化がなければ詳細取得を省略する */
+    listHash: text("list_hash"),
     price: integer("price").notNull(),
     adAllowed: boolean("ad_allowed"),
     missCount: smallint("miss_count").notNull().default(0), // 一覧で連続未検出の回数（掲載終了判定）
@@ -126,8 +128,45 @@ export const changeEvents = pgTable(
 export const users = pgTable("users", {
   id: uuid("id").primaryKey().defaultRandom(),
   displayName: text("display_name"),
+  /** AIチャットで編集中（未確定）の条件 */
+  draftCondition: jsonb("draft_condition"),
+  draftPhase: text("draft_phase", { enum: ["exploring", "considering", "ready"] }),
   ...timestamps,
 });
+
+/** メール確認・LINE連携などのワンタイムトークン */
+export const verificationTokens = pgTable("verification_tokens", {
+  token: text("token").primaryKey(),
+  userId: uuid("user_id")
+    .notNull()
+    .references(() => users.id),
+  purpose: text("purpose", { enum: ["email_verify", "line_link"] }).notNull(),
+  payload: text("payload"), // email_verify: メールアドレス
+  expiresAt: timestamp("expires_at", { withTimezone: true }).notNull(),
+  usedAt: timestamp("used_at", { withTimezone: true }),
+});
+
+/** 巡回の実行ログ（管理画面のソース状況表示・構造変化の検知） */
+export const crawlRuns = pgTable(
+  "crawl_runs",
+  {
+    id: bigserial("id", { mode: "number" }).primaryKey(),
+    source: text("source").notNull(),
+    status: text("status", { enum: ["running", "succeeded", "failed"] }).notNull(),
+    seen: integer("seen").notNull().default(0),
+    fetched: integer("fetched").notNull().default(0),
+    inArea: integer("in_area").notNull().default(0),
+    newCount: integer("new_count").notNull().default(0),
+    updatedCount: integer("updated_count").notNull().default(0),
+    delistedCount: integer("delisted_count").notNull().default(0),
+    errorCount: integer("error_count").notNull().default(0),
+    warnings: jsonb("warnings").notNull().default(sql`'[]'::jsonb`),
+    error: text("error"),
+    startedAt: timestamp("started_at", { withTimezone: true }).notNull().defaultNow(),
+    finishedAt: timestamp("finished_at", { withTimezone: true }),
+  },
+  (t) => [index("crawl_runs_source_idx").on(t.source, t.startedAt)],
+);
 
 export const channelType = pgEnum("channel_type", ["line", "instagram", "email"]);
 
@@ -265,6 +304,11 @@ export const inquiries = pgTable("inquiries", {
     enum: ["broker_refused", "already_applied", "condition_mismatch", "other"],
   }),
   preferredDates: jsonb("preferred_dates"),
+  contactName: text("contact_name").notNull(),
+  contactPhone: text("contact_phone"),
+  contactEmail: text("contact_email"),
+  message: text("message"),
+  adminNote: text("admin_note"),
   ...timestamps,
 });
 
@@ -282,6 +326,7 @@ export const similarSuggestions = pgTable("similar_suggestions", {
   /** 管理者の判定: 承認して送る / 却下 */
   adminDecision: text("admin_decision", { enum: ["approved", "rejected"] }),
   adminNote: text("admin_note"),
+  sentAt: timestamp("sent_at", { withTimezone: true }),
   userReaction: text("user_reaction", { enum: ["clicked", "inquired", "dismissed"] }),
   ...timestamps,
 });

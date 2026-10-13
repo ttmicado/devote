@@ -1,0 +1,23 @@
+name: DB Migrate
+
+# main への push で Neon にマイグレーションを適用する（手動実行も可）
+on:
+  push:
+    branches: [main]
+    paths: ["packages/db/drizzle/**"]
+  workflow_dispatch:
+
+jobs:
+  migrate:
+    runs-on: ubuntu-latest
+    env:
+      DATABASE_URL: ${{ secrets.DATABASE_URL }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm db:migrate

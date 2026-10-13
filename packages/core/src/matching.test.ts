@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
-import type { SearchCondition } from "./condition.js";
-import { scoreListing, selectForPhase } from "./matching.js";
-import type { NormalizedListing } from "./property.js";
+import type { SearchCondition } from "./condition";
+import { scoreListing, selectForPhase } from "./matching";
+import type { NormalizedListing } from "./property";
 
 const now = new Date("2026-10-13");
 

@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { isInTargetArea, splitAddress } from "./areas.js";
+import { isInTargetArea, splitAddress } from "./areas";
 
 describe("isInTargetArea", () => {
   it.each([

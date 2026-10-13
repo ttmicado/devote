@@ -9,7 +9,7 @@ import {
   parseStationAccess,
   parseYen,
   walkMinutesFromMeters,
-} from "./normalize.js";
+} from "./normalize";
 
 describe("parseYen", () => {
   it.each([

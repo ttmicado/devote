@@ -9,7 +9,7 @@
     "node": ">=22"
   },
   "scripts": {
-    "build": "pnpm -r build",
+    "build": "pnpm --filter @devote/web build",
     "typecheck": "pnpm -r typecheck",
     "test": "vitest run",
     "lint": "biome check .",
@@ -18,7 +18,9 @@
     "db:down": "docker compose down",
     "db:generate": "pnpm --filter @devote/db generate",
     "db:migrate": "pnpm --filter @devote/db migrate",
-    "scrape": "pnpm --filter @devote/scraper scrape"
+    "scrape": "pnpm --filter @devote/scraper scrape",
+    "worker": "pnpm --filter @devote/pipeline worker",
+    "dev": "pnpm --filter @devote/web dev"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.2.0",

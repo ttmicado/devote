@@ -1,0 +1,17 @@
+{
+  "name": "@devote/services",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@devote/core": "workspace:*",
+    "@devote/db": "workspace:*",
+    "drizzle-orm": "^0.45.0"
+  }
+}

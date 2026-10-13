@@ -7,10 +7,31 @@
       "!**/node_modules",
       "!**/drizzle",
       "!**/__fixtures__",
-      "!**/storage"
+      "!**/storage",
+      "!**/.next",
+      "!**/next-env.d.ts"
     ]
   },
-  "formatter": { "indentStyle": "space", "indentWidth": 2, "lineWidth": 100 },
-  "linter": { "enabled": true, "rules": { "preset": "none" } },
-  "javascript": { "formatter": { "quoteStyle": "double", "semicolons": "always" } }
+  "formatter": {
+    "indentStyle": "space",
+    "indentWidth": 2,
+    "lineWidth": 100
+  },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "preset": "none"
+    }
+  },
+  "javascript": {
+    "formatter": {
+      "quoteStyle": "double",
+      "semicolons": "always"
+    }
+  },
+  "css": {
+    "parser": {
+      "tailwindDirectives": true
+    }
+  }
 }

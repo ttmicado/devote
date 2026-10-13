@@ -1,0 +1,55 @@
+name: Crawl & Notify
+
+# 物件サイトの巡回 → マッチング → 通知（LINE / メール）
+# 実行間隔は 30 分（GitHub の混雑で数分遅れることがある）
+on:
+  schedule:
+    - cron: "*/30 * * * *"
+  workflow_dispatch:
+    inputs:
+      sources:
+        description: "巡回するソースID（カンマ区切り。空なら全て）"
+        required: false
+        default: ""
+
+concurrency:
+  group: crawl
+  cancel-in-progress: false
+
+jobs:
+  crawl:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      DATABASE_URL: ${{ secrets.DATABASE_URL }}
+      APP_URL: ${{ secrets.APP_URL }}
+      LINE_CHANNEL_ACCESS_TOKEN: ${{ secrets.LINE_CHANNEL_ACCESS_TOKEN }}
+      RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+      MAIL_FROM: ${{ secrets.MAIL_FROM }}
+      REINS_USER_ID: ${{ secrets.REINS_USER_ID }}
+      REINS_PASSWORD: ${{ secrets.REINS_PASSWORD }}
+      ATBB_USER_ID: ${{ secrets.ATBB_USER_ID }}
+      ATBB_PASSWORD: ${{ secrets.ATBB_PASSWORD }}
+      ITANDI_EMAIL: ${{ secrets.ITANDI_EMAIL }}
+      ITANDI_PASSWORD: ${{ secrets.ITANDI_PASSWORD }}
+      ENABLE_UNVERIFIED_SOURCES: ${{ vars.ENABLE_UNVERIFIED_SOURCES }}
+      # 会員サイトを国内のセルフホストランナーで回す場合は、こちらでは公開サイトだけに絞る
+      DEVOTE_SOURCES: ${{ inputs.sources || vars.DEVOTE_SOURCES }}
+      DEVOTE_STORAGE_DIR: ${{ github.workspace }}/storage
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - name: Install Chromium for Playwright
+        run: pnpm --filter @devote/scraper exec playwright install --with-deps chromium
+      - name: Restore login sessions
+        uses: actions/cache@v4
+        with:
+          path: storage/sessions
+          key: sessions-${{ github.run_id }}
+          restore-keys: sessions-
+      - run: pnpm worker all

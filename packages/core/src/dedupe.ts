@@ -1,4 +1,4 @@
-import type { NormalizedListing } from "./property.js";
+import type { NormalizedListing } from "./property";
 
 /**
  * 同一物件の名寄せキー。

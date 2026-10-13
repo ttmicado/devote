@@ -1,6 +1,6 @@
-import { PHASE_GATE, type SearchCondition, type SearchPhase } from "./condition.js";
-import { buildingAgeYears } from "./normalize.js";
-import type { NormalizedListing } from "./property.js";
+import { PHASE_GATE, type SearchCondition, type SearchPhase } from "./condition";
+import { buildingAgeYears } from "./normalize";
+import type { NormalizedListing } from "./property";
 
 export interface MatchResult {
   /** 0〜100。hard 条件を許容幅で外れた分は減点、soft 条件で加点 */
