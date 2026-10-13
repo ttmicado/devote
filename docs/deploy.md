@@ -60,7 +60,7 @@ Vercel の画面から作ると、接続情報（`DATABASE_URL` など）が Ver
 2. Domains → Add Domain で **`mail.devote-inc.jp`** を追加し、表示される DNS レコード（MX / SPF の TXT / DKIM の TXT）を
    devote-inc.jp の DNS（お名前.com 等、ドメインを管理しているサービス）に登録する → Verify
    - 送信専用のサブドメインにしておくと、会社のメール（@devote-inc.jp）の到達率に影響しません
-3. `MAIL_FROM` = `Devote <notify@mail.devote-inc.jp>`
+3. `MAIL_FROM` = `Devote <noreply@mail.devote-inc.jp>`
 4. （推奨）DMARC: `_dmarc.mail.devote-inc.jp` に TXT `v=DMARC1; p=none;` を追加
 
 ### 5. Vercel（Web）
