@@ -78,6 +78,7 @@ Vercel の画面から作ると、接続情報（`DATABASE_URL` など）が Ver
 | `ANTHROPIC_API_KEY` | 手順2 |
 | `LINE_CHANNEL_ACCESS_TOKEN` / `LINE_CHANNEL_SECRET` | 手順3 |
 | `NEXT_PUBLIC_LINE_ADD_FRIEND_URL` | 手順3 |
+| `NEXT_PUBLIC_LINE_OA_ID` | 公式アカウントのベーシックID（例: `@123abcde`）。設定するとLINE連携がワンタップになる |
 | `RESEND_API_KEY` / `MAIL_FROM` | 手順4 |
 
 5. Deploy
@@ -95,6 +96,7 @@ Vercel の画面から作ると、接続情報（`DATABASE_URL` など）が Ver
 | `DATABASE_URL` | Neon の pooled 接続文字列（手順 1-4） |
 | `DATABASE_URL_UNPOOLED` | Neon の direct 接続文字列（マイグレーション用） |
 | `APP_URL` | `https://app.devote-inc.jp` |
+| `SESSION_SECRET` | Vercel と**同じ値**（通知のリンクから開いたときに本人を引き継ぐ署名に使う） |
 | `LINE_CHANNEL_ACCESS_TOKEN` | 手順3 |
 | `RESEND_API_KEY` / `MAIL_FROM` | 手順4 |
 | `REINS_USER_ID` / `REINS_PASSWORD` | レインズ |

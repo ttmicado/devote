@@ -43,15 +43,20 @@ export async function ensureUserId(): Promise<string> {
   if (existing) return existing;
   const id = randomUUID();
   await getDb().insert(users).values({ id });
+  await setSessionCookie(id);
+  return id;
+}
+
+/** 指定ユーザーとしてログインした状態にする（通知の署名付きリンクから） */
+export async function setSessionCookie(userId: string) {
   const store = await cookies();
-  store.set(COOKIE, sign(id), {
+  store.set(COOKIE, sign(userId), {
     httpOnly: true,
     sameSite: "lax",
     secure: process.env.NODE_ENV === "production",
     maxAge: 60 * 60 * 24 * 365,
     path: "/",
   });
-  return id;
 }
 
 export function appUrl(): string {

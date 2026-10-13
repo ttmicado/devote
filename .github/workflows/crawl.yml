@@ -27,6 +27,8 @@ jobs:
     env:
       DATABASE_URL: ${{ secrets.DATABASE_URL }}
       APP_URL: ${{ secrets.APP_URL }}
+      # 通知リンクの署名（Vercel の SESSION_SECRET と同じ値）
+      SESSION_SECRET: ${{ secrets.SESSION_SECRET }}
       LINE_CHANNEL_ACCESS_TOKEN: ${{ secrets.LINE_CHANNEL_ACCESS_TOKEN }}
       RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
       MAIL_FROM: ${{ secrets.MAIL_FROM }}

@@ -1,219 +1,332 @@
-import Link from "next/link";
 import {
   disconnectChannel,
   issueLineLinkCode,
   requestEmailVerification,
   updateNotificationSettings,
 } from "@/app/actions";
-import { ConditionSummary, PHASE_LABELS } from "@/components/condition-summary";
+import { ConditionSummary } from "@/components/condition-summary";
+import { PageShell } from "@/components/page-shell";
+import { ButtonLink, Eyebrow, Notice, PageHeader, Toast } from "@/components/ui";
+import { PREFERENCES as T } from "@/lib/copy";
 import { latestCondition, userChannelList } from "@/lib/data";
 import { currentUserId } from "@/lib/session";
 
 export const dynamic = "force-dynamic";
 
-const FREQ = [
-  { v: "instant", label: "すぐに（新着が見つかり次第）" },
-  { v: "daily", label: "1日1回まとめて" },
-  { v: "weekly", label: "週1回（月曜）まとめて" },
-] as const;
-
-const EMAIL_MSG: Record<string, string> = {
-  sent: "確認メールを送りました。メール内のリンクを開くと登録が完了します。",
-  verified: "メールアドレスを登録しました。",
-  invalid: "メールアドレスの形式が正しくありません。",
-  expired: "確認リンクの有効期限が切れています。もう一度登録してください。",
-};
+const PHASE_ORDER = ["exploring", "considering", "ready"] as const;
 
 export default async function SettingsPage({
   searchParams,
 }: {
-  searchParams: Promise<{ lineCode?: string; email?: string }>;
+  searchParams: Promise<{ lineCode?: string; email?: string; saved?: string; welcome?: string }>;
 }) {
-  const { lineCode, email } = await searchParams;
+  const { lineCode, email, saved, welcome } = await searchParams;
   const userId = await currentUserId();
   const condition = userId ? await latestCondition(userId) : null;
   const channels = userId ? await userChannelList(userId) : [];
   const active = channels.filter((c) => c.active);
+  const lineLinked = active.some((c) => c.channel === "line");
   const friendUrl = process.env.NEXT_PUBLIC_LINE_ADD_FRIEND_URL;
+  const oneTap = Boolean(process.env.NEXT_PUBLIC_LINE_OA_ID);
+  const emailMessage = email ? T.email.messages[email as keyof typeof T.email.messages] : null;
 
   return (
-    <div className="space-y-6">
-      <h1 className="text-xl font-bold">通知設定</h1>
+    <PageShell>
+      <PageHeader eyebrow={T.eyebrow} title={T.title} lead={T.lead} />
 
-      <section className="space-y-3 rounded-xl border border-stone-200 bg-white p-5">
-        <h2 className="font-bold">受け取り方法</h2>
-        {active.length === 0 && (
-          <p className="text-sm text-amber-700">
-            まだ受け取り方法が登録されていません。LINE かメールを登録してください。
-          </p>
+      <div className="mt-8 space-y-4" aria-live="polite">
+        {welcome && (
+          <Toast>
+            承りました。合う物件が見つかり次第お届けします。最後に、受け取り方をお選びください。
+          </Toast>
         )}
-        <ul className="space-y-2 text-sm">
-          {active.map((c) => (
-            <li
-              key={c.id}
-              className="flex items-center justify-between rounded-lg bg-stone-50 px-3 py-2"
-            >
-              <span>
-                {c.channel === "line" ? "LINE" : "メール"}
-                {c.channel === "email" && <span className="ml-2 text-stone-500">{c.address}</span>}
-              </span>
-              <form action={disconnectChannel}>
-                <input type="hidden" name="channelId" value={c.id} />
-                <button type="submit" className="text-xs text-stone-500 underline">
-                  解除
-                </button>
-              </form>
-            </li>
-          ))}
-        </ul>
+        {saved && <Toast>{T.saved}</Toast>}
+      </div>
 
-        <div className="grid gap-4 sm:grid-cols-2">
-          <div className="rounded-lg border border-stone-200 p-4">
-            <p className="font-bold text-[#06C755]">LINE（おすすめ）</p>
-            <ol className="mt-2 list-decimal space-y-1 pl-5 text-sm text-stone-600">
-              <li>
-                {friendUrl ? (
-                  <a
-                    href={friendUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="text-brand-700 underline"
+      {/* 受け取り方 */}
+      <section className="mt-14" aria-labelledby="channels">
+        <div className="flex items-baseline justify-between gap-4">
+          <h2 id="channels" className="display font-mincho text-2xl text-evergreen-900">
+            {T.channelsTitle}
+          </h2>
+          {active.length === 0 && <p className="text-sm text-sand-600">{T.noChannel}</p>}
+        </div>
+
+        {active.length > 0 && (
+          <ul className="mt-6 divide-y divide-ink-900/10 border-y border-ink-900/15">
+            {active.map((c) => (
+              <li key={c.id} className="flex items-center justify-between gap-4 py-4">
+                <div>
+                  <p className="eyebrow text-sand-600">{c.channel === "line" ? "LINE" : "Email"}</p>
+                  <p className="mt-1 text-sm text-ink-900">
+                    {c.channel === "line" ? "LINE にお届けします" : c.address}
+                  </p>
+                </div>
+                <form action={disconnectChannel}>
+                  <input type="hidden" name="channelId" value={c.id} />
+                  <button
+                    type="submit"
+                    className="min-h-11 rounded-full border border-ink-900/20 px-5 text-xs tracking-[0.12em] text-ink-700 transition-colors hover:border-ink-900 hover:text-ink-900"
                   >
-                    Devote 公式アカウントを友だち追加
-                  </a>
-                ) : (
-                  "Devote 公式アカウントを友だち追加"
-                )}
+                    {T.disconnect}
+                  </button>
+                </form>
               </li>
-              <li>下のボタンで連携コードを発行</li>
-              <li>コード（6桁）をトークに送信</li>
-            </ol>
-            {lineCode ? (
-              <p className="mt-3 rounded-lg bg-stone-100 py-3 text-center font-mono text-3xl font-bold tracking-widest">
-                {lineCode}
-              </p>
-            ) : (
-              <form action={issueLineLinkCode} className="mt-3">
-                <button
-                  type="submit"
-                  className="w-full rounded-lg bg-[#06C755] py-2 text-sm font-bold text-white"
-                >
-                  連携コードを発行
-                </button>
-              </form>
-            )}
-            {lineCode && <p className="mt-1 text-xs text-stone-500">有効期限は30分です。</p>}
+            ))}
+          </ul>
+        )}
+
+        <div className="mt-8 grid gap-px border border-ink-900/15 bg-ink-900/15 md:grid-cols-[1.15fr_1fr]">
+          {/* LINE（おすすめ） */}
+          <div className="relative overflow-hidden bg-evergreen-900 p-8 text-sand-100 sm:p-10">
+            <div
+              aria-hidden
+              className="pointer-events-none absolute -top-24 -right-24 size-72 rounded-full bg-evergreen-700/40 blur-3xl"
+            />
+            <div className="relative">
+              <div className="flex items-center gap-3">
+                <Eyebrow tone="dark">LINE</Eyebrow>
+                <span className="eyebrow rounded-full border border-sand-200/40 px-2.5 py-0.5 text-[10px] text-sand-200">
+                  {T.line.recommended}
+                </span>
+              </div>
+              <h3 className="display mt-4 font-mincho text-2xl text-sand-50">{T.line.title}</h3>
+
+              {lineLinked ? (
+                <p className="mt-6 text-sm leading-7 text-sand-200">LINE と連携済みです。</p>
+              ) : oneTap ? (
+                <>
+                  <p className="mt-4 text-sm leading-7 text-sand-200">
+                    ボタンを押すと LINE が開きます。そのまま送信すると連携が完了します。
+                  </p>
+                  <form action={issueLineLinkCode} className="mt-8">
+                    <button
+                      type="submit"
+                      className="inline-flex min-h-14 w-full items-center justify-center gap-3 rounded-full bg-sand-200 px-8 text-sm tracking-[0.12em] text-evergreen-900 transition-colors duration-500 hover:bg-sand-50"
+                    >
+                      {T.line.oneTap} →
+                    </button>
+                  </form>
+                </>
+              ) : (
+                <>
+                  <ol className="mt-6 space-y-3">
+                    {T.line.steps.map((s, i) => (
+                      <li key={s} className="flex gap-4 text-sm leading-7 text-sand-200">
+                        <span className="font-serif text-lg leading-7 text-sand-300">0{i + 1}</span>
+                        {i === 0 && friendUrl ? (
+                          <a
+                            href={friendUrl}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="underline decoration-sand-300/60 underline-offset-4 hover:text-sand-50"
+                          >
+                            {s}
+                          </a>
+                        ) : (
+                          s
+                        )}
+                      </li>
+                    ))}
+                  </ol>
+                  {lineCode ? (
+                    <div className="mt-8 border-t border-sand-100/15 pt-6">
+                      <p className="eyebrow text-sand-300">Link Code</p>
+                      <p className="mt-2 font-serif text-6xl tracking-[0.18em] text-sand-50">
+                        {lineCode}
+                      </p>
+                      <p className="mt-3 text-xs leading-6 text-sand-300">{T.line.codeNote}</p>
+                    </div>
+                  ) : (
+                    <form action={issueLineLinkCode} className="mt-8">
+                      <button
+                        type="submit"
+                        className="inline-flex min-h-12 w-full items-center justify-center rounded-full bg-sand-200 px-8 text-sm tracking-[0.12em] text-evergreen-900 transition-colors duration-500 hover:bg-sand-50"
+                      >
+                        {T.line.issue}
+                      </button>
+                    </form>
+                  )}
+                </>
+              )}
+            </div>
           </div>
-          <div className="rounded-lg border border-stone-200 p-4">
-            <p className="font-bold">メール</p>
-            {email && <p className="mt-2 text-sm text-brand-700">{EMAIL_MSG[email]}</p>}
-            <form action={requestEmailVerification} className="mt-3 space-y-2">
+
+          {/* メール */}
+          <div className="bg-sand-50 p-8 sm:p-10">
+            <Eyebrow>Email</Eyebrow>
+            <h3 className="display mt-4 font-mincho text-2xl text-evergreen-900">
+              {T.email.title}
+            </h3>
+            <p className="mt-4 text-sm leading-7 text-ink-500">{T.email.note}</p>
+            <form action={requestEmailVerification} className="mt-6">
+              <label htmlFor="email" className="field-label">
+                {T.email.label}
+              </label>
               <input
+                id="email"
                 name="email"
                 type="email"
                 required
-                placeholder="you@example.com"
-                className="w-full rounded-lg border border-stone-300 px-3 py-2 text-sm"
+                autoComplete="email"
+                placeholder={T.email.placeholder}
+                className="field"
               />
               <button
                 type="submit"
-                className="w-full rounded-lg bg-stone-800 py-2 text-sm font-bold text-white"
+                className="mt-6 inline-flex min-h-12 w-full items-center justify-center rounded-full border border-ink-900/30 px-8 text-sm tracking-[0.12em] text-ink-900 transition-colors duration-500 hover:border-ink-900 hover:bg-ink-900/5"
               >
-                確認メールを送る
+                {T.email.submit}
               </button>
             </form>
+            {emailMessage && (
+              <p className="mt-4 text-sm leading-7 text-evergreen-700" role="status">
+                {emailMessage}
+              </p>
+            )}
           </div>
         </div>
       </section>
 
-      <section className="rounded-xl border border-stone-200 bg-white p-5">
-        <h2 className="font-bold">頻度と検討段階</h2>
+      {/* 頻度と検討段階 */}
+      <section className="mt-20" aria-labelledby="cadence">
         {!condition ? (
-          <p className="mt-2 text-sm text-stone-600">
-            先に{" "}
-            <Link href="/chat" className="text-brand-700 underline">
-              AIと条件を相談
-            </Link>{" "}
-            してください。
-          </p>
+          <Notice
+            title={T.noCondition}
+            action={
+              <ButtonLink href="/chat" arrow>
+                ご相談をはじめる
+              </ButtonLink>
+            }
+          />
         ) : (
-          <form action={updateNotificationSettings} className="mt-3 space-y-5">
-            <fieldset className="space-y-1.5">
-              <legend className="mb-1 text-sm text-stone-500">通知の頻度</legend>
-              {FREQ.map((f) => (
-                <label key={f.v} className="flex items-center gap-2 text-sm">
-                  <input
-                    type="radio"
-                    name="frequency"
-                    value={f.v}
-                    defaultChecked={condition.frequency === f.v}
-                  />
-                  {f.label}
-                </label>
-              ))}
-              <label className="mt-2 flex items-center gap-2 text-sm">
-                まとめて送る時刻
-                <select
-                  name="sendHour"
-                  defaultValue={condition.sendHour}
-                  className="rounded border border-stone-300 px-2 py-1"
-                >
-                  {Array.from({ length: 24 }, (_, h) => (
-                    <option key={h} value={h}>
-                      {h}時
-                    </option>
-                  ))}
-                </select>
-              </label>
-            </fieldset>
+          <form action={updateNotificationSettings} className="group/form space-y-16">
             <fieldset>
-              <legend className="mb-1 text-sm text-stone-500">
-                検討段階（届ける物件の厳選度）
+              <legend id="cadence" className="display font-mincho text-2xl text-evergreen-900">
+                {T.frequencyTitle}
               </legend>
-              <div className="grid gap-2 sm:grid-cols-3">
-                {(Object.keys(PHASE_LABELS) as (keyof typeof PHASE_LABELS)[]).map((k) => (
+              <div className="mt-6 grid gap-px border border-ink-900/15 bg-ink-900/15 sm:grid-cols-3">
+                {T.frequencies.map((f) => (
                   <label
-                    key={k}
-                    className="cursor-pointer rounded-lg border border-stone-200 p-3 text-sm has-[:checked]:border-brand-600 has-[:checked]:bg-brand-50"
+                    key={f.v}
+                    className="relative cursor-pointer bg-sand-50 p-6 transition-colors duration-500 hover:bg-sand-100 has-[:checked]:bg-evergreen-900 has-[:checked]:text-sand-50 has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-sand-500 has-[:focus-visible]:ring-inset"
                   >
                     <input
                       type="radio"
-                      name="phase"
-                      value={k}
-                      defaultChecked={condition.phase === k}
-                      className="sr-only"
+                      name="frequency"
+                      value={f.v}
+                      defaultChecked={condition.frequency === f.v}
+                      className="peer sr-only"
                     />
-                    <span className="font-bold">{PHASE_LABELS[k].label}</span>
-                    <span className="mt-1 block text-xs text-stone-500">
-                      {PHASE_LABELS[k].help}
+                    <span className="block font-mincho text-xl">{f.label}</span>
+                    <span className="mt-2 block text-[13px] leading-6 text-ink-500 peer-checked:text-sand-200">
+                      {f.note}
                     </span>
                   </label>
                 ))}
               </div>
+              {/* すぐに を選んだときは時刻を出さない */}
+              <div className="mt-6 flex items-center gap-4 group-has-[input[name=frequency][value=instant]:checked]/form:hidden">
+                <label htmlFor="sendHour" className="field-label">
+                  {T.sendHour}
+                </label>
+                <select
+                  id="sendHour"
+                  name="sendHour"
+                  defaultValue={condition.sendHour}
+                  className="min-h-11 border-b border-ink-900/25 bg-transparent px-1 font-serif text-xl text-ink-900 focus:border-evergreen-700 focus:outline-none"
+                >
+                  {Array.from({ length: 17 }, (_, i) => i + 6).map((h) => (
+                    <option key={h} value={h}>
+                      {h}:00
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <p className="mt-3 text-xs leading-6 text-ink-500 hidden group-has-[input[name=frequency][value=instant]:checked]/form:block">
+                夜間（22時〜8時）に見つかった物件は、朝8時にまとめてお届けします。
+              </p>
             </fieldset>
-            <label className="flex items-center gap-2 text-sm">
-              <input type="checkbox" name="active" defaultChecked={condition.active} />
-              通知を受け取る
-            </label>
-            <button
-              type="submit"
-              className="rounded-lg bg-brand-700 px-5 py-2 text-sm font-bold text-white"
-            >
-              保存
-            </button>
+
+            <fieldset>
+              <legend className="display font-mincho text-2xl text-evergreen-900">
+                {T.phaseTitle}
+              </legend>
+              <p className="mt-3 text-sm leading-7 text-ink-500">{T.phaseLead}</p>
+              <div className="mt-6 grid gap-px border border-ink-900/15 bg-ink-900/15 sm:grid-cols-3">
+                {PHASE_ORDER.map((k, i) => {
+                  const p = T.phases[k];
+                  return (
+                    <label
+                      key={k}
+                      className="cursor-pointer bg-sand-50 p-6 transition-colors duration-500 hover:bg-sand-100 has-[:checked]:bg-evergreen-900 has-[:checked]:text-sand-50 has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-sand-500 has-[:focus-visible]:ring-inset"
+                    >
+                      <input
+                        type="radio"
+                        name="phase"
+                        value={k}
+                        defaultChecked={condition.phase === k}
+                        className="peer sr-only"
+                      />
+                      {/* ゲージ: 段階が進むほど絞り込む */}
+                      <span aria-hidden className="flex h-6 items-end gap-1">
+                        {Array.from({ length: 3 }, (_, b) => (
+                          <span
+                            key={b}
+                            className={`w-1.5 bg-current transition-opacity ${b <= i ? "opacity-90" : "opacity-20"}`}
+                            style={{ height: `${(b + 1) * 33}%` }}
+                          />
+                        ))}
+                      </span>
+                      <span className="mt-4 block font-mincho text-xl">{p.label}</span>
+                      <span className="eyebrow mt-1 block text-sand-600 peer-checked:text-sand-300">
+                        {p.count}
+                      </span>
+                      <span className="mt-3 block text-[13px] leading-6 text-ink-500 peer-checked:text-sand-200">
+                        {p.note}
+                      </span>
+                    </label>
+                  );
+                })}
+              </div>
+            </fieldset>
+
+            <div className="flex flex-col gap-6 border-t border-ink-900/15 pt-8 sm:flex-row sm:items-center sm:justify-between">
+              <label className="flex min-h-11 cursor-pointer items-center gap-3 text-sm text-ink-900">
+                <input
+                  type="checkbox"
+                  name="active"
+                  defaultChecked={condition.active}
+                  className="size-5 accent-evergreen-800"
+                />
+                {T.active}
+              </label>
+              <button
+                type="submit"
+                className="inline-flex min-h-14 items-center justify-center rounded-full bg-evergreen-800 px-10 text-sm tracking-[0.12em] text-sand-50 transition-colors duration-500 hover:bg-evergreen-900"
+              >
+                {T.save}
+              </button>
+            </div>
           </form>
         )}
       </section>
 
       {condition && (
-        <section className="rounded-xl border border-stone-200 bg-white p-5">
-          <h2 className="mb-3 font-bold">登録中の条件</h2>
-          <ConditionSummary condition={condition.condition} />
-          <Link href="/chat" className="mt-3 inline-block text-sm text-brand-700 underline">
-            AIと条件を見直す
-          </Link>
+        <section className="mt-20 border-t border-ink-900/15 pt-12" aria-labelledby="brief">
+          <div className="flex items-baseline justify-between gap-4">
+            <h2 id="brief" className="display font-mincho text-2xl text-evergreen-900">
+              {T.briefTitle}
+            </h2>
+            <ButtonLink href="/chat" variant="ghost" arrow>
+              {T.briefEdit}
+            </ButtonLink>
+          </div>
+          <div className="mt-6">
+            <ConditionSummary condition={condition.condition} />
+          </div>
         </section>
       )}
-    </div>
+    </PageShell>
   );
 }

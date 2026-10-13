@@ -65,8 +65,13 @@ describe("scoreListing", () => {
   it("70㎡希望に69.5㎡は許容幅内で減点のみ（議事録の例）", () => {
     const r = scoreListing({ ...base, areaSqm: 69.5 }, cond, now);
     expect(r.excluded).toBe(false);
-    expect(r.reasons).toContain("面積が0.5㎡不足");
+    expect(r.reasons).toContain("面積はご希望より0.5㎡小さめです");
     expect(r.score).toBeLessThan(scoreListing(base, cond, now).score);
+  });
+
+  it("丸めると差が0になる程度の不足は違いとして出さない", () => {
+    const r = scoreListing({ ...base, areaSqm: 69.97 }, cond, now);
+    expect(r.reasons).toEqual([]);
   });
 
   it("許容幅を超えたら除外", () => {

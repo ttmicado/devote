@@ -1,3 +1,4 @@
+import { buildingAgeYears } from "./normalize";
 import type { NormalizedListing } from "./property";
 
 /** 185000 → "18.5万円" / 129800000 → "1億2,980万円" */
@@ -32,4 +33,43 @@ export function priceLabel(l: NormalizedListing): string {
     return `${formatYen(l.price)}${fee}`;
   }
   return formatYen(l.price);
+}
+
+/** 判断に必要な数字: 賃貸は管理費込みの総額（月額）、売買は価格 */
+export function headlinePrice(l: NormalizedListing): {
+  label: string;
+  amount: string;
+  note: string | null;
+} {
+  if (l.dealType === "rent") {
+    const total = l.price + (l.managementFee ?? 0);
+    const note = l.managementFee
+      ? `賃料 ${formatYen(l.price)} ＋ 管理費 ${formatYen(l.managementFee)}`
+      : null;
+    return { label: "総額／月", amount: formatYen(total), note };
+  }
+  const perSqm =
+    l.areaSqm && l.areaSqm > 0 ? `㎡単価 ${formatYen(Math.round(l.price / l.areaSqm))}` : null;
+  return { label: "価格", amount: formatYen(l.price), note: perSqm };
+}
+
+/** 経営者が一目で判断するための1行: "南麻布 · 2LDK 68㎡ · 広尾 徒歩6分 · 築8年 · 12階" */
+export function keyFacts(l: NormalizedListing, now: Date = new Date()): string[] {
+  const st = l.stations[0];
+  const access = st
+    ? `${st.station} ${st.walkMinutes != null ? `徒歩${st.walkMinutes}分` : st.busMinutes != null ? `バス${st.busMinutes}分` : ""}`.trim()
+    : null;
+  const age = l.builtYearMonth
+    ? (() => {
+        const y = buildingAgeYears(l.builtYearMonth, now);
+        return y === 0 ? "築1年未満" : `築${y}年`;
+      })()
+    : null;
+  return [
+    l.address.town ?? l.address.city,
+    [l.layout, l.areaSqm != null ? `${l.areaSqm}㎡` : null].filter(Boolean).join(" ") || null,
+    access,
+    age,
+    l.floor != null ? (l.floor < 0 ? `地下${-l.floor}階` : `${l.floor}階`) : null,
+  ].filter((v): v is string => Boolean(v));
 }

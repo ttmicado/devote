@@ -1,43 +1,36 @@
-import type { Metadata } from "next";
-import Link from "next/link";
+import type { Metadata, Viewport } from "next";
+import { SiteFooter } from "@/components/site-footer";
+import { SiteHeader } from "@/components/site-header";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Devote — あなたにピッタリの物件を最速で",
-  description: "あなたにピッタリ合う物件を、最速で・手間なく・くまなく提案してくれるAI",
+  title: "Devote — 物件探しを、任せられる人へ。",
+  description:
+    "条件をひとこと伝えるだけ。業者間情報からデベロッパーの自社サイトまで、AIコンシェルジュが毎日くまなく見張り、あなたに合う一室だけを最速でお届けします。",
 };
 
-const NAV = [
-  { href: "/chat", label: "AIに相談" },
-  { href: "/matches", label: "おすすめ物件" },
-  { href: "/inquiries", label: "問い合わせ" },
-  { href: "/settings", label: "通知設定" },
-];
+export const viewport: Viewport = {
+  themeColor: "#142821",
+  // iOS の safe-area（下部の固定ボタン）とキーボード表示時の高さ
+  viewportFit: "cover",
+  interactiveWidget: "resizes-content",
+};
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ja">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&family=Shippori+Mincho:wght@400;500;600&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap"
+        />
+      </head>
       <body className="min-h-screen">
-        <header className="sticky top-0 z-10 border-b border-stone-200 bg-white/90 backdrop-blur">
-          <div className="mx-auto flex max-w-5xl items-center gap-4 px-4 py-3">
-            <Link href="/" className="text-xl font-black tracking-tight text-brand-700">
-              Devote
-            </Link>
-            <nav className="flex gap-1 overflow-x-auto text-sm">
-              {NAV.map((n) => (
-                <Link
-                  key={n.href}
-                  href={n.href}
-                  className="whitespace-nowrap rounded-md px-2.5 py-1.5 text-stone-700 hover:bg-stone-100"
-                >
-                  {n.label}
-                </Link>
-              ))}
-            </nav>
-          </div>
-        </header>
-        <main className="mx-auto max-w-5xl px-4 py-6">{children}</main>
-        <footer className="mx-auto max-w-5xl px-4 py-10 text-xs text-stone-400">© Devote</footer>
+        <SiteHeader />
+        {children}
+        <SiteFooter />
       </body>
     </html>
   );

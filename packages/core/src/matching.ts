@@ -1,4 +1,5 @@
 import { PHASE_GATE, type SearchCondition, type SearchPhase } from "./condition";
+import { formatYen } from "./format";
 import { buildingAgeYears } from "./normalize";
 import type { NormalizedListing } from "./property";
 
@@ -57,18 +58,20 @@ export function scoreListing(
     const total = listing.price + (cond.dealType === "rent" ? (listing.managementFee ?? 0) : 0);
     const p = graded(total - hard.maxPrice, tolerance.price, 25);
     if (p === "excluded") return exclude("予算超過");
-    if (p > 0) reasons.push(`予算を${(total - hard.maxPrice).toLocaleString()}円超過`);
+    if (p > 0) reasons.push(`総額はご希望を${formatYen(total - hard.maxPrice)}上回ります`);
     penalty += p;
   }
 
   if (hard.minAreaSqm != null) {
     if (listing.areaSqm == null) {
       penalty += 5;
-      reasons.push("面積不明");
+      reasons.push("面積は掲載元に記載がありません");
     } else {
       const p = graded(hard.minAreaSqm - listing.areaSqm, tolerance.areaSqm, 15);
       if (p === "excluded") return exclude("面積不足");
-      if (p > 0) reasons.push(`面積が${(hard.minAreaSqm - listing.areaSqm).toFixed(1)}㎡不足`);
+      // 0.05㎡未満の差（表記の丸め程度）は「違い」として出さない
+      const short = Number((hard.minAreaSqm - listing.areaSqm).toFixed(1));
+      if (p > 0 && short > 0) reasons.push(`面積はご希望より${short}㎡小さめです`);
       penalty += p;
     }
   }
@@ -80,12 +83,13 @@ export function scoreListing(
       .filter((w): w is number => w != null);
     if (walks.length === 0) {
       penalty += 5;
-      reasons.push("駅徒歩不明");
+      reasons.push("駅からの距離は掲載元に記載がありません");
     } else {
       const best = Math.min(...walks);
       const p = graded(best - hard.maxWalkMinutes, tolerance.walkMinutes, 15);
       if (p === "excluded") return exclude("駅から遠い");
-      if (p > 0) reasons.push(`駅徒歩が${best - hard.maxWalkMinutes}分超過`);
+      if (p > 0)
+        reasons.push(`駅から徒歩${best}分。ご希望より${best - hard.maxWalkMinutes}分遠くなります`);
       penalty += p;
     }
   }
@@ -100,7 +104,8 @@ export function scoreListing(
     const age = buildingAgeYears(listing.builtYearMonth, now);
     const p = graded(age - hard.maxBuildingAgeYears, tolerance.buildingAgeYears, 10);
     if (p === "excluded") return exclude("築年数超過");
-    if (p > 0) reasons.push(`築年数が${age - hard.maxBuildingAgeYears}年超過`);
+    if (p > 0)
+      reasons.push(`築${age}年。ご希望より${age - hard.maxBuildingAgeYears}年古くなります`);
     penalty += p;
   }
 

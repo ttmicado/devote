@@ -43,7 +43,7 @@ export async function POST(req: Request) {
       await replyLine(ev.replyToken, [
         {
           type: "text",
-          text: `友だち追加ありがとうございます！\nDevote の設定画面（${appUrl()}/settings）で表示される6桁の連携コードをこのトークに送ってください。条件に合う新着物件をここでお知らせします。`,
+          text: `Devote のコンシェルジュです。ご登録ありがとうございます。\nお届け設定（${appUrl()}/settings）に表示される6桁の連携コードを、このトークにお送りください。ご希望に適う物件を、ここでお届けします。`,
         },
       ]);
       continue;
@@ -55,7 +55,7 @@ export async function POST(req: Request) {
         await replyLine(ev.replyToken, [
           {
             type: "text",
-            text: `ご連絡ありがとうございます。条件の相談はこちらからどうぞ: ${appUrl()}/chat\n内見のご希望は各物件ページの「内見を問い合わせる」からお送りください。`,
+            text: `ご連絡ありがとうございます。ご希望の見直しは、こちらのコンシェルジュが承ります。\n${appUrl()}/chat\n内見は、お届けした物件のページからご依頼いただけます。`,
           },
         ]);
         continue;
@@ -75,7 +75,7 @@ export async function POST(req: Request) {
         await replyLine(ev.replyToken, [
           {
             type: "text",
-            text: "連携コードが見つからないか、有効期限（30分）が切れています。設定画面で新しいコードを発行してください。",
+            text: "連携コードの有効期限（30分）が切れているようです。お手数ですが、お届け設定で新しいコードを発行してください。",
           },
         ]);
         continue;
@@ -94,7 +94,7 @@ export async function POST(req: Request) {
       await replyLine(ev.replyToken, [
         {
           type: "text",
-          text: "LINE連携が完了しました🎉 条件に合う物件が見つかり次第、ここでお知らせします。",
+          text: "LINE と連携しました。ご希望に適う物件が見つかり次第、ここでお届けします。",
         },
       ]);
     }

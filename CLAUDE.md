@@ -1,6 +1,6 @@
 # Devote
 
-不動産物件を AI と壁打ちして条件を固め、レインズ・業者間サイト・不動産会社の自社サイト・ポータルを巡回して、最新の物件を LINE / メール / Instagram で届けるサービス。
+不動産物件を AI と壁打ちして条件を固め、レインズ・業者間サイト・不動産会社の自社サイト・ポータルを巡回して、最新の物件を LINE / メールで届けるサービス。対象は時間がなく優秀な経営者で、Devote はその「住まいのコンシェルジュ」。
 キャッチコピー: 「あなたにピッタリ合う物件を、最速で・手間なく・くまなく提案してくれるAI」
 
 - 構想と進め方: `docs/plan.md`
@@ -44,8 +44,9 @@ Web から import するパッケージ（core / db / services）は Turbopack �
 - 物件の事実（賃料・面積・空室）を LLM に生成させない
 - 認証情報（レインズ等）は `.env` のみに置く。コード・フィクスチャ・ログに残さない
 - コメント・ドキュメントは日本語
+- 画面の文言は `apps/web/lib/copy.ts` に集約し、色・書体・部品は `.claude/skills/devote-design` に従う
 
 ## スキルとサブエージェント
 
-- スキル: `real-estate-domain`（業界知識・正規化）、`scraper-adapter`（アダプターの作り方）、`property-matching`（マッチング・AI・通知）
-- サブエージェント: `real-estate-advisor`（実務レビュー）、`scraping-engineer`（アダプター実装）、`matching-ai-engineer`（AI・推薦・通知）
+- スキル: `real-estate-domain`（業界知識・正規化）、`scraper-adapter`（アダプターの作り方）、`property-matching`（マッチング・AI・通知）、`devote-design`（画面のデザインシステムと文言のトーン。Web の画面を触るときは必ず読む）
+- サブエージェント: `real-estate-advisor`（実務レビュー）、`scraping-engineer`（アダプター実装）、`matching-ai-engineer`（AI・推薦・通知）、`brand-designer`（画面のデザイン・文言）

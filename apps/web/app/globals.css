@@ -1,14 +1,143 @@
 @import "tailwindcss";
 
+/*
+ * Devote デザイントークン（.claude/skills/devote-design/SKILL.md）
+ * 深い森の緑（Evergreen）× 生成り・砂色（Sand）× 焦げ茶（Ink）。
+ * 参照テイスト: springs.estate（深緑×生成り、細身のセリフ）／ sondaven.com（砂色×焦げ茶、字間の広い英字ラベル）
+ */
 @theme {
-  --color-brand-50: #f0fdfa;
-  --color-brand-100: #ccfbf1;
-  --color-brand-600: #0d9488;
-  --color-brand-700: #0f766e;
-  --color-brand-900: #134e4a;
-  --font-sans: "Hiragino Sans", "Noto Sans JP", system-ui, sans-serif;
+  --color-evergreen-950: #0d1a15;
+  --color-evergreen-900: #142821;
+  --color-evergreen-800: #1b3a2e;
+  --color-evergreen-700: #24503d;
+  --color-evergreen-600: #2f654e;
+
+  --color-sand-50: #f7efe2;
+  --color-sand-100: #f0e4d0;
+  --color-sand-200: #e3d4b9;
+  --color-sand-300: #cfbc98;
+  --color-sand-400: #b9a27c;
+  --color-sand-500: #a28c69;
+  --color-sand-600: #7f6d51;
+
+  --color-ink-900: #26221e;
+  --color-ink-700: #463f37;
+  --color-ink-500: #675e53;
+  --color-ink-300: #a39886;
+
+  --color-signal: #9a3b2e; /* 価格・注意（落ち着いた朱） */
+
+  --font-serif: "Cormorant Garamond", "Shippori Mincho", "Yu Mincho", serif;
+  --font-sans: "Jost", "Zen Kaku Gothic New", "Hiragino Sans", system-ui, sans-serif;
+  --font-mincho: "Shippori Mincho", "Yu Mincho", serif;
+
+  --ease-luxe: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-body {
-  @apply bg-stone-50 text-stone-900 antialiased;
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-sand-50 font-sans text-ink-900 antialiased;
+    font-feature-settings: "palt";
+  }
+  ::selection {
+    @apply bg-evergreen-800 text-sand-100;
+  }
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-sand-500;
+  }
+}
+
+/* 字間の広い英字ラベル（日本語見出しの上に添える） */
+@utility eyebrow {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.28em;
+  line-height: 1.6;
+}
+/* 大見出し: 和文は明朝、欧文は Cormorant。字間を詰める */
+@utility display {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+}
+/* 入力欄（明るい面）: 下線だけ。iOS の自動ズームを避けるため 16px */
+@utility field {
+  width: 100%;
+  border-width: 0 0 1px 0;
+  border-color: color-mix(in oklab, var(--color-ink-900) 25%, transparent);
+  background: transparent;
+  padding: 0.75rem 0;
+  font-size: 16px;
+  color: var(--color-ink-900);
+  border-radius: 0;
+  &::placeholder {
+    color: var(--color-ink-300);
+  }
+  &:focus {
+    outline: none;
+    border-color: var(--color-evergreen-700);
+  }
+}
+@utility field-label {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.28em;
+  color: var(--color-ink-500);
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(-2%, 1.5%, 0) scale(1.04);
+  }
+}
+@keyframes pulse-dot {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}
+
+@utility animate-rise {
+  animation: rise 1.1s var(--ease-luxe) both;
+}
+@utility animate-drift {
+  animation: drift 18s ease-in-out infinite;
+}
+@utility animate-pulse-dot {
+  animation: pulse-dot 2.4s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
 }

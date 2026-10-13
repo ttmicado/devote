@@ -91,7 +91,7 @@ export async function sendSimilarSuggestions(formData: FormData) {
       userId: q.userId,
       items,
       reason: "similar",
-      heading: "お問い合わせの物件に近い物件をご紹介します",
+      kind: "similar",
     });
     if (res.status === "sent") {
       for (const s of picked) {

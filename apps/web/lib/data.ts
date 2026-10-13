@@ -97,3 +97,21 @@ export async function userInquiries(userId: string) {
 export async function userChannelList(userId: string) {
   return getDb().select().from(userChannels).where(eq(userChannels.userId, userId));
 }
+
+/** この物件の、最新の条件版に対する適合度と「ご希望との違い」。条件が無い／マッチしていなければ null */
+export async function propertyMatchForUser(userId: string, propertyId: string) {
+  const c = await latestCondition(userId);
+  if (!c) return null;
+  const [m] = await getDb()
+    .select({ score: matches.score, reasons: matches.reasons })
+    .from(matches)
+    .where(
+      and(
+        eq(matches.userId, userId),
+        eq(matches.propertyId, propertyId),
+        eq(matches.conditionVersion, c.version),
+      ),
+    )
+    .limit(1);
+  return m ? { score: m.score, reasons: (m.reasons as string[]) ?? [] } : null;
+}

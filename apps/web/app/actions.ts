@@ -40,12 +40,19 @@ export async function confirmCondition() {
     condition: parsed.data,
     phase:
       (u?.draftPhase as "exploring" | "considering" | "ready" | null) ?? prev?.phase ?? "exploring",
-    frequency: prev?.frequency ?? "daily",
-    sendHour: prev?.sendHour ?? 19,
+    // 「最速」が既定。夜間（22時〜8時）に見つかった分は朝8時にまとめて届ける
+    frequency: prev?.frequency ?? "instant",
+    sendHour: prev?.sendHour ?? 8,
   });
-  // 確定した条件ですぐにマッチングして一覧に出す
-  await runMatching(db);
-  redirect("/matches?confirmed=1");
+  // 確定した条件ですぐにマッチングして一覧に出す（このユーザーの分だけ）
+  await runMatching(db, new Date(), { userId });
+  // 受け取り方が未登録なら、そのままお届け設定へ
+  const [channel] = await db
+    .select({ id: userChannels.id })
+    .from(userChannels)
+    .where(and(eq(userChannels.userId, userId), eq(userChannels.active, true)))
+    .limit(1);
+  redirect(channel ? "/matches?confirmed=1" : "/settings?welcome=1");
 }
 
 const FREQUENCIES = ["instant", "daily", "weekly"] as const;
@@ -78,7 +85,7 @@ export async function updateNotificationSettings(formData: FormData) {
       updatedAt: new Date(),
     })
     .where(eq(searchConditions.id, c.id));
-  revalidatePath("/settings");
+  redirect("/settings?saved=1");
 }
 
 export async function requestEmailVerification(formData: FormData) {
@@ -138,6 +145,9 @@ export async function issueLineLinkCode() {
       target: verificationTokens.token,
       set: { userId, expiresAt: new Date(Date.now() + 30 * 60_000), usedAt: null },
     });
+  // 公式アカウントの ID があれば、コード入力済みのトーク画面を直接開く（友だち追加もLINE内で完結）
+  const oaId = process.env.NEXT_PUBLIC_LINE_OA_ID;
+  if (oaId) redirect(`https://line.me/R/oaMessage/${encodeURIComponent(oaId)}/?${code}`);
   redirect(`/settings?lineCode=${code}`);
 }
 
@@ -157,7 +167,18 @@ export async function createInquiry(formData: FormData) {
   const userId = await ensureUserId();
   const propertyId = String(formData.get("propertyId"));
   const contactName = String(formData.get("name") ?? "").trim();
-  if (!contactName) redirect(`/properties/${propertyId}?inquiry=invalid#inquiry`);
+  const contactPhone = String(formData.get("phone") ?? "").trim();
+  const contactEmail = String(formData.get("email") ?? "").trim();
+  // 担当から連絡できない依頼は受け付けない
+  if (!contactName || (!contactPhone && !contactEmail)) {
+    redirect(`/properties/${propertyId}?inquiry=invalid#inquiry`);
+  }
+  const dates = [
+    String(formData.get("dates") ?? "").trim(),
+    String(formData.get("datesNote") ?? "").trim(),
+  ]
+    .filter(Boolean)
+    .join("／");
   const db = getDb();
   const [p] = await db
     .select({ id: properties.id })
@@ -168,9 +189,9 @@ export async function createInquiry(formData: FormData) {
     userId,
     propertyId,
     contactName,
-    contactPhone: String(formData.get("phone") ?? "").trim() || null,
-    contactEmail: String(formData.get("email") ?? "").trim() || null,
-    preferredDates: String(formData.get("dates") ?? "").trim() || null,
+    contactPhone: contactPhone || null,
+    contactEmail: contactEmail || null,
+    preferredDates: dates || null,
     message: String(formData.get("message") ?? "").trim() || null,
   });
   redirect("/inquiries?created=1");

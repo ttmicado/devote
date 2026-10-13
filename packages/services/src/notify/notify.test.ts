@@ -28,15 +28,15 @@ describe("buildLineMessages", () => {
     const [msg] = buildLineMessages(items, {
       appUrl: "https://app",
       notificationId: "n1",
-      heading: "新着",
     });
     const contents = (
       msg as { contents: { contents: { hero?: { url: string }; footer: unknown }[] } }
     ).contents.contents;
+    // 物件11件＋「すべてのご提案を見る」
     expect(contents).toHaveLength(12);
     expect(contents[0]?.hero?.url).toBe("https://example.com/b.jpg");
     expect(JSON.stringify(contents[0]?.footer)).toContain("https://app/properties/p0?nid=n1");
-    expect((msg as { altText: string }).altText).toBe("新着（15件）");
+    expect((msg as { altText: string }).altText).toBe("ご希望に適う物件が見つかりました（15件）");
   });
 });
 
@@ -45,13 +45,12 @@ describe("buildEmail", () => {
     const m = buildEmail(items.slice(0, 2), {
       appUrl: "https://app",
       notificationId: "n1",
-      heading: "新着",
       settingsUrl: "https://app/settings",
     });
-    expect(m.subject).toBe("【Devote】新着（2件）");
+    expect(m.subject).toBe("【Devote】ご希望に適う物件が2件見つかりました");
     expect(m.html).toContain("テストタワー &lt;1204&gt;");
     expect(m.html).toContain("https://app/settings");
-    expect(m.text).toContain("32万円（管理費2万円）");
+    expect(m.text).toContain("総額／月 34万円");
   });
 });
 

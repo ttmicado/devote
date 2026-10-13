@@ -25,8 +25,10 @@ export async function activeConditions(db: Db) {
 }
 
 /** 全ユーザーの有効な条件 × 掲載中の物件 でスコアを計算し、matches に保存する */
-export async function runMatching(db: Db, now = new Date()) {
-  const conds = await activeConditions(db);
+export async function runMatching(db: Db, now = new Date(), opts: { userId?: string } = {}) {
+  const conds = (await activeConditions(db)).filter(
+    (c) => !opts.userId || c.userId === opts.userId,
+  );
   if (conds.length === 0) return { conditions: 0, matched: 0 };
   const props = await db
     .select({ id: properties.id, data: properties.data })

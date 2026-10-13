@@ -63,3 +63,30 @@ describe("formatYen", () => {
     [5_000, "5,000円"],
   ])("%s → %s", (y, s) => expect(formatYen(y)).toBe(s));
 });
+
+describe("headlinePrice / keyFacts", async () => {
+  const { headlinePrice, keyFacts } = await import("./format");
+  it("賃貸は管理費込みの総額", () => {
+    expect(headlinePrice(base)).toEqual({
+      label: "総額／月",
+      amount: "32万円",
+      note: "賃料 30万円 ＋ 管理費 2万円",
+    });
+  });
+  it("売買は価格と㎡単価", () => {
+    expect(headlinePrice({ ...base, dealType: "sale", price: 150_000_000 })).toMatchObject({
+      label: "価格",
+      amount: "1億5,000万円",
+      note: "㎡単価 214.3万円",
+    });
+  });
+  it("一行の要点", () => {
+    expect(keyFacts(base, new Date("2026-10-13"))).toEqual([
+      "六本木",
+      "2LDK 70㎡",
+      "六本木 徒歩5分",
+      "築11年",
+      "10階",
+    ]);
+  });
+});

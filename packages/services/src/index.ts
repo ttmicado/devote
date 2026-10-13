@@ -1,3 +1,4 @@
+export * from "./link-token";
 export * from "./match";
 export * from "./notify/dispatch";
 export * from "./notify/email";

@@ -2,6 +2,7 @@ import { randomUUID } from "node:crypto";
 import { type NormalizedListing, PHASE_GATE, type SearchPhase } from "@devote/core";
 import { type Db, matches, notifications, properties, sentLedger, userChannels } from "@devote/db";
 import { and, asc, desc, eq, gt, inArray, sql } from "drizzle-orm";
+import { personalLink } from "../link-token";
 import { activeConditions } from "../match";
 import { sendEmail } from "./email";
 import { buildEmail, buildLineMessages, type NotifyItem } from "./format";
@@ -41,7 +42,8 @@ export async function sendPropertiesToUser(
     userId: string;
     items: NotifyItem[];
     reason: Reason;
-    heading: string;
+    /** 通知の種類（文言が変わる） */
+    kind: "new" | "similar";
     lineUsage?: { count: number | null };
   },
 ): Promise<{
@@ -82,7 +84,12 @@ export async function sendPropertiesToUser(
         }
         await pushLine(
           ch.address,
-          buildLineMessages(items, { appUrl: base, notificationId, heading: args.heading }),
+          buildLineMessages(items, {
+            appUrl: base,
+            notificationId,
+            kind: args.kind,
+            userId: args.userId,
+          }),
           notificationId,
         );
         if (args.lineUsage && args.lineUsage.count != null) args.lineUsage.count++;
@@ -90,8 +97,9 @@ export async function sendPropertiesToUser(
         const mail = buildEmail(items, {
           appUrl: base,
           notificationId,
-          heading: args.heading,
-          settingsUrl: `${base}/settings`,
+          kind: args.kind,
+          userId: args.userId,
+          settingsUrl: personalLink(base, "/settings", args.userId),
         });
         await sendEmail({
           to: ch.address,
@@ -139,7 +147,11 @@ function isDue(
 ): boolean {
   const { hour, weekday } = jst(now);
   const since = lastSentAt ? now.getTime() - lastSentAt.getTime() : Number.POSITIVE_INFINITY;
-  if (frequency === "instant") return since > 10 * 60_000; // 連続送信を避けるため10分空ける
+  if (frequency === "instant") {
+    // 夜間（22時〜8時）は控え、朝8時以降にまとめて届ける。連続送信を避けるため10分空ける
+    if (hour >= 22 || hour < 8) return false;
+    return since > 10 * 60_000;
+  }
   if (frequency === "daily") return hour === sendHour && since > 20 * 3600_000;
   return weekday === 1 && hour === sendHour && since > 6 * 24 * 3600_000; // 毎週月曜
 }
@@ -199,7 +211,7 @@ export async function runNotifications(db: Db, now = new Date()) {
       userId: c.userId,
       items,
       reason: "new",
-      heading: "あなたの条件に合う新着物件",
+      kind: "new",
       lineUsage,
     });
     summary[res.status]++;

@@ -3,6 +3,7 @@ import { getDb, inquiries, properties, similarSuggestions } from "@devote/db";
 import { asc, eq } from "drizzle-orm";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { PageShell } from "@/components/page-shell";
 import { sendSimilarSuggestions, updateInquiryStatus } from "../../actions";
 
 export const dynamic = "force-dynamic";
@@ -56,132 +57,141 @@ export default async function AdminInquiryPage({
     .orderBy(asc(similarSuggestions.rank));
 
   return (
-    <div className="space-y-6">
-      <Link href="/admin" className="text-sm text-brand-700 underline">
-        ← 管理画面
-      </Link>
-      <h1 className="text-xl font-bold">問い合わせ詳細</h1>
+    <PageShell wide>
+      <div className="space-y-6">
+        <Link href="/admin" className="text-sm text-evergreen-700 underline">
+          ← 管理画面
+        </Link>
+        <h1 className="display font-mincho text-3xl text-evergreen-900">問い合わせ詳細</h1>
 
-      <section className="grid gap-4 rounded-xl border border-stone-200 bg-white p-5 sm:grid-cols-2">
-        <div className="space-y-1 text-sm">
-          <p className="font-bold">お客様</p>
-          <p>{q.contactName}</p>
-          {q.contactPhone && <p>☎ {q.contactPhone}</p>}
-          {q.contactEmail && <p>✉ {q.contactEmail}</p>}
-          {q.preferredDates != null && <p>希望日時: {String(q.preferredDates)}</p>}
-          {q.message && <p className="whitespace-pre-wrap text-stone-600">{q.message}</p>}
-        </div>
-        <div className="space-y-1 text-sm">
-          <p className="font-bold">物件</p>
-          <Link href={`/properties/${q.propertyId}`} className="text-brand-700 underline">
-            {l.title ?? "物件"}
-          </Link>
-          <p>{priceLabel(l)}</p>
-          <p className="text-stone-600">{summarizeListing(l)}</p>
-          <p className="text-stone-600">
-            元付: {l.agencyName ?? "不明"}／広告:{" "}
-            {l.adAllowed == null ? "不明" : l.adAllowed ? "可" : "不可"}
-          </p>
-          <a href={l.url} target="_blank" rel="noreferrer" className="text-brand-700 underline">
-            掲載元で確認
-          </a>
-        </div>
-      </section>
-
-      <form
-        action={updateInquiryStatus}
-        className="space-y-3 rounded-xl border border-stone-200 bg-white p-5"
-      >
-        <input type="hidden" name="inquiryId" value={q.id} />
-        <p className="font-bold">対応状況</p>
-        <select
-          name="status"
-          defaultValue={q.status}
-          className="w-full rounded border border-stone-300 px-2 py-2 text-sm"
-        >
-          {STATUSES.map(([v, label]) => (
-            <option key={v} value={v}>
-              {label}
-            </option>
-          ))}
-        </select>
-        <select
-          name="reason"
-          defaultValue={q.unavailableReason ?? "broker_refused"}
-          className="w-full rounded border border-stone-300 px-2 py-2 text-sm"
-        >
-          {REASONS.map(([v, label]) => (
-            <option key={v} value={v}>
-              対応不可の理由: {label}
-            </option>
-          ))}
-        </select>
-        <textarea
-          name="adminNote"
-          defaultValue={q.adminNote ?? ""}
-          rows={2}
-          placeholder="社内メモ"
-          className="w-full rounded border border-stone-300 px-2 py-2 text-sm"
-        />
-        <button
-          type="submit"
-          className="rounded-lg bg-brand-700 px-5 py-2 text-sm font-bold text-white"
-        >
-          更新
-        </button>
-      </form>
-
-      {q.status === "unavailable" && (
-        <section className="space-y-3 rounded-xl border-2 border-amber-300 bg-white p-5">
-          <p className="font-bold">類似物件の候補</p>
-          <p className="text-xs text-stone-500">
-            お客様に送る物件にチェックを入れて送信してください。選ばなかった候補も「却下」として記録し、今後の自動提案の精度向上に使います。
-          </p>
-          {sent && <p className="text-sm text-brand-700">{SENT[sent]}</p>}
-          {suggestions.length === 0 ? (
-            <p className="text-sm text-stone-600">条件に合う類似物件が見つかりませんでした。</p>
-          ) : (
-            <form action={sendSimilarSuggestions} className="space-y-2">
-              <input type="hidden" name="inquiryId" value={q.id} />
-              {suggestions.map(({ s, data }) => {
-                const c = data as NormalizedListing;
-                return (
-                  <label
-                    key={s.id}
-                    className="flex gap-3 rounded-lg border border-stone-200 p-3 text-sm"
-                  >
-                    <input
-                      type="checkbox"
-                      name="approve"
-                      value={s.id}
-                      defaultChecked={s.adminDecision !== "rejected" && s.rank <= 3}
-                    />
-                    <span className="flex-1">
-                      <span className="font-bold">{c.title ?? "物件"}</span>（類似度{" "}
-                      {Math.round(s.similarity * 100)}%）
-                      <br />
-                      {priceLabel(c)}／{summarizeListing(c)}
-                      {s.sentAt && <span className="ml-2 text-xs text-brand-700">送信済み</span>}
-                    </span>
-                    <Link
-                      href={`/properties/${s.propertyId}`}
-                      className="text-xs text-brand-700 underline"
-                    >
-                      詳細
-                    </Link>
-                  </label>
-                );
-              })}
-              <button
-                type="submit"
-                className="rounded-lg bg-amber-500 px-5 py-2 text-sm font-bold text-white"
-              >
-                選んだ物件をお客様に送る
-              </button>
-            </form>
-          )}
+        <section className="grid gap-4 rounded-none border border-ink-900/15 bg-sand-50 p-5 sm:grid-cols-2">
+          <div className="space-y-1 text-sm">
+            <p className="font-bold">お客様</p>
+            <p>{q.contactName}</p>
+            {q.contactPhone && <p>☎ {q.contactPhone}</p>}
+            {q.contactEmail && <p>✉ {q.contactEmail}</p>}
+            {q.preferredDates != null && <p>希望日時: {String(q.preferredDates)}</p>}
+            {q.message && <p className="whitespace-pre-wrap text-ink-500">{q.message}</p>}
+          </div>
+          <div className="space-y-1 text-sm">
+            <p className="font-bold">物件</p>
+            <Link href={`/properties/${q.propertyId}`} className="text-evergreen-700 underline">
+              {l.title ?? "物件"}
+            </Link>
+            <p>{priceLabel(l)}</p>
+            <p className="text-ink-500">{summarizeListing(l)}</p>
+            <p className="text-ink-500">
+              元付: {l.agencyName ?? "不明"}／広告:{" "}
+              {l.adAllowed == null ? "不明" : l.adAllowed ? "可" : "不可"}
+            </p>
+            <a
+              href={l.url}
+              target="_blank"
+              rel="noreferrer"
+              className="text-evergreen-700 underline"
+            >
+              掲載元で確認
+            </a>
+          </div>
         </section>
-      )}
-    </div>
+
+        <form
+          action={updateInquiryStatus}
+          className="space-y-3 rounded-none border border-ink-900/15 bg-sand-50 p-5"
+        >
+          <input type="hidden" name="inquiryId" value={q.id} />
+          <p className="font-bold">対応状況</p>
+          <select
+            name="status"
+            defaultValue={q.status}
+            className="w-full rounded border border-ink-900/25 px-2 py-2 text-sm"
+          >
+            {STATUSES.map(([v, label]) => (
+              <option key={v} value={v}>
+                {label}
+              </option>
+            ))}
+          </select>
+          <select
+            name="reason"
+            defaultValue={q.unavailableReason ?? "broker_refused"}
+            className="w-full rounded border border-ink-900/25 px-2 py-2 text-sm"
+          >
+            {REASONS.map(([v, label]) => (
+              <option key={v} value={v}>
+                対応不可の理由: {label}
+              </option>
+            ))}
+          </select>
+          <textarea
+            name="adminNote"
+            defaultValue={q.adminNote ?? ""}
+            rows={2}
+            placeholder="社内メモ"
+            className="w-full rounded border border-ink-900/25 px-2 py-2 text-sm"
+          />
+          <button
+            type="submit"
+            className="rounded-lg bg-evergreen-700 px-5 py-2 text-sm font-bold text-white"
+          >
+            更新
+          </button>
+        </form>
+
+        {q.status === "unavailable" && (
+          <section className="space-y-3 rounded-none border-2 border-sand-400 bg-sand-50 p-5">
+            <p className="font-bold">類似物件の候補</p>
+            <p className="text-xs text-ink-500">
+              お客様に送る物件にチェックを入れて送信してください。選ばなかった候補も「却下」として記録し、今後の自動提案の精度向上に使います。
+            </p>
+            {sent && <p className="text-sm text-evergreen-700">{SENT[sent]}</p>}
+            {suggestions.length === 0 ? (
+              <p className="text-sm text-ink-500">条件に合う類似物件が見つかりませんでした。</p>
+            ) : (
+              <form action={sendSimilarSuggestions} className="space-y-2">
+                <input type="hidden" name="inquiryId" value={q.id} />
+                {suggestions.map(({ s, data }) => {
+                  const c = data as NormalizedListing;
+                  return (
+                    <label
+                      key={s.id}
+                      className="flex gap-3 rounded-lg border border-ink-900/15 p-3 text-sm"
+                    >
+                      <input
+                        type="checkbox"
+                        name="approve"
+                        value={s.id}
+                        defaultChecked={s.adminDecision !== "rejected" && s.rank <= 3}
+                      />
+                      <span className="flex-1">
+                        <span className="font-bold">{c.title ?? "物件"}</span>（類似度{" "}
+                        {Math.round(s.similarity * 100)}%）
+                        <br />
+                        {priceLabel(c)}／{summarizeListing(c)}
+                        {s.sentAt && (
+                          <span className="ml-2 text-xs text-evergreen-700">送信済み</span>
+                        )}
+                      </span>
+                      <Link
+                        href={`/properties/${s.propertyId}`}
+                        className="text-xs text-evergreen-700 underline"
+                      >
+                        詳細
+                      </Link>
+                    </label>
+                  );
+                })}
+                <button
+                  type="submit"
+                  className="rounded-lg bg-evergreen-800 px-5 py-2 text-sm font-bold text-white"
+                >
+                  選んだ物件をお客様に送る
+                </button>
+              </form>
+            )}
+          </section>
+        )}
+      </div>
+    </PageShell>
   );
 }
