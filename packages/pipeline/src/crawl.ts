@@ -10,6 +10,7 @@ import {
 } from "@devote/scraper";
 import { and, desc, eq, isNotNull } from "drizzle-orm";
 import { ingestCrawl } from "./ingest.js";
+import { loginHoldReason } from "./login-hold.js";
 import { budgetForRun, isWithinActiveHours, jstCalendar, recordUsage } from "./quota.js";
 
 /** 1ソースを巡回して DB に反映し、crawl_runs に結果を残す */
@@ -28,18 +29,19 @@ export async function runSource(
   if (!isWithinActiveHours(adapter.meta.schedule.activeHoursJst, jstCalendar(now).hour)) {
     return skip("提供時間外");
   }
+  const [last] = await db
+    .select({ startedAt: crawlRuns.startedAt, status: crawlRuns.status, error: crawlRuns.error })
+    .from(crawlRuns)
+    .where(eq(crawlRuns.source, source))
+    .orderBy(desc(crawlRuns.startedAt))
+    .limit(1);
   const minInterval = adapter.meta.schedule.minRunIntervalMinutes;
-  if (minInterval) {
-    const [last] = await db
-      .select({ startedAt: crawlRuns.startedAt })
-      .from(crawlRuns)
-      .where(eq(crawlRuns.source, source))
-      .orderBy(desc(crawlRuns.startedAt))
-      .limit(1);
-    if (last && now.getTime() - last.startedAt.getTime() < minInterval * 60_000) {
-      return skip(`前回から${minInterval}分経っていない`);
-    }
+  if (minInterval && last && now.getTime() - last.startedAt.getTime() < minInterval * 60_000) {
+    return skip(`前回から${minInterval}分経っていない`);
   }
+  // 会員サイトでログインに失敗したら、ロックを避けるため一定時間は試さない（人が確認する）
+  const hold = adapter.meta.requiresLogin ? loginHoldReason(last, now) : null;
+  if (hold) return skip(hold);
   const budget = await budgetForRun(db, adapter.meta, now);
   if (budget.list === 0) return skip("本日分の検索枠を使い切った");
 

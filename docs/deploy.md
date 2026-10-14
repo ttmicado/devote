@@ -104,7 +104,7 @@ Vercel の画面から作ると、接続情報（`DATABASE_URL` など）が Ver
 | `ITANDI_EMAIL` / `ITANDI_PASSWORD` | ITANDI BB |
 
 **Variables**（任意）
-- `ENABLE_MEMBER_SOURCES` = `1` … 会員サイト（レインズ・ITANDI BB。確認済み）を巡回する。巡回専用ID・実行環境を決めてから設定する
+- `ENABLE_MEMBER_SOURCES` = `0` … 会員サイト（レインズ・ITANDI BB）の巡回を止める（空なら巡回する。弊害が出たときの停止スイッチ）
 - `ENABLE_UNVERIFIED_SOURCES` = `1` … 動作確認前のアダプター（現状 ATBB）も巡回する（確認が済むまでは空のまま）
 - `DEVOTE_SOURCES` … 巡回するソースを絞る（例: 会員サイトは国内マシンで動かす場合）
 - `REINS_MONTHLY_SEARCH_LIMIT` / `REINS_MONTHLY_DETAIL_LIMIT` … レインズの巡回の月間上限（既定 4,500。無料枠 6,000 は人の利用と共有。
