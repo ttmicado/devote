@@ -1,0 +1,196 @@
+{
+ "property_id": 35619807,
+ "is_meiwakanzai": false,
+ "status_type": "available",
+ "advertisement_reprint_available_type": null,
+ "deal_type": "貸主",
+ "current_state_type": "空き",
+ "property_transfer_period_text": "2026年11月下旬",
+ "pet_negotiation": {
+  "text": null,
+  "remarks": null
+ },
+ "remarks": "　■保証会社利用必須■１年未満解約違約金あり（賃料１ヶ月分）■ペット相談可（敷金１ヶ月積み増し）",
+ "contract_type": "普通借家",
+ "contract_renewal_type": null,
+ "cancellation_notice_period": null,
+ "contract_terms": null,
+ "rent_text": "15.5万円",
+ "reikin_text": "なし",
+ "shikikin_text": "1ヶ月",
+ "shikikin_tsumimashi_text": null,
+ "hoshokin_text": null,
+ "kanrihi_text": "10,000円",
+ "kyoekihi_text": null,
+ "kenrikin_text": null,
+ "koshinryo_text": "1ヶ月",
+ "kokokuhi_text": "100％",
+ "free_rent_text": null,
+ "hoshoryo": {
+  "text": "利用必須",
+  "remarks": "初回保証料：月額賃料等の50~60％（最低1.5万円）、２年目~：1~2万円/年"
+ },
+ "insurance_text": null,
+ "water_charge_type": null,
+ "other_costs": [
+  {
+   "type": "鍵交換費用",
+   "period_costs": [
+    "27,500円"
+   ]
+  }
+ ],
+ "shikibiki_shokyaku_text": "なし",
+ "building_detail_type": "マンション",
+ "structure_type": "鉄筋コンクリート",
+ "story_text": "10階建",
+ "rooms_total_count": null,
+ "building_name": "パークアクシス芝浦キャナル",
+ "address": {
+  "zipcode": "108-0022",
+  "text": "東京都港区海岸3丁目2-3",
+  "latitude": 35.644659,
+  "longitude": 139.755734
+ },
+ "nearby_places_text": null,
+ "nearby_train_station_texts": [
+  "JR山手線 田町駅 徒歩12分",
+  "JR京浜東北線 田町駅 徒歩12分",
+  "ゆりかもめ 芝浦ふ頭駅 徒歩7分"
+ ],
+ "floor_text": "7階",
+ "room_number": "714",
+ "building_number": null,
+ "floor_area_text": "25.55㎡",
+ "layout_text": "1DK",
+ "main_lighting_direction_type": "東向き",
+ "car_parking": {
+  "text": "なし",
+  "remarks": null
+ },
+ "bicycle_parking": {
+  "text": null,
+  "remarks": null
+ },
+ "motorbike_parking": {
+  "text": null,
+  "remarks": null
+ },
+ "vr_image_url": null,
+ "viewing_note": null,
+ "viewing_available_from": "即内見可",
+ "offer_zumens_count": 1,
+ "full_name": "パークアクシス芝浦キャナル 714",
+ "all_images": [
+  {
+   "url": "https://property-images.itandi.co.jp/public/images/01J4MV4VXRE4NRDTB46EN76NCV.jpg",
+   "type": "間取り"
+  },
+  {
+   "url": "https://property-images.itandi.co.jp/public/images/01KQJV0QANM1TEXRVMYB0TH98V.jpg",
+   "type": "外観"
+  },
+  {
+   "url": "https://property-images.itandi.co.jp/public/images/01KQJV0QHRXEN233NP3FV79B81.jpg",
+   "type": "周辺"
+  },
+  {
+   "url": "https://property-images.itandi.co.jp/public/images/01KQNA0YFZN79YVDQP2DM5ZNMS.jpg",
+   "type": "その他"
+  },
+  {
+   "url": "https://property-images.itandi.co.jp/public/images/01KQNA0YQFC67CW0DQK621JXCX.jpg",
+   "type": "その他共用部"
+  },
+  {
+   "url": "https://property-images.itandi.co.jp/public/images/01KQNA0YV5VWE52FYDAWMTG3XV.jpg",
+   "type": "その他"
+  },
+  {
+   "url": "https://property-images.itandi.co.jp/public/images/01J4MT9KD5PGN7T0TPEG6AYBK8.jpg",
+   "type": "その他"
+  }
+ ],
+ "all_options": [
+  {
+   "value": 11010,
+   "text": "バス・トイレ別"
+  },
+  {
+   "value": 11050,
+   "text": "浴室乾燥機"
+  },
+  {
+   "value": 11080,
+   "text": "室内洗濯機置場"
+  },
+  {
+   "value": 12010,
+   "text": "システムキッチン"
+  },
+  {
+   "value": 13010,
+   "text": "エアコン"
+  },
+  {
+   "value": 15010,
+   "text": "BS端子"
+  },
+  {
+   "value": 15011,
+   "text": "CATV"
+  },
+  {
+   "value": 15013,
+   "text": "CS"
+  },
+  {
+   "value": 16010,
+   "text": "オートロック"
+  },
+  {
+   "value": 19030,
+   "text": "フローリング"
+  },
+  {
+   "value": 19040,
+   "text": "エレベーター"
+  },
+  {
+   "value": 19070,
+   "text": "バルコニー"
+  },
+  {
+   "value": 21020,
+   "text": "宅配BOX"
+  },
+  {
+   "value": 21030,
+   "text": "敷地内ごみ置き場"
+  },
+  {
+   "value": 21031,
+   "text": "24時間ゴミ出し可"
+  },
+  {
+   "value": 22010,
+   "text": "ペット相談"
+  },
+  {
+   "value": 22020,
+   "text": "楽器相談"
+  }
+ ],
+ "building_age_text": "築4年",
+ "construction_date_text": "2022年1月",
+ "is_bukkaku_necessary": false,
+ "management_company": {
+  "contact_url": "",
+  "name": "管理会社1",
+  "phone_number": "MASKED",
+  "property_document_dl_enabled": true
+ },
+ "key_unlock_way_detail": null,
+ "advertisable_type": "unspecified",
+ "creating_estimate_availability": "unusable"
+}

@@ -47,12 +47,15 @@ export const VERIFIED = false;
 export const SOURCE_ID = "atbb";
 export const BASE_URL = "https://atbb.athome.jp";
 export const LOGIN_URL = `${BASE_URL}/`;
+/** ログイン後のポータル（加盟店専用サイト） */
+export const PORTAL_URL = "https://members.athome.jp/portal";
 export const BROWSER_UA =
   "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36";
 
-export const hooks: { onStep?: (step: string) => Promise<void> } = {};
+export const hooks: { onStep?: (step: string, page?: Page) => Promise<void> } = {};
+/** 別タブで操作していることがあるので、いま操作中のページを渡して記録する */
 const step = async (name: string) => {
-  await hooks.onStep?.(name).catch(() => undefined);
+  await hooks.onStep?.(name, activePage ?? undefined).catch(() => undefined);
 };
 
 /** ATBB はポップアップ（別ウィンドウ）で画面を開く可能性があるため、操作中のページを追跡する */
@@ -96,12 +99,17 @@ async function waitSettled(page: Page) {
 }
 
 /** クリックして、別ウィンドウが開けばそちらに切り替える */
-async function clickMaybePopup(page: Page, target: ReturnType<Page["locator"]>): Promise<Page> {
+async function clickMaybePopup(
+  page: Page,
+  target: ReturnType<Page["locator"]>,
+  opts: { dispatch?: boolean } = {},
+): Promise<Page> {
   const popupPromise = page
     .context()
     .waitForEvent("page", { timeout: 5_000 })
     .catch(() => null);
-  await target.click();
+  if (opts.dispatch) await target.dispatchEvent("click");
+  else await target.click();
   const popup = await popupPromise;
   const next = popup ?? page;
   await next.waitForLoadState("domcontentloaded").catch(() => undefined);
@@ -162,8 +170,23 @@ async function runSearch(start: Page, s: AtbbSearch): Promise<Page> {
     await page.goto(homeUrl, { waitUntil: "domcontentloaded" });
     await waitSettled(page);
   }
-  // TODO(verify): ログイン後トップ → 「物件検索」（流通物件検索）の入口
-  page = await clickMaybePopup(page, page.getByRole("link", { name: /物件検索/ }).first());
+  // ログイン後のポータル（members.athome.jp/portal）のヘッダー「物件・会社検索」→「流通物件検索」（別タブ）
+  //   メニュー項目は data-action="/atbb/nyushuSearch?..."（target=_blank）。そのパスを別タブで開く
+  const tab = await page.context().newPage();
+  await tab.goto(`${new URL(PORTAL_URL).origin}/atbb/nyushuSearch?from=global_menu_bukkenKensaku`, {
+    waitUntil: "domcontentloaded",
+    timeout: 60_000,
+  });
+  await waitSettled(tab);
+  activePage = tab;
+  page = tab;
+  // 同じIDで人が ATBB を使っていると ConcurrentLoginException.jsp に飛ばされる（2026-10-14 実測）。
+  //   人の作業を奪わないよう、ここで止める（巡回専用の追加IDを使うこと）
+  if (/ConcurrentLoginException/i.test(page.url())) {
+    throw new Error(
+      "atbb: 同じIDで別の端末が ATBB を利用中のため検索に入れません（ConcurrentLoginException）。巡回専用IDを使ってください",
+    );
+  }
   await step("search-menu");
   // TODO(verify): 種目（賃貸居住用 / 売買居住用）の選択
   page = await clickMaybePopup(page, page.getByText(KIND_LABEL[s.deal]).first());
@@ -362,12 +385,15 @@ export default defineAdapter({
     const page = ctx.page;
     activePage = page;
     await applyBrowserProfile(page);
-    await page.goto(LOGIN_URL, { waitUntil: "domcontentloaded", timeout: 60_000 });
+    // 保存済みセッションが生きていればポータルが開く（atbb.athome.jp はログイン中でもログイン画面を出す）
+    await page.goto(PORTAL_URL, { waitUntil: "domcontentloaded", timeout: 60_000 });
     await waitSettled(page);
     if (!isLoginPage(await page.content(), page.url())) {
       homeUrl = page.url();
       return;
     }
+    await page.goto(LOGIN_URL, { waitUntil: "domcontentloaded", timeout: 60_000 });
+    await waitSettled(page);
     await step("login-page"); // 入力前に撮る（スクショにIDを残さない）
     await page.locator("#loginFormText").fill(userId);
     await page.locator("#passFormText").fill(password);

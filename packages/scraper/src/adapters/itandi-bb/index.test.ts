@@ -1,16 +1,20 @@
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { afterEach, describe, expect, it, vi } from "vitest";
-import adapter, { parseSearchUrl, VERIFIED } from "./index.js";
+import adapter, { MAX_PAGES, parseSearchUrl, VERIFIED } from "./index.js";
 
 const fixture = (name: string) =>
   readFileSync(join(import.meta.dirname, "__fixtures__", name), "utf8");
 const LOGIN = "https://itandi-accounts.com/login?client_id=itandi_bb";
 
-describe("itandi-bb（未検証のたたき台）", () => {
-  it("未検証フラグと会員サイト用の meta", () => {
-    expect(VERIFIED).toBe(false);
-    expect(adapter.meta).toMatchObject({ requiresLogin: true, parserVersion: "0-unverified" });
+describe("itandi-bb（2026-10-14 実画面で確認）", () => {
+  it("検証済みフラグと会員サイト用の meta", () => {
+    expect(VERIFIED).toBe(true);
+    expect(adapter.meta).toMatchObject({
+      requiresLogin: true,
+      parserVersion: "1",
+      incrementalList: true,
+    });
     expect(adapter.meta.fetchMode).toEqual({ list: "browser", detail: "browser" });
     expect(adapter.meta.rateLimit.minIntervalMs).toBeGreaterThanOrEqual(3000);
     expect(adapter.meta.rateLimit.maxConcurrency).toBe(1);
@@ -52,29 +56,61 @@ describe("itandi-bb（未検証のたたき台）", () => {
     });
   });
 
-  it("一覧 JSON（合成データ。キー名は公開 JS からの推測）", () => {
-    const body = JSON.stringify({
-      total_count: 25,
-      room_total_count: 2,
-      buildings: [
-        {
-          building_name: "テスト",
-          rooms: [
-            { property_id: 111, rent_yen: 150000, rent_text: "15万円" },
-            { property_id: 112, rent_text: "16.5万円" },
-          ],
-        },
-      ],
+  const url = "itandi-bb://search?deal=rent&pref=東京都&city=港区";
+
+  it("一覧 JSON（実物・マスク済み。1ページ20棟、更新が新しい順）", () => {
+    const r = adapter.parseList(fixture("list-minato.json"), url);
+    expect(r.items).toHaveLength(43);
+    expect(r.items[0]).toMatchObject({
+      sourceListingId: "35619807",
+      price: 155_000,
+      detailUrl: "https://itandibb.com/rent_rooms/35619807",
     });
-    const r = adapter.parseList(body, "itandi-bb://search?deal=rent&city=港区");
-    expect(r.items.map((i) => [i.sourceListingId, i.price])).toEqual([
-      ["111", 150_000],
-      ["112", 165_000],
-    ]);
-    expect(r.items[0]?.detailUrl).toBe("https://itandibb.com/rent_rooms/111");
+    expect(r.totalCount).toBe(1939);
     expect(r.nextPageUrl && parseSearchUrl(r.nextPageUrl)).toMatchObject({ city: "港区", page: 2 });
-    expect(() =>
-      adapter.parseList("<html></html>", "itandi-bb://search?deal=rent&city=港区"),
-    ).toThrow(/JSON/);
+    expect(() => adapter.parseList("<html></html>", url)).toThrow(/JSON/);
+  });
+
+  it("一覧: 更新が1日以内の部屋がないページ・上限ページでは次へ進まない", () => {
+    const json = JSON.parse(fixture("list-minato.json")) as {
+      buildings: { rooms: { offer_conditions_update_elapsed: string }[] }[];
+    };
+    for (const b of json.buildings)
+      for (const r of b.rooms) r.offer_conditions_update_elapsed = "3日前";
+    expect(adapter.parseList(JSON.stringify(json), url).nextPageUrl).toBeNull();
+    expect(
+      adapter.parseList(fixture("list-minato.json"), `${url}&page=${MAX_PAGES}`).nextPageUrl,
+    ).toBeNull();
+  });
+
+  it("詳細 JSON（実物・マスク済み）を正規化する", () => {
+    const raw = adapter.parseDetail(
+      fixture("detail-1.json"),
+      "https://itandibb.com/rent_rooms/35619807",
+    );
+    expect(adapter.normalize(raw)).toMatchObject({
+      sourceListingId: "35619807",
+      title: "パークアクシス芝浦キャナル",
+      address: { prefecture: "東京都", city: "港区", town: "海岸" },
+      price: 155_000,
+      managementFee: 10_000,
+      deposit: 155_000,
+      keyMoney: 0,
+      layout: "1DK",
+      areaSqm: 25.55,
+      builtYearMonth: "2022-01",
+      floor: 7,
+      totalFloors: 10,
+      structure: "RC",
+      direction: "東",
+      transactionMode: "owner",
+      adAllowed: null,
+    });
+    expect(raw.imageUrls.length).toBeGreaterThan(0);
+    expect(raw.imageUrls.every((u) => u.startsWith("https://property-images.itandi.co.jp/"))).toBe(
+      true,
+    );
+    const raw2 = adapter.parseDetail(fixture("detail-2.json"), "https://itandibb.com/rent_rooms/x");
+    expect(adapter.normalize(raw2).price).toBeGreaterThan(0);
   });
 });

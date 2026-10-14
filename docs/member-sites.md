@@ -1,9 +1,69 @@
 # 会員制の業者間サイト（レインズ / ATBB / ITANDI BB）の自動化メモ
 
-2026-10-13 時点。**認証情報がない状態で調べた内容**なので、ログイン後の画面は一度も見ていない。
-見たのは「公開ログイン画面の実物（Playwright で取得）」「公開マニュアル・ヘルプ・FAQ」「公開 JS バンドル」だけ。
-アダプター（`packages/scraper/src/adapters/{reins,atbb,itandi-bb}/`）はすべて `VERIFIED = false`、
-`parserVersion: "0-unverified"` のたたき台で、`registry.ts` には未登録。
+2026-10-13 に認証情報なしで調べ（§1〜§4 はその時点の内容）、**2026-10-14 にログイン後の実画面で確認した（§0）**。
+レインズ・ITANDI BB は `VERIFIED = true`・`parserVersion: "1"`。ATBB は同じIDを人が使用中で検索画面に入れず未確認（`VERIFIED = false`）。
+**2026-10-14 から GitHub Actions で運用する**（人と同じIDのまま。弊害が出たら GitHub の Variables に `ENABLE_MEMBER_SOURCES=0` を入れて止める）。
+
+## 0. 2026-10-14 の実画面での確認結果
+
+確認は Claude Code on the web（米国 GCP の IP、ヘッドレス Chromium＋通常の Chrome UA）から `explore.ts` で行った。
+3サイトとも**米国 IP・ヘッドレスからログインでき、追加認証・CAPTCHA・端末確認は出なかった**。
+
+### レインズ（確認済み）
+- ログイン → メインメニュー（`/main/KG/GKG003100`）。【賃貸 物件検索】→ 検索条件入力（賃貸 `/main/BK/GBK001310`、売買 `GBK001210`）
+- 画面はすべて JSON API で描画される（`POST /main/api/<画面ID>/...`）。アダプターは画面を操作し、API の応答を横取りする
+  - 件数事前確認: `.../getBkknDataCount` → `{ count }`（**無課金**）。結果はダイアログ「件数事前確認結果」（キャンセル／検索）
+  - 一覧1ページ目: `.../GBK002200/getInitDataFromKnskJyukn`（売買は `GBK002100`）。`bkknKnskListResultData1.knskResultList`（50件）と `knskResultListKnsu`（総件数）
+  - 一覧2ページ目以降: `.../getBkknListData`（ページボタン "Go to page N"）
+  - 詳細: 一覧の行（`.p-table-body-row`）の【詳細】→ `/main/BK/GBK003200`（売買 `GBK003100`）。`.p-label-title` と同じ `.col` 内の値を読む
+  - 詳細からブラウザの「戻る」で一覧の同じページに戻る。**一覧の API は再度呼ばれない**（再検索にならない）
+  - 物件番号検索（`GBK004100`）は物件番号を最大20件まとめて検索できる（未使用）
+- 期間の絞り込み: 「その他検索項目(在庫のみ)」の 登録年月日 / 変更年月日（いずれかに一致）に「当日」「前日」「３日以内」…がある
+- 実測件数（港区・賃貸マンション、10/14 8:40）: 全期間 3,112件 / 3日以内 1,050件 / 前日 538件 / 当日 151件。
+  **検索で表示できるのは500件まで**なので、既定は「当日」（9時前は「前日」）の差分検索（`REINS_SEARCH_PERIOD` で変更可）。
+  差分なので一覧に出ないことを掲載終了とみなさない（`meta.incrementalList`）
+- 件数事前確認が0件なら【検索】しない（一覧表示＝課金を避ける）
+- 詳細は表示中の一覧ページからしか開けないため、ランナーは一覧1ページごとに詳細を取る（`meta.detailsAfterEachListPage`）
+- 写真は `<img>` ではなく認証付き API（`/main/api/KG/GKG010100/findBkknGzu?...`）。公式に「保存できません」とあるので**取得しない**（`imageUrls: []`）
+- ログイン画面の「規程及びガイドラインを遵守します」チェックが画面の再描画で外れることがある（未チェックで送ると 401＝ログイン失敗1回）。
+  チェック済みを確認してから送信する。ログアウト後の古いセッションファイルは消す
+- ログアウト: 右メニューの「ログアウト」→ `/logout/main/KG/GKG002100`（件数事前確認のダイアログが開いていると押せない）
+- 利用実績（Myレインズ「利用実績照会」）は**前日までの集計**。当月（10/1〜13）の人の利用は 物件検索 376件・物件詳細 263件・図面 480件。
+  **無料枠 6,000件は会社単位で人と共有**なので、巡回の既定上限は月 4,500件にした。
+  ページ送り（`getBkknListData`）が「物件検索」1件に数えられるかは、翌日以降に利用実績照会で確認すること
+- 確認に使った量（10/14）: 件数事前確認 約8回、検索 6回（うちページ送り1回）、物件詳細 9件
+
+### ATBB（未確認: 人が使用中）
+- ログイン（`atbb.athome.jp` → `members.athome.jp/login`）→ ポータル `https://members.athome.jp/portal`（加盟店専用サイト）。ログインは成功
+- 保存済みセッションの確認はポータルを開いて行う（`atbb.athome.jp` はログイン中でもログイン画面を出す）
+- 流通物件検索はヘッダー「物件・会社検索」のメニュー項目 `data-action="/atbb/nyushuSearch?from=global_menu_bukkenKensaku"`（別タブ）
+- それを開くと `atbb.athome.co.jp/front-web/login/ConcurrentLoginException.jsp` に飛ばされた＝**同じIDで別の端末が ATBB を使用中**（FAQ No.186 の同時ログイン不可）。
+  人の作業を奪わないよう、アダプターはこの画面でエラーにして止める。ポータルからはログアウトした
+- 次にやること: **巡回専用の追加ID** を発行してもらい（または人が使っていない時間帯に）、`explore.ts atbb` で検索条件入力〜一覧〜詳細を確認する
+
+### ITANDI BB（確認済み）
+- ログイン（`itandi-accounts.com/login`）→ `itandibb.com/top`。賃貸のリスト検索 `/rent_rooms/list`
+- 所在地は「所在地で絞り込み」のモーダルで都道府県→市区町村を選ぶ（たたき台の操作で動いた）
+- `POST /api/internal/v4/rent_room_buildings/search` は条件を変えるたびに**該当件数だけの呼び出し（buildings が空）**が走る。
+  一覧の応答は buildings が入っているものを待つ
+- 一覧: 1ページ20棟。`total_count` は棟数（港区 1,103棟）、`room_total_count` は部屋数（1,939室）。部屋の ID は `property_id`
+- 既定の並びは**募集条件の更新が新しい順**（先頭が「6分前」…）。全件（港区で56ページ）は回らず、
+  更新が1日以内の部屋があるページだけ・最大5ページまで送る（`MAX_PAGES`）。差分なので掲載終了の判定はしない
+- 詳細: `/rent_rooms/{id}` を開くと `GET /api/internal/v4/rent_rooms/{id}` の JSON。住所は `address.text`、構造は `structure_type`（"鉄筋コンクリート"）、
+  取引態様は `deal_type`（"貸主" 等）、採光は `main_lighting_direction_type`（"東向き"）、広告は `advertisable_type`（"unspecified" 等）
+- 写真は `https://property-images.itandi.co.jp/public/images/...`（**cookie なしの公開 URL**）
+- ログアウト: 右上の会社名メニュー内の「ログアウト」ボタン
+- 巡回は 9〜21時・4時間以上空けて（1日3回程度）。運営の注意喚起（§4）があるため、件数・頻度はこれ以上増やさない
+
+### 運用方針（2026-10-14 決定）
+1. 実行環境: **GitHub Actions**（米国 IP・毎回ログイン）。米国 IP からのログインは3サイトとも通った
+2. ID: **人と同じIDのまま**。弊害（ログイン停止・不正検知・人の作業中のセッション切れ等）が出たら巡回専用IDを検討する
+3. ITANDI BB: 運営の注意喚起（§4）は承知のうえで**運用する**。頻度・件数は1日3回・1検索最大5ページに抑える
+4. ATBB: 9:20 に再確認しても同じIDが使用中で未確認。未検証のため巡回対象外（人が使っていない時間帯に `explore.ts atbb` で仕上げる）
+5. 止めるとき: GitHub の Variables に `ENABLE_MEMBER_SOURCES=0`（`DEVOTE_SOURCES` で一部だけにもできる）
+6. ログイン失敗時: 前回の巡回がログイン系の失敗（ログイン失敗・追加認証・同時ログイン・セッション切れ）なら、
+   **24時間は再ログインしない**（`packages/pipeline/src/login-hold.ts`）。30分ごとの再試行でアカウントがロックされるのを防ぐ
+7. 弊害の見張り: 管理画面「巡回ソースの状況」の失敗（ログイン失敗・セッション切れ）と、Myレインズ「利用実績照会」の件数
 
 ## 1. まとめ
 
@@ -121,10 +181,14 @@ ITANDI_PASSWORD=...
 1サイトずつ、人がブラウザでそのサイトを使っていない時間帯に:
 
 ```
+node --env-file=.env --import tsx packages/scraper/src/explore.ts reins --precheck-only --logout   # 件数事前確認だけ（無課金）
+node --env-file=.env --import tsx packages/scraper/src/explore.ts reins --query=rent-中央区勝どき --max-count=20 --details=2 --logout
 node --env-file=.env --import tsx packages/scraper/src/explore.ts reins --headed --logout
 # または: set -a; . ./.env; set +a; npx tsx packages/scraper/src/explore.ts reins --headed --logout
 ```
 
+- 主なオプション: `--precheck-only`（レインズ: 件数事前確認で止める）、`--max-count=N`（事前確認が N 件超なら検索しない。既定100）、
+  `--query=KEY`、`--details=N`、`--pages=N`、`--pick=I,J`、`--usage`（レインズの利用実績照会）、`--logout-only`
 - 出力: `storage/explore/<source>/`（各ステップのスクショ＋HTML、`network.jsonl`＋API レスポンス JSON、`explore.log`、`list-body.*`、`detail-*.json`）。セッションは `storage/sessions/<source>.json`
 - 失敗したステップはその時点の画面を `*-failed.png/html` で保存する。ログイン失敗は即終了（**連続で試さない。アカウントロック防止**）
 - 確認する順番:

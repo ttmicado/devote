@@ -121,6 +121,19 @@ describe.skipIf(!db)("ingestCrawl（DB結合）", () => {
     expect(events.map((e) => e.type).sort()).toEqual(["delisted", "new", "new", "price_down"]);
   });
 
+  it("差分検索の一覧（partialList）では、一覧に出ない掲載を掲載終了にしない", async () => {
+    const src = `${PREFIX}-partial`;
+    const P1 = listing("P1", {}, src);
+    const P2 = listing("P2", {}, src);
+    await ingestCrawl(db!, src, result([P1, P2]));
+    for (let i = 0; i < 3; i++) {
+      const s = await ingestCrawl(db!, src, { ...result([], ["P1"]), partialList: true });
+      expect(s.delistedCount).toBe(0);
+    }
+    const rows = await db!.select().from(listings).where(eq(listings.source, src));
+    expect(rows.find((r) => r.sourceListingId === "P2")?.status).toBe("active");
+  });
+
   it("別ソースの同じ部屋は同じ物件に名寄せする", async () => {
     await ingestCrawl(
       db!,

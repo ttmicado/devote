@@ -212,6 +212,8 @@ export async function ingestCrawl(
       .where(and(eq(listings.source, source), inArray(listings.sourceListingId, result.seenIds)));
   }
 
+  // 差分検索（レインズ）の一覧は全件ではないので、一覧に出ないことを掲載終了とみなさない
+  if (result.partialList) return stats;
   if (!result.listCompleted || result.countMismatch) {
     stats.warnings.push(
       "一覧の巡回が不完全、または総件数と取得件数が不一致のため掲載終了判定をスキップ",

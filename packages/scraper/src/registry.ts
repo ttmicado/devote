@@ -33,8 +33,9 @@ const registrations: Registration[] = [
   { adapter: rf12, production: true, verified: true },
   { adapter: kencorp, production: true, verified: true },
   { adapter: axelHome, production: true, verified: true },
-  // 業者間の会員サイト（ログイン後の画面は未確認。docs/member-sites.md）
-  // レインズは検索が従量課金の可能性、ITANDI BB は規約で大量の自動取得を控えるよう求めているため要判断
+  // 業者間の会員サイト（docs/member-sites.md）。レインズ・ITANDI BB は 2026-10-14 にログイン後の実画面で確認済み。
+  // ATBB は同じIDを人が使用中（同時ログイン不可）で検索画面に入れず未確認。
+  // 会員サイトは既定で巡回する。止めるときは ENABLE_MEMBER_SOURCES=0（下の enabledAdapters）
   { adapter: reins, production: true, verified: REINS_VERIFIED, memberOnly: true },
   { adapter: atbb, production: true, verified: ATBB_VERIFIED, memberOnly: true },
   { adapter: itandiBb, production: true, verified: ITANDI_VERIFIED, memberOnly: true },
@@ -54,15 +55,19 @@ export const memberOnlySourceIds: readonly string[] = registrations
 /**
  * 定期巡回の対象。
  * - 未検証のアダプター（会員サイトのたたき台など）は ENABLE_UNVERIFIED_SOURCES=1 のときだけ含める
+ * - 会員サイト（memberOnly）は既定で含める（2026-10-14 運用開始: 人と同じID・GitHub Actions で回す）。
+ *   ログイン停止・セッションの奪い合いなどの弊害が出たら ENABLE_MEMBER_SOURCES=0 で止める
  * - DEVOTE_SOURCES=id1,id2 で対象を絞れる（実行環境ごとに分けるとき用）
  */
 export function enabledAdapters(): SiteAdapter[] {
   const allowUnverified = process.env.ENABLE_UNVERIFIED_SOURCES === "1";
+  const allowMember = process.env.ENABLE_MEMBER_SOURCES !== "0";
   const only = process.env.DEVOTE_SOURCES?.split(",")
     .map((s) => s.trim())
     .filter(Boolean);
   return registrations
     .filter((r) => r.production && (r.verified || allowUnverified))
+    .filter((r) => !r.memberOnly || allowMember)
     .map((r) => r.adapter)
     .filter((a) => !only || only.length === 0 || only.includes(a.meta.id));
 }
