@@ -14,6 +14,8 @@ export interface CrawlResult {
   countMismatch: boolean;
   /** maxDetails を超えたため次回に回した詳細の件数 */
   deferred: number;
+  /** 一覧が差分（期間で絞った検索）のため、掲載終了の判定に使えない */
+  partialList?: boolean;
   /** 実際に行った一覧ページ・詳細ページの取得回数（従量課金サイトの利用量の記録用） */
   listRequests: number;
   detailRequests: number;
@@ -62,6 +64,31 @@ export async function crawlSource(
 
   if (adapter.login) await adapter.login(ctx);
 
+  let detailCount = 0;
+  let deferred = 0;
+  const fetchDetails = async (items: Iterable<ListItem>) => {
+    for (const item of items) {
+      if (knownListHashes.get(item.sourceListingId) === item.listHash) continue;
+      if (detailCount >= maxDetails) {
+        deferred++;
+        continue;
+      }
+      detailCount++;
+      counters.detail++;
+      // 取得を試みた時点で1件と数える（失敗しても相手側では表示・課金されている可能性がある）
+      try {
+        const html = adapter.fetchDetail
+          ? await adapter.fetchDetail(ctx, item)
+          : (await ctx.get(item.detailUrl)).body;
+        await onSnapshot?.("detail", item.detailUrl, html);
+        const raw = adapter.parseDetail(html, item.detailUrl);
+        listings.push(NormalizedListing.parse(adapter.normalize(raw)));
+      } catch (e) {
+        errors.push({ item, error: e instanceof Error ? e.message : String(e) });
+      }
+    }
+  };
+
   for (const query of adapter.queries()) {
     let url: string | null = adapter.buildListUrl(query);
     let totalCount: number | null = null;
@@ -78,35 +105,21 @@ export async function crawlSource(
       const result = adapter.parseList(html, url);
       totalCount ??= result.totalCount;
       found += result.items.length;
-      for (const item of result.items) seen.set(item.sourceListingId, item);
+      const pageItems: ListItem[] = [];
+      for (const item of result.items) {
+        if (seen.has(item.sourceListingId)) continue;
+        seen.set(item.sourceListingId, item);
+        pageItems.push(item);
+      }
+      // 詳細を「いま表示中の一覧ページ」からしか開けないサイト（レインズ）は、ページごとに詳細を取る
+      if (adapter.meta.detailsAfterEachListPage) await fetchDetails(pageItems);
       url = result.nextPageUrl;
     }
     if (url) listCompleted = false; // maxPages / maxListRequests で打ち切った
     if (totalCount != null && totalCount !== found) countMismatch = true;
   }
 
-  let detailCount = 0;
-  let deferred = 0;
-  for (const item of seen.values()) {
-    if (knownListHashes.get(item.sourceListingId) === item.listHash) continue;
-    if (detailCount >= maxDetails) {
-      deferred++;
-      continue;
-    }
-    detailCount++;
-    counters.detail++;
-    // 取得を試みた時点で1件と数える（失敗しても相手側では表示・課金されている可能性がある）
-    try {
-      const html = adapter.fetchDetail
-        ? await adapter.fetchDetail(ctx, item)
-        : (await ctx.get(item.detailUrl)).body;
-      await onSnapshot?.("detail", item.detailUrl, html);
-      const raw = adapter.parseDetail(html, item.detailUrl);
-      listings.push(NormalizedListing.parse(adapter.normalize(raw)));
-    } catch (e) {
-      errors.push({ item, error: e instanceof Error ? e.message : String(e) });
-    }
-  }
+  if (!adapter.meta.detailsAfterEachListPage) await fetchDetails(seen.values());
 
   return {
     listings,
@@ -115,6 +128,7 @@ export async function crawlSource(
     seenIds: [...seen.keys()],
     listHashes: Object.fromEntries([...seen.values()].map((i) => [i.sourceListingId, i.listHash])),
     countMismatch,
+    partialList: adapter.meta.incrementalList ?? false,
     deferred,
     listRequests,
     detailRequests: detailCount,

@@ -13,6 +13,7 @@ import {
   type StationAccess,
   splitAddress,
   TARGET_AREAS,
+  type TransactionMode,
 } from "@devote/core";
 import * as cheerio from "cheerio";
 import type { Page, Response } from "playwright";
@@ -24,11 +25,9 @@ import {
 } from "../../adapter.js";
 
 /**
- * ITANDI BB（業者間サイト, https://itandibb.com/）アダプターのたたき台。
+ * ITANDI BB（業者間サイト, https://itandibb.com/）アダプター。
  *
- * ★ 未検証: ログイン後の画面・API レスポンスは一度も見ていない。公開ログイン画面の実物、
- *   公開ヘルプセンター（Zendesk）、公開 JS バンドル（assets.itandibb.com）から組み立てた。
- *   `// TODO(verify):` の箇所は `npx tsx packages/scraper/src/explore.ts itandi-bb` の結果で確定させる。
+ * 2026-10-14 にログイン後の実画面・API で確認済み（docs/member-sites.md §0）。
  *
  * 分かっていること（2026-10-13 時点）:
  * - itandibb.com は React の SPA。未ログインだと itandi-accounts.com/login（Rails, OAuth風）へリダイレクト
@@ -43,13 +42,13 @@ import {
  *   自動的・継続的な大量取得は ITANDISYSTEM 利用規約 第27条でお控えいただくよう求めている
  *   → 巡回は最小限の頻度・件数にとどめる。運用判断は docs/member-sites.md 参照
  */
-export const VERIFIED = false;
+export const VERIFIED = true;
 
 export const SOURCE_ID = "itandi-bb";
 export const BASE_URL = "https://itandibb.com";
 export const LOGIN_URL = `${BASE_URL}/`;
 export const API_BASE = "https://api.itandibb.com/api/internal";
-/** TODO(verify): 賃貸「部屋」リスト検索画面のパス（JS のルート定義では /rent_rooms/list） */
+/** 賃貸「部屋」リスト検索画面のパス */
 export const RENT_LIST_PATH = "/rent_rooms/list";
 export const BROWSER_UA =
   "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36";
@@ -95,9 +94,23 @@ async function waitSettled(page: Page) {
   await page.waitForLoadState("networkidle", { timeout: 20_000 }).catch(() => undefined);
 }
 
-const isSearchResponse = (r: Response) =>
+const isSearchRequest = (r: Response) =>
   r.request().method() === "POST" &&
   /\/api\/internal\/v4\/rent_room_buildings\/search(\?|$)/.test(r.url());
+
+/**
+ * 一覧の検索結果の応答か。条件を変えるたびに「該当件数」だけを取る同じ API の呼び出しが走り、
+ * その応答は buildings が空（2026-10-14 実測: { room_total_count, total_count, buildings: [] }）なので除く
+ */
+const isSearchResponse = async (r: Response) => {
+  if (!isSearchRequest(r)) return false;
+  try {
+    const j = (await r.json()) as { buildings?: unknown[]; total_count?: number };
+    return (j.buildings?.length ?? 0) > 0 || j.total_count === 0;
+  } catch {
+    return r.status() >= 400;
+  }
+};
 
 async function jsonOf(r: Response, what: string): Promise<string> {
   if (r.status() === 401 || r.status() === 403) {
@@ -140,7 +153,11 @@ export function parseSearchUrl(url: string): ItandiSearch {
 
 const searchKey = (s: ItandiSearch) => `${s.prefecture}|${s.city}|${s.town ?? ""}`;
 
-/** 実在の詳細画面 URL（JS のルート定義 `/rent_rooms/${id}`）。TODO(verify) */
+/** 詳細画面 URL（画面は GET /api/internal/v4/rent_rooms/{id} の JSON で描画される） */
+/** 1検索で送る一覧の最大ページ数（1ページ20棟）。運営が自動取得に注意喚起しているため控えめに */
+export const MAX_PAGES = 5;
+
+/** 詳細画面 URL（2026-10-14 確認。画面は GET /api/internal/v4/rent_rooms/{id} の JSON で描画） */
 export const detailUrlOf = (id: string) => `${BASE_URL}/rent_rooms/${id}`;
 
 // ---------------------------------------------------------------------------
@@ -152,7 +169,6 @@ async function runSearch(page: Page, s: ItandiSearch): Promise<string> {
   await waitSettled(page);
   await step("search-form");
   // 所在地: SearchAddressFormButton → 都道府県 → 市区町村 → 町名 のモーダル（JS から推測）
-  // TODO(verify): ボタン/モーダルの表記
   await page
     .getByRole("button", { name: /所在地/ })
     .first()
@@ -183,7 +199,7 @@ async function runSearch(page: Page, s: ItandiSearch): Promise<string> {
 }
 
 async function goToResultPage(page: Page, n: number): Promise<string> {
-  // TODO(verify): PaginationWithCounter のページボタン
+  // 一覧上部・下部のページ番号ボタン
   const [res] = await Promise.all([
     page.waitForResponse(isSearchResponse, { timeout: 60_000 }),
     page
@@ -237,7 +253,7 @@ export function parseListJson(body: string, url: string) {
   for (const b of buildings) {
     if (!isObj(b) || !Array.isArray(b.rooms)) continue;
     for (const r of b.rooms) {
-      // TODO(verify): 部屋の ID キー（JS では property_id を多用）
+      // 部屋の ID は property_id（詳細 /rent_rooms/{property_id}）
       const id = isObj(r) ? (str(r.property_id) ?? str(r.id)) : undefined;
       if (!id || !isObj(r)) continue;
       items.push({
@@ -259,11 +275,22 @@ export function parseListJson(body: string, url: string) {
       });
     }
   }
-  // TODO(verify): 1ページの件数（ヘルプ: 建物表示は1ページ20棟）と total_count の意味（棟数か部屋数か）
+  // 1ページ20棟。total_count は棟数、room_total_count は部屋数（2026-10-14 確認）
   const totalRooms = typeof json.room_total_count === "number" ? json.room_total_count : null;
   const totalBuildings = typeof json.total_count === "number" ? json.total_count : null;
   const perPage = 20;
-  const hasNext = totalBuildings != null && s.page * perPage < totalBuildings;
+  // 一覧の既定の並びは「募集条件の更新が新しい順」（2026-10-14 実測: 先頭が 6分前 → 1時間前 → … → 13時間前）。
+  //   港区は 1,103棟（56ページ）あるので全件は回らず、更新が1日以内の部屋があるページだけ・最大 MAX_PAGES まで送る
+  const fresh = buildings.some(
+    (b) =>
+      isObj(b) &&
+      Array.isArray(b.rooms) &&
+      b.rooms.some(
+        (r) => isObj(r) && /(秒|分|時間)前/.test(str(r.offer_conditions_update_elapsed) ?? ""),
+      ),
+  );
+  const hasNext =
+    fresh && s.page < MAX_PAGES && totalBuildings != null && s.page * perPage < totalBuildings;
   return {
     items,
     nextPageUrl: hasNext ? buildSearchUrl({ ...s, page: s.page + 1 }) : null,
@@ -293,9 +320,8 @@ export function flattenRoomJson(room: Json): Record<string, string> {
 }
 
 function imageUrlsOf(room: Json): string[] {
-  // 写真: all_images[] / image_url / madori_image_url（キーは JS から推測。TODO(verify)）
-  //   画像は CDN の署名付きURLか、cookie 必須のURLかが未確認。期限付きなら巡回時に
-  //   同じブラウザコンテキストで取得して Vercel Blob に再アップロードし、その URL を使う方針。
+  // 写真: all_images[] / image_url / madori_image_url。https://property-images.itandi.co.jp/public/... の
+  //   cookie なしで取れる公開 URL（2026-10-14 確認）
   // 図面（物件資料）PDF: 一覧・詳細の「物件資料」→「仲介帯で出力」で PDF が保存される
   //   （API: rent_residential_rooms/{id}/brokerage_company_obi_document）。PDF は imageUrls に入れず、
   //   必要時に保存して Blob 化する。写真購入（3,300円/物件の従量課金）は使わない。
@@ -310,6 +336,22 @@ function imageUrlsOf(room: Json): string[] {
   return [...new Set(urls)];
 }
 
+const TRANSACTION_MODES: [RegExp, TransactionMode][] = [
+  [/専属専任|専任/, "exclusive_agency"],
+  [/一般/, "general_agency"],
+  [/代理/, "agent"],
+  [/貸主/, "owner"],
+  [/媒介|仲介/, "brokerage"],
+];
+
+const STRUCTURES: [RegExp, string][] = [
+  [/鉄骨鉄筋|SRC/i, "SRC"],
+  [/鉄筋コンクリート|^RC/i, "RC"],
+  [/軽量鉄骨/, "LGS"],
+  [/鉄骨/, "S"],
+  [/木造/, "W"],
+];
+
 export default defineAdapter({
   meta: {
     id: SOURCE_ID,
@@ -319,8 +361,16 @@ export default defineAdapter({
     requiresLogin: true,
     // 運営が自動取得に注意喚起しているため、他より間隔を広く・頻度を低くする
     rateLimit: { minIntervalMs: 8000, maxConcurrency: 1 },
-    schedule: { listCron: "25 9,13,18 * * *", detailRevisitHours: 72 },
-    parserVersion: "0-unverified",
+    // 定期実行は30分ごとに全ソースを起動するので、間隔（4時間）と時間帯で1日3回程度に抑える
+    schedule: {
+      listCron: "25 9,13,18 * * *",
+      detailRevisitHours: 72,
+      minRunIntervalMinutes: 240,
+      activeHoursJst: [9, 21],
+    },
+    // 更新が新しい順に最大 MAX_PAGES ページしか見ないので、一覧に出ないことを掲載終了とみなさない
+    incrementalList: true,
+    parserVersion: "1",
   },
 
   queries(): SearchQuery[] {
@@ -412,7 +462,7 @@ export default defineAdapter({
 
   parseDetail(body, url) {
     const json = parseJson(body, "詳細");
-    // TODO(verify): レスポンスが部屋オブジェクトそのものか、{ room: {...} } のような包みか
+    // 詳細の応答は部屋オブジェクトそのもの（2026-10-14 確認）。念のため { room } の包みも受ける
     const room = isObj(json.room) ? json.room : json;
     const id = str(room.property_id) ?? str(room.id) ?? url.match(/rent_rooms\/(\d+)/)?.[1];
     if (!id) throw new Error(`itandi-bb: 物件IDが取れない: ${url}`);
@@ -426,7 +476,7 @@ export default defineAdapter({
 
   normalize(raw): NormalizedListingInput {
     const f = raw.fields;
-    // TODO(verify): キー名はすべて公開 JS バンドルからの推測
+    // キー名は 2026-10-14 の実物の詳細 JSON で確認
     const price = f.rent_yen ? Number(f.rent_yen) : parseYen(f.rent_text);
     if (price == null || !Number.isFinite(price) || price <= 0) {
       throw new Error(`itandi-bb: 賃料が解釈できない: ${f.rent_yen ?? f.rent_text}`);
@@ -435,7 +485,7 @@ export default defineAdapter({
       n != null && n !== "" && Number.isFinite(Number(n)) ? Number(n) : parseYen(text);
     const kanri = yen(f.kanrihi_yen, f.kanrihi_text);
     const kyoeki = yen(f.kyoekihi_yen, f.kyoekihi_text);
-    const addressRaw = f.address_text ?? f["building.address_text"] ?? "";
+    const addressRaw = f["address.text"] ?? f.address_text ?? "";
     const stations = (f.nearby_train_station_texts ?? "")
       .split("\n")
       .map((l) => parseStationAccess(l))
@@ -443,7 +493,9 @@ export default defineAdapter({
     const { floor, totalFloors } = parseFloor(
       [f.floor_text, f.story_text].filter(Boolean).join("/") || undefined,
     );
-    const direction = f.main_lighting_direction_type_text ?? f.main_lighting_direction_text ?? null;
+    // main_lighting_direction_type は "東向き" の表記
+    const direction = f.main_lighting_direction_type?.replace(/向き$/, "").trim() || null;
+    // 広告転載: advertisement_reprint_available_type（一覧）/ advertisable_type（詳細, 例 "unspecified"=未設定）
     const ad = f.advertisement_reprint_available_type ?? f.advertisable_type;
     return {
       source: SOURCE_ID,
@@ -464,24 +516,32 @@ export default defineAdapter({
       builtYearMonth: parseBuiltYearMonth(f.construction_date_text ?? f.building_age_text),
       floor,
       totalFloors,
-      // TODO(verify): structure_type は enum 値（"rc" 等）の可能性。表記に寄せて対応表を作る
-      structure: f.structure_type_text ?? f.structure_type ?? null,
+      // structure_type は "鉄筋コンクリート" 等の表記
+      structure: STRUCTURES.find(([re]) => re.test(f.structure_type ?? ""))?.[1] ?? null,
       direction,
       features: [
         ...extractFeatures(
-          [f.all_options, f.custom_options, f.other_costs, f.memo_for_broker]
+          [f.all_options, f.custom_options, f.other_costs, f.remarks, f.memo_for_broker]
             .filter(Boolean)
             .join("\n"),
         ),
         ...directionFeatures(direction),
       ],
-      // ITANDI BB は管理会社（元付）が直接掲載するサイト
-      transactionMode: "unknown",
-      // TODO(verify): advertisement_reprint_available_type の値（"available"/"unavailable" 等）
-      adAllowed: ad ? (/un|not|不可/i.test(ad) ? false : /avail|可/i.test(ad) ? true : null) : null,
+      // deal_type は 貸主 / 代理 / 媒介（専任・一般）の表記。ITANDI BB は管理会社（元付）が直接掲載する
+      transactionMode:
+        TRANSACTION_MODES.find(([re]) => re.test(f.deal_type ?? ""))?.[1] ?? "unknown",
+      adAllowed:
+        !ad || /unspecified/.test(ad)
+          ? null
+          : /^un|not|不可/i.test(ad)
+            ? false
+            : /avail|可/i.test(ad)
+              ? true
+              : null,
       agencyName: f.management_company_name ?? f["management_company.name"] ?? null,
       imageUrls: raw.imageUrls,
-      sourceUpdatedAt: null, // TODO(verify): 募集条件更新日のキー
+      // 詳細 JSON に更新日時のキーはない（一覧の offer_conditions_update_elapsed は「6分前」等の相対表記）
+      sourceUpdatedAt: null,
       propertyType: "mansion",
       extra: Object.fromEntries(
         Object.entries(f).filter(([k]) =>

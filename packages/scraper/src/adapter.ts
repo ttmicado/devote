@@ -36,6 +36,16 @@ export interface SourceMeta {
    * 上限は月末まで日割りで配分し、月の前半に使い切らないようにする。
    */
   monthlyQuota?: { list?: number; detail?: number };
+  /**
+   * 一覧が差分（登録・変更日で絞った検索）で、全件ではない。
+   * true なら一覧に出なかった掲載を掲載終了とみなさない（レインズ）
+   */
+  incrementalList?: boolean;
+  /**
+   * 詳細は「いま表示中の一覧ページ」からしか開けない（レインズ）。
+   * true なら一覧の1ページごとに、そのページの詳細を続けて取得してから次のページへ進む
+   */
+  detailsAfterEachListPage?: boolean;
   /** パーサ改修ごとに上げる。raw_snapshots.parser_version と比較して再パースする */
   parserVersion: string;
 }

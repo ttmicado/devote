@@ -41,6 +41,8 @@ jobs:
       REINS_MONTHLY_SEARCH_LIMIT: ${{ vars.REINS_MONTHLY_SEARCH_LIMIT }}
       REINS_MONTHLY_DETAIL_LIMIT: ${{ vars.REINS_MONTHLY_DETAIL_LIMIT }}
       ENABLE_UNVERIFIED_SOURCES: ${{ vars.ENABLE_UNVERIFIED_SOURCES }}
+      # 会員サイト（レインズ・ATBB・ITANDI BB）を巡回するときだけ 1（docs/member-sites.md）
+      ENABLE_MEMBER_SOURCES: ${{ vars.ENABLE_MEMBER_SOURCES }}
       # 会員サイトを国内のセルフホストランナーで回す場合は、こちらでは公開サイトだけに絞る
       DEVOTE_SOURCES: ${{ inputs.sources || vars.DEVOTE_SOURCES }}
       DEVOTE_MAX_DETAILS_PER_SOURCE: ${{ inputs.max_details || '300' }}
