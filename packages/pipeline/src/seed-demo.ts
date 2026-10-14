@@ -131,6 +131,7 @@ console.log(
     deferred: 0,
     listRequests: 0,
     detailRequests: 0,
+    warnings: [],
   }),
 );
 process.exit(0);

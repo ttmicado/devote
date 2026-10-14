@@ -1,5 +1,9 @@
 import { NormalizedListing } from "@devote/core";
 import type { FetchContext, ListItem, SiteAdapter } from "./adapter.js";
+import { describeBody, detectBlockPage } from "./block.js";
+
+/** 詳細でブロック・チャレンジページがこの回数続いたら、その回の詳細取得を打ち切る */
+const MAX_CONSECUTIVE_DETAIL_BLOCKS = 3;
 
 export interface CrawlResult {
   listings: NormalizedListing[];
@@ -19,6 +23,11 @@ export interface CrawlResult {
   /** 実際に行った一覧ページ・詳細ページの取得回数（従量課金サイトの利用量の記録用） */
   listRequests: number;
   detailRequests: number;
+  /**
+   * 黙って0件にしないための警告（一覧0件のクエリ、ブロック・チャレンジページ、HTTPエラー等）。
+   * crawl_runs.warnings とバッチのログに出す
+   */
+  warnings: string[];
 }
 
 export interface CrawlOptions {
@@ -61,30 +70,58 @@ export async function crawlSource(
   let listCompleted = true;
   let listRequests = 0;
   let countMismatch = false;
+  const warnings: string[] = [];
+  const emptyQueries: string[] = [];
 
   if (adapter.login) await adapter.login(ctx);
 
   let detailCount = 0;
   let deferred = 0;
+  let consecutiveBlocks = 0;
+  let abortedReason: string | null = null;
   const fetchDetails = async (items: Iterable<ListItem>) => {
     for (const item of items) {
       if (knownListHashes.get(item.sourceListingId) === item.listHash) continue;
-      if (detailCount >= maxDetails) {
+      if (detailCount >= maxDetails || abortedReason) {
         deferred++;
         continue;
       }
       detailCount++;
       counters.detail++;
       // 取得を試みた時点で1件と数える（失敗しても相手側では表示・課金されている可能性がある）
+      let html: string | null = null;
       try {
-        const html = adapter.fetchDetail
-          ? await adapter.fetchDetail(ctx, item)
-          : (await ctx.get(item.detailUrl)).body;
+        if (adapter.fetchDetail) {
+          html = await adapter.fetchDetail(ctx, item);
+        } else {
+          const res = await ctx.get(item.detailUrl);
+          html = res.body;
+          const blocked = detectBlockPage(html, res.status);
+          if (blocked)
+            throw new Error(`ブロック・チャレンジの可能性（${blocked}）: ${describeBody(html)}`);
+          if (res.status >= 400) throw new Error(`HTTP ${res.status}: ${item.detailUrl}`);
+        }
         await onSnapshot?.("detail", item.detailUrl, html);
         const raw = adapter.parseDetail(html, item.detailUrl);
         listings.push(NormalizedListing.parse(adapter.normalize(raw)));
+        consecutiveBlocks = 0;
       } catch (e) {
-        errors.push({ item, error: e instanceof Error ? e.message : String(e) });
+        let message = e instanceof Error ? e.message : String(e);
+        // fetchDetail を持つアダプターは HTTP エラーを例外にする（"HTTP 403: <url>"）
+        const bodyBlock = html != null ? detectBlockPage(html) : null;
+        if (bodyBlock && !message.includes("ブロック・チャレンジ")) {
+          message = `ブロック・チャレンジの可能性（${bodyBlock}）: ${message}`;
+        }
+        if (
+          message.includes("ブロック・チャレンジ") ||
+          /\bHTTP (?:401|403|429|503)\b/.test(message)
+        ) {
+          consecutiveBlocks++;
+          if (consecutiveBlocks >= MAX_CONSECUTIVE_DETAIL_BLOCKS) abortedReason = message;
+        } else {
+          consecutiveBlocks = 0;
+        }
+        errors.push({ item, error: message });
       }
     }
   };
@@ -97,29 +134,54 @@ export async function crawlSource(
       if (listRequests >= maxListRequests) break;
       listRequests++;
       counters.list++;
-      const html = adapter.fetchList
-        ? await adapter.fetchList(ctx, url)
-        : (await ctx.get(url)).body;
+      let html: string;
+      let status: number | undefined;
+      if (adapter.fetchList) {
+        html = await adapter.fetchList(ctx, url);
+      } else {
+        const res = await ctx.get(url);
+        html = res.body;
+        status = res.status;
+      }
       await onSnapshot?.("list", url, html);
       if (adapter.isLoggedOut?.(html, url)) throw new Error(`${adapter.meta.id}: セッション切れ`);
+      // ブロック・チャレンジページや HTTP エラーをパースすると「0件」になり、掲載終了の誤判定につながる。
+      // このクエリの巡回を打ち切り、一覧は不完全として扱う
+      const blocked = detectBlockPage(html, status);
+      if (blocked || (status != null && status >= 400)) {
+        warnings.push(
+          `一覧がブロック・チャレンジ・エラーの可能性（${blocked ?? `HTTP ${status}`}）: ${url} ${describeBody(html)}`,
+        );
+        listCompleted = false;
+        url = null;
+        break;
+      }
       const result = adapter.parseList(html, url);
       totalCount ??= result.totalCount;
       found += result.items.length;
-      const pageItems: ListItem[] = [];
-      for (const item of result.items) {
-        if (seen.has(item.sourceListingId)) continue;
-        seen.set(item.sourceListingId, item);
-        pageItems.push(item);
-      }
+      const pageItems = result.items.filter((i) => !seen.has(i.sourceListingId));
+      for (const item of pageItems) seen.set(item.sourceListingId, item);
       // 詳細を「いま表示中の一覧ページ」からしか開けないサイト（レインズ）は、ページごとに詳細を取る
       if (adapter.meta.detailsAfterEachListPage) await fetchDetails(pageItems);
       url = result.nextPageUrl;
     }
     if (url) listCompleted = false; // maxPages / maxListRequests で打ち切った
     if (totalCount != null && totalCount !== found) countMismatch = true;
+    if (found === 0) emptyQueries.push(query.key);
+  }
+  if (emptyQueries.length > 0) {
+    warnings.push(`一覧が0件のクエリ: ${emptyQueries.join(", ")}`);
+  }
+  if (seen.size === 0) {
+    warnings.push("一覧が全体で0件（ブロック・構造変化・検索条件の誤りの可能性）");
   }
 
   if (!adapter.meta.detailsAfterEachListPage) await fetchDetails(seen.values());
+  if (abortedReason) {
+    warnings.push(
+      `詳細でブロック・チャレンジが${MAX_CONSECUTIVE_DETAIL_BLOCKS}回続いたため打ち切り: ${abortedReason}`,
+    );
+  }
 
   return {
     listings,
@@ -128,9 +190,10 @@ export async function crawlSource(
     seenIds: [...seen.keys()],
     listHashes: Object.fromEntries([...seen.values()].map((i) => [i.sourceListingId, i.listHash])),
     countMismatch,
-    partialList: adapter.meta.incrementalList ?? false,
     deferred,
     listRequests,
     detailRequests: detailCount,
+    partialList: adapter.meta.incrementalList ?? false,
+    warnings,
   };
 }

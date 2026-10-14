@@ -11,7 +11,7 @@ import {
   splitFeeLine,
 } from "./helpers.js";
 import adapter from "./index.js";
-import { extractBuildingUrls } from "./sumitomo.js";
+import { countBuildingLinks, extractBuildingUrls } from "./sumitomo.js";
 
 const dir = join(import.meta.dirname, "__fixtures__");
 const fixture = (name: string) => readFileSync(join(dir, name), "utf8");
@@ -85,6 +85,45 @@ describe("sumitomo-residence normalize", () => {
     expect(() =>
       adapter.normalize({ ...raw, fields: { ...raw.fields, 賃料: "お問い合わせ" } }),
     ).toThrow(/賃料/);
+  });
+});
+
+describe("sumitomo-residence fetchList（黙って0件にしない）", () => {
+  const ctxOf = (body: string, status = 200): FetchContext => ({
+    async get(url) {
+      return { status, body, url };
+    },
+  });
+
+  it("空室0の建物しかないエリアは、建物リンクがあるので0件の一覧として通す", async () => {
+    const html = `<main><a href="/buildlist/minato/foo/">Foo 公開空室0室</a></main>`;
+    expect(countBuildingLinks(html, `${BASE}/buildlist/minato/`, [])).toBe(1);
+    const bundle = await adapter.fetchList?.(ctxOf(html), `${BASE}/buildlist/minato/`);
+    expect(adapter.parseList(bundle ?? "", `${BASE}/buildlist/minato/`).items).toEqual([]);
+  });
+
+  it("建物リンクが1件も無いインデックス（別ページ・構造変化）はエラーにする", async () => {
+    const html =
+      "<html><head><title>メンテナンス中</title></head><body><main>ただいまメンテナンス中です</main></body></html>";
+    await expect(adapter.fetchList?.(ctxOf(html), `${BASE}/buildlist/minato/`)).rejects.toThrow(
+      /建物リンクが無い.*メンテナンス中/,
+    );
+  });
+
+  it("チャレンジページ・403 はエラーにする", async () => {
+    const challenge = "<html><head><title>Just a moment...</title></head><body></body></html>";
+    await expect(
+      adapter.fetchList?.(ctxOf(challenge), `${BASE}/buildlist/minato/`),
+    ).rejects.toThrow(/ブロック・チャレンジの可能性（Cloudflare のチャレンジ）/);
+    await expect(
+      adapter.fetchList?.(ctxOf("Forbidden", 403), `${BASE}/buildlist/minato/`),
+    ).rejects.toThrow(/HTTP 403/);
+  });
+
+  it("保存済みのインデックスでは建物リンクを数えられる", () => {
+    expect(
+      countBuildingLinks(fixture("index-minato.html"), `${BASE}/buildlist/minato/`, []),
+    ).toBeGreaterThan(9);
   });
 });
 

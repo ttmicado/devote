@@ -137,6 +137,17 @@ describe("axel-home 事業用（事務所・店舗）", () => {
     expect(r.totalCount).toBeNull();
   });
 
+  it("賃料が非公開の部屋（＊未公開情報あり・※未公開情報有・-）は一覧で除外する", () => {
+    const url = `${BASE}/areas/shibuya?usage=business&page=9`;
+    const r = adapter.parseList(fixture("list-shibuya-business-9.html"), url);
+    // 2026-10 の本番巡回で毎回 errors に出ていた部屋（詳細の賃料欄も非公開）
+    for (const id of ["r106302", "r48696", "r48699", "r60119", "r213816", "r180172", "r111990"]) {
+      expect(r.items.some((i) => i.sourceListingId === id)).toBe(false);
+    }
+    expect(r.items.length).toBeGreaterThan(0);
+    expect(r.items.every((i) => typeof i.price === "number" && i.price > 0)).toBe(true);
+  });
+
   it("事務所を usage=business・間取りなしで正規化する", () => {
     const n = detail("15038", "r180329", "business");
     expect(n).toMatchSnapshot();

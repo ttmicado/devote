@@ -12,6 +12,7 @@ import {
 } from "@devote/core";
 import * as cheerio from "cheerio";
 import { defineAdapter, type FetchContext, type ListItem } from "../../adapter.js";
+import { describeBody, detectBlockPage } from "../../block.js";
 import {
   findDirection,
   parseFeeLoose,
@@ -66,6 +67,9 @@ export function listingIdFromUrl(url: string): string {
 
 async function getOk(ctx: FetchContext, url: string) {
   const res = await ctx.get(url);
+  const blocked = detectBlockPage(res.body, res.status);
+  if (blocked)
+    throw new Error(`ブロック・チャレンジの可能性（${blocked}）: ${url} ${describeBody(res.body)}`);
   if (res.status !== 200) throw new Error(`HTTP ${res.status}: ${url}`);
   return res;
 }
