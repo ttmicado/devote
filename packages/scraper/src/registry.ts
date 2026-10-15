@@ -55,6 +55,14 @@ export const retiredSourceIds: readonly string[] = [
   "rf12", // REIT FIND（2026-10-15）
 ];
 
+/**
+ * 写真を取り込まないソース。他社の社名・ロゴ（透かし含む）が入った写真は使わない方針（2026-10-15）。
+ * 取り込み時に imageUrls を空にし、取り込み済みの写真も巡回のたびに消す（packages/pipeline の stripSourceImages）
+ */
+export const noImageSourceIds: readonly string[] = [
+  "kencorp", // ケン・コーポレーション: ほぼ全ての写真の中央に「Ken Corporation Ltd.」の透かし
+];
+
 export const adapters: Record<string, SiteAdapter> = Object.fromEntries(
   registrations.map((r) => [r.adapter.meta.id, r.adapter]),
 );
