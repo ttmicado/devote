@@ -7,7 +7,7 @@ import {
   sameUnitLikelihood,
 } from "@devote/core";
 import { changeEvents, type Db, listings, properties } from "@devote/db";
-import type { CrawlResult } from "@devote/scraper";
+import { type CrawlResult, noImageSourceIds } from "@devote/scraper";
 import { and, eq, inArray, notInArray, sql } from "drizzle-orm";
 
 /** 同一物件とみなす名寄せスコアの閾値 */
@@ -124,7 +124,9 @@ export async function ingestCrawl(
 
   for (const raw of result.listings) {
     // extra の表記から入居時期・契約形態・駐車場などを埋める（アダプター共通の後処理）
-    const l = deriveContractFacts(raw, now);
+    const derived = deriveContractFacts(raw, now);
+    // 他社の社名・ロゴ入りの写真を使わないソースは写真を外す
+    const l = noImageSourceIds.includes(source) ? { ...derived, imageUrls: [] } : derived;
     if (!isInTargetArea(l.address.raw || `${l.address.city ?? ""}${l.address.town ?? ""}`))
       continue;
     stats.inArea++;
