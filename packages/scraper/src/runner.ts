@@ -76,136 +76,146 @@ export async function crawlSource(
   const emptyQueries: string[] = [];
 
   if (adapter.login) await adapter.login(ctx);
-
-  let detailCount = 0;
-  let deferred = 0;
-  let consecutiveBlocks = 0;
-  let abortedReason: string | null = null;
-  const fetchDetails = async (items: Iterable<ListItem>) => {
-    for (const item of items) {
-      if (knownListHashes.get(item.sourceListingId) === item.listHash) continue;
-      if (detailCount >= maxDetails || abortedReason) {
-        deferred++;
-        continue;
-      }
-      detailCount++;
-      counters.detail++;
-      // 取得を試みた時点で1件と数える（失敗しても相手側では表示・課金されている可能性がある）
-      let html: string | null = null;
-      try {
-        if (adapter.fetchDetail) {
-          html = await adapter.fetchDetail(ctx, item);
-        } else {
-          const res = await ctx.get(item.detailUrl);
-          html = res.body;
-          const blocked = detectBlockPage(html, res.status);
-          if (blocked)
-            throw new Error(`ブロック・チャレンジの可能性（${blocked}）: ${describeBody(html)}`);
-          if (res.status >= 400) throw new Error(`HTTP ${res.status}: ${item.detailUrl}`);
+  try {
+    let detailCount = 0;
+    let deferred = 0;
+    let consecutiveBlocks = 0;
+    let abortedReason: string | null = null;
+    const fetchDetails = async (items: Iterable<ListItem>) => {
+      for (const item of items) {
+        if (knownListHashes.get(item.sourceListingId) === item.listHash) continue;
+        if (detailCount >= maxDetails || abortedReason) {
+          deferred++;
+          continue;
         }
-        await onSnapshot?.("detail", item.detailUrl, html);
-        const raw = adapter.parseDetail(html, item.detailUrl);
-        listings.push(NormalizedListing.parse(adapter.normalize(raw)));
-        consecutiveBlocks = 0;
-      } catch (e) {
-        let message = e instanceof Error ? e.message : String(e);
-        // fetchDetail を持つアダプターは HTTP エラーを例外にする（"HTTP 403: <url>"）
-        const bodyBlock = html != null ? detectBlockPage(html) : null;
-        if (bodyBlock && !message.includes("ブロック・チャレンジ")) {
-          message = `ブロック・チャレンジの可能性（${bodyBlock}）: ${message}`;
-        }
-        if (
-          message.includes("ブロック・チャレンジ") ||
-          /\bHTTP (?:401|403|429|503)\b/.test(message)
-        ) {
-          consecutiveBlocks++;
-          if (consecutiveBlocks >= MAX_CONSECUTIVE_DETAIL_BLOCKS) abortedReason = message;
-        } else {
+        detailCount++;
+        counters.detail++;
+        // 取得を試みた時点で1件と数える（失敗しても相手側では表示・課金されている可能性がある）
+        let html: string | null = null;
+        try {
+          if (adapter.fetchDetail) {
+            html = await adapter.fetchDetail(ctx, item);
+          } else {
+            const res = await ctx.get(item.detailUrl);
+            html = res.body;
+            const blocked = detectBlockPage(html, res.status);
+            if (blocked)
+              throw new Error(`ブロック・チャレンジの可能性（${blocked}）: ${describeBody(html)}`);
+            if (res.status >= 400) throw new Error(`HTTP ${res.status}: ${item.detailUrl}`);
+          }
+          await onSnapshot?.("detail", item.detailUrl, html);
+          const raw = adapter.parseDetail(html, item.detailUrl);
+          listings.push(NormalizedListing.parse(adapter.normalize(raw)));
           consecutiveBlocks = 0;
+        } catch (e) {
+          let message = e instanceof Error ? e.message : String(e);
+          // fetchDetail を持つアダプターは HTTP エラーを例外にする（"HTTP 403: <url>"）
+          const bodyBlock = html != null ? detectBlockPage(html) : null;
+          if (bodyBlock && !message.includes("ブロック・チャレンジ")) {
+            message = `ブロック・チャレンジの可能性（${bodyBlock}）: ${message}`;
+          }
+          if (
+            message.includes("ブロック・チャレンジ") ||
+            /\bHTTP (?:401|403|429|503)\b/.test(message)
+          ) {
+            consecutiveBlocks++;
+            if (consecutiveBlocks >= MAX_CONSECUTIVE_DETAIL_BLOCKS) abortedReason = message;
+          } else {
+            consecutiveBlocks = 0;
+          }
+          errors.push({ item, error: message });
         }
-        errors.push({ item, error: message });
       }
+    };
+
+    // 一覧が差分か全件か。ページが申告しなければ meta.incrementalList に従う
+    let anyPartial = false;
+    let anyReported = false;
+    for (const query of adapter.queries(opts.queryContext)) {
+      let url: string | null = adapter.buildListUrl(query);
+      let totalCount: number | null = null;
+      let found = 0;
+      for (let page = 0; url && page < maxPages; page++) {
+        if (listRequests >= maxListRequests) break;
+        // ページ送りが課金・利用量に数えられないサイト（レインズ）は、検索1回（1ページ目）だけ数える
+        if (page === 0 || !adapter.meta.pageTurnsAreFree) {
+          listRequests++;
+          counters.list++;
+        }
+        let html: string;
+        let status: number | undefined;
+        if (adapter.fetchList) {
+          html = await adapter.fetchList(ctx, url);
+        } else {
+          const res = await ctx.get(url);
+          html = res.body;
+          status = res.status;
+        }
+        await onSnapshot?.("list", url, html);
+        if (adapter.isLoggedOut?.(html, url)) throw new Error(`${adapter.meta.id}: セッション切れ`);
+        // ブロック・チャレンジページや HTTP エラーをパースすると「0件」になり、掲載終了の誤判定につながる。
+        // このクエリの巡回を打ち切り、一覧は不完全として扱う
+        const blocked = detectBlockPage(html, status);
+        if (blocked || (status != null && status >= 400)) {
+          warnings.push(
+            `一覧がブロック・チャレンジ・エラーの可能性（${blocked ?? `HTTP ${status}`}）: ${url} ${describeBody(html)}`,
+          );
+          listCompleted = false;
+          url = null;
+          break;
+        }
+        const result = adapter.parseList(html, url);
+        if (result.partial !== undefined) {
+          anyReported = true;
+          if (result.partial) anyPartial = true;
+        }
+        totalCount ??= result.totalCount;
+        found += result.items.length;
+        const pageItems = result.items.filter((i) => !seen.has(i.sourceListingId));
+        for (const item of pageItems) seen.set(item.sourceListingId, item);
+        // 詳細を「いま表示中の一覧ページ」からしか開けないサイト（レインズ）は、ページごとに詳細を取る
+        if (adapter.meta.detailsAfterEachListPage) await fetchDetails(pageItems);
+        url = result.nextPageUrl;
+      }
+      if (url) listCompleted = false; // maxPages / maxListRequests で打ち切った
+      if (totalCount != null && totalCount !== found) countMismatch = true;
+      if (found === 0) emptyQueries.push(query.key);
     }
-  };
-
-  // 一覧が差分か全件か。ページが申告しなければ meta.incrementalList に従う
-  let anyPartial = false;
-  let anyReported = false;
-  for (const query of adapter.queries(opts.queryContext)) {
-    let url: string | null = adapter.buildListUrl(query);
-    let totalCount: number | null = null;
-    let found = 0;
-    for (let page = 0; url && page < maxPages; page++) {
-      if (listRequests >= maxListRequests) break;
-      // ページ送りが課金・利用量に数えられないサイト（レインズ）は、検索1回（1ページ目）だけ数える
-      if (page === 0 || !adapter.meta.pageTurnsAreFree) {
-        listRequests++;
-        counters.list++;
-      }
-      let html: string;
-      let status: number | undefined;
-      if (adapter.fetchList) {
-        html = await adapter.fetchList(ctx, url);
-      } else {
-        const res = await ctx.get(url);
-        html = res.body;
-        status = res.status;
-      }
-      await onSnapshot?.("list", url, html);
-      if (adapter.isLoggedOut?.(html, url)) throw new Error(`${adapter.meta.id}: セッション切れ`);
-      // ブロック・チャレンジページや HTTP エラーをパースすると「0件」になり、掲載終了の誤判定につながる。
-      // このクエリの巡回を打ち切り、一覧は不完全として扱う
-      const blocked = detectBlockPage(html, status);
-      if (blocked || (status != null && status >= 400)) {
-        warnings.push(
-          `一覧がブロック・チャレンジ・エラーの可能性（${blocked ?? `HTTP ${status}`}）: ${url} ${describeBody(html)}`,
-        );
-        listCompleted = false;
-        url = null;
-        break;
-      }
-      const result = adapter.parseList(html, url);
-      if (result.partial !== undefined) {
-        anyReported = true;
-        if (result.partial) anyPartial = true;
-      }
-      totalCount ??= result.totalCount;
-      found += result.items.length;
-      const pageItems = result.items.filter((i) => !seen.has(i.sourceListingId));
-      for (const item of pageItems) seen.set(item.sourceListingId, item);
-      // 詳細を「いま表示中の一覧ページ」からしか開けないサイト（レインズ）は、ページごとに詳細を取る
-      if (adapter.meta.detailsAfterEachListPage) await fetchDetails(pageItems);
-      url = result.nextPageUrl;
+    if (emptyQueries.length > 0) {
+      warnings.push(`一覧が0件のクエリ: ${emptyQueries.join(", ")}`);
     }
-    if (url) listCompleted = false; // maxPages / maxListRequests で打ち切った
-    if (totalCount != null && totalCount !== found) countMismatch = true;
-    if (found === 0) emptyQueries.push(query.key);
-  }
-  if (emptyQueries.length > 0) {
-    warnings.push(`一覧が0件のクエリ: ${emptyQueries.join(", ")}`);
-  }
-  if (seen.size === 0) {
-    warnings.push("一覧が全体で0件（ブロック・構造変化・検索条件の誤りの可能性）");
-  }
+    if (seen.size === 0) {
+      warnings.push("一覧が全体で0件（ブロック・構造変化・検索条件の誤りの可能性）");
+    }
 
-  if (!adapter.meta.detailsAfterEachListPage) await fetchDetails(seen.values());
-  if (abortedReason) {
-    warnings.push(
-      `詳細でブロック・チャレンジが${MAX_CONSECUTIVE_DETAIL_BLOCKS}回続いたため打ち切り: ${abortedReason}`,
-    );
-  }
+    if (!adapter.meta.detailsAfterEachListPage) await fetchDetails(seen.values());
+    if (abortedReason) {
+      warnings.push(
+        `詳細でブロック・チャレンジが${MAX_CONSECUTIVE_DETAIL_BLOCKS}回続いたため打ち切り: ${abortedReason}`,
+      );
+    }
 
-  return {
-    listings,
-    errors,
-    listCompleted,
-    seenIds: [...seen.keys()],
-    listHashes: Object.fromEntries([...seen.values()].map((i) => [i.sourceListingId, i.listHash])),
-    countMismatch,
-    deferred,
-    listRequests,
-    detailRequests: detailCount,
-    partialList: anyReported ? anyPartial : (adapter.meta.incrementalList ?? false),
-    warnings,
-  };
+    return {
+      listings,
+      errors,
+      listCompleted,
+      seenIds: [...seen.keys()],
+      listHashes: Object.fromEntries(
+        [...seen.values()].map((i) => [i.sourceListingId, i.listHash]),
+      ),
+      countMismatch,
+      deferred,
+      listRequests,
+      detailRequests: detailCount,
+      partialList: anyReported ? anyPartial : (adapter.meta.incrementalList ?? false),
+      warnings,
+    };
+  } finally {
+    // 人と同じIDの会員サイトは、ログインしたままだと人がログインできなくなる（同時ログイン不可）。巡回の後は必ずログアウトする
+    await adapter.logout?.(ctx).catch((e) => {
+      console.warn(
+        `${adapter.meta.id}: ログアウトに失敗: ${e instanceof Error ? e.message : String(e)}`,
+      );
+    });
+  }
 }

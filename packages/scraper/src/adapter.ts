@@ -117,6 +117,8 @@ export interface SiteAdapter {
   /** ログインが必要なサイトのみ */
   login?(ctx: FetchContext): Promise<void>;
   isLoggedOut?(html: string, url: string): boolean;
+  /** 巡回の最後に呼ぶ（失敗しても巡回の結果は捨てない）。同時ログインできないサイトで人の利用を妨げないため */
+  logout?(ctx: FetchContext): Promise<void>;
   /** デフォルトの取得方法を上書きしたい場合のみ（SPA の内部APIなど） */
   fetchList?(ctx: FetchContext, url: string): Promise<string>;
   fetchDetail?(ctx: FetchContext, item: ListItem): Promise<string>;

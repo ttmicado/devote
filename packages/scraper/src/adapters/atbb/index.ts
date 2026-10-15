@@ -438,6 +438,35 @@ export default defineAdapter({
   isLoggedOut: (html, url) =>
     url.startsWith("atbb:") ? isLoginPage(html, BASE_URL) : isLoginPage(html, url),
 
+  // ポータルからログアウトしても ATBB（atbb.athome.co.jp）側のセッションは残り、次のログインで
+  //   「他のユーザーがATBBを利用中です」（ConcurrentLoginException）になる（2026-10-16 実測。人も入れなくなる）。
+  //   先に ATBB のヘッダーの「ログアウト」（submitAction(…, '../j_acegi_logout')）で ATBB を抜け、次にポータルを抜ける
+  async logout(ctx) {
+    const pages = ctx.page ? ctx.page.context().pages() : [];
+    for (const p of pages) {
+      if (p.isClosed() || !/atbb\.athome\.co\.jp/.test(p.url())) continue;
+      const link = p.locator("a[onclick*='j_acegi_logout']").first();
+      if ((await link.count()) === 0) continue;
+      await Promise.all([
+        p.waitForNavigation({ timeout: 30_000 }).catch(() => undefined),
+        link.click({ timeout: 10_000 }),
+      ]);
+      await waitSettled(p);
+    }
+    const page = requirePage(ctx);
+    if (!page.url().startsWith(PORTAL_URL)) {
+      await page.goto(PORTAL_URL, { waitUntil: "domcontentloaded", timeout: 60_000 });
+      await waitSettled(page);
+    }
+    if (isLoginPage(await page.content(), page.url())) return;
+    await Promise.all([
+      page.waitForNavigation({ timeout: 30_000 }).catch(() => undefined),
+      page.locator(".c-util__menu__logout button").first().click({ timeout: 10_000 }),
+    ]);
+    activePage = null;
+    currentSearchKey = null;
+  },
+
   async fetchList(ctx, url) {
     let page = requirePage(ctx);
     const s = parseSearchUrl(url);

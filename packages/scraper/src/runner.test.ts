@@ -282,6 +282,20 @@ describe("crawlSource の詳細の取得順・差分一覧", () => {
     expect(paid.list).toBe(2);
   });
 
+  it("巡回の最後にログアウトする（同時ログインできないサイトで人の利用を妨げない）。失敗しても結果は返す", async () => {
+    const { adapter, calls } = fakeAdapter({});
+    const withLogout = {
+      ...adapter,
+      logout: async () => {
+        calls.push("logout");
+        throw new Error("logout 失敗");
+      },
+    };
+    const r = await crawlSource(withLogout, fakeCtx);
+    expect(calls.at(-1)).toBe("logout");
+    expect(r.detailRequests).toBe(2);
+  });
+
   it("queryContext を queries() に渡す", async () => {
     const { adapter } = fakeAdapter({});
     let received: unknown;
