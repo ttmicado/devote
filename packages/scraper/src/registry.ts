@@ -46,6 +46,15 @@ const registrations: Registration[] = [
   { adapter: itandiBb, production: true, verified: ITANDI_VERIFIED, memberOnly: true },
 ];
 
+/**
+ * 巡回をやめたソース。取り込み済みの掲載は巡回のたびに閉じる（packages/pipeline の closeRetiredSources）。
+ * 巡回しないと掲載終了を判定できず、物件が掲載中のまま残り続けるため
+ */
+export const retiredSourceIds: readonly string[] = [
+  "axel-home", // アクセルホーム（2026-10-15）
+  "rf12", // REIT FIND（2026-10-15）
+];
+
 export const adapters: Record<string, SiteAdapter> = Object.fromEntries(
   registrations.map((r) => [r.adapter.meta.id, r.adapter]),
 );

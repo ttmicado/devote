@@ -8,9 +8,10 @@
  *   pnpm worker sources               有効なソース一覧
  */
 import { createDb } from "@devote/db";
-import { enabledAdapters } from "@devote/scraper";
+import { enabledAdapters, retiredSourceIds } from "@devote/scraper";
 import { runMatching, runNotifications } from "@devote/services";
 import { loadCrawlScopes, runSource } from "./crawl.js";
+import { closeRetiredSources } from "./retire.js";
 
 const [command = "all", ...args] = process.argv.slice(2);
 const db = createDb();
@@ -22,6 +23,8 @@ async function crawl(ids: string[]) {
     const known = all.map((a) => a.meta.id).join(", ");
     throw new Error(`不明または無効なソース: ${ids.join(", ")}（有効: ${known}）`);
   }
+  const retired = await closeRetiredSources(db, retiredSourceIds);
+  if (retired > 0) console.log(`巡回をやめたソースの掲載を閉じました: ${retired} 件`);
   // 会員サイトの検索範囲（ユーザーの希望条件から作る）。バッチの最初に1度だけ読む
   const scopes = targets.some((a) => a.meta.scopedByConditions)
     ? await loadCrawlScopes(db)
