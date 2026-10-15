@@ -7,6 +7,7 @@ import mecH from "./adapters/mec-h/index.js";
 import mitsuiChintai from "./adapters/mitsui-chintai/index.js";
 import moriLiving from "./adapters/mori-living/index.js";
 import reins, { VERIFIED as REINS_VERIFIED } from "./adapters/reins/index.js";
+import rf12 from "./adapters/rf12/index.js";
 import sampleRealtor from "./adapters/sample-realtor/index.js";
 import stepon from "./adapters/stepon/index.js";
 import sumitomoLatour from "./adapters/sumitomo-latour/index.js";
@@ -32,6 +33,7 @@ const registrations: Registration[] = [
   { adapter: sumitomoResidence, production: true, verified: true },
   { adapter: sumitomoLatour, production: true, verified: true },
   { adapter: moriLiving, production: true, verified: true },
+  { adapter: rf12, production: true, verified: true },
   { adapter: kencorp, production: true, verified: true },
   // 大手仲介・管理会社の賃貸（2026-10-15 追加）
   { adapter: stepon, production: true, verified: true },
@@ -52,7 +54,6 @@ const registrations: Registration[] = [
  */
 export const retiredSourceIds: readonly string[] = [
   "axel-home", // アクセルホーム（2026-10-15）
-  "rf12", // REIT FIND（2026-10-15）
 ];
 
 /**
@@ -61,6 +62,7 @@ export const retiredSourceIds: readonly string[] = [
  */
 export const noImageSourceIds: readonly string[] = [
   "kencorp", // ケン・コーポレーション: ほぼ全ての写真の中央に「Ken Corporation Ltd.」の透かし
+  "rf12", // REIT FIND: 社名・ロゴ（透かし含む）が入った写真が多い（2026-10-15 に巡回へ戻すときに指定）
 ];
 
 export const adapters: Record<string, SiteAdapter> = Object.fromEntries(
