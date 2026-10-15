@@ -1,5 +1,5 @@
 import { NormalizedListing } from "@devote/core";
-import type { FetchContext, ListItem, SiteAdapter } from "./adapter.js";
+import type { FetchContext, ListItem, QueryContext, SiteAdapter } from "./adapter.js";
 import { describeBody, detectBlockPage } from "./block.js";
 
 /** 詳細でブロック・チャレンジページがこの回数続いたら、その回の詳細取得を打ち切る */
@@ -43,6 +43,8 @@ export interface CrawlOptions {
   counters?: { list: number; detail: number };
   /** 1回の巡回で取得する一覧ページの上限（従量課金サイト用）。超えたら一覧の巡回を打ち切る */
   maxListRequests?: number;
+  /** queries() に渡す実行時の情報（希望条件から作った検索範囲など） */
+  queryContext?: QueryContext;
   /** 取得した生HTMLの保存フック（raw_snapshots） */
   onSnapshot?: (kind: "list" | "detail", url: string, body: string) => Promise<void> | void;
 }
@@ -126,14 +128,20 @@ export async function crawlSource(
     }
   };
 
-  for (const query of adapter.queries()) {
+  // 一覧が差分か全件か。ページが申告しなければ meta.incrementalList に従う
+  let anyPartial = false;
+  let anyReported = false;
+  for (const query of adapter.queries(opts.queryContext)) {
     let url: string | null = adapter.buildListUrl(query);
     let totalCount: number | null = null;
     let found = 0;
     for (let page = 0; url && page < maxPages; page++) {
       if (listRequests >= maxListRequests) break;
-      listRequests++;
-      counters.list++;
+      // ページ送りが課金・利用量に数えられないサイト（レインズ）は、検索1回（1ページ目）だけ数える
+      if (page === 0 || !adapter.meta.pageTurnsAreFree) {
+        listRequests++;
+        counters.list++;
+      }
       let html: string;
       let status: number | undefined;
       if (adapter.fetchList) {
@@ -157,6 +165,10 @@ export async function crawlSource(
         break;
       }
       const result = adapter.parseList(html, url);
+      if (result.partial !== undefined) {
+        anyReported = true;
+        if (result.partial) anyPartial = true;
+      }
       totalCount ??= result.totalCount;
       found += result.items.length;
       const pageItems = result.items.filter((i) => !seen.has(i.sourceListingId));
@@ -193,7 +205,7 @@ export async function crawlSource(
     deferred,
     listRequests,
     detailRequests: detailCount,
-    partialList: adapter.meta.incrementalList ?? false,
+    partialList: anyReported ? anyPartial : (adapter.meta.incrementalList ?? false),
     warnings,
   };
 }

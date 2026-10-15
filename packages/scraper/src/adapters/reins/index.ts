@@ -1,5 +1,6 @@
 import { createHash } from "node:crypto";
 import {
+  type CrawlScope,
   type DealType,
   directionFeatures,
   extractFeatures,
@@ -74,6 +75,8 @@ const step = async (name: string) => {
 let mainMenuUrl: string | null = null;
 /** いま画面に出ている検索結果の検索キー（ページ送りの判定用） */
 let currentSearchKey: string | null = null;
+/** 直近の検索で使った期間（一覧の JSON に書き足す） */
+let lastPeriod: ReinsPeriod = "all";
 /** 直近の一覧 API の JSON */
 let lastListJson: string | null = null;
 /** 直近の一覧の物件番号（表示順） */
@@ -123,30 +126,32 @@ const PROPERTY_KIND: Record<DealType, string> = {
 };
 
 /**
- * 登録年月日・変更年月日で絞る期間（画面のラジオボタンの表記）。all は指定なし（全期間）。
+ * 登録年月日・変更年月日で絞る期間（画面のラジオボタンの表記）。
  * 当日・前日は画面の選択肢そのまま（前日は「前日以降」の意味と思われる: 前日=538件 ≒ 3日以内の約半分）
  */
 export const PERIOD_LABEL = {
-  today: "当日",
-  yesterday: "前日",
-  "3d": "３日以内",
-  "1w": "１週間以内",
+  all: "指定なし",
   "1m": "１ヶ月以内",
-  all: null,
+  "1w": "１週間以内",
+  "3d": "３日以内",
+  yesterday: "前日",
+  today: "当日",
 } as const;
 export type ReinsPeriod = keyof typeof PERIOD_LABEL;
+/** 期間の指定。auto は件数事前確認で決める */
+export type PeriodSetting = ReinsPeriod | "auto";
+/** 広い順。auto は件数事前確認（無課金）で、表示上限500件に収まる最も広い期間を選ぶ */
+export const PERIODS_WIDE_FIRST: ReinsPeriod[] = ["all", "1m", "1w", "3d", "yesterday", "today"];
 const isPeriod = (v: unknown): v is ReinsPeriod =>
   typeof v === "string" && Object.hasOwn(PERIOD_LABEL, v);
 /**
- * 既定の期間。実測（2026-10-14 港区・賃貸マンション）で 3日以内=1,050件・前日=538件・当日(8:40)=151件。
- * 3日以内でも上限500件を超えるため、日中は「当日」、朝（9時前）の初回だけ「前日」にして夜間の更新を拾う
- * （前日は500件を超えうるが、並び順が最新順なので切れるのは前日の朝の分＝前日の巡回で取得済み）
+ * 既定は auto。実測（2026-10-14 港区・賃貸マンション・条件なし）では全期間 3,112件・3日以内 1,050件・
+ * 当日 151〜621件で、条件なしだと「当日」でも500件を超えた。ユーザーの希望条件（予算・広さ・間取り）で絞ると
+ * 全期間でも収まることが多く、そのときは一覧が全件なので掲載終了も判定できる。REINS_SEARCH_PERIOD で固定可
  */
-export const defaultPeriod = (now = new Date()): ReinsPeriod => {
+export const defaultPeriod = (): PeriodSetting => {
   const v = process.env.REINS_SEARCH_PERIOD;
-  if (isPeriod(v)) return v;
-  const hourJst = (now.getUTCHours() + 9) % 24;
-  return hourJst < 9 ? "yesterday" : "today";
+  return isPeriod(v) ? v : "auto";
 };
 
 export interface ReinsSearch {
@@ -154,16 +159,26 @@ export interface ReinsSearch {
   prefecture: string;
   city: string;
   town: string | null;
-  period: ReinsPeriod;
+  period: PeriodSetting;
+  /** 賃料・価格の上限（万円）。null = 指定なし */
+  maxPriceMan: number | null;
+  /** 面積（賃貸は建物使用部分面積、売買は専有面積）の下限（㎡） */
+  minArea: number | null;
+  /** 間取部屋数の下限 */
+  minRooms: number | null;
   page: number;
 }
 
-export function buildSearchUrl(
-  s: Omit<ReinsSearch, "page" | "period"> & { page?: number; period?: ReinsPeriod },
-): string {
+type SearchInput = Pick<ReinsSearch, "deal" | "prefecture" | "city" | "town"> &
+  Partial<Omit<ReinsSearch, "deal" | "prefecture" | "city" | "town">>;
+
+export function buildSearchUrl(s: SearchInput): string {
   const p = new URLSearchParams({ deal: s.deal, pref: s.prefecture, city: s.city });
   if (s.town) p.set("town", s.town);
-  if (s.period && s.period !== "all") p.set("period", s.period);
+  if (s.period && s.period !== "auto") p.set("period", s.period);
+  if (s.maxPriceMan != null) p.set("max", String(s.maxPriceMan));
+  if (s.minArea != null) p.set("area", String(s.minArea));
+  if (s.minRooms != null) p.set("rooms", String(s.minRooms));
   if (s.page && s.page > 1) p.set("page", String(s.page));
   return `reins://search?${p.toString()}`;
 }
@@ -175,20 +190,28 @@ export function parseSearchUrl(url: string): ReinsSearch {
   const city = u.searchParams.get("city");
   if ((deal !== "rent" && deal !== "sale") || !city)
     throw new Error(`reins: 不正な検索URL: ${url}`);
+  const num = (k: string) => {
+    const v = u.searchParams.get(k);
+    return v != null && Number.isFinite(Number(v)) ? Number(v) : null;
+  };
+  const period = u.searchParams.get("period");
   return {
     deal,
     prefecture: u.searchParams.get("pref") ?? "東京都",
     city,
     town: u.searchParams.get("town"),
-    period: isPeriod(u.searchParams.get("period"))
-      ? (u.searchParams.get("period") as ReinsPeriod)
-      : "all",
-    page: Number(u.searchParams.get("page") ?? "1"),
+    period: isPeriod(period) ? period : "auto",
+    maxPriceMan: num("max"),
+    minArea: num("area"),
+    minRooms: num("rooms"),
+    page: num("page") ?? 1,
   };
 }
 
 const searchKey = (s: ReinsSearch) =>
-  `${s.deal}|${s.prefecture}|${s.city}|${s.town ?? ""}|${s.period}`;
+  [s.deal, s.prefecture, s.city, s.town ?? "", s.period, s.maxPriceMan, s.minArea, s.minRooms].join(
+    "|",
+  );
 
 export function detailUrlOf(id: string, deal: DealType): string {
   return `reins://detail?${new URLSearchParams({ id, deal }).toString()}`;
@@ -237,11 +260,59 @@ async function choosePeriod(page: Page, label: "登録年月日" | "変更年月
     .click();
 }
 
-/** 件数事前確認が 0件で【検索】しなかったことを表す一覧の本文（parseList が 0件として扱う） */
-export const EMPTY_LIST_MARKER = "<!-- reins:precheck-empty -->";
+/** 件数事前確認が0件で【検索】しなかったことを表す一覧の本文（parseList が 0件として扱う） */
+export const emptyListMarker = (period: ReinsPeriod) =>
+  `<!-- reins:precheck-empty period=${period} -->`;
+const EMPTY_LIST_RE = /^<!-- reins:precheck-empty(?: period=(\w+))? -->$/;
+/** 一覧の JSON に、検索に使った期間を書き足すキー（parseList が差分か全件かを判断する） */
+const PERIOD_KEY = "__devotePeriod";
+
+/** ラベル（.p-label-title）が完全一致する項目の入力欄（範囲指定なら [下限, 上限]） */
+const rangeInputs = (page: Page, label: string) =>
+  page
+    .locator(".p-label-title", { hasText: new RegExp(`^\\s*${label}\\s*$`) })
+    .first()
+    .locator("xpath=ancestor::div[contains(@class,'col')][1]")
+    .locator("input[type='text']");
+
+/** 件数事前確認（無課金）を押して件数を読む。ダイアログは開いたまま返す */
+async function precheck(page: Page, s: ReinsSearch) {
+  const [countRes] = await Promise.all([
+    page.waitForResponse((r) => r.url().includes("/getBkknDataCount"), { timeout: 30_000 }),
+    page
+      .getByRole("button", { name: /件数事前確認/ })
+      .first()
+      .click(),
+  ]);
+  const count = Number(((await countRes.json()) as { count?: number }).count ?? Number.NaN);
+  const dialog = page.getByRole("dialog");
+  await dialog
+    .first()
+    .waitFor({ state: "visible", timeout: 5_000 })
+    .catch(() => undefined);
+  const close = async () => {
+    await dialog
+      .getByRole("button", { name: /キャンセル|閉じる|OK/ })
+      .first()
+      .click({ timeout: 3_000 })
+      .catch(() => page.keyboard.press("Escape"));
+    await dialog
+      .first()
+      .waitFor({ state: "hidden", timeout: 5_000 })
+      .catch(() => undefined);
+  };
+  if (!Number.isFinite(count)) {
+    await close();
+    throw new Error(`reins: 件数事前確認の結果が読めない: ${searchKey(s)}`);
+  }
+  return { count, dialog, close };
+}
 
 /** 検索条件を入れて件数事前確認 → 一覧。0件なら一覧を開かない */
-async function runSearch(page: Page, s: ReinsSearch): Promise<{ count: number }> {
+async function runSearch(
+  page: Page,
+  s: ReinsSearch,
+): Promise<{ count: number; period: ReinsPeriod }> {
   await openMainMenu(page);
   // メインメニューの【賃貸 物件検索】/【売買 物件検索】（ボタン）
   const entry = s.deal === "rent" ? /賃貸\s*物件検索/ : /売買\s*物件検索/;
@@ -264,64 +335,62 @@ async function runSearch(page: Page, s: ReinsSearch): Promise<{ count: number }>
     // 所在地名２は「〇丁目」を消すと町名全域になる（マニュアル P29）
     await afterLabel(page, /所在地名\s*[2２]/, "input").fill(s.town);
   }
-  // 差分巡回: 「その他検索項目(在庫のみ)」の登録年月日・変更年月日（いずれかに一致＝OR）で期間を絞る。
-  //   港区の賃貸マンションは全期間だと 3,112件（2026-10-14）で上限500件を超えるため、期間指定は必須
-  const period = PERIOD_LABEL[s.period];
-  if (period) {
-    await choosePeriod(page, "登録年月日", period);
-    await choosePeriod(page, "変更年月日", period);
+  // ユーザーの希望条件から作った範囲（crawlScopes）。賃料は管理費を含まない額なので、総額の上限をそのまま上限にできる
+  if (s.maxPriceMan != null) {
+    await rangeInputs(page, s.deal === "rent" ? "賃料" : "価格")
+      .nth(1)
+      .fill(String(s.maxPriceMan));
   }
-  await step("search-filled");
+  if (s.minArea != null) {
+    await rangeInputs(page, s.deal === "rent" ? "建物使用部分面積" : "専有面積")
+      .nth(0)
+      .fill(String(s.minArea));
+  }
+  if (s.minRooms != null) {
+    await rangeInputs(page, "間取部屋数").nth(0).fill(String(s.minRooms));
+  }
 
-  // 件数事前確認（無課金）。件数は API（getBkknDataCount）の JSON から読む
-  const [countRes] = await Promise.all([
-    page.waitForResponse((r) => r.url().includes("/getBkknDataCount"), { timeout: 30_000 }),
-    page
-      .getByRole("button", { name: /件数事前確認/ })
-      .first()
-      .click(),
-  ]);
-  const count = Number(((await countRes.json()) as { count?: number }).count ?? Number.NaN);
-  const dialog = page.getByRole("dialog");
-  await dialog
-    .first()
-    .waitFor({ state: "visible", timeout: 5_000 })
-    .catch(() => undefined);
-  await step("search-precheck");
-  lastPrecheckCount = Number.isFinite(count) ? count : null;
-  const cancel = async () => {
-    await dialog
-      .getByRole("button", { name: /キャンセル|閉じる|OK/ })
-      .first()
-      .click({ timeout: 3_000 })
-      .catch(() => page.keyboard.press("Escape"));
-  };
-  if (!Number.isFinite(count)) {
-    await cancel();
-    throw new Error(`reins: 件数事前確認の結果が読めない: ${searchKey(s)}`);
+  // 期間: 「その他検索項目(在庫のみ)」の登録年月日・変更年月日（いずれかに一致＝OR）。
+  //   auto は広い順に件数事前確認（無課金）し、表示上限500件に収まる最も広い期間で検索する
+  const periods = s.period === "auto" ? PERIODS_WIDE_FIRST : [s.period];
+  let chosen: ReinsPeriod = "all";
+  let result: Awaited<ReturnType<typeof precheck>> | null = null;
+  for (const [i, period] of periods.entries()) {
+    if (result) await result.close();
+    await choosePeriod(page, "登録年月日", PERIOD_LABEL[period]);
+    await choosePeriod(page, "変更年月日", PERIOD_LABEL[period]);
+    if (i === 0) await step("search-filled");
+    result = await precheck(page, s);
+    chosen = period;
+    if (result.count <= MAX_RESULTS) break;
   }
+  if (!result) throw new Error("reins: 検索期間の指定が空");
+  const { count, dialog, close } = result;
+  await step("search-precheck");
+  lastPrecheckCount = count;
+  lastPeriod = chosen;
   if (count === 0) {
     // 0件なら【検索】しない（一覧表示＝課金を避ける）
-    await cancel();
+    await close();
     currentSearchKey = null;
-    return { count };
+    return { count, period: chosen };
   }
-  if (count > 500) {
+  if (count > MAX_RESULTS) {
     console.warn(
-      `reins: ${searchKey(s)} のヒットが ${count} 件で上限500件を超えています（期間を短くする）`,
+      `reins: ${searchKey(s)} は期間「${PERIOD_LABEL[chosen]}」でも ${count} 件で上限${MAX_RESULTS}件を超えています`,
     );
   }
   if (hooks.precheckOnly || (hooks.maxSearchCount != null && count > hooks.maxSearchCount)) {
-    await cancel();
+    await close();
     currentSearchKey = null;
-    if (hooks.precheckOnly) return { count };
+    if (hooks.precheckOnly) return { count, period: chosen };
     throw new Error(
       `reins: ${searchKey(s)} は ${count} 件で上限 ${hooks.maxSearchCount} 件を超えるため検索しない`,
     );
   }
 
   // 事前確認のダイアログの【検索】で一覧へ（ダイアログが出ていなければ画面下の【検索】）
-  //   一覧は API（.../getInitDataFromKnskJyukn）の JSON に最大500件がまとめて入っている（画面は50件ずつ表示）
+  //   一覧は API（.../getInitDataFromKnskJyukn）の JSON（1ページ50件）
   const listRes = page.waitForResponse(isListResponse, { timeout: 60_000 });
   const dialogSearch = dialog.getByRole("button", { name: /^\s*検索\s*$/ });
   if ((await dialogSearch.count()) > 0 && (await dialogSearch.first().isVisible())) {
@@ -340,7 +409,7 @@ async function runSearch(page: Page, s: ReinsSearch): Promise<{ count: number }>
   await throwIfChallenge(page);
   currentSearchKey = searchKey(s);
   await step("list");
-  return { count };
+  return { count, period: chosen };
 }
 
 /** 一覧の1ページの件数と、検索で表示できる上限 */
@@ -376,8 +445,11 @@ async function waitRows(page: Page) {
 }
 
 async function setListJson(json: string, s: ReinsSearch) {
-  lastListJson = json;
-  lastListIds = parseListJson(json, buildSearchUrl(s)).items.map((i) => i.sourceListingId);
+  // 検索に使った期間を書き足す（全期間なら一覧は条件に合う全件 → 掲載終了を判定できる）
+  const d = JSON.parse(json) as Record<string, unknown>;
+  d[PERIOD_KEY] = lastPeriod;
+  lastListJson = JSON.stringify(d);
+  lastListIds = parseListJson(lastListJson, buildSearchUrl(s)).items.map((i) => i.sourceListingId);
 }
 
 // ---------------------------------------------------------------------------
@@ -438,11 +510,19 @@ const BUKKEN_NO = /(?<!\d)(\d{12})(?!\d)/; // 新システムの物件番号は1
 
 /**
  * 一覧の API（1ページ目 .../getInitDataFromKnskJyukn、2ページ目以降 .../getBkknListData）の JSON をパースする。
- * 件数事前確認が0件で検索しなかった場合は EMPTY_LIST_MARKER。
+ * 件数事前確認が0件で検索しなかった場合は emptyListMarker()。
  */
 export function parseListJson(body: string, url: string) {
   const s = parseSearchUrl(url);
-  if (body.trim() === EMPTY_LIST_MARKER) return { items: [], nextPageUrl: null, totalCount: 0 };
+  const empty = body.trim().match(EMPTY_LIST_RE);
+  if (empty) {
+    return {
+      items: [],
+      nextPageUrl: null,
+      totalCount: 0,
+      ...(empty[1] ? { partial: empty[1] !== "all" } : {}),
+    };
+  }
   if (!body.trimStart().startsWith("{")) {
     throw new Error(`reins: 一覧が JSON ではない（構造が想定と違う）: ${url}`);
   }
@@ -450,7 +530,9 @@ export function parseListJson(body: string, url: string) {
   const d = JSON.parse(body) as Part & {
     bkknKnskListResultData1?: Part;
     bkknKnskListResultData2?: Part;
+    [PERIOD_KEY]?: string;
   };
+  const period = d[PERIOD_KEY];
   // 1ページ目（.../getInitDataFromKnskJyukn）は物件種別ごとに bkknKnskListResultData1/2 の中、
   // 2ページ目以降（.../getBkknListData）は直下に knskResultList / knskResultListKnsu がある。
   // knskResultListKnsu は検索結果の総件数（画面に出せるのは500件まで）、knskResultList は表示中の1ページ分（50件）
@@ -467,6 +549,8 @@ export function parseListJson(body: string, url: string) {
     })),
     nextPageUrl: s.page * PAGE_SIZE < reachable ? buildSearchUrl({ ...s, page: s.page + 1 }) : null,
     totalCount: reachable,
+    // 全期間で検索し500件以内なら、一覧は条件に合う全件。それ以外は差分
+    ...(period ? { partial: period !== "all" || total > MAX_RESULTS } : {}),
   };
 }
 
@@ -550,39 +634,68 @@ export default defineAdapter({
       list: Number(process.env.REINS_MONTHLY_SEARCH_LIMIT || 4500),
       detail: Number(process.env.REINS_MONTHLY_DETAIL_LIMIT || 4500),
     },
-    // 期間（当日/前日）で絞った差分検索なので、一覧に出ないことを掲載終了とみなさない
+    // 期間で絞った差分検索のときは、一覧に出ないことを掲載終了とみなさない。
+    // 全期間で検索できた一覧は parseList が partial: false を返し、掲載終了を判定する
     incrementalList: true,
     // 詳細は表示中の検索結果の一覧（ページ）からしか開けない
     detailsAfterEachListPage: true,
+    // 検索範囲はユーザーの希望条件から作る（希望条件がなければ巡回しない）
+    scopedByConditions: true,
+    // 利用実績（2026-10-14）: 巡回で一覧を約30ページ送っても「物件検索」は検索の回数分しか増えなかった
+    pageTurnsAreFree: true,
     parserVersion: "1",
   },
 
-  queries(): SearchQuery[] {
-    const deals: DealType[] = ["rent", "sale"];
-    return deals.flatMap((deal) =>
-      TARGET_AREAS.flatMap((a) =>
-        (a.towns ?? [null]).map((town) => ({
-          key: `${deal}-${a.city}${town ?? ""}`,
-          params: {
-            deal,
+  /**
+   * 検索条件。巡回（pipeline）ではユーザーの希望条件から作った範囲（ctx.scopes）を使い、
+   * 取引種別 × エリアごとに予算の上限・面積と部屋数の下限で絞る。範囲がなければ検索しない。
+   * ctx を渡さない（explore.ts 等）ときは、対象エリア全体を条件なしで検索する
+   */
+  queries(ctx): SearchQuery[] {
+    const scopes: CrawlScope[] =
+      ctx?.scopes ??
+      (["rent", "sale"] as DealType[]).flatMap((dealType) =>
+        TARGET_AREAS.flatMap((a) =>
+          (a.towns ?? [null]).map((town) => ({
+            dealType,
             prefecture: a.prefecture,
             city: a.city,
-            period: defaultPeriod(),
-            ...(town ? { town } : {}),
-          },
-        })),
-      ),
-    );
+            town,
+            maxPrice: null,
+            minAreaSqm: null,
+            minRooms: null,
+          })),
+        ),
+      );
+    return scopes.map((sc) => ({
+      key: `${sc.dealType}-${sc.city}${sc.town ?? ""}`,
+      params: {
+        deal: sc.dealType,
+        prefecture: sc.prefecture,
+        city: sc.city,
+        period: defaultPeriod(),
+        ...(sc.town ? { town: sc.town } : {}),
+        // 万円・㎡の入力欄。取りこぼさないよう上限は切り上げ、下限は切り捨てる
+        ...(sc.maxPrice != null ? { max: Math.ceil(sc.maxPrice / 10_000) } : {}),
+        ...(sc.minAreaSqm != null ? { area: Math.floor(sc.minAreaSqm) } : {}),
+        ...(sc.minRooms != null ? { rooms: sc.minRooms } : {}),
+      },
+    }));
   },
 
-  buildListUrl: (q) =>
-    buildSearchUrl({
+  buildListUrl: (q) => {
+    const num = (v: unknown) => (typeof v === "number" ? v : null);
+    return buildSearchUrl({
       deal: q.params.deal === "sale" ? "sale" : "rent",
       prefecture: String(q.params.prefecture ?? "東京都"),
       city: String(q.params.city),
       town: q.params.town ? String(q.params.town) : null,
-      period: isPeriod(q.params.period) ? q.params.period : "all",
-    }),
+      period: isPeriod(q.params.period) ? q.params.period : "auto",
+      maxPriceMan: num(q.params.max),
+      minArea: num(q.params.area),
+      minRooms: num(q.params.rooms),
+    });
+  },
 
   async login(ctx) {
     const { userId, password } = credentials();
@@ -637,8 +750,8 @@ export default defineAdapter({
     const page = requirePage(ctx);
     const s = parseSearchUrl(url);
     if (s.page === 1) {
-      const { count } = await runSearch(page, s);
-      if (count === 0 || hooks.precheckOnly) return EMPTY_LIST_MARKER;
+      const { count, period } = await runSearch(page, s);
+      if (count === 0 || hooks.precheckOnly) return emptyListMarker(period);
     } else {
       // 2ページ目以降は表示中の検索結果のページ送り（一覧の API が1ページ50件ずつ返す）
       if (currentSearchKey !== searchKey(s)) {

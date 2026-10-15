@@ -10,7 +10,7 @@
 import { createDb } from "@devote/db";
 import { enabledAdapters } from "@devote/scraper";
 import { runMatching, runNotifications } from "@devote/services";
-import { runSource } from "./crawl.js";
+import { loadCrawlScopes, runSource } from "./crawl.js";
 
 const [command = "all", ...args] = process.argv.slice(2);
 const db = createDb();
@@ -22,6 +22,23 @@ async function crawl(ids: string[]) {
     const known = all.map((a) => a.meta.id).join(", ");
     throw new Error(`不明または無効なソース: ${ids.join(", ")}（有効: ${known}）`);
   }
+  // 会員サイトの検索範囲（ユーザーの希望条件から作る）。バッチの最初に1度だけ読む
+  const scopes = targets.some((a) => a.meta.scopedByConditions)
+    ? await loadCrawlScopes(db)
+    : undefined;
+  if (scopes) {
+    console.log(
+      `会員サイトの検索範囲: ${scopes.length} 件 ${JSON.stringify(
+        scopes.map((s) => ({
+          deal: s.dealType,
+          area: `${s.city}${s.town ?? ""}`,
+          maxPrice: s.maxPrice,
+          minArea: s.minAreaSqm,
+          minRooms: s.minRooms,
+        })),
+      )}`,
+    );
+  }
   // サイト間は並列（同じサイトへのアクセスは各アダプターのレート制御で直列）
   const parallel = Number(process.env.DEVOTE_CRAWL_PARALLEL ?? 3);
   const queue = [...targets];
@@ -30,7 +47,7 @@ async function crawl(ids: string[]) {
     Array.from({ length: Math.min(parallel, queue.length) }, async () => {
       for (let a = queue.shift(); a; a = queue.shift()) {
         console.log(`▶ crawl ${a.meta.id}`);
-        const r = await runSource(db, a);
+        const r = await runSource(db, a, { scopes });
         console.log(JSON.stringify(r));
         results.push(r);
       }

@@ -256,6 +256,46 @@ describe("crawlSource の詳細の取得順・差分一覧", () => {
     expect(r.detailRequests).toBe(2);
   });
 
+  it("一覧が全件か差分かをページが申告したら、meta.incrementalList より優先する", async () => {
+    const make = (partial: boolean) => {
+      const { adapter } = fakeAdapter({ incrementalList: true });
+      const parse = adapter.parseList;
+      return { ...adapter, parseList: (b: string, u: string) => ({ ...parse(b, u), partial }) };
+    };
+    expect((await crawlSource(make(false), fakeCtx)).partialList).toBe(false);
+    expect((await crawlSource(make(true), fakeCtx)).partialList).toBe(true);
+  });
+
+  it("pageTurnsAreFree: 一覧のページ送りは利用量に数えない（検索1回 = 1件）", async () => {
+    const counters = { list: 0, detail: 0 };
+    const free = fakeAdapter({});
+    await crawlSource(
+      { ...free.adapter, meta: { ...free.adapter.meta, pageTurnsAreFree: true } },
+      fakeCtx,
+      {
+        counters,
+      },
+    );
+    expect(counters.list).toBe(1);
+    const paid = { list: 0, detail: 0 };
+    await crawlSource(fakeAdapter({}).adapter, fakeCtx, { counters: paid });
+    expect(paid.list).toBe(2);
+  });
+
+  it("queryContext を queries() に渡す", async () => {
+    const { adapter } = fakeAdapter({});
+    let received: unknown;
+    const spy = {
+      ...adapter,
+      queries: (ctx?: unknown) => {
+        received = ctx;
+        return adapter.queries();
+      },
+    };
+    await crawlSource(spy, fakeCtx, { queryContext: { scopes: [] } });
+    expect(received).toEqual({ scopes: [] });
+  });
+
   it("incrementalList: 結果に partialList を付ける（掲載終了の判定をさせない）", async () => {
     expect(
       (await crawlSource(fakeAdapter({ incrementalList: true }).adapter, fakeCtx)).partialList,

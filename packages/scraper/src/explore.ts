@@ -16,6 +16,7 @@
  *   --details=N      詳細を開く件数（既定1）
  *   --pages=N        一覧を N ページ目まで送り、詳細は最後のページから開く
  *   --logout-only    ログイン（保存セッションがあれば再利用）してすぐログアウトする
+ *   --max=万円 --area=㎡ --rooms=N  レインズ用。賃料・価格の上限、面積・部屋数の下限で絞る
  *   --usage          レインズ用。ログイン後に Myレインズの利用実績照会を記録して終わる
  *   --pick=I,J       一覧の I 件目・J 件目（0始まり）の詳細を開く
  *   --max-count=N    レインズ用。事前確認の件数が N 件（既定100）を超えたら検索しない
@@ -276,7 +277,18 @@ const query = adapter
       : q.params.city === "港区" && (q.params.deal ?? "rent") === "rent",
   );
 if (!query) await finish(1);
-const listUrl = adapter.buildListUrl(query as NonNullable<typeof query>);
+// --max=万円 --area=㎡ --rooms=N（レインズ）: 希望条件から作る検索範囲と同じ絞り込みを試す
+const extra = Object.fromEntries(
+  ["max", "area", "rooms"].flatMap((k) => {
+    const v = flags.find((f) => f.startsWith(`--${k}=`))?.split("=")[1];
+    return v ? [[k, Number(v)]] : [];
+  }),
+);
+const listUrl = adapter.buildListUrl({
+  ...(query as NonNullable<typeof query>),
+  params: { ...(query as NonNullable<typeof query>).params, ...extra },
+});
+log(`検索: ${listUrl}`);
 const listBody = await runStep(
   "search-and-list",
   async () => {

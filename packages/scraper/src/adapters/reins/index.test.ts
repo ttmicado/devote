@@ -4,7 +4,7 @@ import { afterEach, describe, expect, it, vi } from "vitest";
 import adapter, {
   buildSearchUrl,
   defaultPeriod,
-  EMPTY_LIST_MARKER,
+  emptyListMarker,
   extractLabelValues,
   LOGIN_URL,
   parseJpDate,
@@ -106,11 +106,13 @@ describe("reins（2026-10-14 実画面で確認）", () => {
   });
 
   it("一覧: 件数事前確認が0件（検索しなかった）は空、JSON でなければ throw", () => {
-    expect(adapter.parseList(EMPTY_LIST_MARKER, rentUrl)).toEqual({
+    expect(adapter.parseList(emptyListMarker("all"), rentUrl)).toEqual({
       items: [],
       nextPageUrl: null,
       totalCount: 0,
+      partial: false,
     });
+    expect(adapter.parseList(emptyListMarker("today"), rentUrl).partial).toBe(true);
     expect(() => adapter.parseList("<body>なにか別の画面</body>", rentUrl)).toThrow(
       /構造が想定と違う/,
     );
@@ -208,12 +210,69 @@ describe("reins（2026-10-14 実画面で確認）", () => {
     expect(parseJpDate(undefined)).toBeNull();
   });
 
-  it("期間の既定値: 9時前は前日、日中は当日（REINS_SEARCH_PERIOD で上書き）", () => {
+  it("期間の既定値は auto（件数事前確認で決める）。REINS_SEARCH_PERIOD で固定できる", () => {
     vi.stubEnv("REINS_SEARCH_PERIOD", "");
-    expect(defaultPeriod(new Date("2026-10-13T22:30:00Z"))).toBe("yesterday"); // JST 7:30
-    expect(defaultPeriod(new Date("2026-10-14T03:00:00Z"))).toBe("today"); // JST 12:00
+    expect(defaultPeriod()).toBe("auto");
     vi.stubEnv("REINS_SEARCH_PERIOD", "3d");
-    expect(defaultPeriod(new Date("2026-10-14T03:00:00Z"))).toBe("3d");
+    expect(defaultPeriod()).toBe("3d");
     vi.unstubAllEnvs();
+  });
+
+  it("一覧: 全期間で検索した一覧は全件（掲載終了を判定できる）、期間で絞った一覧は差分", () => {
+    const withPeriod = (period: string) => {
+      const d = JSON.parse(fixture("list-rent-kachidoki.json")) as Record<string, unknown>;
+      d.__devotePeriod = period;
+      return JSON.stringify(d);
+    };
+    expect(adapter.parseList(withPeriod("all"), rentUrl).partial).toBe(false);
+    expect(adapter.parseList(withPeriod("1m"), rentUrl).partial).toBe(true);
+    // 期間の記録がない一覧（古いスナップショット）は申告しない＝ meta.incrementalList に従う
+    expect(adapter.parseList(fixture("list-rent-kachidoki.json"), rentUrl).partial).toBeUndefined();
+  });
+
+  it("希望条件の範囲（scopes）から検索条件を作る。範囲がなければ検索しない", () => {
+    expect(adapter.queries({ scopes: [] })).toEqual([]);
+    const qs = adapter.queries({
+      scopes: [
+        {
+          dealType: "rent",
+          prefecture: "東京都",
+          city: "港区",
+          town: null,
+          maxPrice: 552_000,
+          minAreaSqm: 55.5,
+          minRooms: 2,
+        },
+        {
+          dealType: "sale",
+          prefecture: "東京都",
+          city: "中央区",
+          town: "勝どき",
+          maxPrice: null,
+          minAreaSqm: null,
+          minRooms: null,
+        },
+      ],
+    });
+    expect(qs.map((q) => parseSearchUrl(adapter.buildListUrl(q)))).toEqual([
+      expect.objectContaining({
+        deal: "rent",
+        city: "港区",
+        period: "auto",
+        // 取りこぼさないよう上限は切り上げ（55.2万→56万円）、下限は切り捨て
+        maxPriceMan: 56,
+        minArea: 55,
+        minRooms: 2,
+      }),
+      expect.objectContaining({
+        deal: "sale",
+        city: "中央区",
+        town: "勝どき",
+        maxPriceMan: null,
+        minArea: null,
+        minRooms: null,
+      }),
+    ]);
+    expect(adapter.meta.scopedByConditions).toBe(true);
   });
 });

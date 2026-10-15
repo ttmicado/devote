@@ -56,6 +56,22 @@ describe("itandi-bb（2026-10-14 実画面で確認）", () => {
     });
   });
 
+  it("希望条件の範囲（scopes）にある賃貸のエリアだけを検索する", () => {
+    const scope = (dealType: "rent" | "sale", city: string) => ({
+      dealType,
+      prefecture: "東京都",
+      city,
+      town: null,
+      maxPrice: null,
+      minAreaSqm: null,
+      minRooms: null,
+    });
+    expect(adapter.queries({ scopes: [] })).toEqual([]);
+    const qs = adapter.queries({ scopes: [scope("rent", "港区"), scope("sale", "渋谷区")] });
+    expect(qs.map((q) => q.params.city)).toEqual(["港区"]);
+    expect(adapter.meta.scopedByConditions).toBe(true);
+  });
+
   const url = "itandi-bb://search?deal=rent&pref=東京都&city=港区";
 
   it("一覧 JSON（実物・マスク済み。1ページ20棟、更新が新しい順）", () => {
