@@ -1,0 +1,403 @@
+{
+ "isExpired": false,
+ "detailCard": {
+  "variant": "default",
+  "propertyCd": "L132609353",
+  "propertyName": "パークコート青山高樹町ザ　タワー",
+  "price": {
+   "propertyPrice": {
+    "mstCd": 4,
+    "consumptionTaxFlg": false,
+    "rent": 647000
+   }
+  },
+  "labelInfo": {
+   "list": [
+    {
+     "text": "新築マンション",
+     "className": "a-tag--type"
+    }
+   ],
+   "iconLink": {
+    "href": "/kounyu/explanation-icon/"
+   }
+  },
+  "address": {
+   "linkList": [
+    {
+     "text": "東京都",
+     "href": "/chintai/mansion/tokyo/select-area/"
+    },
+    {
+     "text": "港区",
+     "href": "/chintai/mansion/tokyo/a13103/"
+    },
+    {
+     "text": "南青山６丁目",
+     "href": "/chintai/mansion/tokyo/t13103025/"
+    },
+    {
+     "text": "11-6",
+     "href": ""
+    }
+   ],
+   "mapLink": {
+    "show": true,
+    "propertyCd": "L132609353",
+    "latitude": 35.660282,
+    "longitude": 139.7162133,
+    "address": "東京都港区南青山６丁目11-6",
+    "iconUrl": "https://www.livable.co.jp/images/common/pin_chintai_selected.png"
+   }
+  },
+  "access": {
+   "linkList": [
+    {
+     "text": "東京メトロ千代田線",
+     "href": "/chintai/mansion/tokyo/l2346/select-station/"
+    },
+    {
+     "text": "「表参道」駅",
+     "href": "/chintai/mansion/tokyo/s2346170/"
+    },
+    {
+     "text": "徒歩9分",
+     "href": ""
+    }
+   ]
+  },
+  "basicInfo": {
+   "itemList": [
+    {
+     "label": "間取り",
+     "value": "2LDK"
+    },
+    {
+     "label": "専有面積",
+     "value": "70.43m<sup>2</sup>"
+    },
+    {
+     "label": "築年月",
+     "value": "2026年9月"
+    },
+    {
+     "label": "所在階数",
+     "value": "21階建ての2階部分"
+    },
+    {
+     "label": "向き",
+     "value": "南西"
+    }
+   ]
+  },
+  "userReaction": {
+   "enableMachineScore": false
+  },
+  "anchorLinkList": {
+   "linkList": [
+    {
+     "id": "bus_002_click_anchor_features",
+     "text": "特徴",
+     "href": {
+      "hash": "propertyFeatures"
+     }
+    },
+    {
+     "id": "bus_002_click_anchor_map",
+     "text": "周辺地図",
+     "href": {
+      "hash": "mapSection"
+     }
+    },
+    {
+     "id": "bus_002_click_anchor_summary",
+     "text": "物件概要",
+     "href": {
+      "hash": "propertySummarySection"
+     }
+    },
+    {
+     "id": "bus_002_click_anchor_store",
+     "text": "担当店舗",
+     "href": {
+      "hash": "shopSection"
+     }
+    }
+   ]
+  },
+  "propertyImage": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fphoto1%2FL132609353.jpg%3F20261015123506&w=96&h=96"
+ },
+ "summary": {
+  "enableFavoriteComparison": true,
+  "compareInfo": {
+   "button": {
+    "isEmphasized": false
+   },
+   "modal": {
+    "type": "rent",
+    "inquiryUrl": "/chintai/inquiry/L132609353/"
+   }
+  },
+  "tableItems": [
+   {
+    "type": "linkList",
+    "title": "所在地",
+    "data": {
+     "links": [
+      {
+       "text": "東京都",
+       "href": "/chintai/mansion/tokyo/select-area/"
+      },
+      {
+       "text": "港区",
+       "href": "/chintai/mansion/tokyo/a13103/"
+      },
+      {
+       "text": "南青山６丁目",
+       "href": "/chintai/mansion/tokyo/t13103025/"
+      },
+      {
+       "text": "11-6"
+      }
+     ],
+     "googleMapLink": {
+      "href": "https://www.google.com/maps?q=35.660282%2C139.7162133"
+     }
+    },
+    "column": 1
+   },
+   {
+    "type": "multiLinkList",
+    "title": "交通",
+    "data": {
+     "links": [
+      [
+       {
+        "text": "東京メトロ千代田線",
+        "href": "/chintai/mansion/tokyo/l2346/select-station/"
+       },
+       {
+        "text": "「表参道」駅",
+        "href": "/chintai/mansion/tokyo/s2346170/"
+       },
+       {
+        "text": "徒歩9分"
+       }
+      ]
+     ]
+    },
+    "column": 1
+   },
+   {
+    "type": "price",
+    "title": "賃料\n（管理費）",
+    "data": {
+     "price": {
+      "mstCd": 4,
+      "consumptionTaxFlg": false,
+      "rent": 647000
+     }
+    },
+    "column": 1
+   },
+   {
+    "type": "text",
+    "title": "物件種別",
+    "data": "マンション"
+   },
+   {
+    "type": "text",
+    "title": "構造",
+    "data": "鉄筋コンクリート造"
+   },
+   {
+    "type": "html",
+    "title": "敷金/礼金 敷金償却/敷引",
+    "data": "1ヶ月 / 1ヶ月<br>- / -"
+   },
+   {
+    "type": "text",
+    "title": "更新料",
+    "data": "-"
+   },
+   {
+    "type": "html",
+    "title": "間取り",
+    "data": "2LDK"
+   },
+   {
+    "type": "html",
+    "title": "専有面積",
+    "data": "70.43m<sup>2</sup>"
+   },
+   {
+    "type": "html",
+    "title": "築年月",
+    "data": "2026年9月"
+   },
+   {
+    "type": "text",
+    "title": "所在階数",
+    "data": "21階建ての2階部分"
+   },
+   {
+    "type": "text",
+    "title": "向き",
+    "data": "南西"
+   },
+   {
+    "type": "text",
+    "title": "入居可能時期",
+    "data": "-"
+   },
+   {
+    "type": "html",
+    "title": "設備",
+    "data": "<ul><li>■新築（築後1年未満未入居）</li><li>■オートロック</li><li>■床暖房</li><li>■エレベータ</li><li>■バルコニー</li><li>■ウォークインクロゼット</li><li>■浴室乾燥機</li><li>■浴室追焚可</li><li>■ガスコンロ付 コンロ3口</li><li>■バス・トイレ別</li><li>■洗面所独立</li><li>■室内洗濯機置き場</li><li>■駐輪場有（利用料借主負担）</li><li>■宅配ボックス</li><li>■インターネット接続可【光ケーブル・CATV以外】（利用料借主負担）</li><li>■ディスポーザー</li></ul>"
+   },
+   {
+    "type": "text",
+    "title": "入居条件",
+    "data": "ペット可・相談"
+   },
+   {
+    "type": "html",
+    "title": "契約の種類・期間",
+    "data": "定期建物賃貸借契約  期間：3年"
+   },
+   {
+    "type": "html",
+    "title": "駐車場",
+    "data": "-"
+   },
+   {
+    "type": "html",
+    "title": "損保",
+    "data": "14,540円 &#xFF5E; /2年"
+   },
+   {
+    "type": "html",
+    "title": "その他費用",
+    "data": "保証会社必須。初回：月額賃料等の５０～６０％、２年目～：１～２万円／年※１０月２３日申込～変更予定"
+   },
+   {
+    "type": "text",
+    "title": "取引態様",
+    "data": "仲介"
+   },
+   {
+    "type": "text",
+    "title": "仲介手数料",
+    "data": "1.1ヶ月(税込)"
+   },
+   {
+    "type": "html",
+    "title": "備考",
+    "data": "-"
+   },
+   {
+    "type": "text",
+    "title": "物件番号",
+    "data": "L132609353"
+   }
+  ]
+ },
+ "specificSection": {
+  "propertyFeatureImage": [
+   {
+    "src": "/_assets/images/templates/bus/icon_fctn62_pet_consultation.png",
+    "alt": "ペット相談",
+    "text": "ペット相談"
+   },
+   {
+    "src": "/_assets/images/templates/bus/icon_fctn14_facing_south.png",
+    "alt": "南西向き",
+    "text": "南西向き"
+   },
+   {
+    "src": "/_assets/images/templates/bus/icon_fctn32_air_conditioning.png",
+    "alt": "エアコン",
+    "text": "エアコン"
+   },
+   {
+    "src": "/_assets/images/templates/bus/icon_fctn66_reheating.png",
+    "alt": "浴室追焚",
+    "text": "浴室追焚"
+   },
+   {
+    "src": "/_assets/images/templates/bus/icon_fctn38_internet.png",
+    "alt": "インターネット",
+    "text": "インターネット"
+   },
+   {
+    "src": "/_assets/images/templates/bus/icon_fctn43_build_5_years.png",
+    "alt": "築5年以内",
+    "text": "築5年以内"
+   },
+   {
+    "src": "/_assets/images/templates/bus/icon_fctn50_auto_lock.png",
+    "alt": "オートロック",
+    "text": "オートロック"
+   },
+   {
+    "src": "/_assets/images/templates/bus/icon_fctn56_10minutes_on_foot.png",
+    "alt": "駅徒歩<br>10分以内",
+    "text": "駅徒歩<br>10分以内"
+   }
+  ]
+ },
+ "detailImages": {
+  "propertyName": "パークコート青山高樹町ザ　タワー",
+  "inquiryUrl": "/chintai/inquiry/L132609353/",
+  "pc": {
+   "mainImage": {
+    "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fphoto1%2FL132609353.jpg%3F20261015123506&w=768&h=576",
+    "alt": "パークコート青山高樹町ザ　タワー"
+   },
+   "subImage": {
+    "id": "bus_common_click_floor-plan-image",
+    "image": {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Flayout1%2FL132609353.jpg%3F20260921230042&w=768&h=576",
+     "alt": "パークコート青山高樹町ザ　タワー"
+    },
+    "isAddToModalTab": true
+   },
+   "thumbnailImages": []
+  },
+  "sp": {
+   "images": [
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fphoto1%2FL132609353.jpg%3F20261015123506&w=768&h=576",
+     "alt": "パークコート青山高樹町ザ　タワー"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Flayout1%2FL132609353.jpg%3F20260921230042&w=768&h=576",
+     "alt": "パークコート青山高樹町ザ　タワー"
+    }
+   ],
+   "subImageButton": "layout"
+  },
+  "modal": {
+   "allImages": [
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fphoto1%2FL132609353.jpg%3F20261015123506&w=768&h=576",
+     "alt": "パークコート青山高樹町ザ　タワー",
+     "description": ""
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Flayout1%2FL132609353.jpg%3F20260921230042&w=768&h=576",
+     "alt": "パークコート青山高樹町ザ　タワー",
+     "description": ""
+    }
+   ],
+   "subImage": {
+    "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Flayout1%2FL132609353.jpg%3F20260921230042&w=768&h=576",
+    "alt": "パークコート青山高樹町ザ　タワー",
+    "tabText": "間取り"
+   }
+  }
+ },
+ "recommendedPoint": {
+  "text": "【借主負担等】<br>■定借３年：再契約相談可<br>■口座振替事務手数料：２２０円／月（税込）<br>■退去時通常清掃費用：１３１，７０４円（税込）<br>■退去時エアコンクリーニング費用：１６，５００円～２７，５００円／台（税込）<br>■駐輪場１台（区画指定有、変更不可）<br>■ペット相談可：小型犬又は猫１匹（敷金２）・規約による制限有"
+ }
+}

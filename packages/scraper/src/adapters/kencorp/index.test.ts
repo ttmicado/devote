@@ -23,26 +23,16 @@ const office = (bldg: string, code: string) =>
   );
 
 describe("kencorp queries", () => {
-  it("賃貸・売買・事業用 × 区/エリアの検索API URLを作る", () => {
+  it("賃貸・売買 × 区/エリアの検索API URLを作る（事業用は巡回しない）", () => {
     const urls = adapter.queries().map((q) => adapter.buildListUrl(q));
-    expect(urls).toHaveLength(18);
+    expect(urls).toHaveLength(12);
     expect(urls).toContain(
       `${API}?search_type=rent&search_by=district&districts=12&page=1&per_page=50`,
     );
     expect(urls).toContain(
       `${API}?search_type=buy&search_by=area&areas=ginwan02&page=1&per_page=50`,
     );
-    // 事業用は区コードは共通、エリアコードは別体系（rinkai03=晴海・勝どき、rinkai02=豊洲・東雲）
-    expect(urls).toContain(
-      `${API}?search_type=office&search_by=district&districts=12&page=1&per_page=50`,
-    );
-    expect(urls).toContain(
-      `${API}?search_type=office&search_by=area&areas=rinkai03&page=1&per_page=50`,
-    );
-    expect(urls).toContain(
-      `${API}?search_type=office&search_by=area&areas=rinkai02&page=1&per_page=50`,
-    );
-    expect(urls.some((u) => u.includes("search_type=office") && u.includes("ginwan"))).toBe(false);
+    expect(urls.some((u) => u.includes("search_type=office"))).toBe(false);
   });
 });
 

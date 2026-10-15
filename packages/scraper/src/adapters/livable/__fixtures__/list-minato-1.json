@@ -1,0 +1,4728 @@
+{
+ "searchedResultCounts": "193",
+ "propertyList": [
+  {
+   "propertyCd": "L132609088",
+   "propertyName": "シティタワー麻布十番",
+   "priceModel": {
+    "mstCd": 4,
+    "consumptionTaxFlg": false,
+    "rent": 380000
+   },
+   "address": "東京都港区三田１丁目",
+   "access": [
+    "東京メトロ南北線「麻布十番」駅 徒歩4分",
+    "都営大江戸線「麻布十番」駅 徒歩4分",
+    "都営大江戸線「赤羽橋」駅 徒歩4分",
+    "都営三田線「芝公園」駅 徒歩12分"
+   ],
+   "propertyDetail": [
+    "敷金1ヶ月 礼金1ヶ月",
+    "敷金償却- 敷引-",
+    "1LDK",
+    "45.49m<sup>2</sup>",
+    "2009年6月築",
+    "38階建ての19階部分",
+    "南東向き"
+   ],
+   "detailUrl": "/chintai/L132609088/",
+   "inquiryInfo": {
+    "inquiryUrl": "/chintai/inquiry/L132609088/",
+    "inquiryTypeFlg": true,
+    "inquiryLinkText": "詳細"
+   },
+   "labelList": [
+    {
+     "cd": "028",
+     "iconName": "物件種別",
+     "detailClass": "a-tag--type",
+     "detailText": "マンション",
+     "listClass": "a-tag--type",
+     "listText": "マンション"
+    }
+   ],
+   "otherConditionLabels": [
+    {
+     "cd": "029",
+     "iconName": "パノラマ",
+     "detailClass": "a-tag--condition",
+     "detailText": "パノラマ",
+     "listClass": "a-tag--condition",
+     "listText": "パノラマ"
+    }
+   ],
+   "thumbnailImage": [
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fphoto1%2FL132609088.jpg%3F20261006230039&w=718&h=538",
+     "alt": "シティタワー麻布十番(外観)",
+     "href": "/chintai/L132609088/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Flayout1%2FL132609088.jpg%3F20260911230043&w=718&h=538",
+     "alt": "シティタワー麻布十番(間取り)",
+     "href": "/chintai/L132609088/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Findoor1%2FL132609088.jpg%3F20261004143506&w=718&h=538",
+     "alt": "シティタワー麻布十番",
+     "href": "/chintai/L132609088/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Findoor2%2FL132609088.jpg%3F20261004230040&w=718&h=538",
+     "alt": "シティタワー麻布十番",
+     "href": "/chintai/L132609088/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc3%2FL132609088.jpg%3F20261004230040&w=718&h=538",
+     "alt": "シティタワー麻布十番",
+     "href": "/chintai/L132609088/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc4%2FL132609088.jpg%3F20261004230040&w=718&h=538",
+     "alt": "シティタワー麻布十番",
+     "href": "/chintai/L132609088/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc5%2FL132609088.jpg%3F20261004230040&w=718&h=538",
+     "alt": "シティタワー麻布十番",
+     "href": "/chintai/L132609088/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc6%2FL132609088.jpg%3F20261004230040&w=718&h=538",
+     "alt": "シティタワー麻布十番",
+     "href": "/chintai/L132609088/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc7%2FL132609088.jpg%3F20261004230040&w=718&h=538",
+     "alt": "シティタワー麻布十番",
+     "href": "/chintai/L132609088/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc8%2FL132609088.jpg%3F20261004230040&w=718&h=538",
+     "alt": "シティタワー麻布十番",
+     "href": "/chintai/L132609088/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc9%2FL132609088.jpg%3F20261004230040&w=718&h=538",
+     "alt": "シティタワー麻布十番",
+     "href": "/chintai/L132609088/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc10%2FL132609088.jpg%3F20261004230040&w=718&h=538",
+     "alt": "シティタワー麻布十番",
+     "href": "/chintai/L132609088/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc11%2FL132609088.jpg%3F20261004230040&w=718&h=538",
+     "alt": "シティタワー麻布十番",
+     "href": "/chintai/L132609088/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc12%2FL132609088.jpg%3F20261004230040&w=718&h=538",
+     "alt": "シティタワー麻布十番",
+     "href": "/chintai/L132609088/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc13%2FL132609088.jpg%3F20261004230040&w=718&h=538",
+     "alt": "シティタワー麻布十番",
+     "href": "/chintai/L132609088/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc14%2FL132609088.jpg%3F20261004230040&w=718&h=538",
+     "alt": "シティタワー麻布十番",
+     "href": "/chintai/L132609088/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc15%2FL132609088.jpg%3F20261004230040&w=718&h=538",
+     "alt": "シティタワー麻布十番",
+     "href": "/chintai/L132609088/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc16%2FL132609088.jpg%3F20261004230040&w=718&h=538",
+     "alt": "シティタワー麻布十番",
+     "href": "/chintai/L132609088/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc17%2FL132609088.jpg%3F20261004230040&w=718&h=538",
+     "alt": "シティタワー麻布十番",
+     "href": "/chintai/L132609088/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc18%2FL132609088.jpg%3F20261004230040&w=718&h=538",
+     "alt": "シティタワー麻布十番",
+     "href": "/chintai/L132609088/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc19%2FL132609088.jpg%3F20260911230043&w=718&h=538",
+     "alt": "シティタワー麻布十番",
+     "href": "/chintai/L132609088/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc20%2FL132609088.jpg%3F20261004143506&w=718&h=538",
+     "alt": "シティタワー麻布十番",
+     "href": "/chintai/L132609088/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc21%2FL132609088.jpg%3F20261004143506&w=718&h=538",
+     "alt": "シティタワー麻布十番",
+     "href": "/chintai/L132609088/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fenv3%2FL132609088.jpg%3F20261006230039&w=718&h=538",
+     "alt": "シティタワー麻布十番",
+     "href": "/chintai/L132609088/"
+    }
+   ],
+   "layoutImageModal": {
+    "propertyTitle": "シティタワー麻布十番",
+    "layoutImage": {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Flayout1%2FL132609088.jpg%3F20260911230043&w=718&h=538",
+     "alt": "シティタワー麻布十番(間取り)"
+    },
+    "propertyDetailUrl": "/chintai/L132609088/",
+    "inquiryUrl": "/chintai/inquiry/L132609088/"
+   },
+   "prIconFlg": false,
+   "favoriteFlg": false,
+   "favoriteType": "rent",
+   "applyingServiceList": [],
+   "commuteInfoList": [],
+   "openHouses": [],
+   "matchingTargetFlg": false,
+   "isForeignPage": false,
+   "hasOfficialSite": false
+  },
+  {
+   "propertyCd": "L132608466",
+   "propertyName": "三田ガーデンヒルズ　イーストヒル",
+   "priceModel": {
+    "mstCd": 4,
+    "consumptionTaxFlg": false,
+    "rent": 1380000
+   },
+   "address": "東京都港区三田１丁目",
+   "access": [
+    "東京メトロ南北線「麻布十番」駅 徒歩5分",
+    "都営大江戸線「麻布十番」駅 徒歩5分",
+    "都営大江戸線「赤羽橋」駅 徒歩10分"
+   ],
+   "propertyDetail": [
+    "敷金2ヶ月 礼金1ヶ月",
+    "敷金償却- 敷引-",
+    "3LDK",
+    "100.65m<sup>2</sup>",
+    "2024年12月築",
+    "14階建ての11階部分",
+    "東向き"
+   ],
+   "detailUrl": "/chintai/L132608466/",
+   "inquiryInfo": {
+    "inquiryUrl": "/chintai/inquiry/L132608466/",
+    "inquiryTypeFlg": true,
+    "inquiryLinkText": "詳細"
+   },
+   "labelList": [
+    {
+     "cd": "028",
+     "iconName": "物件種別",
+     "detailClass": "a-tag--type",
+     "detailText": "マンション",
+     "listClass": "a-tag--type",
+     "listText": "マンション"
+    },
+    {
+     "cd": "025",
+     "iconName": "新賃料",
+     "detailClass": "a-tag--new-price",
+     "detailText": "新賃料 10/11",
+     "listClass": "a-tag--new-price",
+     "listText": "新賃料 10/11"
+    }
+   ],
+   "otherConditionLabels": [],
+   "thumbnailImage": [
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fphoto1%2FL132608466.jpg%3F20261015164506&w=718&h=538",
+     "alt": "三田ガーデンヒルズ　イーストヒル(外観)",
+     "href": "/chintai/L132608466/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Flayout1%2FL132608466.jpg%3F20260829230042&w=718&h=538",
+     "alt": "三田ガーデンヒルズ　イーストヒル(間取り)",
+     "href": "/chintai/L132608466/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Findoor1%2FL132608466.jpg%3F20260903230042&w=718&h=538",
+     "alt": "三田ガーデンヒルズ　イーストヒル",
+     "href": "/chintai/L132608466/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Findoor2%2FL132608466.jpg%3F20260903230042&w=718&h=538",
+     "alt": "三田ガーデンヒルズ　イーストヒル",
+     "href": "/chintai/L132608466/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc3%2FL132608466.jpg%3F20260903230042&w=718&h=538",
+     "alt": "三田ガーデンヒルズ　イーストヒル",
+     "href": "/chintai/L132608466/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc4%2FL132608466.jpg%3F20260903230042&w=718&h=538",
+     "alt": "三田ガーデンヒルズ　イーストヒル",
+     "href": "/chintai/L132608466/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc5%2FL132608466.jpg%3F20260903230042&w=718&h=538",
+     "alt": "三田ガーデンヒルズ　イーストヒル",
+     "href": "/chintai/L132608466/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc6%2FL132608466.jpg%3F20260903230042&w=718&h=538",
+     "alt": "三田ガーデンヒルズ　イーストヒル",
+     "href": "/chintai/L132608466/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc7%2FL132608466.jpg%3F20260903230042&w=718&h=538",
+     "alt": "三田ガーデンヒルズ　イーストヒル",
+     "href": "/chintai/L132608466/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc8%2FL132608466.jpg%3F20260903230042&w=718&h=538",
+     "alt": "三田ガーデンヒルズ　イーストヒル",
+     "href": "/chintai/L132608466/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc9%2FL132608466.jpg%3F20260903230042&w=718&h=538",
+     "alt": "三田ガーデンヒルズ　イーストヒル",
+     "href": "/chintai/L132608466/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc10%2FL132608466.jpg%3F20260903230042&w=718&h=538",
+     "alt": "三田ガーデンヒルズ　イーストヒル",
+     "href": "/chintai/L132608466/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc11%2FL132608466.jpg%3F20260903230042&w=718&h=538",
+     "alt": "三田ガーデンヒルズ　イーストヒル",
+     "href": "/chintai/L132608466/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc12%2FL132608466.jpg%3F20260903230042&w=718&h=538",
+     "alt": "三田ガーデンヒルズ　イーストヒル",
+     "href": "/chintai/L132608466/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc13%2FL132608466.jpg%3F20260903230042&w=718&h=538",
+     "alt": "三田ガーデンヒルズ　イーストヒル",
+     "href": "/chintai/L132608466/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc14%2FL132608466.jpg%3F20260903230042&w=718&h=538",
+     "alt": "三田ガーデンヒルズ　イーストヒル",
+     "href": "/chintai/L132608466/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc15%2FL132608466.jpg%3F20260903230042&w=718&h=538",
+     "alt": "三田ガーデンヒルズ　イーストヒル",
+     "href": "/chintai/L132608466/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc16%2FL132608466.jpg%3F20260903230042&w=718&h=538",
+     "alt": "三田ガーデンヒルズ　イーストヒル",
+     "href": "/chintai/L132608466/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc17%2FL132608466.jpg%3F20260830230042&w=718&h=538",
+     "alt": "三田ガーデンヒルズ　イーストヒル",
+     "href": "/chintai/L132608466/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc18%2FL132608466.jpg%3F20260830230042&w=718&h=538",
+     "alt": "三田ガーデンヒルズ　イーストヒル",
+     "href": "/chintai/L132608466/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc19%2FL132608466.jpg%3F20260830230042&w=718&h=538",
+     "alt": "三田ガーデンヒルズ　イーストヒル",
+     "href": "/chintai/L132608466/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc20%2FL132608466.jpg%3F20260830230042&w=718&h=538",
+     "alt": "三田ガーデンヒルズ　イーストヒル",
+     "href": "/chintai/L132608466/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc21%2FL132608466.jpg%3F20260830230042&w=718&h=538",
+     "alt": "三田ガーデンヒルズ　イーストヒル",
+     "href": "/chintai/L132608466/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc22%2FL132608466.jpg%3F20261015164506&w=718&h=538",
+     "alt": "三田ガーデンヒルズ　イーストヒル",
+     "href": "/chintai/L132608466/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc23%2FL132608466.jpg%3F20261015164506&w=718&h=538",
+     "alt": "三田ガーデンヒルズ　イーストヒル",
+     "href": "/chintai/L132608466/"
+    }
+   ],
+   "layoutImageModal": {
+    "propertyTitle": "三田ガーデンヒルズ　イーストヒル",
+    "layoutImage": {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Flayout1%2FL132608466.jpg%3F20260829230042&w=718&h=538",
+     "alt": "三田ガーデンヒルズ　イーストヒル(間取り)"
+    },
+    "propertyDetailUrl": "/chintai/L132608466/",
+    "inquiryUrl": "/chintai/inquiry/L132608466/"
+   },
+   "prIconFlg": false,
+   "favoriteFlg": false,
+   "favoriteType": "rent",
+   "applyingServiceList": [],
+   "commuteInfoList": [],
+   "openHouses": [],
+   "matchingTargetFlg": false,
+   "isForeignPage": false,
+   "hasOfficialSite": false
+  },
+  {
+   "propertyCd": "L826101903",
+   "propertyName": "カーサスプレンディッド三田慶大前",
+   "priceModel": {
+    "mstCd": 4,
+    "consumptionTaxFlg": false,
+    "rent": 119000,
+    "manageCost": 10000
+   },
+   "address": "東京都港区三田３丁目",
+   "access": [
+    "都営浅草線「三田」駅 徒歩4分",
+    "山手線「田町」駅 徒歩7分",
+    "都営三田線「三田」駅 徒歩4分"
+   ],
+   "propertyDetail": [
+    "敷金1ヶ月 礼金1ヶ月",
+    "敷金償却- 敷引-",
+    "1K",
+    "22.66m<sup>2</sup>",
+    "2016年3月築",
+    "11階建ての3階部分",
+    "北東向き"
+   ],
+   "detailUrl": "/chintai/L826101903/",
+   "inquiryInfo": {
+    "inquiryUrl": "/chintai/inquiry/L826101903/",
+    "inquiryTypeFlg": true,
+    "inquiryLinkText": "詳細"
+   },
+   "labelList": [
+    {
+     "cd": "028",
+     "iconName": "物件種別",
+     "detailClass": "a-tag--type",
+     "detailText": "マンション",
+     "listClass": "a-tag--type",
+     "listText": "マンション"
+    },
+    {
+     "cd": "001",
+     "iconName": "NEW",
+     "detailClass": "a-tag--new-date",
+     "detailText": "NEW 10/13",
+     "listClass": "a-tag--new-date",
+     "listText": "NEW 10/13"
+    }
+   ],
+   "otherConditionLabels": [],
+   "thumbnailImage": [
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fphoto1%2FL826101903.jpg%3F20261014230044&w=718&h=538",
+     "alt": "カーサスプレンディッド三田慶大前(外観)",
+     "href": "/chintai/L826101903/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Flayout1%2FL826101903.jpg%3F20261013230043&w=718&h=538",
+     "alt": "カーサスプレンディッド三田慶大前(間取り)",
+     "href": "/chintai/L826101903/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc22%2FL826101903.jpg%3F20261014230044&w=718&h=538",
+     "alt": "カーサスプレンディッド三田慶大前",
+     "href": "/chintai/L826101903/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc23%2FL826101903.jpg%3F20261014230044&w=718&h=538",
+     "alt": "カーサスプレンディッド三田慶大前",
+     "href": "/chintai/L826101903/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc24%2FL826101903.jpg%3F20261014230044&w=718&h=538",
+     "alt": "カーサスプレンディッド三田慶大前",
+     "href": "/chintai/L826101903/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc25%2FL826101903.jpg%3F20261014230044&w=718&h=538",
+     "alt": "カーサスプレンディッド三田慶大前",
+     "href": "/chintai/L826101903/"
+    }
+   ],
+   "layoutImageModal": {
+    "propertyTitle": "カーサスプレンディッド三田慶大前",
+    "layoutImage": {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Flayout1%2FL826101903.jpg%3F20261013230043&w=718&h=538",
+     "alt": "カーサスプレンディッド三田慶大前(間取り)"
+    },
+    "propertyDetailUrl": "/chintai/L826101903/",
+    "inquiryUrl": "/chintai/inquiry/L826101903/"
+   },
+   "prIconFlg": false,
+   "favoriteFlg": false,
+   "favoriteType": "rent",
+   "applyingServiceList": [],
+   "commuteInfoList": [],
+   "openHouses": [],
+   "matchingTargetFlg": false,
+   "isForeignPage": false,
+   "hasOfficialSite": false
+  },
+  {
+   "propertyCd": "L826101349",
+   "propertyName": "カーサスプレンディッド三田慶大前",
+   "priceModel": {
+    "mstCd": 4,
+    "consumptionTaxFlg": false,
+    "rent": 120000,
+    "manageCost": 10000
+   },
+   "address": "東京都港区三田３丁目",
+   "access": [
+    "都営浅草線「三田」駅 徒歩4分",
+    "山手線「田町」駅 徒歩7分",
+    "都営三田線「三田」駅 徒歩4分"
+   ],
+   "propertyDetail": [
+    "敷金1ヶ月 礼金1ヶ月",
+    "敷金償却- 敷引-",
+    "1K",
+    "22.66m<sup>2</sup>",
+    "2016年3月築",
+    "11階建ての4階部分",
+    "北東向き"
+   ],
+   "detailUrl": "/chintai/L826101349/",
+   "inquiryInfo": {
+    "inquiryUrl": "/chintai/inquiry/L826101349/",
+    "inquiryTypeFlg": true,
+    "inquiryLinkText": "詳細"
+   },
+   "labelList": [
+    {
+     "cd": "028",
+     "iconName": "物件種別",
+     "detailClass": "a-tag--type",
+     "detailText": "マンション",
+     "listClass": "a-tag--type",
+     "listText": "マンション"
+    },
+    {
+     "cd": "001",
+     "iconName": "NEW",
+     "detailClass": "a-tag--new-date",
+     "detailText": "NEW 10/9",
+     "listClass": "a-tag--new-date",
+     "listText": "NEW 10/9"
+    }
+   ],
+   "otherConditionLabels": [],
+   "thumbnailImage": [
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fphoto1%2FL826101349.jpg%3F20261014230044&w=718&h=538",
+     "alt": "カーサスプレンディッド三田慶大前(外観)",
+     "href": "/chintai/L826101349/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Flayout1%2FL826101349.jpg%3F20261009230044&w=718&h=538",
+     "alt": "カーサスプレンディッド三田慶大前(間取り)",
+     "href": "/chintai/L826101349/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Findoor1%2FL826101349.jpg%3F20261009230044&w=718&h=538",
+     "alt": "カーサスプレンディッド三田慶大前",
+     "href": "/chintai/L826101349/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Findoor2%2FL826101349.jpg%3F20261009230044&w=718&h=538",
+     "alt": "カーサスプレンディッド三田慶大前",
+     "href": "/chintai/L826101349/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc3%2FL826101349.jpg%3F20261009230044&w=718&h=538",
+     "alt": "カーサスプレンディッド三田慶大前",
+     "href": "/chintai/L826101349/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc4%2FL826101349.jpg%3F20261009230044&w=718&h=538",
+     "alt": "カーサスプレンディッド三田慶大前",
+     "href": "/chintai/L826101349/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc5%2FL826101349.jpg%3F20261009230044&w=718&h=538",
+     "alt": "カーサスプレンディッド三田慶大前",
+     "href": "/chintai/L826101349/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc6%2FL826101349.jpg%3F20261009230044&w=718&h=538",
+     "alt": "カーサスプレンディッド三田慶大前",
+     "href": "/chintai/L826101349/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc7%2FL826101349.jpg%3F20261009230044&w=718&h=538",
+     "alt": "カーサスプレンディッド三田慶大前",
+     "href": "/chintai/L826101349/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc8%2FL826101349.jpg%3F20261009230044&w=718&h=538",
+     "alt": "カーサスプレンディッド三田慶大前",
+     "href": "/chintai/L826101349/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc9%2FL826101349.jpg%3F20261009230044&w=718&h=538",
+     "alt": "カーサスプレンディッド三田慶大前",
+     "href": "/chintai/L826101349/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc10%2FL826101349.jpg%3F20261009230044&w=718&h=538",
+     "alt": "カーサスプレンディッド三田慶大前",
+     "href": "/chintai/L826101349/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc11%2FL826101349.jpg%3F20261009230044&w=718&h=538",
+     "alt": "カーサスプレンディッド三田慶大前",
+     "href": "/chintai/L826101349/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc12%2FL826101349.jpg%3F20261009230044&w=718&h=538",
+     "alt": "カーサスプレンディッド三田慶大前",
+     "href": "/chintai/L826101349/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc13%2FL826101349.jpg%3F20261009230044&w=718&h=538",
+     "alt": "カーサスプレンディッド三田慶大前",
+     "href": "/chintai/L826101349/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc22%2FL826101349.jpg%3F20261014230044&w=718&h=538",
+     "alt": "カーサスプレンディッド三田慶大前",
+     "href": "/chintai/L826101349/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc23%2FL826101349.jpg%3F20261014230044&w=718&h=538",
+     "alt": "カーサスプレンディッド三田慶大前",
+     "href": "/chintai/L826101349/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc24%2FL826101349.jpg%3F20261014230044&w=718&h=538",
+     "alt": "カーサスプレンディッド三田慶大前",
+     "href": "/chintai/L826101349/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc25%2FL826101349.jpg%3F20261014230044&w=718&h=538",
+     "alt": "カーサスプレンディッド三田慶大前",
+     "href": "/chintai/L826101349/"
+    }
+   ],
+   "layoutImageModal": {
+    "propertyTitle": "カーサスプレンディッド三田慶大前",
+    "layoutImage": {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Flayout1%2FL826101349.jpg%3F20261009230044&w=718&h=538",
+     "alt": "カーサスプレンディッド三田慶大前(間取り)"
+    },
+    "propertyDetailUrl": "/chintai/L826101349/",
+    "inquiryUrl": "/chintai/inquiry/L826101349/"
+   },
+   "prIconFlg": false,
+   "favoriteFlg": false,
+   "favoriteType": "rent",
+   "applyingServiceList": [],
+   "commuteInfoList": [],
+   "openHouses": [],
+   "matchingTargetFlg": false,
+   "isForeignPage": false,
+   "hasOfficialSite": false
+  },
+  {
+   "propertyCd": "L132610084",
+   "propertyName": "クオリア三田",
+   "priceModel": {
+    "mstCd": 4,
+    "consumptionTaxFlg": false,
+    "rent": 162000,
+    "manageCost": 10000
+   },
+   "address": "東京都港区三田３丁目",
+   "access": [
+    "山手線「田町」駅 徒歩7分",
+    "都営浅草線「三田」駅 徒歩6分"
+   ],
+   "propertyDetail": [
+    "敷金1ヶ月 礼金1ヶ月",
+    "敷金償却- 敷引-",
+    "1K+S(納戸)",
+    "32.47m<sup>2</sup>",
+    "2008年11月築",
+    "14階建ての11階部分",
+    "北西向き"
+   ],
+   "detailUrl": "/chintai/L132610084/",
+   "inquiryInfo": {
+    "inquiryUrl": "/chintai/inquiry/L132610084/",
+    "inquiryTypeFlg": true,
+    "inquiryLinkText": "詳細"
+   },
+   "labelList": [
+    {
+     "cd": "028",
+     "iconName": "物件種別",
+     "detailClass": "a-tag--type",
+     "detailText": "マンション",
+     "listClass": "a-tag--type",
+     "listText": "マンション"
+    },
+    {
+     "cd": "001",
+     "iconName": "NEW",
+     "detailClass": "a-tag--new-date",
+     "detailText": "NEW 10/9",
+     "listClass": "a-tag--new-date",
+     "listText": "NEW 10/9"
+    }
+   ],
+   "otherConditionLabels": [],
+   "thumbnailImage": [
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fphoto1%2FL132610084.jpg%3F20261009230044&w=718&h=538",
+     "alt": "クオリア三田(外観)",
+     "href": "/chintai/L132610084/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Flayout1%2FL132610084.jpg%3F20261009230044&w=718&h=538",
+     "alt": "クオリア三田(間取り)",
+     "href": "/chintai/L132610084/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Findoor1%2FL132610084.jpg%3F20261009230044&w=718&h=538",
+     "alt": "クオリア三田",
+     "href": "/chintai/L132610084/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Findoor2%2FL132610084.jpg%3F20261009230044&w=718&h=538",
+     "alt": "クオリア三田",
+     "href": "/chintai/L132610084/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc3%2FL132610084.jpg%3F20261009230044&w=718&h=538",
+     "alt": "クオリア三田",
+     "href": "/chintai/L132610084/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc4%2FL132610084.jpg%3F20261009230044&w=718&h=538",
+     "alt": "クオリア三田",
+     "href": "/chintai/L132610084/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc5%2FL132610084.jpg%3F20261009230044&w=718&h=538",
+     "alt": "クオリア三田",
+     "href": "/chintai/L132610084/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc6%2FL132610084.jpg%3F20261009230044&w=718&h=538",
+     "alt": "クオリア三田",
+     "href": "/chintai/L132610084/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc7%2FL132610084.jpg%3F20261009230044&w=718&h=538",
+     "alt": "クオリア三田",
+     "href": "/chintai/L132610084/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc8%2FL132610084.jpg%3F20261009230044&w=718&h=538",
+     "alt": "クオリア三田",
+     "href": "/chintai/L132610084/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc9%2FL132610084.jpg%3F20261009230044&w=718&h=538",
+     "alt": "クオリア三田",
+     "href": "/chintai/L132610084/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc10%2FL132610084.jpg%3F20261009230044&w=718&h=538",
+     "alt": "クオリア三田",
+     "href": "/chintai/L132610084/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc11%2FL132610084.jpg%3F20261009230044&w=718&h=538",
+     "alt": "クオリア三田",
+     "href": "/chintai/L132610084/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc12%2FL132610084.jpg%3F20261009230044&w=718&h=538",
+     "alt": "クオリア三田",
+     "href": "/chintai/L132610084/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc13%2FL132610084.jpg%3F20261009230044&w=718&h=538",
+     "alt": "クオリア三田",
+     "href": "/chintai/L132610084/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc14%2FL132610084.jpg%3F20261009230044&w=718&h=538",
+     "alt": "クオリア三田",
+     "href": "/chintai/L132610084/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc15%2FL132610084.jpg%3F20261009230044&w=718&h=538",
+     "alt": "クオリア三田",
+     "href": "/chintai/L132610084/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc16%2FL132610084.jpg%3F20261009230044&w=718&h=538",
+     "alt": "クオリア三田",
+     "href": "/chintai/L132610084/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc17%2FL132610084.jpg%3F20261009230044&w=718&h=538",
+     "alt": "クオリア三田",
+     "href": "/chintai/L132610084/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc18%2FL132610084.jpg%3F20261009230044&w=718&h=538",
+     "alt": "クオリア三田",
+     "href": "/chintai/L132610084/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc19%2FL132610084.jpg%3F20261009230044&w=718&h=538",
+     "alt": "クオリア三田",
+     "href": "/chintai/L132610084/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc20%2FL132610084.jpg%3F20261009230044&w=718&h=538",
+     "alt": "クオリア三田",
+     "href": "/chintai/L132610084/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc21%2FL132610084.jpg%3F20261009230044&w=718&h=538",
+     "alt": "クオリア三田",
+     "href": "/chintai/L132610084/"
+    }
+   ],
+   "layoutImageModal": {
+    "propertyTitle": "クオリア三田",
+    "layoutImage": {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Flayout1%2FL132610084.jpg%3F20261009230044&w=718&h=538",
+     "alt": "クオリア三田(間取り)"
+    },
+    "propertyDetailUrl": "/chintai/L132610084/",
+    "inquiryUrl": "/chintai/inquiry/L132610084/"
+   },
+   "prIconFlg": false,
+   "favoriteFlg": false,
+   "favoriteType": "rent",
+   "applyingServiceList": [],
+   "commuteInfoList": [],
+   "openHouses": [],
+   "matchingTargetFlg": false,
+   "isForeignPage": false,
+   "hasOfficialSite": false
+  },
+  {
+   "propertyCd": "L826091943",
+   "propertyName": "Ｔｈｅ　ｇｌｏｗ　Ｍｉｔａ",
+   "priceModel": {
+    "mstCd": 4,
+    "consumptionTaxFlg": false,
+    "rent": 411000,
+    "manageCost": 15000
+   },
+   "address": "東京都港区三田３丁目",
+   "access": [
+    "都営三田線「三田」駅 徒歩5分",
+    "山手線「田町」駅 徒歩7分",
+    "都営大江戸線「赤羽橋」駅 徒歩12分"
+   ],
+   "propertyDetail": [
+    "敷金1ヶ月 礼金1ヶ月",
+    "敷金償却- 敷引-",
+    "2LDK",
+    "64.00m<sup>2</sup>",
+    "2025年1月築",
+    "12階建ての10階部分",
+    "北西向き"
+   ],
+   "detailUrl": "/chintai/L826091943/",
+   "inquiryInfo": {
+    "inquiryUrl": "/chintai/inquiry/L826091943/",
+    "inquiryTypeFlg": true,
+    "inquiryLinkText": "詳細"
+   },
+   "labelList": [
+    {
+     "cd": "028",
+     "iconName": "物件種別",
+     "detailClass": "a-tag--type",
+     "detailText": "マンション",
+     "listClass": "a-tag--type",
+     "listText": "マンション"
+    }
+   ],
+   "otherConditionLabels": [],
+   "thumbnailImage": [
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fphoto1%2FL826091943.jpg%3F20261014230044&w=718&h=538",
+     "alt": "Ｔｈｅ　ｇｌｏｗ　Ｍｉｔａ(外観)",
+     "href": "/chintai/L826091943/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Flayout1%2FL826091943.jpg%3F20260910230043&w=718&h=538",
+     "alt": "Ｔｈｅ　ｇｌｏｗ　Ｍｉｔａ(間取り)",
+     "href": "/chintai/L826091943/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Findoor1%2FL826091943.jpg%3F20260910230043&w=718&h=538",
+     "alt": "Ｔｈｅ　ｇｌｏｗ　Ｍｉｔａ",
+     "href": "/chintai/L826091943/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Findoor2%2FL826091943.jpg%3F20260910230043&w=718&h=538",
+     "alt": "Ｔｈｅ　ｇｌｏｗ　Ｍｉｔａ",
+     "href": "/chintai/L826091943/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc3%2FL826091943.jpg%3F20260910230043&w=718&h=538",
+     "alt": "Ｔｈｅ　ｇｌｏｗ　Ｍｉｔａ",
+     "href": "/chintai/L826091943/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc4%2FL826091943.jpg%3F20260910230043&w=718&h=538",
+     "alt": "Ｔｈｅ　ｇｌｏｗ　Ｍｉｔａ",
+     "href": "/chintai/L826091943/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc5%2FL826091943.jpg%3F20260910230043&w=718&h=538",
+     "alt": "Ｔｈｅ　ｇｌｏｗ　Ｍｉｔａ",
+     "href": "/chintai/L826091943/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc6%2FL826091943.jpg%3F20260910230043&w=718&h=538",
+     "alt": "Ｔｈｅ　ｇｌｏｗ　Ｍｉｔａ",
+     "href": "/chintai/L826091943/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc7%2FL826091943.jpg%3F20260910230043&w=718&h=538",
+     "alt": "Ｔｈｅ　ｇｌｏｗ　Ｍｉｔａ",
+     "href": "/chintai/L826091943/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc8%2FL826091943.jpg%3F20260910230043&w=718&h=538",
+     "alt": "Ｔｈｅ　ｇｌｏｗ　Ｍｉｔａ",
+     "href": "/chintai/L826091943/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc9%2FL826091943.jpg%3F20260910230043&w=718&h=538",
+     "alt": "Ｔｈｅ　ｇｌｏｗ　Ｍｉｔａ",
+     "href": "/chintai/L826091943/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc10%2FL826091943.jpg%3F20260910230043&w=718&h=538",
+     "alt": "Ｔｈｅ　ｇｌｏｗ　Ｍｉｔａ",
+     "href": "/chintai/L826091943/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc11%2FL826091943.jpg%3F20260910230043&w=718&h=538",
+     "alt": "Ｔｈｅ　ｇｌｏｗ　Ｍｉｔａ",
+     "href": "/chintai/L826091943/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc22%2FL826091943.jpg%3F20261014230044&w=718&h=538",
+     "alt": "Ｔｈｅ　ｇｌｏｗ　Ｍｉｔａ",
+     "href": "/chintai/L826091943/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc23%2FL826091943.jpg%3F20261014230044&w=718&h=538",
+     "alt": "Ｔｈｅ　ｇｌｏｗ　Ｍｉｔａ",
+     "href": "/chintai/L826091943/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc24%2FL826091943.jpg%3F20261014230044&w=718&h=538",
+     "alt": "Ｔｈｅ　ｇｌｏｗ　Ｍｉｔａ",
+     "href": "/chintai/L826091943/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc25%2FL826091943.jpg%3F20261014230044&w=718&h=538",
+     "alt": "Ｔｈｅ　ｇｌｏｗ　Ｍｉｔａ",
+     "href": "/chintai/L826091943/"
+    }
+   ],
+   "layoutImageModal": {
+    "propertyTitle": "Ｔｈｅ　ｇｌｏｗ　Ｍｉｔａ",
+    "layoutImage": {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Flayout1%2FL826091943.jpg%3F20260910230043&w=718&h=538",
+     "alt": "Ｔｈｅ　ｇｌｏｗ　Ｍｉｔａ(間取り)"
+    },
+    "propertyDetailUrl": "/chintai/L826091943/",
+    "inquiryUrl": "/chintai/inquiry/L826091943/"
+   },
+   "prIconFlg": false,
+   "favoriteFlg": false,
+   "favoriteType": "rent",
+   "applyingServiceList": [],
+   "commuteInfoList": [],
+   "openHouses": [],
+   "matchingTargetFlg": false,
+   "isForeignPage": false,
+   "hasOfficialSite": false
+  },
+  {
+   "propertyCd": "L826102256",
+   "propertyName": "ＪＰ　ｎｏｉｅ　三田",
+   "priceModel": {
+    "mstCd": 4,
+    "consumptionTaxFlg": false,
+    "rent": 245000,
+    "manageCost": 10000
+   },
+   "address": "東京都港区三田４丁目",
+   "access": [
+    "都営三田線「白金高輪」駅 徒歩8分",
+    "都営浅草線「三田」駅 徒歩10分",
+    "山手線「田町」駅 徒歩12分"
+   ],
+   "propertyDetail": [
+    "敷金1ヶ月 礼金1ヶ月",
+    "敷金償却- 敷引-",
+    "1LDK",
+    "45.25m<sup>2</sup>",
+    "2019年2月築",
+    "13階建ての9階部分",
+    "西向き"
+   ],
+   "detailUrl": "/chintai/L826102256/",
+   "inquiryInfo": {
+    "inquiryUrl": "/chintai/inquiry/L826102256/",
+    "inquiryTypeFlg": true,
+    "inquiryLinkText": "詳細"
+   },
+   "labelList": [
+    {
+     "cd": "028",
+     "iconName": "物件種別",
+     "detailClass": "a-tag--type",
+     "detailText": "マンション",
+     "listClass": "a-tag--type",
+     "listText": "マンション"
+    },
+    {
+     "cd": "001",
+     "iconName": "NEW",
+     "detailClass": "a-tag--new-date",
+     "detailText": "NEW 10/15",
+     "listClass": "a-tag--new-date",
+     "listText": "NEW 10/15"
+    }
+   ],
+   "otherConditionLabels": [],
+   "thumbnailImage": [
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fphoto1%2FL826102256.jpg%3F20261015114506&w=718&h=538",
+     "alt": "ＪＰ　ｎｏｉｅ　三田(外観)",
+     "href": "/chintai/L826102256/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Flayout1%2FL826102256.jpg%3F20261015114506&w=718&h=538",
+     "alt": "ＪＰ　ｎｏｉｅ　三田(間取り)",
+     "href": "/chintai/L826102256/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Findoor1%2FL826102256.jpg%3F20261015114506&w=718&h=538",
+     "alt": "ＪＰ　ｎｏｉｅ　三田",
+     "href": "/chintai/L826102256/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Findoor2%2FL826102256.jpg%3F20261015114506&w=718&h=538",
+     "alt": "ＪＰ　ｎｏｉｅ　三田",
+     "href": "/chintai/L826102256/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc3%2FL826102256.jpg%3F20261015114506&w=718&h=538",
+     "alt": "ＪＰ　ｎｏｉｅ　三田",
+     "href": "/chintai/L826102256/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc4%2FL826102256.jpg%3F20261015114506&w=718&h=538",
+     "alt": "ＪＰ　ｎｏｉｅ　三田",
+     "href": "/chintai/L826102256/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc5%2FL826102256.jpg%3F20261015114506&w=718&h=538",
+     "alt": "ＪＰ　ｎｏｉｅ　三田",
+     "href": "/chintai/L826102256/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc6%2FL826102256.jpg%3F20261015114506&w=718&h=538",
+     "alt": "ＪＰ　ｎｏｉｅ　三田",
+     "href": "/chintai/L826102256/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc7%2FL826102256.jpg%3F20261015114506&w=718&h=538",
+     "alt": "ＪＰ　ｎｏｉｅ　三田",
+     "href": "/chintai/L826102256/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc8%2FL826102256.jpg%3F20261015114506&w=718&h=538",
+     "alt": "ＪＰ　ｎｏｉｅ　三田",
+     "href": "/chintai/L826102256/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc9%2FL826102256.jpg%3F20261015114506&w=718&h=538",
+     "alt": "ＪＰ　ｎｏｉｅ　三田",
+     "href": "/chintai/L826102256/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc10%2FL826102256.jpg%3F20261015114506&w=718&h=538",
+     "alt": "ＪＰ　ｎｏｉｅ　三田",
+     "href": "/chintai/L826102256/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc22%2FL826102256.jpg%3F20261015114506&w=718&h=538",
+     "alt": "ＪＰ　ｎｏｉｅ　三田",
+     "href": "/chintai/L826102256/"
+    }
+   ],
+   "layoutImageModal": {
+    "propertyTitle": "ＪＰ　ｎｏｉｅ　三田",
+    "layoutImage": {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Flayout1%2FL826102256.jpg%3F20261015114506&w=718&h=538",
+     "alt": "ＪＰ　ｎｏｉｅ　三田(間取り)"
+    },
+    "propertyDetailUrl": "/chintai/L826102256/",
+    "inquiryUrl": "/chintai/inquiry/L826102256/"
+   },
+   "prIconFlg": false,
+   "favoriteFlg": false,
+   "favoriteType": "rent",
+   "applyingServiceList": [],
+   "commuteInfoList": [],
+   "openHouses": [],
+   "matchingTargetFlg": false,
+   "isForeignPage": false,
+   "hasOfficialSite": false
+  },
+  {
+   "propertyCd": "L132608214",
+   "propertyName": "セザール高輪",
+   "priceModel": {
+    "mstCd": 4,
+    "consumptionTaxFlg": false,
+    "rent": 220000,
+    "manageCost": 10000
+   },
+   "address": "東京都港区三田４丁目",
+   "access": [
+    "東京メトロ南北線「白金高輪」駅 徒歩7分",
+    "都営浅草線「泉岳寺」駅 徒歩8分",
+    "都営三田線「白金高輪」駅 徒歩7分"
+   ],
+   "propertyDetail": [
+    "敷金1ヶ月 礼金1ヶ月",
+    "敷金償却- 敷引-",
+    "ワンルーム",
+    "55.01m<sup>2</sup>",
+    "1996年12月築",
+    "5階建ての1階部分",
+    "南西向き"
+   ],
+   "detailUrl": "/chintai/L132608214/",
+   "inquiryInfo": {
+    "inquiryUrl": "/chintai/inquiry/L132608214/",
+    "inquiryTypeFlg": true,
+    "inquiryLinkText": "詳細"
+   },
+   "labelList": [
+    {
+     "cd": "028",
+     "iconName": "物件種別",
+     "detailClass": "a-tag--type",
+     "detailText": "マンション",
+     "listClass": "a-tag--type",
+     "listText": "マンション"
+    }
+   ],
+   "otherConditionLabels": [],
+   "thumbnailImage": [
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fphoto1%2FL132608214.jpg%3F20260928230042&w=718&h=538",
+     "alt": "セザール高輪(外観)",
+     "href": "/chintai/L132608214/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Flayout1%2FL132608214.jpg%3F20260822230043&w=718&h=538",
+     "alt": "セザール高輪(間取り)",
+     "href": "/chintai/L132608214/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Findoor1%2FL132608214.jpg%3F20260822230043&w=718&h=538",
+     "alt": "セザール高輪",
+     "href": "/chintai/L132608214/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Findoor2%2FL132608214.jpg%3F20260822230043&w=718&h=538",
+     "alt": "セザール高輪",
+     "href": "/chintai/L132608214/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc3%2FL132608214.jpg%3F20260822230043&w=718&h=538",
+     "alt": "セザール高輪",
+     "href": "/chintai/L132608214/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc4%2FL132608214.jpg%3F20260822230043&w=718&h=538",
+     "alt": "セザール高輪",
+     "href": "/chintai/L132608214/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fenv1%2FL132608214.jpg%3F20260928230042&w=718&h=538",
+     "alt": "セザール高輪",
+     "href": "/chintai/L132608214/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fenv2%2FL132608214.jpg%3F20260928230042&w=718&h=538",
+     "alt": "セザール高輪",
+     "href": "/chintai/L132608214/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fenv5%2FL132608214.jpg%3F20260928230042&w=718&h=538",
+     "alt": "セザール高輪",
+     "href": "/chintai/L132608214/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fenv6%2FL132608214.jpg%3F20260928230042&w=718&h=538",
+     "alt": "セザール高輪",
+     "href": "/chintai/L132608214/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fenv7%2FL132608214.jpg%3F20260928230042&w=718&h=538",
+     "alt": "セザール高輪",
+     "href": "/chintai/L132608214/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fenv8%2FL132608214.jpg%3F20260928230042&w=718&h=538",
+     "alt": "セザール高輪",
+     "href": "/chintai/L132608214/"
+    }
+   ],
+   "layoutImageModal": {
+    "propertyTitle": "セザール高輪",
+    "layoutImage": {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Flayout1%2FL132608214.jpg%3F20260822230043&w=718&h=538",
+     "alt": "セザール高輪(間取り)"
+    },
+    "propertyDetailUrl": "/chintai/L132608214/",
+    "inquiryUrl": "/chintai/inquiry/L132608214/"
+   },
+   "prIconFlg": false,
+   "favoriteFlg": false,
+   "favoriteType": "rent",
+   "applyingServiceList": [],
+   "commuteInfoList": [],
+   "openHouses": [],
+   "matchingTargetFlg": false,
+   "isForeignPage": false,
+   "hasOfficialSite": false
+  },
+  {
+   "propertyCd": "L132606229",
+   "propertyName": "ザ・パークハウス三田ガーデン　タワー棟",
+   "priceModel": {
+    "mstCd": 4,
+    "consumptionTaxFlg": false,
+    "rent": 700000
+   },
+   "address": "東京都港区三田５丁目",
+   "access": [
+    "東京メトロ南北線「白金高輪」駅 徒歩9分",
+    "都営大江戸線「麻布十番」駅 徒歩10分",
+    "都営三田線「三田」駅 徒歩14分"
+   ],
+   "propertyDetail": [
+    "敷金1ヶ月 礼金1ヶ月",
+    "敷金償却- 敷引-",
+    "3LDK",
+    "82.28m<sup>2</sup>",
+    "2021年10月築",
+    "22階建ての2階部分",
+    "北西向き"
+   ],
+   "detailUrl": "/chintai/L132606229/",
+   "inquiryInfo": {
+    "inquiryUrl": "/chintai/inquiry/L132606229/",
+    "inquiryTypeFlg": true,
+    "inquiryLinkText": "詳細"
+   },
+   "labelList": [
+    {
+     "cd": "028",
+     "iconName": "物件種別",
+     "detailClass": "a-tag--type",
+     "detailText": "マンション",
+     "listClass": "a-tag--type",
+     "listText": "マンション"
+    }
+   ],
+   "otherConditionLabels": [],
+   "thumbnailImage": [
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fphoto1%2FL132606229.jpeg%3F20261013230043&w=718&h=538",
+     "alt": "ザ・パークハウス三田ガーデン　タワー棟(外観)",
+     "href": "/chintai/L132606229/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Flayout1%2FL132606229.jpg%3F20260612230051&w=718&h=538",
+     "alt": "ザ・パークハウス三田ガーデン　タワー棟(間取り)",
+     "href": "/chintai/L132606229/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Findoor1%2FL132606229.jpg%3F20260612230051&w=718&h=538",
+     "alt": "ザ・パークハウス三田ガーデン　タワー棟",
+     "href": "/chintai/L132606229/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Findoor2%2FL132606229.jpg%3F20260612230051&w=718&h=538",
+     "alt": "ザ・パークハウス三田ガーデン　タワー棟",
+     "href": "/chintai/L132606229/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc3%2FL132606229.jpg%3F20260612230051&w=718&h=538",
+     "alt": "ザ・パークハウス三田ガーデン　タワー棟",
+     "href": "/chintai/L132606229/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc4%2FL132606229.jpg%3F20260612230051&w=718&h=538",
+     "alt": "ザ・パークハウス三田ガーデン　タワー棟",
+     "href": "/chintai/L132606229/"
+    }
+   ],
+   "layoutImageModal": {
+    "propertyTitle": "ザ・パークハウス三田ガーデン　タワー棟",
+    "layoutImage": {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Flayout1%2FL132606229.jpg%3F20260612230051&w=718&h=538",
+     "alt": "ザ・パークハウス三田ガーデン　タワー棟(間取り)"
+    },
+    "propertyDetailUrl": "/chintai/L132606229/",
+    "inquiryUrl": "/chintai/inquiry/L132606229/"
+   },
+   "prIconFlg": false,
+   "favoriteFlg": false,
+   "favoriteType": "rent",
+   "applyingServiceList": [],
+   "commuteInfoList": [],
+   "openHouses": [],
+   "matchingTargetFlg": false,
+   "isForeignPage": false,
+   "hasOfficialSite": false
+  },
+  {
+   "propertyCd": "L826094378",
+   "propertyName": "コンフォリア白金高輪",
+   "priceModel": {
+    "mstCd": 4,
+    "consumptionTaxFlg": false,
+    "rent": 228000,
+    "manageCost": 10000
+   },
+   "address": "東京都港区三田５丁目",
+   "access": [
+    "東京メトロ南北線「白金高輪」駅 徒歩6分",
+    "都営三田線「白金高輪」駅 徒歩6分",
+    "都営浅草線「泉岳寺」駅 徒歩13分",
+    "東京メトロ南北線「麻布十番」駅 徒歩13分"
+   ],
+   "propertyDetail": [
+    "敷金1ヶ月 礼金-",
+    "敷金償却- 敷引-",
+    "1LDK",
+    "39.69m<sup>2</sup>",
+    "2007年10月築",
+    "13階建ての5階部分",
+    "南西向き"
+   ],
+   "detailUrl": "/chintai/L826094378/",
+   "inquiryInfo": {
+    "inquiryUrl": "/chintai/inquiry/L826094378/",
+    "inquiryTypeFlg": true,
+    "inquiryLinkText": "詳細"
+   },
+   "labelList": [
+    {
+     "cd": "028",
+     "iconName": "物件種別",
+     "detailClass": "a-tag--type",
+     "detailText": "マンション",
+     "listClass": "a-tag--type",
+     "listText": "マンション"
+    }
+   ],
+   "otherConditionLabels": [
+    {
+     "cd": "008",
+     "iconName": "礼金なし",
+     "detailClass": "a-tag--condition",
+     "detailText": "礼金なし",
+     "listClass": "a-tag--condition",
+     "listText": "礼金なし"
+    }
+   ],
+   "thumbnailImage": [
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fphoto1%2FL826094378.jpg%3F20261014230044&w=718&h=538",
+     "alt": "コンフォリア白金高輪(外観)",
+     "href": "/chintai/L826094378/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Flayout1%2FL826094378.jpg%3F20260930230043&w=718&h=538",
+     "alt": "コンフォリア白金高輪(間取り)",
+     "href": "/chintai/L826094378/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Findoor1%2FL826094378.jpg%3F20260930230043&w=718&h=538",
+     "alt": "コンフォリア白金高輪",
+     "href": "/chintai/L826094378/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Findoor2%2FL826094378.jpg%3F20260930230043&w=718&h=538",
+     "alt": "コンフォリア白金高輪",
+     "href": "/chintai/L826094378/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc3%2FL826094378.jpg%3F20260930230043&w=718&h=538",
+     "alt": "コンフォリア白金高輪",
+     "href": "/chintai/L826094378/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc4%2FL826094378.jpg%3F20260930230043&w=718&h=538",
+     "alt": "コンフォリア白金高輪",
+     "href": "/chintai/L826094378/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc5%2FL826094378.jpg%3F20260930230043&w=718&h=538",
+     "alt": "コンフォリア白金高輪",
+     "href": "/chintai/L826094378/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc6%2FL826094378.jpg%3F20260930230043&w=718&h=538",
+     "alt": "コンフォリア白金高輪",
+     "href": "/chintai/L826094378/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc7%2FL826094378.jpg%3F20260930230043&w=718&h=538",
+     "alt": "コンフォリア白金高輪",
+     "href": "/chintai/L826094378/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc8%2FL826094378.jpg%3F20260930230043&w=718&h=538",
+     "alt": "コンフォリア白金高輪",
+     "href": "/chintai/L826094378/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc9%2FL826094378.jpg%3F20260930230043&w=718&h=538",
+     "alt": "コンフォリア白金高輪",
+     "href": "/chintai/L826094378/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc10%2FL826094378.jpg%3F20260930230043&w=718&h=538",
+     "alt": "コンフォリア白金高輪",
+     "href": "/chintai/L826094378/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc11%2FL826094378.jpg%3F20260930230043&w=718&h=538",
+     "alt": "コンフォリア白金高輪",
+     "href": "/chintai/L826094378/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc12%2FL826094378.jpg%3F20260930230043&w=718&h=538",
+     "alt": "コンフォリア白金高輪",
+     "href": "/chintai/L826094378/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc13%2FL826094378.jpg%3F20260930230043&w=718&h=538",
+     "alt": "コンフォリア白金高輪",
+     "href": "/chintai/L826094378/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc14%2FL826094378.jpg%3F20260930230043&w=718&h=538",
+     "alt": "コンフォリア白金高輪",
+     "href": "/chintai/L826094378/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc15%2FL826094378.jpg%3F20260930230043&w=718&h=538",
+     "alt": "コンフォリア白金高輪",
+     "href": "/chintai/L826094378/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc16%2FL826094378.jpg%3F20260930230043&w=718&h=538",
+     "alt": "コンフォリア白金高輪",
+     "href": "/chintai/L826094378/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc17%2FL826094378.jpg%3F20260930230043&w=718&h=538",
+     "alt": "コンフォリア白金高輪",
+     "href": "/chintai/L826094378/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc18%2FL826094378.jpg%3F20260930230043&w=718&h=538",
+     "alt": "コンフォリア白金高輪",
+     "href": "/chintai/L826094378/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc19%2FL826094378.jpg%3F20260930230043&w=718&h=538",
+     "alt": "コンフォリア白金高輪",
+     "href": "/chintai/L826094378/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc20%2FL826094378.jpg%3F20260930230043&w=718&h=538",
+     "alt": "コンフォリア白金高輪",
+     "href": "/chintai/L826094378/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc21%2FL826094378.jpg%3F20260930230043&w=718&h=538",
+     "alt": "コンフォリア白金高輪",
+     "href": "/chintai/L826094378/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc22%2FL826094378.jpg%3F20261014230044&w=718&h=538",
+     "alt": "コンフォリア白金高輪",
+     "href": "/chintai/L826094378/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc23%2FL826094378.jpg%3F20261014230044&w=718&h=538",
+     "alt": "コンフォリア白金高輪",
+     "href": "/chintai/L826094378/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc24%2FL826094378.jpg%3F20261014230044&w=718&h=538",
+     "alt": "コンフォリア白金高輪",
+     "href": "/chintai/L826094378/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc25%2FL826094378.jpg%3F20261014230044&w=718&h=538",
+     "alt": "コンフォリア白金高輪",
+     "href": "/chintai/L826094378/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fenv4%2FL826094378.jpg%3F20261014230044&w=718&h=538",
+     "alt": "コンフォリア白金高輪",
+     "href": "/chintai/L826094378/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fenv7%2FL826094378.jpg%3F20261014230044&w=718&h=538",
+     "alt": "コンフォリア白金高輪",
+     "href": "/chintai/L826094378/"
+    }
+   ],
+   "layoutImageModal": {
+    "propertyTitle": "コンフォリア白金高輪",
+    "layoutImage": {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Flayout1%2FL826094378.jpg%3F20260930230043&w=718&h=538",
+     "alt": "コンフォリア白金高輪(間取り)"
+    },
+    "propertyDetailUrl": "/chintai/L826094378/",
+    "inquiryUrl": "/chintai/inquiry/L826094378/"
+   },
+   "prIconFlg": false,
+   "favoriteFlg": false,
+   "favoriteType": "rent",
+   "applyingServiceList": [],
+   "commuteInfoList": [],
+   "openHouses": [],
+   "matchingTargetFlg": false,
+   "isForeignPage": false,
+   "hasOfficialSite": false
+  },
+  {
+   "propertyCd": "L826101555",
+   "propertyName": "リエトコート元赤坂",
+   "priceModel": {
+    "mstCd": 4,
+    "consumptionTaxFlg": false,
+    "rent": 152000,
+    "manageCost": 10000
+   },
+   "address": "東京都港区元赤坂１丁目",
+   "access": [
+    "東京メトロ丸ノ内線「赤坂見附」駅 徒歩5分",
+    "東京メトロ半蔵門線「永田町」駅 徒歩6分"
+   ],
+   "propertyDetail": [
+    "敷金1ヶ月 礼金1ヶ月",
+    "敷金償却- 敷引-",
+    "ワンルーム",
+    "24.75m<sup>2</sup>",
+    "2006年4月築",
+    "11階建ての4階部分",
+    "北東向き"
+   ],
+   "detailUrl": "/chintai/L826101555/",
+   "inquiryInfo": {
+    "inquiryUrl": "/chintai/inquiry/L826101555/",
+    "inquiryTypeFlg": true,
+    "inquiryLinkText": "詳細"
+   },
+   "labelList": [
+    {
+     "cd": "028",
+     "iconName": "物件種別",
+     "detailClass": "a-tag--type",
+     "detailText": "マンション",
+     "listClass": "a-tag--type",
+     "listText": "マンション"
+    },
+    {
+     "cd": "001",
+     "iconName": "NEW",
+     "detailClass": "a-tag--new-date",
+     "detailText": "NEW 10/9",
+     "listClass": "a-tag--new-date",
+     "listText": "NEW 10/9"
+    }
+   ],
+   "otherConditionLabels": [],
+   "thumbnailImage": [
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fphoto1%2FL826101555.jpg%3F20261010230045&w=718&h=538",
+     "alt": "リエトコート元赤坂(外観)",
+     "href": "/chintai/L826101555/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Flayout1%2FL826101555.jpg%3F20261009230044&w=718&h=538",
+     "alt": "リエトコート元赤坂(間取り)",
+     "href": "/chintai/L826101555/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc22%2FL826101555.jpg%3F20261010230045&w=718&h=538",
+     "alt": "リエトコート元赤坂",
+     "href": "/chintai/L826101555/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc23%2FL826101555.jpg%3F20261010230045&w=718&h=538",
+     "alt": "リエトコート元赤坂",
+     "href": "/chintai/L826101555/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc24%2FL826101555.jpg%3F20261010230045&w=718&h=538",
+     "alt": "リエトコート元赤坂",
+     "href": "/chintai/L826101555/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc25%2FL826101555.jpg%3F20261010230045&w=718&h=538",
+     "alt": "リエトコート元赤坂",
+     "href": "/chintai/L826101555/"
+    }
+   ],
+   "layoutImageModal": {
+    "propertyTitle": "リエトコート元赤坂",
+    "layoutImage": {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Flayout1%2FL826101555.jpg%3F20261009230044&w=718&h=538",
+     "alt": "リエトコート元赤坂(間取り)"
+    },
+    "propertyDetailUrl": "/chintai/L826101555/",
+    "inquiryUrl": "/chintai/inquiry/L826101555/"
+   },
+   "prIconFlg": false,
+   "favoriteFlg": false,
+   "favoriteType": "rent",
+   "applyingServiceList": [],
+   "commuteInfoList": [],
+   "openHouses": [],
+   "matchingTargetFlg": false,
+   "isForeignPage": false,
+   "hasOfficialSite": false
+  },
+  {
+   "propertyCd": "L826101558",
+   "propertyName": "リエトコート元赤坂",
+   "priceModel": {
+    "mstCd": 4,
+    "consumptionTaxFlg": false,
+    "rent": 198000,
+    "manageCost": 10000
+   },
+   "address": "東京都港区元赤坂１丁目",
+   "access": [
+    "東京メトロ丸ノ内線「赤坂見附」駅 徒歩5分",
+    "東京メトロ半蔵門線「永田町」駅 徒歩6分"
+   ],
+   "propertyDetail": [
+    "敷金1ヶ月 礼金1ヶ月",
+    "敷金償却- 敷引-",
+    "1DK",
+    "32.76m<sup>2</sup>",
+    "2006年4月築",
+    "11階建ての6階部分",
+    "北東向き"
+   ],
+   "detailUrl": "/chintai/L826101558/",
+   "inquiryInfo": {
+    "inquiryUrl": "/chintai/inquiry/L826101558/",
+    "inquiryTypeFlg": true,
+    "inquiryLinkText": "詳細"
+   },
+   "labelList": [
+    {
+     "cd": "028",
+     "iconName": "物件種別",
+     "detailClass": "a-tag--type",
+     "detailText": "マンション",
+     "listClass": "a-tag--type",
+     "listText": "マンション"
+    },
+    {
+     "cd": "001",
+     "iconName": "NEW",
+     "detailClass": "a-tag--new-date",
+     "detailText": "NEW 10/9",
+     "listClass": "a-tag--new-date",
+     "listText": "NEW 10/9"
+    }
+   ],
+   "otherConditionLabels": [],
+   "thumbnailImage": [
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fphoto1%2FL826101558.jpg%3F20261010230045&w=718&h=538",
+     "alt": "リエトコート元赤坂(外観)",
+     "href": "/chintai/L826101558/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Flayout1%2FL826101558.jpg%3F20261009230044&w=718&h=538",
+     "alt": "リエトコート元赤坂(間取り)",
+     "href": "/chintai/L826101558/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Findoor1%2FL826101558.jpg%3F20261009230044&w=718&h=538",
+     "alt": "リエトコート元赤坂",
+     "href": "/chintai/L826101558/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Findoor2%2FL826101558.jpg%3F20261009230044&w=718&h=538",
+     "alt": "リエトコート元赤坂",
+     "href": "/chintai/L826101558/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc3%2FL826101558.jpg%3F20261009230044&w=718&h=538",
+     "alt": "リエトコート元赤坂",
+     "href": "/chintai/L826101558/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc4%2FL826101558.jpg%3F20261009230044&w=718&h=538",
+     "alt": "リエトコート元赤坂",
+     "href": "/chintai/L826101558/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc5%2FL826101558.jpg%3F20261009230044&w=718&h=538",
+     "alt": "リエトコート元赤坂",
+     "href": "/chintai/L826101558/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc6%2FL826101558.jpg%3F20261009230044&w=718&h=538",
+     "alt": "リエトコート元赤坂",
+     "href": "/chintai/L826101558/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc7%2FL826101558.jpg%3F20261009230044&w=718&h=538",
+     "alt": "リエトコート元赤坂",
+     "href": "/chintai/L826101558/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc8%2FL826101558.jpg%3F20261009230044&w=718&h=538",
+     "alt": "リエトコート元赤坂",
+     "href": "/chintai/L826101558/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc9%2FL826101558.jpg%3F20261009230044&w=718&h=538",
+     "alt": "リエトコート元赤坂",
+     "href": "/chintai/L826101558/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc22%2FL826101558.jpg%3F20261010230045&w=718&h=538",
+     "alt": "リエトコート元赤坂",
+     "href": "/chintai/L826101558/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc23%2FL826101558.jpg%3F20261010230045&w=718&h=538",
+     "alt": "リエトコート元赤坂",
+     "href": "/chintai/L826101558/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc24%2FL826101558.jpg%3F20261010230045&w=718&h=538",
+     "alt": "リエトコート元赤坂",
+     "href": "/chintai/L826101558/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc25%2FL826101558.jpg%3F20261010230045&w=718&h=538",
+     "alt": "リエトコート元赤坂",
+     "href": "/chintai/L826101558/"
+    }
+   ],
+   "layoutImageModal": {
+    "propertyTitle": "リエトコート元赤坂",
+    "layoutImage": {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Flayout1%2FL826101558.jpg%3F20261009230044&w=718&h=538",
+     "alt": "リエトコート元赤坂(間取り)"
+    },
+    "propertyDetailUrl": "/chintai/L826101558/",
+    "inquiryUrl": "/chintai/inquiry/L826101558/"
+   },
+   "prIconFlg": false,
+   "favoriteFlg": false,
+   "favoriteType": "rent",
+   "applyingServiceList": [],
+   "commuteInfoList": [],
+   "openHouses": [],
+   "matchingTargetFlg": false,
+   "isForeignPage": false,
+   "hasOfficialSite": false
+  },
+  {
+   "propertyCd": "L826101556",
+   "propertyName": "リエトコート元赤坂",
+   "priceModel": {
+    "mstCd": 4,
+    "consumptionTaxFlg": false,
+    "rent": 179000,
+    "manageCost": 10000
+   },
+   "address": "東京都港区元赤坂１丁目",
+   "access": [
+    "東京メトロ丸ノ内線「赤坂見附」駅 徒歩5分",
+    "東京メトロ半蔵門線「永田町」駅 徒歩6分"
+   ],
+   "propertyDetail": [
+    "敷金1ヶ月 礼金1ヶ月",
+    "敷金償却- 敷引-",
+    "1DK",
+    "30.90m<sup>2</sup>",
+    "2006年4月築",
+    "11階建ての8階部分",
+    "北東向き"
+   ],
+   "detailUrl": "/chintai/L826101556/",
+   "inquiryInfo": {
+    "inquiryUrl": "/chintai/inquiry/L826101556/",
+    "inquiryTypeFlg": true,
+    "inquiryLinkText": "詳細"
+   },
+   "labelList": [
+    {
+     "cd": "028",
+     "iconName": "物件種別",
+     "detailClass": "a-tag--type",
+     "detailText": "マンション",
+     "listClass": "a-tag--type",
+     "listText": "マンション"
+    },
+    {
+     "cd": "001",
+     "iconName": "NEW",
+     "detailClass": "a-tag--new-date",
+     "detailText": "NEW 10/9",
+     "listClass": "a-tag--new-date",
+     "listText": "NEW 10/9"
+    }
+   ],
+   "otherConditionLabels": [],
+   "thumbnailImage": [
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fphoto1%2FL826101556.jpg%3F20261010230045&w=718&h=538",
+     "alt": "リエトコート元赤坂(外観)",
+     "href": "/chintai/L826101556/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Flayout1%2FL826101556.jpg%3F20261009230044&w=718&h=538",
+     "alt": "リエトコート元赤坂(間取り)",
+     "href": "/chintai/L826101556/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc22%2FL826101556.jpg%3F20261010230045&w=718&h=538",
+     "alt": "リエトコート元赤坂",
+     "href": "/chintai/L826101556/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc23%2FL826101556.jpg%3F20261010230045&w=718&h=538",
+     "alt": "リエトコート元赤坂",
+     "href": "/chintai/L826101556/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc24%2FL826101556.jpg%3F20261010230045&w=718&h=538",
+     "alt": "リエトコート元赤坂",
+     "href": "/chintai/L826101556/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc25%2FL826101556.jpg%3F20261010230045&w=718&h=538",
+     "alt": "リエトコート元赤坂",
+     "href": "/chintai/L826101556/"
+    }
+   ],
+   "layoutImageModal": {
+    "propertyTitle": "リエトコート元赤坂",
+    "layoutImage": {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Flayout1%2FL826101556.jpg%3F20261009230044&w=718&h=538",
+     "alt": "リエトコート元赤坂(間取り)"
+    },
+    "propertyDetailUrl": "/chintai/L826101556/",
+    "inquiryUrl": "/chintai/inquiry/L826101556/"
+   },
+   "prIconFlg": false,
+   "favoriteFlg": false,
+   "favoriteType": "rent",
+   "applyingServiceList": [],
+   "commuteInfoList": [],
+   "openHouses": [],
+   "matchingTargetFlg": false,
+   "isForeignPage": false,
+   "hasOfficialSite": false
+  },
+  {
+   "propertyCd": "L826101557",
+   "propertyName": "リエトコート元赤坂",
+   "priceModel": {
+    "mstCd": 4,
+    "consumptionTaxFlg": false,
+    "rent": 209000,
+    "manageCost": 10000
+   },
+   "address": "東京都港区元赤坂１丁目",
+   "access": [
+    "東京メトロ丸ノ内線「赤坂見附」駅 徒歩5分",
+    "東京メトロ半蔵門線「永田町」駅 徒歩6分"
+   ],
+   "propertyDetail": [
+    "敷金1ヶ月 礼金1ヶ月",
+    "敷金償却- 敷引-",
+    "1DK",
+    "36.60m<sup>2</sup>",
+    "2006年4月築",
+    "11階建ての8階部分",
+    "北東向き"
+   ],
+   "detailUrl": "/chintai/L826101557/",
+   "inquiryInfo": {
+    "inquiryUrl": "/chintai/inquiry/L826101557/",
+    "inquiryTypeFlg": true,
+    "inquiryLinkText": "詳細"
+   },
+   "labelList": [
+    {
+     "cd": "028",
+     "iconName": "物件種別",
+     "detailClass": "a-tag--type",
+     "detailText": "マンション",
+     "listClass": "a-tag--type",
+     "listText": "マンション"
+    },
+    {
+     "cd": "001",
+     "iconName": "NEW",
+     "detailClass": "a-tag--new-date",
+     "detailText": "NEW 10/9",
+     "listClass": "a-tag--new-date",
+     "listText": "NEW 10/9"
+    }
+   ],
+   "otherConditionLabels": [],
+   "thumbnailImage": [
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fphoto1%2FL826101557.jpg%3F20261010230045&w=718&h=538",
+     "alt": "リエトコート元赤坂(外観)",
+     "href": "/chintai/L826101557/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Flayout1%2FL826101557.jpg%3F20261009230044&w=718&h=538",
+     "alt": "リエトコート元赤坂(間取り)",
+     "href": "/chintai/L826101557/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Findoor1%2FL826101557.jpg%3F20261009230044&w=718&h=538",
+     "alt": "リエトコート元赤坂",
+     "href": "/chintai/L826101557/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Findoor2%2FL826101557.jpg%3F20261009230044&w=718&h=538",
+     "alt": "リエトコート元赤坂",
+     "href": "/chintai/L826101557/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc3%2FL826101557.jpg%3F20261009230044&w=718&h=538",
+     "alt": "リエトコート元赤坂",
+     "href": "/chintai/L826101557/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc4%2FL826101557.jpg%3F20261009230044&w=718&h=538",
+     "alt": "リエトコート元赤坂",
+     "href": "/chintai/L826101557/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc5%2FL826101557.jpg%3F20261009230044&w=718&h=538",
+     "alt": "リエトコート元赤坂",
+     "href": "/chintai/L826101557/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc6%2FL826101557.jpg%3F20261009230044&w=718&h=538",
+     "alt": "リエトコート元赤坂",
+     "href": "/chintai/L826101557/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc7%2FL826101557.jpg%3F20261009230044&w=718&h=538",
+     "alt": "リエトコート元赤坂",
+     "href": "/chintai/L826101557/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc8%2FL826101557.jpg%3F20261009230044&w=718&h=538",
+     "alt": "リエトコート元赤坂",
+     "href": "/chintai/L826101557/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc9%2FL826101557.jpg%3F20261009230044&w=718&h=538",
+     "alt": "リエトコート元赤坂",
+     "href": "/chintai/L826101557/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc10%2FL826101557.jpg%3F20261009230044&w=718&h=538",
+     "alt": "リエトコート元赤坂",
+     "href": "/chintai/L826101557/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc11%2FL826101557.jpg%3F20261009230044&w=718&h=538",
+     "alt": "リエトコート元赤坂",
+     "href": "/chintai/L826101557/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc12%2FL826101557.jpg%3F20261009230044&w=718&h=538",
+     "alt": "リエトコート元赤坂",
+     "href": "/chintai/L826101557/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc13%2FL826101557.jpg%3F20261009230044&w=718&h=538",
+     "alt": "リエトコート元赤坂",
+     "href": "/chintai/L826101557/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc22%2FL826101557.jpg%3F20261010230045&w=718&h=538",
+     "alt": "リエトコート元赤坂",
+     "href": "/chintai/L826101557/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc23%2FL826101557.jpg%3F20261010230045&w=718&h=538",
+     "alt": "リエトコート元赤坂",
+     "href": "/chintai/L826101557/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc24%2FL826101557.jpg%3F20261010230045&w=718&h=538",
+     "alt": "リエトコート元赤坂",
+     "href": "/chintai/L826101557/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc25%2FL826101557.jpg%3F20261010230045&w=718&h=538",
+     "alt": "リエトコート元赤坂",
+     "href": "/chintai/L826101557/"
+    }
+   ],
+   "layoutImageModal": {
+    "propertyTitle": "リエトコート元赤坂",
+    "layoutImage": {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Flayout1%2FL826101557.jpg%3F20261009230044&w=718&h=538",
+     "alt": "リエトコート元赤坂(間取り)"
+    },
+    "propertyDetailUrl": "/chintai/L826101557/",
+    "inquiryUrl": "/chintai/inquiry/L826101557/"
+   },
+   "prIconFlg": false,
+   "favoriteFlg": false,
+   "favoriteType": "rent",
+   "applyingServiceList": [],
+   "commuteInfoList": [],
+   "openHouses": [],
+   "matchingTargetFlg": false,
+   "isForeignPage": false,
+   "hasOfficialSite": false
+  },
+  {
+   "propertyCd": "L826074074",
+   "propertyName": "リエトコート元赤坂",
+   "priceModel": {
+    "mstCd": 4,
+    "consumptionTaxFlg": false,
+    "rent": 194000,
+    "manageCost": 10000
+   },
+   "address": "東京都港区元赤坂１丁目",
+   "access": [
+    "東京メトロ丸ノ内線「赤坂見附」駅 徒歩5分",
+    "東京メトロ半蔵門線「永田町」駅 徒歩6分"
+   ],
+   "propertyDetail": [
+    "敷金1ヶ月 礼金-",
+    "敷金償却- 敷引-",
+    "1DK",
+    "32.76m<sup>2</sup>",
+    "2006年4月築",
+    "11階建ての5階部分",
+    "北東向き"
+   ],
+   "detailUrl": "/chintai/L826074074/",
+   "inquiryInfo": {
+    "inquiryUrl": "/chintai/inquiry/L826074074/",
+    "inquiryTypeFlg": true,
+    "inquiryLinkText": "詳細"
+   },
+   "labelList": [
+    {
+     "cd": "028",
+     "iconName": "物件種別",
+     "detailClass": "a-tag--type",
+     "detailText": "マンション",
+     "listClass": "a-tag--type",
+     "listText": "マンション"
+    }
+   ],
+   "otherConditionLabels": [
+    {
+     "cd": "008",
+     "iconName": "礼金なし",
+     "detailClass": "a-tag--condition",
+     "detailText": "礼金なし",
+     "listClass": "a-tag--condition",
+     "listText": "礼金なし"
+    }
+   ],
+   "thumbnailImage": [
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fphoto1%2FL826074074.jpg%3F20261010230045&w=718&h=538",
+     "alt": "リエトコート元赤坂(外観)",
+     "href": "/chintai/L826074074/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Flayout1%2FL826074074.jpg%3F20260730230052&w=718&h=538",
+     "alt": "リエトコート元赤坂(間取り)",
+     "href": "/chintai/L826074074/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc22%2FL826074074.jpg%3F20261010230045&w=718&h=538",
+     "alt": "リエトコート元赤坂",
+     "href": "/chintai/L826074074/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc23%2FL826074074.jpg%3F20261010230045&w=718&h=538",
+     "alt": "リエトコート元赤坂",
+     "href": "/chintai/L826074074/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc24%2FL826074074.jpg%3F20261010230045&w=718&h=538",
+     "alt": "リエトコート元赤坂",
+     "href": "/chintai/L826074074/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc25%2FL826074074.jpg%3F20261010230045&w=718&h=538",
+     "alt": "リエトコート元赤坂",
+     "href": "/chintai/L826074074/"
+    }
+   ],
+   "layoutImageModal": {
+    "propertyTitle": "リエトコート元赤坂",
+    "layoutImage": {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Flayout1%2FL826074074.jpg%3F20260730230052&w=718&h=538",
+     "alt": "リエトコート元赤坂(間取り)"
+    },
+    "propertyDetailUrl": "/chintai/L826074074/",
+    "inquiryUrl": "/chintai/inquiry/L826074074/"
+   },
+   "prIconFlg": false,
+   "favoriteFlg": false,
+   "favoriteType": "rent",
+   "applyingServiceList": [],
+   "commuteInfoList": [],
+   "openHouses": [],
+   "matchingTargetFlg": false,
+   "isForeignPage": false,
+   "hasOfficialSite": false
+  },
+  {
+   "propertyCd": "L132605281",
+   "propertyName": "ザ・レジデンス六本木",
+   "priceModel": {
+    "mstCd": 4,
+    "consumptionTaxFlg": false,
+    "rent": 900000,
+    "manageCost": 30000
+   },
+   "address": "東京都港区六本木１丁目",
+   "access": [
+    "東京メトロ南北線「六本木一丁目」駅 徒歩3分",
+    "東京メトロ日比谷線「神谷町」駅 徒歩7分",
+    "都営大江戸線「六本木」駅 徒歩11分",
+    "東京メトロ日比谷線「六本木」駅 徒歩11分"
+   ],
+   "propertyDetail": [
+    "敷金2ヶ月 礼金1ヶ月",
+    "敷金償却- 敷引-",
+    "3LDK",
+    "101.50m<sup>2</sup>",
+    "2019年8月築",
+    "23階建ての2階部分",
+    "南東向き"
+   ],
+   "detailUrl": "/chintai/L132605281/",
+   "inquiryInfo": {
+    "inquiryUrl": "/chintai/inquiry/L132605281/",
+    "inquiryTypeFlg": true,
+    "inquiryLinkText": "詳細"
+   },
+   "labelList": [
+    {
+     "cd": "028",
+     "iconName": "物件種別",
+     "detailClass": "a-tag--type",
+     "detailText": "マンション",
+     "listClass": "a-tag--type",
+     "listText": "マンション"
+    },
+    {
+     "cd": "025",
+     "iconName": "新賃料",
+     "detailClass": "a-tag--new-price",
+     "detailText": "新賃料 10/15",
+     "listClass": "a-tag--new-price",
+     "listText": "新賃料 10/15"
+    }
+   ],
+   "otherConditionLabels": [
+    {
+     "cd": "029",
+     "iconName": "パノラマ",
+     "detailClass": "a-tag--condition",
+     "detailText": "パノラマ",
+     "listClass": "a-tag--condition",
+     "listText": "パノラマ"
+    }
+   ],
+   "thumbnailImage": [
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fphoto1%2FL132605281.jpg%3F20261015104507&w=718&h=538",
+     "alt": "ザ・レジデンス六本木(外観)",
+     "href": "/chintai/L132605281/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Flayout1%2FL132605281.jpg%3F20260522230053&w=718&h=538",
+     "alt": "ザ・レジデンス六本木(間取り)",
+     "href": "/chintai/L132605281/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Findoor1%2FL132605281.jpg%3F20260522230053&w=718&h=538",
+     "alt": "ザ・レジデンス六本木",
+     "href": "/chintai/L132605281/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Findoor2%2FL132605281.jpg%3F20260522230053&w=718&h=538",
+     "alt": "ザ・レジデンス六本木",
+     "href": "/chintai/L132605281/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc3%2FL132605281.jpg%3F20260522230053&w=718&h=538",
+     "alt": "ザ・レジデンス六本木",
+     "href": "/chintai/L132605281/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc4%2FL132605281.jpg%3F20260522230053&w=718&h=538",
+     "alt": "ザ・レジデンス六本木",
+     "href": "/chintai/L132605281/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc5%2FL132605281.jpg%3F20260522230053&w=718&h=538",
+     "alt": "ザ・レジデンス六本木",
+     "href": "/chintai/L132605281/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc6%2FL132605281.jpg%3F20260522230053&w=718&h=538",
+     "alt": "ザ・レジデンス六本木",
+     "href": "/chintai/L132605281/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc7%2FL132605281.jpg%3F20260522230053&w=718&h=538",
+     "alt": "ザ・レジデンス六本木",
+     "href": "/chintai/L132605281/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc8%2FL132605281.jpg%3F20260522230053&w=718&h=538",
+     "alt": "ザ・レジデンス六本木",
+     "href": "/chintai/L132605281/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc9%2FL132605281.jpg%3F20260522230053&w=718&h=538",
+     "alt": "ザ・レジデンス六本木",
+     "href": "/chintai/L132605281/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc10%2FL132605281.jpg%3F20260522230053&w=718&h=538",
+     "alt": "ザ・レジデンス六本木",
+     "href": "/chintai/L132605281/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc11%2FL132605281.jpg%3F20260522230053&w=718&h=538",
+     "alt": "ザ・レジデンス六本木",
+     "href": "/chintai/L132605281/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc12%2FL132605281.jpg%3F20260522230053&w=718&h=538",
+     "alt": "ザ・レジデンス六本木",
+     "href": "/chintai/L132605281/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc13%2FL132605281.jpg%3F20260522230053&w=718&h=538",
+     "alt": "ザ・レジデンス六本木",
+     "href": "/chintai/L132605281/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc14%2FL132605281.jpg%3F20260522230053&w=718&h=538",
+     "alt": "ザ・レジデンス六本木",
+     "href": "/chintai/L132605281/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc15%2FL132605281.jpg%3F20260522230053&w=718&h=538",
+     "alt": "ザ・レジデンス六本木",
+     "href": "/chintai/L132605281/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc16%2FL132605281.jpg%3F20260522230053&w=718&h=538",
+     "alt": "ザ・レジデンス六本木",
+     "href": "/chintai/L132605281/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc17%2FL132605281.jpg%3F20260522230053&w=718&h=538",
+     "alt": "ザ・レジデンス六本木",
+     "href": "/chintai/L132605281/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc18%2FL132605281.jpg%3F20260522230053&w=718&h=538",
+     "alt": "ザ・レジデンス六本木",
+     "href": "/chintai/L132605281/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc19%2FL132605281.jpg%3F20260522230053&w=718&h=538",
+     "alt": "ザ・レジデンス六本木",
+     "href": "/chintai/L132605281/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc20%2FL132605281.jpg%3F20260522230053&w=718&h=538",
+     "alt": "ザ・レジデンス六本木",
+     "href": "/chintai/L132605281/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc21%2FL132605281.jpg%3F20260522230053&w=718&h=538",
+     "alt": "ザ・レジデンス六本木",
+     "href": "/chintai/L132605281/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc22%2FL132605281.jpg%3F20261015104507&w=718&h=538",
+     "alt": "ザ・レジデンス六本木",
+     "href": "/chintai/L132605281/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc23%2FL132605281.jpg%3F20261015104507&w=718&h=538",
+     "alt": "ザ・レジデンス六本木",
+     "href": "/chintai/L132605281/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc24%2FL132605281.jpg%3F20261015104507&w=718&h=538",
+     "alt": "ザ・レジデンス六本木",
+     "href": "/chintai/L132605281/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc25%2FL132605281.jpg%3F20261015104507&w=718&h=538",
+     "alt": "ザ・レジデンス六本木",
+     "href": "/chintai/L132605281/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fenv1%2FL132605281.jpg%3F20261015104507&w=718&h=538",
+     "alt": "ザ・レジデンス六本木",
+     "href": "/chintai/L132605281/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fenv2%2FL132605281.jpg%3F20261015104507&w=718&h=538",
+     "alt": "ザ・レジデンス六本木",
+     "href": "/chintai/L132605281/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fenv3%2FL132605281.jpg%3F20261015104507&w=718&h=538",
+     "alt": "ザ・レジデンス六本木",
+     "href": "/chintai/L132605281/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fenv7%2FL132605281.jpg%3F20261015104507&w=718&h=538",
+     "alt": "ザ・レジデンス六本木",
+     "href": "/chintai/L132605281/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fenv8%2FL132605281.jpg%3F20261015104507&w=718&h=538",
+     "alt": "ザ・レジデンス六本木",
+     "href": "/chintai/L132605281/"
+    }
+   ],
+   "layoutImageModal": {
+    "propertyTitle": "ザ・レジデンス六本木",
+    "layoutImage": {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Flayout1%2FL132605281.jpg%3F20260522230053&w=718&h=538",
+     "alt": "ザ・レジデンス六本木(間取り)"
+    },
+    "propertyDetailUrl": "/chintai/L132605281/",
+    "inquiryUrl": "/chintai/inquiry/L132605281/"
+   },
+   "prIconFlg": false,
+   "favoriteFlg": false,
+   "favoriteType": "rent",
+   "applyingServiceList": [],
+   "commuteInfoList": [],
+   "openHouses": [],
+   "matchingTargetFlg": false,
+   "isForeignPage": false,
+   "hasOfficialSite": false
+  },
+  {
+   "propertyCd": "L132609180",
+   "propertyName": "六本木グランドタワーレジデンス",
+   "priceModel": {
+    "mstCd": 4,
+    "consumptionTaxFlg": false,
+    "rent": 470000
+   },
+   "address": "東京都港区六本木３丁目",
+   "access": [
+    "東京メトロ南北線「六本木一丁目」駅 徒歩2分",
+    "東京メトロ日比谷線「六本木」駅 徒歩7分",
+    "都営大江戸線「六本木」駅 徒歩7分",
+    "東京メトロ日比谷線「神谷町」駅 徒歩9分"
+   ],
+   "propertyDetail": [
+    "敷金1ヶ月 礼金1ヶ月",
+    "敷金償却- 敷引-",
+    "1LDK",
+    "50.47m<sup>2</sup>",
+    "2016年4月築",
+    "27階建ての13階部分",
+    "北東向き"
+   ],
+   "detailUrl": "/chintai/L132609180/",
+   "inquiryInfo": {
+    "inquiryUrl": "/chintai/inquiry/L132609180/",
+    "inquiryTypeFlg": true,
+    "inquiryLinkText": "詳細"
+   },
+   "labelList": [
+    {
+     "cd": "028",
+     "iconName": "物件種別",
+     "detailClass": "a-tag--type",
+     "detailText": "マンション",
+     "listClass": "a-tag--type",
+     "listText": "マンション"
+    },
+    {
+     "cd": "025",
+     "iconName": "新賃料",
+     "detailClass": "a-tag--new-price",
+     "detailText": "新賃料 10/3",
+     "listClass": "a-tag--new-price",
+     "listText": "新賃料 10/3"
+    }
+   ],
+   "otherConditionLabels": [
+    {
+     "cd": "029",
+     "iconName": "パノラマ",
+     "detailClass": "a-tag--condition",
+     "detailText": "パノラマ",
+     "listClass": "a-tag--condition",
+     "listText": "パノラマ"
+    }
+   ],
+   "thumbnailImage": [
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fphoto1%2FL132609180.jpg%3F20261004230040&w=718&h=538",
+     "alt": "六本木グランドタワーレジデンス(外観)",
+     "href": "/chintai/L132609180/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Flayout1%2FL132609180.jpg%3F20260914230043&w=718&h=538",
+     "alt": "六本木グランドタワーレジデンス(間取り)",
+     "href": "/chintai/L132609180/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Findoor1%2FL132609180.jpg%3F20260914230043&w=718&h=538",
+     "alt": "六本木グランドタワーレジデンス",
+     "href": "/chintai/L132609180/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Findoor2%2FL132609180.jpg%3F20260914230043&w=718&h=538",
+     "alt": "六本木グランドタワーレジデンス",
+     "href": "/chintai/L132609180/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc3%2FL132609180.jpg%3F20260914230043&w=718&h=538",
+     "alt": "六本木グランドタワーレジデンス",
+     "href": "/chintai/L132609180/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc4%2FL132609180.jpg%3F20260914230043&w=718&h=538",
+     "alt": "六本木グランドタワーレジデンス",
+     "href": "/chintai/L132609180/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc5%2FL132609180.jpg%3F20260914230043&w=718&h=538",
+     "alt": "六本木グランドタワーレジデンス",
+     "href": "/chintai/L132609180/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc6%2FL132609180.jpg%3F20260914230043&w=718&h=538",
+     "alt": "六本木グランドタワーレジデンス",
+     "href": "/chintai/L132609180/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc7%2FL132609180.jpg%3F20260914230043&w=718&h=538",
+     "alt": "六本木グランドタワーレジデンス",
+     "href": "/chintai/L132609180/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc8%2FL132609180.jpg%3F20260914230043&w=718&h=538",
+     "alt": "六本木グランドタワーレジデンス",
+     "href": "/chintai/L132609180/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc9%2FL132609180.jpg%3F20260914230043&w=718&h=538",
+     "alt": "六本木グランドタワーレジデンス",
+     "href": "/chintai/L132609180/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc10%2FL132609180.jpg%3F20260914230043&w=718&h=538",
+     "alt": "六本木グランドタワーレジデンス",
+     "href": "/chintai/L132609180/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc11%2FL132609180.jpg%3F20260914230043&w=718&h=538",
+     "alt": "六本木グランドタワーレジデンス",
+     "href": "/chintai/L132609180/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc12%2FL132609180.jpg%3F20260914230043&w=718&h=538",
+     "alt": "六本木グランドタワーレジデンス",
+     "href": "/chintai/L132609180/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc13%2FL132609180.jpg%3F20260914230043&w=718&h=538",
+     "alt": "六本木グランドタワーレジデンス",
+     "href": "/chintai/L132609180/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc14%2FL132609180.jpg%3F20260914230043&w=718&h=538",
+     "alt": "六本木グランドタワーレジデンス",
+     "href": "/chintai/L132609180/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc15%2FL132609180.jpg%3F20260914230043&w=718&h=538",
+     "alt": "六本木グランドタワーレジデンス",
+     "href": "/chintai/L132609180/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc16%2FL132609180.jpg%3F20260914230043&w=718&h=538",
+     "alt": "六本木グランドタワーレジデンス",
+     "href": "/chintai/L132609180/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc17%2FL132609180.jpg%3F20260914230043&w=718&h=538",
+     "alt": "六本木グランドタワーレジデンス",
+     "href": "/chintai/L132609180/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc18%2FL132609180.jpg%3F20260914230043&w=718&h=538",
+     "alt": "六本木グランドタワーレジデンス",
+     "href": "/chintai/L132609180/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc19%2FL132609180.jpg%3F20260914230043&w=718&h=538",
+     "alt": "六本木グランドタワーレジデンス",
+     "href": "/chintai/L132609180/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc20%2FL132609180.jpg%3F20260914230043&w=718&h=538",
+     "alt": "六本木グランドタワーレジデンス",
+     "href": "/chintai/L132609180/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc21%2FL132609180.jpg%3F20260914230043&w=718&h=538",
+     "alt": "六本木グランドタワーレジデンス",
+     "href": "/chintai/L132609180/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fenv1%2FL132609180.jpg%3F20261004230040&w=718&h=538",
+     "alt": "六本木グランドタワーレジデンス",
+     "href": "/chintai/L132609180/"
+    }
+   ],
+   "layoutImageModal": {
+    "propertyTitle": "六本木グランドタワーレジデンス",
+    "layoutImage": {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Flayout1%2FL132609180.jpg%3F20260914230043&w=718&h=538",
+     "alt": "六本木グランドタワーレジデンス(間取り)"
+    },
+    "propertyDetailUrl": "/chintai/L132609180/",
+    "inquiryUrl": "/chintai/inquiry/L132609180/"
+   },
+   "prIconFlg": false,
+   "favoriteFlg": false,
+   "favoriteType": "rent",
+   "applyingServiceList": [],
+   "commuteInfoList": [],
+   "openHouses": [],
+   "matchingTargetFlg": false,
+   "isForeignPage": false,
+   "hasOfficialSite": false
+  },
+  {
+   "propertyCd": "L132609320",
+   "propertyName": "グランスイート麻布六本木",
+   "priceModel": {
+    "mstCd": 4,
+    "consumptionTaxFlg": false,
+    "rent": 205000,
+    "manageCost": 15000
+   },
+   "address": "東京都港区六本木３丁目",
+   "access": [
+    "東京メトロ南北線「六本木一丁目」駅 徒歩5分",
+    "東京メトロ日比谷線「六本木」駅 徒歩10分",
+    "都営大江戸線「六本木」駅 徒歩10分",
+    "東京メトロ南北線「麻布十番」駅 徒歩12分",
+    "都営大江戸線「麻布十番」駅 徒歩12分"
+   ],
+   "propertyDetail": [
+    "敷金1ヶ月 礼金1ヶ月",
+    "敷金償却- 敷引-",
+    "1K",
+    "27.45m<sup>2</sup>",
+    "2025年6月築",
+    "14階建ての7階部分",
+    "南西向き"
+   ],
+   "detailUrl": "/chintai/L132609320/",
+   "inquiryInfo": {
+    "inquiryUrl": "/chintai/inquiry/L132609320/",
+    "inquiryTypeFlg": true,
+    "inquiryLinkText": "詳細"
+   },
+   "labelList": [
+    {
+     "cd": "028",
+     "iconName": "物件種別",
+     "detailClass": "a-tag--type",
+     "detailText": "マンション",
+     "listClass": "a-tag--type",
+     "listText": "マンション"
+    },
+    {
+     "cd": "001",
+     "iconName": "NEW",
+     "detailClass": "a-tag--new-date",
+     "detailText": "NEW 10/3",
+     "listClass": "a-tag--new-date",
+     "listText": "NEW 10/3"
+    }
+   ],
+   "otherConditionLabels": [
+    {
+     "cd": "029",
+     "iconName": "パノラマ",
+     "detailClass": "a-tag--condition",
+     "detailText": "パノラマ",
+     "listClass": "a-tag--condition",
+     "listText": "パノラマ"
+    }
+   ],
+   "thumbnailImage": [
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fphoto1%2FL132609320.jpg%3F20261011230043&w=718&h=538",
+     "alt": "グランスイート麻布六本木(外観)",
+     "href": "/chintai/L132609320/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Flayout1%2FL132609320.jpg%3F20261003230041&w=718&h=538",
+     "alt": "グランスイート麻布六本木(間取り)",
+     "href": "/chintai/L132609320/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Findoor1%2FL132609320.jpg%3F20261011230043&w=718&h=538",
+     "alt": "グランスイート麻布六本木",
+     "href": "/chintai/L132609320/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Findoor2%2FL132609320.jpg%3F20261011230043&w=718&h=538",
+     "alt": "グランスイート麻布六本木",
+     "href": "/chintai/L132609320/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc3%2FL132609320.jpg%3F20261011230043&w=718&h=538",
+     "alt": "グランスイート麻布六本木",
+     "href": "/chintai/L132609320/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc4%2FL132609320.jpg%3F20261011230043&w=718&h=538",
+     "alt": "グランスイート麻布六本木",
+     "href": "/chintai/L132609320/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc5%2FL132609320.jpg%3F20261011230043&w=718&h=538",
+     "alt": "グランスイート麻布六本木",
+     "href": "/chintai/L132609320/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc6%2FL132609320.jpg%3F20261011230043&w=718&h=538",
+     "alt": "グランスイート麻布六本木",
+     "href": "/chintai/L132609320/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc7%2FL132609320.jpg%3F20261011230043&w=718&h=538",
+     "alt": "グランスイート麻布六本木",
+     "href": "/chintai/L132609320/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc8%2FL132609320.jpg%3F20261011230043&w=718&h=538",
+     "alt": "グランスイート麻布六本木",
+     "href": "/chintai/L132609320/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc9%2FL132609320.jpg%3F20261011230043&w=718&h=538",
+     "alt": "グランスイート麻布六本木",
+     "href": "/chintai/L132609320/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc10%2FL132609320.jpg%3F20261011230043&w=718&h=538",
+     "alt": "グランスイート麻布六本木",
+     "href": "/chintai/L132609320/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc11%2FL132609320.jpg%3F20261011230043&w=718&h=538",
+     "alt": "グランスイート麻布六本木",
+     "href": "/chintai/L132609320/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc12%2FL132609320.jpg%3F20261011230043&w=718&h=538",
+     "alt": "グランスイート麻布六本木",
+     "href": "/chintai/L132609320/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc13%2FL132609320.jpg%3F20261011230043&w=718&h=538",
+     "alt": "グランスイート麻布六本木",
+     "href": "/chintai/L132609320/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc14%2FL132609320.jpg%3F20261011230043&w=718&h=538",
+     "alt": "グランスイート麻布六本木",
+     "href": "/chintai/L132609320/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc15%2FL132609320.jpg%3F20261011230043&w=718&h=538",
+     "alt": "グランスイート麻布六本木",
+     "href": "/chintai/L132609320/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc16%2FL132609320.jpg%3F20261011230043&w=718&h=538",
+     "alt": "グランスイート麻布六本木",
+     "href": "/chintai/L132609320/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc17%2FL132609320.jpg%3F20261011230043&w=718&h=538",
+     "alt": "グランスイート麻布六本木",
+     "href": "/chintai/L132609320/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc18%2FL132609320.jpg%3F20261011230043&w=718&h=538",
+     "alt": "グランスイート麻布六本木",
+     "href": "/chintai/L132609320/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc19%2FL132609320.jpg%3F20261011230043&w=718&h=538",
+     "alt": "グランスイート麻布六本木",
+     "href": "/chintai/L132609320/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc20%2FL132609320.jpg%3F20261011230043&w=718&h=538",
+     "alt": "グランスイート麻布六本木",
+     "href": "/chintai/L132609320/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc21%2FL132609320.jpg%3F20261011230043&w=718&h=538",
+     "alt": "グランスイート麻布六本木",
+     "href": "/chintai/L132609320/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Fimages%2Fcommon%2Fnoimage.png&w=718&h=538",
+     "alt": "ただいま準備中です",
+     "href": "/chintai/L132609320/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fenv2%2FL132609320.jpeg%3F20261011230043&w=718&h=538",
+     "alt": "グランスイート麻布六本木",
+     "href": "/chintai/L132609320/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Fimages%2Fcommon%2Fnoimage.png&w=718&h=538",
+     "alt": "ただいま準備中です",
+     "href": "/chintai/L132609320/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fenv4%2FL132609320.jpg%3F20261011230043&w=718&h=538",
+     "alt": "グランスイート麻布六本木",
+     "href": "/chintai/L132609320/"
+    }
+   ],
+   "layoutImageModal": {
+    "propertyTitle": "グランスイート麻布六本木",
+    "layoutImage": {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Flayout1%2FL132609320.jpg%3F20261003230041&w=718&h=538",
+     "alt": "グランスイート麻布六本木(間取り)"
+    },
+    "propertyDetailUrl": "/chintai/L132609320/",
+    "inquiryUrl": "/chintai/inquiry/L132609320/"
+   },
+   "prIconFlg": false,
+   "favoriteFlg": false,
+   "favoriteType": "rent",
+   "applyingServiceList": [],
+   "commuteInfoList": [],
+   "openHouses": [],
+   "matchingTargetFlg": false,
+   "isForeignPage": false,
+   "hasOfficialSite": false
+  },
+  {
+   "propertyCd": "L826091557",
+   "propertyName": "ウェリス六本木",
+   "priceModel": {
+    "mstCd": 4,
+    "consumptionTaxFlg": false,
+    "rent": 470000,
+    "manageCost": 20000
+   },
+   "address": "東京都港区六本木３丁目",
+   "access": [
+    "東京メトロ南北線「六本木一丁目」駅 徒歩5分",
+    "東京メトロ日比谷線「六本木」駅 徒歩7分"
+   ],
+   "propertyDetail": [
+    "敷金1ヶ月 礼金1ヶ月",
+    "敷金償却- 敷引-",
+    "3LDK",
+    "68.74m<sup>2</sup>",
+    "2014年1月築",
+    "17階建ての12階部分",
+    "南東向き"
+   ],
+   "detailUrl": "/chintai/L826091557/",
+   "inquiryInfo": {
+    "inquiryUrl": "/chintai/inquiry/L826091557/",
+    "inquiryTypeFlg": true,
+    "inquiryLinkText": "詳細"
+   },
+   "labelList": [
+    {
+     "cd": "028",
+     "iconName": "物件種別",
+     "detailClass": "a-tag--type",
+     "detailText": "マンション",
+     "listClass": "a-tag--type",
+     "listText": "マンション"
+    }
+   ],
+   "otherConditionLabels": [],
+   "thumbnailImage": [
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fphoto1%2FL826091557.jpg%3F20260930230043&w=718&h=538",
+     "alt": "ウェリス六本木(外観)",
+     "href": "/chintai/L826091557/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Flayout1%2FL826091557.jpg%3F20260929230044&w=718&h=538",
+     "alt": "ウェリス六本木(間取り)",
+     "href": "/chintai/L826091557/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Findoor1%2FL826091557.jpg%3F20260929230044&w=718&h=538",
+     "alt": "ウェリス六本木",
+     "href": "/chintai/L826091557/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Findoor2%2FL826091557.jpg%3F20260929230044&w=718&h=538",
+     "alt": "ウェリス六本木",
+     "href": "/chintai/L826091557/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc3%2FL826091557.jpg%3F20260929230044&w=718&h=538",
+     "alt": "ウェリス六本木",
+     "href": "/chintai/L826091557/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc4%2FL826091557.jpg%3F20260929230044&w=718&h=538",
+     "alt": "ウェリス六本木",
+     "href": "/chintai/L826091557/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc5%2FL826091557.jpg%3F20260929230044&w=718&h=538",
+     "alt": "ウェリス六本木",
+     "href": "/chintai/L826091557/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc6%2FL826091557.jpg%3F20260929230044&w=718&h=538",
+     "alt": "ウェリス六本木",
+     "href": "/chintai/L826091557/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc7%2FL826091557.jpg%3F20260929230044&w=718&h=538",
+     "alt": "ウェリス六本木",
+     "href": "/chintai/L826091557/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc8%2FL826091557.jpg%3F20260929230044&w=718&h=538",
+     "alt": "ウェリス六本木",
+     "href": "/chintai/L826091557/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc9%2FL826091557.jpg%3F20260929230044&w=718&h=538",
+     "alt": "ウェリス六本木",
+     "href": "/chintai/L826091557/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc10%2FL826091557.jpg%3F20260929230044&w=718&h=538",
+     "alt": "ウェリス六本木",
+     "href": "/chintai/L826091557/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc11%2FL826091557.jpg%3F20260929230044&w=718&h=538",
+     "alt": "ウェリス六本木",
+     "href": "/chintai/L826091557/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc12%2FL826091557.jpg%3F20260929230044&w=718&h=538",
+     "alt": "ウェリス六本木",
+     "href": "/chintai/L826091557/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc13%2FL826091557.jpg%3F20260929230044&w=718&h=538",
+     "alt": "ウェリス六本木",
+     "href": "/chintai/L826091557/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc14%2FL826091557.jpg%3F20260929230044&w=718&h=538",
+     "alt": "ウェリス六本木",
+     "href": "/chintai/L826091557/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc22%2FL826091557.jpg%3F20260929230044&w=718&h=538",
+     "alt": "ウェリス六本木",
+     "href": "/chintai/L826091557/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc23%2FL826091557.jpg%3F20260930230043&w=718&h=538",
+     "alt": "ウェリス六本木",
+     "href": "/chintai/L826091557/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc24%2FL826091557.jpg%3F20260930230043&w=718&h=538",
+     "alt": "ウェリス六本木",
+     "href": "/chintai/L826091557/"
+    }
+   ],
+   "layoutImageModal": {
+    "propertyTitle": "ウェリス六本木",
+    "layoutImage": {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Flayout1%2FL826091557.jpg%3F20260929230044&w=718&h=538",
+     "alt": "ウェリス六本木(間取り)"
+    },
+    "propertyDetailUrl": "/chintai/L826091557/",
+    "inquiryUrl": "/chintai/inquiry/L826091557/"
+   },
+   "prIconFlg": false,
+   "favoriteFlg": false,
+   "favoriteType": "rent",
+   "applyingServiceList": [],
+   "commuteInfoList": [],
+   "openHouses": [],
+   "matchingTargetFlg": false,
+   "isForeignPage": false,
+   "hasOfficialSite": false
+  },
+  {
+   "propertyCd": "L132609177",
+   "propertyName": "パークサイド六本木",
+   "priceModel": {
+    "mstCd": 4,
+    "consumptionTaxFlg": false,
+    "rent": 106000,
+    "manageCost": 4000
+   },
+   "address": "東京都港区六本木４丁目",
+   "access": [
+    "東京メトロ日比谷線「六本木」駅 徒歩3分",
+    "東京メトロ南北線「六本木一丁目」駅 徒歩6分",
+    "東京メトロ南北線「溜池山王」駅 徒歩11分",
+    "東京メトロ千代田線「乃木坂」駅 徒歩12分",
+    "都営大江戸線「六本木」駅 徒歩3分"
+   ],
+   "propertyDetail": [
+    "敷金1ヶ月 礼金-",
+    "敷金償却- 敷引-",
+    "1K",
+    "23.76m<sup>2</sup>",
+    "1979年7月築",
+    "5階建ての4階部分",
+    "北東向き"
+   ],
+   "detailUrl": "/chintai/L132609177/",
+   "inquiryInfo": {
+    "inquiryUrl": "/chintai/inquiry/L132609177/",
+    "inquiryTypeFlg": true,
+    "inquiryLinkText": "詳細"
+   },
+   "labelList": [
+    {
+     "cd": "028",
+     "iconName": "物件種別",
+     "detailClass": "a-tag--type",
+     "detailText": "マンション",
+     "listClass": "a-tag--type",
+     "listText": "マンション"
+    }
+   ],
+   "otherConditionLabels": [
+    {
+     "cd": "008",
+     "iconName": "礼金なし",
+     "detailClass": "a-tag--condition",
+     "detailText": "礼金なし",
+     "listClass": "a-tag--condition",
+     "listText": "礼金なし"
+    },
+    {
+     "cd": "029",
+     "iconName": "パノラマ",
+     "detailClass": "a-tag--condition",
+     "detailText": "パノラマ",
+     "listClass": "a-tag--condition",
+     "listText": "パノラマ"
+    }
+   ],
+   "thumbnailImage": [
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fphoto1%2FL132609177.jpg%3F20261011230043&w=718&h=538",
+     "alt": "パークサイド六本木(外観)",
+     "href": "/chintai/L132609177/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Flayout1%2FL132609177.jpg%3F20261010230045&w=718&h=538",
+     "alt": "パークサイド六本木(間取り)",
+     "href": "/chintai/L132609177/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Findoor1%2FL132609177.jpg%3F20261005230040&w=718&h=538",
+     "alt": "パークサイド六本木",
+     "href": "/chintai/L132609177/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Findoor2%2FL132609177.jpg%3F20261005230040&w=718&h=538",
+     "alt": "パークサイド六本木",
+     "href": "/chintai/L132609177/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc3%2FL132609177.jpg%3F20261005230040&w=718&h=538",
+     "alt": "パークサイド六本木",
+     "href": "/chintai/L132609177/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc4%2FL132609177.jpg%3F20261005230040&w=718&h=538",
+     "alt": "パークサイド六本木",
+     "href": "/chintai/L132609177/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc5%2FL132609177.jpg%3F20261010113506&w=718&h=538",
+     "alt": "パークサイド六本木",
+     "href": "/chintai/L132609177/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc6%2FL132609177.jpg%3F20261005230040&w=718&h=538",
+     "alt": "パークサイド六本木",
+     "href": "/chintai/L132609177/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc7%2FL132609177.jpg%3F20261005230040&w=718&h=538",
+     "alt": "パークサイド六本木",
+     "href": "/chintai/L132609177/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc8%2FL132609177.jpg%3F20261005230040&w=718&h=538",
+     "alt": "パークサイド六本木",
+     "href": "/chintai/L132609177/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc9%2FL132609177.jpg%3F20261005230040&w=718&h=538",
+     "alt": "パークサイド六本木",
+     "href": "/chintai/L132609177/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc10%2FL132609177.jpg%3F20261005230040&w=718&h=538",
+     "alt": "パークサイド六本木",
+     "href": "/chintai/L132609177/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc11%2FL132609177.jpg%3F20261005230040&w=718&h=538",
+     "alt": "パークサイド六本木",
+     "href": "/chintai/L132609177/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc12%2FL132609177.jpg%3F20261005230040&w=718&h=538",
+     "alt": "パークサイド六本木",
+     "href": "/chintai/L132609177/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc13%2FL132609177.jpg%3F20261005230040&w=718&h=538",
+     "alt": "パークサイド六本木",
+     "href": "/chintai/L132609177/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc14%2FL132609177.jpg%3F20261005230040&w=718&h=538",
+     "alt": "パークサイド六本木",
+     "href": "/chintai/L132609177/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc15%2FL132609177.jpg%3F20261005230040&w=718&h=538",
+     "alt": "パークサイド六本木",
+     "href": "/chintai/L132609177/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc16%2FL132609177.jpg%3F20261005230040&w=718&h=538",
+     "alt": "パークサイド六本木",
+     "href": "/chintai/L132609177/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc17%2FL132609177.jpg%3F20261005230040&w=718&h=538",
+     "alt": "パークサイド六本木",
+     "href": "/chintai/L132609177/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc18%2FL132609177.jpg%3F20261005230040&w=718&h=538",
+     "alt": "パークサイド六本木",
+     "href": "/chintai/L132609177/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc19%2FL132609177.jpg%3F20261005230040&w=718&h=538",
+     "alt": "パークサイド六本木",
+     "href": "/chintai/L132609177/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc20%2FL132609177.jpg%3F20261005230040&w=718&h=538",
+     "alt": "パークサイド六本木",
+     "href": "/chintai/L132609177/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc21%2FL132609177.jpg%3F20261005230040&w=718&h=538",
+     "alt": "パークサイド六本木",
+     "href": "/chintai/L132609177/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc22%2FL132609177.jpg%3F20261011230043&w=718&h=538",
+     "alt": "パークサイド六本木",
+     "href": "/chintai/L132609177/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc23%2FL132609177.jpg%3F20261011230043&w=718&h=538",
+     "alt": "パークサイド六本木",
+     "href": "/chintai/L132609177/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc24%2FL132609177.jpg%3F20261011230043&w=718&h=538",
+     "alt": "パークサイド六本木",
+     "href": "/chintai/L132609177/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc25%2FL132609177.jpg%3F20261011230043&w=718&h=538",
+     "alt": "パークサイド六本木",
+     "href": "/chintai/L132609177/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fenv1%2FL132609177.jpg%3F20261011230043&w=718&h=538",
+     "alt": "パークサイド六本木",
+     "href": "/chintai/L132609177/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fenv2%2FL132609177.jpg%3F20261011230043&w=718&h=538",
+     "alt": "パークサイド六本木",
+     "href": "/chintai/L132609177/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fenv3%2FL132609177.jpg%3F20261011230043&w=718&h=538",
+     "alt": "パークサイド六本木",
+     "href": "/chintai/L132609177/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fenv4%2FL132609177.jpg%3F20261011230043&w=718&h=538",
+     "alt": "パークサイド六本木",
+     "href": "/chintai/L132609177/"
+    }
+   ],
+   "layoutImageModal": {
+    "propertyTitle": "パークサイド六本木",
+    "layoutImage": {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Flayout1%2FL132609177.jpg%3F20261010230045&w=718&h=538",
+     "alt": "パークサイド六本木(間取り)"
+    },
+    "propertyDetailUrl": "/chintai/L132609177/",
+    "inquiryUrl": "/chintai/inquiry/L132609177/"
+   },
+   "prIconFlg": false,
+   "favoriteFlg": false,
+   "favoriteType": "rent",
+   "applyingServiceList": [],
+   "commuteInfoList": [],
+   "openHouses": [],
+   "matchingTargetFlg": false,
+   "isForeignPage": false,
+   "hasOfficialSite": false
+  },
+  {
+   "propertyCd": "L826042948",
+   "propertyName": "俳優座ビル",
+   "priceModel": {
+    "mstCd": 4,
+    "consumptionTaxFlg": false,
+    "rent": 139000,
+    "manageCost": 5000
+   },
+   "address": "東京都港区六本木４丁目",
+   "access": [
+    "東京メトロ日比谷線「六本木」駅 徒歩1分",
+    "都営大江戸線「六本木」駅 徒歩1分",
+    "東京メトロ千代田線「乃木坂」駅 徒歩12分",
+    "東京メトロ千代田線「赤坂」駅 徒歩16分"
+   ],
+   "propertyDetail": [
+    "敷金1ヶ月 礼金1ヶ月",
+    "敷金償却- 敷引-",
+    "ワンルーム",
+    "25.20m<sup>2</sup>",
+    "1980年8月築",
+    "9階建ての8階部分",
+    "南東向き"
+   ],
+   "detailUrl": "/chintai/L826042948/",
+   "inquiryInfo": {
+    "inquiryUrl": "/chintai/inquiry/L826042948/",
+    "inquiryTypeFlg": true,
+    "inquiryLinkText": "詳細"
+   },
+   "labelList": [
+    {
+     "cd": "028",
+     "iconName": "物件種別",
+     "detailClass": "a-tag--type",
+     "detailText": "マンション",
+     "listClass": "a-tag--type",
+     "listText": "マンション"
+    }
+   ],
+   "otherConditionLabels": [],
+   "thumbnailImage": [
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fphoto1%2FL826042948.jpg%3F20261005230040&w=718&h=538",
+     "alt": "俳優座ビル(外観)",
+     "href": "/chintai/L826042948/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Flayout1%2FL826042948.jpg%3F20260516230053&w=718&h=538",
+     "alt": "俳優座ビル(間取り)",
+     "href": "/chintai/L826042948/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Findoor1%2FL826042948.jpg%3F20260516230053&w=718&h=538",
+     "alt": "俳優座ビル",
+     "href": "/chintai/L826042948/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Findoor2%2FL826042948.jpg%3F20260516230053&w=718&h=538",
+     "alt": "俳優座ビル",
+     "href": "/chintai/L826042948/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc3%2FL826042948.jpg%3F20260516230053&w=718&h=538",
+     "alt": "俳優座ビル",
+     "href": "/chintai/L826042948/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc4%2FL826042948.jpg%3F20260516230053&w=718&h=538",
+     "alt": "俳優座ビル",
+     "href": "/chintai/L826042948/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc5%2FL826042948.jpg%3F20260516230053&w=718&h=538",
+     "alt": "俳優座ビル",
+     "href": "/chintai/L826042948/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc6%2FL826042948.jpg%3F20260516230053&w=718&h=538",
+     "alt": "俳優座ビル",
+     "href": "/chintai/L826042948/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc22%2FL826042948.jpg%3F20261005230040&w=718&h=538",
+     "alt": "俳優座ビル",
+     "href": "/chintai/L826042948/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc23%2FL826042948.jpg%3F20261005230040&w=718&h=538",
+     "alt": "俳優座ビル",
+     "href": "/chintai/L826042948/"
+    }
+   ],
+   "layoutImageModal": {
+    "propertyTitle": "俳優座ビル",
+    "layoutImage": {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Flayout1%2FL826042948.jpg%3F20260516230053&w=718&h=538",
+     "alt": "俳優座ビル(間取り)"
+    },
+    "propertyDetailUrl": "/chintai/L826042948/",
+    "inquiryUrl": "/chintai/inquiry/L826042948/"
+   },
+   "prIconFlg": false,
+   "favoriteFlg": false,
+   "favoriteType": "rent",
+   "applyingServiceList": [],
+   "commuteInfoList": [],
+   "openHouses": [],
+   "matchingTargetFlg": false,
+   "isForeignPage": false,
+   "hasOfficialSite": false
+  },
+  {
+   "propertyCd": "L132608226",
+   "propertyName": "インペリアル六本木　１号館",
+   "priceModel": {
+    "mstCd": 4,
+    "consumptionTaxFlg": false,
+    "rent": 230000,
+    "manageCost": 20000
+   },
+   "address": "東京都港区六本木５丁目",
+   "access": [
+    "東京メトロ日比谷線「六本木」駅 徒歩5分",
+    "東京メトロ南北線「六本木一丁目」駅 徒歩8分",
+    "都営大江戸線「麻布十番」駅 徒歩9分"
+   ],
+   "propertyDetail": [
+    "敷金1ヶ月 礼金1ヶ月",
+    "敷金償却- 敷引-",
+    "ワンルーム",
+    "39.57m<sup>2</sup>",
+    "1982年11月築",
+    "11階建ての6階部分",
+    "北西向き"
+   ],
+   "detailUrl": "/chintai/L132608226/",
+   "inquiryInfo": {
+    "inquiryUrl": "/chintai/inquiry/L132608226/",
+    "inquiryTypeFlg": true,
+    "inquiryLinkText": "詳細"
+   },
+   "labelList": [
+    {
+     "cd": "028",
+     "iconName": "物件種別",
+     "detailClass": "a-tag--type",
+     "detailText": "マンション",
+     "listClass": "a-tag--type",
+     "listText": "マンション"
+    }
+   ],
+   "otherConditionLabels": [],
+   "thumbnailImage": [
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fphoto1%2FL132608226.jpg%3F20260920230043&w=718&h=538",
+     "alt": "インペリアル六本木　１号館(外観)",
+     "href": "/chintai/L132608226/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Flayout1%2FL132608226.jpg%3F20260911230043&w=718&h=538",
+     "alt": "インペリアル六本木　１号館(間取り)",
+     "href": "/chintai/L132608226/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Findoor1%2FL132608226.jpg%3F20260810230042&w=718&h=538",
+     "alt": "インペリアル六本木　１号館",
+     "href": "/chintai/L132608226/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Findoor2%2FL132608226.jpg%3F20260810230042&w=718&h=538",
+     "alt": "インペリアル六本木　１号館",
+     "href": "/chintai/L132608226/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc3%2FL132608226.jpg%3F20260810230042&w=718&h=538",
+     "alt": "インペリアル六本木　１号館",
+     "href": "/chintai/L132608226/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc4%2FL132608226.jpg%3F20260810230042&w=718&h=538",
+     "alt": "インペリアル六本木　１号館",
+     "href": "/chintai/L132608226/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc5%2FL132608226.jpg%3F20260810230042&w=718&h=538",
+     "alt": "インペリアル六本木　１号館",
+     "href": "/chintai/L132608226/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc6%2FL132608226.jpg%3F20260810230042&w=718&h=538",
+     "alt": "インペリアル六本木　１号館",
+     "href": "/chintai/L132608226/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc7%2FL132608226.jpg%3F20260810230042&w=718&h=538",
+     "alt": "インペリアル六本木　１号館",
+     "href": "/chintai/L132608226/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc8%2FL132608226.jpg%3F20260810230042&w=718&h=538",
+     "alt": "インペリアル六本木　１号館",
+     "href": "/chintai/L132608226/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc9%2FL132608226.jpg%3F20260810230042&w=718&h=538",
+     "alt": "インペリアル六本木　１号館",
+     "href": "/chintai/L132608226/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc10%2FL132608226.jpg%3F20260810230042&w=718&h=538",
+     "alt": "インペリアル六本木　１号館",
+     "href": "/chintai/L132608226/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc11%2FL132608226.jpg%3F20260810230042&w=718&h=538",
+     "alt": "インペリアル六本木　１号館",
+     "href": "/chintai/L132608226/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc12%2FL132608226.jpg%3F20260810230042&w=718&h=538",
+     "alt": "インペリアル六本木　１号館",
+     "href": "/chintai/L132608226/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc13%2FL132608226.jpg%3F20260810230042&w=718&h=538",
+     "alt": "インペリアル六本木　１号館",
+     "href": "/chintai/L132608226/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc14%2FL132608226.jpg%3F20260810230042&w=718&h=538",
+     "alt": "インペリアル六本木　１号館",
+     "href": "/chintai/L132608226/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc15%2FL132608226.jpg%3F20260810230042&w=718&h=538",
+     "alt": "インペリアル六本木　１号館",
+     "href": "/chintai/L132608226/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc16%2FL132608226.jpg%3F20260810230042&w=718&h=538",
+     "alt": "インペリアル六本木　１号館",
+     "href": "/chintai/L132608226/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc17%2FL132608226.jpg%3F20260810230042&w=718&h=538",
+     "alt": "インペリアル六本木　１号館",
+     "href": "/chintai/L132608226/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc18%2FL132608226.jpg%3F20260810230042&w=718&h=538",
+     "alt": "インペリアル六本木　１号館",
+     "href": "/chintai/L132608226/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc19%2FL132608226.jpg%3F20260810230042&w=718&h=538",
+     "alt": "インペリアル六本木　１号館",
+     "href": "/chintai/L132608226/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc20%2FL132608226.jpg%3F20260810230042&w=718&h=538",
+     "alt": "インペリアル六本木　１号館",
+     "href": "/chintai/L132608226/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc21%2FL132608226.jpg%3F20260810230042&w=718&h=538",
+     "alt": "インペリアル六本木　１号館",
+     "href": "/chintai/L132608226/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc22%2FL132608226.jpg%3F20260920230043&w=718&h=538",
+     "alt": "インペリアル六本木　１号館",
+     "href": "/chintai/L132608226/"
+    }
+   ],
+   "layoutImageModal": {
+    "propertyTitle": "インペリアル六本木　１号館",
+    "layoutImage": {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Flayout1%2FL132608226.jpg%3F20260911230043&w=718&h=538",
+     "alt": "インペリアル六本木　１号館(間取り)"
+    },
+    "propertyDetailUrl": "/chintai/L132608226/",
+    "inquiryUrl": "/chintai/inquiry/L132608226/"
+   },
+   "prIconFlg": false,
+   "favoriteFlg": false,
+   "favoriteType": "rent",
+   "applyingServiceList": [],
+   "commuteInfoList": [],
+   "openHouses": [],
+   "matchingTargetFlg": false,
+   "isForeignPage": false,
+   "hasOfficialSite": false
+  },
+  {
+   "propertyCd": "L132608551",
+   "propertyName": "六本木ヒルズレジデンスD棟",
+   "priceModel": {
+    "mstCd": 4,
+    "consumptionTaxFlg": false,
+    "rent": 320000,
+    "manageCost": 20000
+   },
+   "address": "東京都港区六本木６丁目",
+   "access": [
+    "東京メトロ日比谷線「六本木」駅 徒歩7分",
+    "都営大江戸線「六本木」駅 徒歩7分",
+    "東京メトロ南北線「麻布十番」駅 徒歩6分",
+    "都営大江戸線「麻布十番」駅 徒歩6分",
+    "東京メトロ千代田線「乃木坂」駅 徒歩15分"
+   ],
+   "propertyDetail": [
+    "敷金1ヶ月 礼金1ヶ月",
+    "敷金償却- 敷引-",
+    "1K",
+    "35.58m<sup>2</sup>",
+    "2003年4月築",
+    "18階建ての9階部分",
+    "東向き"
+   ],
+   "detailUrl": "/chintai/L132608551/",
+   "inquiryInfo": {
+    "inquiryUrl": "/chintai/inquiry/L132608551/",
+    "inquiryTypeFlg": true,
+    "inquiryLinkText": "詳細"
+   },
+   "labelList": [
+    {
+     "cd": "028",
+     "iconName": "物件種別",
+     "detailClass": "a-tag--type",
+     "detailText": "マンション",
+     "listClass": "a-tag--type",
+     "listText": "マンション"
+    }
+   ],
+   "otherConditionLabels": [],
+   "thumbnailImage": [
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fphoto1%2FL132608551.jpeg%3F20261013230043&w=718&h=538",
+     "alt": "六本木ヒルズレジデンスD棟(外観)",
+     "href": "/chintai/L132608551/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Flayout1%2FL132608551.jpg%3F20260903230042&w=718&h=538",
+     "alt": "六本木ヒルズレジデンスD棟(間取り)",
+     "href": "/chintai/L132608551/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Findoor1%2FL132608551.jpeg%3F20261013230043&w=718&h=538",
+     "alt": "六本木ヒルズレジデンスD棟",
+     "href": "/chintai/L132608551/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Findoor2%2FL132608551.jpg%3F20260927230044&w=718&h=538",
+     "alt": "六本木ヒルズレジデンスD棟",
+     "href": "/chintai/L132608551/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc3%2FL132608551.jpg%3F20260927230044&w=718&h=538",
+     "alt": "六本木ヒルズレジデンスD棟",
+     "href": "/chintai/L132608551/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc4%2FL132608551.jpg%3F20260927230044&w=718&h=538",
+     "alt": "六本木ヒルズレジデンスD棟",
+     "href": "/chintai/L132608551/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc5%2FL132608551.jpeg%3F20261013230043&w=718&h=538",
+     "alt": "六本木ヒルズレジデンスD棟",
+     "href": "/chintai/L132608551/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc6%2FL132608551.jpg%3F20260927230044&w=718&h=538",
+     "alt": "六本木ヒルズレジデンスD棟",
+     "href": "/chintai/L132608551/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc7%2FL132608551.jpg%3F20260927230044&w=718&h=538",
+     "alt": "六本木ヒルズレジデンスD棟",
+     "href": "/chintai/L132608551/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc8%2FL132608551.jpg%3F20260927230044&w=718&h=538",
+     "alt": "六本木ヒルズレジデンスD棟",
+     "href": "/chintai/L132608551/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc9%2FL132608551.jpeg%3F20261013230043&w=718&h=538",
+     "alt": "六本木ヒルズレジデンスD棟",
+     "href": "/chintai/L132608551/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc10%2FL132608551.jpg%3F20260927230044&w=718&h=538",
+     "alt": "六本木ヒルズレジデンスD棟",
+     "href": "/chintai/L132608551/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc11%2FL132608551.jpg%3F20260927230044&w=718&h=538",
+     "alt": "六本木ヒルズレジデンスD棟",
+     "href": "/chintai/L132608551/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc12%2FL132608551.jpg%3F20260927230044&w=718&h=538",
+     "alt": "六本木ヒルズレジデンスD棟",
+     "href": "/chintai/L132608551/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc13%2FL132608551.jpg%3F20260927230044&w=718&h=538",
+     "alt": "六本木ヒルズレジデンスD棟",
+     "href": "/chintai/L132608551/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc14%2FL132608551.jpg%3F20260927230044&w=718&h=538",
+     "alt": "六本木ヒルズレジデンスD棟",
+     "href": "/chintai/L132608551/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc15%2FL132608551.jpg%3F20260927230044&w=718&h=538",
+     "alt": "六本木ヒルズレジデンスD棟",
+     "href": "/chintai/L132608551/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc16%2FL132608551.jpg%3F20260927230044&w=718&h=538",
+     "alt": "六本木ヒルズレジデンスD棟",
+     "href": "/chintai/L132608551/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc17%2FL132608551.jpg%3F20260927230044&w=718&h=538",
+     "alt": "六本木ヒルズレジデンスD棟",
+     "href": "/chintai/L132608551/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc18%2FL132608551.jpg%3F20260926230044&w=718&h=538",
+     "alt": "六本木ヒルズレジデンスD棟",
+     "href": "/chintai/L132608551/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc19%2FL132608551.jpg%3F20260926230044&w=718&h=538",
+     "alt": "六本木ヒルズレジデンスD棟",
+     "href": "/chintai/L132608551/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc20%2FL132608551.jpg%3F20260903230042&w=718&h=538",
+     "alt": "六本木ヒルズレジデンスD棟",
+     "href": "/chintai/L132608551/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc21%2FL132608551.jpg%3F20260903230042&w=718&h=538",
+     "alt": "六本木ヒルズレジデンスD棟",
+     "href": "/chintai/L132608551/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc22%2FL132608551.jpg%3F20261013230043&w=718&h=538",
+     "alt": "六本木ヒルズレジデンスD棟",
+     "href": "/chintai/L132608551/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc23%2FL132608551.jpg%3F20261013230043&w=718&h=538",
+     "alt": "六本木ヒルズレジデンスD棟",
+     "href": "/chintai/L132608551/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc24%2FL132608551.jpg%3F20261013230043&w=718&h=538",
+     "alt": "六本木ヒルズレジデンスD棟",
+     "href": "/chintai/L132608551/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc25%2FL132608551.jpg%3F20261013230043&w=718&h=538",
+     "alt": "六本木ヒルズレジデンスD棟",
+     "href": "/chintai/L132608551/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fenv1%2FL132608551.jpg%3F20261013230043&w=718&h=538",
+     "alt": "六本木ヒルズレジデンスD棟",
+     "href": "/chintai/L132608551/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fenv2%2FL132608551.jpg%3F20261013230043&w=718&h=538",
+     "alt": "六本木ヒルズレジデンスD棟",
+     "href": "/chintai/L132608551/"
+    }
+   ],
+   "layoutImageModal": {
+    "propertyTitle": "六本木ヒルズレジデンスD棟",
+    "layoutImage": {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Flayout1%2FL132608551.jpg%3F20260903230042&w=718&h=538",
+     "alt": "六本木ヒルズレジデンスD棟(間取り)"
+    },
+    "propertyDetailUrl": "/chintai/L132608551/",
+    "inquiryUrl": "/chintai/inquiry/L132608551/"
+   },
+   "prIconFlg": false,
+   "favoriteFlg": false,
+   "favoriteType": "rent",
+   "applyingServiceList": [],
+   "commuteInfoList": [],
+   "openHouses": [],
+   "matchingTargetFlg": false,
+   "isForeignPage": false,
+   "hasOfficialSite": false
+  },
+  {
+   "propertyCd": "L132605078",
+   "propertyName": "セントラルレジデンス北青山アクシルコート",
+   "priceModel": {
+    "mstCd": 4,
+    "consumptionTaxFlg": false,
+    "rent": 175000
+   },
+   "address": "東京都港区北青山２丁目",
+   "access": [
+    "東京メトロ銀座線「外苑前」駅 徒歩2分",
+    "東京メトロ銀座線「青山一丁目」駅 徒歩11分",
+    "東京メトロ銀座線「表参道」駅 徒歩11分",
+    "都営大江戸線「青山一丁目」駅 徒歩11分",
+    "東京メトロ千代田線「表参道」駅 徒歩11分"
+   ],
+   "propertyDetail": [
+    "敷金1ヶ月 礼金1ヶ月",
+    "敷金償却- 敷引-",
+    "ワンルーム",
+    "34.21m<sup>2</sup>",
+    "2000年10月築",
+    "12階建ての2階部分",
+    "南東向き"
+   ],
+   "detailUrl": "/chintai/L132605078/",
+   "inquiryInfo": {
+    "inquiryUrl": "/chintai/inquiry/L132605078/",
+    "inquiryTypeFlg": true,
+    "inquiryLinkText": "詳細"
+   },
+   "labelList": [
+    {
+     "cd": "028",
+     "iconName": "物件種別",
+     "detailClass": "a-tag--type",
+     "detailText": "マンション",
+     "listClass": "a-tag--type",
+     "listText": "マンション"
+    }
+   ],
+   "otherConditionLabels": [],
+   "thumbnailImage": [
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fphoto1%2FL132605078.jpg%3F20260920230043&w=718&h=538",
+     "alt": "セントラルレジデンス北青山アクシルコート(外観)",
+     "href": "/chintai/L132605078/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Flayout1%2FL132605078.jpg%3F20260511230045&w=718&h=538",
+     "alt": "セントラルレジデンス北青山アクシルコート(間取り)",
+     "href": "/chintai/L132605078/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Findoor1%2FL132605078.jpg%3F20260620230054&w=718&h=538",
+     "alt": "セントラルレジデンス北青山アクシルコート",
+     "href": "/chintai/L132605078/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Findoor2%2FL132605078.jpg%3F20260620230054&w=718&h=538",
+     "alt": "セントラルレジデンス北青山アクシルコート",
+     "href": "/chintai/L132605078/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc3%2FL132605078.jpg%3F20260620230054&w=718&h=538",
+     "alt": "セントラルレジデンス北青山アクシルコート",
+     "href": "/chintai/L132605078/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc4%2FL132605078.jpg%3F20260620230054&w=718&h=538",
+     "alt": "セントラルレジデンス北青山アクシルコート",
+     "href": "/chintai/L132605078/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc5%2FL132605078.jpg%3F20260620230054&w=718&h=538",
+     "alt": "セントラルレジデンス北青山アクシルコート",
+     "href": "/chintai/L132605078/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc6%2FL132605078.jpg%3F20260620230054&w=718&h=538",
+     "alt": "セントラルレジデンス北青山アクシルコート",
+     "href": "/chintai/L132605078/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc7%2FL132605078.jpg%3F20260620230054&w=718&h=538",
+     "alt": "セントラルレジデンス北青山アクシルコート",
+     "href": "/chintai/L132605078/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc8%2FL132605078.jpg%3F20260620230054&w=718&h=538",
+     "alt": "セントラルレジデンス北青山アクシルコート",
+     "href": "/chintai/L132605078/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc9%2FL132605078.jpg%3F20260620230054&w=718&h=538",
+     "alt": "セントラルレジデンス北青山アクシルコート",
+     "href": "/chintai/L132605078/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc10%2FL132605078.jpg%3F20260620230054&w=718&h=538",
+     "alt": "セントラルレジデンス北青山アクシルコート",
+     "href": "/chintai/L132605078/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc11%2FL132605078.jpg%3F20260510230046&w=718&h=538",
+     "alt": "セントラルレジデンス北青山アクシルコート",
+     "href": "/chintai/L132605078/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc12%2FL132605078.jpg%3F20260620230054&w=718&h=538",
+     "alt": "セントラルレジデンス北青山アクシルコート",
+     "href": "/chintai/L132605078/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc13%2FL132605078.jpg%3F20260620230054&w=718&h=538",
+     "alt": "セントラルレジデンス北青山アクシルコート",
+     "href": "/chintai/L132605078/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc14%2FL132605078.jpg%3F20260620230054&w=718&h=538",
+     "alt": "セントラルレジデンス北青山アクシルコート",
+     "href": "/chintai/L132605078/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc15%2FL132605078.jpg%3F20260620230054&w=718&h=538",
+     "alt": "セントラルレジデンス北青山アクシルコート",
+     "href": "/chintai/L132605078/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc16%2FL132605078.jpg%3F20260620230054&w=718&h=538",
+     "alt": "セントラルレジデンス北青山アクシルコート",
+     "href": "/chintai/L132605078/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc17%2FL132605078.jpg%3F20260620230054&w=718&h=538",
+     "alt": "セントラルレジデンス北青山アクシルコート",
+     "href": "/chintai/L132605078/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc18%2FL132605078.jpg%3F20260620230054&w=718&h=538",
+     "alt": "セントラルレジデンス北青山アクシルコート",
+     "href": "/chintai/L132605078/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc19%2FL132605078.jpg%3F20260620230054&w=718&h=538",
+     "alt": "セントラルレジデンス北青山アクシルコート",
+     "href": "/chintai/L132605078/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc20%2FL132605078.jpg%3F20260620230054&w=718&h=538",
+     "alt": "セントラルレジデンス北青山アクシルコート",
+     "href": "/chintai/L132605078/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc21%2FL132605078.jpg%3F20260620230054&w=718&h=538",
+     "alt": "セントラルレジデンス北青山アクシルコート",
+     "href": "/chintai/L132605078/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fenv1%2FL132605078.jpg%3F20260920230043&w=718&h=538",
+     "alt": "セントラルレジデンス北青山アクシルコート",
+     "href": "/chintai/L132605078/"
+    }
+   ],
+   "layoutImageModal": {
+    "propertyTitle": "セントラルレジデンス北青山アクシルコート",
+    "layoutImage": {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Flayout1%2FL132605078.jpg%3F20260511230045&w=718&h=538",
+     "alt": "セントラルレジデンス北青山アクシルコート(間取り)"
+    },
+    "propertyDetailUrl": "/chintai/L132605078/",
+    "inquiryUrl": "/chintai/inquiry/L132605078/"
+   },
+   "prIconFlg": false,
+   "favoriteFlg": false,
+   "favoriteType": "rent",
+   "applyingServiceList": [],
+   "commuteInfoList": [],
+   "openHouses": [],
+   "matchingTargetFlg": false,
+   "isForeignPage": false,
+   "hasOfficialSite": false
+  },
+  {
+   "propertyCd": "L132511608",
+   "propertyName": "グランドメゾン南青山",
+   "priceModel": {
+    "mstCd": 4,
+    "consumptionTaxFlg": false,
+    "rent": 550000
+   },
+   "address": "東京都港区南青山１丁目",
+   "access": [
+    "東京メトロ千代田線「乃木坂」駅 徒歩3分",
+    "東京メトロ銀座線「青山一丁目」駅 徒歩7分",
+    "東京メトロ半蔵門線「青山一丁目」駅 徒歩7分",
+    "都営大江戸線「青山一丁目」駅 徒歩7分",
+    "東京メトロ日比谷線「六本木」駅 徒歩9分"
+   ],
+   "propertyDetail": [
+    "敷金1ヶ月 礼金1ヶ月",
+    "敷金償却- 敷引-",
+    "2LDK",
+    "87.42m<sup>2</sup>",
+    "2002年12月築",
+    "13階建ての4階部分",
+    "東向き"
+   ],
+   "detailUrl": "/chintai/L132511608/",
+   "inquiryInfo": {
+    "inquiryUrl": "/chintai/inquiry/L132511608/",
+    "inquiryTypeFlg": true,
+    "inquiryLinkText": "詳細"
+   },
+   "labelList": [
+    {
+     "cd": "028",
+     "iconName": "物件種別",
+     "detailClass": "a-tag--type",
+     "detailText": "マンション",
+     "listClass": "a-tag--type",
+     "listText": "マンション"
+    }
+   ],
+   "otherConditionLabels": [
+    {
+     "cd": "029",
+     "iconName": "パノラマ",
+     "detailClass": "a-tag--condition",
+     "detailText": "パノラマ",
+     "listClass": "a-tag--condition",
+     "listText": "パノラマ"
+    }
+   ],
+   "thumbnailImage": [
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fphoto1%2FL132511608.jpg%3F20260910230043&w=718&h=538",
+     "alt": "グランドメゾン南青山(外観)",
+     "href": "/chintai/L132511608/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Flayout1%2FL132511608.jpg%3F20260801230051&w=718&h=538",
+     "alt": "グランドメゾン南青山(間取り)",
+     "href": "/chintai/L132511608/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Findoor1%2FL132511608.jpeg%3F20260910230043&w=718&h=538",
+     "alt": "グランドメゾン南青山",
+     "href": "/chintai/L132511608/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Findoor2%2FL132511608.jpeg%3F20260910230043&w=718&h=538",
+     "alt": "グランドメゾン南青山",
+     "href": "/chintai/L132511608/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc3%2FL132511608.jpeg%3F20260910230043&w=718&h=538",
+     "alt": "グランドメゾン南青山",
+     "href": "/chintai/L132511608/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc4%2FL132511608.jpeg%3F20260910230043&w=718&h=538",
+     "alt": "グランドメゾン南青山",
+     "href": "/chintai/L132511608/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc5%2FL132511608.jpeg%3F20260910230043&w=718&h=538",
+     "alt": "グランドメゾン南青山",
+     "href": "/chintai/L132511608/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc6%2FL132511608.jpeg%3F20260910230043&w=718&h=538",
+     "alt": "グランドメゾン南青山",
+     "href": "/chintai/L132511608/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc7%2FL132511608.jpg%3F20260910230043&w=718&h=538",
+     "alt": "グランドメゾン南青山",
+     "href": "/chintai/L132511608/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc8%2FL132511608.jpeg%3F20260910230043&w=718&h=538",
+     "alt": "グランドメゾン南青山",
+     "href": "/chintai/L132511608/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc9%2FL132511608.jpeg%3F20260910230043&w=718&h=538",
+     "alt": "グランドメゾン南青山",
+     "href": "/chintai/L132511608/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc10%2FL132511608.jpeg%3F20260910230043&w=718&h=538",
+     "alt": "グランドメゾン南青山",
+     "href": "/chintai/L132511608/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc11%2FL132511608.jpeg%3F20260910230043&w=718&h=538",
+     "alt": "グランドメゾン南青山",
+     "href": "/chintai/L132511608/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc12%2FL132511608.jpeg%3F20260910230043&w=718&h=538",
+     "alt": "グランドメゾン南青山",
+     "href": "/chintai/L132511608/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc13%2FL132511608.jpeg%3F20260910230043&w=718&h=538",
+     "alt": "グランドメゾン南青山",
+     "href": "/chintai/L132511608/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc14%2FL132511608.jpeg%3F20260910230043&w=718&h=538",
+     "alt": "グランドメゾン南青山",
+     "href": "/chintai/L132511608/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc15%2FL132511608.jpeg%3F20260910230043&w=718&h=538",
+     "alt": "グランドメゾン南青山",
+     "href": "/chintai/L132511608/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc16%2FL132511608.jpeg%3F20260910230043&w=718&h=538",
+     "alt": "グランドメゾン南青山",
+     "href": "/chintai/L132511608/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc17%2FL132511608.jpg%3F20260910230043&w=718&h=538",
+     "alt": "グランドメゾン南青山",
+     "href": "/chintai/L132511608/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc18%2FL132511608.jpeg%3F20260910230043&w=718&h=538",
+     "alt": "グランドメゾン南青山",
+     "href": "/chintai/L132511608/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc19%2FL132511608.jpeg%3F20260910230043&w=718&h=538",
+     "alt": "グランドメゾン南青山",
+     "href": "/chintai/L132511608/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc20%2FL132511608.jpg%3F20260910230043&w=718&h=538",
+     "alt": "グランドメゾン南青山",
+     "href": "/chintai/L132511608/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc21%2FL132511608.jpeg%3F20260910230043&w=718&h=538",
+     "alt": "グランドメゾン南青山",
+     "href": "/chintai/L132511608/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc22%2FL132511608.jpg%3F20260910230043&w=718&h=538",
+     "alt": "グランドメゾン南青山",
+     "href": "/chintai/L132511608/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fenv1%2FL132511608.jpg%3F20260910230043&w=718&h=538",
+     "alt": "グランドメゾン南青山",
+     "href": "/chintai/L132511608/"
+    }
+   ],
+   "layoutImageModal": {
+    "propertyTitle": "グランドメゾン南青山",
+    "layoutImage": {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Flayout1%2FL132511608.jpg%3F20260801230051&w=718&h=538",
+     "alt": "グランドメゾン南青山(間取り)"
+    },
+    "propertyDetailUrl": "/chintai/L132511608/",
+    "inquiryUrl": "/chintai/inquiry/L132511608/"
+   },
+   "prIconFlg": false,
+   "favoriteFlg": false,
+   "favoriteType": "rent",
+   "applyingServiceList": [],
+   "commuteInfoList": [],
+   "openHouses": [],
+   "matchingTargetFlg": false,
+   "isForeignPage": false,
+   "hasOfficialSite": false
+  },
+  {
+   "propertyCd": "L826094239",
+   "propertyName": "ニュー堀マンションＣ棟",
+   "priceModel": {
+    "mstCd": 4,
+    "consumptionTaxFlg": false,
+    "rent": 116000,
+    "manageCost": 6000
+   },
+   "address": "東京都港区南青山４丁目",
+   "access": [
+    "東京メトロ銀座線「表参道」駅 徒歩9分",
+    "東京メトロ半蔵門線「表参道」駅 徒歩9分",
+    "東京メトロ千代田線「乃木坂」駅 徒歩13分"
+   ],
+   "propertyDetail": [
+    "敷金1ヶ月 礼金1ヶ月",
+    "敷金償却- 敷引-",
+    "1DK",
+    "27.40m<sup>2</sup>",
+    "1980年2月築",
+    "3階建ての1階部分",
+    "北西向き"
+   ],
+   "detailUrl": "/chintai/L826094239/",
+   "inquiryInfo": {
+    "inquiryUrl": "/chintai/inquiry/L826094239/",
+    "inquiryTypeFlg": true,
+    "inquiryLinkText": "詳細"
+   },
+   "labelList": [
+    {
+     "cd": "028",
+     "iconName": "物件種別",
+     "detailClass": "a-tag--type",
+     "detailText": "マンション",
+     "listClass": "a-tag--type",
+     "listText": "マンション"
+    }
+   ],
+   "otherConditionLabels": [],
+   "thumbnailImage": [
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fphoto1%2FL826094239.jpg%3F20261002230040&w=718&h=538",
+     "alt": "ニュー堀マンションＣ棟(外観)",
+     "href": "/chintai/L826094239/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Flayout1%2FL826094239.jpg%3F20260929230044&w=718&h=538",
+     "alt": "ニュー堀マンションＣ棟(間取り)",
+     "href": "/chintai/L826094239/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc22%2FL826094239.jpg%3F20261002230040&w=718&h=538",
+     "alt": "ニュー堀マンションＣ棟",
+     "href": "/chintai/L826094239/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc23%2FL826094239.jpg%3F20261002230040&w=718&h=538",
+     "alt": "ニュー堀マンションＣ棟",
+     "href": "/chintai/L826094239/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc24%2FL826094239.jpg%3F20261002230040&w=718&h=538",
+     "alt": "ニュー堀マンションＣ棟",
+     "href": "/chintai/L826094239/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc25%2FL826094239.jpg%3F20261002230040&w=718&h=538",
+     "alt": "ニュー堀マンションＣ棟",
+     "href": "/chintai/L826094239/"
+    }
+   ],
+   "layoutImageModal": {
+    "propertyTitle": "ニュー堀マンションＣ棟",
+    "layoutImage": {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Flayout1%2FL826094239.jpg%3F20260929230044&w=718&h=538",
+     "alt": "ニュー堀マンションＣ棟(間取り)"
+    },
+    "propertyDetailUrl": "/chintai/L826094239/",
+    "inquiryUrl": "/chintai/inquiry/L826094239/"
+   },
+   "prIconFlg": false,
+   "favoriteFlg": false,
+   "favoriteType": "rent",
+   "applyingServiceList": [],
+   "commuteInfoList": [],
+   "openHouses": [],
+   "matchingTargetFlg": false,
+   "isForeignPage": false,
+   "hasOfficialSite": false
+  },
+  {
+   "propertyCd": "L826091379",
+   "propertyName": "コンフォリア南青山",
+   "priceModel": {
+    "mstCd": 4,
+    "consumptionTaxFlg": false,
+    "rent": 199000,
+    "manageCost": 10000
+   },
+   "address": "東京都港区南青山４丁目",
+   "access": [
+    "東京メトロ銀座線「外苑前」駅 徒歩7分",
+    "東京メトロ半蔵門線「表参道」駅 徒歩11分",
+    "東京メトロ千代田線「乃木坂」駅 徒歩17分"
+   ],
+   "propertyDetail": [
+    "敷金1ヶ月 礼金-",
+    "敷金償却- 敷引-",
+    "ワンルーム",
+    "35.36m<sup>2</sup>",
+    "2003年10月築",
+    "9階建ての4階部分",
+    "南西向き"
+   ],
+   "detailUrl": "/chintai/L826091379/",
+   "inquiryInfo": {
+    "inquiryUrl": "/chintai/inquiry/L826091379/",
+    "inquiryTypeFlg": true,
+    "inquiryLinkText": "詳細"
+   },
+   "labelList": [
+    {
+     "cd": "028",
+     "iconName": "物件種別",
+     "detailClass": "a-tag--type",
+     "detailText": "マンション",
+     "listClass": "a-tag--type",
+     "listText": "マンション"
+    }
+   ],
+   "otherConditionLabels": [
+    {
+     "cd": "008",
+     "iconName": "礼金なし",
+     "detailClass": "a-tag--condition",
+     "detailText": "礼金なし",
+     "listClass": "a-tag--condition",
+     "listText": "礼金なし"
+    }
+   ],
+   "thumbnailImage": [
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fphoto1%2FL826091379.jpg%3F20261015104507&w=718&h=538",
+     "alt": "コンフォリア南青山(外観)",
+     "href": "/chintai/L826091379/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Flayout1%2FL826091379.jpg%3F20260908230044&w=718&h=538",
+     "alt": "コンフォリア南青山(間取り)",
+     "href": "/chintai/L826091379/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Findoor1%2FL826091379.jpg%3F20260908230044&w=718&h=538",
+     "alt": "コンフォリア南青山",
+     "href": "/chintai/L826091379/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Findoor2%2FL826091379.jpg%3F20260908230044&w=718&h=538",
+     "alt": "コンフォリア南青山",
+     "href": "/chintai/L826091379/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc3%2FL826091379.jpg%3F20260908230044&w=718&h=538",
+     "alt": "コンフォリア南青山",
+     "href": "/chintai/L826091379/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc4%2FL826091379.jpg%3F20260908230044&w=718&h=538",
+     "alt": "コンフォリア南青山",
+     "href": "/chintai/L826091379/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc22%2FL826091379.jpg%3F20261015104507&w=718&h=538",
+     "alt": "コンフォリア南青山",
+     "href": "/chintai/L826091379/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc23%2FL826091379.jpg%3F20261015104507&w=718&h=538",
+     "alt": "コンフォリア南青山",
+     "href": "/chintai/L826091379/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc24%2FL826091379.jpg%3F20261015104507&w=718&h=538",
+     "alt": "コンフォリア南青山",
+     "href": "/chintai/L826091379/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc25%2FL826091379.jpg%3F20261015104507&w=718&h=538",
+     "alt": "コンフォリア南青山",
+     "href": "/chintai/L826091379/"
+    }
+   ],
+   "layoutImageModal": {
+    "propertyTitle": "コンフォリア南青山",
+    "layoutImage": {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Flayout1%2FL826091379.jpg%3F20260908230044&w=718&h=538",
+     "alt": "コンフォリア南青山(間取り)"
+    },
+    "propertyDetailUrl": "/chintai/L826091379/",
+    "inquiryUrl": "/chintai/inquiry/L826091379/"
+   },
+   "prIconFlg": false,
+   "favoriteFlg": false,
+   "favoriteType": "rent",
+   "applyingServiceList": [],
+   "commuteInfoList": [],
+   "openHouses": [],
+   "matchingTargetFlg": false,
+   "isForeignPage": false,
+   "hasOfficialSite": false
+  },
+  {
+   "propertyCd": "L826090985",
+   "propertyName": "Ｈ＆Ｍ南青山　ＥＡＳＴ",
+   "priceModel": {
+    "mstCd": 4,
+    "consumptionTaxFlg": false,
+    "rent": 205000,
+    "manageCost": 21000
+   },
+   "address": "東京都港区南青山５丁目",
+   "access": [
+    "東京メトロ銀座線「表参道」駅 徒歩5分",
+    "東京メトロ千代田線「表参道」駅 徒歩4分"
+   ],
+   "propertyDetail": [
+    "敷金1ヶ月 礼金1ヶ月",
+    "敷金償却- 敷引-",
+    "ワンルーム",
+    "40.67m<sup>2</sup>",
+    "1991年5月築",
+    "6階建ての4階部分",
+    "南東向き"
+   ],
+   "detailUrl": "/chintai/L826090985/",
+   "inquiryInfo": {
+    "inquiryUrl": "/chintai/inquiry/L826090985/",
+    "inquiryTypeFlg": true,
+    "inquiryLinkText": "詳細"
+   },
+   "labelList": [
+    {
+     "cd": "028",
+     "iconName": "物件種別",
+     "detailClass": "a-tag--type",
+     "detailText": "マンション",
+     "listClass": "a-tag--type",
+     "listText": "マンション"
+    }
+   ],
+   "otherConditionLabels": [],
+   "thumbnailImage": [
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fphoto1%2FL826090985.jpg%3F20261015134506&w=718&h=538",
+     "alt": "Ｈ＆Ｍ南青山　ＥＡＳＴ(外観)",
+     "href": "/chintai/L826090985/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Flayout1%2FL826090985.jpg%3F20260904230042&w=718&h=538",
+     "alt": "Ｈ＆Ｍ南青山　ＥＡＳＴ(間取り)",
+     "href": "/chintai/L826090985/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Findoor1%2FL826090985.jpg%3F20260904230042&w=718&h=538",
+     "alt": "Ｈ＆Ｍ南青山　ＥＡＳＴ",
+     "href": "/chintai/L826090985/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Findoor2%2FL826090985.jpg%3F20260904230042&w=718&h=538",
+     "alt": "Ｈ＆Ｍ南青山　ＥＡＳＴ",
+     "href": "/chintai/L826090985/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc3%2FL826090985.jpg%3F20260904230042&w=718&h=538",
+     "alt": "Ｈ＆Ｍ南青山　ＥＡＳＴ",
+     "href": "/chintai/L826090985/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc4%2FL826090985.jpg%3F20260904230042&w=718&h=538",
+     "alt": "Ｈ＆Ｍ南青山　ＥＡＳＴ",
+     "href": "/chintai/L826090985/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc5%2FL826090985.jpg%3F20260904230042&w=718&h=538",
+     "alt": "Ｈ＆Ｍ南青山　ＥＡＳＴ",
+     "href": "/chintai/L826090985/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc6%2FL826090985.jpg%3F20260904230042&w=718&h=538",
+     "alt": "Ｈ＆Ｍ南青山　ＥＡＳＴ",
+     "href": "/chintai/L826090985/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc7%2FL826090985.jpg%3F20260904230042&w=718&h=538",
+     "alt": "Ｈ＆Ｍ南青山　ＥＡＳＴ",
+     "href": "/chintai/L826090985/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc8%2FL826090985.jpg%3F20260904230042&w=718&h=538",
+     "alt": "Ｈ＆Ｍ南青山　ＥＡＳＴ",
+     "href": "/chintai/L826090985/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc9%2FL826090985.jpg%3F20260904230042&w=718&h=538",
+     "alt": "Ｈ＆Ｍ南青山　ＥＡＳＴ",
+     "href": "/chintai/L826090985/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc10%2FL826090985.jpg%3F20260904230042&w=718&h=538",
+     "alt": "Ｈ＆Ｍ南青山　ＥＡＳＴ",
+     "href": "/chintai/L826090985/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc11%2FL826090985.jpg%3F20260904230042&w=718&h=538",
+     "alt": "Ｈ＆Ｍ南青山　ＥＡＳＴ",
+     "href": "/chintai/L826090985/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc12%2FL826090985.jpg%3F20260904230042&w=718&h=538",
+     "alt": "Ｈ＆Ｍ南青山　ＥＡＳＴ",
+     "href": "/chintai/L826090985/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc13%2FL826090985.jpg%3F20260904230042&w=718&h=538",
+     "alt": "Ｈ＆Ｍ南青山　ＥＡＳＴ",
+     "href": "/chintai/L826090985/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc22%2FL826090985.jpg%3F20261015134506&w=718&h=538",
+     "alt": "Ｈ＆Ｍ南青山　ＥＡＳＴ",
+     "href": "/chintai/L826090985/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc23%2FL826090985.jpg%3F20261015134506&w=718&h=538",
+     "alt": "Ｈ＆Ｍ南青山　ＥＡＳＴ",
+     "href": "/chintai/L826090985/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc24%2FL826090985.jpg%3F20261015134506&w=718&h=538",
+     "alt": "Ｈ＆Ｍ南青山　ＥＡＳＴ",
+     "href": "/chintai/L826090985/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc25%2FL826090985.jpg%3F20261015134506&w=718&h=538",
+     "alt": "Ｈ＆Ｍ南青山　ＥＡＳＴ",
+     "href": "/chintai/L826090985/"
+    }
+   ],
+   "layoutImageModal": {
+    "propertyTitle": "Ｈ＆Ｍ南青山　ＥＡＳＴ",
+    "layoutImage": {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Flayout1%2FL826090985.jpg%3F20260904230042&w=718&h=538",
+     "alt": "Ｈ＆Ｍ南青山　ＥＡＳＴ(間取り)"
+    },
+    "propertyDetailUrl": "/chintai/L826090985/",
+    "inquiryUrl": "/chintai/inquiry/L826090985/"
+   },
+   "prIconFlg": false,
+   "favoriteFlg": false,
+   "favoriteType": "rent",
+   "applyingServiceList": [],
+   "commuteInfoList": [],
+   "openHouses": [],
+   "matchingTargetFlg": false,
+   "isForeignPage": false,
+   "hasOfficialSite": false
+  },
+  {
+   "propertyCd": "L132609451",
+   "propertyName": "南青ハイツ",
+   "priceModel": {
+    "mstCd": 4,
+    "consumptionTaxFlg": false,
+    "rent": 280000,
+    "manageCost": 10000
+   },
+   "address": "東京都港区南青山６丁目",
+   "access": [
+    "東京メトロ半蔵門線「表参道」駅 徒歩5分",
+    "東京メトロ千代田線「表参道」駅 徒歩5分",
+    "東京メトロ銀座線「表参道」駅 徒歩5分",
+    "東京メトロ千代田線「乃木坂」駅 徒歩12分",
+    "東京メトロ銀座線「外苑前」駅 徒歩14分"
+   ],
+   "propertyDetail": [
+    "敷金1ヶ月 礼金1ヶ月",
+    "敷金償却- 敷引-",
+    "1LDK",
+    "55.89m<sup>2</sup>",
+    "1970年7月築",
+    "7階建ての4階部分",
+    "東向き"
+   ],
+   "detailUrl": "/chintai/L132609451/",
+   "inquiryInfo": {
+    "inquiryUrl": "/chintai/inquiry/L132609451/",
+    "inquiryTypeFlg": true,
+    "inquiryLinkText": "詳細"
+   },
+   "labelList": [
+    {
+     "cd": "028",
+     "iconName": "物件種別",
+     "detailClass": "a-tag--type",
+     "detailText": "マンション",
+     "listClass": "a-tag--type",
+     "listText": "マンション"
+    },
+    {
+     "cd": "001",
+     "iconName": "NEW",
+     "detailClass": "a-tag--new-date",
+     "detailText": "NEW 10/4",
+     "listClass": "a-tag--new-date",
+     "listText": "NEW 10/4"
+    }
+   ],
+   "otherConditionLabels": [],
+   "thumbnailImage": [
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fphoto1%2FL132609451.jpg%3F20261004230040&w=718&h=538",
+     "alt": "南青ハイツ(外観)",
+     "href": "/chintai/L132609451/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Flayout1%2FL132609451.jpg%3F20261004230040&w=718&h=538",
+     "alt": "南青ハイツ(間取り)",
+     "href": "/chintai/L132609451/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Findoor1%2FL132609451.jpg%3F20261004230040&w=718&h=538",
+     "alt": "南青ハイツ",
+     "href": "/chintai/L132609451/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Findoor2%2FL132609451.jpg%3F20261004230040&w=718&h=538",
+     "alt": "南青ハイツ",
+     "href": "/chintai/L132609451/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc3%2FL132609451.jpg%3F20261004230040&w=718&h=538",
+     "alt": "南青ハイツ",
+     "href": "/chintai/L132609451/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc4%2FL132609451.jpg%3F20261004230040&w=718&h=538",
+     "alt": "南青ハイツ",
+     "href": "/chintai/L132609451/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc5%2FL132609451.jpg%3F20261004230040&w=718&h=538",
+     "alt": "南青ハイツ",
+     "href": "/chintai/L132609451/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc6%2FL132609451.jpg%3F20261004230040&w=718&h=538",
+     "alt": "南青ハイツ",
+     "href": "/chintai/L132609451/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc7%2FL132609451.jpg%3F20261004230040&w=718&h=538",
+     "alt": "南青ハイツ",
+     "href": "/chintai/L132609451/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc8%2FL132609451.jpg%3F20261004230040&w=718&h=538",
+     "alt": "南青ハイツ",
+     "href": "/chintai/L132609451/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc9%2FL132609451.jpg%3F20261004230040&w=718&h=538",
+     "alt": "南青ハイツ",
+     "href": "/chintai/L132609451/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc10%2FL132609451.jpg%3F20261004230040&w=718&h=538",
+     "alt": "南青ハイツ",
+     "href": "/chintai/L132609451/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc11%2FL132609451.jpg%3F20261004230040&w=718&h=538",
+     "alt": "南青ハイツ",
+     "href": "/chintai/L132609451/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc12%2FL132609451.jpg%3F20261004230040&w=718&h=538",
+     "alt": "南青ハイツ",
+     "href": "/chintai/L132609451/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc13%2FL132609451.jpg%3F20261004230040&w=718&h=538",
+     "alt": "南青ハイツ",
+     "href": "/chintai/L132609451/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc14%2FL132609451.jpg%3F20261004230040&w=718&h=538",
+     "alt": "南青ハイツ",
+     "href": "/chintai/L132609451/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc15%2FL132609451.jpg%3F20261004230040&w=718&h=538",
+     "alt": "南青ハイツ",
+     "href": "/chintai/L132609451/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc16%2FL132609451.jpg%3F20261004230040&w=718&h=538",
+     "alt": "南青ハイツ",
+     "href": "/chintai/L132609451/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc17%2FL132609451.jpg%3F20261004230040&w=718&h=538",
+     "alt": "南青ハイツ",
+     "href": "/chintai/L132609451/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc18%2FL132609451.jpg%3F20261004230040&w=718&h=538",
+     "alt": "南青ハイツ",
+     "href": "/chintai/L132609451/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc19%2FL132609451.jpg%3F20261004230040&w=718&h=538",
+     "alt": "南青ハイツ",
+     "href": "/chintai/L132609451/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc20%2FL132609451.jpg%3F20261004230040&w=718&h=538",
+     "alt": "南青ハイツ",
+     "href": "/chintai/L132609451/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc21%2FL132609451.jpg%3F20261004230040&w=718&h=538",
+     "alt": "南青ハイツ",
+     "href": "/chintai/L132609451/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc22%2FL132609451.jpg%3F20261004230040&w=718&h=538",
+     "alt": "南青ハイツ",
+     "href": "/chintai/L132609451/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc23%2FL132609451.jpg%3F20261004230040&w=718&h=538",
+     "alt": "南青ハイツ",
+     "href": "/chintai/L132609451/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fenv1%2FL132609451.jpg%3F20261004230040&w=718&h=538",
+     "alt": "南青ハイツ",
+     "href": "/chintai/L132609451/"
+    }
+   ],
+   "layoutImageModal": {
+    "propertyTitle": "南青ハイツ",
+    "layoutImage": {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Flayout1%2FL132609451.jpg%3F20261004230040&w=718&h=538",
+     "alt": "南青ハイツ(間取り)"
+    },
+    "propertyDetailUrl": "/chintai/L132609451/",
+    "inquiryUrl": "/chintai/inquiry/L132609451/"
+   },
+   "prIconFlg": false,
+   "favoriteFlg": false,
+   "favoriteType": "rent",
+   "applyingServiceList": [],
+   "commuteInfoList": [],
+   "openHouses": [],
+   "matchingTargetFlg": false,
+   "isForeignPage": false,
+   "hasOfficialSite": false
+  },
+  {
+   "propertyCd": "L132609353",
+   "propertyName": "パークコート青山高樹町ザ　タワー",
+   "priceModel": {
+    "mstCd": 4,
+    "consumptionTaxFlg": false,
+    "rent": 647000
+   },
+   "address": "東京都港区南青山６丁目",
+   "access": [
+    "東京メトロ千代田線「表参道」駅 徒歩9分"
+   ],
+   "propertyDetail": [
+    "敷金1ヶ月 礼金1ヶ月",
+    "敷金償却- 敷引-",
+    "2LDK",
+    "70.43m<sup>2</sup>",
+    "2026年9月築",
+    "21階建ての2階部分",
+    "南西向き"
+   ],
+   "detailUrl": "/chintai/L132609353/",
+   "inquiryInfo": {
+    "inquiryUrl": "/chintai/inquiry/L132609353/",
+    "inquiryTypeFlg": true,
+    "inquiryLinkText": "詳細"
+   },
+   "labelList": [
+    {
+     "cd": "028",
+     "iconName": "物件種別",
+     "detailClass": "a-tag--type",
+     "detailText": "新築マンション",
+     "listClass": "a-tag--type",
+     "listText": "新築マンション"
+    }
+   ],
+   "otherConditionLabels": [],
+   "thumbnailImage": [
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fphoto1%2FL132609353.jpg%3F20261015123506&w=718&h=538",
+     "alt": "パークコート青山高樹町ザ　タワー(外観)",
+     "href": "/chintai/L132609353/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Flayout1%2FL132609353.jpg%3F20260921230042&w=718&h=538",
+     "alt": "パークコート青山高樹町ザ　タワー(間取り)",
+     "href": "/chintai/L132609353/"
+    }
+   ],
+   "layoutImageModal": {
+    "propertyTitle": "パークコート青山高樹町ザ　タワー",
+    "layoutImage": {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Flayout1%2FL132609353.jpg%3F20260921230042&w=718&h=538",
+     "alt": "パークコート青山高樹町ザ　タワー(間取り)"
+    },
+    "propertyDetailUrl": "/chintai/L132609353/",
+    "inquiryUrl": "/chintai/inquiry/L132609353/"
+   },
+   "prIconFlg": false,
+   "favoriteFlg": false,
+   "favoriteType": "rent",
+   "applyingServiceList": [],
+   "commuteInfoList": [],
+   "openHouses": [],
+   "matchingTargetFlg": false,
+   "isForeignPage": false,
+   "hasOfficialSite": false
+  }
+ ]
+}

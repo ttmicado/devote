@@ -39,7 +39,8 @@ export function createHttpFetcher(
           await sleep(2 ** attempt * 1000);
           continue;
         }
-        return { status: res.status, body: await res.text(), url: res.url || url };
+        const body = decodeBody(await res.arrayBuffer(), res.headers.get("content-type"));
+        return { status: res.status, body, url: res.url || url };
       } catch (err) {
         if (attempt >= maxRetries) throw err;
         await sleep(2 ** attempt * 1000);
@@ -55,6 +56,23 @@ export function createHttpFetcher(
       return p;
     },
   };
+}
+
+/**
+ * レスポンス本文を文字列にする。Shift_JIS のサイト（住友不動産ステップ等）があるため、
+ * Content-Type の charset → HTML 先頭の <meta charset> の順に文字コードを決める（既定 UTF-8）。
+ */
+export function decodeBody(buf: ArrayBuffer, contentType: string | null): string {
+  const bytes = new Uint8Array(buf);
+  const fromHeader = contentType?.match(/charset=["']?([\w-]+)/i)?.[1];
+  const head = new TextDecoder("latin1").decode(bytes.subarray(0, 2048));
+  const fromMeta = head.match(/<meta[^>]+charset=["']?([\w-]+)/i)?.[1];
+  const label = (fromHeader ?? fromMeta ?? "utf-8").toLowerCase();
+  try {
+    return new TextDecoder(label).decode(bytes);
+  } catch {
+    return new TextDecoder("utf-8").decode(bytes);
+  }
 }
 
 /**

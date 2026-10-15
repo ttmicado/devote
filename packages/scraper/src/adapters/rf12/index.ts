@@ -16,7 +16,7 @@ import {
 } from "@devote/core";
 import * as cheerio from "cheerio";
 import { defineAdapter, type ListItem } from "../../adapter.js";
-import { parseJpDate, parseMonths, parseStructure, parseTotalFloors } from "./helpers.js";
+import { parseJpDate, parseMonths, parseStructure, parseTotalFloors } from "../../helpers.js";
 
 /**
  * REIT FIND（https://rf12.jp/）— 株式会社SOLPIR が運営する、REIT系・ブランド賃貸マンション専門の

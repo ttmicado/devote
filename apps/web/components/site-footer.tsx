@@ -48,9 +48,9 @@ export function SiteFooter() {
           <p className="eyebrow mb-3 text-sand-400">Coverage</p>
           港区・渋谷区・千代田区・品川区
           <br />
-          中央区勝どき・江東区豊洲
+          中央区勝どき・晴海・江東区豊洲
           <br />
-          住まいの賃貸・売買／事業用の賃貸
+          住まいの賃貸・売買
         </div>
       </div>
       <div className="border-t border-sand-100/10">

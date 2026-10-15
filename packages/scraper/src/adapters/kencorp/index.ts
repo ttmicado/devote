@@ -52,7 +52,7 @@ const AREAS: { key: string; by: "district" | "area"; value: string; officeValue?
   { key: "shibuya", by: "district", value: "2" },
   { key: "chiyoda", by: "district", value: "14" },
   { key: "shinagawa", by: "district", value: "17" },
-  // 区単位だと広すぎる中央区・江東区はエリアで絞る（後段で isInTargetArea により勝どき・豊洲に絞る）
+  // 区単位だと広すぎる中央区・江東区はエリアで絞る（後段で isInTargetArea により勝どき・晴海・豊洲に絞る）
   { key: "tsukishima-kachidoki-harumi", by: "area", value: "ginwan01", officeValue: "rinkai03" },
   { key: "toyosu-ariake", by: "area", value: "ginwan02", officeValue: "rinkai02" },
 ];
@@ -123,14 +123,16 @@ export default defineAdapter({
     parserVersion: "2",
   },
 
+  // 事業用（office）は巡回しない（2026-10-15 から、ユーザーが探せるのは住まいの賃貸・売買だけ）。
+  // 事業用のパーサは残してあるので、再開するときは "office" を足す
   queries: (): SearchQuery[] =>
-    (["rent", "buy", "office"] as const).flatMap((type) =>
+    (["rent", "buy"] as const).flatMap((type) =>
       AREAS.map((a) => ({
         key: `${type}-${a.key}`,
         params: {
           search_type: type,
           search_by: a.by,
-          value: type === "office" ? (a.officeValue ?? a.value) : a.value,
+          value: a.value,
         },
       })),
     ),

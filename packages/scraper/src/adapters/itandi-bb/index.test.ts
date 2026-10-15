@@ -35,7 +35,7 @@ describe("itandi-bb（2026-10-14 実画面で確認）", () => {
 
   it("賃貸 × 対象エリアのクエリ", () => {
     const qs = adapter.queries();
-    expect(qs).toHaveLength(6);
+    expect(qs).toHaveLength(7);
     expect(qs.every((q) => q.params.deal === "rent")).toBe(true);
     const kachidoki = qs.find((q) => q.params.town === "勝どき");
     expect(kachidoki && parseSearchUrl(adapter.buildListUrl(kachidoki))).toMatchObject({
