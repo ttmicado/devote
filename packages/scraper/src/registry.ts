@@ -1,6 +1,5 @@
 import type { SiteAdapter } from "./adapter.js";
 import atbb, { VERIFIED as ATBB_VERIFIED } from "./adapters/atbb/index.js";
-import axelHome from "./adapters/axel-home/index.js";
 import itandiBb, { VERIFIED as ITANDI_VERIFIED } from "./adapters/itandi-bb/index.js";
 import kencorp from "./adapters/kencorp/index.js";
 import moriLiving from "./adapters/mori-living/index.js";
@@ -32,7 +31,6 @@ const registrations: Registration[] = [
   { adapter: moriLiving, production: true, verified: true },
   { adapter: rf12, production: true, verified: true },
   { adapter: kencorp, production: true, verified: true },
-  { adapter: axelHome, production: true, verified: true },
   // 業者間の会員サイト（docs/member-sites.md）。レインズ・ITANDI BB は 2026-10-14 にログイン後の実画面で確認済み。
   // ATBB は同じIDを人が使用中（同時ログイン不可）で検索画面に入れず未確認。
   // 会員サイトは既定で巡回する。止めるときは ENABLE_MEMBER_SOURCES=0（下の enabledAdapters）
