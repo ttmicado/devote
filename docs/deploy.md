@@ -146,6 +146,6 @@ pnpm install
 cp .env.example .env        # 値を入れる
 pnpm db:up && pnpm db:migrate
 pnpm dev                    # http://localhost:3000
-pnpm worker crawl rf12      # 1ソースだけ巡回
+pnpm worker crawl kencorp   # 1ソースだけ巡回
 pnpm worker all             # 巡回 → マッチング → 通知
 ```

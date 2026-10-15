@@ -43,6 +43,13 @@
       "when": 1792051376509,
       "tag": "0005_retire_axel_home",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1792054057429,
+      "tag": "0006_retire_rf12",
+      "breakpoints": true
     }
   ]
 }

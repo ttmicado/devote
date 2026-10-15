@@ -1,5 +1,5 @@
 /**
- * rf12（REIT FIND）用の小さな正規化ヘルパー。
+ * 複数のアダプターで使う小さな正規化ヘルパー（構造・総階数・日付）。
  * core に同等の関数がないため暫定でここに置く（core へ移す候補）。
  */
 import { toHalfWidth } from "@devote/core";
@@ -38,13 +38,4 @@ export function parseJpDate(input: string | null | undefined): string | null {
   const iso = `${m[1]}-${m[2]?.padStart(2, "0")}-${m[3]?.padStart(2, "0")}T00:00:00+09:00`;
   const d = new Date(iso);
   return Number.isNaN(d.getTime()) ? null : d.toISOString();
-}
-
-/** "1ヶ月" / "0.5ヶ月" → 月数。月数表記でなければ null */
-export function parseMonths(input: string | null | undefined): number | null {
-  if (!input) return null;
-  const m = toHalfWidth(input)
-    .replace(/\s+/g, "")
-    .match(/^(\d+(?:\.\d+)?)(?:ヶ|ケ|ヵ|カ|か)?月/);
-  return m ? Number(m[1]) : null;
 }

@@ -7,7 +7,6 @@ import mecH from "./adapters/mec-h/index.js";
 import mitsuiChintai from "./adapters/mitsui-chintai/index.js";
 import moriLiving from "./adapters/mori-living/index.js";
 import reins, { VERIFIED as REINS_VERIFIED } from "./adapters/reins/index.js";
-import rf12 from "./adapters/rf12/index.js";
 import sampleRealtor from "./adapters/sample-realtor/index.js";
 import stepon from "./adapters/stepon/index.js";
 import sumitomoLatour from "./adapters/sumitomo-latour/index.js";
@@ -33,7 +32,6 @@ const registrations: Registration[] = [
   { adapter: sumitomoResidence, production: true, verified: true },
   { adapter: sumitomoLatour, production: true, verified: true },
   { adapter: moriLiving, production: true, verified: true },
-  { adapter: rf12, production: true, verified: true },
   { adapter: kencorp, production: true, verified: true },
   // 大手仲介・管理会社の賃貸（2026-10-15 追加）
   { adapter: stepon, production: true, verified: true },

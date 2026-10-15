@@ -17,8 +17,8 @@ import {
 import * as cheerio from "cheerio";
 import { defineAdapter, type ListItem } from "../../adapter.js";
 import { describeBody, detectBlockPage } from "../../block.js";
+import { parseJpDate, parseStructure, parseTotalFloors } from "../../helpers.js";
 import { addressInTowns, carryTowns, townsOf, withTowns } from "../../town-filter.js";
-import { parseJpDate, parseStructure, parseTotalFloors } from "../rf12/helpers.js";
 
 /**
  * 三井の賃貸（三井不動産レジデンシャルリース、https://www.mitsui-chintai.co.jp/）。

@@ -16,7 +16,7 @@ import {
 import * as cheerio from "cheerio";
 import { defineAdapter, type FetchContext, type ListItem } from "../../adapter.js";
 import { describeBody, detectBlockPage } from "../../block.js";
-import { parseStructure } from "../rf12/helpers.js";
+import { parseStructure } from "../../helpers.js";
 
 /**
  * 東急リバブル（https://www.livable.co.jp/chintai/）の賃貸。

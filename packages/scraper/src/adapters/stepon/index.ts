@@ -15,8 +15,8 @@ import {
 } from "@devote/core";
 import * as cheerio from "cheerio";
 import { defineAdapter, type ListItem } from "../../adapter.js";
+import { parseJpDate, parseStructure } from "../../helpers.js";
 import { addressInTowns, carryTowns, townsOf, withTowns } from "../../town-filter.js";
-import { parseJpDate, parseStructure } from "../rf12/helpers.js";
 
 /**
  * 住友不動産ステップ（https://www.stepon.co.jp/chintai/）— 住友不動産販売の仲介ブランド。賃貸の一覧・詳細。
