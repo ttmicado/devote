@@ -119,11 +119,34 @@ export async function applyBrowserProfile(page: Page): Promise<void> {
 // 検索クエリ（擬似URL）
 // ---------------------------------------------------------------------------
 
-/** レインズの物件種別１（検索対象）。選択肢の表記は 2026-10-14 確認 */
-const PROPERTY_KIND: Record<DealType, string> = {
-  rent: "賃貸マンション",
-  sale: "売マンション",
+/** 検索する建物の種類。マンション（2026-10-14 実画面で確認）と一戸建（2026-10-15 追加） */
+export type ReinsKind = "mansion" | "house";
+export const REINS_KINDS: readonly ReinsKind[] = ["mansion", "house"];
+
+/**
+ * レインズの物件種別１（検索対象）の選択肢の表記。
+ * マンションは 2026-10-14 の実画面で確認。一戸建は公開マニュアルの表記（賃貸一戸建 / 売一戸建）で、
+ * 実画面では未確認 → 完全一致で選べなければ「一戸建」を含む選択肢を探す（kindPattern）
+ */
+const PROPERTY_KIND: Record<DealType, Record<ReinsKind, string>> = {
+  rent: { mansion: "賃貸マンション", house: "賃貸一戸建" },
+  sale: { mansion: "売マンション", house: "売一戸建" },
 };
+const kindPattern = (deal: DealType, kind: ReinsKind) =>
+  kind === "mansion"
+    ? new RegExp(`^\\s*${PROPERTY_KIND[deal].mansion}\\s*$`)
+    : deal === "rent"
+      ? /賃貸.*一戸建/
+      : /売.*一戸建/;
+
+/** 面積の下限を入れる項目。賃貸は建物使用部分面積、売マンションは専有面積、売一戸建は建物面積（未確認） */
+const AREA_LABEL: Record<DealType, Record<ReinsKind, string>> = {
+  rent: { mansion: "建物使用部分面積", house: "建物使用部分面積" },
+  sale: { mansion: "専有面積", house: "建物面積" },
+};
+
+/** 一戸建の物件種別が画面で選べなかった（表記の違いなど）。その検索だけ飛ばし、巡回全体は止めない */
+class KindUnavailableError extends Error {}
 
 /**
  * 登録年月日・変更年月日で絞る期間（画面のラジオボタンの表記）。
@@ -156,6 +179,8 @@ export const defaultPeriod = (): PeriodSetting => {
 
 export interface ReinsSearch {
   deal: DealType;
+  /** 建物の種類（既定はマンション） */
+  kind: ReinsKind;
   prefecture: string;
   city: string;
   town: string | null;
@@ -174,6 +199,7 @@ type SearchInput = Pick<ReinsSearch, "deal" | "prefecture" | "city" | "town"> &
 
 export function buildSearchUrl(s: SearchInput): string {
   const p = new URLSearchParams({ deal: s.deal, pref: s.prefecture, city: s.city });
+  if (s.kind === "house") p.set("kind", "house");
   if (s.town) p.set("town", s.town);
   if (s.period && s.period !== "auto") p.set("period", s.period);
   if (s.maxPriceMan != null) p.set("max", String(s.maxPriceMan));
@@ -197,6 +223,7 @@ export function parseSearchUrl(url: string): ReinsSearch {
   const period = u.searchParams.get("period");
   return {
     deal,
+    kind: u.searchParams.get("kind") === "house" ? "house" : "mansion",
     prefecture: u.searchParams.get("pref") ?? "東京都",
     city,
     town: u.searchParams.get("town"),
@@ -209,9 +236,17 @@ export function parseSearchUrl(url: string): ReinsSearch {
 }
 
 const searchKey = (s: ReinsSearch) =>
-  [s.deal, s.prefecture, s.city, s.town ?? "", s.period, s.maxPriceMan, s.minArea, s.minRooms].join(
-    "|",
-  );
+  [
+    s.deal,
+    s.kind,
+    s.prefecture,
+    s.city,
+    s.town ?? "",
+    s.period,
+    s.maxPriceMan,
+    s.minArea,
+    s.minRooms,
+  ].join("|");
 
 export function detailUrlOf(id: string, deal: DealType): string {
   return `reins://detail?${new URLSearchParams({ id, deal }).toString()}`;
@@ -308,6 +343,30 @@ async function precheck(page: Page, s: ReinsSearch) {
   return { count, dialog, close };
 }
 
+/** 物件種別１を選ぶ。一戸建は表記が実画面と違っても「一戸建」を含む選択肢を探す */
+async function selectKind(page: Page, s: ReinsSearch) {
+  const select = afterLabel(page, /物件種別\s*[1１]/, "select");
+  const label = PROPERTY_KIND[s.deal][s.kind];
+  // 選択肢は画面の描画後に入るので、マンションの選択肢が出るまで待ってから読む
+  await select
+    .locator("option", { hasText: "マンション" })
+    .first()
+    .waitFor({ state: "attached", timeout: 15_000 });
+  const options = (await select.locator("option").allInnerTexts()).map((t) => t.trim());
+  const option = options.includes(label)
+    ? label
+    : options.find((o) => kindPattern(s.deal, s.kind).test(o));
+  if (!option) {
+    if (s.kind === "house") {
+      throw new KindUnavailableError(
+        `reins: 物件種別「${label}」が選択肢にない（${options.join(" / ")}）`,
+      );
+    }
+    throw new Error(`reins: 物件種別「${label}」が選択肢にない（${options.join(" / ")}）`);
+  }
+  await select.selectOption({ label: option });
+}
+
 /** 検索条件を入れて件数事前確認 → 一覧。0件なら一覧を開かない */
 async function runSearch(
   page: Page,
@@ -325,9 +384,7 @@ async function runSearch(
   await step("search-form");
 
   // 物件種別１（必須。select）
-  await afterLabel(page, /物件種別\s*[1１]/, "select").selectOption({
-    label: PROPERTY_KIND[s.deal],
-  });
+  await selectKind(page, s);
   // 所在地は「入力ガイド」を使わず直接入力できる（都道府県名・所在地名１は完全一致、所在地名２は前方一致）
   await afterLabel(page, /都道府県名/, "input").fill(s.prefecture);
   await afterLabel(page, /所在地名\s*[1１]/, "input").fill(s.city);
@@ -342,9 +399,15 @@ async function runSearch(
       .fill(String(s.maxPriceMan));
   }
   if (s.minArea != null) {
-    await rangeInputs(page, s.deal === "rent" ? "建物使用部分面積" : "専有面積")
-      .nth(0)
-      .fill(String(s.minArea));
+    const area = rangeInputs(page, AREA_LABEL[s.deal][s.kind]);
+    if ((await area.count()) > 0) {
+      await area.nth(0).fill(String(s.minArea));
+    } else {
+      // 一戸建の面積の項目名は未確認。見つからなければ面積で絞らずに検索する（取りこぼしは出ない）
+      console.warn(
+        `reins: 面積の項目「${AREA_LABEL[s.deal][s.kind]}」が見つからない: ${searchKey(s)}`,
+      );
+    }
   }
   if (s.minRooms != null) {
     await rangeInputs(page, "間取部屋数").nth(0).fill(String(s.minRooms));
@@ -667,26 +730,32 @@ export default defineAdapter({
           })),
         ),
       );
-    return scopes.map((sc) => ({
-      key: `${sc.dealType}-${sc.city}${sc.town ?? ""}`,
-      params: {
-        deal: sc.dealType,
-        prefecture: sc.prefecture,
-        city: sc.city,
-        period: defaultPeriod(),
-        ...(sc.town ? { town: sc.town } : {}),
-        // 万円・㎡の入力欄。取りこぼさないよう上限は切り上げ、下限は切り捨てる
-        ...(sc.maxPrice != null ? { max: Math.ceil(sc.maxPrice / 10_000) } : {}),
-        ...(sc.minAreaSqm != null ? { area: Math.floor(sc.minAreaSqm) } : {}),
-        ...(sc.minRooms != null ? { rooms: sc.minRooms } : {}),
-      },
-    }));
+    // マンションと一戸建は別の検索（物件種別１が1つ・面積の項目も違うため）。
+    // 1回の検索枠が足りないときにマンションを先に回すよう、種類ごとにまとめて並べる
+    return REINS_KINDS.flatMap((kind) =>
+      scopes.map((sc) => ({
+        key: `${sc.dealType}-${kind === "house" ? "house-" : ""}${sc.city}${sc.town ?? ""}`,
+        params: {
+          deal: sc.dealType,
+          kind,
+          prefecture: sc.prefecture,
+          city: sc.city,
+          period: defaultPeriod(),
+          ...(sc.town ? { town: sc.town } : {}),
+          // 万円・㎡の入力欄。取りこぼさないよう上限は切り上げ、下限は切り捨てる
+          ...(sc.maxPrice != null ? { max: Math.ceil(sc.maxPrice / 10_000) } : {}),
+          ...(sc.minAreaSqm != null ? { area: Math.floor(sc.minAreaSqm) } : {}),
+          ...(sc.minRooms != null ? { rooms: sc.minRooms } : {}),
+        },
+      })),
+    );
   },
 
   buildListUrl: (q) => {
     const num = (v: unknown) => (typeof v === "number" ? v : null);
     return buildSearchUrl({
       deal: q.params.deal === "sale" ? "sale" : "rent",
+      kind: q.params.kind === "house" ? "house" : "mansion",
       prefecture: String(q.params.prefecture ?? "東京都"),
       city: String(q.params.city),
       town: q.params.town ? String(q.params.town) : null,
@@ -750,7 +819,18 @@ export default defineAdapter({
     const page = requirePage(ctx);
     const s = parseSearchUrl(url);
     if (s.page === 1) {
-      const { count, period } = await runSearch(page, s);
+      let searched: Awaited<ReturnType<typeof runSearch>>;
+      try {
+        searched = await runSearch(page, s);
+      } catch (e) {
+        if (!(e instanceof KindUnavailableError)) throw e;
+        // 一戸建の種別が選べなかった: この検索だけ0件扱いにする。期間は差分（当日）扱いにして、
+        // 取り込み済みの一戸建を掲載終了にしない
+        console.warn(e.message);
+        currentSearchKey = null;
+        return emptyListMarker("today");
+      }
+      const { count, period } = searched;
       if (count === 0 || hooks.precheckOnly) return emptyListMarker(period);
     } else {
       // 2ページ目以降は表示中の検索結果のページ送り（一覧の API が1ページ50件ずつ返す）
