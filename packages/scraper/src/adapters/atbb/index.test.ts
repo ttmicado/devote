@@ -36,7 +36,7 @@ describe("atbb（未検証のたたき台）", () => {
 
   it("賃貸・売買 × 対象エリアのクエリ", () => {
     const qs = adapter.queries();
-    expect(qs).toHaveLength(12);
+    expect(qs).toHaveLength(14);
     const toyosu = qs.find((q) => q.params.town === "豊洲" && q.params.deal === "sale");
     expect(toyosu && parseSearchUrl(adapter.buildListUrl(toyosu))).toMatchObject({
       deal: "sale",

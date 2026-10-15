@@ -73,12 +73,13 @@ describe("crawlScopes（希望条件から会員サイトの検索範囲を作�
     expect(scopes.map((s) => `${s.dealType}-${s.city}${s.town ?? ""}`).sort()).toEqual([
       "rent-港区",
       "sale-中央区勝どき",
+      "sale-中央区晴海",
     ]);
   });
 
   it("区の指定がない（駅だけ）・駅の指定もある条件は全エリアを見る", () => {
-    expect(crawlScopes([cond({ cities: [], stations: ["麻布十番"] })])).toHaveLength(6);
-    expect(crawlScopes([cond({ cities: ["港区"], stations: ["勝どき"] })])).toHaveLength(6);
+    expect(crawlScopes([cond({ cities: [], stations: ["麻布十番"] })])).toHaveLength(7);
+    expect(crawlScopes([cond({ cities: ["港区"], stations: ["勝どき"] })])).toHaveLength(7);
   });
 
   it("間取り: layouts と minRooms のどちらかを満たせばよいので部屋数は小さい方。1部屋なら絞らない", () => {

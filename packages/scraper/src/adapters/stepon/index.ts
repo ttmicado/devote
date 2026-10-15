@@ -26,7 +26,7 @@ import { addressInTowns, carryTowns, townsOf, withTowns } from "../../town-filte
  *   は部屋単位。limit=50 で 50件/ページ、「次へ」で pageNo=N。総件数は「N件中」
  * - 種別は mansion（マンション・アパート）と kodate（一戸建て・テラスハウス）。戸建ては件数が少ないので区をまとめて1検索
  * - 詳細 /chintai/detail/{物件番号}/。sourceListingId は物件番号（例 162UA980）
- * - 区単位の検索しかないため、中央区・江東区は一覧の所在地で勝どき・豊洲に絞る（town-filter）
+ * - 区単位の検索しかないため、中央区・江東区は一覧の所在地で勝どき・晴海・豊洲に絞る（town-filter）
  */
 const BASE_URL = "https://www.stepon.co.jp";
 const SOURCE_ID = "stepon";
@@ -36,7 +36,7 @@ const WARDS: { key: string; code: string; towns?: string[] }[] = [
   { key: "shibuya", code: "13_113" },
   { key: "chiyoda", code: "13_101" },
   { key: "shinagawa", code: "13_109" },
-  { key: "chuo-kachidoki", code: "13_102", towns: ["勝どき"] },
+  { key: "chuo-kachidoki-harumi", code: "13_102", towns: ["勝どき", "晴海"] },
   { key: "koto-toyosu", code: "13_108", towns: ["豊洲"] },
 ];
 

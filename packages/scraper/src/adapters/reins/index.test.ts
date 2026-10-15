@@ -43,7 +43,7 @@ describe("reins（2026-10-14 実画面で確認）", () => {
 
   it("賃貸・売買 × 対象エリア（町名指定を含む）のクエリを作る", () => {
     const qs = adapter.queries();
-    expect(qs).toHaveLength(12);
+    expect(qs).toHaveLength(14);
     const urls = qs.map((q) => adapter.buildListUrl(q));
     expect(urls.map((u) => parseSearchUrl(u))).toContainEqual(
       expect.objectContaining({ deal: "rent", city: "港区", town: null }),

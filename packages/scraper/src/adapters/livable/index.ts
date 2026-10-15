@@ -24,7 +24,7 @@ import { parseStructure } from "../../helpers.js";
  * - Next.js（pages router）。一覧・詳細とも HTML に埋め込まれた __NEXT_DATA__ の pageProps に全データがある
  *   → fetchList / fetchDetail で pageProps の必要な部分だけを JSON にして返し、パーサは JSON を読む
  *   （HTML は 0.6〜1.5MB あるため、スナップショットとフィクスチャを小さくする）
- * - 一覧 /chintai/tokyo/{エリア}/?sort=address&page=N。エリアは区（a13103）か町（t13102003 = 勝どき）。30件/ページ
+ * - 一覧 /chintai/tokyo/{エリア}/?sort=address&page=N。エリアは区（a13103）か町（t13102003 = 勝どき、t13102034 = 晴海）。30件/ページ
  *   並びは「所在地順」に固定する（既定の「おすすめ順」はページ送り中に順位が変わりうる）
  * - 詳細 /chintai/{物件番号}/（例 L826101903）。掲載終了は pageProps.isExpired
  */
@@ -38,6 +38,7 @@ const AREAS: { key: string; path: string }[] = [
   { key: "chiyoda", path: "a13101" },
   { key: "shinagawa", path: "a13109" },
   { key: "chuo-kachidoki", path: "t13102003" },
+  { key: "chuo-harumi", path: "t13102034" },
   { key: "koto-toyosu", path: "t13108030" },
 ];
 

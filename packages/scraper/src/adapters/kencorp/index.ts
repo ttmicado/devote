@@ -52,7 +52,7 @@ const AREAS: { key: string; by: "district" | "area"; value: string; officeValue?
   { key: "shibuya", by: "district", value: "2" },
   { key: "chiyoda", by: "district", value: "14" },
   { key: "shinagawa", by: "district", value: "17" },
-  // 区単位だと広すぎる中央区・江東区はエリアで絞る（後段で isInTargetArea により勝どき・豊洲に絞る）
+  // 区単位だと広すぎる中央区・江東区はエリアで絞る（後段で isInTargetArea により勝どき・晴海・豊洲に絞る）
   { key: "tsukishima-kachidoki-harumi", by: "area", value: "ginwan01", officeValue: "rinkai03" },
   { key: "toyosu-ariake", by: "area", value: "ginwan02", officeValue: "rinkai02" },
 ];

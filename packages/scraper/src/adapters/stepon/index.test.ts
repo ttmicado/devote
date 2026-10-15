@@ -7,6 +7,8 @@ import adapter from "./index.js";
 const dir = join(import.meta.dirname, "__fixtures__");
 const fixture = (name: string) => readFileSync(join(dir, name), "utf8");
 const BASE = "https://www.stepon.co.jp";
+/** list-chuo-1.html のうち所在地が晴海の物件（中央区の1ページ目に勝どきは無い） */
+const HARUMI = ["1622AA10", "162UA987", "1622A912", "162IA958"];
 const detail = (id: string) =>
   NormalizedListing.parse(
     adapter.normalize(
@@ -21,9 +23,9 @@ describe("stepon queries", () => {
     expect(urls[0]).toBe(
       `${BASE}/chintai/search/list/?type=mansion&prefCd=13&isDesignated=on&searchType=area&prefCityCd=13_103&limit=50`,
     );
-    // 中央区は勝どきだけに絞る（フラグメントはサーバーに送られない）
+    // 中央区は勝どき・晴海だけに絞る（フラグメントはサーバーに送られない）
     expect(urls).toContain(
-      `${BASE}/chintai/search/list/?type=mansion&prefCd=13&isDesignated=on&searchType=area&prefCityCd=13_102&limit=50#towns=%E5%8B%9D%E3%81%A9%E3%81%8D`,
+      `${BASE}/chintai/search/list/?type=mansion&prefCd=13&isDesignated=on&searchType=area&prefCityCd=13_102&limit=50#towns=%E5%8B%9D%E3%81%A9%E3%81%8D,%E6%99%B4%E6%B5%B7`,
     );
     expect(urls.at(-1)).toBe(
       `${BASE}/chintai/search/list/?type=kodate&prefCd=13&isDesignated=on&searchType=area&prefCityCd=13_103&prefCityCd=13_113&prefCityCd=13_101&prefCityCd=13_109&limit=50`,
@@ -50,14 +52,17 @@ describe("stepon parseList", () => {
 
   it("町名で絞る一覧は対象の町だけ残し、次ページにも絞り込みを引き継ぐ", () => {
     const url = adapter.buildListUrl(
-      adapter.queries().find((q) => q.key === "mansion-chuo-kachidoki") ?? { key: "", params: {} },
+      adapter.queries().find((q) => q.key === "mansion-chuo-kachidoki-harumi") ?? {
+        key: "",
+        params: {},
+      },
     );
     const r = adapter.parseList(fixture("list-chuo-1.html"), url);
-    // 1ページ目（50件）は月島・晴海・築地などで、勝どきは無い
-    expect(r.items).toHaveLength(0);
+    // 1ページ目（50件）は月島・晴海・築地などで、勝どきは無く晴海が4件
+    expect(r.items.map((i) => i.sourceListingId)).toEqual(HARUMI);
     expect(r.totalCount).toBeNull();
     expect(r.nextPageUrl).toBe(
-      `${BASE}/chintai/search/list/?pageNo=2&type=mansion&prefCd=13&isDesignated=on&searchType=area&prefCityCd=13_102&limit=50#towns=%E5%8B%9D%E3%81%A9%E3%81%8D`,
+      `${BASE}/chintai/search/list/?pageNo=2&type=mansion&prefCd=13&isDesignated=on&searchType=area&prefCityCd=13_102&limit=50#towns=%E5%8B%9D%E3%81%A9%E3%81%8D,%E6%99%B4%E6%B5%B7`,
     );
   });
 
