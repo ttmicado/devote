@@ -50,6 +50,13 @@
       "when": 1792054057429,
       "tag": "0006_retire_rf12",
       "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "7",
+      "when": 1792054569261,
+      "tag": "0007_retire_sources_again",
+      "breakpoints": true
     }
   ]
 }
