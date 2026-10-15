@@ -164,6 +164,12 @@ const searchKey = (s: AtbbSearch) => `${s.deal}|${s.prefecture}|${s.city}|${s.to
 // 画面操作
 // ---------------------------------------------------------------------------
 
+const bodyText = (page: Page) =>
+  page
+    .locator("body")
+    .innerText({ timeout: 5_000 })
+    .catch(() => "");
+
 async function runSearch(start: Page, s: AtbbSearch): Promise<Page> {
   let page = start;
   if (homeUrl && page.url() !== homeUrl) {
@@ -180,6 +186,15 @@ async function runSearch(start: Page, s: AtbbSearch): Promise<Page> {
   await waitSettled(tab);
   activePage = tab;
   page = tab;
+  // 転送先の URL にセッションID（;jsessionid=…）が付くと「request rejected: path contains matrix parameter
+  //   separator」で弾かれる（2026-10-15 実測）。Cookie は付いているので、セッションIDを外して開き直す
+  if (/;jsessionid=/i.test(page.url()) && /request rejected/i.test(await bodyText(page))) {
+    await page.goto(page.url().replace(/;jsessionid=[^?#/]*/i, ""), {
+      waitUntil: "domcontentloaded",
+      timeout: 60_000,
+    });
+    await waitSettled(page);
+  }
   // 同じIDで人が ATBB を使っていると ConcurrentLoginException.jsp に飛ばされる（2026-10-14 実測）。
   //   人の作業を奪わないよう、ここで止める。巡回は一定時間（既定60分）待ってから自動で再開する
   //   （packages/pipeline/src/login-hold.ts）
