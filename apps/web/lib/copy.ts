@@ -37,6 +37,7 @@ export const AREAS = [
   { ja: "千代田区", en: "Chiyoda" },
   { ja: "品川区", en: "Shinagawa" },
   { ja: "中央区 勝どき", en: "Kachidoki" },
+  { ja: "中央区 晴海", en: "Harumi" },
   { ja: "江東区 豊洲", en: "Toyosu" },
 ] as const;
 
@@ -726,7 +727,7 @@ export const LEGAL = {
     rowsTitle: "運営会社",
     transactionMode: "取引態様",
     areas: "対応エリア",
-    areasValue: "港区・渋谷区・千代田区・品川区・中央区勝どき・江東区豊洲",
+    areasValue: "港区・渋谷区・千代田区・品川区・中央区勝どき・晴海・江東区豊洲",
     kinds: "対応種別",
     kindsValue: "住まいの賃貸・売買、オフィスや店舗などの事業用の賃貸",
     site: "コーポレートサイト",

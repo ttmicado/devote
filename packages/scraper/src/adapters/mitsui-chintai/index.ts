@@ -39,8 +39,8 @@ const AREA_QUERIES: { key: string; params: Record<string, string> }[] = [
   { key: "shibuya", params: { ku: "(1,10)", get: "ward" } },
   { key: "chiyoda", params: { ku: "(1,17)", get: "ward" } },
   { key: "shinagawa", params: { ku: "(1,9)", get: "ward" } },
-  // 「月島・勝どき・豊洲」エリア。月島・晴海などは一覧で落とす
-  { key: "kachidoki-toyosu", params: { are: "10", get: "area", towns: "勝どき,豊洲" } },
+  // 「月島・勝どき・豊洲」エリア（晴海を含む）。月島・佃などは一覧で落とす
+  { key: "kachidoki-harumi-toyosu", params: { are: "10", get: "area", towns: "勝どき,晴海,豊洲" } },
 ];
 
 const TRANSACTION_MODES: Record<string, TransactionMode> = {

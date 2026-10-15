@@ -15,9 +15,10 @@ const detail = (id: string) =>
 describe("livable queries", () => {
   it("区・町ごとに所在地順の一覧URLを作る", () => {
     const urls = adapter.queries().map((q) => adapter.buildListUrl(q));
-    expect(urls).toHaveLength(6);
+    expect(urls).toHaveLength(7);
     expect(urls).toContain(`${BASE}/chintai/tokyo/a13103/?sort=address`);
     expect(urls).toContain(`${BASE}/chintai/tokyo/t13102003/?sort=address`); // 勝どき
+    expect(urls).toContain(`${BASE}/chintai/tokyo/t13102034/?sort=address`); // 晴海
     expect(urls).toContain(`${BASE}/chintai/tokyo/t13108030/?sort=address`); // 豊洲
   });
 });

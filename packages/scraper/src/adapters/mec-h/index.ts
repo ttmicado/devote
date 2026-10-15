@@ -26,7 +26,7 @@ import { addressInTowns, carryTowns, townsOf, withTowns } from "../../town-filte
  * - 一覧 /rent/list/building?todohuken_cd=13&shikugun_cd[]=13103 は建物単位で 30棟/ページ。
  *   各建物の下に空室が全件並ぶ（アコーディオンは表示の開閉だけ）。次ページは a.list-prev-next__btn.--next
  * - 詳細 /rent/detail/{物件コード}（例 H00907000066 / R3430621r602）。sourceListingId は物件コード
- * - 区単位の検索なので、中央区・江東区は一覧の所在地で勝どき・豊洲に絞る（town-filter）
+ * - 区単位の検索なので、中央区・江東区は一覧の所在地で勝どき・晴海・豊洲に絞る（town-filter）
  */
 const BASE_URL = "https://www.mec-h.com";
 const SOURCE_ID = "mec-h";
@@ -36,7 +36,7 @@ const WARDS: { key: string; code: string; towns?: string[] }[] = [
   { key: "shibuya", code: "13113" },
   { key: "chiyoda", code: "13101" },
   { key: "shinagawa", code: "13109" },
-  { key: "chuo-kachidoki", code: "13102", towns: ["勝どき"] },
+  { key: "chuo-kachidoki-harumi", code: "13102", towns: ["勝どき", "晴海"] },
   { key: "koto-toyosu", code: "13108", towns: ["豊洲"] },
 ];
 

@@ -10,7 +10,7 @@ export interface TargetArea {
 
 export const TARGET_AREAS: TargetArea[] = [
   { prefecture: "東京都", city: "港区" },
-  { prefecture: "東京都", city: "中央区", towns: ["勝どき"] },
+  { prefecture: "東京都", city: "中央区", towns: ["勝どき", "晴海"] },
   { prefecture: "東京都", city: "渋谷区" },
   { prefecture: "東京都", city: "千代田区" },
   { prefecture: "東京都", city: "品川区" },

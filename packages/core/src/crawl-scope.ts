@@ -16,7 +16,7 @@ export interface CrawlScope {
   dealType: DealType;
   prefecture: string;
   city: string;
-  /** TARGET_AREAS の町名指定（勝どき・豊洲）。null は区全体 */
+  /** TARGET_AREAS の町名指定（勝どき・晴海・豊洲）。null は区全体 */
   town: string | null;
   /** 価格・賃料の上限（円）。null = 上限なし */
   maxPrice: number | null;

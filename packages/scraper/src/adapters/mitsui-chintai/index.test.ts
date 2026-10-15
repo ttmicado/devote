@@ -19,12 +19,12 @@ const detail = (id: string) =>
   );
 
 describe("mitsui-chintai queries", () => {
-  it("区と「月島・勝どき・豊洲」エリアの一覧URLを作る（エリアは勝どき・豊洲に絞る）", () => {
+  it("区と「月島・勝どき・豊洲」エリアの一覧URLを作る（エリアは勝どき・晴海・豊洲に絞る）", () => {
     const urls = adapter.queries().map((q) => adapter.buildListUrl(q));
     expect(urls).toHaveLength(5);
     expect(urls[0]).toBe(`${BASE}/rf/result?ku=(1,22)&get=ward`);
     expect(urls.at(-1)).toBe(
-      `${BASE}/rf/result?are=10&get=area#towns=%E5%8B%9D%E3%81%A9%E3%81%8D,%E8%B1%8A%E6%B4%B2`,
+      `${BASE}/rf/result?are=10&get=area#towns=%E5%8B%9D%E3%81%A9%E3%81%8D,%E6%99%B4%E6%B5%B7,%E8%B1%8A%E6%B4%B2`,
     );
   });
 });
@@ -55,7 +55,7 @@ describe("mitsui-chintai parseList", () => {
     expect(r.nextPageUrl).toBeNull();
   });
 
-  it("エリア検索は勝どき・豊洲の建物だけ残し、次ページにも絞り込みを引き継ぐ", () => {
+  it("エリア検索は勝どき・晴海・豊洲の建物だけ残し、次ページにも絞り込みを引き継ぐ", () => {
     const url = adapter.buildListUrl(adapter.queries().at(-1) ?? { key: "", params: {} });
     const r = adapter.parseList(fixture("list-area10-1.html"), url);
     expect(r.items.length).toBeGreaterThan(0);
