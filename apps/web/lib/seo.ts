@@ -8,10 +8,10 @@ export const SITE_URL = "https://app.devote-inc.jp";
 
 export const SITE_NAME = "Devote";
 
-export const SITE_TITLE = "Devote｜港区・渋谷区の住まいとオフィス探しを任せる、物件コンシェルジュ";
+export const SITE_TITLE = "Devote｜港区・渋谷区の住まい探しを任せる、物件コンシェルジュ";
 
 export const SITE_DESCRIPTION =
-  "港区・渋谷区・千代田区など都心6エリアの物件探しを任せられるコンシェルジュ。住まいの賃貸・売買、オフィスや店舗の事業用賃貸に対応。ご希望を一度伝えれば、合う物件だけを LINE かメールでお届けします。";
+  "港区・渋谷区・千代田区など都心6エリアの物件探しを任せられるコンシェルジュ。住まいの賃貸・売買に対応。ご希望を一度伝えれば、合う物件だけを LINE かメールでお届けします。";
 
 /** 会員の画面・物件ページ（索引にもリンクの追跡にも使わせない） */
 export const PRIVATE_ROBOTS = {

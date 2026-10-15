@@ -39,3 +39,12 @@ export function parseJpDate(input: string | null | undefined): string | null {
   const d = new Date(iso);
   return Number.isNaN(d.getTime()) ? null : d.toISOString();
 }
+
+/** "1ヶ月" / "0.5ヶ月" → 月数。月数表記でなければ null */
+export function parseMonths(input: string | null | undefined): number | null {
+  if (!input) return null;
+  const m = toHalfWidth(input)
+    .replace(/\s+/g, "")
+    .match(/^(\d+(?:\.\d+)?)(?:ヶ|ケ|ヵ|カ|か)?月/);
+  return m ? Number(m[1]) : null;
+}

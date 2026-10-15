@@ -81,10 +81,10 @@ export interface LivableDetail {
 }
 
 const sha1 = (s: string) => createHash("sha1").update(s).digest("hex");
-const squash = (s: string | undefined) => (s ?? "").replace(/\s+/g, " ").trim();
+export const squash = (s: string | undefined) => (s ?? "").replace(/\s+/g, " ").trim();
 
 /** HTML 断片 → 改行区切りのテキスト（"<ul><li>■オートロック</li>…" / "1ヶ月 / 1ヶ月<br>- / -"） */
-function htmlText(html: string): string {
+export function htmlText(html: string): string {
   const $ = cheerio.load(
     `<div>${html.replace(/<br\s*\/?>/gi, "\n").replace(/<\/li>/gi, "\n")}</div>`,
   );
@@ -106,10 +106,10 @@ export function nextDataProps(html: string): Record<string, unknown> {
   return props;
 }
 
-const pick = (o: Record<string, unknown>, keys: string[]) =>
+export const pick = (o: Record<string, unknown>, keys: string[]) =>
   Object.fromEntries(keys.filter((k) => k in o).map((k) => [k, o[k]]));
 
-async function getOk(ctx: FetchContext, url: string): Promise<string> {
+export async function getOk(ctx: FetchContext, url: string): Promise<string> {
   const res = await ctx.get(url);
   const blocked = detectBlockPage(res.body, res.status);
   if (blocked)
@@ -119,13 +119,13 @@ async function getOk(ctx: FetchContext, url: string): Promise<string> {
 }
 
 /** "徒歩4分" などを連結した交通の行 */
-function accessLines(data: unknown): string[] {
+export function accessLines(data: unknown): string[] {
   const links = (data as { links?: { text?: string }[][] } | undefined)?.links ?? [];
   return links.map((row) => row.map((l) => l.text ?? "").join(" "));
 }
 
 /** 画像プロキシ（img.livable.co.jp/?url=…&w=…）から元画像のURLを取り出す */
-function originalImage(src: string | undefined): string | null {
+export function originalImage(src: string | undefined): string | null {
   if (!src) return null;
   try {
     const u = new URL(src, BASE_URL);

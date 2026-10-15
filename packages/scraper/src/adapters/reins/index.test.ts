@@ -41,9 +41,13 @@ describe("reins（2026-10-14 実画面で確認）", () => {
     expect(adapter.isLoggedOut?.(html, "https://system.reins.jp/main/KG/GKG003100")).toBe(false);
   });
 
-  it("賃貸・売買 × 対象エリア（町名指定を含む）のクエリを作る", () => {
+  it("賃貸・売買 × マンション・一戸建 × 対象エリア（町名指定を含む）のクエリを作る", () => {
     const qs = adapter.queries();
-    expect(qs).toHaveLength(14);
+    expect(qs).toHaveLength(28);
+    // 検索枠が足りないときにマンションを先に回すよう、マンションの検索が先に並ぶ
+    expect(qs.slice(0, 14).every((q) => q.params.kind === "mansion")).toBe(true);
+    expect(qs.slice(14).every((q) => q.params.kind === "house")).toBe(true);
+    expect(parseSearchUrl(adapter.buildListUrl(qs[14]!))).toMatchObject({ kind: "house" });
     const urls = qs.map((q) => adapter.buildListUrl(q));
     expect(urls.map((u) => parseSearchUrl(u))).toContainEqual(
       expect.objectContaining({ deal: "rent", city: "港区", town: null }),
@@ -103,6 +107,22 @@ describe("reins（2026-10-14 実画面で確認）", () => {
     expect(r.items).toHaveLength(50);
     expect(r.totalCount).toBe(166);
     expect(r.nextPageUrl && parseSearchUrl(r.nextPageUrl)).toMatchObject({ city: "港区", page: 3 });
+  });
+
+  it("一戸建の検索URLは kind=house を持ち、次ページにも引き継ぐ", () => {
+    const url = buildSearchUrl({
+      deal: "sale",
+      kind: "house",
+      prefecture: "東京都",
+      city: "港区",
+      town: null,
+      period: "today",
+    });
+    expect(url).toContain("kind=house");
+    expect(parseSearchUrl(url)).toMatchObject({ deal: "sale", kind: "house" });
+    // マンション（既定）は kind を付けない（これまでの検索URLと同じ）
+    expect(rentUrl).not.toContain("kind=");
+    expect(parseSearchUrl(rentUrl).kind).toBe("mansion");
   });
 
   it("一覧: 件数事前確認が0件（検索しなかった）は空、JSON でなければ throw", () => {
@@ -254,25 +274,27 @@ describe("reins（2026-10-14 実画面で確認）", () => {
         },
       ],
     });
-    expect(qs.map((q) => parseSearchUrl(adapter.buildListUrl(q)))).toEqual([
-      expect.objectContaining({
-        deal: "rent",
-        city: "港区",
-        period: "auto",
-        // 取りこぼさないよう上限は切り上げ（55.2万→56万円）、下限は切り捨て
-        maxPriceMan: 56,
-        minArea: 55,
-        minRooms: 2,
-      }),
-      expect.objectContaining({
-        deal: "sale",
-        city: "中央区",
-        town: "勝どき",
-        maxPriceMan: null,
-        minArea: null,
-        minRooms: null,
-      }),
-    ]);
+    const rent = expect.objectContaining({
+      deal: "rent",
+      city: "港区",
+      period: "auto",
+      // 取りこぼさないよう上限は切り上げ（55.2万→56万円）、下限は切り捨て
+      maxPriceMan: 56,
+      minArea: 55,
+      minRooms: 2,
+    });
+    const sale = expect.objectContaining({
+      deal: "sale",
+      city: "中央区",
+      town: "勝どき",
+      maxPriceMan: null,
+      minArea: null,
+      minRooms: null,
+    });
+    const parsed = qs.map((q) => parseSearchUrl(adapter.buildListUrl(q)));
+    // マンション2件 → 一戸建2件の順
+    expect(parsed).toEqual([rent, sale, rent, sale]);
+    expect(parsed.map((p) => p.kind)).toEqual(["mansion", "mansion", "house", "house"]);
     expect(adapter.meta.scopedByConditions).toBe(true);
   });
 });

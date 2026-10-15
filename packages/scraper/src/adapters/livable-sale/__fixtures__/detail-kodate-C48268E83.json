@@ -1,0 +1,578 @@
+{
+ "isExpired": false,
+ "detailCard": {
+  "variant": "default",
+  "propertyCd": "C48268E83",
+  "propertyName": "東京都港区南青山３丁目",
+  "price": {
+   "propertyPrice": {
+    "mstCd": 1,
+    "price": 598000000,
+    "consumptionTaxFlg": true
+   }
+  },
+  "labelInfo": {
+   "list": [
+    {
+     "text": "中古一戸建て",
+     "className": "a-tag--type"
+    }
+   ],
+   "iconLink": {
+    "href": "/kounyu/explanation-icon/"
+   }
+  },
+  "address": {
+   "linkList": [
+    {
+     "text": "東京都",
+     "href": "/kounyu/kodate/tokyo/select-area/"
+    },
+    {
+     "text": "港区",
+     "href": "/kounyu/kodate/tokyo/a13103/"
+    },
+    {
+     "text": "南青山３丁目",
+     "href": "/kounyu/kodate/tokyo/t13103025/"
+    }
+   ],
+   "mapLink": {
+    "show": true,
+    "propertyCd": "C48268E83",
+    "latitude": 35.6672538,
+    "longitude": 139.7165728,
+    "address": "東京都港区南青山３丁目3-16",
+    "iconUrl": "https://www.livable.co.jp/images/common/pin_house_selected.png"
+   }
+  },
+  "access": {
+   "linkList": [
+    {
+     "text": "東京メトロ半蔵門線",
+     "href": "/kounyu/kodate/tokyo/l2348/select-station/"
+    },
+    {
+     "text": "「表参道」駅",
+     "href": "/kounyu/kodate/tokyo/s2348020/"
+    },
+    {
+     "text": "徒歩7分",
+     "href": ""
+    }
+   ]
+  },
+  "basicInfo": {
+   "itemList": [
+    {
+     "label": "間取り",
+     "value": "5LDK"
+    },
+    {
+     "label": "建物面積",
+     "value": "147.93m<sup>2</sup>"
+    },
+    {
+     "label": "土地面積",
+     "value": "104.63m<sup>2</sup>"
+    },
+    {
+     "label": "築年月",
+     "value": "2000年11月"
+    }
+   ]
+  },
+  "userReaction": {
+   "enableMachineScore": true
+  },
+  "anchorLinkList": {
+   "linkList": [
+    {
+     "id": "bus_002_click_anchor_features",
+     "text": "特徴",
+     "href": {
+      "hash": "propertyFeatures"
+     }
+    },
+    {
+     "id": "bus_002_click_anchor_map",
+     "text": "周辺地図",
+     "href": {
+      "hash": "mapSection"
+     }
+    },
+    {
+     "id": "bus_002_click_anchor_summary",
+     "text": "物件概要",
+     "href": {
+      "hash": "propertySummarySection"
+     }
+    },
+    {
+     "id": "bus_002_click_anchor_store",
+     "text": "担当店舗",
+     "href": {
+      "hash": "shopSection"
+     }
+    }
+   ]
+  },
+  "propertyImage": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fphoto%2FC48268E83.jpg%3F20260831120801&w=96&h=96"
+ },
+ "summary": {
+  "enableFavoriteComparison": true,
+  "compareInfo": {
+   "button": {
+    "isEmphasized": false
+   },
+   "modal": {
+    "type": "buy",
+    "inquiryUrl": "/kounyu/inquiry/C48268E83/"
+   }
+  },
+  "tableItems": [
+   {
+    "type": "linkList",
+    "title": "所在地",
+    "data": {
+     "links": [
+      {
+       "text": "東京都",
+       "href": "/kounyu/kodate/tokyo/select-area/"
+      },
+      {
+       "text": "港区",
+       "href": "/kounyu/kodate/tokyo/a13103/"
+      },
+      {
+       "text": "南青山３丁目",
+       "href": "/kounyu/kodate/tokyo/t13103025/"
+      }
+     ],
+     "googleMapLink": {
+      "href": "https://www.google.com/maps?q=35.6672538%2C139.7165728"
+     }
+    },
+    "column": 1
+   },
+   {
+    "type": "multiLinkList",
+    "title": "交通",
+    "data": {
+     "links": [
+      [
+       {
+        "text": "東京メトロ半蔵門線",
+        "href": "/kounyu/kodate/tokyo/l2348/select-station/"
+       },
+       {
+        "text": "「表参道」駅",
+        "href": "/kounyu/kodate/tokyo/s2348020/"
+       },
+       {
+        "text": "徒歩7分"
+       }
+      ],
+      [
+       {
+        "text": "東京メトロ銀座線",
+        "href": "/kounyu/kodate/tokyo/l2341/select-station/"
+       },
+       {
+        "text": "「外苑前」駅",
+        "href": "/kounyu/kodate/tokyo/s2341160/"
+       },
+       {
+        "text": "徒歩7分"
+       }
+      ],
+      [
+       {
+        "text": "東京メトロ千代田線",
+        "href": "/kounyu/kodate/tokyo/l2346/select-station/"
+       },
+       {
+        "text": "「明治神宮前」駅",
+        "href": "/kounyu/kodate/tokyo/s2346180/"
+       },
+       {
+        "text": "徒歩17分"
+       }
+      ]
+     ]
+    },
+    "column": 1
+   },
+   {
+    "type": "price",
+    "title": "価格",
+    "data": {
+     "price": {
+      "mstCd": 1,
+      "price": 598000000,
+      "consumptionTaxFlg": true
+     },
+     "showSimulationButton": true
+    },
+    "column": 1
+   },
+   {
+    "type": "html",
+    "title": "間取り",
+    "data": "5LDK"
+   },
+   {
+    "type": "html",
+    "title": "建物面積",
+    "data": "147.93m<sup>2</sup>"
+   },
+   {
+    "type": "html",
+    "title": "土地面積",
+    "data": "公簿104.63m<sup>2</sup>"
+   },
+   {
+    "type": "text",
+    "title": "土地権利",
+    "data": "所有権"
+   },
+   {
+    "type": "html",
+    "title": "築年月",
+    "data": "2000年11月"
+   },
+   {
+    "type": "text",
+    "title": "建物構造",
+    "data": "鉄骨造 3階"
+   },
+   {
+    "type": "text",
+    "title": "接道状況",
+    "data": "一方道路"
+   },
+   {
+    "type": "html",
+    "title": "駐車場",
+    "data": "有"
+   },
+   {
+    "type": "text",
+    "title": "接道方向／幅員",
+    "data": "北西3.7m私道"
+   },
+   {
+    "type": "text",
+    "title": "用途地域等",
+    "data": "市街化区域 / 第2種中高層住居専用地域"
+   },
+   {
+    "type": "text",
+    "title": "建ぺい率",
+    "data": "60％"
+   },
+   {
+    "type": "text",
+    "title": "容積率",
+    "data": "160％"
+   },
+   {
+    "type": "text",
+    "title": "現況",
+    "data": "空室"
+   },
+   {
+    "type": "text",
+    "title": "引渡可能年月",
+    "data": "相談"
+   },
+   {
+    "type": "text",
+    "title": "取引態様",
+    "data": "媒介（仲介）"
+   },
+   {
+    "type": "html",
+    "title": "備考",
+    "data": "-"
+   },
+   {
+    "type": "text",
+    "title": "物件番号",
+    "data": "C48268E83"
+   },
+   {
+    "type": "html",
+    "title": "設備・条件",
+    "data": "駅徒歩10分以内、2沿線以上利用可"
+   }
+  ]
+ },
+ "specificSection": {
+  "propertyFeatureImage": [
+   {
+    "src": "/_assets/images/templates/bus/icon_fctn56_10minutes_on_foot.png",
+    "alt": "駅徒歩<br>10分以内",
+    "text": "駅徒歩<br>10分以内"
+   },
+   {
+    "src": "/_assets/images/templates/bus/icon_fctn57_wayside.png",
+    "alt": "2沿線以上<br>利用可能",
+    "text": "2沿線以上<br>利用可能"
+   }
+  ]
+ },
+ "detailImages": {
+  "propertyName": "東京都港区南青山３丁目",
+  "inquiryUrl": "/kounyu/inquiry/C48268E83/",
+  "pc": {
+   "mainImage": {
+    "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fphoto%2FC48268E83.jpg%3F20260831120801&w=768&h=576",
+    "alt": "東京都港区南青山３丁目（Exterior Facade）"
+   },
+   "subImage": {
+    "id": "bus_common_click_floor-plan-image",
+    "image": {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Flayout%2FC48268E83.gif%3F20260831120801&w=768&h=576",
+     "alt": "東京都港区南青山３丁目（５LDK1st Floor：48.71㎡・2nd Floor：59.83 ㎡・3rd Floor：48.78㎡）"
+    },
+    "isAddToModalTab": true
+   },
+   "thumbnailImages": [
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc2%2FC48268E83.jpg%3F20260831120801&w=768&h=576",
+     "alt": "東京都港区南青山３丁目（Exterior Facade）"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc3%2FC48268E83.jpg%3F20260831120801&w=768&h=576",
+     "alt": "東京都港区南青山３丁目（Exterior Facade）"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc5%2FC48268E83.jpg%3F20260831120801&w=768&h=576",
+     "alt": "東京都港区南青山３丁目（Living Dining Kitchen（16.0J） 家具等は販売対象に含まれません。）"
+    }
+   ]
+  },
+  "sp": {
+   "images": [
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fphoto%2FC48268E83.jpg%3F20260831120801&w=768&h=576",
+     "alt": "東京都港区南青山３丁目（Exterior Facade）"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Flayout%2FC48268E83.gif%3F20260831120801&w=768&h=576",
+     "alt": "東京都港区南青山３丁目（５LDK1st Floor：48.71㎡・2nd Floor：59.83 ㎡・3rd Floor：48.78㎡）"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc2%2FC48268E83.jpg%3F20260831120801&w=768&h=576",
+     "alt": "東京都港区南青山３丁目（Exterior Facade）"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc3%2FC48268E83.jpg%3F20260831120801&w=768&h=576",
+     "alt": "東京都港区南青山３丁目（Exterior Facade）"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc5%2FC48268E83.jpg%3F20260831120801&w=768&h=576",
+     "alt": "東京都港区南青山３丁目（Living Dining Kitchen（16.0J） 家具等は販売対象に含まれません。）"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc4%2FC48268E83.jpg%3F20260831120801&w=768&h=576",
+     "alt": "東京都港区南青山３丁目（Living Room 家具等は販売対象に含まれません。）"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc6%2FC48268E83.jpg%3F20260831120801&w=768&h=576",
+     "alt": "東京都港区南青山３丁目（Living Dining Kitchen（16.0J） 家具等は販売対象に含まれません。）"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc7%2FC48268E83.jpg%3F20260831120801&w=768&h=576",
+     "alt": "東京都港区南青山３丁目（Kitchen Details 家具等は販売対象に含まれません。）"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc8%2FC48268E83.jpg%3F20260831120801&w=768&h=576",
+     "alt": "東京都港区南青山３丁目"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc9%2FC48268E83.jpg%3F20260831120801&w=768&h=576",
+     "alt": "東京都港区南青山３丁目（Roof Balcony）"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc10%2FC48268E83.jpg%3F20260831120801&w=768&h=576",
+     "alt": "東京都港区南青山３丁目（Bed Room 家具等は販売対象に含まれません。）"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc11%2FC48268E83.jpg%3F20260831120801&w=768&h=576",
+     "alt": "東京都港区南青山３丁目（Bed Room 家具等は販売対象に含まれません。）"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc12%2FC48268E83.jpg%3F20260831120801&w=768&h=576",
+     "alt": "東京都港区南青山３丁目（Bed Room 家具等は販売対象に含まれません。）"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc13%2FC48268E83.jpg%3F20260831120801&w=768&h=576",
+     "alt": "東京都港区南青山３丁目（Bed Room 家具等は販売対象に含まれません。）"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc14%2FC48268E83.jpg%3F20260831120801&w=768&h=576",
+     "alt": "東京都港区南青山３丁目（Bed Room 家具等は販売対象に含まれません。）"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc15%2FC48268E83.jpg%3F20260831120801&w=768&h=576",
+     "alt": "東京都港区南青山３丁目（Bed Room 家具等は販売対象に含まれません。）"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc16%2FC48268E83.jpg%3F20260831120801&w=768&h=576",
+     "alt": "東京都港区南青山３丁目（Bed Room 家具等は販売対象に含まれません。）"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc17%2FC48268E83.jpg%3F20260831120801&w=768&h=576",
+     "alt": "東京都港区南青山３丁目（Powder Room 家具等は販売対象に含まれません。）"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc18%2FC48268E83.jpg%3F20260831120801&w=768&h=576",
+     "alt": "東京都港区南青山３丁目（Toilet 家具等は販売対象に含まれません。）"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc19%2FC48268E83.jpg%3F20260831120801&w=768&h=576",
+     "alt": "東京都港区南青山３丁目（Room 家具等は販売対象に含まれません。）"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc20%2FC48268E83.jpg%3F20260831120801&w=768&h=576",
+     "alt": "東京都港区南青山３丁目（Exterior Facade）"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc21%2FC48268E83.jpg%3F20260831120801&w=768&h=576",
+     "alt": "東京都港区南青山３丁目（Exterior Facade）"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc22%2FC48268E83.jpg%3F20260831120801&w=768&h=576",
+     "alt": "東京都港区南青山３丁目（Exterior Facade）"
+    }
+   ],
+   "subImageButton": "layout"
+  },
+  "modal": {
+   "allImages": [
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fphoto%2FC48268E83.jpg%3F20260831120801&w=768&h=576",
+     "alt": "東京都港区南青山３丁目（Exterior Facade）",
+     "description": "Exterior Facade"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Flayout%2FC48268E83.gif%3F20260831120801&w=768&h=576",
+     "alt": "東京都港区南青山３丁目（５LDK1st Floor：48.71㎡・2nd Floor：59.83 ㎡・3rd Floor：48.78㎡）",
+     "description": "５LDK1st Floor：48.71㎡・2nd Floor：59.83 ㎡・3rd Floor：48.78㎡"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc2%2FC48268E83.jpg%3F20260831120801&w=768&h=576",
+     "alt": "東京都港区南青山３丁目（Exterior Facade）",
+     "description": "Exterior Facade"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc3%2FC48268E83.jpg%3F20260831120801&w=768&h=576",
+     "alt": "東京都港区南青山３丁目（Exterior Facade）",
+     "description": "Exterior Facade"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc5%2FC48268E83.jpg%3F20260831120801&w=768&h=576",
+     "alt": "東京都港区南青山３丁目（Living Dining Kitchen（16.0J） 家具等は販売対象に含まれません。）",
+     "description": "Living Dining Kitchen（16.0J） 家具等は販売対象に含まれません。"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc4%2FC48268E83.jpg%3F20260831120801&w=768&h=576",
+     "alt": "東京都港区南青山３丁目（Living Room 家具等は販売対象に含まれません。）",
+     "description": "Living Room 家具等は販売対象に含まれません。"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc6%2FC48268E83.jpg%3F20260831120801&w=768&h=576",
+     "alt": "東京都港区南青山３丁目（Living Dining Kitchen（16.0J） 家具等は販売対象に含まれません。）",
+     "description": "Living Dining Kitchen（16.0J） 家具等は販売対象に含まれません。"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc7%2FC48268E83.jpg%3F20260831120801&w=768&h=576",
+     "alt": "東京都港区南青山３丁目（Kitchen Details 家具等は販売対象に含まれません。）",
+     "description": "Kitchen Details 家具等は販売対象に含まれません。"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc8%2FC48268E83.jpg%3F20260831120801&w=768&h=576",
+     "alt": "東京都港区南青山３丁目",
+     "description": ""
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc9%2FC48268E83.jpg%3F20260831120801&w=768&h=576",
+     "alt": "東京都港区南青山３丁目（Roof Balcony）",
+     "description": "Roof Balcony"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc10%2FC48268E83.jpg%3F20260831120801&w=768&h=576",
+     "alt": "東京都港区南青山３丁目（Bed Room 家具等は販売対象に含まれません。）",
+     "description": "Bed Room 家具等は販売対象に含まれません。"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc11%2FC48268E83.jpg%3F20260831120801&w=768&h=576",
+     "alt": "東京都港区南青山３丁目（Bed Room 家具等は販売対象に含まれません。）",
+     "description": "Bed Room 家具等は販売対象に含まれません。"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc12%2FC48268E83.jpg%3F20260831120801&w=768&h=576",
+     "alt": "東京都港区南青山３丁目（Bed Room 家具等は販売対象に含まれません。）",
+     "description": "Bed Room 家具等は販売対象に含まれません。"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc13%2FC48268E83.jpg%3F20260831120801&w=768&h=576",
+     "alt": "東京都港区南青山３丁目（Bed Room 家具等は販売対象に含まれません。）",
+     "description": "Bed Room 家具等は販売対象に含まれません。"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc14%2FC48268E83.jpg%3F20260831120801&w=768&h=576",
+     "alt": "東京都港区南青山３丁目（Bed Room 家具等は販売対象に含まれません。）",
+     "description": "Bed Room 家具等は販売対象に含まれません。"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc15%2FC48268E83.jpg%3F20260831120801&w=768&h=576",
+     "alt": "東京都港区南青山３丁目（Bed Room 家具等は販売対象に含まれません。）",
+     "description": "Bed Room 家具等は販売対象に含まれません。"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc16%2FC48268E83.jpg%3F20260831120801&w=768&h=576",
+     "alt": "東京都港区南青山３丁目（Bed Room 家具等は販売対象に含まれません。）",
+     "description": "Bed Room 家具等は販売対象に含まれません。"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc17%2FC48268E83.jpg%3F20260831120801&w=768&h=576",
+     "alt": "東京都港区南青山３丁目（Powder Room 家具等は販売対象に含まれません。）",
+     "description": "Powder Room 家具等は販売対象に含まれません。"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc18%2FC48268E83.jpg%3F20260831120801&w=768&h=576",
+     "alt": "東京都港区南青山３丁目（Toilet 家具等は販売対象に含まれません。）",
+     "description": "Toilet 家具等は販売対象に含まれません。"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc19%2FC48268E83.jpg%3F20260831120801&w=768&h=576",
+     "alt": "東京都港区南青山３丁目（Room 家具等は販売対象に含まれません。）",
+     "description": "Room 家具等は販売対象に含まれません。"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc20%2FC48268E83.jpg%3F20260831120801&w=768&h=576",
+     "alt": "東京都港区南青山３丁目（Exterior Facade）",
+     "description": "Exterior Facade"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc21%2FC48268E83.jpg%3F20260831120801&w=768&h=576",
+     "alt": "東京都港区南青山３丁目（Exterior Facade）",
+     "description": "Exterior Facade"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc22%2FC48268E83.jpg%3F20260831120801&w=768&h=576",
+     "alt": "東京都港区南青山３丁目（Exterior Facade）",
+     "description": "Exterior Facade"
+    }
+   ],
+   "subImage": {
+    "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Flayout%2FC48268E83.gif%3F20260831120801&w=768&h=576",
+    "alt": "東京都港区南青山３丁目（５LDK1st Floor：48.71㎡・2nd Floor：59.83 ㎡・3rd Floor：48.78㎡）",
+    "tabText": "間取り"
+   }
+  }
+ }
+}
