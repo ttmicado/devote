@@ -63,7 +63,7 @@ export default defineAdapter({
     requiresLogin: false,
     rateLimit: { minIntervalMs: 2500, maxConcurrency: 1 },
     schedule: { listCron: "25 */3 * * *", detailRevisitHours: 48 },
-    parserVersion: "1",
+    parserVersion: "2",
   },
 
   queries: () =>
@@ -85,16 +85,21 @@ export default defineAdapter({
     const $ = cheerio.load(html);
     const towns = townsOf(url);
     const items: ListItem[] = [];
+    // 1行の解釈失敗でソース全体を止めない。想定外の行は skipped に入れて返す（ランナーが一覧を不完全として扱う）
+    const skipped: string[] = [];
 
     $(".sr-card").each((_, el) => {
       const $el = $(el);
-      const href = $el.find("a.sr-card__name").attr("href");
-      const id = href?.match(/\/detail_([0-9A-Z]+)\/?$/)?.[1];
-      if (!href || !id)
-        throw new Error(`一覧の物件から物件番号/リンクが取れない: ${squash($el.text())}`);
       // "東京都港区白金１丁目" は .sr-card__text の最初のテキスト
       const address = squash($el.find(".sr-card__text").contents().first().text());
+      // 対象の町の外の行は、解釈できなくても一覧の完全さに関係しないので先に落とす
       if (towns && !addressInTowns(address, towns)) return;
+      const href = $el.find("a.sr-card__name").attr("href");
+      const id = href?.match(/\/detail_([0-9A-Z]+)\/?$/)?.[1];
+      if (!href || !id) {
+        skipped.push(`${href ?? squash($el.text()).slice(0, 60)}: 物件番号/リンクが取れない`);
+        return;
+      }
       const price = squash($el.find(".sr-card__price").text()).replace(/\s/g, "");
       items.push({
         sourceListingId: id,
@@ -111,6 +116,7 @@ export default defineAdapter({
       nextPageUrl: carryTowns(next ? new URL(next, url).toString() : null, url),
       // 町名で絞った一覧は、表示の総件数（区全体）と件数が合わない
       totalCount: towns ? null : /^\d+$/.test(total) ? Number(total) : null,
+      ...(skipped.length > 0 ? { skipped } : {}),
     };
   },
 

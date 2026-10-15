@@ -1,5 +1,6 @@
 import { sql } from "drizzle-orm";
 import {
+  bigint,
   bigserial,
   boolean,
   date,
@@ -59,7 +60,7 @@ export const listings = pgTable(
     contentHash: text("content_hash").notNull(),
     /** 一覧で取れる値のハッシュ。変化がなければ詳細取得を省略する */
     listHash: text("list_hash"),
-    price: integer("price").notNull(),
+    price: bigint("price", { mode: "number" }).notNull(),
     adAllowed: boolean("ad_allowed"),
     missCount: smallint("miss_count").notNull().default(0), // 一覧で連続未検出の回数（掲載終了判定）
     firstSeenAt: timestamp("first_seen_at", { withTimezone: true }).notNull().defaultNow(),
@@ -81,7 +82,7 @@ export const properties = pgTable(
     dedupeBlockKey: text("dedupe_block_key"),
     /** 代表値（優先ソースの値を採用） */
     data: jsonb("data").notNull(),
-    price: integer("price").notNull(),
+    price: bigint("price", { mode: "number" }).notNull(),
     areaSqm: real("area_sqm"),
     layout: text("layout"),
     city: text("city"),

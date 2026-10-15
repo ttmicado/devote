@@ -1,6 +1,7 @@
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { NormalizedListing } from "@devote/core";
+import * as cheerio from "cheerio";
 import { describe, expect, it } from "vitest";
 import adapter from "./index.js";
 
@@ -66,6 +67,23 @@ describe("mec-h-sale parseList", () => {
     expect(r.items.length).toBeLessThan(30);
     expect(r.nextPageUrl).toMatch(/page=2#towns=/);
   });
+
+  it("一覧の「258,000万円」（25億円超）も円の整数にする", () => {
+    const $ = cheerio.load(fixture("list-mansion-minato-1.html"));
+    $("article.mod-property-card .mod-property-card__price .num").first().text("258,000");
+    expect(adapter.parseList($.html(), LIST).items[0]?.price).toBe(2_580_000_000);
+  });
+
+  it("リンクが取れない行は throw せず skipped に入れる（売地は skipped に入れず黙って除外）", () => {
+    const $ = cheerio.load(fixture("list-mansion-minato-10.html"));
+    $("article.mod-property-card a.mod-property-card__grid")
+      .filter((_, a) => /\/mansion\/detail\//.test($(a).attr("href") ?? ""))
+      .first()
+      .attr("href", "/mansion/unknown");
+    const r = adapter.parseList($.html(), `${LIST}&page=10`);
+    expect(r.items).toHaveLength(27);
+    expect(r.skipped).toEqual(["/mansion/unknown: 物件のリンクが取れない"]);
+  });
 });
 
 describe("mec-h-sale normalize", () => {
@@ -108,5 +126,15 @@ describe("mec-h-sale normalize", () => {
     });
     expect(n.imageUrls).toHaveLength(21);
     expect(n.imageUrls.every((u) => u.includes("D12X31185"))).toBe(true);
+  });
+
+  it("25億円超の価格（「258,000万円」）も円の整数で取る", () => {
+    const raw = adapter.parseDetail(
+      fixture("detail-mansion-D16X31443.html"),
+      `${BASE}/mansion/detail/D16X31443`,
+    );
+    expect(
+      adapter.normalize({ ...raw, fields: { ...raw.fields, 価格: "258,000万円" } }).price,
+    ).toBe(2_580_000_000);
   });
 });

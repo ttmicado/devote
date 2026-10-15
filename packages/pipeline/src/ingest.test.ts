@@ -170,4 +170,38 @@ describe.skipIf(!db)("ingestCrawl（DB結合）", () => {
       .where(eq(listings.source, `${PREFIX}-c`));
     expect(row?.status).toBe("active");
   });
+
+  it("21.4億円を超える売買の価格も保存できる（price は bigint）", async () => {
+    const big = listing(
+      "K1",
+      { dealType: "sale", price: 2_550_000_000, managementFee: null },
+      `${PREFIX}-d`,
+    );
+    const stats = await ingestCrawl(db!, `${PREFIX}-d`, result([big]));
+    expect(stats.newCount).toBe(1);
+    const [row] = await db!
+      .select()
+      .from(listings)
+      .where(eq(listings.source, `${PREFIX}-d`));
+    expect(row?.price).toBe(2_550_000_000);
+    const [p] = await db!.select().from(properties).where(eq(properties.id, row!.propertyId!));
+    expect(p?.price).toBe(2_550_000_000);
+  });
+
+  it("1件の取り込みに失敗しても、残りの物件は取り込み、失敗は警告に残す", async () => {
+    // bigint の範囲も超える価格で insert を失敗させる（パース後の値を直接壊す）
+    const broken = { ...listing("E1", {}, `${PREFIX}-e`), price: 1e19 } as NormalizedListing;
+    const ok = listing("E2", {}, `${PREFIX}-e`);
+    const stats = await ingestCrawl(db!, `${PREFIX}-e`, result([broken, ok]));
+    expect(stats.failedCount).toBe(1);
+    expect(stats.newCount).toBe(1);
+    expect(stats.warnings.join()).toMatch(/E1: 取り込みに失敗/);
+    // 失敗が半数以上の回は掲載終了の判定をしない
+    expect(stats.warnings.join()).toMatch(/掲載終了判定をスキップ/);
+    const rows = await db!
+      .select()
+      .from(listings)
+      .where(eq(listings.source, `${PREFIX}-e`));
+    expect(rows.map((r) => r.sourceListingId)).toEqual(["E2"]);
+  });
 });

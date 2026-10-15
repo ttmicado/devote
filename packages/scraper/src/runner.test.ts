@@ -296,6 +296,41 @@ describe("crawlSource の詳細の取得順・差分一覧", () => {
     expect(r.detailRequests).toBe(2);
   });
 
+  it("deadline を過ぎたら一覧・詳細を取りに行かず、取得済みの分で正常に終える（一覧は不完全扱い）", async () => {
+    const { adapter, calls } = fakeAdapter({});
+    const r = await crawlSource(adapter, fakeCtx, { deadline: Date.now() - 1 });
+    expect(calls).toEqual([]);
+    expect(r.timedOut).toBe(true);
+    expect(r.listCompleted).toBe(false);
+    expect(r.warnings.join()).toMatch(/締め切り/);
+  });
+
+  it("onUsage: 一覧・詳細を取りに行く直前に1件ずつ呼ぶ（強制終了でも利用量が漏れない）", async () => {
+    const { adapter } = fakeAdapter({});
+    const usage: string[] = [];
+    await crawlSource(adapter, fakeCtx, {
+      onUsage: async (kind) => {
+        usage.push(kind);
+      },
+    });
+    expect(usage).toEqual(["list", "list", "detail", "detail"]);
+  });
+
+  it("一覧の解釈できなかった行（skipped）は警告に出し、一覧は不完全扱い（掲載終了の誤判定をしない）", async () => {
+    const { adapter } = fakeAdapter({});
+    const parse = adapter.parseList;
+    const r = await crawlSource(
+      {
+        ...adapter,
+        parseList: (b: string, u: string) => ({ ...parse(b, u), skipped: ["x: 形式が想定外"] }),
+      },
+      fakeCtx,
+    );
+    expect(r.listCompleted).toBe(false);
+    expect(r.countMismatch).toBe(false);
+    expect(r.warnings.join()).toMatch(/解釈できず飛ばした: x: 形式が想定外/);
+  });
+
   it("queryContext を queries() に渡す", async () => {
     const { adapter } = fakeAdapter({});
     let received: unknown;

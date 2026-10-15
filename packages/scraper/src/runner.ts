@@ -16,8 +16,10 @@ export interface CrawlResult {
   listHashes: Record<string, string>;
   /** 一覧の表示総件数と実際に拾えた件数のずれ（構造変化の兆候） */
   countMismatch: boolean;
-  /** maxDetails を超えたため次回に回した詳細の件数 */
+  /** maxDetails・締め切りのため次回に回した詳細の件数 */
   deferred: number;
+  /** 締め切り（CrawlOptions.deadline）で一覧・詳細の巡回を打ち切った */
+  timedOut?: boolean;
   /** 一覧が差分（期間で絞った検索）のため、掲載終了の判定に使えない */
   partialList?: boolean;
   /** 実際に行った一覧ページ・詳細ページの取得回数（従量課金サイトの利用量の記録用） */
@@ -45,6 +47,16 @@ export interface CrawlOptions {
   maxListRequests?: number;
   /** queries() に渡す実行時の情報（希望条件から作った検索範囲など） */
   queryContext?: QueryContext;
+  /**
+   * この時刻（epoch ms）を過ぎたら、新しい一覧ページ・詳細を取りに行かず、取得済みの分で巡回を終える。
+   * ジョブの制限時間で強制終了されると取得済みの分まで失われるため、その前に正常に終える
+   */
+  deadline?: number;
+  /**
+   * 一覧・詳細を取りに行く直前に呼ぶ（従量課金サイトの利用量を1件ずつ記録する）。
+   * 終わってからまとめて記録すると、強制終了で記録が漏れて月間上限の管理が狂う
+   */
+  onUsage?: (kind: "list" | "detail") => Promise<void>;
   /** 取得した生HTMLの保存フック（raw_snapshots） */
   onSnapshot?: (kind: "list" | "detail", url: string, body: string) => Promise<void> | void;
 }
@@ -63,8 +75,15 @@ export async function crawlSource(
     maxPages = 100,
     maxDetails = Number.POSITIVE_INFINITY,
     maxListRequests = Number.POSITIVE_INFINITY,
+    deadline = Number.POSITIVE_INFINITY,
     onSnapshot,
+    onUsage,
   } = opts;
+  let timedOut = false;
+  const pastDeadline = () => {
+    if (Date.now() >= deadline) timedOut = true;
+    return timedOut;
+  };
   const counters = opts.counters ?? { list: 0, detail: 0 };
   const listings: NormalizedListing[] = [];
   const errors: CrawlResult["errors"] = [];
@@ -84,12 +103,13 @@ export async function crawlSource(
     const fetchDetails = async (items: Iterable<ListItem>) => {
       for (const item of items) {
         if (knownListHashes.get(item.sourceListingId) === item.listHash) continue;
-        if (detailCount >= maxDetails || abortedReason) {
+        if (detailCount >= maxDetails || abortedReason || pastDeadline()) {
           deferred++;
           continue;
         }
         detailCount++;
         counters.detail++;
+        await onUsage?.("detail");
         // 取得を試みた時点で1件と数える（失敗しても相手側では表示・課金されている可能性がある）
         let html: string | null = null;
         try {
@@ -136,11 +156,12 @@ export async function crawlSource(
       let totalCount: number | null = null;
       let found = 0;
       for (let page = 0; url && page < maxPages; page++) {
-        if (listRequests >= maxListRequests) break;
+        if (listRequests >= maxListRequests || pastDeadline()) break;
         // ページ送りが課金・利用量に数えられないサイト（レインズ）は、検索1回（1ページ目）だけ数える
         if (page === 0 || !adapter.meta.pageTurnsAreFree) {
           listRequests++;
           counters.list++;
+          await onUsage?.("list");
         }
         let html: string;
         let status: number | undefined;
@@ -170,14 +191,22 @@ export async function crawlSource(
           if (result.partial) anyPartial = true;
         }
         totalCount ??= result.totalCount;
-        found += result.items.length;
+        found += result.items.length + (result.excludedCount ?? 0);
+        if (result.skipped?.length) {
+          // 解釈できなかった行は表示総件数には含まれるので found に足す（件数ずれの誤検知を防ぐ）
+          found += result.skipped.length;
+          listCompleted = false;
+          warnings.push(
+            `一覧の ${result.skipped.length} 件を解釈できず飛ばした: ${result.skipped.slice(0, 3).join(" / ")}`,
+          );
+        }
         const pageItems = result.items.filter((i) => !seen.has(i.sourceListingId));
         for (const item of pageItems) seen.set(item.sourceListingId, item);
         // 詳細を「いま表示中の一覧ページ」からしか開けないサイト（レインズ）は、ページごとに詳細を取る
         if (adapter.meta.detailsAfterEachListPage) await fetchDetails(pageItems);
         url = result.nextPageUrl;
       }
-      if (url) listCompleted = false; // maxPages / maxListRequests で打ち切った
+      if (url) listCompleted = false; // maxPages / maxListRequests / 締め切りで打ち切った
       if (totalCount != null && totalCount !== found) countMismatch = true;
       if (found === 0) emptyQueries.push(query.key);
     }
@@ -195,6 +224,10 @@ export async function crawlSource(
       );
     }
 
+    if (timedOut) {
+      warnings.push("締め切りのため巡回を途中で終えた（取得済みの分は取り込み、残りは次回）");
+    }
+
     return {
       listings,
       errors,
@@ -205,6 +238,7 @@ export async function crawlSource(
       ),
       countMismatch,
       deferred,
+      ...(timedOut ? { timedOut } : {}),
       listRequests,
       detailRequests: detailCount,
       partialList: anyReported ? anyPartial : (adapter.meta.incrementalList ?? false),

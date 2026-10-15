@@ -1,6 +1,7 @@
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { NormalizedListing } from "@devote/core";
+import * as cheerio from "cheerio";
 import { describe, expect, it } from "vitest";
 import adapter from "./index.js";
 
@@ -58,6 +59,16 @@ describe("mec-h parseList", () => {
     expect(r.items).toHaveLength(0);
     const all = adapter.parseList(fixture("list-chuo-1.html"), LIST);
     expect(all.items).toHaveLength(83);
+  });
+
+  it("部屋行のリンクが取れない行は throw せず skipped に入れ、残りの行は読む", () => {
+    const $ = cheerio.load(fixture("list-minato-1.html"));
+    $('.mod-property-card02__table-item a[href*="/rent/detail/"]')
+      .first()
+      .attr("href", "/rent/detail/");
+    const r = adapter.parseList($.html(), LIST);
+    expect(r.items).toHaveLength(56);
+    expect(r.skipped).toEqual(["/rent/detail/: 部屋行のリンクが取れない"]);
   });
 });
 

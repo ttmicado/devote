@@ -1,6 +1,7 @@
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { NormalizedListing } from "@devote/core";
+import * as cheerio from "cheerio";
 import { describe, expect, it } from "vitest";
 import adapter from "./index.js";
 
@@ -72,6 +73,15 @@ describe("stepon parseList", () => {
     const b = adapter.parseList(html, `${BASE}/chintai/search/list/`);
     expect(a.items).toHaveLength(5);
     expect(a.items.map((i) => i.listHash)).toEqual(b.items.map((i) => i.listHash));
+  });
+
+  it("物件番号が取れない行は throw せず skipped に入れ、残りの行は読む", () => {
+    const $ = cheerio.load(fixture("list-minato-1.html"));
+    $(".resultItem input[name=bukken_no]").first().remove();
+    const r = adapter.parseList($.html(), `${BASE}/chintai/search/list/?limit=50`);
+    expect(r.items).toHaveLength(42);
+    expect(r.skipped).toHaveLength(1);
+    expect(r.skipped?.[0]).toMatch(/物件番号\/リンクが取れない/);
   });
 });
 

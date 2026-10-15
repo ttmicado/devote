@@ -11,7 +11,7 @@ import {
   type SiteAdapter,
 } from "@devote/scraper";
 import { activeConditions } from "@devote/services";
-import { and, desc, eq, isNotNull } from "drizzle-orm";
+import { and, desc, eq, isNotNull, lt, max } from "drizzle-orm";
 import { ingestCrawl } from "./ingest.js";
 import { loginHoldReason } from "./login-hold.js";
 import { budgetForRun, isWithinActiveHours, jstCalendar, recordUsage } from "./quota.js";
@@ -36,16 +36,87 @@ export function summarizeCrawl(result: CrawlResult) {
 
 /** 1ソースを巡回して DB に反映し、crawl_runs に結果を残す */
 const MAX_DETAILS = Number(process.env.DEVOTE_MAX_DETAILS_PER_SOURCE ?? 300);
+/** 1ソースに使ってよい時間（分）。初回の取り込みが重いソースが1本で巡回全体の時間を使い切らないように */
+const SOURCE_MAX_MINUTES = Number(process.env.DEVOTE_SOURCE_MAX_MINUTES ?? 15);
+/** 締め切りのあと、取得済みの分を DB に取り込むために残す時間（分） */
+const INGEST_MARGIN_MINUTES = 3;
+
+/**
+ * 1ソースの締め切り（epoch ms）。バッチ全体の締め切りから取り込みの余裕を引いた時刻と、
+ * 開始からソースごとの上限時間のうち早い方
+ */
+export function sourceDeadline(
+  startedAt: number,
+  batchDeadline: number | undefined,
+  maxMinutes = SOURCE_MAX_MINUTES,
+): number {
+  const own = startedAt + maxMinutes * 60_000;
+  return batchDeadline == null
+    ? own
+    : Math.min(own, batchDeadline - INGEST_MARGIN_MINUTES * 60_000);
+}
 
 /** 有効な希望条件から作った会員サイトの検索範囲（crawlScopes）。1回のバッチで1度だけ読む */
 export async function loadCrawlScopes(db: Db): Promise<CrawlScope[]> {
   return crawlScopes((await activeConditions(db)).map((c) => c.condition));
 }
 
+/**
+ * ジョブの制限時間で強制終了され「running」のまま残った巡回の記録を、失敗として閉じる。
+ * 何度実行しても同じ結果になる
+ */
+export async function closeStaleRuns(db: Db, olderThanMinutes = 70): Promise<number> {
+  const rows = await db
+    .update(crawlRuns)
+    .set({
+      status: "failed",
+      error: "打ち切り（ジョブの制限時間で強制終了された）",
+      finishedAt: new Date(),
+    })
+    .where(
+      and(
+        eq(crawlRuns.status, "running"),
+        lt(crawlRuns.startedAt, new Date(Date.now() - olderThanMinutes * 60_000)),
+      ),
+    )
+    .returning({ id: crawlRuns.id });
+  return rows.length;
+}
+
+/** ソースごとの最後に成功した巡回の開始時刻（巡回の順番を決めるのに使う） */
+export async function lastSucceededAt(db: Db): Promise<Map<string, Date>> {
+  const rows = await db
+    .select({ source: crawlRuns.source, at: max(crawlRuns.startedAt) })
+    .from(crawlRuns)
+    .where(eq(crawlRuns.status, "succeeded"))
+    .groupBy(crawlRuns.source);
+  return new Map(rows.flatMap((r) => (r.at ? [[r.source, r.at] as const] : [])));
+}
+
+/**
+ * 巡回の順番。会員サイト（ログインあり。提供時間・利用枠がある）を先に、残りは最後に成功してから
+ * 長いソース（未成功を含む）から。時間切れで後ろのソースが毎回回れない、ということを防ぐ
+ */
+export function crawlOrder<T extends { meta: { id: string; requiresLogin: boolean } }>(
+  adapters: T[],
+  lastSucceeded: Map<string, Date>,
+): T[] {
+  const at = (a: T) => lastSucceeded.get(a.meta.id)?.getTime() ?? 0;
+  return [...adapters].sort(
+    (a, b) => Number(b.meta.requiresLogin) - Number(a.meta.requiresLogin) || at(a) - at(b),
+  );
+}
+
 export async function runSource(
   db: Db,
   adapter: SiteAdapter,
-  opts: { maxPages?: number; maxDetails?: number; scopes?: CrawlScope[] } = {},
+  opts: {
+    maxPages?: number;
+    maxDetails?: number;
+    scopes?: CrawlScope[];
+    /** バッチ全体の締め切り（epoch ms）。ジョブの制限時間で強制終了される前に正常に終える */
+    deadline?: number;
+  } = {},
 ) {
   const source = adapter.meta.id;
   const now = new Date();
@@ -122,13 +193,22 @@ export async function runSource(
       maxListRequests: budget.list,
       counters,
       queryContext,
+      deadline: sourceDeadline(Date.now(), opts.deadline),
+      // 従量課金のソースは、取りに行く直前に1件ずつ記録する（強制終了されても記録が漏れない）
+      onUsage: adapter.meta.monthlyQuota
+        ? (kind) => recordUsage(db, source, { [kind]: 1 })
+        : undefined,
     });
     await browser?.saveSession();
     const stats = await ingestCrawl(db, source, result);
     const warnings = [
       ...result.warnings,
       ...stats.warnings,
-      ...(result.deferred > 0 ? [`詳細 ${result.deferred} 件は件数上限のため次回に取得`] : []),
+      ...(result.deferred > 0
+        ? [
+            `詳細 ${result.deferred} 件は${result.timedOut ? "時間切れ" : "件数上限"}のため次回に取得`,
+          ]
+        : []),
       ...result.errors.slice(0, 20).map((e) => `${e.item.sourceListingId}: ${e.error}`),
     ];
     await db
@@ -141,7 +221,7 @@ export async function runSource(
         newCount: stats.newCount,
         updatedCount: stats.updatedCount,
         delistedCount: stats.delistedCount,
-        errorCount: result.errors.length,
+        errorCount: result.errors.length + stats.failedCount,
         warnings,
         finishedAt: new Date(),
       })
@@ -165,7 +245,6 @@ export async function runSource(
     return { source, ok: false as const, error: message };
   } finally {
     await browser?.close();
-    // 失敗した場合も、実際に行った検索・詳細表示の回数は必ず記録する（課金対象のため）
-    if (adapter.meta.monthlyQuota) await recordUsage(db, source, counters);
+    // 検索・詳細表示の回数は onUsage で取りに行くたびに記録済み（課金対象のため、失敗・強制終了でも漏らさない）
   }
 }

@@ -58,9 +58,9 @@ export interface LivableList {
   propertyList?: LivableListProperty[];
 }
 interface LivableListProperty {
-  propertyCd: string;
+  propertyCd?: string;
   propertyName?: string;
-  detailUrl: string;
+  detailUrl?: string;
   address?: string;
   priceModel?: LivablePrice;
   propertyDetail?: string[];
@@ -81,6 +81,21 @@ export interface LivableDetail {
 }
 
 const sha1 = (s: string) => createHash("sha1").update(s).digest("hex");
+
+/**
+ * 一覧の詳細URLが東急リバブル自社（livable.co.jp とそのサブドメイン）のページか。
+ * 自社以外（新築分譲の外部プロジェクトサイト https://l-shirokanetakanawa.jp/ など）は false。
+ * URL として解釈できないものは null（想定外。呼び出し側で skipped にする）
+ */
+export function isLivableUrl(href: string): boolean | null {
+  try {
+    const host = new URL(href, BASE_URL).hostname;
+    return host === "livable.co.jp" || host.endsWith(".livable.co.jp");
+  } catch {
+    return null;
+  }
+}
+
 export const squash = (s: string | undefined) => (s ?? "").replace(/\s+/g, " ").trim();
 
 /** HTML 断片 → 改行区切りのテキスト（"<ul><li>■オートロック</li>…" / "1ヶ月 / 1ヶ月<br>- / -"） */
@@ -144,7 +159,7 @@ export default defineAdapter({
     requiresLogin: false,
     rateLimit: { minIntervalMs: 2500, maxConcurrency: 1 },
     schedule: { listCron: "35 */3 * * *", detailRevisitHours: 48 },
-    parserVersion: "1",
+    parserVersion: "2",
   },
 
   queries: () => AREAS.map((a) => ({ key: a.key, params: { path: a.path } })),
@@ -159,26 +174,51 @@ export default defineAdapter({
   parseList(json, url) {
     const data = JSON.parse(json) as LivableList;
     if (!Array.isArray(data.propertyList)) throw new Error(`一覧に propertyList が無い: ${url}`);
-    const items: ListItem[] = data.propertyList.map((p) => {
-      if (!p.propertyCd || !p.detailUrl) throw new Error(`一覧の物件に番号/リンクが無い: ${url}`);
-      return {
+    const items: ListItem[] = [];
+    // 1行の解釈失敗でソース全体を止めない。想定外の行は skipped に入れて返す（ランナーが一覧を不完全として扱う）
+    const skipped: string[] = [];
+    let excluded = 0;
+    for (const p of data.propertyList) {
+      const label = p.propertyCd ?? p.propertyName ?? "（番号なし）";
+      if (!p.detailUrl) {
+        skipped.push(`${label}: 詳細URLが無い`);
+        continue;
+      }
+      const own = isLivableUrl(p.detailUrl);
+      // 自社以外のサイトへのリンクは対象外（取り込まない）
+      if (own === false) {
+        excluded++;
+        continue;
+      }
+      if (own == null || !p.propertyCd) {
+        skipped.push(`${label}: 物件番号/詳細URLが解釈できない（${p.detailUrl}）`);
+        continue;
+      }
+      items.push({
         sourceListingId: p.propertyCd,
         detailUrl: new URL(p.detailUrl, BASE_URL).toString(),
         listHash: sha1(
           JSON.stringify([p.priceModel?.rent, p.priceModel?.manageCost, p.propertyDetail]),
         ),
         price: p.priceModel?.rent,
-      };
-    });
+      });
+    }
     const total = Number(String(data.searchedResultCounts ?? "").trim());
     const u = new URL(url);
     const page = Number(u.searchParams.get("page") ?? "1");
     let next: string | null = null;
-    if (items.length > 0 && Number.isFinite(total) && page * PAGE_SIZE < total) {
+    // 除外・skipped の行があってもページ送りは続ける（そのページの行が全部対象外でも次はある）
+    if (data.propertyList.length > 0 && Number.isFinite(total) && page * PAGE_SIZE < total) {
       u.searchParams.set("page", String(page + 1));
       next = u.toString();
     }
-    return { items, nextPageUrl: next, totalCount: Number.isFinite(total) ? total : null };
+    return {
+      items,
+      nextPageUrl: next,
+      totalCount: Number.isFinite(total) ? total : null,
+      ...(skipped.length > 0 ? { skipped } : {}),
+      ...(excluded > 0 ? { excludedCount: excluded } : {}),
+    };
   },
 
   async fetchDetail(ctx, item) {

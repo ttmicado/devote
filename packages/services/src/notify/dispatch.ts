@@ -37,7 +37,7 @@ function jst(now: Date) {
 }
 
 /** 総額（賃貸は管理費込み）。並び順に使う */
-const totalPriceSql = sql`${properties.price} + case when ${properties.dealType} = 'rent' then coalesce((${properties.data}->>'managementFee')::int, 0) else 0 end`;
+const totalPriceSql = sql`${properties.price} + case when ${properties.dealType} = 'rent' then coalesce((${properties.data}->>'managementFee')::bigint, 0) else 0 end`;
 
 /** 夜間（22時〜8時 JST）は通知を控える */
 function isQuietHours(now: Date) {
