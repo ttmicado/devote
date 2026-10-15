@@ -44,7 +44,10 @@ async function crawl(ids: string[]) {
   }
   // サイト間は並列（同じサイトへのアクセスは各アダプターのレート制御で直列）
   const parallel = Number(process.env.DEVOTE_CRAWL_PARALLEL ?? 3);
-  const queue = [...targets];
+  // 会員サイト（ログインあり）を先に回す。提供時間・利用枠があり、公開サイトの初回取り込みが長引いても遅らせないため
+  const queue = [...targets].sort(
+    (a, b) => Number(b.meta.requiresLogin) - Number(a.meta.requiresLogin),
+  );
   const results: Awaited<ReturnType<typeof runSource>>[] = [];
   await Promise.all(
     Array.from({ length: Math.min(parallel, queue.length) }, async () => {
