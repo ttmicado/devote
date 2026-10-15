@@ -181,10 +181,11 @@ async function runSearch(start: Page, s: AtbbSearch): Promise<Page> {
   activePage = tab;
   page = tab;
   // 同じIDで人が ATBB を使っていると ConcurrentLoginException.jsp に飛ばされる（2026-10-14 実測）。
-  //   人の作業を奪わないよう、ここで止める（巡回専用の追加IDを使うこと）
+  //   人の作業を奪わないよう、ここで止める。巡回は一定時間（既定60分）待ってから自動で再開する
+  //   （packages/pipeline/src/login-hold.ts）
   if (/ConcurrentLoginException/i.test(page.url())) {
     throw new Error(
-      "atbb: 同じIDで別の端末が ATBB を利用中のため検索に入れません（ConcurrentLoginException）。巡回専用IDを使ってください",
+      "atbb: 同じIDで別の端末が ATBB を利用中のため検索に入れません（ConcurrentLoginException）。時間をおいて再開します",
     );
   }
   await step("search-menu");
