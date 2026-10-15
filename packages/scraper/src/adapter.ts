@@ -1,4 +1,4 @@
-import type { NormalizedListingInput } from "@devote/core";
+import type { CrawlScope, NormalizedListingInput } from "@devote/core";
 
 /**
  * サイトごとのアダプター（プラグイン）。
@@ -46,6 +46,16 @@ export interface SourceMeta {
    * true なら一覧の1ページごとに、そのページの詳細を続けて取得してから次のページへ進む
    */
   detailsAfterEachListPage?: boolean;
+  /**
+   * 検索範囲をユーザーの希望条件（QueryContext.scopes）から作る（会員サイト）。
+   * true のソースは、希望条件を持つユーザーがいなければ巡回しない
+   */
+  scopedByConditions?: boolean;
+  /**
+   * 一覧のページ送りは利用量（monthlyQuota.list）に数えない。検索1回 = 1件。
+   * レインズは Myレインズの利用実績で、ページ送りが「物件検索」に数えられないことを確認（2026-10-15）
+   */
+  pageTurnsAreFree?: boolean;
   /** パーサ改修ごとに上げる。raw_snapshots.parser_version と比較して再パースする */
   parserVersion: string;
 }
@@ -54,6 +64,12 @@ export interface SourceMeta {
 export interface SearchQuery {
   key: string;
   params: Record<string, string | number>;
+}
+
+/** queries() に渡す実行時の情報 */
+export interface QueryContext {
+  /** 有効な希望条件から作った検索範囲（crawlScopes）。scopedByConditions のソースだけが使う */
+  scopes?: CrawlScope[];
 }
 
 export interface ListItem {
@@ -69,6 +85,11 @@ export interface ListPageResult {
   nextPageUrl: string | null;
   /** サイトが表示する総件数（構造変化の検知に使う） */
   totalCount: number | null;
+  /**
+   * この一覧が期間などで絞った差分か（true）、条件に合う全件か（false）。
+   * 未指定なら meta.incrementalList に従う。全件の検索だけなら掲載終了を判定できる
+   */
+  partial?: boolean;
 }
 
 /** 詳細ページから抜き出した表記どおりの生テキスト（「賃料」「専有面積」…） */
@@ -87,7 +108,7 @@ export interface FetchContext {
 
 export interface SiteAdapter {
   meta: SourceMeta;
-  queries(): SearchQuery[];
+  queries(ctx?: QueryContext): SearchQuery[];
   buildListUrl(q: SearchQuery): string;
   parseList(html: string, url: string): ListPageResult;
   parseDetail(html: string, url: string): RawDetail;

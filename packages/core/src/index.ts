@@ -2,6 +2,7 @@ export * from "./areas";
 export * from "./brands";
 export * from "./company";
 export * from "./condition";
+export * from "./crawl-scope";
 export * from "./dedupe";
 export * from "./facts";
 export * from "./features";

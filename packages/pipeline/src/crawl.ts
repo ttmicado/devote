@@ -1,4 +1,5 @@
 import { join } from "node:path";
+import { type CrawlScope, crawlScopes } from "@devote/core";
 import { crawlRuns, type Db, listings } from "@devote/db";
 import {
   type BrowserFetchContext,
@@ -9,6 +10,7 @@ import {
   type FetchContext,
   type SiteAdapter,
 } from "@devote/scraper";
+import { activeConditions } from "@devote/services";
 import { and, desc, eq, isNotNull } from "drizzle-orm";
 import { ingestCrawl } from "./ingest.js";
 import { loginHoldReason } from "./login-hold.js";
@@ -35,10 +37,15 @@ export function summarizeCrawl(result: CrawlResult) {
 /** 1ソースを巡回して DB に反映し、crawl_runs に結果を残す */
 const MAX_DETAILS = Number(process.env.DEVOTE_MAX_DETAILS_PER_SOURCE ?? 300);
 
+/** 有効な希望条件から作った会員サイトの検索範囲（crawlScopes）。1回のバッチで1度だけ読む */
+export async function loadCrawlScopes(db: Db): Promise<CrawlScope[]> {
+  return crawlScopes((await activeConditions(db)).map((c) => c.condition));
+}
+
 export async function runSource(
   db: Db,
   adapter: SiteAdapter,
-  opts: { maxPages?: number; maxDetails?: number } = {},
+  opts: { maxPages?: number; maxDetails?: number; scopes?: CrawlScope[] } = {},
 ) {
   const source = adapter.meta.id;
   const now = new Date();
@@ -61,6 +68,15 @@ export async function runSource(
   // 会員サイトでログインに失敗したら、ロックを避けるため一定時間は試さない（人が確認する）
   const hold = adapter.meta.requiresLogin ? loginHoldReason(last, now) : null;
   if (hold) return skip(hold);
+  // 会員サイトは希望条件の範囲だけを検索する。希望条件を持つユーザーがいなければ巡回しない
+  let queryContext: { scopes: CrawlScope[] } | undefined;
+  if (adapter.meta.scopedByConditions) {
+    const scopes = opts.scopes ?? (await loadCrawlScopes(db));
+    if (adapter.queries({ scopes }).length === 0) {
+      return skip("希望条件の範囲に当てはまる検索がない（有効な希望条件がない）");
+    }
+    queryContext = { scopes };
+  }
   const budget = await budgetForRun(db, adapter.meta, now);
   if (budget.list === 0) return skip("本日分の検索枠を使い切った");
 
@@ -105,6 +121,7 @@ export async function runSource(
       ),
       maxListRequests: budget.list,
       counters,
+      queryContext,
     });
     await browser?.saveSession();
     const stats = await ingestCrawl(db, source, result);

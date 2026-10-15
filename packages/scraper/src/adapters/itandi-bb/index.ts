@@ -370,12 +370,22 @@ export default defineAdapter({
     },
     // 更新が新しい順に最大 MAX_PAGES ページしか見ないので、一覧に出ないことを掲載終了とみなさない
     incrementalList: true,
+    // 検索するエリアはユーザーの希望条件から決める（希望条件がなければ巡回しない）
+    scopedByConditions: true,
     parserVersion: "1",
   },
 
-  queries(): SearchQuery[] {
-    // 賃貸のみ（売買メニューもあるが掲載は少ない。必要になったら sale_room_buildings/search を足す）
-    return TARGET_AREAS.flatMap((a) =>
+  /**
+   * 賃貸のみ（売買メニューもあるが掲載は少ない。必要になったら sale_room_buildings/search を足す）。
+   * 巡回（pipeline）では、ユーザーの希望条件の範囲（ctx.scopes）にある賃貸のエリアだけを検索する
+   */
+  queries(ctx): SearchQuery[] {
+    const areas = ctx?.scopes
+      ? TARGET_AREAS.filter((a) =>
+          ctx.scopes?.some((sc) => sc.dealType === "rent" && sc.city === a.city),
+        )
+      : TARGET_AREAS;
+    return areas.flatMap((a) =>
       (a.towns ?? [null]).map((town) => ({
         key: `rent-${a.city}${town ?? ""}`,
         params: { deal: "rent", prefecture: a.prefecture, city: a.city, ...(town ? { town } : {}) },
