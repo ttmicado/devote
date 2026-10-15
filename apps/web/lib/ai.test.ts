@@ -57,9 +57,9 @@ describe("toDisplay", () => {
 });
 
 describe("事業用", () => {
-  it("事業用にすると賃貸に固定する", () => {
-    const r = applyPatch(emptyCondition(), { dealType: "sale", usage: "business" });
-    expect(r.data).toMatchObject({ dealType: "rent", usage: "business" });
+  it("扱うのは住まいだけ。以前に事業用で作った下書きも、更新すると住まいに戻る", () => {
+    const r = applyPatch({ ...emptyCondition(), usage: "business" }, { dealType: "sale" });
+    expect(r.data).toMatchObject({ dealType: "sale", usage: "residential" });
   });
 });
 
@@ -125,9 +125,9 @@ describe("新しい条件項目", () => {
 });
 
 describe("featureText", () => {
-  it("住まい／事業用／共通に分け、要相談タグは載せない", () => {
+  it("住まい／共通に分け（事業用は扱わない）、要相談タグは載せない", () => {
     expect(featureText).toMatch(/- 住まい: .*pet_ok=ペット可/);
-    expect(featureText).toMatch(/- 事業用: .*skeleton=スケルトン/);
+    expect(featureText).not.toMatch(/- 事業用:/);
     expect(featureText).toMatch(/- 共通: .*auto_lock=オートロック/);
     expect(featureText).not.toContain("pet_negotiable");
   });

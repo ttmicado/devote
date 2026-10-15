@@ -54,7 +54,7 @@ function jsonLd() {
       {
         "@type": "Service",
         name: `${SITE_NAME}（物件探しのコンシェルジュ）`,
-        serviceType: "不動産の仲介（賃貸・売買・事業用賃貸）",
+        serviceType: "住まいの不動産仲介（賃貸・売買）",
         description: SITE_DESCRIPTION,
         provider: { "@id": `${SITE_URL}/#organization` },
         areaServed,

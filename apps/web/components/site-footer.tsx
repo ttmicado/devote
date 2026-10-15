@@ -50,7 +50,7 @@ export function SiteFooter() {
           <br />
           中央区勝どき・晴海・江東区豊洲
           <br />
-          住まいの賃貸・売買／事業用の賃貸
+          住まいの賃貸・売買
         </div>
       </div>
       <div className="border-t border-sand-100/10">

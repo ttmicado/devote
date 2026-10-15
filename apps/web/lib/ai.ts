@@ -43,8 +43,8 @@ const areaText = TARGET_AREAS.map((a) =>
   a.towns ? `${a.city}（${a.towns.join("・")}のみ）` : a.city,
 ).join("、");
 
-/** 設備タグの一覧（住まい／事業用／共通）。要相談タグは物件側の表示用なので条件には使わない */
-export const featureText = (["residential", "business", "common"] as FeatureCategory[])
+/** 設備タグの一覧（住まい／共通）。要相談タグは物件側の表示用なので条件には使わない。事業用の物件は扱わない */
+export const featureText = (["residential", "common"] as FeatureCategory[])
   .map((cat) => {
     const tags = Object.entries(FEATURE_DICTIONARY)
       .filter(([, d]) => d.category === cat && !d.negotiableOf)
@@ -54,16 +54,16 @@ export const featureText = (["residential", "business", "common"] as FeatureCate
   })
   .join("\n");
 
-const SYSTEM = `あなたは不動産会社「Devote」の物件探しのコンシェルジュです。都心の賃貸・売買仲介（お住まい・オフィスや店舗）で10年以上の経験を持つ営業担当として、お客様と会話しながら「求める条件」を一緒に固めます。
+const SYSTEM = `あなたは不動産会社「Devote」の物件探しのコンシェルジュです。都心の住まいの賃貸・売買仲介で10年以上の経験を持つ営業担当として、お客様と会話しながら「求める条件」を一緒に固めます。
 
 # サービスについて
 - Devote は不動産会社の業者間サイトや各社の自社サイトを巡回し、条件に合う新着物件を最速で LINE / メールでお届けします。
 - 対象エリアは ${areaText} です。対象外のエリアを希望されたら、正直に対象外であることを伝え、近い対象エリアを提案してください。
-- お住まいの賃貸・売買に加え、オフィス・店舗などの事業用の賃貸にも対応しています（事業用の売買は対象外）。
+- お住まいの賃貸・売買に対応しています。オフィス・店舗などの事業用の物件は扱っていません。ご希望があれば、その旨を短くお伝えし、お住まいのご相談があれば伺います。
 
-# 伺う順番（お住まい）
+# 伺う順番
 お相手は時間の限られた経営者です。質問は一度に一つ、選択肢を添えて答えやすくします。会話から分かっていることは聞き直しません。
-1. お住まいか事業用か、賃貸か購入か
+1. 賃貸か購入か
 2. 入居（購入なら引渡し）の希望時期と、お住み替えの理由（理由は notes に短く）
 3. ご予算。賃料は管理費込みの総額で伺い、法人の社宅なら社宅規程の上限も確かめます
 4. エリア。通勤先・お子様の学校・よく行く場所から区・駅・町を絞り、外したい町があれば伺います
@@ -72,10 +72,6 @@ const SYSTEM = `あなたは不動産会社「Devote」の物件探しのコン�
 7. お車の有無と台数。車種を伺い、機械式駐車場に入るか確認が要ることを添えます（車種は hard.parking.note）
 8. ペット（種類・大きさ）や楽器
 その後に、眺望・階数・設備などのこだわりを伺います。
-
-# 伺う順番（事業用）
-用途（事務所・店舗・クリニックなど） → 人数と今後の増員 → 移転の希望時期（現オフィスの解約予告期間） → 内装（スケルトン／居抜き） → 飲食なら重飲食か軽飲食か → 必須の設備（個別空調・24時間利用・OAフロアなど）。
-事業用は usage を business にし、広さは坪で伺って㎡に換算して記録します（1坪 = 3.30579㎡）。間取りは伺いません。
 
 # 秘書・総務の方が代理で相談されている場合
 契約名義（法人名・個人名）と決裁者（実際にお住まいになる方・最終的に決める方）を確かめ、notes に残します。
@@ -134,12 +130,6 @@ const TOOLS: Anthropic.Beta.BetaTool[] = [
       type: "object",
       properties: {
         dealType: { type: "string", enum: ["rent", "sale"], description: "賃貸=rent / 購入=sale" },
-        usage: {
-          type: "string",
-          enum: ["residential", "business"],
-          description:
-            "お住まい=residential / オフィス・店舗などの事業用=business（事業用は賃貸のみ）",
-        },
         areas: {
           type: "object",
           properties: {
@@ -268,7 +258,6 @@ export function emptyCondition(): SearchCondition {
 type Hard = SearchCondition["hard"];
 export type Patch = Partial<{
   dealType: "rent" | "sale";
-  usage: "residential" | "business";
   areas: Partial<SearchCondition["areas"]>;
   hard: Partial<Omit<Hard, "contract" | "parking">> & {
     contract?: Partial<Hard["contract"]>;
@@ -307,9 +296,8 @@ export function applyPatch(draft: SearchCondition, patch: Patch) {
   const merged = {
     ...draft,
     ...(patch.dealType ? { dealType: patch.dealType } : {}),
-    ...(patch.usage ? { usage: patch.usage } : {}),
-    // 事業用は賃貸のみ対応
-    ...((patch.usage ?? draft.usage) === "business" ? { dealType: "rent" as const } : {}),
+    // 扱うのは住まいだけ（以前に事業用で作った下書きも、更新したら住まいに戻す）
+    usage: "residential" as const,
     areas: {
       ...draft.areas,
       ...areas,

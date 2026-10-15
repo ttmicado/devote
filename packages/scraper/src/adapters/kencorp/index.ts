@@ -123,14 +123,16 @@ export default defineAdapter({
     parserVersion: "2",
   },
 
+  // 事業用（office）は巡回しない（2026-10-15 から、ユーザーが探せるのは住まいの賃貸・売買だけ）。
+  // 事業用のパーサは残してあるので、再開するときは "office" を足す
   queries: (): SearchQuery[] =>
-    (["rent", "buy", "office"] as const).flatMap((type) =>
+    (["rent", "buy"] as const).flatMap((type) =>
       AREAS.map((a) => ({
         key: `${type}-${a.key}`,
         params: {
           search_type: type,
           search_by: a.by,
-          value: type === "office" ? (a.officeValue ?? a.value) : a.value,
+          value: a.value,
         },
       })),
     ),
