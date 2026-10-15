@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import { createHttpFetcher } from "./fetcher.js";
+import { createHttpFetcher, decodeBody } from "./fetcher.js";
 
 describe("createHttpFetcher", () => {
   it("5xx はリトライし、404 はそのまま返す", async () => {
@@ -17,5 +17,24 @@ describe("createHttpFetcher", () => {
     await expect(ctx.get("https://example.com/b")).resolves.toMatchObject({ status: 404 });
     expect(fetchImpl).toHaveBeenCalledTimes(3);
     vi.useRealTimers();
+  });
+});
+
+describe("decodeBody", () => {
+  // 「あ」の Shift_JIS は 0x82 0xA0
+  const sjis = (html: string) =>
+    new Uint8Array([...Buffer.from(html, "latin1"), 0x82, 0xa0]).buffer as ArrayBuffer;
+
+  it("Content-Type の charset で復号する", () => {
+    expect(decodeBody(sjis("<p>"), "text/html; charset=Shift_JIS")).toBe("<p>あ");
+  });
+
+  it("ヘッダに無ければ <meta charset> を見る", () => {
+    const html = '<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS" />';
+    expect(decodeBody(sjis(html), "text/html")).toBe(`${html}あ`);
+  });
+
+  it("指定が無ければ UTF-8", () => {
+    expect(decodeBody(new TextEncoder().encode("あ").buffer as ArrayBuffer, null)).toBe("あ");
   });
 });

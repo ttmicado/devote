@@ -8,9 +8,10 @@
  *   pnpm worker sources               有効なソース一覧
  */
 import { createDb } from "@devote/db";
-import { enabledAdapters } from "@devote/scraper";
+import { enabledAdapters, retiredSourceIds } from "@devote/scraper";
 import { runMatching, runNotifications } from "@devote/services";
 import { loadCrawlScopes, runSource } from "./crawl.js";
+import { closeRetiredSources } from "./retire.js";
 
 const [command = "all", ...args] = process.argv.slice(2);
 const db = createDb();
@@ -22,6 +23,8 @@ async function crawl(ids: string[]) {
     const known = all.map((a) => a.meta.id).join(", ");
     throw new Error(`不明または無効なソース: ${ids.join(", ")}（有効: ${known}）`);
   }
+  const retired = await closeRetiredSources(db, retiredSourceIds);
+  if (retired > 0) console.log(`巡回をやめたソースの掲載を閉じました: ${retired} 件`);
   // 会員サイトの検索範囲（ユーザーの希望条件から作る）。バッチの最初に1度だけ読む
   const scopes = targets.some((a) => a.meta.scopedByConditions)
     ? await loadCrawlScopes(db)
@@ -41,7 +44,10 @@ async function crawl(ids: string[]) {
   }
   // サイト間は並列（同じサイトへのアクセスは各アダプターのレート制御で直列）
   const parallel = Number(process.env.DEVOTE_CRAWL_PARALLEL ?? 3);
-  const queue = [...targets];
+  // 会員サイト（ログインあり）を先に回す。提供時間・利用枠があり、公開サイトの初回取り込みが長引いても遅らせないため
+  const queue = [...targets].sort(
+    (a, b) => Number(b.meta.requiresLogin) - Number(a.meta.requiresLogin),
+  );
   const results: Awaited<ReturnType<typeof runSource>>[] = [];
   await Promise.all(
     Array.from({ length: Math.min(parallel, queue.length) }, async () => {

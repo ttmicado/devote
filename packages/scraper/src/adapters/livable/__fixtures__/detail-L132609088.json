@@ -1,0 +1,655 @@
+{
+ "isExpired": false,
+ "detailCard": {
+  "variant": "default",
+  "propertyCd": "L132609088",
+  "propertyName": "シティタワー麻布十番",
+  "price": {
+   "propertyPrice": {
+    "mstCd": 4,
+    "consumptionTaxFlg": false,
+    "rent": 380000
+   }
+  },
+  "labelInfo": {
+   "list": [
+    {
+     "text": "マンション",
+     "className": "a-tag--type"
+    },
+    {
+     "text": "パノラマ",
+     "className": "a-tag--condition"
+    }
+   ],
+   "iconLink": {
+    "href": "/kounyu/explanation-icon/"
+   }
+  },
+  "address": {
+   "linkList": [
+    {
+     "text": "東京都",
+     "href": "/chintai/mansion/tokyo/select-area/"
+    },
+    {
+     "text": "港区",
+     "href": "/chintai/mansion/tokyo/a13103/"
+    },
+    {
+     "text": "三田１丁目",
+     "href": "/chintai/mansion/tokyo/t13103024/"
+    }
+   ],
+   "mapLink": {
+    "show": true,
+    "propertyCd": "L132609088",
+    "latitude": 35.6540845,
+    "longitude": 139.7405528,
+    "address": "東京都港区三田１丁目",
+    "iconUrl": "https://www.livable.co.jp/images/common/pin_chintai_selected.png"
+   }
+  },
+  "access": {
+   "linkList": [
+    {
+     "text": "東京メトロ南北線",
+     "href": "/chintai/mansion/tokyo/l2349/select-station/"
+    },
+    {
+     "text": "「麻布十番」駅",
+     "href": "/chintai/mansion/tokyo/s2349020/"
+    },
+    {
+     "text": "徒歩4分",
+     "href": ""
+    }
+   ]
+  },
+  "basicInfo": {
+   "itemList": [
+    {
+     "label": "間取り",
+     "value": "1LDK"
+    },
+    {
+     "label": "専有面積",
+     "value": "45.49m<sup>2</sup>"
+    },
+    {
+     "label": "築年月",
+     "value": "2009年6月"
+    },
+    {
+     "label": "所在階数",
+     "value": "38階建ての19階部分"
+    },
+    {
+     "label": "向き",
+     "value": "南東"
+    }
+   ]
+  },
+  "userReaction": {
+   "enableMachineScore": false
+  },
+  "anchorLinkList": {
+   "linkList": [
+    {
+     "id": "bus_002_click_anchor_features",
+     "text": "特徴",
+     "href": {
+      "hash": "propertyFeatures"
+     }
+    },
+    {
+     "id": "bus_002_click_anchor_map",
+     "text": "周辺地図",
+     "href": {
+      "hash": "mapSection"
+     }
+    },
+    {
+     "id": "bus_002_click_anchor_summary",
+     "text": "物件概要",
+     "href": {
+      "hash": "propertySummarySection"
+     }
+    },
+    {
+     "id": "bus_002_click_anchor_store",
+     "text": "担当店舗",
+     "href": {
+      "hash": "shopSection"
+     }
+    }
+   ]
+  },
+  "propertyImage": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fphoto1%2FL132609088.jpg%3F20261006230039&w=96&h=96"
+ },
+ "summary": {
+  "enableFavoriteComparison": true,
+  "compareInfo": {
+   "button": {
+    "isEmphasized": false
+   },
+   "modal": {
+    "type": "rent",
+    "inquiryUrl": "/chintai/inquiry/L132609088/"
+   }
+  },
+  "tableItems": [
+   {
+    "type": "linkList",
+    "title": "所在地",
+    "data": {
+     "links": [
+      {
+       "text": "東京都",
+       "href": "/chintai/mansion/tokyo/select-area/"
+      },
+      {
+       "text": "港区",
+       "href": "/chintai/mansion/tokyo/a13103/"
+      },
+      {
+       "text": "三田１丁目",
+       "href": "/chintai/mansion/tokyo/t13103024/"
+      }
+     ],
+     "googleMapLink": {
+      "href": "https://www.google.com/maps?q=35.6540845%2C139.7405528"
+     }
+    },
+    "column": 1
+   },
+   {
+    "type": "multiLinkList",
+    "title": "交通",
+    "data": {
+     "links": [
+      [
+       {
+        "text": "東京メトロ南北線",
+        "href": "/chintai/mansion/tokyo/l2349/select-station/"
+       },
+       {
+        "text": "「麻布十番」駅",
+        "href": "/chintai/mansion/tokyo/s2349020/"
+       },
+       {
+        "text": "徒歩4分"
+       }
+      ],
+      [
+       {
+        "text": "都営大江戸線",
+        "href": "/chintai/mansion/tokyo/l2358/select-station/"
+       },
+       {
+        "text": "「麻布十番」駅",
+        "href": "/chintai/mansion/tokyo/s2358430/"
+       },
+       {
+        "text": "徒歩4分"
+       }
+      ],
+      [
+       {
+        "text": "都営大江戸線",
+        "href": "/chintai/mansion/tokyo/l2358/select-station/"
+       },
+       {
+        "text": "「赤羽橋」駅",
+        "href": "/chintai/mansion/tokyo/s2358420/"
+       },
+       {
+        "text": "徒歩4分"
+       }
+      ],
+      [
+       {
+        "text": "都営三田線",
+        "href": "/chintai/mansion/tokyo/l2352/select-station/"
+       },
+       {
+        "text": "「芝公園」駅",
+        "href": "/chintai/mansion/tokyo/s2352230/"
+       },
+       {
+        "text": "徒歩12分"
+       }
+      ]
+     ]
+    },
+    "column": 1
+   },
+   {
+    "type": "price",
+    "title": "賃料\n（管理費）",
+    "data": {
+     "price": {
+      "mstCd": 4,
+      "consumptionTaxFlg": false,
+      "rent": 380000
+     }
+    },
+    "column": 1
+   },
+   {
+    "type": "text",
+    "title": "物件種別",
+    "data": "マンション"
+   },
+   {
+    "type": "text",
+    "title": "構造",
+    "data": "鉄筋コンクリート造"
+   },
+   {
+    "type": "html",
+    "title": "敷金/礼金 敷金償却/敷引",
+    "data": "1ヶ月 / 1ヶ月<br>- / -"
+   },
+   {
+    "type": "text",
+    "title": "更新料",
+    "data": "-"
+   },
+   {
+    "type": "html",
+    "title": "間取り",
+    "data": "1LDK"
+   },
+   {
+    "type": "html",
+    "title": "専有面積",
+    "data": "45.49m<sup>2</sup>"
+   },
+   {
+    "type": "html",
+    "title": "築年月",
+    "data": "2009年6月"
+   },
+   {
+    "type": "text",
+    "title": "所在階数",
+    "data": "38階建ての19階部分"
+   },
+   {
+    "type": "text",
+    "title": "向き",
+    "data": "南東"
+   },
+   {
+    "type": "text",
+    "title": "入居可能時期",
+    "data": "2026年10月中旬"
+   },
+   {
+    "type": "html",
+    "title": "設備",
+    "data": "<ul><li>■分譲タイプ</li><li>■オートロック</li><li>■テレビモニター付インターフォン</li><li>■管理人（常駐）</li><li>■フローリング（全居室）</li><li>■個別冷暖房 2基</li><li>■床暖房</li><li>■エレベータ</li><li>■バルコニー</li><li>■浴室乾燥機</li><li>■浴室追焚可</li><li>■温水洗浄機能付便座</li><li>■システムキッチン</li><li>■バス・トイレ別</li><li>■洗面所独立</li><li>■室内洗濯機置き場</li><li>■駐輪場有（利用料借主負担）</li><li>■バイク置き場有（利用料借主負担）</li><li>■宅配ボックス</li><li>■CSアンテナ対応（利用料無）</li><li>■BSアンテナ対応（利用料無）</li><li>■CATV対応（利用料借主負担）</li><li>■インターネット接続可【光ケーブル・CATV以外】（利用料無）</li><li>■都市ガス</li><li>■ディスポーザー</li><li>■敷地内ゴミ置場</li><li>■防犯カメラ</li><li>■セキュリティ会社加入済</li><li>■コンロ2口以上</li><li>■24時間緊急対応（連絡センター）</li></ul>"
+   },
+   {
+    "type": "text",
+    "title": "入居条件",
+    "data": "-"
+   },
+   {
+    "type": "html",
+    "title": "契約の種類・期間",
+    "data": "定期建物賃貸借契約  期間：4年"
+   },
+   {
+    "type": "html",
+    "title": "駐車場",
+    "data": "敷地内有（別契約） 　賃料：39,000円/月"
+   },
+   {
+    "type": "html",
+    "title": "損保",
+    "data": "16,550円 &#xFF5E; /2年"
+   },
+   {
+    "type": "html",
+    "title": "その他費用",
+    "data": "■保証会社原則加入※初回保証料：賃料等の50％～（最低2万円）、月額保証料：月額引落金額×1％"
+   },
+   {
+    "type": "text",
+    "title": "取引態様",
+    "data": "仲介"
+   },
+   {
+    "type": "text",
+    "title": "仲介手数料",
+    "data": "1.1ヶ月(税込)"
+   },
+   {
+    "type": "html",
+    "title": "備考",
+    "data": "☆内見可能☆　定期借家契約4年　※再契約相談可能"
+   },
+   {
+    "type": "text",
+    "title": "物件番号",
+    "data": "L132609088"
+   }
+  ]
+ },
+ "specificSection": {
+  "propertyFeatureImage": [
+   {
+    "src": "/_assets/images/templates/bus/icon_fctn14_facing_south.png",
+    "alt": "南東向き",
+    "text": "南東向き"
+   },
+   {
+    "src": "/_assets/images/templates/bus/icon_fctn32_air_conditioning.png",
+    "alt": "エアコン",
+    "text": "エアコン"
+   },
+   {
+    "src": "/_assets/images/templates/bus/icon_fctn66_reheating.png",
+    "alt": "浴室追焚",
+    "text": "浴室追焚"
+   },
+   {
+    "src": "/_assets/images/templates/bus/icon_fctn38_internet.png",
+    "alt": "インターネット",
+    "text": "インターネット"
+   },
+   {
+    "src": "/_assets/images/templates/bus/icon_fctn46_parking_empty.png",
+    "alt": "駐車場空有",
+    "text": "駐車場空有"
+   },
+   {
+    "src": "/_assets/images/templates/bus/icon_fctn50_auto_lock.png",
+    "alt": "オートロック",
+    "text": "オートロック"
+   },
+   {
+    "src": "/_assets/images/templates/bus/icon_fctn30_flooring.png",
+    "alt": "フローリング",
+    "text": "フローリング"
+   },
+   {
+    "src": "/_assets/images/templates/bus/icon_fctn56_10minutes_on_foot.png",
+    "alt": "駅徒歩<br>10分以内",
+    "text": "駅徒歩<br>10分以内"
+   },
+   {
+    "src": "/_assets/images/templates/bus/icon_fctn57_wayside.png",
+    "alt": "2沿線以上<br>利用可能",
+    "text": "2沿線以上<br>利用可能"
+   }
+  ]
+ },
+ "detailImages": {
+  "propertyName": "シティタワー麻布十番",
+  "inquiryUrl": "/chintai/inquiry/L132609088/",
+  "pc": {
+   "mainImage": {
+    "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fphoto1%2FL132609088.jpg%3F20261006230039&w=768&h=576",
+    "alt": "シティタワー麻布十番"
+   },
+   "subImage": {
+    "id": "bus_common_click_floor-plan-image",
+    "image": {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Flayout1%2FL132609088.jpg%3F20260911230043&w=768&h=576",
+     "alt": "シティタワー麻布十番"
+    },
+    "isAddToModalTab": true
+   },
+   "thumbnailImages": [
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Findoor1%2FL132609088.jpg%3F20261004143506&w=768&h=576",
+     "alt": "シティタワー麻布十番（リビングからの眺望）"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Findoor2%2FL132609088.jpg%3F20261004230040&w=768&h=576",
+     "alt": "シティタワー麻布十番（洋室 5帖）"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc3%2FL132609088.jpg%3F20261004230040&w=768&h=576",
+     "alt": "シティタワー麻布十番（ディスポーザー、グリル、※食器洗乾燥機付）"
+    }
+   ]
+  },
+  "sp": {
+   "images": [
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fphoto1%2FL132609088.jpg%3F20261006230039&w=768&h=576",
+     "alt": "シティタワー麻布十番"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Flayout1%2FL132609088.jpg%3F20260911230043&w=768&h=576",
+     "alt": "シティタワー麻布十番"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Findoor1%2FL132609088.jpg%3F20261004143506&w=768&h=576",
+     "alt": "シティタワー麻布十番（リビングからの眺望）"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Findoor2%2FL132609088.jpg%3F20261004230040&w=768&h=576",
+     "alt": "シティタワー麻布十番（洋室 5帖）"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc3%2FL132609088.jpg%3F20261004230040&w=768&h=576",
+     "alt": "シティタワー麻布十番（ディスポーザー、グリル、※食器洗乾燥機付）"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc4%2FL132609088.jpg%3F20261004230040&w=768&h=576",
+     "alt": "シティタワー麻布十番（追焚機能・浴室乾燥機付き）"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc5%2FL132609088.jpg%3F20261004230040&w=768&h=576",
+     "alt": "シティタワー麻布十番（独立洗面台）"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc6%2FL132609088.jpg%3F20261004230040&w=768&h=576",
+     "alt": "シティタワー麻布十番（温水洗浄機能）"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc7%2FL132609088.jpg%3F20261004230040&w=768&h=576",
+     "alt": "シティタワー麻布十番（LD設置）"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc8%2FL132609088.jpg%3F20261004230040&w=768&h=576",
+     "alt": "シティタワー麻布十番"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc9%2FL132609088.jpg%3F20261004230040&w=768&h=576",
+     "alt": "シティタワー麻布十番（バルコニーからの眺望）"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc10%2FL132609088.jpg%3F20261004230040&w=768&h=576",
+     "alt": "シティタワー麻布十番（玄関）"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc11%2FL132609088.jpg%3F20261004230040&w=768&h=576",
+     "alt": "シティタワー麻布十番（ディスポーザー、グリル、※食器洗乾燥機付）"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc12%2FL132609088.jpg%3F20261004230040&w=768&h=576",
+     "alt": "シティタワー麻布十番（ロビーラウンジ）"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc13%2FL132609088.jpg%3F20261004230040&w=768&h=576",
+     "alt": "シティタワー麻布十番（エレベーターホール）"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc14%2FL132609088.jpg%3F20261004230040&w=768&h=576",
+     "alt": "シティタワー麻布十番（1階　エレベーターホール）"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc15%2FL132609088.jpg%3F20261004230040&w=768&h=576",
+     "alt": "シティタワー麻布十番（スカイラウンジ）"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc16%2FL132609088.jpg%3F20261004230040&w=768&h=576",
+     "alt": "シティタワー麻布十番（エントランスアプローチローチ（車寄せ））"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc17%2FL132609088.jpg%3F20261004230040&w=768&h=576",
+     "alt": "シティタワー麻布十番"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc18%2FL132609088.jpg%3F20261004230040&w=768&h=576",
+     "alt": "シティタワー麻布十番（TVモニター付きインターフォン）"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc19%2FL132609088.jpg%3F20260911230043&w=768&h=576",
+     "alt": "シティタワー麻布十番"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc20%2FL132609088.jpg%3F20261004143506&w=768&h=576",
+     "alt": "シティタワー麻布十番"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc21%2FL132609088.jpg%3F20261004143506&w=768&h=576",
+     "alt": "シティタワー麻布十番"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fenv3%2FL132609088.jpg%3F20261006230039&w=768&h=576",
+     "alt": "シティタワー麻布十番（くすりの福太郎東麻布店　200m）"
+    }
+   ],
+   "subImageButton": "layout"
+  },
+  "modal": {
+   "allImages": [
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fphoto1%2FL132609088.jpg%3F20261006230039&w=768&h=576",
+     "alt": "シティタワー麻布十番",
+     "description": ""
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Flayout1%2FL132609088.jpg%3F20260911230043&w=768&h=576",
+     "alt": "シティタワー麻布十番",
+     "description": ""
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Findoor1%2FL132609088.jpg%3F20261004143506&w=768&h=576",
+     "alt": "シティタワー麻布十番（リビングからの眺望）",
+     "description": "リビングからの眺望"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Findoor2%2FL132609088.jpg%3F20261004230040&w=768&h=576",
+     "alt": "シティタワー麻布十番（洋室 5帖）",
+     "description": "洋室 5帖"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc3%2FL132609088.jpg%3F20261004230040&w=768&h=576",
+     "alt": "シティタワー麻布十番（ディスポーザー、グリル、※食器洗乾燥機付）",
+     "description": "ディスポーザー、グリル、※食器洗乾燥機付"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc4%2FL132609088.jpg%3F20261004230040&w=768&h=576",
+     "alt": "シティタワー麻布十番（追焚機能・浴室乾燥機付き）",
+     "description": "追焚機能・浴室乾燥機付き"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc5%2FL132609088.jpg%3F20261004230040&w=768&h=576",
+     "alt": "シティタワー麻布十番（独立洗面台）",
+     "description": "独立洗面台"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc6%2FL132609088.jpg%3F20261004230040&w=768&h=576",
+     "alt": "シティタワー麻布十番（温水洗浄機能）",
+     "description": "温水洗浄機能"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc7%2FL132609088.jpg%3F20261004230040&w=768&h=576",
+     "alt": "シティタワー麻布十番（LD設置）",
+     "description": "LD設置"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc8%2FL132609088.jpg%3F20261004230040&w=768&h=576",
+     "alt": "シティタワー麻布十番",
+     "description": ""
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc9%2FL132609088.jpg%3F20261004230040&w=768&h=576",
+     "alt": "シティタワー麻布十番（バルコニーからの眺望）",
+     "description": "バルコニーからの眺望"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc10%2FL132609088.jpg%3F20261004230040&w=768&h=576",
+     "alt": "シティタワー麻布十番（玄関）",
+     "description": "玄関"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc11%2FL132609088.jpg%3F20261004230040&w=768&h=576",
+     "alt": "シティタワー麻布十番（ディスポーザー、グリル、※食器洗乾燥機付）",
+     "description": "ディスポーザー、グリル、※食器洗乾燥機付"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc12%2FL132609088.jpg%3F20261004230040&w=768&h=576",
+     "alt": "シティタワー麻布十番（ロビーラウンジ）",
+     "description": "ロビーラウンジ"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc13%2FL132609088.jpg%3F20261004230040&w=768&h=576",
+     "alt": "シティタワー麻布十番（エレベーターホール）",
+     "description": "エレベーターホール"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc14%2FL132609088.jpg%3F20261004230040&w=768&h=576",
+     "alt": "シティタワー麻布十番（1階　エレベーターホール）",
+     "description": "1階　エレベーターホール"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc15%2FL132609088.jpg%3F20261004230040&w=768&h=576",
+     "alt": "シティタワー麻布十番（スカイラウンジ）",
+     "description": "スカイラウンジ"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc16%2FL132609088.jpg%3F20261004230040&w=768&h=576",
+     "alt": "シティタワー麻布十番（エントランスアプローチローチ（車寄せ））",
+     "description": "エントランスアプローチローチ（車寄せ）"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc17%2FL132609088.jpg%3F20261004230040&w=768&h=576",
+     "alt": "シティタワー麻布十番",
+     "description": ""
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc18%2FL132609088.jpg%3F20261004230040&w=768&h=576",
+     "alt": "シティタワー麻布十番（TVモニター付きインターフォン）",
+     "description": "TVモニター付きインターフォン"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc19%2FL132609088.jpg%3F20260911230043&w=768&h=576",
+     "alt": "シティタワー麻布十番",
+     "description": ""
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc20%2FL132609088.jpg%3F20261004143506&w=768&h=576",
+     "alt": "シティタワー麻布十番",
+     "description": ""
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc21%2FL132609088.jpg%3F20261004143506&w=768&h=576",
+     "alt": "シティタワー麻布十番",
+     "description": ""
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fenv3%2FL132609088.jpg%3F20261006230039&w=768&h=576",
+     "alt": "シティタワー麻布十番（くすりの福太郎東麻布店　200m）",
+     "description": "くすりの福太郎東麻布店　200m"
+    }
+   ],
+   "subImage": {
+    "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Flayout1%2FL132609088.jpg%3F20260911230043&w=768&h=576",
+    "alt": "シティタワー麻布十番",
+    "tabText": "間取り"
+   }
+  }
+ },
+ "recommendedPoint": {
+  "text": "～シティタワー麻布十番～<br><br>★2026年9月　全室 全面クロス張替、浴室換気乾燥暖房機交換済み★<br><br>■地下２階付地上３８階建て<br>■総戸数５０２戸のビックコミュニティ<br>■制震構造<br>■２４時間有人管理（夜間警備員）・２４時間セキュリティシステム<br>■コンシェルジュサービス<br>■各フロアゴミ置き場有<br>■共用施設（一部有償）<br>キッズルーム（地下１階）<br>スカイラウンジ（２４・２５階）<br>ゲストルーム（３階／３室）<br><br><br>○インターネット（SUISUI Lite利用料無）<br><br><br>【借主負担】<br>■退去時通常清掃費：面積㎡×１，５４０円<br>■退去時エアコンクリーニング費用　３０，８００円×２基<br>■有料共用施設利用料<br>■浄水器カートリッジ交換費用<br>■口座振替手数料：１１０円／月<br>■再契約時：再契約事務手数料　新賃料の０．５５ヶ月<br>■駐輪場３００円～/月<br>■駐車場：３９，０００円～/月※複数台、様々なサイズ区画で空き有<br>■バイク置き場３，０００円～/月<br>■トランクルーム：２，０００円～／月<br><br>※給湯器交換の実施予定 (入居者対応の可能性有）<br>※機能保証なし・・カーテン×４（LD）、レースカーテン×４（LD）、照明器具×１（洋室）<br><br>※禁煙"
+ }
+}

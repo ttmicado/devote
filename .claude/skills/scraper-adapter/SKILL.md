@@ -31,10 +31,15 @@ description: 不動産サイト（レインズ、業者間サイト、不動産�
 |---|---|---|
 | `sumitomo-residence` / `sumitomo-latour` | 住友不動産 ラ・トゥール（2サイト・共通実装） | HTTP（建物→空室ページを束ねる） |
 | `mori-living` | 森ビル | 内部JSON API＋詳細HTML |
-| `rf12` | REIT FIND | HTTP（SSR） |
 | `kencorp` | ケン・コーポレーション（賃貸＋売買＋事業用賃貸） | 一覧は内部JSON API（事業用は `search_type=office`、賃料「相談」は除外）、詳細はSSR |
-| `axel-home` | アクセルホーム（賃貸＋事業用賃貸） | HTTP（SSR）。事業用は一覧・詳細URLの `?usage=business` で判定 |
+| `stepon` | 住友不動産ステップ（賃貸） | HTTP（SSR・Shift_JIS）。区ごとのマンション検索＋戸建ての1検索 |
+| `livable` | 東急リバブル（賃貸） | HTTP。一覧・詳細とも `__NEXT_DATA__` の pageProps を JSON にして読む |
+| `mitsui-chintai` | 三井の賃貸（三井不動産レジデンシャルリース） | HTTP（SSR）。建物→空室。写真は `/rf/photo/{建物}/{部屋}` の JSON |
+| `mec-h` | 三菱地所ハウスネット（賃貸） | HTTP（SSR）。建物→空室 |
 | `reins` / `atbb` / `itandi-bb` | 会員サイト | Playwright（未検証。`docs/member-sites.md`） |
+
+区単位でしか検索できないサイトで中央区勝どき・江東区豊洲を巡回するときは、一覧URLのフラグメント（`#towns=勝どき`）で
+町名を渡し、パーサが一覧の所在地で絞る（`src/town-filter.ts`）。対象外の物件は取り込まれないので、一覧で落とさないと毎回詳細を取り直すことになる。
 
 ## レート制御・マナー
 
