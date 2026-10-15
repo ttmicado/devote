@@ -90,6 +90,17 @@ export interface ListPageResult {
    * 未指定なら meta.incrementalList に従う。全件の検索だけなら掲載終了を判定できる
    */
   partial?: boolean;
+  /**
+   * 一覧に出ていたが解釈できず飛ばした行（「<識別子>: <理由>」）。1行の解釈失敗でソース全体を止めない。
+   * 1件でもあれば一覧は不完全として扱う（構造変化で全件読めないときに、全件を掲載終了と誤判定しないため）。
+   * 対象外（他社ドメインの新築分譲サイト・売地など）と分かっている行は、ここに入れずに黙って除外してよい
+   */
+  skipped?: string[];
+  /**
+   * 対象外として黙って除外した行の数。表示総件数（totalCount）には含まれるので、件数ずれの判定で足す
+   * （足さないと毎回「総件数と取得件数が不一致」になり、掲載終了の判定がされなくなる）
+   */
+  excludedCount?: number;
 }
 
 /** 詳細ページから抜き出した表記どおりの生テキスト（「賃料」「専有面積」…） */
@@ -117,6 +128,8 @@ export interface SiteAdapter {
   /** ログインが必要なサイトのみ */
   login?(ctx: FetchContext): Promise<void>;
   isLoggedOut?(html: string, url: string): boolean;
+  /** 巡回の最後に呼ぶ（失敗しても巡回の結果は捨てない）。同時ログインできないサイトで人の利用を妨げないため */
+  logout?(ctx: FetchContext): Promise<void>;
   /** デフォルトの取得方法を上書きしたい場合のみ（SPA の内部APIなど） */
   fetchList?(ctx: FetchContext, url: string): Promise<string>;
   fetchDetail?(ctx: FetchContext, item: ListItem): Promise<string>;

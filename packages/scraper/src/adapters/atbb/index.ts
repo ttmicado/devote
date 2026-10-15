@@ -164,6 +164,12 @@ const searchKey = (s: AtbbSearch) => `${s.deal}|${s.prefecture}|${s.city}|${s.to
 // 画面操作
 // ---------------------------------------------------------------------------
 
+const bodyText = (page: Page) =>
+  page
+    .locator("body")
+    .innerText({ timeout: 5_000 })
+    .catch(() => "");
+
 async function runSearch(start: Page, s: AtbbSearch): Promise<Page> {
   let page = start;
   if (homeUrl && page.url() !== homeUrl) {
@@ -180,6 +186,15 @@ async function runSearch(start: Page, s: AtbbSearch): Promise<Page> {
   await waitSettled(tab);
   activePage = tab;
   page = tab;
+  // 転送先の URL にセッションID（;jsessionid=…）が付くと「request rejected: path contains matrix parameter
+  //   separator」で弾かれる（2026-10-15 実測）。Cookie は付いているので、セッションIDを外して開き直す
+  if (/;jsessionid=/i.test(page.url()) && /request rejected/i.test(await bodyText(page))) {
+    await page.goto(page.url().replace(/;jsessionid=[^?#/]*/i, ""), {
+      waitUntil: "domcontentloaded",
+      timeout: 60_000,
+    });
+    await waitSettled(page);
+  }
   // 同じIDで人が ATBB を使っていると ConcurrentLoginException.jsp に飛ばされる（2026-10-14 実測）。
   //   人の作業を奪わないよう、ここで止める。巡回は一定時間（既定60分）待ってから自動で再開する
   //   （packages/pipeline/src/login-hold.ts）
@@ -422,6 +437,35 @@ export default defineAdapter({
 
   isLoggedOut: (html, url) =>
     url.startsWith("atbb:") ? isLoginPage(html, BASE_URL) : isLoginPage(html, url),
+
+  // ポータルからログアウトしても ATBB（atbb.athome.co.jp）側のセッションは残り、次のログインで
+  //   「他のユーザーがATBBを利用中です」（ConcurrentLoginException）になる（2026-10-16 実測。人も入れなくなる）。
+  //   先に ATBB のヘッダーの「ログアウト」（submitAction(…, '../j_acegi_logout')）で ATBB を抜け、次にポータルを抜ける
+  async logout(ctx) {
+    const pages = ctx.page ? ctx.page.context().pages() : [];
+    for (const p of pages) {
+      if (p.isClosed() || !/atbb\.athome\.co\.jp/.test(p.url())) continue;
+      const link = p.locator("a[onclick*='j_acegi_logout']").first();
+      if ((await link.count()) === 0) continue;
+      await Promise.all([
+        p.waitForNavigation({ timeout: 30_000 }).catch(() => undefined),
+        link.click({ timeout: 10_000 }),
+      ]);
+      await waitSettled(p);
+    }
+    const page = requirePage(ctx);
+    if (!page.url().startsWith(PORTAL_URL)) {
+      await page.goto(PORTAL_URL, { waitUntil: "domcontentloaded", timeout: 60_000 });
+      await waitSettled(page);
+    }
+    if (isLoginPage(await page.content(), page.url())) return;
+    await Promise.all([
+      page.waitForNavigation({ timeout: 30_000 }).catch(() => undefined),
+      page.locator(".c-util__menu__logout button").first().click({ timeout: 10_000 }),
+    ]);
+    activePage = null;
+    currentSearchKey = null;
+  },
 
   async fetchList(ctx, url) {
     let page = requirePage(ctx);

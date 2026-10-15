@@ -6,6 +6,16 @@
 - 構想と進め方: `docs/plan.md`
 - アーキテクチャ: `docs/architecture.md`
 - 調査資料: `docs/research/`
+- **運用の約束と現在の状態: `docs/operations.md`**（作業を始める前に読む）
+
+## 複数の環境で作業するときの約束
+
+このリポジトリは複数の環境（別々の Claude セッション・人）から同時に変更される。
+
+- 作業を始めたら、`docs/operations.md` の「現在の状態」を読む。前回の監査以降に既定ブランチへ入った変更があれば、サブエージェント `ops-auditor`（手順はスキル `devote-operations`）で監査する
+- 別環境の枝・PR を取り込む／マージする前にも監査する
+- 運用に関わる変更（ソース・エリア・物件種別、件数・頻度・時間、DB スキーマ、公開範囲、写真、ログイン）をしたら、`docs/operations.md` の「現在の状態」と「決定の記録」を同じ PR で更新する
+- `packages/db/drizzle/` への push は、ブランチを問わずすぐ本番の DB に適用される。古いコードでも動く変更にする
 
 ## コマンド
 
@@ -48,5 +58,5 @@ Web から import するパッケージ（core / db / services）は Turbopack �
 
 ## スキルとサブエージェント
 
-- スキル: `real-estate-domain`（業界知識・正規化）、`scraper-adapter`（アダプターの作り方）、`property-matching`（マッチング・AI・通知）、`devote-design`（画面のデザインシステムと文言のトーン。Web の画面を触るときは必ず読む）
-- サブエージェント: `real-estate-advisor`（実務レビュー）、`scraping-engineer`（アダプター実装）、`matching-ai-engineer`（AI・推薦・通知）、`brand-designer`（画面のデザイン・文言）
+- スキル: `devote-operations`（運用状況の把握・別環境の変更の監査・巡回の確認）、`real-estate-domain`（業界知識・正規化）、`scraper-adapter`（アダプターの作り方）、`property-matching`（マッチング・AI・通知）、`devote-design`（画面のデザインシステムと文言のトーン。Web の画面を触るときは必ず読む）
+- サブエージェント: `ops-auditor`（別環境の変更と本番の巡回の監査）、`real-estate-advisor`（実務レビュー）、`scraping-engineer`（アダプター実装）、`matching-ai-engineer`（AI・推薦・通知）、`brand-designer`（画面のデザイン・文言）

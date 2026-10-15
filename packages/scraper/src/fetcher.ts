@@ -1,5 +1,8 @@
 import type { FetchContext, SourceMeta } from "./adapter.js";
 
+/** 1リクエストの上限時間（本文の受信まで） */
+const REQUEST_TIMEOUT_MS = 30_000;
+
 const USER_AGENT =
   "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0 Safari/537.36 DevoteBot/0.1";
 
@@ -34,6 +37,8 @@ export function createHttpFetcher(
         const res = await fetchImpl(url, {
           headers: { "user-agent": USER_AGENT, "accept-language": "ja,en;q=0.8" },
           redirect: "follow",
+          // 応答のない接続が1本あると巡回の締め切りが効かないので、1リクエスト30秒で諦める（再試行はする）
+          signal: AbortSignal.timeout(REQUEST_TIMEOUT_MS),
         });
         if ((res.status === 429 || res.status >= 500) && attempt < maxRetries) {
           await sleep(2 ** attempt * 1000);

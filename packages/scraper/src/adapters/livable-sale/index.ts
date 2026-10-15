@@ -20,6 +20,7 @@ import {
   accessLines,
   getOk,
   htmlText,
+  isLivableUrl,
   type LivableDetail,
   nextDataProps,
   originalImage,
@@ -64,6 +65,7 @@ const sha1 = (s: string) => createHash("sha1").update(s).digest("hex");
 
 interface SaleListProperty {
   propertyCd?: string;
+  propertyName?: string;
   detailUrl?: string;
   priceModel?: { price?: number };
   propertyDetail?: string[];
@@ -87,7 +89,7 @@ export default defineAdapter({
     requiresLogin: false,
     rateLimit: { minIntervalMs: 2500, maxConcurrency: 1 },
     schedule: { listCron: "40 */3 * * *", detailRevisitHours: 48 },
-    parserVersion: "1",
+    parserVersion: "2",
   },
 
   queries: () =>
@@ -108,26 +110,51 @@ export default defineAdapter({
       propertyList?: SaleListProperty[];
     };
     if (!Array.isArray(data.propertyList)) throw new Error(`一覧に propertyList が無い: ${url}`);
-    const items: ListItem[] = data.propertyList.map((p) => {
-      const key = p.detailUrl ? detailKey(p.detailUrl) : null;
-      if (!p.detailUrl || !key)
-        throw new Error(`一覧の物件の詳細URLが解釈できない: ${p.detailUrl}`);
-      return {
+    const items: ListItem[] = [];
+    // 1行の解釈失敗でソース全体を止めない。想定外の行は skipped に入れて返す（ランナーが一覧を不完全として扱う）
+    const skipped: string[] = [];
+    let excluded = 0;
+    for (const p of data.propertyList) {
+      const label = p.propertyCd ?? p.propertyName ?? "（番号なし）";
+      if (!p.detailUrl) {
+        skipped.push(`${label}: 詳細URLが無い`);
+        continue;
+      }
+      const own = isLivableUrl(p.detailUrl);
+      // 自社以外のURL（新築分譲の外部プロジェクトサイト https://l-shirokanetakanawa.jp/ など）は対象外。
+      // 価格帯・予定戸数は住戸単位の事実ではないので取り込まない
+      if (own === false) {
+        excluded++;
+        continue;
+      }
+      const key = own ? detailKey(p.detailUrl) : null;
+      if (!key) {
+        skipped.push(`${label}: 詳細URLが解釈できない（${p.detailUrl}）`);
+        continue;
+      }
+      items.push({
         sourceListingId: key[1],
         detailUrl: new URL(p.detailUrl, BASE_URL).toString(),
         listHash: sha1(JSON.stringify([p.priceModel?.price, p.propertyDetail])),
         price: p.priceModel?.price,
-      };
-    });
+      });
+    }
     const total = Number(String(data.searchedResultCounts ?? "").trim());
     const u = new URL(url);
     const page = Number(u.searchParams.get("page") ?? "1");
     let next: string | null = null;
-    if (items.length > 0 && Number.isFinite(total) && page * PAGE_SIZE < total) {
+    // 除外・skipped の行があってもページ送りは続ける（そのページの行が全部対象外でも次はある）
+    if (data.propertyList.length > 0 && Number.isFinite(total) && page * PAGE_SIZE < total) {
       u.searchParams.set("page", String(page + 1));
       next = u.toString();
     }
-    return { items, nextPageUrl: next, totalCount: Number.isFinite(total) ? total : null };
+    return {
+      items,
+      nextPageUrl: next,
+      totalCount: Number.isFinite(total) ? total : null,
+      ...(skipped.length > 0 ? { skipped } : {}),
+      ...(excluded > 0 ? { excludedCount: excluded } : {}),
+    };
   },
 
   async fetchDetail(ctx, item) {

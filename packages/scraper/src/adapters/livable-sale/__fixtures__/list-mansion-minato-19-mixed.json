@@ -1,0 +1,489 @@
+{
+ "searchedResultCounts": "545",
+ "propertyList": [
+  {
+   "propertyCd": "M13268014",
+   "propertyClassCd": "1",
+   "propertyName": "グランスイート麻布台ヒルトップタワー",
+   "priceModel": {
+    "mstCd": 2,
+    "price": 142800000,
+    "consumptionTaxFlg": false
+   },
+   "address": "東京都港区麻布台３丁目",
+   "access": [
+    "東京メトロ南北線「六本木一丁目」駅 徒歩7分"
+   ],
+   "propertyDetail": [
+    "1LDKタイプ",
+    "40.67㎡",
+    "166戸"
+   ],
+   "detailUrl": "https://www.livable.co.jp/grantact/detail/C13267U41",
+   "inquiryInfo": {
+    "inquiryUrl": "/kounyu/inquiry/building/M13268014/",
+    "inquiryTypeFlg": true,
+    "inquiryLinkText": "公式サイト"
+   },
+   "labelList": [
+    {
+     "cd": "028",
+     "iconName": "物件種別",
+     "detailClass": "a-tag--type",
+     "detailText": "中古マンション",
+     "listClass": "a-tag--type",
+     "listText": "中古マンション"
+    },
+    {
+     "cd": "005",
+     "iconName": "新価格",
+     "detailClass": "a-tag--new-price",
+     "detailText": "新価格 10/10",
+     "listClass": "a-tag--new-price",
+     "listText": "新価格 10/10"
+    }
+   ],
+   "otherConditionLabels": [
+    {
+     "cd": "002",
+     "iconName": "おすすめ",
+     "detailClass": "a-tag--condition",
+     "detailText": "おすすめ",
+     "listClass": "a-tag--condition",
+     "listText": "おすすめ"
+    }
+   ],
+   "thumbnailImage": [
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fphoto%2FC13267U41.jpg%3F20260719141759&w=718&h=538",
+     "alt": "グランスイート麻布台ヒルトップタワー(外観)",
+     "href": "https://www.livable.co.jp/grantact/detail/C13267U41"
+    }
+   ],
+   "prIconFlg": false,
+   "favoriteFlg": false,
+   "favoriteType": "buy",
+   "applyingServiceList": [],
+   "commuteInfoList": [],
+   "openHouses": [],
+   "matchingTargetFlg": false,
+   "isForeignPage": true,
+   "hasOfficialSite": true
+  },
+  {
+   "propertyCd": "M13267010",
+   "propertyClassCd": "1",
+   "propertyName": "グランスイート麻布台ヒルトップタワー",
+   "priceModel": {
+    "mstCd": 2,
+    "price": 322000000,
+    "consumptionTaxFlg": false
+   },
+   "address": "東京都港区麻布台３丁目",
+   "access": [
+    "都営大江戸線「麻布十番」駅 徒歩7分"
+   ],
+   "propertyDetail": [
+    "2LDKタイプ",
+    "62.83㎡",
+    "166戸"
+   ],
+   "detailUrl": "https://www.livable.co.jp/grantact/detail/C13267716",
+   "inquiryInfo": {
+    "inquiryUrl": "/kounyu/inquiry/building/M13267010/",
+    "inquiryTypeFlg": true,
+    "inquiryLinkText": "公式サイト"
+   },
+   "labelList": [
+    {
+     "cd": "028",
+     "iconName": "物件種別",
+     "detailClass": "a-tag--type",
+     "detailText": "中古マンション",
+     "listClass": "a-tag--type",
+     "listText": "中古マンション"
+    }
+   ],
+   "otherConditionLabels": [],
+   "thumbnailImage": [
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fphoto%2FC13267716.jpg%3F20260706123309&w=718&h=538",
+     "alt": "グランスイート麻布台ヒルトップタワー(外観)",
+     "href": "https://www.livable.co.jp/grantact/detail/C13267716"
+    }
+   ],
+   "prIconFlg": false,
+   "favoriteFlg": false,
+   "favoriteType": "buy",
+   "applyingServiceList": [],
+   "commuteInfoList": [],
+   "openHouses": [],
+   "matchingTargetFlg": false,
+   "isForeignPage": true,
+   "hasOfficialSite": true
+  },
+  {
+   "propertyCd": "N13268001",
+   "propertyClassCd": "1",
+   "propertyName": "新築分譲マンション（外部の公式サイト）",
+   "priceModel": {
+    "mstCd": 3,
+    "consumptionTaxFlg": true
+   },
+   "address": "東京都港区麻布台３丁目",
+   "access": [
+    "東京メトロ南北線「六本木一丁目」駅 徒歩4分",
+    "東京メトロ南北線「麻布十番」駅 徒歩8分"
+   ],
+   "propertyDetail": [
+    "1LDK～3LDK",
+    "40.12㎡～95.30㎡",
+    "予定販売戸数 未定"
+   ],
+   "detailUrl": "https://l-shirokanetakanawa.jp/",
+   "inquiryInfo": {
+    "inquiryUrl": "https://l-shirokanetakanawa.jp/",
+    "inquiryTypeFlg": false,
+    "inquiryLinkText": "公式サイト"
+   },
+   "labelList": [
+    {
+     "cd": "028",
+     "iconName": "物件種別",
+     "detailClass": "a-tag--type",
+     "detailText": "中古マンション",
+     "listClass": "a-tag--type",
+     "listText": "中古マンション"
+    }
+   ],
+   "otherConditionLabels": [],
+   "thumbnailImage": [],
+   "layoutImageModal": {
+    "propertyTitle": "アクト飯倉",
+    "layoutImage": {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Flayout%2FC13246509.gif%3F20240608124415&w=718&h=538",
+     "alt": "アクト飯倉(間取り)"
+    },
+    "propertyDetailUrl": "/mansion/C13246509/",
+    "inquiryUrl": "/kounyu/inquiry/C13246509/"
+   },
+   "prIconFlg": false,
+   "favoriteFlg": false,
+   "favoriteType": "buy",
+   "applyingServiceList": [],
+   "commuteInfoList": [],
+   "openHouses": [],
+   "matchingTargetFlg": true,
+   "isForeignPage": false,
+   "hasOfficialSite": true
+  },
+  {
+   "propertyCd": "M13267040",
+   "propertyClassCd": "1",
+   "propertyName": "グランスイート麻布台ヒルトップタワー",
+   "priceModel": {
+    "mstCd": 2,
+    "price": 438000000,
+    "consumptionTaxFlg": false
+   },
+   "address": "東京都港区麻布台３丁目",
+   "access": [
+    "東京メトロ南北線「六本木一丁目」駅 徒歩7分"
+   ],
+   "propertyDetail": [
+    "2LDKタイプ",
+    "67.31㎡",
+    "166戸"
+   ],
+   "detailUrl": "https://www.livable.co.jp/grantact/detail/C48267218",
+   "inquiryInfo": {
+    "inquiryUrl": "/kounyu/inquiry/building/M13267040/",
+    "inquiryTypeFlg": true,
+    "inquiryLinkText": "公式サイト"
+   },
+   "labelList": [
+    {
+     "cd": "028",
+     "iconName": "物件種別",
+     "detailClass": "a-tag--type",
+     "detailText": "中古マンション",
+     "listClass": "a-tag--type",
+     "listText": "中古マンション"
+    },
+    {
+     "cd": "005",
+     "iconName": "新価格",
+     "detailClass": "a-tag--new-price",
+     "detailText": "新価格 10/9",
+     "listClass": "a-tag--new-price",
+     "listText": "新価格 10/9"
+    }
+   ],
+   "otherConditionLabels": [
+    {
+     "cd": "040",
+     "iconName": "当社売主",
+     "detailClass": "a-tag--condition",
+     "detailText": "当社売主",
+     "listClass": "a-tag--condition",
+     "listText": "当社売主"
+    }
+   ],
+   "thumbnailImage": [
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Flayout%2FC48267218.gif%3F20260720175600&w=718&h=538",
+     "alt": "グランスイート麻布台ヒルトップタワー(間取り)",
+     "href": "https://www.livable.co.jp/grantact/detail/C48267218"
+    }
+   ],
+   "prIconFlg": false,
+   "favoriteFlg": false,
+   "favoriteType": "buy",
+   "applyingServiceList": [],
+   "commuteInfoList": [],
+   "openHouses": [],
+   "matchingTargetFlg": false,
+   "isForeignPage": true,
+   "hasOfficialSite": true
+  },
+  {
+   "propertyCd": "C13246509",
+   "propertyClassCd": "1",
+   "propertyName": "アクト飯倉",
+   "priceModel": {
+    "mstCd": 1,
+    "price": 228000000,
+    "consumptionTaxFlg": false
+   },
+   "address": "東京都港区麻布台３丁目",
+   "access": [
+    "東京メトロ南北線「六本木一丁目」駅 徒歩4分",
+    "東京メトロ南北線「麻布十番」駅 徒歩8分"
+   ],
+   "propertyDetail": [
+    "2LDK",
+    "内法45.59m<sup>2</sup>",
+    "1971年12月築",
+    "4階／地上5階 地下1階",
+    "西向き"
+   ],
+   "detailUrl": "/mansion/C13246509/",
+   "inquiryInfo": {
+    "inquiryUrl": "/kounyu/inquiry/C13246509/",
+    "inquiryTypeFlg": true,
+    "inquiryLinkText": "詳細"
+   },
+   "labelList": [
+    {
+     "cd": "028",
+     "iconName": "物件種別",
+     "detailClass": "a-tag--type",
+     "detailText": "中古マンション",
+     "listClass": "a-tag--type",
+     "listText": "中古マンション"
+    }
+   ],
+   "otherConditionLabels": [],
+   "thumbnailImage": [
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fphoto%2FC13246509.jpg%3F20261004180523&w=718&h=538",
+     "alt": "アクト飯倉(外観)",
+     "href": "/mansion/C13246509/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Flayout%2FC13246509.gif%3F20240608124415&w=718&h=538",
+     "alt": "アクト飯倉(間取り)",
+     "href": "/mansion/C13246509/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc1%2FC13246509.jpg%3F20240608124415&w=718&h=538",
+     "alt": "アクト飯倉",
+     "href": "/mansion/C13246509/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc2%2FC13246509.jpg%3F20261004180523&w=718&h=538",
+     "alt": "アクト飯倉",
+     "href": "/mansion/C13246509/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc3%2FC13246509.jpg%3F20261004180523&w=718&h=538",
+     "alt": "アクト飯倉",
+     "href": "/mansion/C13246509/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc4%2FC13246509.jpg%3F20240608124415&w=718&h=538",
+     "alt": "アクト飯倉",
+     "href": "/mansion/C13246509/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc5%2FC13246509.jpg%3F20261004180523&w=718&h=538",
+     "alt": "アクト飯倉",
+     "href": "/mansion/C13246509/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc7%2FC13246509.jpg%3F20261004180523&w=718&h=538",
+     "alt": "アクト飯倉",
+     "href": "/mansion/C13246509/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc22%2FC13246509.jpg%3F20261004182721&w=718&h=538",
+     "alt": "アクト飯倉",
+     "href": "/mansion/C13246509/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc6%2FC13246509.jpg%3F20240608124415&w=718&h=538",
+     "alt": "アクト飯倉",
+     "href": "/mansion/C13246509/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc8%2FC13246509.jpg%3F20250717162818&w=718&h=538",
+     "alt": "アクト飯倉",
+     "href": "/mansion/C13246509/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc10%2FC13246509.jpg%3F20250717162818&w=718&h=538",
+     "alt": "アクト飯倉",
+     "href": "/mansion/C13246509/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc11%2FC13246509.jpg%3F20250717162818&w=718&h=538",
+     "alt": "アクト飯倉",
+     "href": "/mansion/C13246509/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc20%2FC13246509.jpg%3F20250717162818&w=718&h=538",
+     "alt": "アクト飯倉",
+     "href": "/mansion/C13246509/"
+    }
+   ],
+   "layoutImageModal": {
+    "propertyTitle": "アクト飯倉",
+    "layoutImage": {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Flayout%2FC13246509.gif%3F20240608124415&w=718&h=538",
+     "alt": "アクト飯倉(間取り)"
+    },
+    "propertyDetailUrl": "/mansion/C13246509/",
+    "inquiryUrl": "/kounyu/inquiry/C13246509/"
+   },
+   "prIconFlg": false,
+   "favoriteFlg": false,
+   "favoriteType": "buy",
+   "applyingServiceList": [],
+   "commuteInfoList": [],
+   "openHouses": [],
+   "matchingTargetFlg": true,
+   "isForeignPage": false,
+   "hasOfficialSite": false
+  },
+  {
+   "propertyCd": "C13269999",
+   "propertyClassCd": "1",
+   "propertyName": "アクト飯倉",
+   "priceModel": {
+    "mstCd": 1,
+    "price": 228000000,
+    "consumptionTaxFlg": false
+   },
+   "address": "東京都港区麻布台３丁目",
+   "access": [
+    "東京メトロ南北線「六本木一丁目」駅 徒歩4分",
+    "東京メトロ南北線「麻布十番」駅 徒歩8分"
+   ],
+   "propertyDetail": [
+    "2LDK",
+    "内法45.59m<sup>2</sup>",
+    "1971年12月築",
+    "4階／地上5階 地下1階",
+    "西向き"
+   ],
+   "detailUrl": "/kounyu/mansion/unknown/C13269999/",
+   "inquiryInfo": {
+    "inquiryUrl": "/kounyu/inquiry/C13246509/",
+    "inquiryTypeFlg": true,
+    "inquiryLinkText": "詳細"
+   },
+   "labelList": [
+    {
+     "cd": "028",
+     "iconName": "物件種別",
+     "detailClass": "a-tag--type",
+     "detailText": "中古マンション",
+     "listClass": "a-tag--type",
+     "listText": "中古マンション"
+    }
+   ],
+   "otherConditionLabels": [],
+   "thumbnailImage": [],
+   "layoutImageModal": {
+    "propertyTitle": "アクト飯倉",
+    "layoutImage": {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Flayout%2FC13246509.gif%3F20240608124415&w=718&h=538",
+     "alt": "アクト飯倉(間取り)"
+    },
+    "propertyDetailUrl": "/mansion/C13246509/",
+    "inquiryUrl": "/kounyu/inquiry/C13246509/"
+   },
+   "prIconFlg": false,
+   "favoriteFlg": false,
+   "favoriteType": "buy",
+   "applyingServiceList": [],
+   "commuteInfoList": [],
+   "openHouses": [],
+   "matchingTargetFlg": true,
+   "isForeignPage": false,
+   "hasOfficialSite": false
+  },
+  {
+   "propertyCd": "M1326A021",
+   "propertyClassCd": "1",
+   "propertyName": "ブランズ麻布狸穴町",
+   "priceModel": {
+    "mstCd": 2,
+    "price": 230000000,
+    "consumptionTaxFlg": false
+   },
+   "address": "東京都港区麻布狸穴町",
+   "access": [
+    "東京メトロ南北線「麻布十番」駅 徒歩6分"
+   ],
+   "propertyDetail": [
+    "2LDKタイプ",
+    "61.08㎡",
+    "140戸"
+   ],
+   "detailUrl": "https://www.livable.co.jp/grantact/detail/C1325XD78",
+   "inquiryInfo": {
+    "inquiryUrl": "/kounyu/inquiry/building/M1326A021/",
+    "inquiryTypeFlg": true,
+    "inquiryLinkText": "公式サイト"
+   },
+   "labelList": [
+    {
+     "cd": "028",
+     "iconName": "物件種別",
+     "detailClass": "a-tag--type",
+     "detailText": "中古マンション",
+     "listClass": "a-tag--type",
+     "listText": "中古マンション"
+    }
+   ],
+   "otherConditionLabels": [],
+   "thumbnailImage": [
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fphoto%2FC1325XD78.jpg%3F20260918140722&w=718&h=538",
+     "alt": "ブランズ麻布狸穴町(外観)",
+     "href": "https://www.livable.co.jp/grantact/detail/C1325XD78"
+    }
+   ],
+   "prIconFlg": false,
+   "favoriteFlg": false,
+   "favoriteType": "buy",
+   "applyingServiceList": [],
+   "commuteInfoList": [],
+   "openHouses": [],
+   "matchingTargetFlg": false,
+   "isForeignPage": true,
+   "hasOfficialSite": true
+  }
+ ]
+}

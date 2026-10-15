@@ -72,8 +72,8 @@ const TRANSACTION_MODES: Record<string, TransactionMode> = {
 };
 
 interface ApiProperty {
-  code: string;
-  url: string;
+  code?: string;
+  url?: string;
   /** 賃貸は円・売買は万円。事業用は月額費用（円）で、数値のことも「相談」「未定」のこともある */
   price: string | number | null;
   admin_cost?: string | null;
@@ -120,7 +120,7 @@ export default defineAdapter({
     requiresLogin: false,
     rateLimit: { minIntervalMs: 2000, maxConcurrency: 1 },
     schedule: { listCron: "30 */3 * * *", detailRevisitHours: 48 },
-    parserVersion: "2",
+    parserVersion: "3",
   },
 
   // 事業用（office）は巡回しない（2026-10-15 から、ユーザーが探せるのは住まいの賃貸・売買だけ）。
@@ -163,9 +163,14 @@ export default defineAdapter({
     const searchType = u.searchParams.get("search_type");
     const isSale = searchType === "buy";
     const isOffice = searchType === "office";
+    // 1行の解釈失敗でソース全体を止めない。想定外の行は skipped に入れて返す（ランナーが一覧を不完全として扱う）
+    const skipped: string[] = [];
     const items: ListItem[] = data.buildings.flatMap((b) =>
       (b.properties ?? []).flatMap((p) => {
-        if (!p.code || !p.url) throw new Error(`物件コード/URL が取れない: ${JSON.stringify(p)}`);
+        if (!p.code || !p.url) {
+          skipped.push(`${p.code ?? p.url ?? "（コードなし）"}: 物件コード/URL が取れない`);
+          return [];
+        }
         const raw =
           p.price != null && /^\d+(\.\d+)?$/.test(String(p.price)) ? Number(p.price) : null;
         let price = raw == null ? undefined : Math.round(isSale ? raw * 10_000 : raw);
@@ -206,7 +211,12 @@ export default defineAdapter({
       nextPageUrl = u.toString();
     }
     // 事業用は価格非公開などを一覧で除外するため、prop_count と取得件数は一致しない
-    return { items, nextPageUrl, totalCount: isOffice ? null : (data.prop_count ?? null) };
+    return {
+      items,
+      nextPageUrl,
+      totalCount: isOffice ? null : (data.prop_count ?? null),
+      ...(skipped.length > 0 ? { skipped } : {}),
+    };
   },
 
   parseDetail(html, url) {

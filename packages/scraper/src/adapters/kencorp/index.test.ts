@@ -76,6 +76,37 @@ describe("kencorp parseList（内部JSON API）", () => {
   it("JSON でない応答は throw する", () => {
     expect(() => adapter.parseList("<html></html>", url1)).toThrow(/JSON/);
   });
+
+  it("売買の一覧の価格（万円）が25億円超でも円の整数にする", () => {
+    const data = JSON.parse(fixture("list-sale-toyosu-1.json")) as {
+      buildings: { properties?: { code?: string; price?: string }[] }[];
+    };
+    const p = data.buildings
+      .flatMap((b) => b.properties ?? [])
+      .find((x) => x.code === "2026095145");
+    if (!p) throw new Error("フィクスチャに物件が無い");
+    p.price = "258000";
+    const r = adapter.parseList(
+      JSON.stringify(data),
+      `${API}?search_type=buy&search_by=area&areas=ginwan02&page=1&per_page=50`,
+    );
+    expect(r.items.find((i) => i.sourceListingId === "2026095145")?.price).toBe(2_580_000_000);
+  });
+
+  it("物件コード/URL が無い行は throw せず skipped に入れ、残りの行は読む", () => {
+    const data = JSON.parse(fixture("list-sale-toyosu-1.json")) as {
+      buildings: { properties?: { code?: string; url?: string }[] }[];
+    };
+    const p = data.buildings.flatMap((b) => b.properties ?? [])[0];
+    if (!p) throw new Error("フィクスチャに物件が無い");
+    delete p.url;
+    const r = adapter.parseList(
+      JSON.stringify(data),
+      `${API}?search_type=buy&search_by=area&areas=ginwan02&page=1&per_page=50`,
+    );
+    expect(r.items).toHaveLength(9);
+    expect(r.skipped).toEqual([`${p.code}: 物件コード/URL が取れない`]);
+  });
 });
 
 describe("kencorp normalize", () => {
@@ -149,6 +180,16 @@ describe("kencorp normalize", () => {
     expect(() =>
       adapter.parseDetail("<div class='main co-ho-pr'></div>", detailUrl("1", "2")),
     ).toThrow();
+  });
+
+  it("売買: 25億円超の価格も円の整数で取る", () => {
+    const raw = adapter.parseDetail(
+      fixture("detail-2026095145.html"),
+      detailUrl("183198", "2026095145"),
+    );
+    expect(
+      adapter.normalize({ ...raw, fields: { ...raw.fields, 価格: "25億8,000万円" } }).price,
+    ).toBe(2_580_000_000);
   });
 });
 

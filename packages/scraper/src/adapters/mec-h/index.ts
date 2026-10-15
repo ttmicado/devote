@@ -62,7 +62,7 @@ export default defineAdapter({
     requiresLogin: false,
     rateLimit: { minIntervalMs: 2500, maxConcurrency: 1 },
     schedule: { listCron: "55 */3 * * *", detailRevisitHours: 48 },
-    parserVersion: "1",
+    parserVersion: "2",
   },
 
   queries: () =>
@@ -84,6 +84,8 @@ export default defineAdapter({
     const $ = cheerio.load(html);
     const towns = townsOf(url);
     const items: ListItem[] = [];
+    // 1行の解釈失敗でソース全体を止めない。想定外の行は skipped に入れて返す（ランナーが一覧を不完全として扱う）
+    const skipped: string[] = [];
 
     $("article.mod-property-card02").each((_, card) => {
       const $c = $(card);
@@ -93,7 +95,10 @@ export default defineAdapter({
         const $r = $(row);
         const href = $r.find('a[href*="/rent/detail/"]').first().attr("href");
         const id = href?.match(/\/rent\/detail\/([A-Za-z0-9]+)/)?.[1];
-        if (!href || !id) throw new Error(`一覧の部屋行からリンクが取れない: ${squash($r.text())}`);
+        if (!href || !id) {
+          skipped.push(`${href ?? squash($r.text()).slice(0, 60)}: 部屋行のリンクが取れない`);
+          return;
+        }
         // "33.4 万円(管理費 20,000円)" / "4階" / "1LDK / 47.27㎡" / "敷金/礼金1ヶ月 /-"
         const detailText = squash($r.find(".table-detail").text());
         const man = $r.find(".txt-num").first().text();
@@ -112,6 +117,7 @@ export default defineAdapter({
       nextPageUrl: carryTowns(next ? new URL(next, url).toString() : null, url),
       // 表示の「該当物件数」は棟数なので、部屋数との照合には使えない
       totalCount: null,
+      ...(skipped.length > 0 ? { skipped } : {}),
     };
   },
 

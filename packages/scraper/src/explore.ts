@@ -75,15 +75,9 @@ const TARGETS: Record<string, Target> = {
   atbb: {
     adapter: atbb,
     hooks: atbbModule.hooks,
-    // ポータル（members.athome.jp/portal）右上の「ログアウト」（form POST /logout）
+    // ATBB 側 → ポータルの順にログアウトする（アダプターの logout。巡回でも同じものを使う）
     logout: async (ctx) => {
-      if (!ctx.page.url().startsWith("https://members.athome.jp/portal")) {
-        await ctx.page.goto("https://members.athome.jp/portal", { waitUntil: "domcontentloaded" });
-      }
-      await Promise.all([
-        ctx.page.waitForNavigation({ timeout: 30_000 }).catch(() => undefined),
-        ctx.page.locator(".c-util__menu__logout button").first().click({ timeout: 10_000 }),
-      ]);
+      await atbb.logout?.(ctx);
     },
   },
   "itandi-bb": {

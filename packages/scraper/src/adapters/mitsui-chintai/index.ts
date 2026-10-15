@@ -62,9 +62,23 @@ interface Photo {
 }
 
 /** 詳細URL /rf/tatemono/6412/203 → "6412-203" */
+/** 相対URL → 絶対URL。解釈できなければ空文字（roomId が null を返す） */
+function absUrl(href: string, base: string): string {
+  try {
+    return new URL(href, base).toString();
+  } catch {
+    return "";
+  }
+}
+
 function roomId(url: string): string | null {
-  const m = new URL(url).pathname.match(/\/rf\/tatemono\/(\d+)\/([^/]+)\/?$/);
-  return m ? `${m[1]}-${decodeURIComponent(m[2] ?? "")}` : null;
+  try {
+    const m = new URL(url).pathname.match(/\/rf\/tatemono\/(\d+)\/([^/]+)\/?$/);
+    return m ? `${m[1]}-${decodeURIComponent(m[2] ?? "")}` : null;
+  } catch {
+    // URL として解釈できない・不正なパーセントエンコード
+    return null;
+  }
 }
 
 /**
@@ -105,7 +119,7 @@ export default defineAdapter({
     requiresLogin: false,
     rateLimit: { minIntervalMs: 2500, maxConcurrency: 1 },
     schedule: { listCron: "45 */3 * * *", detailRevisitHours: 48 },
-    parserVersion: "1",
+    parserVersion: "2",
   },
 
   queries: () => AREA_QUERIES,
@@ -123,6 +137,8 @@ export default defineAdapter({
     const $ = cheerio.load(html);
     const towns = townsOf(url);
     const items: ListItem[] = [];
+    // 1行の解釈失敗でソース全体を止めない。想定外の行は skipped に入れて返す（ランナーが一覧を不完全として扱う）
+    const skipped: string[] = [];
 
     $(".c-result-build").each((_, build) => {
       const $b = $(build);
@@ -137,8 +153,11 @@ export default defineAdapter({
       $b.find("tr[data-js-room-link]").each((__, tr) => {
         const $tr = $(tr);
         const href = $tr.attr("data-js-room-link") ?? "";
-        const id = href ? roomId(new URL(href, url).toString()) : null;
-        if (!id) throw new Error(`一覧の部屋行からリンクが取れない: ${squash($tr.text())}`);
+        const id = href ? roomId(absUrl(href, url)) : null;
+        if (!id) {
+          skipped.push(`${href || squash($tr.text()).slice(0, 60)}: 部屋行のリンクが取れない`);
+          return;
+        }
         const rent = squash($tr.find(".c-room-list__rent").text());
         items.push({
           sourceListingId: id,
@@ -167,6 +186,7 @@ export default defineAdapter({
       items,
       nextPageUrl: carryTowns(next ? new URL(next, url).toString() : null, url),
       totalCount: towns ? null : /^\d+$/.test(rooms) ? Number(rooms) : null,
+      ...(skipped.length > 0 ? { skipped } : {}),
     };
   },
 

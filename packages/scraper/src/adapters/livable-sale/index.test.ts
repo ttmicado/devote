@@ -57,6 +57,35 @@ describe("livable-sale parseList", () => {
   });
 });
 
+describe("livable-sale parseList（行の除外・skipped）", () => {
+  const r = adapter.parseList(
+    fixture("list-mansion-minato-19-mixed.json"),
+    `${BASE}/kounyu/mansion/tokyo/a13103/?sort=address&page=19`,
+  );
+
+  it("自社以外の新築分譲サイト（l-shirokanetakanawa.jp）の行は throw せず黙って除外する", () => {
+    expect(r.items).toHaveLength(5);
+    expect(r.items.some((i) => !i.detailUrl.startsWith(`${BASE}/`))).toBe(false);
+    expect(r.skipped?.join("\n") ?? "").not.toMatch(/l-shirokanetakanawa/);
+    // 表示総件数には含まれるので、件数ずれの判定に足せるよう除外数を返す
+    expect(r.excludedCount).toBe(1);
+  });
+
+  it("自社ドメインだが形式が想定外の行は skipped に入れる", () => {
+    expect(r.skipped).toEqual([
+      "C13269999: 詳細URLが解釈できない（/kounyu/mansion/unknown/C13269999/）",
+    ]);
+  });
+
+  it("問題のない一覧では skipped を返さない", () => {
+    const ok = adapter.parseList(
+      fixture("list-mansion-minato-19.json"),
+      `${BASE}/kounyu/mansion/tokyo/a13103/?sort=address&page=19`,
+    );
+    expect(ok.skipped).toBeUndefined();
+  });
+});
+
 describe("livable-sale normalize", () => {
   it("中古マンション（通常の詳細）を正規化する", () => {
     expect(detail("detail-mansion-C13262R30.json", "/mansion/C13262R30/")).toMatchSnapshot();
@@ -93,6 +122,24 @@ describe("livable-sale normalize", () => {
     expect(
       n.imageUrls.every((u) => u.includes("/grantact/img/upload/") && !u.includes("_sp/")),
     ).toBe(true);
+  });
+
+  it("25億円超の価格も円の整数で取る（通常の詳細は円の数値、GRANTACT は「億」表記）", () => {
+    const json = adapter.parseDetail(
+      fixture("detail-mansion-C13262R30.json"),
+      `${BASE}/mansion/C13262R30/`,
+    );
+    expect(
+      adapter.normalize({ ...json, fields: { ...json.fields, 価格: "2580000000" } }).price,
+    ).toBe(2_580_000_000);
+    const grantact = adapter.parseDetail(
+      fixture("detail-grantact-C48266B42.html"),
+      `${BASE}/grantact/detail/C48266B42`,
+    );
+    expect(
+      adapter.normalize({ ...grantact, fields: { ...grantact.fields, 価格: "25億8,000万円" } })
+        .price,
+    ).toBe(2_580_000_000);
   });
 
   it("一戸建ては建物面積・所在階なし・「鉄骨造 3階」から総階数", () => {

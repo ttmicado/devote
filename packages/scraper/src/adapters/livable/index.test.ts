@@ -67,6 +67,25 @@ describe("livable parseList", () => {
     expect(r.items).toHaveLength(12);
     expect(r.totalCount).toBe(12);
     expect(r.nextPageUrl).toBeNull();
+    expect(r.skipped).toBeUndefined();
+  });
+
+  it("解釈できない行は throw せず skipped に入れ、自社以外のサイトへのリンクは黙って除外する", () => {
+    const data = JSON.parse(fixture("list-minato-1.json")) as {
+      propertyList: { propertyCd?: string; detailUrl?: string }[];
+    };
+    const [a, b, c] = data.propertyList;
+    if (!a || !b || !c) throw new Error("フィクスチャの行が足りない");
+    a.detailUrl = "https://example-project.jp/"; // 外部サイト → 対象外
+    delete b.detailUrl; // 詳細URLが無い → 想定外
+    c.propertyCd = undefined; // 物件番号が無い → 想定外
+    const r = adapter.parseList(JSON.stringify(data), `${BASE}/chintai/tokyo/a13103/?sort=address`);
+    expect(r.items).toHaveLength(27);
+    expect(r.skipped).toHaveLength(2);
+    expect(r.skipped?.[0]).toMatch(/詳細URLが無い/);
+    expect(r.skipped?.[1]).toMatch(/解釈できない/);
+    // 行を飛ばしてもページ送りは続ける
+    expect(r.nextPageUrl).toBe(`${BASE}/chintai/tokyo/a13103/?sort=address&page=2`);
   });
 });
 

@@ -1,6 +1,7 @@
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { NormalizedListing } from "@devote/core";
+import * as cheerio from "cheerio";
 import { describe, expect, it } from "vitest";
 import type { FetchContext } from "../../adapter.js";
 import adapter from "./index.js";
@@ -62,6 +63,14 @@ describe("mitsui-chintai parseList", () => {
     expect(r.items.length).toBeLessThan(102); // 月島・晴海などを除く
     expect(r.totalCount).toBeNull();
     expect(r.nextPageUrl).toBe(`${BASE}/rf/result?are=10&get=area&page=2${new URL(url).hash}`);
+  });
+
+  it("部屋行のリンクが取れない行は throw せず skipped に入れ、残りの行は読む", () => {
+    const $ = cheerio.load(fixture("list-minato-1.html"));
+    $("tr[data-js-room-link]").first().attr("data-js-room-link", "/rf/unknown");
+    const r = adapter.parseList($.html(), `${BASE}/rf/result?ku=(1,22)&get=ward`);
+    expect(r.items).toHaveLength(87);
+    expect(r.skipped).toEqual(["/rf/unknown: 部屋行のリンクが取れない"]);
   });
 });
 

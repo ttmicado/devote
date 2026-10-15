@@ -1,6 +1,7 @@
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { NormalizedListing } from "@devote/core";
+import * as cheerio from "cheerio";
 import { describe, expect, it } from "vitest";
 import adapter from "./index.js";
 
@@ -65,6 +66,22 @@ describe("stepon-sale parseList", () => {
       `${BASE}/mansion/area_13/list_13_102/30_2/#towns=%E5%8B%9D%E3%81%A9%E3%81%8D,%E6%99%B4%E6%B5%B7`,
     );
   });
+
+  it("一覧の「25億」「8,000万円」も円の整数にする", () => {
+    const $ = cheerio.load(fixture("list-mansion-minato-1.html"));
+    $("#label_price_head").first().text("25");
+    const r = adapter.parseList($.html(), `${BASE}/mansion/area_13/list_13_103/`);
+    expect(r.items[0]?.price).toBe(2_580_000_000);
+  });
+
+  it("物件番号/リンクが取れない行は throw せず skipped に入れ、残りの行は読む", () => {
+    const $ = cheerio.load(fixture("list-mansion-minato-7.html"));
+    $(".sr-card a.sr-card__name").first().removeAttr("href");
+    const r = adapter.parseList($.html(), `${BASE}/mansion/area_13/list_13_103/30_7/`);
+    expect(r.items).toHaveLength(5);
+    expect(r.skipped).toHaveLength(1);
+    expect(r.skipped?.[0]).toMatch(/物件番号\/リンクが取れない/);
+  });
 });
 
 describe("stepon-sale normalize", () => {
@@ -116,5 +133,19 @@ describe("stepon-sale normalize", () => {
     expect(n.imageUrls.every((u) => u.includes("/158P3027/158P3027_") && /_l\.\w+$/.test(u))).toBe(
       true,
     );
+  });
+
+  it("25億円超の価格も円の整数で取る", () => {
+    const raw = adapter.parseDetail(
+      fixture("detail-mansion-158P3027.html"),
+      `${BASE}/mansion/detail_158P3027/`,
+    );
+    for (const [text, yen] of [
+      ["25億円", 2_500_000_000],
+      ["25億8,000万円", 2_580_000_000],
+      ["３０億円", 3_000_000_000],
+    ] as const) {
+      expect(adapter.normalize({ ...raw, fields: { ...raw.fields, 価格: text } }).price).toBe(yen);
+    }
   });
 });

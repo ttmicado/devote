@@ -65,7 +65,7 @@ export default defineAdapter({
     requiresLogin: false,
     rateLimit: { minIntervalMs: 2500, maxConcurrency: 1 },
     schedule: { listCron: "25 */3 * * *", detailRevisitHours: 48 },
-    parserVersion: "1",
+    parserVersion: "2",
   },
 
   queries: () => [
@@ -104,18 +104,23 @@ export default defineAdapter({
     const $ = cheerio.load(html);
     const towns = townsOf(url);
     const items: ListItem[] = [];
+    // 1行の解釈失敗でソース全体を止めない。想定外の行は skipped に入れて返す（ランナーが一覧を不完全として扱う）
+    const skipped: string[] = [];
 
     $(".resultItem").each((_, el) => {
       const $el = $(el);
-      const id = $el.find("input[name=bukken_no]").attr("value");
-      const href = $el.find("h2.txt a[href]").attr("href");
-      if (!id || !href)
-        throw new Error(`一覧の物件から物件番号/リンクが取れない: ${squash($el.text())}`);
       const doc: Record<string, string> = {};
       $el.find(".doc dl").each((__, dl) => {
         doc[squash($(dl).find("dt").text())] = squash($(dl).find("dd").text());
       });
+      // 対象の町の外の行は、解釈できなくても一覧の完全さに関係しないので先に落とす
       if (towns && !addressInTowns(doc.所在地 ?? "", towns)) return;
+      const id = $el.find("input[name=bukken_no]").attr("value");
+      const href = $el.find("h2.txt a[href]").attr("href");
+      if (!id || !href) {
+        skipped.push(`${id ?? href ?? squash($el.text()).slice(0, 60)}: 物件番号/リンクが取れない`);
+        return;
+      }
       items.push({
         sourceListingId: id,
         detailUrl: new URL(href, url).toString(),
@@ -138,6 +143,7 @@ export default defineAdapter({
       nextPageUrl: carryTowns(next ? new URL(next, url).toString() : null, url),
       // 町名で絞った一覧は、表示の総件数（区全体）と件数が合わない
       totalCount: towns ? null : /^\d+$/.test(total) ? Number(total) : null,
+      ...(skipped.length > 0 ? { skipped } : {}),
     };
   },
 

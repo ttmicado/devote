@@ -68,7 +68,7 @@ export default defineAdapter({
     requiresLogin: false,
     rateLimit: { minIntervalMs: 2500, maxConcurrency: 1 },
     schedule: { listCron: "5 */3 * * *", detailRevisitHours: 48 },
-    parserVersion: "1",
+    parserVersion: "2",
   },
 
   queries: () =>
@@ -92,17 +92,23 @@ export default defineAdapter({
     const $ = cheerio.load(html);
     const towns = townsOf(url);
     const items: ListItem[] = [];
+    // 1行の解釈失敗でソース全体を止めない。想定外の行は skipped に入れて返す（ランナーが一覧を不完全として扱う）
+    const skipped: string[] = [];
 
     $("article.mod-property-card").each((_, card) => {
       const $c = $(card);
       const href = $c.find("a.mod-property-card__grid").attr("href");
-      // マンションの一覧には売地（/land/detail/…）が混ざる。住まいではないので読まない
+      // マンションの一覧には売地（/land/detail/…）が混ざる。住まいではないので対象外（黙って除外）
       if (href && /\/land\/detail\//.test(href)) return;
-      const id = href?.match(/\/(?:mansion|house)\/detail\/([A-Za-z0-9]+)/)?.[1];
-      if (!href || !id) throw new Error(`一覧の物件からリンクが取れない: ${squash($c.text())}`);
       // "港区南青山６丁目"
       const address = squash($c.find(".mod-property-card__detail-access p").first().text());
+      // 対象の町の外の行は、解釈できなくても一覧の完全さに関係しないので先に落とす
       if (towns && !addressInTowns(address, towns)) return;
+      const id = href?.match(/\/(?:mansion|house)\/detail\/([A-Za-z0-9]+)/)?.[1];
+      if (!href || !id) {
+        skipped.push(`${href ?? squash($c.text()).slice(0, 60)}: 物件のリンクが取れない`);
+        return;
+      }
       const man = $c.find(".mod-property-card__price .num").first().text();
       items.push({
         sourceListingId: id,
@@ -124,6 +130,7 @@ export default defineAdapter({
           : /^\d+$/.test(hit)
             ? Number(hit)
             : null,
+      ...(skipped.length > 0 ? { skipped } : {}),
     };
   },
 

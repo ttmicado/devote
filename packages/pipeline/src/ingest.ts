@@ -20,6 +20,8 @@ export interface IngestStats {
   newCount: number;
   updatedCount: number;
   delistedCount: number;
+  /** DB への取り込みに失敗した件数（1件の失敗でソース全体は止めない） */
+  failedCount: number;
   warnings: string[];
 }
 
@@ -102,6 +104,95 @@ async function resolveProperty(db: Db, l: NormalizedListing): Promise<string> {
   return created.id;
 }
 
+/** 1件の掲載を DB に反映する（ingestCrawl から1件ずつトランザクションで呼ぶ） */
+async function ingestOne(
+  db: Db,
+  source: string,
+  raw: NormalizedListing,
+  listHashes: Record<string, string>,
+  now: Date,
+): Promise<"outside" | "new" | "updated" | "unchanged"> {
+  // extra の表記から入居時期・契約形態・駐車場などを埋める（アダプター共通の後処理）
+  const derived = deriveContractFacts(raw, now);
+  // 他社の社名・ロゴ入りの写真を使わないソースは写真を外す
+  const l = noImageSourceIds.includes(source) ? { ...derived, imageUrls: [] } : derived;
+  if (!isInTargetArea(l.address.raw || `${l.address.city ?? ""}${l.address.town ?? ""}`))
+    return "outside";
+  const hash = contentHash(l);
+  const listHash = listHashes[l.sourceListingId] ?? null;
+  const [existing] = await db
+    .select()
+    .from(listings)
+    .where(and(eq(listings.source, source), eq(listings.sourceListingId, l.sourceListingId)));
+
+  if (!existing) {
+    const propertyId = await resolveProperty(db, l);
+    const [row] = await db
+      .insert(listings)
+      .values({
+        source,
+        sourceListingId: l.sourceListingId,
+        url: l.url,
+        propertyId,
+        data: l,
+        contentHash: hash,
+        listHash,
+        price: l.price,
+        adAllowed: l.adAllowed,
+      })
+      .returning({ id: listings.id });
+    if (row) {
+      await db
+        .insert(changeEvents)
+        .values({ listingId: row.id, propertyId, type: "new", after: l });
+    }
+    return "new";
+  }
+
+  const before = existing.data as NormalizedListing;
+  const relisted = existing.status === "closed";
+  const changed = existing.contentHash !== hash;
+  if (!changed && !relisted) {
+    await db
+      .update(listings)
+      .set({ lastSeenAt: now, missCount: 0, listHash })
+      .where(eq(listings.id, existing.id));
+    return "unchanged";
+  }
+  const propertyId = existing.propertyId ?? (await resolveProperty(db, l));
+  if (existing.propertyId) {
+    await db
+      .update(properties)
+      .set(propertyColumns(l))
+      .where(eq(properties.id, existing.propertyId));
+  }
+  await db
+    .update(listings)
+    .set({
+      url: l.url,
+      data: l,
+      contentHash: hash,
+      listHash,
+      price: l.price,
+      adAllowed: l.adAllowed,
+      status: "active",
+      missCount: 0,
+      lastSeenAt: now,
+      propertyId,
+      updatedAt: now,
+    })
+    .where(eq(listings.id, existing.id));
+  const change = classifyChange(before, l);
+  await db.insert(changeEvents).values({
+    listingId: existing.id,
+    propertyId,
+    type: relisted ? "relisted" : change.type,
+    before: priceSnapshot(before),
+    after: { ...priceSnapshot(l), improved: change.improved },
+  });
+  return "updated";
+}
+
 /**
  * 1ソースの巡回結果を DB に反映する。
  * - 対象エリア外は保存しない
@@ -118,93 +209,33 @@ export async function ingestCrawl(
     newCount: 0,
     updatedCount: 0,
     delistedCount: 0,
+    failedCount: 0,
     warnings: [],
   };
   const now = new Date();
 
+  let failed = 0;
   for (const raw of result.listings) {
-    // extra の表記から入居時期・契約形態・駐車場などを埋める（アダプター共通の後処理）
-    const derived = deriveContractFacts(raw, now);
-    // 他社の社名・ロゴ入りの写真を使わないソースは写真を外す
-    const l = noImageSourceIds.includes(source) ? { ...derived, imageUrls: [] } : derived;
-    if (!isInTargetArea(l.address.raw || `${l.address.city ?? ""}${l.address.town ?? ""}`))
-      continue;
-    stats.inArea++;
-    const hash = contentHash(l);
-    const listHash = result.listHashes[l.sourceListingId] ?? null;
-    const [existing] = await db
-      .select()
-      .from(listings)
-      .where(and(eq(listings.source, source), eq(listings.sourceListingId, l.sourceListingId)));
-
-    if (!existing) {
-      const propertyId = await resolveProperty(db, l);
-      const [row] = await db
-        .insert(listings)
-        .values({
-          source,
-          sourceListingId: l.sourceListingId,
-          url: l.url,
-          propertyId,
-          data: l,
-          contentHash: hash,
-          listHash,
-          price: l.price,
-          adAllowed: l.adAllowed,
-        })
-        .returning({ id: listings.id });
-      if (row) {
-        await db
-          .insert(changeEvents)
-          .values({ listingId: row.id, propertyId, type: "new", after: l });
+    try {
+      // 1件ごとにトランザクション（物件 → 掲載 → 変更履歴の途中で失敗して半端なデータを残さない）
+      const outcome = await db.transaction((tx) =>
+        ingestOne(tx as unknown as Db, source, raw, result.listHashes, now),
+      );
+      if (outcome === "outside") continue;
+      stats.inArea++;
+      if (outcome === "new") stats.newCount++;
+      if (outcome === "updated") stats.updatedCount++;
+    } catch (e) {
+      // 1件の失敗でソース全体を止めない（以前は1件の失敗で毎回ソース全体が失敗し、後続の物件も取り込めなかった）
+      failed++;
+      const cause =
+        e instanceof Error ? ((e.cause as Error | undefined)?.message ?? e.message) : String(e);
+      if (failed <= 5) {
+        stats.warnings.push(`${raw.sourceListingId}: 取り込みに失敗: ${cause.slice(0, 200)}`);
       }
-      stats.newCount++;
-      continue;
     }
-
-    const before = existing.data as NormalizedListing;
-    const relisted = existing.status === "closed";
-    const changed = existing.contentHash !== hash;
-    if (!changed && !relisted) {
-      await db
-        .update(listings)
-        .set({ lastSeenAt: now, missCount: 0, listHash })
-        .where(eq(listings.id, existing.id));
-      continue;
-    }
-    const propertyId = existing.propertyId ?? (await resolveProperty(db, l));
-    if (existing.propertyId) {
-      await db
-        .update(properties)
-        .set(propertyColumns(l))
-        .where(eq(properties.id, existing.propertyId));
-    }
-    await db
-      .update(listings)
-      .set({
-        url: l.url,
-        data: l,
-        contentHash: hash,
-        listHash,
-        price: l.price,
-        adAllowed: l.adAllowed,
-        status: "active",
-        missCount: 0,
-        lastSeenAt: now,
-        propertyId,
-        updatedAt: now,
-      })
-      .where(eq(listings.id, existing.id));
-    const change = classifyChange(before, l);
-    await db.insert(changeEvents).values({
-      listingId: existing.id,
-      propertyId,
-      type: relisted ? "relisted" : change.type,
-      before: priceSnapshot(before),
-      after: { ...priceSnapshot(l), improved: change.improved },
-    });
-    stats.updatedCount++;
   }
+  stats.failedCount = failed;
 
   // 詳細取得を省略した（listHash が同じ）掲載も「一覧で見えた」ので生存扱い
   if (result.seenIds.length > 0) {
@@ -216,6 +247,13 @@ export async function ingestCrawl(
 
   // 差分検索（レインズ）の一覧は全件ではないので、一覧に出ないことを掲載終了とみなさない
   if (result.partialList) return stats;
+  // 取り込みの失敗が多い回は、DB や正規化の異常の可能性がある。掲載終了の判定はしない
+  if (failed > 0 && failed * 2 >= result.listings.length) {
+    stats.warnings.push(
+      `取り込みの失敗が ${failed}/${result.listings.length} 件と多いため掲載終了判定をスキップ`,
+    );
+    return stats;
+  }
   if (!result.listCompleted || result.countMismatch) {
     stats.warnings.push(
       "一覧の巡回が不完全、または総件数と取得件数が不一致のため掲載終了判定をスキップ",
