@@ -2,10 +2,14 @@ import type { SiteAdapter } from "./adapter.js";
 import atbb, { VERIFIED as ATBB_VERIFIED } from "./adapters/atbb/index.js";
 import itandiBb, { VERIFIED as ITANDI_VERIFIED } from "./adapters/itandi-bb/index.js";
 import kencorp from "./adapters/kencorp/index.js";
+import livable from "./adapters/livable/index.js";
+import mecH from "./adapters/mec-h/index.js";
+import mitsuiChintai from "./adapters/mitsui-chintai/index.js";
 import moriLiving from "./adapters/mori-living/index.js";
 import reins, { VERIFIED as REINS_VERIFIED } from "./adapters/reins/index.js";
 import rf12 from "./adapters/rf12/index.js";
 import sampleRealtor from "./adapters/sample-realtor/index.js";
+import stepon from "./adapters/stepon/index.js";
 import sumitomoLatour from "./adapters/sumitomo-latour/index.js";
 import sumitomoResidence from "./adapters/sumitomo-residence/index.js";
 
@@ -31,6 +35,11 @@ const registrations: Registration[] = [
   { adapter: moriLiving, production: true, verified: true },
   { adapter: rf12, production: true, verified: true },
   { adapter: kencorp, production: true, verified: true },
+  // 大手仲介・管理会社の賃貸（2026-10-15 追加）
+  { adapter: stepon, production: true, verified: true },
+  { adapter: livable, production: true, verified: true },
+  { adapter: mitsuiChintai, production: true, verified: true },
+  { adapter: mecH, production: true, verified: true },
   // 業者間の会員サイト（docs/member-sites.md）。レインズ・ITANDI BB は 2026-10-14 にログイン後の実画面で確認済み。
   // ATBB は同じIDを人が使用中（同時ログイン不可）で検索画面に入れず未確認。
   // 会員サイトは既定で巡回する。止めるときは ENABLE_MEMBER_SOURCES=0（下の enabledAdapters）

@@ -1,0 +1,2292 @@
+{
+ "searchedResultCounts": " 12",
+ "propertyList": [
+  {
+   "propertyCd": "L132603329",
+   "propertyName": "マンション勝どき",
+   "priceModel": {
+    "mstCd": 4,
+    "consumptionTaxFlg": false,
+    "rent": 215000,
+    "manageCost": 15000
+   },
+   "address": "東京都中央区勝どき２丁目",
+   "access": [
+    "都営大江戸線「勝どき」駅 徒歩1分",
+    "東京メトロ有楽町線「月島」駅 徒歩9分",
+    "都営大江戸線「月島」駅 徒歩9分",
+    "東京メトロ日比谷線「築地」駅 徒歩15分",
+    "都営大江戸線「築地市場」駅 徒歩21分"
+   ],
+   "propertyDetail": [
+    "敷金1ヶ月 礼金1ヶ月",
+    "敷金償却- 敷引-",
+    "2LDK",
+    "57.96m<sup>2</sup>",
+    "1981年5月築",
+    "11階建ての8階部分",
+    "南東向き"
+   ],
+   "detailUrl": "/chintai/L132603329/",
+   "inquiryInfo": {
+    "inquiryUrl": "/chintai/inquiry/L132603329/",
+    "inquiryTypeFlg": true,
+    "inquiryLinkText": "詳細"
+   },
+   "labelList": [
+    {
+     "cd": "028",
+     "iconName": "物件種別",
+     "detailClass": "a-tag--type",
+     "detailText": "マンション",
+     "listClass": "a-tag--type",
+     "listText": "マンション"
+    }
+   ],
+   "otherConditionLabels": [],
+   "thumbnailImage": [
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fphoto1%2FL132603329.jpg%3F20260926230044&w=718&h=538",
+     "alt": "マンション勝どき(外観)",
+     "href": "/chintai/L132603329/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Flayout1%2FL132603329.jpg%3F20260320230054&w=718&h=538",
+     "alt": "マンション勝どき(間取り)",
+     "href": "/chintai/L132603329/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Findoor1%2FL132603329.jpg%3F20260926230044&w=718&h=538",
+     "alt": "マンション勝どき",
+     "href": "/chintai/L132603329/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Findoor2%2FL132603329.jpg%3F20260426230054&w=718&h=538",
+     "alt": "マンション勝どき",
+     "href": "/chintai/L132603329/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc3%2FL132603329.jpg%3F20260426230054&w=718&h=538",
+     "alt": "マンション勝どき",
+     "href": "/chintai/L132603329/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc4%2FL132603329.jpg%3F20260711230051&w=718&h=538",
+     "alt": "マンション勝どき",
+     "href": "/chintai/L132603329/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc5%2FL132603329.jpg%3F20260426230054&w=718&h=538",
+     "alt": "マンション勝どき",
+     "href": "/chintai/L132603329/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc6%2FL132603329.jpg%3F20260926230044&w=718&h=538",
+     "alt": "マンション勝どき",
+     "href": "/chintai/L132603329/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc7%2FL132603329.jpg%3F20260426230054&w=718&h=538",
+     "alt": "マンション勝どき",
+     "href": "/chintai/L132603329/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc8%2FL132603329.jpg%3F20260327230055&w=718&h=538",
+     "alt": "マンション勝どき",
+     "href": "/chintai/L132603329/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc9%2FL132603329.jpg%3F20260426230054&w=718&h=538",
+     "alt": "マンション勝どき",
+     "href": "/chintai/L132603329/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc10%2FL132603329.jpg%3F20260426230054&w=718&h=538",
+     "alt": "マンション勝どき",
+     "href": "/chintai/L132603329/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc11%2FL132603329.jpg%3F20260426230054&w=718&h=538",
+     "alt": "マンション勝どき",
+     "href": "/chintai/L132603329/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc12%2FL132603329.jpg%3F20260426230054&w=718&h=538",
+     "alt": "マンション勝どき",
+     "href": "/chintai/L132603329/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc13%2FL132603329.jpg%3F20260426230054&w=718&h=538",
+     "alt": "マンション勝どき",
+     "href": "/chintai/L132603329/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc14%2FL132603329.jpg%3F20260426230054&w=718&h=538",
+     "alt": "マンション勝どき",
+     "href": "/chintai/L132603329/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc15%2FL132603329.jpg%3F20260426230054&w=718&h=538",
+     "alt": "マンション勝どき",
+     "href": "/chintai/L132603329/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc16%2FL132603329.jpg%3F20260426230054&w=718&h=538",
+     "alt": "マンション勝どき",
+     "href": "/chintai/L132603329/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc17%2FL132603329.jpg%3F20260327230055&w=718&h=538",
+     "alt": "マンション勝どき",
+     "href": "/chintai/L132603329/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc18%2FL132603329.jpg%3F20260426230054&w=718&h=538",
+     "alt": "マンション勝どき",
+     "href": "/chintai/L132603329/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc19%2FL132603329.jpg%3F20260426230054&w=718&h=538",
+     "alt": "マンション勝どき",
+     "href": "/chintai/L132603329/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc20%2FL132603329.jpg%3F20260327230055&w=718&h=538",
+     "alt": "マンション勝どき",
+     "href": "/chintai/L132603329/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc21%2FL132603329.jpg%3F20260327230055&w=718&h=538",
+     "alt": "マンション勝どき",
+     "href": "/chintai/L132603329/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc22%2FL132603329.jpg%3F20260926230044&w=718&h=538",
+     "alt": "マンション勝どき",
+     "href": "/chintai/L132603329/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc23%2FL132603329.jpg%3F20260926230044&w=718&h=538",
+     "alt": "マンション勝どき",
+     "href": "/chintai/L132603329/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc24%2FL132603329.jpg%3F20260926230044&w=718&h=538",
+     "alt": "マンション勝どき",
+     "href": "/chintai/L132603329/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc25%2FL132603329.jpg%3F20260926230044&w=718&h=538",
+     "alt": "マンション勝どき",
+     "href": "/chintai/L132603329/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fenv1%2FL132603329.jpg%3F20260926230044&w=718&h=538",
+     "alt": "マンション勝どき",
+     "href": "/chintai/L132603329/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fenv2%2FL132603329.jpg%3F20260926230044&w=718&h=538",
+     "alt": "マンション勝どき",
+     "href": "/chintai/L132603329/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fenv4%2FL132603329.jpg%3F20260926230044&w=718&h=538",
+     "alt": "マンション勝どき",
+     "href": "/chintai/L132603329/"
+    }
+   ],
+   "layoutImageModal": {
+    "propertyTitle": "マンション勝どき",
+    "layoutImage": {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Flayout1%2FL132603329.jpg%3F20260320230054&w=718&h=538",
+     "alt": "マンション勝どき(間取り)"
+    },
+    "propertyDetailUrl": "/chintai/L132603329/",
+    "inquiryUrl": "/chintai/inquiry/L132603329/"
+   },
+   "prIconFlg": false,
+   "favoriteFlg": false,
+   "favoriteType": "rent",
+   "applyingServiceList": [],
+   "commuteInfoList": [],
+   "openHouses": [],
+   "matchingTargetFlg": false,
+   "isForeignPage": false,
+   "hasOfficialSite": false
+  },
+  {
+   "propertyCd": "L132606197",
+   "propertyName": "ヴェラハイツ勝どき",
+   "priceModel": {
+    "mstCd": 4,
+    "consumptionTaxFlg": false,
+    "rent": 235000,
+    "manageCost": 15000
+   },
+   "address": "東京都中央区勝どき３丁目",
+   "access": [
+    "都営大江戸線「勝どき」駅 徒歩3分",
+    "東京メトロ有楽町線「月島」駅 徒歩10分"
+   ],
+   "propertyDetail": [
+    "敷金1ヶ月 礼金1ヶ月",
+    "敷金償却- 敷引-",
+    "2LDK",
+    "52.64m<sup>2</sup>",
+    "1984年9月築",
+    "10階建ての6階部分",
+    "南向き"
+   ],
+   "detailUrl": "/chintai/L132606197/",
+   "inquiryInfo": {
+    "inquiryUrl": "/chintai/inquiry/L132606197/",
+    "inquiryTypeFlg": true,
+    "inquiryLinkText": "詳細"
+   },
+   "labelList": [
+    {
+     "cd": "028",
+     "iconName": "物件種別",
+     "detailClass": "a-tag--type",
+     "detailText": "マンション",
+     "listClass": "a-tag--type",
+     "listText": "マンション"
+    }
+   ],
+   "otherConditionLabels": [
+    {
+     "cd": "029",
+     "iconName": "パノラマ",
+     "detailClass": "a-tag--condition",
+     "detailText": "パノラマ",
+     "listClass": "a-tag--condition",
+     "listText": "パノラマ"
+    }
+   ],
+   "thumbnailImage": [
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fphoto1%2FL132606197.jpg%3F20261009230044&w=718&h=538",
+     "alt": "ヴェラハイツ勝どき(外観)",
+     "href": "/chintai/L132606197/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Flayout1%2FL132606197.jpg%3F20260627230052&w=718&h=538",
+     "alt": "ヴェラハイツ勝どき(間取り)",
+     "href": "/chintai/L132606197/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Findoor1%2FL132606197.jpg%3F20260626230054&w=718&h=538",
+     "alt": "ヴェラハイツ勝どき",
+     "href": "/chintai/L132606197/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Findoor2%2FL132606197.jpg%3F20260626230054&w=718&h=538",
+     "alt": "ヴェラハイツ勝どき",
+     "href": "/chintai/L132606197/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc3%2FL132606197.jpg%3F20260626230054&w=718&h=538",
+     "alt": "ヴェラハイツ勝どき",
+     "href": "/chintai/L132606197/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc4%2FL132606197.jpg%3F20260626230054&w=718&h=538",
+     "alt": "ヴェラハイツ勝どき",
+     "href": "/chintai/L132606197/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc5%2FL132606197.jpg%3F20260626230054&w=718&h=538",
+     "alt": "ヴェラハイツ勝どき",
+     "href": "/chintai/L132606197/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc6%2FL132606197.jpg%3F20260626230054&w=718&h=538",
+     "alt": "ヴェラハイツ勝どき",
+     "href": "/chintai/L132606197/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc7%2FL132606197.jpg%3F20260626230054&w=718&h=538",
+     "alt": "ヴェラハイツ勝どき",
+     "href": "/chintai/L132606197/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc8%2FL132606197.jpg%3F20260626230054&w=718&h=538",
+     "alt": "ヴェラハイツ勝どき",
+     "href": "/chintai/L132606197/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc9%2FL132606197.jpg%3F20260626230054&w=718&h=538",
+     "alt": "ヴェラハイツ勝どき",
+     "href": "/chintai/L132606197/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc10%2FL132606197.jpg%3F20260626230054&w=718&h=538",
+     "alt": "ヴェラハイツ勝どき",
+     "href": "/chintai/L132606197/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc11%2FL132606197.jpg%3F20260627173506&w=718&h=538",
+     "alt": "ヴェラハイツ勝どき",
+     "href": "/chintai/L132606197/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc12%2FL132606197.jpg%3F20260626230054&w=718&h=538",
+     "alt": "ヴェラハイツ勝どき",
+     "href": "/chintai/L132606197/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc13%2FL132606197.jpg%3F20260626230054&w=718&h=538",
+     "alt": "ヴェラハイツ勝どき",
+     "href": "/chintai/L132606197/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fenv1%2FL132606197.jpg%3F20261009230044&w=718&h=538",
+     "alt": "ヴェラハイツ勝どき",
+     "href": "/chintai/L132606197/"
+    }
+   ],
+   "layoutImageModal": {
+    "propertyTitle": "ヴェラハイツ勝どき",
+    "layoutImage": {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Flayout1%2FL132606197.jpg%3F20260627230052&w=718&h=538",
+     "alt": "ヴェラハイツ勝どき(間取り)"
+    },
+    "propertyDetailUrl": "/chintai/L132606197/",
+    "inquiryUrl": "/chintai/inquiry/L132606197/"
+   },
+   "prIconFlg": false,
+   "favoriteFlg": false,
+   "favoriteType": "rent",
+   "applyingServiceList": [],
+   "commuteInfoList": [],
+   "openHouses": [],
+   "matchingTargetFlg": false,
+   "isForeignPage": false,
+   "hasOfficialSite": false
+  },
+  {
+   "propertyCd": "L826094394",
+   "propertyName": "ＳＴＡＮＤＺ勝どき",
+   "priceModel": {
+    "mstCd": 4,
+    "consumptionTaxFlg": false,
+    "rent": 294000,
+    "manageCost": 10000
+   },
+   "address": "東京都中央区勝どき３丁目",
+   "access": [
+    "都営大江戸線「勝どき」駅 徒歩4分"
+   ],
+   "propertyDetail": [
+    "敷金1ヶ月 礼金-",
+    "敷金償却- 敷引-",
+    "2LDK",
+    "55.86m<sup>2</sup>",
+    "2025年3月築",
+    "8階建ての5階部分",
+    "北西向き"
+   ],
+   "detailUrl": "/chintai/L826094394/",
+   "inquiryInfo": {
+    "inquiryUrl": "/chintai/inquiry/L826094394/",
+    "inquiryTypeFlg": true,
+    "inquiryLinkText": "詳細"
+   },
+   "labelList": [
+    {
+     "cd": "028",
+     "iconName": "物件種別",
+     "detailClass": "a-tag--type",
+     "detailText": "マンション",
+     "listClass": "a-tag--type",
+     "listText": "マンション"
+    }
+   ],
+   "otherConditionLabels": [
+    {
+     "cd": "008",
+     "iconName": "礼金なし",
+     "detailClass": "a-tag--condition",
+     "detailText": "礼金なし",
+     "listClass": "a-tag--condition",
+     "listText": "礼金なし"
+    }
+   ],
+   "thumbnailImage": [
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fphoto1%2FL826094394.jpg%3F20261010230045&w=718&h=538",
+     "alt": "ＳＴＡＮＤＺ勝どき(外観)",
+     "href": "/chintai/L826094394/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Flayout1%2FL826094394.jpg%3F20260930230043&w=718&h=538",
+     "alt": "ＳＴＡＮＤＺ勝どき(間取り)",
+     "href": "/chintai/L826094394/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Findoor1%2FL826094394.jpg%3F20260930230043&w=718&h=538",
+     "alt": "ＳＴＡＮＤＺ勝どき",
+     "href": "/chintai/L826094394/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Findoor2%2FL826094394.jpg%3F20260930230043&w=718&h=538",
+     "alt": "ＳＴＡＮＤＺ勝どき",
+     "href": "/chintai/L826094394/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc3%2FL826094394.jpg%3F20260930230043&w=718&h=538",
+     "alt": "ＳＴＡＮＤＺ勝どき",
+     "href": "/chintai/L826094394/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc4%2FL826094394.jpg%3F20260930230043&w=718&h=538",
+     "alt": "ＳＴＡＮＤＺ勝どき",
+     "href": "/chintai/L826094394/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc5%2FL826094394.jpg%3F20260930230043&w=718&h=538",
+     "alt": "ＳＴＡＮＤＺ勝どき",
+     "href": "/chintai/L826094394/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc6%2FL826094394.jpg%3F20260930230043&w=718&h=538",
+     "alt": "ＳＴＡＮＤＺ勝どき",
+     "href": "/chintai/L826094394/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc7%2FL826094394.jpg%3F20260930230043&w=718&h=538",
+     "alt": "ＳＴＡＮＤＺ勝どき",
+     "href": "/chintai/L826094394/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc8%2FL826094394.jpg%3F20260930230043&w=718&h=538",
+     "alt": "ＳＴＡＮＤＺ勝どき",
+     "href": "/chintai/L826094394/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc9%2FL826094394.jpg%3F20260930230043&w=718&h=538",
+     "alt": "ＳＴＡＮＤＺ勝どき",
+     "href": "/chintai/L826094394/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc10%2FL826094394.jpg%3F20260930230043&w=718&h=538",
+     "alt": "ＳＴＡＮＤＺ勝どき",
+     "href": "/chintai/L826094394/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc11%2FL826094394.jpg%3F20260930230043&w=718&h=538",
+     "alt": "ＳＴＡＮＤＺ勝どき",
+     "href": "/chintai/L826094394/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc12%2FL826094394.jpg%3F20260930230043&w=718&h=538",
+     "alt": "ＳＴＡＮＤＺ勝どき",
+     "href": "/chintai/L826094394/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc13%2FL826094394.jpg%3F20260930230043&w=718&h=538",
+     "alt": "ＳＴＡＮＤＺ勝どき",
+     "href": "/chintai/L826094394/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc22%2FL826094394.jpg%3F20261010230045&w=718&h=538",
+     "alt": "ＳＴＡＮＤＺ勝どき",
+     "href": "/chintai/L826094394/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc23%2FL826094394.jpg%3F20261010230045&w=718&h=538",
+     "alt": "ＳＴＡＮＤＺ勝どき",
+     "href": "/chintai/L826094394/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc24%2FL826094394.jpg%3F20261010230045&w=718&h=538",
+     "alt": "ＳＴＡＮＤＺ勝どき",
+     "href": "/chintai/L826094394/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc25%2FL826094394.jpg%3F20261010230045&w=718&h=538",
+     "alt": "ＳＴＡＮＤＺ勝どき",
+     "href": "/chintai/L826094394/"
+    }
+   ],
+   "layoutImageModal": {
+    "propertyTitle": "ＳＴＡＮＤＺ勝どき",
+    "layoutImage": {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Flayout1%2FL826094394.jpg%3F20260930230043&w=718&h=538",
+     "alt": "ＳＴＡＮＤＺ勝どき(間取り)"
+    },
+    "propertyDetailUrl": "/chintai/L826094394/",
+    "inquiryUrl": "/chintai/inquiry/L826094394/"
+   },
+   "prIconFlg": false,
+   "favoriteFlg": false,
+   "favoriteType": "rent",
+   "applyingServiceList": [],
+   "commuteInfoList": [],
+   "openHouses": [],
+   "matchingTargetFlg": false,
+   "isForeignPage": false,
+   "hasOfficialSite": false
+  },
+  {
+   "propertyCd": "L132609082",
+   "propertyName": "パークタワー勝どきサウス",
+   "priceModel": {
+    "mstCd": 4,
+    "consumptionTaxFlg": false,
+    "rent": 600000,
+    "manageCost": 40000
+   },
+   "address": "東京都中央区勝どき４丁目",
+   "access": [
+    "都営大江戸線「勝どき」駅 徒歩2分",
+    "東京メトロ有楽町線「月島」駅 徒歩13分",
+    "都営大江戸線「月島」駅 徒歩13分"
+   ],
+   "propertyDetail": [
+    "敷金1.5ヶ月 礼金1ヶ月",
+    "敷金償却- 敷引-",
+    "2LDK",
+    "85.85m<sup>2</sup>",
+    "2023年8月築",
+    "58階建ての46階部分",
+    "北西向き"
+   ],
+   "detailUrl": "/chintai/L132609082/",
+   "inquiryInfo": {
+    "inquiryUrl": "/chintai/inquiry/L132609082/",
+    "inquiryTypeFlg": true,
+    "inquiryLinkText": "詳細"
+   },
+   "labelList": [
+    {
+     "cd": "028",
+     "iconName": "物件種別",
+     "detailClass": "a-tag--type",
+     "detailText": "マンション",
+     "listClass": "a-tag--type",
+     "listText": "マンション"
+    }
+   ],
+   "otherConditionLabels": [],
+   "thumbnailImage": [
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fphoto1%2FL132609082.jpg%3F20260907230042&w=718&h=538",
+     "alt": "パークタワー勝どきサウス(外観)",
+     "href": "/chintai/L132609082/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Flayout1%2FL132609082.jpg%3F20260906230043&w=718&h=538",
+     "alt": "パークタワー勝どきサウス(間取り)",
+     "href": "/chintai/L132609082/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Findoor1%2FL132609082.jpg%3F20260906230043&w=718&h=538",
+     "alt": "パークタワー勝どきサウス",
+     "href": "/chintai/L132609082/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Findoor2%2FL132609082.jpg%3F20260906230043&w=718&h=538",
+     "alt": "パークタワー勝どきサウス",
+     "href": "/chintai/L132609082/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc3%2FL132609082.jpg%3F20260906230043&w=718&h=538",
+     "alt": "パークタワー勝どきサウス",
+     "href": "/chintai/L132609082/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc4%2FL132609082.jpg%3F20260906230043&w=718&h=538",
+     "alt": "パークタワー勝どきサウス",
+     "href": "/chintai/L132609082/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc5%2FL132609082.jpg%3F20260906230043&w=718&h=538",
+     "alt": "パークタワー勝どきサウス",
+     "href": "/chintai/L132609082/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc6%2FL132609082.jpg%3F20260906230043&w=718&h=538",
+     "alt": "パークタワー勝どきサウス",
+     "href": "/chintai/L132609082/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc7%2FL132609082.jpg%3F20260906230043&w=718&h=538",
+     "alt": "パークタワー勝どきサウス",
+     "href": "/chintai/L132609082/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc8%2FL132609082.jpg%3F20260906230043&w=718&h=538",
+     "alt": "パークタワー勝どきサウス",
+     "href": "/chintai/L132609082/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc9%2FL132609082.jpg%3F20260906230043&w=718&h=538",
+     "alt": "パークタワー勝どきサウス",
+     "href": "/chintai/L132609082/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc10%2FL132609082.jpg%3F20260906230043&w=718&h=538",
+     "alt": "パークタワー勝どきサウス",
+     "href": "/chintai/L132609082/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc11%2FL132609082.jpg%3F20260906230043&w=718&h=538",
+     "alt": "パークタワー勝どきサウス",
+     "href": "/chintai/L132609082/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc12%2FL132609082.jpg%3F20260906230043&w=718&h=538",
+     "alt": "パークタワー勝どきサウス",
+     "href": "/chintai/L132609082/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc13%2FL132609082.jpg%3F20260906230043&w=718&h=538",
+     "alt": "パークタワー勝どきサウス",
+     "href": "/chintai/L132609082/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc14%2FL132609082.jpg%3F20260906230043&w=718&h=538",
+     "alt": "パークタワー勝どきサウス",
+     "href": "/chintai/L132609082/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc15%2FL132609082.jpg%3F20260906230043&w=718&h=538",
+     "alt": "パークタワー勝どきサウス",
+     "href": "/chintai/L132609082/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc16%2FL132609082.jpg%3F20260906230043&w=718&h=538",
+     "alt": "パークタワー勝どきサウス",
+     "href": "/chintai/L132609082/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc17%2FL132609082.jpg%3F20260906230043&w=718&h=538",
+     "alt": "パークタワー勝どきサウス",
+     "href": "/chintai/L132609082/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc18%2FL132609082.jpg%3F20260906230043&w=718&h=538",
+     "alt": "パークタワー勝どきサウス",
+     "href": "/chintai/L132609082/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc19%2FL132609082.jpg%3F20260906230043&w=718&h=538",
+     "alt": "パークタワー勝どきサウス",
+     "href": "/chintai/L132609082/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc20%2FL132609082.jpg%3F20260906230043&w=718&h=538",
+     "alt": "パークタワー勝どきサウス",
+     "href": "/chintai/L132609082/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc22%2FL132609082.jpg%3F20260907230042&w=718&h=538",
+     "alt": "パークタワー勝どきサウス",
+     "href": "/chintai/L132609082/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc23%2FL132609082.jpg%3F20260907230042&w=718&h=538",
+     "alt": "パークタワー勝どきサウス",
+     "href": "/chintai/L132609082/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fenv1%2FL132609082.jpg%3F20260907230042&w=718&h=538",
+     "alt": "パークタワー勝どきサウス",
+     "href": "/chintai/L132609082/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fenv3%2FL132609082.jpg%3F20260907230042&w=718&h=538",
+     "alt": "パークタワー勝どきサウス",
+     "href": "/chintai/L132609082/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fenv8%2FL132609082.jpg%3F20260907230042&w=718&h=538",
+     "alt": "パークタワー勝どきサウス",
+     "href": "/chintai/L132609082/"
+    }
+   ],
+   "layoutImageModal": {
+    "propertyTitle": "パークタワー勝どきサウス",
+    "layoutImage": {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Flayout1%2FL132609082.jpg%3F20260906230043&w=718&h=538",
+     "alt": "パークタワー勝どきサウス(間取り)"
+    },
+    "propertyDetailUrl": "/chintai/L132609082/",
+    "inquiryUrl": "/chintai/inquiry/L132609082/"
+   },
+   "prIconFlg": false,
+   "favoriteFlg": false,
+   "favoriteType": "rent",
+   "applyingServiceList": [],
+   "commuteInfoList": [],
+   "openHouses": [],
+   "matchingTargetFlg": false,
+   "isForeignPage": false,
+   "hasOfficialSite": false
+  },
+  {
+   "propertyCd": "L132608056",
+   "propertyName": "パークタワー勝どきサウス",
+   "priceModel": {
+    "mstCd": 4,
+    "consumptionTaxFlg": false,
+    "rent": 720000,
+    "manageCost": 30000
+   },
+   "address": "東京都中央区勝どき４丁目",
+   "access": [
+    "都営大江戸線「勝どき」駅 徒歩2分"
+   ],
+   "propertyDetail": [
+    "敷金1ヶ月 礼金1ヶ月",
+    "敷金償却- 敷引-",
+    "2LDK",
+    "88.17m<sup>2</sup>",
+    "2023年8月築",
+    "58階建ての44階部分",
+    "南向き"
+   ],
+   "detailUrl": "/chintai/L132608056/",
+   "inquiryInfo": {
+    "inquiryUrl": "/chintai/inquiry/L132608056/",
+    "inquiryTypeFlg": true,
+    "inquiryLinkText": "詳細"
+   },
+   "labelList": [
+    {
+     "cd": "028",
+     "iconName": "物件種別",
+     "detailClass": "a-tag--type",
+     "detailText": "マンション",
+     "listClass": "a-tag--type",
+     "listText": "マンション"
+    }
+   ],
+   "otherConditionLabels": [],
+   "thumbnailImage": [
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fphoto1%2FL132608056.jpg%3F20260926230044&w=718&h=538",
+     "alt": "パークタワー勝どきサウス(外観)",
+     "href": "/chintai/L132608056/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Flayout1%2FL132608056.jpg%3F20260808230042&w=718&h=538",
+     "alt": "パークタワー勝どきサウス(間取り)",
+     "href": "/chintai/L132608056/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Findoor1%2FL132608056.jpg%3F20260807230044&w=718&h=538",
+     "alt": "パークタワー勝どきサウス",
+     "href": "/chintai/L132608056/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Findoor2%2FL132608056.jpg%3F20260807230044&w=718&h=538",
+     "alt": "パークタワー勝どきサウス",
+     "href": "/chintai/L132608056/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc3%2FL132608056.jpg%3F20260809230041&w=718&h=538",
+     "alt": "パークタワー勝どきサウス",
+     "href": "/chintai/L132608056/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc4%2FL132608056.jpg%3F20260809230041&w=718&h=538",
+     "alt": "パークタワー勝どきサウス",
+     "href": "/chintai/L132608056/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc5%2FL132608056.jpg%3F20260926230044&w=718&h=538",
+     "alt": "パークタワー勝どきサウス",
+     "href": "/chintai/L132608056/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc6%2FL132608056.jpg%3F20260809230041&w=718&h=538",
+     "alt": "パークタワー勝どきサウス",
+     "href": "/chintai/L132608056/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc7%2FL132608056.jpg%3F20260809230041&w=718&h=538",
+     "alt": "パークタワー勝どきサウス",
+     "href": "/chintai/L132608056/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc8%2FL132608056.jpg%3F20260924230043&w=718&h=538",
+     "alt": "パークタワー勝どきサウス",
+     "href": "/chintai/L132608056/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc9%2FL132608056.jpg%3F20260926230044&w=718&h=538",
+     "alt": "パークタワー勝どきサウス",
+     "href": "/chintai/L132608056/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc10%2FL132608056.jpg%3F20260809230041&w=718&h=538",
+     "alt": "パークタワー勝どきサウス",
+     "href": "/chintai/L132608056/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc11%2FL132608056.jpg%3F20260809230041&w=718&h=538",
+     "alt": "パークタワー勝どきサウス",
+     "href": "/chintai/L132608056/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc12%2FL132608056.jpg%3F20260809230041&w=718&h=538",
+     "alt": "パークタワー勝どきサウス",
+     "href": "/chintai/L132608056/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc13%2FL132608056.jpg%3F20260809230041&w=718&h=538",
+     "alt": "パークタワー勝どきサウス",
+     "href": "/chintai/L132608056/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc14%2FL132608056.jpg%3F20260809230041&w=718&h=538",
+     "alt": "パークタワー勝どきサウス",
+     "href": "/chintai/L132608056/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc15%2FL132608056.jpg%3F20260809230041&w=718&h=538",
+     "alt": "パークタワー勝どきサウス",
+     "href": "/chintai/L132608056/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc16%2FL132608056.jpg%3F20260809230041&w=718&h=538",
+     "alt": "パークタワー勝どきサウス",
+     "href": "/chintai/L132608056/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc17%2FL132608056.jpg%3F20260809230041&w=718&h=538",
+     "alt": "パークタワー勝どきサウス",
+     "href": "/chintai/L132608056/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc18%2FL132608056.jpg%3F20260924230043&w=718&h=538",
+     "alt": "パークタワー勝どきサウス",
+     "href": "/chintai/L132608056/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc19%2FL132608056.jpg%3F20260809230041&w=718&h=538",
+     "alt": "パークタワー勝どきサウス",
+     "href": "/chintai/L132608056/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc20%2FL132608056.jpg%3F20260926230044&w=718&h=538",
+     "alt": "パークタワー勝どきサウス",
+     "href": "/chintai/L132608056/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc21%2FL132608056.jpg%3F20260926230044&w=718&h=538",
+     "alt": "パークタワー勝どきサウス",
+     "href": "/chintai/L132608056/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc22%2FL132608056.jpg%3F20260926230044&w=718&h=538",
+     "alt": "パークタワー勝どきサウス",
+     "href": "/chintai/L132608056/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc23%2FL132608056.jpg%3F20260926230044&w=718&h=538",
+     "alt": "パークタワー勝どきサウス",
+     "href": "/chintai/L132608056/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fenv1%2FL132608056.jpg%3F20260926230044&w=718&h=538",
+     "alt": "パークタワー勝どきサウス",
+     "href": "/chintai/L132608056/"
+    }
+   ],
+   "layoutImageModal": {
+    "propertyTitle": "パークタワー勝どきサウス",
+    "layoutImage": {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Flayout1%2FL132608056.jpg%3F20260808230042&w=718&h=538",
+     "alt": "パークタワー勝どきサウス(間取り)"
+    },
+    "propertyDetailUrl": "/chintai/L132608056/",
+    "inquiryUrl": "/chintai/inquiry/L132608056/"
+   },
+   "prIconFlg": false,
+   "favoriteFlg": false,
+   "favoriteType": "rent",
+   "applyingServiceList": [],
+   "commuteInfoList": [],
+   "openHouses": [],
+   "matchingTargetFlg": false,
+   "isForeignPage": false,
+   "hasOfficialSite": false
+  },
+  {
+   "propertyCd": "L132512696",
+   "propertyName": "パークタワー勝どきサウス",
+   "priceModel": {
+    "mstCd": 4,
+    "consumptionTaxFlg": false,
+    "rent": 1000000
+   },
+   "address": "東京都中央区勝どき４丁目",
+   "access": [
+    "都営大江戸線「勝どき」駅 徒歩2分",
+    "東京メトロ有楽町線「月島」駅 徒歩13分",
+    "都営大江戸線「月島」駅 徒歩13分"
+   ],
+   "propertyDetail": [
+    "敷金1ヶ月 礼金1ヶ月",
+    "敷金償却- 敷引-",
+    "3LDK",
+    "94.95m<sup>2</sup>",
+    "2023年8月築",
+    "58階建ての46階部分",
+    "南東向き"
+   ],
+   "detailUrl": "/chintai/L132512696/",
+   "inquiryInfo": {
+    "inquiryUrl": "/chintai/inquiry/L132512696/",
+    "inquiryTypeFlg": true,
+    "inquiryLinkText": "詳細"
+   },
+   "labelList": [
+    {
+     "cd": "028",
+     "iconName": "物件種別",
+     "detailClass": "a-tag--type",
+     "detailText": "マンション",
+     "listClass": "a-tag--type",
+     "listText": "マンション"
+    }
+   ],
+   "otherConditionLabels": [],
+   "thumbnailImage": [
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fphoto1%2FL132512696.jpg%3F20261009230044&w=718&h=538",
+     "alt": "パークタワー勝どきサウス(外観)",
+     "href": "/chintai/L132512696/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Flayout1%2FL132512696.jpg%3F20251228230051&w=718&h=538",
+     "alt": "パークタワー勝どきサウス(間取り)",
+     "href": "/chintai/L132512696/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Findoor1%2FL132512696.jpg%3F20251228230051&w=718&h=538",
+     "alt": "パークタワー勝どきサウス",
+     "href": "/chintai/L132512696/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Findoor2%2FL132512696.jpg%3F20251228230051&w=718&h=538",
+     "alt": "パークタワー勝どきサウス",
+     "href": "/chintai/L132512696/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc3%2FL132512696.jpg%3F20251228230051&w=718&h=538",
+     "alt": "パークタワー勝どきサウス",
+     "href": "/chintai/L132512696/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc4%2FL132512696.jpg%3F20251228230051&w=718&h=538",
+     "alt": "パークタワー勝どきサウス",
+     "href": "/chintai/L132512696/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc5%2FL132512696.jpg%3F20251228230051&w=718&h=538",
+     "alt": "パークタワー勝どきサウス",
+     "href": "/chintai/L132512696/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc6%2FL132512696.jpg%3F20260118230055&w=718&h=538",
+     "alt": "パークタワー勝どきサウス",
+     "href": "/chintai/L132512696/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc7%2FL132512696.jpg%3F20260118230055&w=718&h=538",
+     "alt": "パークタワー勝どきサウス",
+     "href": "/chintai/L132512696/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc8%2FL132512696.jpg%3F20260118230055&w=718&h=538",
+     "alt": "パークタワー勝どきサウス",
+     "href": "/chintai/L132512696/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc9%2FL132512696.jpg%3F20260118230055&w=718&h=538",
+     "alt": "パークタワー勝どきサウス",
+     "href": "/chintai/L132512696/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc10%2FL132512696.jpg%3F20260118230055&w=718&h=538",
+     "alt": "パークタワー勝どきサウス",
+     "href": "/chintai/L132512696/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc11%2FL132512696.jpg%3F20260118230055&w=718&h=538",
+     "alt": "パークタワー勝どきサウス",
+     "href": "/chintai/L132512696/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc12%2FL132512696.jpg%3F20260118230055&w=718&h=538",
+     "alt": "パークタワー勝どきサウス",
+     "href": "/chintai/L132512696/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc13%2FL132512696.jpg%3F20260118230055&w=718&h=538",
+     "alt": "パークタワー勝どきサウス",
+     "href": "/chintai/L132512696/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc14%2FL132512696.jpg%3F20260118230055&w=718&h=538",
+     "alt": "パークタワー勝どきサウス",
+     "href": "/chintai/L132512696/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc15%2FL132512696.jpg%3F20260118230055&w=718&h=538",
+     "alt": "パークタワー勝どきサウス",
+     "href": "/chintai/L132512696/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc16%2FL132512696.jpg%3F20260118230055&w=718&h=538",
+     "alt": "パークタワー勝どきサウス",
+     "href": "/chintai/L132512696/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc17%2FL132512696.jpg%3F20260118230055&w=718&h=538",
+     "alt": "パークタワー勝どきサウス",
+     "href": "/chintai/L132512696/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc18%2FL132512696.jpg%3F20260118230055&w=718&h=538",
+     "alt": "パークタワー勝どきサウス",
+     "href": "/chintai/L132512696/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc19%2FL132512696.jpg%3F20260118230055&w=718&h=538",
+     "alt": "パークタワー勝どきサウス",
+     "href": "/chintai/L132512696/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc20%2FL132512696.jpg%3F20260118230055&w=718&h=538",
+     "alt": "パークタワー勝どきサウス",
+     "href": "/chintai/L132512696/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc21%2FL132512696.jpg%3F20260118230055&w=718&h=538",
+     "alt": "パークタワー勝どきサウス",
+     "href": "/chintai/L132512696/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc22%2FL132512696.jpg%3F20261009230044&w=718&h=538",
+     "alt": "パークタワー勝どきサウス",
+     "href": "/chintai/L132512696/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc23%2FL132512696.jpg%3F20261009230044&w=718&h=538",
+     "alt": "パークタワー勝どきサウス",
+     "href": "/chintai/L132512696/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc24%2FL132512696.jpg%3F20261009230044&w=718&h=538",
+     "alt": "パークタワー勝どきサウス",
+     "href": "/chintai/L132512696/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc25%2FL132512696.jpg%3F20261009230044&w=718&h=538",
+     "alt": "パークタワー勝どきサウス",
+     "href": "/chintai/L132512696/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fenv1%2FL132512696.jpg%3F20261009230044&w=718&h=538",
+     "alt": "パークタワー勝どきサウス",
+     "href": "/chintai/L132512696/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fenv2%2FL132512696.jpg%3F20261009230044&w=718&h=538",
+     "alt": "パークタワー勝どきサウス",
+     "href": "/chintai/L132512696/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fenv3%2FL132512696.jpg%3F20261009230044&w=718&h=538",
+     "alt": "パークタワー勝どきサウス",
+     "href": "/chintai/L132512696/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fenv5%2FL132512696.jpg%3F20261009230044&w=718&h=538",
+     "alt": "パークタワー勝どきサウス",
+     "href": "/chintai/L132512696/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fenv6%2FL132512696.jpg%3F20261009230044&w=718&h=538",
+     "alt": "パークタワー勝どきサウス",
+     "href": "/chintai/L132512696/"
+    }
+   ],
+   "layoutImageModal": {
+    "propertyTitle": "パークタワー勝どきサウス",
+    "layoutImage": {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Flayout1%2FL132512696.jpg%3F20251228230051&w=718&h=538",
+     "alt": "パークタワー勝どきサウス(間取り)"
+    },
+    "propertyDetailUrl": "/chintai/L132512696/",
+    "inquiryUrl": "/chintai/inquiry/L132512696/"
+   },
+   "prIconFlg": false,
+   "favoriteFlg": false,
+   "favoriteType": "rent",
+   "applyingServiceList": [],
+   "commuteInfoList": [],
+   "openHouses": [],
+   "matchingTargetFlg": false,
+   "isForeignPage": false,
+   "hasOfficialSite": false
+  },
+  {
+   "propertyCd": "L132602361",
+   "propertyName": "パークタワー勝どきサウス",
+   "priceModel": {
+    "mstCd": 4,
+    "consumptionTaxFlg": false,
+    "rent": 950000,
+    "manageCost": 50000
+   },
+   "address": "東京都中央区勝どき４丁目",
+   "access": [
+    "都営大江戸線「勝どき」駅 徒歩2分",
+    "東京メトロ有楽町線「月島」駅 徒歩13分",
+    "都営大江戸線「月島」駅 徒歩13分"
+   ],
+   "propertyDetail": [
+    "敷金1ヶ月 礼金1.5ヶ月",
+    "敷金償却- 敷引-",
+    "3LDK",
+    "94.95m<sup>2</sup>",
+    "2023年8月築",
+    "58階建ての32階部分",
+    "南西向き"
+   ],
+   "detailUrl": "/chintai/L132602361/",
+   "inquiryInfo": {
+    "inquiryUrl": "/chintai/inquiry/L132602361/",
+    "inquiryTypeFlg": true,
+    "inquiryLinkText": "詳細"
+   },
+   "labelList": [
+    {
+     "cd": "028",
+     "iconName": "物件種別",
+     "detailClass": "a-tag--type",
+     "detailText": "マンション",
+     "listClass": "a-tag--type",
+     "listText": "マンション"
+    }
+   ],
+   "otherConditionLabels": [],
+   "thumbnailImage": [
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fphoto1%2FL132602361.jpg%3F20260223230052&w=718&h=538",
+     "alt": "パークタワー勝どきサウス(外観)",
+     "href": "/chintai/L132602361/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Flayout1%2FL132602361.jpg%3F20260222230052&w=718&h=538",
+     "alt": "パークタワー勝どきサウス(間取り)",
+     "href": "/chintai/L132602361/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Findoor1%2FL132602361.jpg%3F20260222230052&w=718&h=538",
+     "alt": "パークタワー勝どきサウス",
+     "href": "/chintai/L132602361/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Findoor2%2FL132602361.jpg%3F20260222230052&w=718&h=538",
+     "alt": "パークタワー勝どきサウス",
+     "href": "/chintai/L132602361/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc3%2FL132602361.jpg%3F20260222230052&w=718&h=538",
+     "alt": "パークタワー勝どきサウス",
+     "href": "/chintai/L132602361/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc4%2FL132602361.jpg%3F20260222230052&w=718&h=538",
+     "alt": "パークタワー勝どきサウス",
+     "href": "/chintai/L132602361/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc22%2FL132602361.jpg%3F20260223230052&w=718&h=538",
+     "alt": "パークタワー勝どきサウス",
+     "href": "/chintai/L132602361/"
+    }
+   ],
+   "layoutImageModal": {
+    "propertyTitle": "パークタワー勝どきサウス",
+    "layoutImage": {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Flayout1%2FL132602361.jpg%3F20260222230052&w=718&h=538",
+     "alt": "パークタワー勝どきサウス(間取り)"
+    },
+    "propertyDetailUrl": "/chintai/L132602361/",
+    "inquiryUrl": "/chintai/inquiry/L132602361/"
+   },
+   "prIconFlg": false,
+   "favoriteFlg": false,
+   "favoriteType": "rent",
+   "applyingServiceList": [],
+   "commuteInfoList": [],
+   "openHouses": [],
+   "matchingTargetFlg": false,
+   "isForeignPage": false,
+   "hasOfficialSite": false
+  },
+  {
+   "propertyCd": "L132608301",
+   "propertyName": "勝どきザ・タワー",
+   "priceModel": {
+    "mstCd": 4,
+    "consumptionTaxFlg": false,
+    "rent": 375000,
+    "manageCost": 20000
+   },
+   "address": "東京都中央区勝どき５丁目",
+   "access": [
+    "都営大江戸線「勝どき」駅 徒歩7分",
+    "東京メトロ有楽町線「月島」駅 徒歩15分"
+   ],
+   "propertyDetail": [
+    "敷金2ヶ月 礼金1ヶ月",
+    "敷金償却- 敷引-",
+    "3LDK",
+    "72.85m<sup>2</sup>",
+    "2016年11月築",
+    "53階建ての20階部分",
+    "北西向き"
+   ],
+   "detailUrl": "/chintai/L132608301/",
+   "inquiryInfo": {
+    "inquiryUrl": "/chintai/inquiry/L132608301/",
+    "inquiryTypeFlg": true,
+    "inquiryLinkText": "詳細"
+   },
+   "labelList": [
+    {
+     "cd": "028",
+     "iconName": "物件種別",
+     "detailClass": "a-tag--type",
+     "detailText": "マンション",
+     "listClass": "a-tag--type",
+     "listText": "マンション"
+    },
+    {
+     "cd": "025",
+     "iconName": "新賃料",
+     "detailClass": "a-tag--new-price",
+     "detailText": "新賃料 10/9",
+     "listClass": "a-tag--new-price",
+     "listText": "新賃料 10/9"
+    }
+   ],
+   "otherConditionLabels": [],
+   "thumbnailImage": [
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fphoto1%2FL132608301.jpg%3F20261009230044&w=718&h=538",
+     "alt": "勝どきザ・タワー(外観)",
+     "href": "/chintai/L132608301/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Flayout1%2FL132608301.jpg%3F20260823230041&w=718&h=538",
+     "alt": "勝どきザ・タワー(間取り)",
+     "href": "/chintai/L132608301/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Findoor1%2FL132608301.jpg%3F20260824230043&w=718&h=538",
+     "alt": "勝どきザ・タワー",
+     "href": "/chintai/L132608301/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Findoor2%2FL132608301.jpg%3F20260824230043&w=718&h=538",
+     "alt": "勝どきザ・タワー",
+     "href": "/chintai/L132608301/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc3%2FL132608301.jpg%3F20260824230043&w=718&h=538",
+     "alt": "勝どきザ・タワー",
+     "href": "/chintai/L132608301/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc4%2FL132608301.jpg%3F20260824230043&w=718&h=538",
+     "alt": "勝どきザ・タワー",
+     "href": "/chintai/L132608301/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc5%2FL132608301.jpg%3F20260824230043&w=718&h=538",
+     "alt": "勝どきザ・タワー",
+     "href": "/chintai/L132608301/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc6%2FL132608301.jpg%3F20260824230043&w=718&h=538",
+     "alt": "勝どきザ・タワー",
+     "href": "/chintai/L132608301/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc7%2FL132608301.jpg%3F20260824230043&w=718&h=538",
+     "alt": "勝どきザ・タワー",
+     "href": "/chintai/L132608301/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc8%2FL132608301.jpg%3F20260824230043&w=718&h=538",
+     "alt": "勝どきザ・タワー",
+     "href": "/chintai/L132608301/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc9%2FL132608301.jpg%3F20260824230043&w=718&h=538",
+     "alt": "勝どきザ・タワー",
+     "href": "/chintai/L132608301/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc10%2FL132608301.jpg%3F20260824230043&w=718&h=538",
+     "alt": "勝どきザ・タワー",
+     "href": "/chintai/L132608301/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc11%2FL132608301.jpg%3F20260824230043&w=718&h=538",
+     "alt": "勝どきザ・タワー",
+     "href": "/chintai/L132608301/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc12%2FL132608301.jpg%3F20260824230043&w=718&h=538",
+     "alt": "勝どきザ・タワー",
+     "href": "/chintai/L132608301/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc13%2FL132608301.jpg%3F20260824230043&w=718&h=538",
+     "alt": "勝どきザ・タワー",
+     "href": "/chintai/L132608301/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc14%2FL132608301.jpg%3F20260824230043&w=718&h=538",
+     "alt": "勝どきザ・タワー",
+     "href": "/chintai/L132608301/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc15%2FL132608301.jpg%3F20260824230043&w=718&h=538",
+     "alt": "勝どきザ・タワー",
+     "href": "/chintai/L132608301/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc16%2FL132608301.jpg%3F20260824230043&w=718&h=538",
+     "alt": "勝どきザ・タワー",
+     "href": "/chintai/L132608301/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc22%2FL132608301.jpg%3F20261009230044&w=718&h=538",
+     "alt": "勝どきザ・タワー",
+     "href": "/chintai/L132608301/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc23%2FL132608301.jpg%3F20261009230044&w=718&h=538",
+     "alt": "勝どきザ・タワー",
+     "href": "/chintai/L132608301/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc24%2FL132608301.jpg%3F20261009230044&w=718&h=538",
+     "alt": "勝どきザ・タワー",
+     "href": "/chintai/L132608301/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc25%2FL132608301.jpg%3F20261009230044&w=718&h=538",
+     "alt": "勝どきザ・タワー",
+     "href": "/chintai/L132608301/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fenv1%2FL132608301.jpg%3F20261009230044&w=718&h=538",
+     "alt": "勝どきザ・タワー",
+     "href": "/chintai/L132608301/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fenv2%2FL132608301.jpg%3F20261009230044&w=718&h=538",
+     "alt": "勝どきザ・タワー",
+     "href": "/chintai/L132608301/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fenv3%2FL132608301.jpg%3F20261009230044&w=718&h=538",
+     "alt": "勝どきザ・タワー",
+     "href": "/chintai/L132608301/"
+    }
+   ],
+   "layoutImageModal": {
+    "propertyTitle": "勝どきザ・タワー",
+    "layoutImage": {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Flayout1%2FL132608301.jpg%3F20260823230041&w=718&h=538",
+     "alt": "勝どきザ・タワー(間取り)"
+    },
+    "propertyDetailUrl": "/chintai/L132608301/",
+    "inquiryUrl": "/chintai/inquiry/L132608301/"
+   },
+   "prIconFlg": false,
+   "favoriteFlg": false,
+   "favoriteType": "rent",
+   "applyingServiceList": [],
+   "commuteInfoList": [],
+   "openHouses": [],
+   "matchingTargetFlg": false,
+   "isForeignPage": false,
+   "hasOfficialSite": false
+  },
+  {
+   "propertyCd": "L132607497",
+   "propertyName": "東京ミッドベイ勝どき",
+   "priceModel": {
+    "mstCd": 4,
+    "consumptionTaxFlg": false,
+    "rent": 248000,
+    "manageCost": 12000
+   },
+   "address": "東京都中央区勝どき５丁目",
+   "access": [
+    "都営大江戸線「勝どき」駅 徒歩8分",
+    "山手線「新橋」駅 バス10分「勝どきBRT」停 徒歩3分",
+    "山手線「東京」駅 バス22分「新島橋」停 徒歩1分"
+   ],
+   "propertyDetail": [
+    "敷金1ヶ月 礼金1ヶ月",
+    "敷金償却- 敷引-",
+    "3LDK",
+    "65.47m<sup>2</sup>",
+    "2012年2月築",
+    "15階建ての3階部分",
+    "南西向き"
+   ],
+   "detailUrl": "/chintai/L132607497/",
+   "inquiryInfo": {
+    "inquiryUrl": "/chintai/inquiry/L132607497/",
+    "inquiryTypeFlg": true,
+    "inquiryLinkText": "詳細"
+   },
+   "labelList": [
+    {
+     "cd": "028",
+     "iconName": "物件種別",
+     "detailClass": "a-tag--type",
+     "detailText": "マンション",
+     "listClass": "a-tag--type",
+     "listText": "マンション"
+    }
+   ],
+   "otherConditionLabels": [],
+   "thumbnailImage": [
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fphoto1%2FL132607497.jpg%3F20260831230042&w=718&h=538",
+     "alt": "東京ミッドベイ勝どき(外観)",
+     "href": "/chintai/L132607497/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Flayout1%2FL132607497.jpg%3F20260730230052&w=718&h=538",
+     "alt": "東京ミッドベイ勝どき(間取り)",
+     "href": "/chintai/L132607497/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Findoor1%2FL132607497.jpg%3F20260727230051&w=718&h=538",
+     "alt": "東京ミッドベイ勝どき",
+     "href": "/chintai/L132607497/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Findoor2%2FL132607497.jpg%3F20260727230051&w=718&h=538",
+     "alt": "東京ミッドベイ勝どき",
+     "href": "/chintai/L132607497/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc3%2FL132607497.jpg%3F20260727230051&w=718&h=538",
+     "alt": "東京ミッドベイ勝どき",
+     "href": "/chintai/L132607497/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc4%2FL132607497.jpg%3F20260727230051&w=718&h=538",
+     "alt": "東京ミッドベイ勝どき",
+     "href": "/chintai/L132607497/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc5%2FL132607497.jpg%3F20260727230051&w=718&h=538",
+     "alt": "東京ミッドベイ勝どき",
+     "href": "/chintai/L132607497/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc6%2FL132607497.jpg%3F20260727230051&w=718&h=538",
+     "alt": "東京ミッドベイ勝どき",
+     "href": "/chintai/L132607497/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc7%2FL132607497.jpg%3F20260727230051&w=718&h=538",
+     "alt": "東京ミッドベイ勝どき",
+     "href": "/chintai/L132607497/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc8%2FL132607497.jpg%3F20260727230051&w=718&h=538",
+     "alt": "東京ミッドベイ勝どき",
+     "href": "/chintai/L132607497/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc9%2FL132607497.jpg%3F20260727230051&w=718&h=538",
+     "alt": "東京ミッドベイ勝どき",
+     "href": "/chintai/L132607497/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc10%2FL132607497.jpg%3F20260727230051&w=718&h=538",
+     "alt": "東京ミッドベイ勝どき",
+     "href": "/chintai/L132607497/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc11%2FL132607497.jpg%3F20260727230051&w=718&h=538",
+     "alt": "東京ミッドベイ勝どき",
+     "href": "/chintai/L132607497/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc12%2FL132607497.jpg%3F20260727230051&w=718&h=538",
+     "alt": "東京ミッドベイ勝どき",
+     "href": "/chintai/L132607497/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc13%2FL132607497.jpg%3F20260727230051&w=718&h=538",
+     "alt": "東京ミッドベイ勝どき",
+     "href": "/chintai/L132607497/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc14%2FL132607497.jpg%3F20260727230051&w=718&h=538",
+     "alt": "東京ミッドベイ勝どき",
+     "href": "/chintai/L132607497/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc15%2FL132607497.jpg%3F20260727230051&w=718&h=538",
+     "alt": "東京ミッドベイ勝どき",
+     "href": "/chintai/L132607497/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc16%2FL132607497.jpg%3F20260727230051&w=718&h=538",
+     "alt": "東京ミッドベイ勝どき",
+     "href": "/chintai/L132607497/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc17%2FL132607497.jpg%3F20260727230051&w=718&h=538",
+     "alt": "東京ミッドベイ勝どき",
+     "href": "/chintai/L132607497/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc18%2FL132607497.jpg%3F20260727230051&w=718&h=538",
+     "alt": "東京ミッドベイ勝どき",
+     "href": "/chintai/L132607497/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc19%2FL132607497.jpg%3F20260727230051&w=718&h=538",
+     "alt": "東京ミッドベイ勝どき",
+     "href": "/chintai/L132607497/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc20%2FL132607497.jpg%3F20260727230051&w=718&h=538",
+     "alt": "東京ミッドベイ勝どき",
+     "href": "/chintai/L132607497/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc21%2FL132607497.jpg%3F20260727230051&w=718&h=538",
+     "alt": "東京ミッドベイ勝どき",
+     "href": "/chintai/L132607497/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc22%2FL132607497.jpg%3F20260831230042&w=718&h=538",
+     "alt": "東京ミッドベイ勝どき",
+     "href": "/chintai/L132607497/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc23%2FL132607497.jpg%3F20260831230042&w=718&h=538",
+     "alt": "東京ミッドベイ勝どき",
+     "href": "/chintai/L132607497/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fenv1%2FL132607497.jpg%3F20260831230042&w=718&h=538",
+     "alt": "東京ミッドベイ勝どき",
+     "href": "/chintai/L132607497/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fenv2%2FL132607497.jpg%3F20260831230042&w=718&h=538",
+     "alt": "東京ミッドベイ勝どき",
+     "href": "/chintai/L132607497/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fenv3%2FL132607497.jpg%3F20260831230042&w=718&h=538",
+     "alt": "東京ミッドベイ勝どき",
+     "href": "/chintai/L132607497/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fenv4%2FL132607497.jpeg%3F20260831230042&w=718&h=538",
+     "alt": "東京ミッドベイ勝どき",
+     "href": "/chintai/L132607497/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fenv5%2FL132607497.jpg%3F20260831230042&w=718&h=538",
+     "alt": "東京ミッドベイ勝どき",
+     "href": "/chintai/L132607497/"
+    }
+   ],
+   "layoutImageModal": {
+    "propertyTitle": "東京ミッドベイ勝どき",
+    "layoutImage": {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Flayout1%2FL132607497.jpg%3F20260730230052&w=718&h=538",
+     "alt": "東京ミッドベイ勝どき(間取り)"
+    },
+    "propertyDetailUrl": "/chintai/L132607497/",
+    "inquiryUrl": "/chintai/inquiry/L132607497/"
+   },
+   "prIconFlg": false,
+   "favoriteFlg": false,
+   "favoriteType": "rent",
+   "applyingServiceList": [],
+   "commuteInfoList": [],
+   "openHouses": [],
+   "matchingTargetFlg": false,
+   "isForeignPage": false,
+   "hasOfficialSite": false
+  },
+  {
+   "propertyCd": "L132607314",
+   "propertyName": "クレストシティレジデンス",
+   "priceModel": {
+    "mstCd": 4,
+    "consumptionTaxFlg": false,
+    "rent": 270000,
+    "manageCost": 20000
+   },
+   "address": "東京都中央区勝どき５丁目",
+   "access": [
+    "都営大江戸線「勝どき」駅 徒歩8分",
+    "東京メトロ有楽町線「月島」駅 徒歩16分",
+    "山手線「新橋」駅 バス10分「勝どきBRT」停 徒歩3分",
+    "山手線「有楽町」駅 バス14分「新島橋」停 徒歩3分",
+    "山手線「東京」駅 バス22分「新島橋」停 徒歩3分"
+   ],
+   "propertyDetail": [
+    "敷金1ヶ月 礼金1ヶ月",
+    "敷金償却- 敷引-",
+    "2LDK",
+    "70.31m<sup>2</sup>",
+    "2007年2月築",
+    "18階建ての9階部分",
+    "南西向き"
+   ],
+   "detailUrl": "/chintai/L132607314/",
+   "inquiryInfo": {
+    "inquiryUrl": "/chintai/inquiry/L132607314/",
+    "inquiryTypeFlg": true,
+    "inquiryLinkText": "詳細"
+   },
+   "labelList": [
+    {
+     "cd": "028",
+     "iconName": "物件種別",
+     "detailClass": "a-tag--type",
+     "detailText": "マンション",
+     "listClass": "a-tag--type",
+     "listText": "マンション"
+    }
+   ],
+   "otherConditionLabels": [],
+   "thumbnailImage": [
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fphoto1%2FL132607314.jpg%3F20260919230041&w=718&h=538",
+     "alt": "クレストシティレジデンス(外観)",
+     "href": "/chintai/L132607314/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Flayout1%2FL132607314.jpg%3F20260725230053&w=718&h=538",
+     "alt": "クレストシティレジデンス(間取り)",
+     "href": "/chintai/L132607314/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Findoor1%2FL132607314.jpg%3F20260725230053&w=718&h=538",
+     "alt": "クレストシティレジデンス",
+     "href": "/chintai/L132607314/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Findoor2%2FL132607314.jpg%3F20260725230053&w=718&h=538",
+     "alt": "クレストシティレジデンス",
+     "href": "/chintai/L132607314/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc3%2FL132607314.jpg%3F20260725230053&w=718&h=538",
+     "alt": "クレストシティレジデンス",
+     "href": "/chintai/L132607314/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc4%2FL132607314.jpg%3F20260918230042&w=718&h=538",
+     "alt": "クレストシティレジデンス",
+     "href": "/chintai/L132607314/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc5%2FL132607314.jpg%3F20260918230042&w=718&h=538",
+     "alt": "クレストシティレジデンス",
+     "href": "/chintai/L132607314/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc6%2FL132607314.jpg%3F20260918230042&w=718&h=538",
+     "alt": "クレストシティレジデンス",
+     "href": "/chintai/L132607314/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc7%2FL132607314.jpg%3F20260918230042&w=718&h=538",
+     "alt": "クレストシティレジデンス",
+     "href": "/chintai/L132607314/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc8%2FL132607314.jpg%3F20260918230042&w=718&h=538",
+     "alt": "クレストシティレジデンス",
+     "href": "/chintai/L132607314/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc9%2FL132607314.jpg%3F20260918230042&w=718&h=538",
+     "alt": "クレストシティレジデンス",
+     "href": "/chintai/L132607314/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc10%2FL132607314.jpg%3F20260918230042&w=718&h=538",
+     "alt": "クレストシティレジデンス",
+     "href": "/chintai/L132607314/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc11%2FL132607314.jpg%3F20260918230042&w=718&h=538",
+     "alt": "クレストシティレジデンス",
+     "href": "/chintai/L132607314/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc12%2FL132607314.jpg%3F20260918230042&w=718&h=538",
+     "alt": "クレストシティレジデンス",
+     "href": "/chintai/L132607314/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc13%2FL132607314.jpg%3F20260918230042&w=718&h=538",
+     "alt": "クレストシティレジデンス",
+     "href": "/chintai/L132607314/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc14%2FL132607314.jpg%3F20260918230042&w=718&h=538",
+     "alt": "クレストシティレジデンス",
+     "href": "/chintai/L132607314/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc15%2FL132607314.jpg%3F20260918230042&w=718&h=538",
+     "alt": "クレストシティレジデンス",
+     "href": "/chintai/L132607314/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc16%2FL132607314.jpg%3F20260918230042&w=718&h=538",
+     "alt": "クレストシティレジデンス",
+     "href": "/chintai/L132607314/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc17%2FL132607314.jpg%3F20260918230042&w=718&h=538",
+     "alt": "クレストシティレジデンス",
+     "href": "/chintai/L132607314/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc18%2FL132607314.jpg%3F20260918230042&w=718&h=538",
+     "alt": "クレストシティレジデンス",
+     "href": "/chintai/L132607314/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc19%2FL132607314.jpg%3F20260918230042&w=718&h=538",
+     "alt": "クレストシティレジデンス",
+     "href": "/chintai/L132607314/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc20%2FL132607314.jpg%3F20260918230042&w=718&h=538",
+     "alt": "クレストシティレジデンス",
+     "href": "/chintai/L132607314/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc21%2FL132607314.jpg%3F20260918230042&w=718&h=538",
+     "alt": "クレストシティレジデンス",
+     "href": "/chintai/L132607314/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc22%2FL132607314.jpg%3F20260919230041&w=718&h=538",
+     "alt": "クレストシティレジデンス",
+     "href": "/chintai/L132607314/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc23%2FL132607314.jpg%3F20260919230041&w=718&h=538",
+     "alt": "クレストシティレジデンス",
+     "href": "/chintai/L132607314/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc24%2FL132607314.jpg%3F20260919230041&w=718&h=538",
+     "alt": "クレストシティレジデンス",
+     "href": "/chintai/L132607314/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fenv1%2FL132607314.jpg%3F20260919230041&w=718&h=538",
+     "alt": "クレストシティレジデンス",
+     "href": "/chintai/L132607314/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fenv2%2FL132607314.jpg%3F20260918230042&w=718&h=538",
+     "alt": "クレストシティレジデンス",
+     "href": "/chintai/L132607314/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fenv3%2FL132607314.jpg%3F20260919230041&w=718&h=538",
+     "alt": "クレストシティレジデンス",
+     "href": "/chintai/L132607314/"
+    }
+   ],
+   "layoutImageModal": {
+    "propertyTitle": "クレストシティレジデンス",
+    "layoutImage": {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Flayout1%2FL132607314.jpg%3F20260725230053&w=718&h=538",
+     "alt": "クレストシティレジデンス(間取り)"
+    },
+    "propertyDetailUrl": "/chintai/L132607314/",
+    "inquiryUrl": "/chintai/inquiry/L132607314/"
+   },
+   "prIconFlg": false,
+   "favoriteFlg": false,
+   "favoriteType": "rent",
+   "applyingServiceList": [],
+   "commuteInfoList": [],
+   "openHouses": [],
+   "matchingTargetFlg": false,
+   "isForeignPage": false,
+   "hasOfficialSite": false
+  },
+  {
+   "propertyCd": "L132606493",
+   "propertyName": "勝どきザ・タワー",
+   "priceModel": {
+    "mstCd": 4,
+    "consumptionTaxFlg": false,
+    "rent": 400000,
+    "manageCost": 20000
+   },
+   "address": "東京都中央区勝どき５丁目",
+   "access": [
+    "都営大江戸線「勝どき」駅 徒歩7分",
+    "東京メトロ有楽町線「月島」駅 徒歩15分"
+   ],
+   "propertyDetail": [
+    "敷金1ヶ月 礼金1ヶ月",
+    "敷金償却- 敷引-",
+    "2LDK",
+    "69.58m<sup>2</sup>",
+    "2016年11月築",
+    "53階建ての33階部分",
+    "北東向き"
+   ],
+   "detailUrl": "/chintai/L132606493/",
+   "inquiryInfo": {
+    "inquiryUrl": "/chintai/inquiry/L132606493/",
+    "inquiryTypeFlg": true,
+    "inquiryLinkText": "詳細"
+   },
+   "labelList": [
+    {
+     "cd": "028",
+     "iconName": "物件種別",
+     "detailClass": "a-tag--type",
+     "detailText": "マンション",
+     "listClass": "a-tag--type",
+     "listText": "マンション"
+    }
+   ],
+   "otherConditionLabels": [],
+   "thumbnailImage": [
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fphoto1%2FL132606493.jpg%3F20261009230044&w=718&h=538",
+     "alt": "勝どきザ・タワー(外観)",
+     "href": "/chintai/L132606493/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Flayout1%2FL132606493.jpg%3F20260626230054&w=718&h=538",
+     "alt": "勝どきザ・タワー(間取り)",
+     "href": "/chintai/L132606493/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Findoor1%2FL132606493.jpg%3F20260622230053&w=718&h=538",
+     "alt": "勝どきザ・タワー",
+     "href": "/chintai/L132606493/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Findoor2%2FL132606493.jpg%3F20260622230053&w=718&h=538",
+     "alt": "勝どきザ・タワー",
+     "href": "/chintai/L132606493/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc3%2FL132606493.jpg%3F20260622230053&w=718&h=538",
+     "alt": "勝どきザ・タワー",
+     "href": "/chintai/L132606493/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc4%2FL132606493.jpg%3F20260622230053&w=718&h=538",
+     "alt": "勝どきザ・タワー",
+     "href": "/chintai/L132606493/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc5%2FL132606493.jpg%3F20260622230053&w=718&h=538",
+     "alt": "勝どきザ・タワー",
+     "href": "/chintai/L132606493/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc6%2FL132606493.jpg%3F20260704230051&w=718&h=538",
+     "alt": "勝どきザ・タワー",
+     "href": "/chintai/L132606493/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc7%2FL132606493.jpg%3F20260622230053&w=718&h=538",
+     "alt": "勝どきザ・タワー",
+     "href": "/chintai/L132606493/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc8%2FL132606493.jpg%3F20260622230053&w=718&h=538",
+     "alt": "勝どきザ・タワー",
+     "href": "/chintai/L132606493/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc9%2FL132606493.jpg%3F20260622230053&w=718&h=538",
+     "alt": "勝どきザ・タワー",
+     "href": "/chintai/L132606493/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc10%2FL132606493.jpg%3F20260622230053&w=718&h=538",
+     "alt": "勝どきザ・タワー",
+     "href": "/chintai/L132606493/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc11%2FL132606493.jpg%3F20260622230053&w=718&h=538",
+     "alt": "勝どきザ・タワー",
+     "href": "/chintai/L132606493/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc12%2FL132606493.jpg%3F20260622230053&w=718&h=538",
+     "alt": "勝どきザ・タワー",
+     "href": "/chintai/L132606493/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc13%2FL132606493.jpg%3F20260622230053&w=718&h=538",
+     "alt": "勝どきザ・タワー",
+     "href": "/chintai/L132606493/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc14%2FL132606493.jpg%3F20260622230053&w=718&h=538",
+     "alt": "勝どきザ・タワー",
+     "href": "/chintai/L132606493/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc15%2FL132606493.jpg%3F20260622230053&w=718&h=538",
+     "alt": "勝どきザ・タワー",
+     "href": "/chintai/L132606493/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc16%2FL132606493.jpg%3F20260622230053&w=718&h=538",
+     "alt": "勝どきザ・タワー",
+     "href": "/chintai/L132606493/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc17%2FL132606493.jpg%3F20260622230053&w=718&h=538",
+     "alt": "勝どきザ・タワー",
+     "href": "/chintai/L132606493/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc18%2FL132606493.jpg%3F20260622230053&w=718&h=538",
+     "alt": "勝どきザ・タワー",
+     "href": "/chintai/L132606493/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc19%2FL132606493.jpg%3F20260622230053&w=718&h=538",
+     "alt": "勝どきザ・タワー",
+     "href": "/chintai/L132606493/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc20%2FL132606493.jpg%3F20260622230053&w=718&h=538",
+     "alt": "勝どきザ・タワー",
+     "href": "/chintai/L132606493/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc21%2FL132606493.jpg%3F20260622230053&w=718&h=538",
+     "alt": "勝どきザ・タワー",
+     "href": "/chintai/L132606493/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc22%2FL132606493.jpg%3F20261009230044&w=718&h=538",
+     "alt": "勝どきザ・タワー",
+     "href": "/chintai/L132606493/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc23%2FL132606493.jpg%3F20261009230044&w=718&h=538",
+     "alt": "勝どきザ・タワー",
+     "href": "/chintai/L132606493/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc24%2FL132606493.jpg%3F20261009230044&w=718&h=538",
+     "alt": "勝どきザ・タワー",
+     "href": "/chintai/L132606493/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc25%2FL132606493.jpg%3F20261009230044&w=718&h=538",
+     "alt": "勝どきザ・タワー",
+     "href": "/chintai/L132606493/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fenv1%2FL132606493.jpg%3F20261009230044&w=718&h=538",
+     "alt": "勝どきザ・タワー",
+     "href": "/chintai/L132606493/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fenv2%2FL132606493.jpg%3F20261009230044&w=718&h=538",
+     "alt": "勝どきザ・タワー",
+     "href": "/chintai/L132606493/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fenv3%2FL132606493.jpg%3F20261009230044&w=718&h=538",
+     "alt": "勝どきザ・タワー",
+     "href": "/chintai/L132606493/"
+    }
+   ],
+   "layoutImageModal": {
+    "propertyTitle": "勝どきザ・タワー",
+    "layoutImage": {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Flayout1%2FL132606493.jpg%3F20260626230054&w=718&h=538",
+     "alt": "勝どきザ・タワー(間取り)"
+    },
+    "propertyDetailUrl": "/chintai/L132606493/",
+    "inquiryUrl": "/chintai/inquiry/L132606493/"
+   },
+   "prIconFlg": false,
+   "favoriteFlg": false,
+   "favoriteType": "rent",
+   "applyingServiceList": [],
+   "commuteInfoList": [],
+   "openHouses": [],
+   "matchingTargetFlg": false,
+   "isForeignPage": false,
+   "hasOfficialSite": false
+  },
+  {
+   "propertyCd": "L132609218",
+   "propertyName": "ＴＨＥ　ＴＯＫＹＯ　ＴＯＷＥＲＳ　シータワー",
+   "priceModel": {
+    "mstCd": 4,
+    "consumptionTaxFlg": false,
+    "rent": 370000,
+    "manageCost": 20000
+   },
+   "address": "東京都中央区勝どき６丁目",
+   "access": [
+    "都営大江戸線「勝どき」駅 徒歩9分"
+   ],
+   "propertyDetail": [
+    "敷金1ヶ月 礼金1ヶ月",
+    "敷金償却- 敷引-",
+    "2LDK",
+    "80.23m<sup>2</sup>",
+    "2008年1月築",
+    "58階建ての46階部分",
+    "南西向き"
+   ],
+   "detailUrl": "/chintai/L132609218/",
+   "inquiryInfo": {
+    "inquiryUrl": "/chintai/inquiry/L132609218/",
+    "inquiryTypeFlg": true,
+    "inquiryLinkText": "詳細"
+   },
+   "labelList": [
+    {
+     "cd": "028",
+     "iconName": "物件種別",
+     "detailClass": "a-tag--type",
+     "detailText": "マンション",
+     "listClass": "a-tag--type",
+     "listText": "マンション"
+    },
+    {
+     "cd": "001",
+     "iconName": "NEW",
+     "detailClass": "a-tag--new-date",
+     "detailText": "NEW 10/9",
+     "listClass": "a-tag--new-date",
+     "listText": "NEW 10/9"
+    }
+   ],
+   "otherConditionLabels": [],
+   "thumbnailImage": [
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fphoto1%2FL132609218.jpg%3F20261015164506&w=718&h=538",
+     "alt": "ＴＨＥ　ＴＯＫＹＯ　ＴＯＷＥＲＳ　シータワー(外観)",
+     "href": "/chintai/L132609218/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Flayout1%2FL132609218.jpg%3F20261012230043&w=718&h=538",
+     "alt": "ＴＨＥ　ＴＯＫＹＯ　ＴＯＷＥＲＳ　シータワー(間取り)",
+     "href": "/chintai/L132609218/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Findoor1%2FL132609218.jpg%3F20261012230043&w=718&h=538",
+     "alt": "ＴＨＥ　ＴＯＫＹＯ　ＴＯＷＥＲＳ　シータワー",
+     "href": "/chintai/L132609218/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Findoor2%2FL132609218.jpg%3F20261012230043&w=718&h=538",
+     "alt": "ＴＨＥ　ＴＯＫＹＯ　ＴＯＷＥＲＳ　シータワー",
+     "href": "/chintai/L132609218/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc3%2FL132609218.jpg%3F20261012230043&w=718&h=538",
+     "alt": "ＴＨＥ　ＴＯＫＹＯ　ＴＯＷＥＲＳ　シータワー",
+     "href": "/chintai/L132609218/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc4%2FL132609218.jpg%3F20261012230043&w=718&h=538",
+     "alt": "ＴＨＥ　ＴＯＫＹＯ　ＴＯＷＥＲＳ　シータワー",
+     "href": "/chintai/L132609218/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc5%2FL132609218.jpg%3F20261012230043&w=718&h=538",
+     "alt": "ＴＨＥ　ＴＯＫＹＯ　ＴＯＷＥＲＳ　シータワー",
+     "href": "/chintai/L132609218/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc6%2FL132609218.jpg%3F20261012230043&w=718&h=538",
+     "alt": "ＴＨＥ　ＴＯＫＹＯ　ＴＯＷＥＲＳ　シータワー",
+     "href": "/chintai/L132609218/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc7%2FL132609218.jpg%3F20261012230043&w=718&h=538",
+     "alt": "ＴＨＥ　ＴＯＫＹＯ　ＴＯＷＥＲＳ　シータワー",
+     "href": "/chintai/L132609218/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc8%2FL132609218.jpg%3F20261012230043&w=718&h=538",
+     "alt": "ＴＨＥ　ＴＯＫＹＯ　ＴＯＷＥＲＳ　シータワー",
+     "href": "/chintai/L132609218/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc9%2FL132609218.jpg%3F20261012230043&w=718&h=538",
+     "alt": "ＴＨＥ　ＴＯＫＹＯ　ＴＯＷＥＲＳ　シータワー",
+     "href": "/chintai/L132609218/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc10%2FL132609218.jpg%3F20261012230043&w=718&h=538",
+     "alt": "ＴＨＥ　ＴＯＫＹＯ　ＴＯＷＥＲＳ　シータワー",
+     "href": "/chintai/L132609218/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc11%2FL132609218.jpg%3F20261012230043&w=718&h=538",
+     "alt": "ＴＨＥ　ＴＯＫＹＯ　ＴＯＷＥＲＳ　シータワー",
+     "href": "/chintai/L132609218/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc12%2FL132609218.jpg%3F20261012230043&w=718&h=538",
+     "alt": "ＴＨＥ　ＴＯＫＹＯ　ＴＯＷＥＲＳ　シータワー",
+     "href": "/chintai/L132609218/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc13%2FL132609218.jpg%3F20261012230043&w=718&h=538",
+     "alt": "ＴＨＥ　ＴＯＫＹＯ　ＴＯＷＥＲＳ　シータワー",
+     "href": "/chintai/L132609218/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc14%2FL132609218.jpg%3F20261012230043&w=718&h=538",
+     "alt": "ＴＨＥ　ＴＯＫＹＯ　ＴＯＷＥＲＳ　シータワー",
+     "href": "/chintai/L132609218/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc15%2FL132609218.jpg%3F20261012230043&w=718&h=538",
+     "alt": "ＴＨＥ　ＴＯＫＹＯ　ＴＯＷＥＲＳ　シータワー",
+     "href": "/chintai/L132609218/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc16%2FL132609218.jpg%3F20261012230043&w=718&h=538",
+     "alt": "ＴＨＥ　ＴＯＫＹＯ　ＴＯＷＥＲＳ　シータワー",
+     "href": "/chintai/L132609218/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc17%2FL132609218.jpg%3F20261012230043&w=718&h=538",
+     "alt": "ＴＨＥ　ＴＯＫＹＯ　ＴＯＷＥＲＳ　シータワー",
+     "href": "/chintai/L132609218/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc18%2FL132609218.jpg%3F20261012230043&w=718&h=538",
+     "alt": "ＴＨＥ　ＴＯＫＹＯ　ＴＯＷＥＲＳ　シータワー",
+     "href": "/chintai/L132609218/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc19%2FL132609218.jpg%3F20261012230043&w=718&h=538",
+     "alt": "ＴＨＥ　ＴＯＫＹＯ　ＴＯＷＥＲＳ　シータワー",
+     "href": "/chintai/L132609218/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc20%2FL132609218.jpg%3F20261012230043&w=718&h=538",
+     "alt": "ＴＨＥ　ＴＯＫＹＯ　ＴＯＷＥＲＳ　シータワー",
+     "href": "/chintai/L132609218/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc21%2FL132609218.jpg%3F20261012230043&w=718&h=538",
+     "alt": "ＴＨＥ　ＴＯＫＹＯ　ＴＯＷＥＲＳ　シータワー",
+     "href": "/chintai/L132609218/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fmisc22%2FL132609218.jpg%3F20261015164506&w=718&h=538",
+     "alt": "ＴＨＥ　ＴＯＫＹＯ　ＴＯＷＥＲＳ　シータワー",
+     "href": "/chintai/L132609218/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fenv1%2FL132609218.jpg%3F20261015164506&w=718&h=538",
+     "alt": "ＴＨＥ　ＴＯＫＹＯ　ＴＯＷＥＲＳ　シータワー",
+     "href": "/chintai/L132609218/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fenv2%2FL132609218.jpg%3F20261015164506&w=718&h=538",
+     "alt": "ＴＨＥ　ＴＯＫＹＯ　ＴＯＷＥＲＳ　シータワー",
+     "href": "/chintai/L132609218/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fenv3%2FL132609218.jpg%3F20261015164506&w=718&h=538",
+     "alt": "ＴＨＥ　ＴＯＫＹＯ　ＴＯＷＥＲＳ　シータワー",
+     "href": "/chintai/L132609218/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fenv4%2FL132609218.jpg%3F20261015164506&w=718&h=538",
+     "alt": "ＴＨＥ　ＴＯＫＹＯ　ＴＯＷＥＲＳ　シータワー",
+     "href": "/chintai/L132609218/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fenv5%2FL132609218.jpg%3F20261015164506&w=718&h=538",
+     "alt": "ＴＨＥ　ＴＯＫＹＯ　ＴＯＷＥＲＳ　シータワー",
+     "href": "/chintai/L132609218/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fenv6%2FL132609218.jpg%3F20261015164506&w=718&h=538",
+     "alt": "ＴＨＥ　ＴＯＫＹＯ　ＴＯＷＥＲＳ　シータワー",
+     "href": "/chintai/L132609218/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fenv7%2FL132609218.jpg%3F20261015164506&w=718&h=538",
+     "alt": "ＴＨＥ　ＴＯＫＹＯ　ＴＯＷＥＲＳ　シータワー",
+     "href": "/chintai/L132609218/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Fenv8%2FL132609218.jpg%3F20261015164506&w=718&h=538",
+     "alt": "ＴＨＥ　ＴＯＫＹＯ　ＴＯＷＥＲＳ　シータワー",
+     "href": "/chintai/L132609218/"
+    }
+   ],
+   "layoutImageModal": {
+    "propertyTitle": "ＴＨＥ　ＴＯＫＹＯ　ＴＯＷＥＲＳ　シータワー",
+    "layoutImage": {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frent_home_image%2Flayout1%2FL132609218.jpg%3F20261012230043&w=718&h=538",
+     "alt": "ＴＨＥ　ＴＯＫＹＯ　ＴＯＷＥＲＳ　シータワー(間取り)"
+    },
+    "propertyDetailUrl": "/chintai/L132609218/",
+    "inquiryUrl": "/chintai/inquiry/L132609218/"
+   },
+   "prIconFlg": false,
+   "favoriteFlg": false,
+   "favoriteType": "rent",
+   "applyingServiceList": [],
+   "commuteInfoList": [],
+   "openHouses": [],
+   "matchingTargetFlg": false,
+   "isForeignPage": false,
+   "hasOfficialSite": false
+  }
+ ]
+}

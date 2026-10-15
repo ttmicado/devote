@@ -1,0 +1,88 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`mec-h normalize > 詳細を NormalizedListing に正規化する 1`] = `
+{
+  "adAllowed": null,
+  "address": {
+    "city": "港区",
+    "prefecture": "東京都",
+    "raw": "東京都港区白金１丁目",
+    "town": "白金",
+  },
+  "agencyName": "三菱地所ハウスネット",
+  "areaSqm": 68.92,
+  "availableFrom": null,
+  "builtYearMonth": "2026-10",
+  "contractTermMonths": null,
+  "contractType": null,
+  "dealType": "rent",
+  "deposit": 595000,
+  "direction": "南",
+  "extra": {
+    "保証会社": "利用必須 ジェイリース・ウェルオンソリューションズ 初年度保証料：賃料等合計額の50% 毎月：330円 2年目",
+    "備考": "礼金無（1年未満解約時、賃料1か月分の違約金有） 引越日は引越幹事会社へ要相談 駆付けサポート24借主加入 保証会社利用必須 ペット・楽器相談(諸条件弊社募集図面要確認) SOHO使用応相談 民泊不可 退去時:室内清掃・エアコン洗浄費借主負担 付属施設空状況要確認",
+    "入居時期": "2026年10月中旬",
+    "利用の制限": "ペット：相談可
+（小型犬・猫計2匹迄／敷金1か月積増） 楽器：相談可
+（10～20時／連続演奏1時間以内／消音機能付限定） 民泊：不可",
+    "契約形態": "定期建物賃貸借
+（2年）",
+    "契約種類": "定期建物賃貸借
+（2年）",
+    "損害保険等": "火災保険 加入必須",
+    "更新料": "なし",
+    "総戸数": "65戸",
+    "間取り詳細": "LDK（15.1帖）、洋室（6.2帖）、洋室（5帖）、洋室（3.3帖）",
+    "駐車場": "無",
+  },
+  "features": [
+    "air_conditioner",
+    "separate_bath_toilet",
+    "reheating_bath",
+    "bathroom_dryer",
+    "pet_negotiable",
+    "instrument_negotiable",
+    "floor_heating",
+    "dishwasher",
+    "south_facing",
+  ],
+  "floor": 12,
+  "imageUrls": [
+    "https://cdn.prd2026.www.mec-h.com/bkn_img/photo/D34/H00907000066.jpg",
+    "https://cdn.prd2026.www.mec-h.com/bkn_img/photo/D34/H00907000066A.jpg",
+    "https://cdn.prd2026.www.mec-h.com/bkn_img/madori/D34/H00907000066.jpg",
+  ],
+  "keyMoney": 0,
+  "layout": "3LDK",
+  "managementFee": 25000,
+  "parkingNote": null,
+  "price": 595000,
+  "propertyType": "mansion",
+  "renewalFee": null,
+  "repairReserveFee": null,
+  "source": "mec-h",
+  "sourceListingId": "H00907000066",
+  "sourceUpdatedAt": "2026-10-14T15:00:00.000Z",
+  "stations": [
+    {
+      "busMinutes": null,
+      "line": "東京メトロ南北線",
+      "station": "白金高輪",
+      "walkMinutes": 2,
+    },
+    {
+      "busMinutes": null,
+      "line": "都営三田線",
+      "station": "白金高輪",
+      "walkMinutes": 2,
+    },
+  ],
+  "structure": "RC",
+  "title": "ザ・パークハビオ白金高輪",
+  "totalFloors": 12,
+  "totalUnits": null,
+  "transactionMode": "owner",
+  "url": "https://www.mec-h.com/rent/detail/H00907000066",
+  "usage": "residential",
+}
+`;

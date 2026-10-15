@@ -1,0 +1,152 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`livable normalize > 詳細を NormalizedListing に正規化する 1`] = `
+{
+  "adAllowed": null,
+  "address": {
+    "city": "中央区",
+    "prefecture": "東京都",
+    "raw": "東京都中央区勝どき２丁目",
+    "town": "勝どき",
+  },
+  "agencyName": "東急リバブル",
+  "areaSqm": 57.96,
+  "availableFrom": null,
+  "builtYearMonth": "1981-05",
+  "contractTermMonths": null,
+  "contractType": null,
+  "dealType": "rent",
+  "deposit": 215000,
+  "direction": "南東",
+  "extra": {
+    "おすすめポイント": "◆◇◆ マンション勝どき ◆◇◆
+1981年4月に竣工した11階建て分譲マンション8階部分2LDK、定借4年のお部屋です。
+エレベーターリニューアルや配管更新など、大規模修繕工事の履歴があり、マンションの管理体制は良好です。
+お部屋は、2026年3月に大規模リフォーム予定です♪
+★リフォーム内容
+・ユニットバス新規交換
+・洗面化粧台新規交換
+・TVモニタ付インターホン新規設置
+・壁・天井クロス全面張替
+・フローリング新規張替（LDK/洋室/廊下）・畳表替え（和室）
+・クッションフロア新規張替（トイレ/洗面所）
+・ハウスクリーニング
+★交通
+・都営大江戸線「勝どき」駅 徒歩1分
+・東京メトロ有楽町線「月島」駅 徒歩9分
+・東京メトロ日比谷線「築地」駅 徒歩15分
+★設備
+・24時間ゴミ出し可
+・TVモニタ付インターホン
+・エアコン2基(LD/和室)
+【借主負担費用】
+・口座振替手数料110円/月
+・火災保険16，550円～ /2年
+・退去時清掃費：㎡×1，540円
+・TV/インターネット：利用に伴う諸費用
+・再契約事務手数料：新賃料0.55ヶ月
+※再開発エリア該当、将来的に建替えの可能性あり",
+    "その他費用": "■保証会社原則加入※初回保証料：賃料等の50％～（最低2万円）、月額保証料：月額引落金額×1％",
+    "仲介手数料": "1.1ヶ月(税込)",
+    "入居可能時期": "即入居可",
+    "契約の種類・期間": "定期建物賃貸借契約 期間：4年",
+    "契約形態": "定期建物賃貸借契約 期間：4年",
+    "損保": "16,550円 ～ /2年",
+    "物件種別": "マンション",
+  },
+  "features": [
+    "air_conditioner",
+    "fixed_term",
+    "separate_bath_toilet",
+    "independent_washbasin",
+    "indoor_laundry",
+    "garbage_24h",
+    "condo_for_rent",
+    "individual_ac",
+    "south_facing",
+  ],
+  "floor": 8,
+  "imageUrls": [
+    "https://www.livable.co.jp/rent_home_image/photo1/L132603329.jpg?20260926230044",
+    "https://www.livable.co.jp/rent_home_image/layout1/L132603329.jpg?20260320230054",
+    "https://www.livable.co.jp/rent_home_image/indoor1/L132603329.jpg?20260926230044",
+    "https://www.livable.co.jp/rent_home_image/indoor2/L132603329.jpg?20260426230054",
+    "https://www.livable.co.jp/rent_home_image/misc3/L132603329.jpg?20260426230054",
+    "https://www.livable.co.jp/rent_home_image/misc4/L132603329.jpg?20260711230051",
+    "https://www.livable.co.jp/rent_home_image/misc5/L132603329.jpg?20260426230054",
+    "https://www.livable.co.jp/rent_home_image/misc6/L132603329.jpg?20260926230044",
+    "https://www.livable.co.jp/rent_home_image/misc7/L132603329.jpg?20260426230054",
+    "https://www.livable.co.jp/rent_home_image/misc8/L132603329.jpg?20260327230055",
+    "https://www.livable.co.jp/rent_home_image/misc9/L132603329.jpg?20260426230054",
+    "https://www.livable.co.jp/rent_home_image/misc10/L132603329.jpg?20260426230054",
+    "https://www.livable.co.jp/rent_home_image/misc11/L132603329.jpg?20260426230054",
+    "https://www.livable.co.jp/rent_home_image/misc12/L132603329.jpg?20260426230054",
+    "https://www.livable.co.jp/rent_home_image/misc13/L132603329.jpg?20260426230054",
+    "https://www.livable.co.jp/rent_home_image/misc14/L132603329.jpg?20260426230054",
+    "https://www.livable.co.jp/rent_home_image/misc15/L132603329.jpg?20260426230054",
+    "https://www.livable.co.jp/rent_home_image/misc16/L132603329.jpg?20260426230054",
+    "https://www.livable.co.jp/rent_home_image/misc17/L132603329.jpg?20260327230055",
+    "https://www.livable.co.jp/rent_home_image/misc18/L132603329.jpg?20260426230054",
+    "https://www.livable.co.jp/rent_home_image/misc19/L132603329.jpg?20260426230054",
+    "https://www.livable.co.jp/rent_home_image/misc20/L132603329.jpg?20260327230055",
+    "https://www.livable.co.jp/rent_home_image/misc21/L132603329.jpg?20260327230055",
+    "https://www.livable.co.jp/rent_home_image/misc22/L132603329.jpg?20260926230044",
+    "https://www.livable.co.jp/rent_home_image/misc23/L132603329.jpg?20260926230044",
+    "https://www.livable.co.jp/rent_home_image/misc24/L132603329.jpg?20260926230044",
+    "https://www.livable.co.jp/rent_home_image/misc25/L132603329.jpg?20260926230044",
+    "https://www.livable.co.jp/rent_home_image/env1/L132603329.jpg?20260926230044",
+    "https://www.livable.co.jp/rent_home_image/env2/L132603329.jpg?20260926230044",
+    "https://www.livable.co.jp/rent_home_image/env4/L132603329.jpg?20260926230044",
+  ],
+  "keyMoney": 215000,
+  "layout": "2LDK",
+  "managementFee": 15000,
+  "parkingNote": null,
+  "price": 215000,
+  "propertyType": "mansion",
+  "renewalFee": null,
+  "repairReserveFee": null,
+  "source": "livable",
+  "sourceListingId": "L132603329",
+  "sourceUpdatedAt": null,
+  "stations": [
+    {
+      "busMinutes": null,
+      "line": "都営大江戸線",
+      "station": "勝どき",
+      "walkMinutes": 1,
+    },
+    {
+      "busMinutes": null,
+      "line": "東京メトロ有楽町線",
+      "station": "月島",
+      "walkMinutes": 9,
+    },
+    {
+      "busMinutes": null,
+      "line": "都営大江戸線",
+      "station": "月島",
+      "walkMinutes": 9,
+    },
+    {
+      "busMinutes": null,
+      "line": "東京メトロ日比谷線",
+      "station": "築地",
+      "walkMinutes": 15,
+    },
+    {
+      "busMinutes": null,
+      "line": "都営大江戸線",
+      "station": "築地市場",
+      "walkMinutes": 21,
+    },
+  ],
+  "structure": "RC",
+  "title": "マンション勝どき",
+  "totalFloors": 11,
+  "totalUnits": null,
+  "transactionMode": "brokerage",
+  "url": "https://www.livable.co.jp/chintai/L132603329/",
+  "usage": "residential",
+}
+`;
