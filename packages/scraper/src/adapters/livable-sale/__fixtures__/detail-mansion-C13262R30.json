@@ -1,0 +1,706 @@
+{
+ "isExpired": false,
+ "detailCard": {
+  "variant": "default",
+  "propertyCd": "C13262R30",
+  "propertyName": "ダイナシティ三田",
+  "price": {
+   "propertyPrice": {
+    "mstCd": 1,
+    "price": 109990000,
+    "consumptionTaxFlg": true
+   }
+  },
+  "labelInfo": {
+   "list": [
+    {
+     "text": "中古マンション",
+     "className": "a-tag--type"
+    },
+    {
+     "text": "リフォーム",
+     "className": "a-tag--condition"
+    }
+   ],
+   "iconLink": {
+    "href": "/kounyu/explanation-icon/"
+   }
+  },
+  "address": {
+   "linkList": [
+    {
+     "text": "東京都",
+     "href": "/kounyu/mansion/tokyo/select-area/"
+    },
+    {
+     "text": "港区",
+     "href": "/kounyu/mansion/tokyo/a13103/"
+    },
+    {
+     "text": "三田２丁目",
+     "href": "/kounyu/mansion/tokyo/t13103024/"
+    }
+   ],
+   "mapLink": {
+    "show": true,
+    "propertyCd": "C13262R30",
+    "latitude": 35.648228,
+    "longitude": 139.7410638,
+    "address": "東京都港区三田２丁目17-16",
+    "iconUrl": "https://www.livable.co.jp/images/common/pin_condo_selected.png"
+   }
+  },
+  "access": {
+   "linkList": [
+    {
+     "text": "都営三田線",
+     "href": "/kounyu/mansion/tokyo/l2352/select-station/"
+    },
+    {
+     "text": "「三田」駅",
+     "href": "/kounyu/mansion/tokyo/s2352240/"
+    },
+    {
+     "text": "徒歩7分",
+     "href": ""
+    }
+   ]
+  },
+  "basicInfo": {
+   "itemList": [
+    {
+     "label": "間取り",
+     "value": "2LDK"
+    },
+    {
+     "label": "専有面積",
+     "value": "49.90m<sup>2</sup>"
+    },
+    {
+     "label": "バルコニー面積",
+     "value": "4.59m<sup>2</sup>"
+    },
+    {
+     "label": "築年月",
+     "value": "2004年11月"
+    },
+    {
+     "label": "所在階数",
+     "value": "4階／地上14階"
+    },
+    {
+     "label": "建物階数"
+    },
+    {
+     "label": "向き",
+     "value": "南東"
+    }
+   ]
+  },
+  "userReaction": {
+   "enableMachineScore": true
+  },
+  "anchorLinkList": {
+   "linkList": [
+    {
+     "id": "bus_002_click_anchor_features",
+     "text": "特徴",
+     "href": {
+      "hash": "propertyFeatures"
+     }
+    },
+    {
+     "id": "bus_002_click_anchor_map",
+     "text": "周辺地図",
+     "href": {
+      "hash": "mapSection"
+     }
+    },
+    {
+     "id": "bus_002_click_anchor_summary",
+     "text": "物件概要",
+     "href": {
+      "hash": "propertySummarySection"
+     }
+    },
+    {
+     "id": "bus_002_click_anchor_store",
+     "text": "担当店舗",
+     "href": {
+      "hash": "shopSection"
+     }
+    }
+   ]
+  },
+  "propertyImage": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fphoto%2FC13262R30.jpg%3F20260222114311&w=96&h=96"
+ },
+ "summary": {
+  "enableFavoriteComparison": true,
+  "compareInfo": {
+   "button": {
+    "isEmphasized": false
+   },
+   "modal": {
+    "type": "buy",
+    "inquiryUrl": "/kounyu/inquiry/C13262R30/"
+   }
+  },
+  "tableItems": [
+   {
+    "type": "linkList",
+    "title": "所在地",
+    "data": {
+     "links": [
+      {
+       "text": "東京都",
+       "href": "/kounyu/mansion/tokyo/select-area/"
+      },
+      {
+       "text": "港区",
+       "href": "/kounyu/mansion/tokyo/a13103/"
+      },
+      {
+       "text": "三田２丁目",
+       "href": "/kounyu/mansion/tokyo/t13103024/"
+      }
+     ],
+     "googleMapLink": {
+      "href": "https://www.google.com/maps?q=35.648228%2C139.7410638"
+     }
+    },
+    "column": 1
+   },
+   {
+    "type": "multiLinkList",
+    "title": "交通",
+    "data": {
+     "links": [
+      [
+       {
+        "text": "都営三田線",
+        "href": "/kounyu/mansion/tokyo/l2352/select-station/"
+       },
+       {
+        "text": "「三田」駅",
+        "href": "/kounyu/mansion/tokyo/s2352240/"
+       },
+       {
+        "text": "徒歩7分"
+       }
+      ],
+      [
+       {
+        "text": "東京メトロ南北線",
+        "href": "/kounyu/mansion/tokyo/l2349/select-station/"
+       },
+       {
+        "text": "「白金高輪」駅",
+        "href": "/kounyu/mansion/tokyo/s2349015/"
+       },
+       {
+        "text": "徒歩11分"
+       }
+      ],
+      [
+       {
+        "text": "山手線",
+        "href": "/kounyu/mansion/tokyo/l2172/select-station/"
+       },
+       {
+        "text": "「田町」駅",
+        "href": "/kounyu/mansion/tokyo/s2172050/"
+       },
+       {
+        "text": "徒歩12分"
+       }
+      ]
+     ]
+    },
+    "column": 1
+   },
+   {
+    "type": "price",
+    "title": "価格",
+    "data": {
+     "price": {
+      "mstCd": 1,
+      "price": 109990000,
+      "consumptionTaxFlg": true
+     },
+     "showSimulationButton": true
+    },
+    "column": 1
+   },
+   {
+    "type": "html",
+    "title": "間取り",
+    "data": "2LDK"
+   },
+   {
+    "type": "html",
+    "title": "専有面積",
+    "data": "壁芯49.90m<sup>2</sup>"
+   },
+   {
+    "type": "html",
+    "title": "バルコニー面積",
+    "data": "4.59m<sup>2</sup>"
+   },
+   {
+    "type": "text",
+    "title": "向き",
+    "data": "南東"
+   },
+   {
+    "type": "text",
+    "title": "建物構造",
+    "data": "鉄骨鉄筋コンクリート造"
+   },
+   {
+    "type": "text",
+    "title": "所在階数",
+    "data": "4階 / 地上14階"
+   },
+   {
+    "type": "html",
+    "title": "築年月",
+    "data": "2004年11月"
+   },
+   {
+    "type": "text",
+    "title": "総戸数",
+    "data": "50戸"
+   },
+   {
+    "type": "text",
+    "title": "土地権利",
+    "data": "所有権"
+   },
+   {
+    "type": "text",
+    "title": "分譲会社",
+    "data": "-"
+   },
+   {
+    "type": "text",
+    "title": "施工会社",
+    "data": "新日本建設株式会社"
+   },
+   {
+    "type": "text",
+    "title": "管理会社",
+    "data": "日本ハウズイング株式会社 / 全部委託"
+   },
+   {
+    "type": "text",
+    "title": "管理員の勤務形態",
+    "data": "巡回"
+   },
+   {
+    "type": "text",
+    "title": "管理費",
+    "data": "10,980（円/月）"
+   },
+   {
+    "type": "text",
+    "title": "修繕積立金",
+    "data": "15,970（円/月）"
+   },
+   {
+    "type": "html",
+    "title": "その他費用",
+    "data": "-"
+   },
+   {
+    "type": "html",
+    "title": "駐車場",
+    "data": "-"
+   },
+   {
+    "type": "text",
+    "title": "現況",
+    "data": "空室"
+   },
+   {
+    "type": "text",
+    "title": "引渡可能年月",
+    "data": "相談"
+   },
+   {
+    "type": "text",
+    "title": "取引態様",
+    "data": "媒介（仲介）"
+   },
+   {
+    "type": "html",
+    "title": "備考",
+    "data": "管理費にCATV利用料、自治会費月額200円を含む<br>構造/鉄骨鉄筋コンクリート・鉄筋コンクリート造"
+   },
+   {
+    "type": "text",
+    "title": "物件番号",
+    "data": "C13262R30"
+   },
+   {
+    "type": "html",
+    "title": "設備・条件",
+    "data": "リフォーム済み、ペット可（規約制限あり）、南東向き、角部屋、オートロック、駅徒歩10分以内、2沿線以上利用可"
+   }
+  ]
+ },
+ "specificSection": {
+  "propertyFeatureImage": [
+   {
+    "src": "/_assets/images/templates/bus/icon_fctn06_reformed.png",
+    "alt": "リフォーム済",
+    "text": "リフォーム済"
+   },
+   {
+    "src": "/_assets/images/templates/bus/icon_fctn10_pet_ok.png",
+    "alt": "ペット可",
+    "text": "ペット可"
+   },
+   {
+    "src": "/_assets/images/templates/bus/icon_fctn14_facing_south.png",
+    "alt": "南東向き",
+    "text": "南東向き"
+   },
+   {
+    "src": "/_assets/images/templates/bus/icon_fctn17_corner_room.png",
+    "alt": "角部屋",
+    "text": "角部屋"
+   },
+   {
+    "src": "/_assets/images/templates/bus/icon_fctn50_auto_lock.png",
+    "alt": "オートロック",
+    "text": "オートロック"
+   },
+   {
+    "src": "/_assets/images/templates/bus/icon_fctn56_10minutes_on_foot.png",
+    "alt": "駅徒歩<br>10分以内",
+    "text": "駅徒歩<br>10分以内"
+   },
+   {
+    "src": "/_assets/images/templates/bus/icon_fctn57_wayside.png",
+    "alt": "2沿線以上<br>利用可能",
+    "text": "2沿線以上<br>利用可能"
+   }
+  ]
+ },
+ "detailImages": {
+  "propertyName": "ダイナシティ三田",
+  "inquiryUrl": "/kounyu/inquiry/C13262R30/",
+  "pc": {
+   "mainImage": {
+    "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fphoto%2FC13262R30.jpg%3F20260222114311&w=768&h=576",
+    "alt": "ダイナシティ三田"
+   },
+   "subImage": {
+    "id": "bus_common_click_floor-plan-image",
+    "image": {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Flayout%2FC13262R30.gif%3F20260220145808&w=768&h=576",
+     "alt": "ダイナシティ三田"
+    },
+    "isAddToModalTab": true
+   },
+   "thumbnailImages": [
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc6%2FC13262R30.jpg%3F20260531154702&w=768&h=576",
+     "alt": "ダイナシティ三田（LDK 家具等は販売対象に含まれません。）"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc5%2FC13262R30.jpg%3F20260531154702&w=768&h=576",
+     "alt": "ダイナシティ三田（LDK 家具等は販売対象に含まれません。）"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc4%2FC13262R30.jpg%3F20260531154702&w=768&h=576",
+     "alt": "ダイナシティ三田（LDK 家具等は販売対象に含まれません。）"
+    }
+   ]
+  },
+  "sp": {
+   "images": [
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fphoto%2FC13262R30.jpg%3F20260222114311&w=768&h=576",
+     "alt": "ダイナシティ三田"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Flayout%2FC13262R30.gif%3F20260220145808&w=768&h=576",
+     "alt": "ダイナシティ三田"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc6%2FC13262R30.jpg%3F20260531154702&w=768&h=576",
+     "alt": "ダイナシティ三田（LDK 家具等は販売対象に含まれません。）"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc5%2FC13262R30.jpg%3F20260531154702&w=768&h=576",
+     "alt": "ダイナシティ三田（LDK 家具等は販売対象に含まれません。）"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc4%2FC13262R30.jpg%3F20260531154702&w=768&h=576",
+     "alt": "ダイナシティ三田（LDK 家具等は販売対象に含まれません。）"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc3%2FC13262R30.jpg%3F20260531154702&w=768&h=576",
+     "alt": "ダイナシティ三田（LDK 家具等は販売対象に含まれません。）"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc2%2FC13262R30.jpg%3F20260531154702&w=768&h=576",
+     "alt": "ダイナシティ三田（LDK 家具等は販売対象に含まれません。）"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc7%2FC13262R30.jpg%3F20260531154702&w=768&h=576",
+     "alt": "ダイナシティ三田（洋室4帖 家具等は販売対象に含まれません。）"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc8%2FC13262R30.jpg%3F20260531154702&w=768&h=576",
+     "alt": "ダイナシティ三田（洋室4帖 家具等は販売対象に含まれません。）"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc9%2FC13262R30.jpg%3F20260531154702&w=768&h=576",
+     "alt": "ダイナシティ三田（洋室4帖 家具等は販売対象に含まれません。）"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc10%2FC13262R30.jpg%3F20260531154702&w=768&h=576",
+     "alt": "ダイナシティ三田（クローゼット 家具等は販売対象に含まれません。）"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc11%2FC13262R30.jpg%3F20260531154702&w=768&h=576",
+     "alt": "ダイナシティ三田（洋室4.1帖 家具等は販売対象に含まれません。）"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc12%2FC13262R30.jpg%3F20260531154702&w=768&h=576",
+     "alt": "ダイナシティ三田（洋室4.1帖 家具等は販売対象に含まれません。）"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc13%2FC13262R30.jpg%3F20260531154702&w=768&h=576",
+     "alt": "ダイナシティ三田（キッチン 家具等は販売対象に含まれません。）"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc14%2FC13262R30.jpg%3F20260531154702&w=768&h=576",
+     "alt": "ダイナシティ三田（シンク 家具等は販売対象に含まれません。）"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc15%2FC13262R30.jpg%3F20260531154702&w=768&h=576",
+     "alt": "ダイナシティ三田（3口ガスコンロ 家具等は販売対象に含まれません。）"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc16%2FC13262R30.jpg%3F20260531154702&w=768&h=576",
+     "alt": "ダイナシティ三田（カップボード 家具等は販売対象に含まれません。）"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc17%2FC13262R30.jpg%3F20260531154702&w=768&h=576",
+     "alt": "ダイナシティ三田（洗面室 家具等は販売対象に含まれません。）"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc18%2FC13262R30.jpg%3F20260531154702&w=768&h=576",
+     "alt": "ダイナシティ三田（浴室 家具等は販売対象に含まれません。）"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc19%2FC13262R30.jpg%3F20260531154702&w=768&h=576",
+     "alt": "ダイナシティ三田（トイレ 家具等は販売対象に含まれません。）"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc20%2FC13262R30.jpg%3F20260531154702&w=768&h=576",
+     "alt": "ダイナシティ三田（玄関）"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc21%2FC13262R30.jpg%3F20260531154702&w=768&h=576",
+     "alt": "ダイナシティ三田"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc22%2FC13262R30.jpg%3F20260531154702&w=768&h=576",
+     "alt": "ダイナシティ三田"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc23%2FC13262R30.jpg%3F20260531154702&w=768&h=576",
+     "alt": "ダイナシティ三田"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc24%2FC13262R30.jpg%3F20260531154702&w=768&h=576",
+     "alt": "ダイナシティ三田"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc25%2FC13262R30.jpg%3F20260531154702&w=768&h=576",
+     "alt": "ダイナシティ三田"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc26%2FC13262R30.jpg%3F20260531154702&w=768&h=576",
+     "alt": "ダイナシティ三田"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc27%2FC13262R30.jpg%3F20260531154702&w=768&h=576",
+     "alt": "ダイナシティ三田"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc28%2FC13262R30.jpg%3F20260531154702&w=768&h=576",
+     "alt": "ダイナシティ三田"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc29%2FC13262R30.jpg%3F20260531154702&w=768&h=576",
+     "alt": "ダイナシティ三田"
+    }
+   ],
+   "subImageButton": "layout"
+  },
+  "modal": {
+   "allImages": [
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fphoto%2FC13262R30.jpg%3F20260222114311&w=768&h=576",
+     "alt": "ダイナシティ三田",
+     "description": ""
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Flayout%2FC13262R30.gif%3F20260220145808&w=768&h=576",
+     "alt": "ダイナシティ三田",
+     "description": ""
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc6%2FC13262R30.jpg%3F20260531154702&w=768&h=576",
+     "alt": "ダイナシティ三田（LDK 家具等は販売対象に含まれません。）",
+     "description": "LDK 家具等は販売対象に含まれません。"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc5%2FC13262R30.jpg%3F20260531154702&w=768&h=576",
+     "alt": "ダイナシティ三田（LDK 家具等は販売対象に含まれません。）",
+     "description": "LDK 家具等は販売対象に含まれません。"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc4%2FC13262R30.jpg%3F20260531154702&w=768&h=576",
+     "alt": "ダイナシティ三田（LDK 家具等は販売対象に含まれません。）",
+     "description": "LDK 家具等は販売対象に含まれません。"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc3%2FC13262R30.jpg%3F20260531154702&w=768&h=576",
+     "alt": "ダイナシティ三田（LDK 家具等は販売対象に含まれません。）",
+     "description": "LDK 家具等は販売対象に含まれません。"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc2%2FC13262R30.jpg%3F20260531154702&w=768&h=576",
+     "alt": "ダイナシティ三田（LDK 家具等は販売対象に含まれません。）",
+     "description": "LDK 家具等は販売対象に含まれません。"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc7%2FC13262R30.jpg%3F20260531154702&w=768&h=576",
+     "alt": "ダイナシティ三田（洋室4帖 家具等は販売対象に含まれません。）",
+     "description": "洋室4帖 家具等は販売対象に含まれません。"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc8%2FC13262R30.jpg%3F20260531154702&w=768&h=576",
+     "alt": "ダイナシティ三田（洋室4帖 家具等は販売対象に含まれません。）",
+     "description": "洋室4帖 家具等は販売対象に含まれません。"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc9%2FC13262R30.jpg%3F20260531154702&w=768&h=576",
+     "alt": "ダイナシティ三田（洋室4帖 家具等は販売対象に含まれません。）",
+     "description": "洋室4帖 家具等は販売対象に含まれません。"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc10%2FC13262R30.jpg%3F20260531154702&w=768&h=576",
+     "alt": "ダイナシティ三田（クローゼット 家具等は販売対象に含まれません。）",
+     "description": "クローゼット 家具等は販売対象に含まれません。"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc11%2FC13262R30.jpg%3F20260531154702&w=768&h=576",
+     "alt": "ダイナシティ三田（洋室4.1帖 家具等は販売対象に含まれません。）",
+     "description": "洋室4.1帖 家具等は販売対象に含まれません。"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc12%2FC13262R30.jpg%3F20260531154702&w=768&h=576",
+     "alt": "ダイナシティ三田（洋室4.1帖 家具等は販売対象に含まれません。）",
+     "description": "洋室4.1帖 家具等は販売対象に含まれません。"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc13%2FC13262R30.jpg%3F20260531154702&w=768&h=576",
+     "alt": "ダイナシティ三田（キッチン 家具等は販売対象に含まれません。）",
+     "description": "キッチン 家具等は販売対象に含まれません。"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc14%2FC13262R30.jpg%3F20260531154702&w=768&h=576",
+     "alt": "ダイナシティ三田（シンク 家具等は販売対象に含まれません。）",
+     "description": "シンク 家具等は販売対象に含まれません。"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc15%2FC13262R30.jpg%3F20260531154702&w=768&h=576",
+     "alt": "ダイナシティ三田（3口ガスコンロ 家具等は販売対象に含まれません。）",
+     "description": "3口ガスコンロ 家具等は販売対象に含まれません。"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc16%2FC13262R30.jpg%3F20260531154702&w=768&h=576",
+     "alt": "ダイナシティ三田（カップボード 家具等は販売対象に含まれません。）",
+     "description": "カップボード 家具等は販売対象に含まれません。"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc17%2FC13262R30.jpg%3F20260531154702&w=768&h=576",
+     "alt": "ダイナシティ三田（洗面室 家具等は販売対象に含まれません。）",
+     "description": "洗面室 家具等は販売対象に含まれません。"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc18%2FC13262R30.jpg%3F20260531154702&w=768&h=576",
+     "alt": "ダイナシティ三田（浴室 家具等は販売対象に含まれません。）",
+     "description": "浴室 家具等は販売対象に含まれません。"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc19%2FC13262R30.jpg%3F20260531154702&w=768&h=576",
+     "alt": "ダイナシティ三田（トイレ 家具等は販売対象に含まれません。）",
+     "description": "トイレ 家具等は販売対象に含まれません。"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc20%2FC13262R30.jpg%3F20260531154702&w=768&h=576",
+     "alt": "ダイナシティ三田（玄関）",
+     "description": "玄関"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc21%2FC13262R30.jpg%3F20260531154702&w=768&h=576",
+     "alt": "ダイナシティ三田",
+     "description": ""
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc22%2FC13262R30.jpg%3F20260531154702&w=768&h=576",
+     "alt": "ダイナシティ三田",
+     "description": ""
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc23%2FC13262R30.jpg%3F20260531154702&w=768&h=576",
+     "alt": "ダイナシティ三田",
+     "description": ""
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc24%2FC13262R30.jpg%3F20260531154702&w=768&h=576",
+     "alt": "ダイナシティ三田",
+     "description": ""
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc25%2FC13262R30.jpg%3F20260531154702&w=768&h=576",
+     "alt": "ダイナシティ三田",
+     "description": ""
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc26%2FC13262R30.jpg%3F20260531154702&w=768&h=576",
+     "alt": "ダイナシティ三田",
+     "description": ""
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc27%2FC13262R30.jpg%3F20260531154702&w=768&h=576",
+     "alt": "ダイナシティ三田",
+     "description": ""
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc28%2FC13262R30.jpg%3F20260531154702&w=768&h=576",
+     "alt": "ダイナシティ三田",
+     "description": ""
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc29%2FC13262R30.jpg%3F20260531154702&w=768&h=576",
+     "alt": "ダイナシティ三田",
+     "description": ""
+    }
+   ],
+   "subImage": {
+    "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Flayout%2FC13262R30.gif%3F20260220145808&w=768&h=576",
+    "alt": "ダイナシティ三田",
+    "tabText": "間取り"
+   }
+  }
+ }
+}

@@ -1,0 +1,3881 @@
+{
+ "searchedResultCounts": "545",
+ "propertyList": [
+  {
+   "propertyCd": "M13266050",
+   "propertyClassCd": "1",
+   "propertyName": "三田ガーデンヒルズ　サウスヒル",
+   "priceModel": {
+    "mstCd": 2,
+    "price": 745000000,
+    "consumptionTaxFlg": false
+   },
+   "address": "東京都港区三田１丁目",
+   "access": [
+    "東京メトロ南北線「麻布十番」駅 徒歩7分"
+   ],
+   "propertyDetail": [
+    "2LDKタイプ",
+    "85.28㎡",
+    "1002戸"
+   ],
+   "detailUrl": "https://www.livable.co.jp/grantact/detail/C48266B42",
+   "inquiryInfo": {
+    "inquiryUrl": "/kounyu/inquiry/building/M13266050/",
+    "inquiryTypeFlg": true,
+    "inquiryLinkText": "公式サイト"
+   },
+   "labelList": [
+    {
+     "cd": "028",
+     "iconName": "物件種別",
+     "detailClass": "a-tag--type",
+     "detailText": "中古マンション",
+     "listClass": "a-tag--type",
+     "listText": "中古マンション"
+    },
+    {
+     "cd": "005",
+     "iconName": "新価格",
+     "detailClass": "a-tag--new-price",
+     "detailText": "新価格 9/17",
+     "listClass": "a-tag--new-price",
+     "listText": "新価格 9/17"
+    }
+   ],
+   "otherConditionLabels": [],
+   "thumbnailImage": [
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fphoto%2FC48266B42.jpg%3F20260626162230&w=718&h=538",
+     "alt": "三田ガーデンヒルズ　サウスヒル(外観)",
+     "href": "https://www.livable.co.jp/grantact/detail/C48266B42"
+    }
+   ],
+   "prIconFlg": false,
+   "favoriteFlg": false,
+   "favoriteType": "buy",
+   "applyingServiceList": [],
+   "commuteInfoList": [],
+   "openHouses": [],
+   "matchingTargetFlg": false,
+   "isForeignPage": true,
+   "hasOfficialSite": true
+  },
+  {
+   "propertyCd": "M13261071",
+   "propertyClassCd": "1",
+   "propertyName": "シティタワー麻布十番",
+   "priceModel": {
+    "mstCd": 2,
+    "price": 359900000,
+    "consumptionTaxFlg": false
+   },
+   "address": "東京都港区三田１丁目",
+   "access": [
+    "東京メトロ南北線「麻布十番」駅 徒歩5分"
+   ],
+   "propertyDetail": [
+    "2LDKタイプ",
+    "64.91㎡",
+    "501戸"
+   ],
+   "detailUrl": "https://www.livable.co.jp/grantact/detail/C4825Z665",
+   "inquiryInfo": {
+    "inquiryUrl": "/kounyu/inquiry/building/M13261071/",
+    "inquiryTypeFlg": true,
+    "inquiryLinkText": "公式サイト"
+   },
+   "labelList": [
+    {
+     "cd": "028",
+     "iconName": "物件種別",
+     "detailClass": "a-tag--type",
+     "detailText": "中古マンション",
+     "listClass": "a-tag--type",
+     "listText": "中古マンション"
+    }
+   ],
+   "otherConditionLabels": [],
+   "thumbnailImage": [
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fphoto%2FC4825Z665.jpg%3F20260125120343&w=718&h=538",
+     "alt": "シティタワー麻布十番(外観)",
+     "href": "https://www.livable.co.jp/grantact/detail/C4825Z665"
+    }
+   ],
+   "prIconFlg": false,
+   "favoriteFlg": false,
+   "favoriteType": "buy",
+   "applyingServiceList": [],
+   "commuteInfoList": [],
+   "openHouses": [],
+   "matchingTargetFlg": false,
+   "isForeignPage": true,
+   "hasOfficialSite": true
+  },
+  {
+   "propertyCd": "M13261052",
+   "propertyClassCd": "1",
+   "propertyName": "アトラス麻布十番",
+   "priceModel": {
+    "mstCd": 2,
+    "price": 229000000,
+    "consumptionTaxFlg": false
+   },
+   "address": "東京都港区三田１丁目",
+   "access": [
+    "東京メトロ南北線「麻布十番」駅 徒歩4分"
+   ],
+   "propertyDetail": [
+    "2LDKタイプ",
+    "63.95㎡",
+    "44戸"
+   ],
+   "detailUrl": "https://www.livable.co.jp/grantact/detail/C1325YR59",
+   "inquiryInfo": {
+    "inquiryUrl": "/kounyu/inquiry/building/M13261052/",
+    "inquiryTypeFlg": true,
+    "inquiryLinkText": "公式サイト"
+   },
+   "labelList": [
+    {
+     "cd": "028",
+     "iconName": "物件種別",
+     "detailClass": "a-tag--type",
+     "detailText": "中古マンション",
+     "listClass": "a-tag--type",
+     "listText": "中古マンション"
+    },
+    {
+     "cd": "005",
+     "iconName": "新価格",
+     "detailClass": "a-tag--new-price",
+     "detailText": "新価格 10/4",
+     "listClass": "a-tag--new-price",
+     "listText": "新価格 10/4"
+    }
+   ],
+   "otherConditionLabels": [
+    {
+     "cd": "002",
+     "iconName": "おすすめ",
+     "detailClass": "a-tag--condition",
+     "detailText": "おすすめ",
+     "listClass": "a-tag--condition",
+     "listText": "おすすめ"
+    }
+   ],
+   "thumbnailImage": [
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fphoto%2FC1325YR59.jpg%3F20260129124842&w=718&h=538",
+     "alt": "アトラス麻布十番(外観)",
+     "href": "https://www.livable.co.jp/grantact/detail/C1325YR59"
+    }
+   ],
+   "prIconFlg": false,
+   "favoriteFlg": false,
+   "favoriteType": "buy",
+   "applyingServiceList": [],
+   "commuteInfoList": [],
+   "openHouses": [],
+   "matchingTargetFlg": false,
+   "isForeignPage": true,
+   "hasOfficialSite": true
+  },
+  {
+   "propertyCd": "M1326A030",
+   "propertyClassCd": "1",
+   "propertyName": "三田ガーデンヒルズ　ノースヒル",
+   "priceModel": {
+    "mstCd": 2,
+    "price": 700000000,
+    "consumptionTaxFlg": false
+   },
+   "address": "東京都港区三田１丁目",
+   "access": [
+    "東京メトロ南北線「麻布十番」駅 徒歩7分"
+   ],
+   "propertyDetail": [
+    "3LDKタイプ",
+    "100.01㎡",
+    "1002戸"
+   ],
+   "detailUrl": "https://www.livable.co.jp/grantact/detail/C13268934",
+   "inquiryInfo": {
+    "inquiryUrl": "/kounyu/inquiry/building/M1326A030/",
+    "inquiryTypeFlg": true,
+    "inquiryLinkText": "公式サイト"
+   },
+   "labelList": [
+    {
+     "cd": "028",
+     "iconName": "物件種別",
+     "detailClass": "a-tag--type",
+     "detailText": "中古マンション",
+     "listClass": "a-tag--type",
+     "listText": "中古マンション"
+    }
+   ],
+   "otherConditionLabels": [],
+   "thumbnailImage": [
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fphoto%2FC13268934.jpg%3F20260810113305&w=718&h=538",
+     "alt": "三田ガーデンヒルズ　ノースヒル(外観)",
+     "href": "https://www.livable.co.jp/grantact/detail/C13268934"
+    }
+   ],
+   "prIconFlg": false,
+   "favoriteFlg": false,
+   "favoriteType": "buy",
+   "applyingServiceList": [],
+   "commuteInfoList": [],
+   "openHouses": [],
+   "matchingTargetFlg": false,
+   "isForeignPage": true,
+   "hasOfficialSite": true
+  },
+  {
+   "propertyCd": "M1326A026",
+   "propertyClassCd": "1",
+   "propertyName": "三田ガーデンヒルズ　ウエストヒル",
+   "priceModel": {
+    "mstCd": 2,
+    "price": 340000000,
+    "consumptionTaxFlg": false
+   },
+   "address": "東京都港区三田１丁目",
+   "access": [
+    "東京メトロ南北線「麻布十番」駅 徒歩7分"
+   ],
+   "propertyDetail": [
+    "1LDKタイプ",
+    "60.67㎡",
+    "1002戸"
+   ],
+   "detailUrl": "https://www.livable.co.jp/grantact/detail/C13268927",
+   "inquiryInfo": {
+    "inquiryUrl": "/kounyu/inquiry/building/M1326A026/",
+    "inquiryTypeFlg": true,
+    "inquiryLinkText": "公式サイト"
+   },
+   "labelList": [
+    {
+     "cd": "028",
+     "iconName": "物件種別",
+     "detailClass": "a-tag--type",
+     "detailText": "中古マンション",
+     "listClass": "a-tag--type",
+     "listText": "中古マンション"
+    }
+   ],
+   "otherConditionLabels": [],
+   "thumbnailImage": [
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fphoto%2FC13268927.jpg%3F20260810113904&w=718&h=538",
+     "alt": "三田ガーデンヒルズ　ウエストヒル(外観)",
+     "href": "https://www.livable.co.jp/grantact/detail/C13268927"
+    }
+   ],
+   "prIconFlg": false,
+   "favoriteFlg": false,
+   "favoriteType": "buy",
+   "applyingServiceList": [],
+   "commuteInfoList": [],
+   "openHouses": [],
+   "matchingTargetFlg": false,
+   "isForeignPage": true,
+   "hasOfficialSite": true
+  },
+  {
+   "propertyCd": "M1326A028",
+   "propertyClassCd": "1",
+   "propertyName": "三田ガーデンヒルズ　ウエストヒル",
+   "priceModel": {
+    "mstCd": 2,
+    "price": 435000000,
+    "consumptionTaxFlg": false
+   },
+   "address": "東京都港区三田１丁目",
+   "access": [
+    "東京メトロ南北線「麻布十番」駅 徒歩7分"
+   ],
+   "propertyDetail": [
+    "2LDKタイプ",
+    "83.98㎡",
+    "1002戸"
+   ],
+   "detailUrl": "https://www.livable.co.jp/grantact/detail/C13267V70",
+   "inquiryInfo": {
+    "inquiryUrl": "/kounyu/inquiry/building/M1326A028/",
+    "inquiryTypeFlg": true,
+    "inquiryLinkText": "公式サイト"
+   },
+   "labelList": [
+    {
+     "cd": "028",
+     "iconName": "物件種別",
+     "detailClass": "a-tag--type",
+     "detailText": "中古マンション",
+     "listClass": "a-tag--type",
+     "listText": "中古マンション"
+    },
+    {
+     "cd": "005",
+     "iconName": "新価格",
+     "detailClass": "a-tag--new-price",
+     "detailText": "新価格 9/17",
+     "listClass": "a-tag--new-price",
+     "listText": "新価格 9/17"
+    }
+   ],
+   "otherConditionLabels": [],
+   "thumbnailImage": [
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fphoto%2FC13267V70.jpg%3F20260726121654&w=718&h=538",
+     "alt": "三田ガーデンヒルズ　ウエストヒル(外観)",
+     "href": "https://www.livable.co.jp/grantact/detail/C13267V70"
+    }
+   ],
+   "prIconFlg": false,
+   "favoriteFlg": false,
+   "favoriteType": "buy",
+   "applyingServiceList": [],
+   "commuteInfoList": [],
+   "openHouses": [],
+   "matchingTargetFlg": false,
+   "isForeignPage": true,
+   "hasOfficialSite": true
+  },
+  {
+   "propertyCd": "M1326A029",
+   "propertyClassCd": "1",
+   "propertyName": "三田ガーデンヒルズ　ノースヒル",
+   "priceModel": {
+    "mstCd": 2,
+    "price": 580000000,
+    "consumptionTaxFlg": false
+   },
+   "address": "東京都港区三田１丁目",
+   "access": [
+    "東京メトロ南北線「麻布十番」駅 徒歩5分"
+   ],
+   "propertyDetail": [
+    "2LDKタイプ",
+    "70.94㎡",
+    "1002戸"
+   ],
+   "detailUrl": "https://www.livable.co.jp/grantact/detail/C13267Q67",
+   "inquiryInfo": {
+    "inquiryUrl": "/kounyu/inquiry/building/M1326A029/",
+    "inquiryTypeFlg": true,
+    "inquiryLinkText": "公式サイト"
+   },
+   "labelList": [
+    {
+     "cd": "028",
+     "iconName": "物件種別",
+     "detailClass": "a-tag--type",
+     "detailText": "中古マンション",
+     "listClass": "a-tag--type",
+     "listText": "中古マンション"
+    }
+   ],
+   "otherConditionLabels": [],
+   "thumbnailImage": [
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fphoto%2FC13267Q67.jpg%3F20260717123530&w=718&h=538",
+     "alt": "三田ガーデンヒルズ　ノースヒル(外観)",
+     "href": "https://www.livable.co.jp/grantact/detail/C13267Q67"
+    }
+   ],
+   "prIconFlg": false,
+   "favoriteFlg": false,
+   "favoriteType": "buy",
+   "applyingServiceList": [],
+   "commuteInfoList": [],
+   "openHouses": [],
+   "matchingTargetFlg": false,
+   "isForeignPage": true,
+   "hasOfficialSite": true
+  },
+  {
+   "propertyCd": "M13262008",
+   "propertyClassCd": "1",
+   "propertyName": "三田ガーデンヒルズ　ノースヒル",
+   "priceModel": {
+    "mstCd": 2,
+    "price": 125000000,
+    "consumptionTaxFlg": false
+   },
+   "address": "東京都港区三田１丁目",
+   "access": [
+    "東京メトロ南北線「麻布十番」駅 徒歩5分"
+   ],
+   "propertyDetail": [
+    "1Rタイプ",
+    "29.34㎡",
+    "1002戸"
+   ],
+   "detailUrl": "https://www.livable.co.jp/grantact/detail/C13262911",
+   "inquiryInfo": {
+    "inquiryUrl": "/kounyu/inquiry/building/M13262008/",
+    "inquiryTypeFlg": true,
+    "inquiryLinkText": "公式サイト"
+   },
+   "labelList": [
+    {
+     "cd": "028",
+     "iconName": "物件種別",
+     "detailClass": "a-tag--type",
+     "detailText": "中古マンション",
+     "listClass": "a-tag--type",
+     "listText": "中古マンション"
+    }
+   ],
+   "otherConditionLabels": [],
+   "thumbnailImage": [
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fphoto%2FC13262911.jpg%3F20260212101640&w=718&h=538",
+     "alt": "三田ガーデンヒルズ　ノースヒル(外観)",
+     "href": "https://www.livable.co.jp/grantact/detail/C13262911"
+    }
+   ],
+   "prIconFlg": false,
+   "favoriteFlg": false,
+   "favoriteType": "buy",
+   "applyingServiceList": [],
+   "commuteInfoList": [],
+   "openHouses": [],
+   "matchingTargetFlg": false,
+   "isForeignPage": true,
+   "hasOfficialSite": true
+  },
+  {
+   "propertyCd": "M13268042",
+   "propertyClassCd": "1",
+   "propertyName": "シティタワー麻布十番",
+   "priceModel": {
+    "mstCd": 2,
+    "price": 210000000,
+    "consumptionTaxFlg": false
+   },
+   "address": "東京都港区三田１丁目",
+   "access": [
+    "都営大江戸線「赤羽橋」駅 徒歩4分"
+   ],
+   "propertyDetail": [
+    "1LDKタイプ",
+    "46.66㎡",
+    "501戸"
+   ],
+   "detailUrl": "https://www.livable.co.jp/grantact/detail/C13268306",
+   "inquiryInfo": {
+    "inquiryUrl": "/kounyu/inquiry/building/M13268042/",
+    "inquiryTypeFlg": true,
+    "inquiryLinkText": "公式サイト"
+   },
+   "labelList": [
+    {
+     "cd": "028",
+     "iconName": "物件種別",
+     "detailClass": "a-tag--type",
+     "detailText": "中古マンション",
+     "listClass": "a-tag--type",
+     "listText": "中古マンション"
+    }
+   ],
+   "otherConditionLabels": [],
+   "thumbnailImage": [
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fphoto%2FC13268306.jpg%3F20260809115611&w=718&h=538",
+     "alt": "シティタワー麻布十番(外観)",
+     "href": "https://www.livable.co.jp/grantact/detail/C13268306"
+    }
+   ],
+   "prIconFlg": false,
+   "favoriteFlg": false,
+   "favoriteType": "buy",
+   "applyingServiceList": [],
+   "commuteInfoList": [],
+   "openHouses": [],
+   "matchingTargetFlg": false,
+   "isForeignPage": true,
+   "hasOfficialSite": true
+  },
+  {
+   "propertyCd": "M13264031",
+   "propertyClassCd": "1",
+   "propertyName": "三田ガーデンヒルズ　ウエストヒル",
+   "priceModel": {
+    "mstCd": 2,
+    "price": 448000000,
+    "consumptionTaxFlg": false
+   },
+   "address": "東京都港区三田１丁目",
+   "access": [
+    "東京メトロ南北線「麻布十番」駅 徒歩5分"
+   ],
+   "propertyDetail": [
+    "3LDKタイプ",
+    "86.77㎡",
+    "1002戸"
+   ],
+   "detailUrl": "https://www.livable.co.jp/grantact/detail/C13264105",
+   "inquiryInfo": {
+    "inquiryUrl": "/kounyu/inquiry/building/M13264031/",
+    "inquiryTypeFlg": true,
+    "inquiryLinkText": "公式サイト"
+   },
+   "labelList": [
+    {
+     "cd": "028",
+     "iconName": "物件種別",
+     "detailClass": "a-tag--type",
+     "detailText": "中古マンション",
+     "listClass": "a-tag--type",
+     "listText": "中古マンション"
+    },
+    {
+     "cd": "005",
+     "iconName": "新価格",
+     "detailClass": "a-tag--new-price",
+     "detailText": "新価格 10/8",
+     "listClass": "a-tag--new-price",
+     "listText": "新価格 10/8"
+    }
+   ],
+   "otherConditionLabels": [],
+   "thumbnailImage": [
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fphoto%2FC13264105.jpg%3F20260404095827&w=718&h=538",
+     "alt": "三田ガーデンヒルズ　ウエストヒル(外観)",
+     "href": "https://www.livable.co.jp/grantact/detail/C13264105"
+    }
+   ],
+   "prIconFlg": false,
+   "favoriteFlg": false,
+   "favoriteType": "buy",
+   "applyingServiceList": [],
+   "commuteInfoList": [],
+   "openHouses": [],
+   "matchingTargetFlg": false,
+   "isForeignPage": true,
+   "hasOfficialSite": true
+  },
+  {
+   "propertyCd": "C13266P58",
+   "propertyClassCd": "1",
+   "propertyName": "サンウッド三田パークサイドタワー",
+   "priceModel": {
+    "mstCd": 1,
+    "price": 269000000,
+    "consumptionTaxFlg": true
+   },
+   "address": "東京都港区三田１丁目",
+   "access": [
+    "都営大江戸線「赤羽橋」駅 徒歩1分",
+    "都営三田線「芝公園」駅 徒歩6分",
+    "都営大江戸線「麻布十番」駅 徒歩8分"
+   ],
+   "propertyDetail": [
+    "2LDK",
+    "60.46m<sup>2</sup>",
+    "2005年11月築",
+    "12階／地上25階 地下1階",
+    "南向き"
+   ],
+   "detailUrl": "/mansion/C13266P58/",
+   "inquiryInfo": {
+    "inquiryUrl": "/kounyu/inquiry/C13266P58/",
+    "inquiryTypeFlg": true,
+    "inquiryLinkText": "詳細"
+   },
+   "labelList": [
+    {
+     "cd": "028",
+     "iconName": "物件種別",
+     "detailClass": "a-tag--type",
+     "detailText": "中古マンション",
+     "listClass": "a-tag--type",
+     "listText": "中古マンション"
+    }
+   ],
+   "otherConditionLabels": [],
+   "thumbnailImage": [
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc7%2FC13266P58.jpg%3F20260709111413&w=718&h=538",
+     "alt": "サンウッド三田パークサイドタワー",
+     "href": "/mansion/C13266P58/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Flayout%2FC13266P58.gif%3F20260710113445&w=718&h=538",
+     "alt": "サンウッド三田パークサイドタワー(間取り)",
+     "href": "/mansion/C13266P58/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc1%2FC13266P58.jpg%3F20260709095818&w=718&h=538",
+     "alt": "サンウッド三田パークサイドタワー",
+     "href": "/mansion/C13266P58/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc3%2FC13266P58.jpg%3F20260709095818&w=718&h=538",
+     "alt": "サンウッド三田パークサイドタワー",
+     "href": "/mansion/C13266P58/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc4%2FC13266P58.jpg%3F20260709095818&w=718&h=538",
+     "alt": "サンウッド三田パークサイドタワー",
+     "href": "/mansion/C13266P58/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc5%2FC13266P58.jpg%3F20260709095818&w=718&h=538",
+     "alt": "サンウッド三田パークサイドタワー",
+     "href": "/mansion/C13266P58/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc6%2FC13266P58.jpg%3F20260709111413&w=718&h=538",
+     "alt": "サンウッド三田パークサイドタワー",
+     "href": "/mansion/C13266P58/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fphoto%2FC13266P58.jpg%3F20260709111413&w=718&h=538",
+     "alt": "サンウッド三田パークサイドタワー(外観)",
+     "href": "/mansion/C13266P58/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc8%2FC13266P58.jpg%3F20260709111413&w=718&h=538",
+     "alt": "サンウッド三田パークサイドタワー",
+     "href": "/mansion/C13266P58/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc2%2FC13266P58.jpg%3F20260709111413&w=718&h=538",
+     "alt": "サンウッド三田パークサイドタワー",
+     "href": "/mansion/C13266P58/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc9%2FC13266P58.jpg%3F20260709111413&w=718&h=538",
+     "alt": "サンウッド三田パークサイドタワー",
+     "href": "/mansion/C13266P58/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc10%2FC13266P58.jpg%3F20260709111413&w=718&h=538",
+     "alt": "サンウッド三田パークサイドタワー",
+     "href": "/mansion/C13266P58/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc11%2FC13266P58.jpg%3F20260709111413&w=718&h=538",
+     "alt": "サンウッド三田パークサイドタワー",
+     "href": "/mansion/C13266P58/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc12%2FC13266P58.jpg%3F20260709111413&w=718&h=538",
+     "alt": "サンウッド三田パークサイドタワー",
+     "href": "/mansion/C13266P58/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc13%2FC13266P58.jpg%3F20260709111413&w=718&h=538",
+     "alt": "サンウッド三田パークサイドタワー",
+     "href": "/mansion/C13266P58/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc14%2FC13266P58.jpg%3F20260709111413&w=718&h=538",
+     "alt": "サンウッド三田パークサイドタワー",
+     "href": "/mansion/C13266P58/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc15%2FC13266P58.jpg%3F20260709111413&w=718&h=538",
+     "alt": "サンウッド三田パークサイドタワー",
+     "href": "/mansion/C13266P58/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc16%2FC13266P58.jpg%3F20260709111413&w=718&h=538",
+     "alt": "サンウッド三田パークサイドタワー",
+     "href": "/mansion/C13266P58/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc17%2FC13266P58.jpg%3F20260709111413&w=718&h=538",
+     "alt": "サンウッド三田パークサイドタワー",
+     "href": "/mansion/C13266P58/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc18%2FC13266P58.jpg%3F20260709111413&w=718&h=538",
+     "alt": "サンウッド三田パークサイドタワー",
+     "href": "/mansion/C13266P58/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc19%2FC13266P58.jpg%3F20260709111413&w=718&h=538",
+     "alt": "サンウッド三田パークサイドタワー",
+     "href": "/mansion/C13266P58/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc20%2FC13266P58.jpg%3F20260709111413&w=718&h=538",
+     "alt": "サンウッド三田パークサイドタワー",
+     "href": "/mansion/C13266P58/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc21%2FC13266P58.jpg%3F20260709111413&w=718&h=538",
+     "alt": "サンウッド三田パークサイドタワー",
+     "href": "/mansion/C13266P58/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc22%2FC13266P58.jpg%3F20260709111413&w=718&h=538",
+     "alt": "サンウッド三田パークサイドタワー",
+     "href": "/mansion/C13266P58/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc23%2FC13266P58.jpg%3F20260709111413&w=718&h=538",
+     "alt": "サンウッド三田パークサイドタワー",
+     "href": "/mansion/C13266P58/"
+    }
+   ],
+   "layoutImageModal": {
+    "propertyTitle": "サンウッド三田パークサイドタワー",
+    "layoutImage": {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Flayout%2FC13266P58.gif%3F20260710113445&w=718&h=538",
+     "alt": "サンウッド三田パークサイドタワー(間取り)"
+    },
+    "propertyDetailUrl": "/mansion/C13266P58/",
+    "inquiryUrl": "/kounyu/inquiry/C13266P58/"
+   },
+   "prIconFlg": false,
+   "favoriteFlg": false,
+   "favoriteType": "buy",
+   "applyingServiceList": [],
+   "commuteInfoList": [],
+   "openHouses": [],
+   "matchingTargetFlg": true,
+   "isForeignPage": false,
+   "hasOfficialSite": false
+  },
+  {
+   "propertyCd": "C13257K51",
+   "propertyClassCd": "1",
+   "propertyName": "アトラス麻布十番",
+   "priceModel": {
+    "mstCd": 1,
+    "price": 177000000,
+    "consumptionTaxFlg": true
+   },
+   "address": "東京都港区三田１丁目",
+   "access": [
+    "東京メトロ南北線「麻布十番」駅 徒歩4分",
+    "都営大江戸線「赤羽橋」駅 徒歩6分"
+   ],
+   "propertyDetail": [
+    "1LDK",
+    "43.18m<sup>2</sup>",
+    "2025年8月築",
+    "3階／地上12階 地下1階",
+    "西向き"
+   ],
+   "detailUrl": "/mansion/C13257K51/",
+   "inquiryInfo": {
+    "inquiryUrl": "/kounyu/inquiry/C13257K51/",
+    "inquiryTypeFlg": true,
+    "inquiryLinkText": "詳細"
+   },
+   "labelList": [
+    {
+     "cd": "028",
+     "iconName": "物件種別",
+     "detailClass": "a-tag--type",
+     "detailText": "完成後未入居マンション",
+     "listClass": "a-tag--type",
+     "listText": "完成後未入居マンション"
+    },
+    {
+     "cd": "005",
+     "iconName": "新価格",
+     "detailClass": "a-tag--new-price",
+     "detailText": "新価格 10/1",
+     "listClass": "a-tag--new-price",
+     "listText": "新価格 10/1"
+    }
+   ],
+   "otherConditionLabels": [],
+   "thumbnailImage": [
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fphoto%2FC13257K51.jpg%3F20260124141753&w=718&h=538",
+     "alt": "アトラス麻布十番(外観)",
+     "href": "/mansion/C13257K51/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Flayout%2FC13257K51.gif%3F20250720104304&w=718&h=538",
+     "alt": "アトラス麻布十番(間取り)",
+     "href": "/mansion/C13257K51/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc2%2FC13257K51.jpg%3F20250721144819&w=718&h=538",
+     "alt": "アトラス麻布十番",
+     "href": "/mansion/C13257K51/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc3%2FC13257K51.jpg%3F20250721144819&w=718&h=538",
+     "alt": "アトラス麻布十番",
+     "href": "/mansion/C13257K51/"
+    }
+   ],
+   "layoutImageModal": {
+    "propertyTitle": "アトラス麻布十番",
+    "layoutImage": {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Flayout%2FC13257K51.gif%3F20250720104304&w=718&h=538",
+     "alt": "アトラス麻布十番(間取り)"
+    },
+    "propertyDetailUrl": "/mansion/C13257K51/",
+    "inquiryUrl": "/kounyu/inquiry/C13257K51/"
+   },
+   "prIconFlg": false,
+   "favoriteFlg": false,
+   "favoriteType": "buy",
+   "applyingServiceList": [],
+   "commuteInfoList": [],
+   "openHouses": [],
+   "matchingTargetFlg": true,
+   "isForeignPage": false,
+   "hasOfficialSite": false
+  },
+  {
+   "propertyCd": "C48267015",
+   "propertyClassCd": "1",
+   "propertyName": "シティタワー麻布十番",
+   "priceModel": {
+    "mstCd": 1,
+    "price": 988000000,
+    "consumptionTaxFlg": true
+   },
+   "address": "東京都港区三田１丁目",
+   "access": [
+    "東京メトロ南北線「麻布十番」駅 徒歩4分"
+   ],
+   "propertyDetail": [
+    "2LDK",
+    "127.95m<sup>2</sup>",
+    "2009年6月築",
+    "37階・38階／地上38階 地下2階",
+    "北西向き"
+   ],
+   "detailUrl": "/mansion/C48267015/",
+   "inquiryInfo": {
+    "inquiryUrl": "/kounyu/inquiry/C48267015/",
+    "inquiryTypeFlg": true,
+    "inquiryLinkText": "詳細"
+   },
+   "labelList": [
+    {
+     "cd": "028",
+     "iconName": "物件種別",
+     "detailClass": "a-tag--type",
+     "detailText": "中古マンション",
+     "listClass": "a-tag--type",
+     "listText": "中古マンション"
+    }
+   ],
+   "otherConditionLabels": [],
+   "thumbnailImage": [
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fphoto%2FC48267015.jpg%3F20260731164755&w=718&h=538",
+     "alt": "シティタワー麻布十番(外観)",
+     "href": "/mansion/C48267015/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Flayout%2FC48267015.gif%3F20260731164755&w=718&h=538",
+     "alt": "シティタワー麻布十番(間取り)",
+     "href": "/mansion/C48267015/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc2%2FC48267015.jpg%3F20260731164755&w=718&h=538",
+     "alt": "シティタワー麻布十番",
+     "href": "/mansion/C48267015/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc3%2FC48267015.jpg%3F20260731164755&w=718&h=538",
+     "alt": "シティタワー麻布十番",
+     "href": "/mansion/C48267015/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc4%2FC48267015.jpg%3F20260731164755&w=718&h=538",
+     "alt": "シティタワー麻布十番",
+     "href": "/mansion/C48267015/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc5%2FC48267015.jpg%3F20260731164755&w=718&h=538",
+     "alt": "シティタワー麻布十番",
+     "href": "/mansion/C48267015/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc6%2FC48267015.jpg%3F20260731164755&w=718&h=538",
+     "alt": "シティタワー麻布十番",
+     "href": "/mansion/C48267015/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc7%2FC48267015.jpg%3F20260731164755&w=718&h=538",
+     "alt": "シティタワー麻布十番",
+     "href": "/mansion/C48267015/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc8%2FC48267015.jpg%3F20260731164755&w=718&h=538",
+     "alt": "シティタワー麻布十番",
+     "href": "/mansion/C48267015/"
+    }
+   ],
+   "layoutImageModal": {
+    "propertyTitle": "シティタワー麻布十番",
+    "layoutImage": {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Flayout%2FC48267015.gif%3F20260731164755&w=718&h=538",
+     "alt": "シティタワー麻布十番(間取り)"
+    },
+    "propertyDetailUrl": "/mansion/C48267015/",
+    "inquiryUrl": "/kounyu/inquiry/C48267015/"
+   },
+   "prIconFlg": false,
+   "favoriteFlg": false,
+   "favoriteType": "buy",
+   "applyingServiceList": [],
+   "commuteInfoList": [],
+   "openHouses": [],
+   "matchingTargetFlg": true,
+   "isForeignPage": false,
+   "hasOfficialSite": false
+  },
+  {
+   "propertyCd": "M1326A024",
+   "propertyClassCd": "1",
+   "propertyName": "ザ・レジデンス三田",
+   "priceModel": {
+    "mstCd": 2,
+    "price": 288000000,
+    "consumptionTaxFlg": false
+   },
+   "address": "東京都港区三田２丁目",
+   "access": [
+    "都営大江戸線「赤羽橋」駅 徒歩6分"
+   ],
+   "propertyDetail": [
+    "3LDKタイプ",
+    "74.46㎡",
+    "252戸"
+   ],
+   "detailUrl": "https://www.livable.co.jp/grantact/detail/C48265422",
+   "inquiryInfo": {
+    "inquiryUrl": "/kounyu/inquiry/building/M1326A024/",
+    "inquiryTypeFlg": true,
+    "inquiryLinkText": "公式サイト"
+   },
+   "labelList": [
+    {
+     "cd": "028",
+     "iconName": "物件種別",
+     "detailClass": "a-tag--type",
+     "detailText": "中古マンション",
+     "listClass": "a-tag--type",
+     "listText": "中古マンション"
+    }
+   ],
+   "otherConditionLabels": [
+    {
+     "cd": "002",
+     "iconName": "おすすめ",
+     "detailClass": "a-tag--condition",
+     "detailText": "おすすめ",
+     "listClass": "a-tag--condition",
+     "listText": "おすすめ"
+    },
+    {
+     "cd": "040",
+     "iconName": "当社売主",
+     "detailClass": "a-tag--condition",
+     "detailText": "当社売主",
+     "listClass": "a-tag--condition",
+     "listText": "当社売主"
+    }
+   ],
+   "thumbnailImage": [
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fphoto%2FC48265422.jpg%3F20260622093541&w=718&h=538",
+     "alt": "ザ・レジデンス三田(外観)",
+     "href": "https://www.livable.co.jp/grantact/detail/C48265422"
+    }
+   ],
+   "prIconFlg": false,
+   "favoriteFlg": false,
+   "favoriteType": "buy",
+   "applyingServiceList": [
+    {
+     "cd": "021",
+     "iconName": "ルームデコ",
+     "detailClass": "a-tag--condition",
+     "detailText": "ルームデコ",
+     "detailPath": "/images/common/icon_roomdeco.png",
+     "listClass": "a-tag--condition",
+     "listText": "ルームデコ",
+     "listPath": "/images/common/banner_roomdeco.png",
+     "linkUrl": "/baikyaku/mansionpremium/room_decoration.html",
+     "serviceText": "物件購入後の新生活をイメージできる「家具・インテリア」配置サービス"
+    }
+   ],
+   "commuteInfoList": [],
+   "openHouses": [],
+   "matchingTargetFlg": false,
+   "isForeignPage": true,
+   "hasOfficialSite": true
+  },
+  {
+   "propertyCd": "M1326A023",
+   "propertyClassCd": "1",
+   "propertyName": "ザ・レジデンス三田",
+   "priceModel": {
+    "mstCd": 2,
+    "price": 288000000,
+    "consumptionTaxFlg": false
+   },
+   "address": "東京都港区三田２丁目",
+   "access": [
+    "都営大江戸線「赤羽橋」駅 徒歩6分"
+   ],
+   "propertyDetail": [
+    "3LDKタイプ",
+    "80.35㎡",
+    "252戸"
+   ],
+   "detailUrl": "https://www.livable.co.jp/grantact/detail/C48267834",
+   "inquiryInfo": {
+    "inquiryUrl": "/kounyu/inquiry/building/M1326A023/",
+    "inquiryTypeFlg": true,
+    "inquiryLinkText": "公式サイト"
+   },
+   "labelList": [
+    {
+     "cd": "028",
+     "iconName": "物件種別",
+     "detailClass": "a-tag--type",
+     "detailText": "中古マンション",
+     "listClass": "a-tag--type",
+     "listText": "中古マンション"
+    }
+   ],
+   "otherConditionLabels": [],
+   "thumbnailImage": [
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fphoto%2FC48267834.jpg%3F20260726111411&w=718&h=538",
+     "alt": "ザ・レジデンス三田(外観)",
+     "href": "https://www.livable.co.jp/grantact/detail/C48267834"
+    }
+   ],
+   "prIconFlg": false,
+   "favoriteFlg": false,
+   "favoriteType": "buy",
+   "applyingServiceList": [],
+   "commuteInfoList": [],
+   "openHouses": [],
+   "matchingTargetFlg": false,
+   "isForeignPage": true,
+   "hasOfficialSite": true
+  },
+  {
+   "propertyCd": "M1326A010",
+   "propertyClassCd": "1",
+   "propertyName": "ザ・パークハウス三田タワー",
+   "priceModel": {
+    "mstCd": 2,
+    "price": 192800000,
+    "consumptionTaxFlg": false
+   },
+   "address": "東京都港区三田２丁目",
+   "access": [
+    "都営大江戸線「赤羽橋」駅 徒歩7分"
+   ],
+   "propertyDetail": [
+    "2LDKタイプ",
+    "59.16㎡",
+    "111戸"
+   ],
+   "detailUrl": "https://www.livable.co.jp/grantact/detail/C13265F57",
+   "inquiryInfo": {
+    "inquiryUrl": "/kounyu/inquiry/building/M1326A010/",
+    "inquiryTypeFlg": true,
+    "inquiryLinkText": "公式サイト"
+   },
+   "labelList": [
+    {
+     "cd": "028",
+     "iconName": "物件種別",
+     "detailClass": "a-tag--type",
+     "detailText": "中古マンション",
+     "listClass": "a-tag--type",
+     "listText": "中古マンション"
+    }
+   ],
+   "otherConditionLabels": [
+    {
+     "cd": "002",
+     "iconName": "おすすめ",
+     "detailClass": "a-tag--condition",
+     "detailText": "おすすめ",
+     "listClass": "a-tag--condition",
+     "listText": "おすすめ"
+    },
+    {
+     "cd": "040",
+     "iconName": "当社売主",
+     "detailClass": "a-tag--condition",
+     "detailText": "当社売主",
+     "listClass": "a-tag--condition",
+     "listText": "当社売主"
+    }
+   ],
+   "thumbnailImage": [
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fphoto%2FC13265F57.jpg%3F20261010145500&w=718&h=538",
+     "alt": "ザ・パークハウス三田タワー(外観)",
+     "href": "https://www.livable.co.jp/grantact/detail/C13265F57"
+    }
+   ],
+   "prIconFlg": false,
+   "favoriteFlg": false,
+   "favoriteType": "buy",
+   "applyingServiceList": [],
+   "commuteInfoList": [],
+   "openHouses": [],
+   "matchingTargetFlg": false,
+   "isForeignPage": true,
+   "hasOfficialSite": true
+  },
+  {
+   "propertyCd": "C13264J31",
+   "propertyClassCd": "1",
+   "propertyName": "秀和第二三田綱町レジデンス",
+   "priceModel": {
+    "mstCd": 1,
+    "price": 56990000,
+    "consumptionTaxFlg": true
+   },
+   "address": "東京都港区三田２丁目",
+   "access": [
+    "都営大江戸線「麻布十番」駅 徒歩3分"
+   ],
+   "propertyDetail": [
+    "1LDK",
+    "41.00m<sup>2</sup>",
+    "1972年2月築",
+    "2階／地上8階",
+    "西向き"
+   ],
+   "detailUrl": "/mansion/C13264J31/",
+   "inquiryInfo": {
+    "inquiryUrl": "/kounyu/inquiry/C13264J31/",
+    "inquiryTypeFlg": true,
+    "inquiryLinkText": "詳細"
+   },
+   "labelList": [
+    {
+     "cd": "028",
+     "iconName": "物件種別",
+     "detailClass": "a-tag--type",
+     "detailText": "中古マンション",
+     "listClass": "a-tag--type",
+     "listText": "中古マンション"
+    },
+    {
+     "cd": "005",
+     "iconName": "新価格",
+     "detailClass": "a-tag--new-price",
+     "detailText": "新価格 10/9",
+     "listClass": "a-tag--new-price",
+     "listText": "新価格 10/9"
+    }
+   ],
+   "otherConditionLabels": [],
+   "thumbnailImage": [
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fphoto%2FC13264J31.jpg%3F20260417181950&w=718&h=538",
+     "alt": "秀和第二三田綱町レジデンス(外観)",
+     "href": "/mansion/C13264J31/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Flayout%2FC13264J31.gif%3F20260413133811&w=718&h=538",
+     "alt": "秀和第二三田綱町レジデンス(間取り)",
+     "href": "/mansion/C13264J31/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc2%2FC13264J31.jpg%3F20260417181950&w=718&h=538",
+     "alt": "秀和第二三田綱町レジデンス",
+     "href": "/mansion/C13264J31/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc3%2FC13264J31.jpg%3F20260417181950&w=718&h=538",
+     "alt": "秀和第二三田綱町レジデンス",
+     "href": "/mansion/C13264J31/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc4%2FC13264J31.jpg%3F20260417181950&w=718&h=538",
+     "alt": "秀和第二三田綱町レジデンス",
+     "href": "/mansion/C13264J31/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc5%2FC13264J31.jpg%3F20260417181950&w=718&h=538",
+     "alt": "秀和第二三田綱町レジデンス",
+     "href": "/mansion/C13264J31/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc6%2FC13264J31.jpg%3F20260417181950&w=718&h=538",
+     "alt": "秀和第二三田綱町レジデンス",
+     "href": "/mansion/C13264J31/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc21%2FC13264J31.jpg%3F20260420182510&w=718&h=538",
+     "alt": "秀和第二三田綱町レジデンス",
+     "href": "/mansion/C13264J31/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc7%2FC13264J31.jpg%3F20260417181950&w=718&h=538",
+     "alt": "秀和第二三田綱町レジデンス",
+     "href": "/mansion/C13264J31/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc8%2FC13264J31.jpg%3F20260417181950&w=718&h=538",
+     "alt": "秀和第二三田綱町レジデンス",
+     "href": "/mansion/C13264J31/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc9%2FC13264J31.jpg%3F20260417181950&w=718&h=538",
+     "alt": "秀和第二三田綱町レジデンス",
+     "href": "/mansion/C13264J31/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc10%2FC13264J31.jpg%3F20260417181950&w=718&h=538",
+     "alt": "秀和第二三田綱町レジデンス",
+     "href": "/mansion/C13264J31/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc11%2FC13264J31.jpg%3F20260417181950&w=718&h=538",
+     "alt": "秀和第二三田綱町レジデンス",
+     "href": "/mansion/C13264J31/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc12%2FC13264J31.jpg%3F20260417181950&w=718&h=538",
+     "alt": "秀和第二三田綱町レジデンス",
+     "href": "/mansion/C13264J31/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc13%2FC13264J31.jpg%3F20260417181950&w=718&h=538",
+     "alt": "秀和第二三田綱町レジデンス",
+     "href": "/mansion/C13264J31/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc14%2FC13264J31.jpg%3F20260420182510&w=718&h=538",
+     "alt": "秀和第二三田綱町レジデンス",
+     "href": "/mansion/C13264J31/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc15%2FC13264J31.jpg%3F20260420182510&w=718&h=538",
+     "alt": "秀和第二三田綱町レジデンス",
+     "href": "/mansion/C13264J31/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc16%2FC13264J31.jpg%3F20260420182510&w=718&h=538",
+     "alt": "秀和第二三田綱町レジデンス",
+     "href": "/mansion/C13264J31/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc17%2FC13264J31.jpg%3F20260420182510&w=718&h=538",
+     "alt": "秀和第二三田綱町レジデンス",
+     "href": "/mansion/C13264J31/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc18%2FC13264J31.jpg%3F20260420182510&w=718&h=538",
+     "alt": "秀和第二三田綱町レジデンス",
+     "href": "/mansion/C13264J31/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc19%2FC13264J31.jpg%3F20260420182510&w=718&h=538",
+     "alt": "秀和第二三田綱町レジデンス",
+     "href": "/mansion/C13264J31/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc20%2FC13264J31.jpg%3F20260420182510&w=718&h=538",
+     "alt": "秀和第二三田綱町レジデンス",
+     "href": "/mansion/C13264J31/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc22%2FC13264J31.jpg%3F20260420182510&w=718&h=538",
+     "alt": "秀和第二三田綱町レジデンス",
+     "href": "/mansion/C13264J31/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc23%2FC13264J31.jpg%3F20260420182510&w=718&h=538",
+     "alt": "秀和第二三田綱町レジデンス",
+     "href": "/mansion/C13264J31/"
+    }
+   ],
+   "layoutImageModal": {
+    "propertyTitle": "秀和第二三田綱町レジデンス",
+    "layoutImage": {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Flayout%2FC13264J31.gif%3F20260413133811&w=718&h=538",
+     "alt": "秀和第二三田綱町レジデンス(間取り)"
+    },
+    "propertyDetailUrl": "/mansion/C13264J31/",
+    "inquiryUrl": "/kounyu/inquiry/C13264J31/"
+   },
+   "prIconFlg": false,
+   "favoriteFlg": false,
+   "favoriteType": "buy",
+   "applyingServiceList": [],
+   "commuteInfoList": [],
+   "openHouses": [],
+   "matchingTargetFlg": true,
+   "isForeignPage": false,
+   "hasOfficialSite": false
+  },
+  {
+   "propertyCd": "C48265M89",
+   "propertyClassCd": "1",
+   "propertyName": "秀和第二三田綱町レジデンス",
+   "priceModel": {
+    "mstCd": 1,
+    "price": 75800000,
+    "consumptionTaxFlg": true
+   },
+   "address": "東京都港区三田２丁目",
+   "access": [
+    "東京メトロ南北線「麻布十番」駅 徒歩3分"
+   ],
+   "propertyDetail": [
+    "1LDK",
+    "52.50m<sup>2</sup>",
+    "1972年2月築",
+    "1階／地上8階",
+    "東向き"
+   ],
+   "detailUrl": "/mansion/C48265M89/",
+   "inquiryInfo": {
+    "inquiryUrl": "/kounyu/inquiry/C48265M89/",
+    "inquiryTypeFlg": true,
+    "inquiryLinkText": "詳細"
+   },
+   "labelList": [
+    {
+     "cd": "028",
+     "iconName": "物件種別",
+     "detailClass": "a-tag--type",
+     "detailText": "中古マンション",
+     "listClass": "a-tag--type",
+     "listText": "中古マンション"
+    }
+   ],
+   "otherConditionLabels": [],
+   "thumbnailImage": [
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc7%2FC48265M89.jpg%3F20260601103715&w=718&h=538",
+     "alt": "秀和第二三田綱町レジデンス",
+     "href": "/mansion/C48265M89/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Flayout%2FC48265M89.gif%3F20260601085857&w=718&h=538",
+     "alt": "秀和第二三田綱町レジデンス(間取り)",
+     "href": "/mansion/C48265M89/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc14%2FC48265M89.jpg%3F20260601103715&w=718&h=538",
+     "alt": "秀和第二三田綱町レジデンス",
+     "href": "/mansion/C48265M89/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc3%2FC48265M89.jpg%3F20260601103715&w=718&h=538",
+     "alt": "秀和第二三田綱町レジデンス",
+     "href": "/mansion/C48265M89/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc2%2FC48265M89.jpg%3F20260601103715&w=718&h=538",
+     "alt": "秀和第二三田綱町レジデンス",
+     "href": "/mansion/C48265M89/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc4%2FC48265M89.jpg%3F20260601103715&w=718&h=538",
+     "alt": "秀和第二三田綱町レジデンス",
+     "href": "/mansion/C48265M89/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc5%2FC48265M89.jpg%3F20260601103715&w=718&h=538",
+     "alt": "秀和第二三田綱町レジデンス",
+     "href": "/mansion/C48265M89/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc6%2FC48265M89.jpg%3F20260601103715&w=718&h=538",
+     "alt": "秀和第二三田綱町レジデンス",
+     "href": "/mansion/C48265M89/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc8%2FC48265M89.jpg%3F20260601103715&w=718&h=538",
+     "alt": "秀和第二三田綱町レジデンス",
+     "href": "/mansion/C48265M89/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc9%2FC48265M89.jpg%3F20260601103715&w=718&h=538",
+     "alt": "秀和第二三田綱町レジデンス",
+     "href": "/mansion/C48265M89/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc10%2FC48265M89.jpg%3F20260601103715&w=718&h=538",
+     "alt": "秀和第二三田綱町レジデンス",
+     "href": "/mansion/C48265M89/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc11%2FC48265M89.jpg%3F20260601103715&w=718&h=538",
+     "alt": "秀和第二三田綱町レジデンス",
+     "href": "/mansion/C48265M89/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc12%2FC48265M89.jpg%3F20260601103715&w=718&h=538",
+     "alt": "秀和第二三田綱町レジデンス",
+     "href": "/mansion/C48265M89/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc13%2FC48265M89.jpg%3F20260601103715&w=718&h=538",
+     "alt": "秀和第二三田綱町レジデンス",
+     "href": "/mansion/C48265M89/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc15%2FC48265M89.jpg%3F20260601103715&w=718&h=538",
+     "alt": "秀和第二三田綱町レジデンス",
+     "href": "/mansion/C48265M89/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc16%2FC48265M89.jpg%3F20260601103715&w=718&h=538",
+     "alt": "秀和第二三田綱町レジデンス",
+     "href": "/mansion/C48265M89/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc17%2FC48265M89.jpg%3F20260601103715&w=718&h=538",
+     "alt": "秀和第二三田綱町レジデンス",
+     "href": "/mansion/C48265M89/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc18%2FC48265M89.jpg%3F20260601103715&w=718&h=538",
+     "alt": "秀和第二三田綱町レジデンス",
+     "href": "/mansion/C48265M89/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc19%2FC48265M89.jpg%3F20260601103715&w=718&h=538",
+     "alt": "秀和第二三田綱町レジデンス",
+     "href": "/mansion/C48265M89/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc20%2FC48265M89.jpg%3F20260601103715&w=718&h=538",
+     "alt": "秀和第二三田綱町レジデンス",
+     "href": "/mansion/C48265M89/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc21%2FC48265M89.jpg%3F20260601103715&w=718&h=538",
+     "alt": "秀和第二三田綱町レジデンス",
+     "href": "/mansion/C48265M89/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc22%2FC48265M89.jpg%3F20260601103715&w=718&h=538",
+     "alt": "秀和第二三田綱町レジデンス",
+     "href": "/mansion/C48265M89/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc23%2FC48265M89.jpg%3F20260601103715&w=718&h=538",
+     "alt": "秀和第二三田綱町レジデンス",
+     "href": "/mansion/C48265M89/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc24%2FC48265M89.jpg%3F20260601103715&w=718&h=538",
+     "alt": "秀和第二三田綱町レジデンス",
+     "href": "/mansion/C48265M89/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc25%2FC48265M89.jpg%3F20260601103715&w=718&h=538",
+     "alt": "秀和第二三田綱町レジデンス",
+     "href": "/mansion/C48265M89/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc26%2FC48265M89.jpg%3F20260601103715&w=718&h=538",
+     "alt": "秀和第二三田綱町レジデンス",
+     "href": "/mansion/C48265M89/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc27%2FC48265M89.jpg%3F20260601103715&w=718&h=538",
+     "alt": "秀和第二三田綱町レジデンス",
+     "href": "/mansion/C48265M89/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc28%2FC48265M89.jpg%3F20260601103715&w=718&h=538",
+     "alt": "秀和第二三田綱町レジデンス",
+     "href": "/mansion/C48265M89/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc29%2FC48265M89.jpg%3F20260601103715&w=718&h=538",
+     "alt": "秀和第二三田綱町レジデンス",
+     "href": "/mansion/C48265M89/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fphoto%2FC48265M89.jpg%3F20260601103715&w=718&h=538",
+     "alt": "秀和第二三田綱町レジデンス(外観)",
+     "href": "/mansion/C48265M89/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc30%2FC48265M89.jpg%3F20260601103715&w=718&h=538",
+     "alt": "秀和第二三田綱町レジデンス",
+     "href": "/mansion/C48265M89/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc31%2FC48265M89.jpg%3F20260601103715&w=718&h=538",
+     "alt": "秀和第二三田綱町レジデンス",
+     "href": "/mansion/C48265M89/"
+    }
+   ],
+   "layoutImageModal": {
+    "propertyTitle": "秀和第二三田綱町レジデンス",
+    "layoutImage": {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Flayout%2FC48265M89.gif%3F20260601085857&w=718&h=538",
+     "alt": "秀和第二三田綱町レジデンス(間取り)"
+    },
+    "propertyDetailUrl": "/mansion/C48265M89/",
+    "inquiryUrl": "/kounyu/inquiry/C48265M89/"
+   },
+   "prIconFlg": false,
+   "favoriteFlg": false,
+   "favoriteType": "buy",
+   "applyingServiceList": [],
+   "commuteInfoList": [],
+   "openHouses": [],
+   "matchingTargetFlg": true,
+   "isForeignPage": false,
+   "hasOfficialSite": false
+  },
+  {
+   "propertyCd": "C48264637",
+   "propertyClassCd": "1",
+   "propertyName": "アトラス三田",
+   "priceModel": {
+    "mstCd": 1,
+    "price": 220000000,
+    "consumptionTaxFlg": false
+   },
+   "address": "東京都港区三田２丁目",
+   "access": [
+    "都営三田線「三田」駅 徒歩8分",
+    "都営浅草線「三田」駅 徒歩8分",
+    "都営大江戸線「赤羽橋」駅 徒歩6分"
+   ],
+   "propertyDetail": [
+    "2LDK",
+    "53.95m<sup>2</sup>",
+    "2027年6月築",
+    "11階／地上13階 地下1階",
+    "東向き"
+   ],
+   "detailUrl": "/mansion/C48264637/",
+   "inquiryInfo": {
+    "inquiryUrl": "/kounyu/inquiry/C48264637/",
+    "inquiryTypeFlg": true,
+    "inquiryLinkText": "詳細"
+   },
+   "labelList": [
+    {
+     "cd": "028",
+     "iconName": "物件種別",
+     "detailClass": "a-tag--type",
+     "detailText": "新築マンション",
+     "listClass": "a-tag--type",
+     "listText": "新築マンション"
+    }
+   ],
+   "otherConditionLabels": [],
+   "thumbnailImage": [
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fphoto%2FC48264637.jpg%3F20260427112616&w=718&h=538",
+     "alt": "アトラス三田(外観)",
+     "href": "/mansion/C48264637/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Flayout%2FC48264637.gif%3F20260427112616&w=718&h=538",
+     "alt": "アトラス三田(間取り)",
+     "href": "/mansion/C48264637/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc3%2FC48264637.jpg%3F20260427112616&w=718&h=538",
+     "alt": "アトラス三田",
+     "href": "/mansion/C48264637/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc2%2FC48264637.jpg%3F20260427112616&w=718&h=538",
+     "alt": "アトラス三田",
+     "href": "/mansion/C48264637/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc4%2FC48264637.jpg%3F20260427112616&w=718&h=538",
+     "alt": "アトラス三田",
+     "href": "/mansion/C48264637/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc8%2FC48264637.jpg%3F20260427112616&w=718&h=538",
+     "alt": "アトラス三田",
+     "href": "/mansion/C48264637/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc5%2FC48264637.jpg%3F20260427112616&w=718&h=538",
+     "alt": "アトラス三田",
+     "href": "/mansion/C48264637/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc6%2FC48264637.jpg%3F20260427112616&w=718&h=538",
+     "alt": "アトラス三田",
+     "href": "/mansion/C48264637/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc7%2FC48264637.jpg%3F20260427112616&w=718&h=538",
+     "alt": "アトラス三田",
+     "href": "/mansion/C48264637/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc11%2FC48264637.jpg%3F20260427112616&w=718&h=538",
+     "alt": "アトラス三田",
+     "href": "/mansion/C48264637/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc9%2FC48264637.jpg%3F20260427112616&w=718&h=538",
+     "alt": "アトラス三田",
+     "href": "/mansion/C48264637/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc10%2FC48264637.jpg%3F20260427112616&w=718&h=538",
+     "alt": "アトラス三田",
+     "href": "/mansion/C48264637/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc12%2FC48264637.jpg%3F20260427112616&w=718&h=538",
+     "alt": "アトラス三田",
+     "href": "/mansion/C48264637/"
+    }
+   ],
+   "layoutImageModal": {
+    "propertyTitle": "アトラス三田",
+    "layoutImage": {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Flayout%2FC48264637.gif%3F20260427112616&w=718&h=538",
+     "alt": "アトラス三田(間取り)"
+    },
+    "propertyDetailUrl": "/mansion/C48264637/",
+    "inquiryUrl": "/kounyu/inquiry/C48264637/"
+   },
+   "prIconFlg": false,
+   "favoriteFlg": false,
+   "favoriteType": "buy",
+   "applyingServiceList": [],
+   "commuteInfoList": [],
+   "openHouses": [],
+   "matchingTargetFlg": true,
+   "isForeignPage": false,
+   "hasOfficialSite": false
+  },
+  {
+   "propertyCd": "C13262R30",
+   "propertyClassCd": "1",
+   "propertyName": "ダイナシティ三田",
+   "priceModel": {
+    "mstCd": 1,
+    "price": 109990000,
+    "consumptionTaxFlg": true
+   },
+   "address": "東京都港区三田２丁目",
+   "access": [
+    "都営三田線「三田」駅 徒歩7分",
+    "東京メトロ南北線「白金高輪」駅 徒歩11分",
+    "山手線「田町」駅 徒歩12分"
+   ],
+   "propertyDetail": [
+    "2LDK",
+    "49.90m<sup>2</sup>",
+    "2004年11月築",
+    "4階／地上14階",
+    "南東向き"
+   ],
+   "detailUrl": "/mansion/C13262R30/",
+   "inquiryInfo": {
+    "inquiryUrl": "/kounyu/inquiry/C13262R30/",
+    "inquiryTypeFlg": true,
+    "inquiryLinkText": "詳細"
+   },
+   "labelList": [
+    {
+     "cd": "028",
+     "iconName": "物件種別",
+     "detailClass": "a-tag--type",
+     "detailText": "中古マンション",
+     "listClass": "a-tag--type",
+     "listText": "中古マンション"
+    }
+   ],
+   "otherConditionLabels": [
+    {
+     "cd": "026",
+     "iconName": "リフォーム",
+     "detailClass": "a-tag--condition",
+     "detailText": "リフォーム",
+     "listClass": "a-tag--condition",
+     "listText": "リフォーム"
+    }
+   ],
+   "thumbnailImage": [
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fphoto%2FC13262R30.jpg%3F20260222114311&w=718&h=538",
+     "alt": "ダイナシティ三田(外観)",
+     "href": "/mansion/C13262R30/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Flayout%2FC13262R30.gif%3F20260220145808&w=718&h=538",
+     "alt": "ダイナシティ三田(間取り)",
+     "href": "/mansion/C13262R30/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc6%2FC13262R30.jpg%3F20260531154702&w=718&h=538",
+     "alt": "ダイナシティ三田",
+     "href": "/mansion/C13262R30/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc5%2FC13262R30.jpg%3F20260531154702&w=718&h=538",
+     "alt": "ダイナシティ三田",
+     "href": "/mansion/C13262R30/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc4%2FC13262R30.jpg%3F20260531154702&w=718&h=538",
+     "alt": "ダイナシティ三田",
+     "href": "/mansion/C13262R30/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc3%2FC13262R30.jpg%3F20260531154702&w=718&h=538",
+     "alt": "ダイナシティ三田",
+     "href": "/mansion/C13262R30/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc2%2FC13262R30.jpg%3F20260531154702&w=718&h=538",
+     "alt": "ダイナシティ三田",
+     "href": "/mansion/C13262R30/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc7%2FC13262R30.jpg%3F20260531154702&w=718&h=538",
+     "alt": "ダイナシティ三田",
+     "href": "/mansion/C13262R30/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc8%2FC13262R30.jpg%3F20260531154702&w=718&h=538",
+     "alt": "ダイナシティ三田",
+     "href": "/mansion/C13262R30/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc9%2FC13262R30.jpg%3F20260531154702&w=718&h=538",
+     "alt": "ダイナシティ三田",
+     "href": "/mansion/C13262R30/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc10%2FC13262R30.jpg%3F20260531154702&w=718&h=538",
+     "alt": "ダイナシティ三田",
+     "href": "/mansion/C13262R30/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc11%2FC13262R30.jpg%3F20260531154702&w=718&h=538",
+     "alt": "ダイナシティ三田",
+     "href": "/mansion/C13262R30/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc12%2FC13262R30.jpg%3F20260531154702&w=718&h=538",
+     "alt": "ダイナシティ三田",
+     "href": "/mansion/C13262R30/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc13%2FC13262R30.jpg%3F20260531154702&w=718&h=538",
+     "alt": "ダイナシティ三田",
+     "href": "/mansion/C13262R30/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc14%2FC13262R30.jpg%3F20260531154702&w=718&h=538",
+     "alt": "ダイナシティ三田",
+     "href": "/mansion/C13262R30/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc15%2FC13262R30.jpg%3F20260531154702&w=718&h=538",
+     "alt": "ダイナシティ三田",
+     "href": "/mansion/C13262R30/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc16%2FC13262R30.jpg%3F20260531154702&w=718&h=538",
+     "alt": "ダイナシティ三田",
+     "href": "/mansion/C13262R30/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc17%2FC13262R30.jpg%3F20260531154702&w=718&h=538",
+     "alt": "ダイナシティ三田",
+     "href": "/mansion/C13262R30/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc18%2FC13262R30.jpg%3F20260531154702&w=718&h=538",
+     "alt": "ダイナシティ三田",
+     "href": "/mansion/C13262R30/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc19%2FC13262R30.jpg%3F20260531154702&w=718&h=538",
+     "alt": "ダイナシティ三田",
+     "href": "/mansion/C13262R30/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc20%2FC13262R30.jpg%3F20260531154702&w=718&h=538",
+     "alt": "ダイナシティ三田",
+     "href": "/mansion/C13262R30/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc21%2FC13262R30.jpg%3F20260531154702&w=718&h=538",
+     "alt": "ダイナシティ三田",
+     "href": "/mansion/C13262R30/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc22%2FC13262R30.jpg%3F20260531154702&w=718&h=538",
+     "alt": "ダイナシティ三田",
+     "href": "/mansion/C13262R30/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc23%2FC13262R30.jpg%3F20260531154702&w=718&h=538",
+     "alt": "ダイナシティ三田",
+     "href": "/mansion/C13262R30/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc24%2FC13262R30.jpg%3F20260531154702&w=718&h=538",
+     "alt": "ダイナシティ三田",
+     "href": "/mansion/C13262R30/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc25%2FC13262R30.jpg%3F20260531154702&w=718&h=538",
+     "alt": "ダイナシティ三田",
+     "href": "/mansion/C13262R30/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc26%2FC13262R30.jpg%3F20260531154702&w=718&h=538",
+     "alt": "ダイナシティ三田",
+     "href": "/mansion/C13262R30/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc27%2FC13262R30.jpg%3F20260531154702&w=718&h=538",
+     "alt": "ダイナシティ三田",
+     "href": "/mansion/C13262R30/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc28%2FC13262R30.jpg%3F20260531154702&w=718&h=538",
+     "alt": "ダイナシティ三田",
+     "href": "/mansion/C13262R30/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc29%2FC13262R30.jpg%3F20260531154702&w=718&h=538",
+     "alt": "ダイナシティ三田",
+     "href": "/mansion/C13262R30/"
+    }
+   ],
+   "layoutImageModal": {
+    "propertyTitle": "ダイナシティ三田",
+    "layoutImage": {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Flayout%2FC13262R30.gif%3F20260220145808&w=718&h=538",
+     "alt": "ダイナシティ三田(間取り)"
+    },
+    "propertyDetailUrl": "/mansion/C13262R30/",
+    "inquiryUrl": "/kounyu/inquiry/C13262R30/"
+   },
+   "prIconFlg": false,
+   "favoriteFlg": false,
+   "favoriteType": "buy",
+   "applyingServiceList": [],
+   "commuteInfoList": [],
+   "openHouses": [],
+   "matchingTargetFlg": true,
+   "isForeignPage": false,
+   "hasOfficialSite": false
+  },
+  {
+   "propertyCd": "C13266K25",
+   "propertyClassCd": "1",
+   "propertyName": "アイビハイツ三田",
+   "priceModel": {
+    "mstCd": 1,
+    "price": 85800000,
+    "consumptionTaxFlg": true
+   },
+   "address": "東京都港区三田２丁目",
+   "access": [
+    "東京メトロ南北線「麻布十番」駅 徒歩8分"
+   ],
+   "propertyDetail": [
+    "2LDK",
+    "54.67m<sup>2</sup>",
+    "1972年6月築",
+    "3階／地上7階",
+    "南東向き"
+   ],
+   "detailUrl": "/mansion/C13266K25/",
+   "inquiryInfo": {
+    "inquiryUrl": "/kounyu/inquiry/C13266K25/",
+    "inquiryTypeFlg": true,
+    "inquiryLinkText": "詳細"
+   },
+   "labelList": [
+    {
+     "cd": "028",
+     "iconName": "物件種別",
+     "detailClass": "a-tag--type",
+     "detailText": "中古マンション",
+     "listClass": "a-tag--type",
+     "listText": "中古マンション"
+    },
+    {
+     "cd": "005",
+     "iconName": "新価格",
+     "detailClass": "a-tag--new-price",
+     "detailText": "新価格 10/8",
+     "listClass": "a-tag--new-price",
+     "listText": "新価格 10/8"
+    }
+   ],
+   "otherConditionLabels": [],
+   "thumbnailImage": [
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc8%2FC13266K25.jpg%3F20260621081308&w=718&h=538",
+     "alt": "アイビハイツ三田",
+     "href": "/mansion/C13266K25/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Flayout%2FC13266K25.gif%3F20260615103305&w=718&h=538",
+     "alt": "アイビハイツ三田(間取り)",
+     "href": "/mansion/C13266K25/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fphoto%2FC13266K25.jpg%3F20260621081308&w=718&h=538",
+     "alt": "アイビハイツ三田(外観)",
+     "href": "/mansion/C13266K25/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc2%2FC13266K25.jpg%3F20260621081308&w=718&h=538",
+     "alt": "アイビハイツ三田",
+     "href": "/mansion/C13266K25/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc3%2FC13266K25.jpg%3F20260621081308&w=718&h=538",
+     "alt": "アイビハイツ三田",
+     "href": "/mansion/C13266K25/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc4%2FC13266K25.jpg%3F20260621081308&w=718&h=538",
+     "alt": "アイビハイツ三田",
+     "href": "/mansion/C13266K25/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc5%2FC13266K25.jpg%3F20260621081308&w=718&h=538",
+     "alt": "アイビハイツ三田",
+     "href": "/mansion/C13266K25/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc6%2FC13266K25.jpg%3F20260621081308&w=718&h=538",
+     "alt": "アイビハイツ三田",
+     "href": "/mansion/C13266K25/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc7%2FC13266K25.jpg%3F20260621081308&w=718&h=538",
+     "alt": "アイビハイツ三田",
+     "href": "/mansion/C13266K25/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc9%2FC13266K25.jpg%3F20260621081308&w=718&h=538",
+     "alt": "アイビハイツ三田",
+     "href": "/mansion/C13266K25/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc10%2FC13266K25.jpg%3F20260621081308&w=718&h=538",
+     "alt": "アイビハイツ三田",
+     "href": "/mansion/C13266K25/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc11%2FC13266K25.jpg%3F20260621081308&w=718&h=538",
+     "alt": "アイビハイツ三田",
+     "href": "/mansion/C13266K25/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc12%2FC13266K25.jpg%3F20260621081308&w=718&h=538",
+     "alt": "アイビハイツ三田",
+     "href": "/mansion/C13266K25/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc13%2FC13266K25.jpg%3F20260621081308&w=718&h=538",
+     "alt": "アイビハイツ三田",
+     "href": "/mansion/C13266K25/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc14%2FC13266K25.jpg%3F20260621081308&w=718&h=538",
+     "alt": "アイビハイツ三田",
+     "href": "/mansion/C13266K25/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc15%2FC13266K25.jpg%3F20260621081308&w=718&h=538",
+     "alt": "アイビハイツ三田",
+     "href": "/mansion/C13266K25/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc16%2FC13266K25.jpg%3F20260621081308&w=718&h=538",
+     "alt": "アイビハイツ三田",
+     "href": "/mansion/C13266K25/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc17%2FC13266K25.jpg%3F20260621081308&w=718&h=538",
+     "alt": "アイビハイツ三田",
+     "href": "/mansion/C13266K25/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc18%2FC13266K25.jpg%3F20260621081308&w=718&h=538",
+     "alt": "アイビハイツ三田",
+     "href": "/mansion/C13266K25/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc19%2FC13266K25.jpg%3F20260621081308&w=718&h=538",
+     "alt": "アイビハイツ三田",
+     "href": "/mansion/C13266K25/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc20%2FC13266K25.jpg%3F20260621081308&w=718&h=538",
+     "alt": "アイビハイツ三田",
+     "href": "/mansion/C13266K25/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc21%2FC13266K25.jpg%3F20260621081308&w=718&h=538",
+     "alt": "アイビハイツ三田",
+     "href": "/mansion/C13266K25/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc22%2FC13266K25.jpg%3F20260621081308&w=718&h=538",
+     "alt": "アイビハイツ三田",
+     "href": "/mansion/C13266K25/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc23%2FC13266K25.jpg%3F20260621081308&w=718&h=538",
+     "alt": "アイビハイツ三田",
+     "href": "/mansion/C13266K25/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc24%2FC13266K25.jpg%3F20260621081308&w=718&h=538",
+     "alt": "アイビハイツ三田",
+     "href": "/mansion/C13266K25/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc25%2FC13266K25.jpg%3F20260621081308&w=718&h=538",
+     "alt": "アイビハイツ三田",
+     "href": "/mansion/C13266K25/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc26%2FC13266K25.jpg%3F20260621081308&w=718&h=538",
+     "alt": "アイビハイツ三田",
+     "href": "/mansion/C13266K25/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc27%2FC13266K25.jpg%3F20260621081308&w=718&h=538",
+     "alt": "アイビハイツ三田",
+     "href": "/mansion/C13266K25/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc28%2FC13266K25.jpg%3F20260621081308&w=718&h=538",
+     "alt": "アイビハイツ三田",
+     "href": "/mansion/C13266K25/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc29%2FC13266K25.jpg%3F20260621081308&w=718&h=538",
+     "alt": "アイビハイツ三田",
+     "href": "/mansion/C13266K25/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc30%2FC13266K25.jpg%3F20260621081308&w=718&h=538",
+     "alt": "アイビハイツ三田",
+     "href": "/mansion/C13266K25/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc31%2FC13266K25.jpg%3F20260621081308&w=718&h=538",
+     "alt": "アイビハイツ三田",
+     "href": "/mansion/C13266K25/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc32%2FC13266K25.jpg%3F20260621081308&w=718&h=538",
+     "alt": "アイビハイツ三田",
+     "href": "/mansion/C13266K25/"
+    }
+   ],
+   "layoutImageModal": {
+    "propertyTitle": "アイビハイツ三田",
+    "layoutImage": {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Flayout%2FC13266K25.gif%3F20260615103305&w=718&h=538",
+     "alt": "アイビハイツ三田(間取り)"
+    },
+    "propertyDetailUrl": "/mansion/C13266K25/",
+    "inquiryUrl": "/kounyu/inquiry/C13266K25/"
+   },
+   "prIconFlg": false,
+   "favoriteFlg": false,
+   "favoriteType": "buy",
+   "applyingServiceList": [],
+   "commuteInfoList": [],
+   "openHouses": [],
+   "matchingTargetFlg": true,
+   "isForeignPage": false,
+   "hasOfficialSite": false
+  },
+  {
+   "propertyCd": "C48264492",
+   "propertyClassCd": "1",
+   "propertyName": "三田コーポラス",
+   "priceModel": {
+    "mstCd": 1,
+    "price": 56990000,
+    "consumptionTaxFlg": true
+   },
+   "address": "東京都港区三田２丁目",
+   "access": [
+    "東京メトロ南北線「麻布十番」駅 徒歩10分"
+   ],
+   "propertyDetail": [
+    "2LDK",
+    "45.36m<sup>2</sup>",
+    "1969年1月築",
+    "3階／地上6階",
+    "南向き"
+   ],
+   "detailUrl": "/mansion/C48264492/",
+   "inquiryInfo": {
+    "inquiryUrl": "/kounyu/inquiry/C48264492/",
+    "inquiryTypeFlg": true,
+    "inquiryLinkText": "詳細"
+   },
+   "labelList": [
+    {
+     "cd": "028",
+     "iconName": "物件種別",
+     "detailClass": "a-tag--type",
+     "detailText": "中古マンション",
+     "listClass": "a-tag--type",
+     "listText": "中古マンション"
+    },
+    {
+     "cd": "005",
+     "iconName": "新価格",
+     "detailClass": "a-tag--new-price",
+     "detailText": "新価格 9/18",
+     "listClass": "a-tag--new-price",
+     "listText": "新価格 9/18"
+    }
+   ],
+   "otherConditionLabels": [],
+   "thumbnailImage": [
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fphoto%2FC48264492.jpg%3F20260420174412&w=718&h=538",
+     "alt": "三田コーポラス(外観)",
+     "href": "/mansion/C48264492/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Flayout%2FC48264492.gif%3F20260423164049&w=718&h=538",
+     "alt": "三田コーポラス(間取り)",
+     "href": "/mansion/C48264492/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc6%2FC48264492.jpg%3F20260420175349&w=718&h=538",
+     "alt": "三田コーポラス",
+     "href": "/mansion/C48264492/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc5%2FC48264492.jpg%3F20260420175349&w=718&h=538",
+     "alt": "三田コーポラス",
+     "href": "/mansion/C48264492/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc4%2FC48264492.jpg%3F20260420175349&w=718&h=538",
+     "alt": "三田コーポラス",
+     "href": "/mansion/C48264492/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc3%2FC48264492.jpg%3F20260420175349&w=718&h=538",
+     "alt": "三田コーポラス",
+     "href": "/mansion/C48264492/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc2%2FC48264492.jpg%3F20260420175349&w=718&h=538",
+     "alt": "三田コーポラス",
+     "href": "/mansion/C48264492/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc7%2FC48264492.jpg%3F20260420175349&w=718&h=538",
+     "alt": "三田コーポラス",
+     "href": "/mansion/C48264492/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc8%2FC48264492.jpg%3F20260420175349&w=718&h=538",
+     "alt": "三田コーポラス",
+     "href": "/mansion/C48264492/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc9%2FC48264492.jpg%3F20260420175349&w=718&h=538",
+     "alt": "三田コーポラス",
+     "href": "/mansion/C48264492/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc10%2FC48264492.jpg%3F20260420175349&w=718&h=538",
+     "alt": "三田コーポラス",
+     "href": "/mansion/C48264492/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc11%2FC48264492.jpg%3F20260420175350&w=718&h=538",
+     "alt": "三田コーポラス",
+     "href": "/mansion/C48264492/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc12%2FC48264492.jpg%3F20260420175350&w=718&h=538",
+     "alt": "三田コーポラス",
+     "href": "/mansion/C48264492/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc13%2FC48264492.jpg%3F20260420175350&w=718&h=538",
+     "alt": "三田コーポラス",
+     "href": "/mansion/C48264492/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc14%2FC48264492.jpg%3F20260420175350&w=718&h=538",
+     "alt": "三田コーポラス",
+     "href": "/mansion/C48264492/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc15%2FC48264492.jpg%3F20260420175350&w=718&h=538",
+     "alt": "三田コーポラス",
+     "href": "/mansion/C48264492/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc16%2FC48264492.jpg%3F20260420175350&w=718&h=538",
+     "alt": "三田コーポラス",
+     "href": "/mansion/C48264492/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc17%2FC48264492.jpg%3F20260420175350&w=718&h=538",
+     "alt": "三田コーポラス",
+     "href": "/mansion/C48264492/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc18%2FC48264492.jpg%3F20260420175350&w=718&h=538",
+     "alt": "三田コーポラス",
+     "href": "/mansion/C48264492/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc19%2FC48264492.jpg%3F20260420175350&w=718&h=538",
+     "alt": "三田コーポラス",
+     "href": "/mansion/C48264492/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc20%2FC48264492.jpg%3F20260420175350&w=718&h=538",
+     "alt": "三田コーポラス",
+     "href": "/mansion/C48264492/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc22%2FC48264492.jpg%3F20260420175350&w=718&h=538",
+     "alt": "三田コーポラス",
+     "href": "/mansion/C48264492/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc21%2FC48264492.jpg%3F20260420175350&w=718&h=538",
+     "alt": "三田コーポラス",
+     "href": "/mansion/C48264492/"
+    }
+   ],
+   "layoutImageModal": {
+    "propertyTitle": "三田コーポラス",
+    "layoutImage": {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Flayout%2FC48264492.gif%3F20260423164049&w=718&h=538",
+     "alt": "三田コーポラス(間取り)"
+    },
+    "propertyDetailUrl": "/mansion/C48264492/",
+    "inquiryUrl": "/kounyu/inquiry/C48264492/"
+   },
+   "prIconFlg": false,
+   "favoriteFlg": false,
+   "favoriteType": "buy",
+   "applyingServiceList": [],
+   "commuteInfoList": [],
+   "openHouses": [],
+   "matchingTargetFlg": true,
+   "isForeignPage": false,
+   "hasOfficialSite": false
+  },
+  {
+   "propertyCd": "C48259370",
+   "propertyClassCd": "1",
+   "propertyName": "三田コーポラス",
+   "priceModel": {
+    "mstCd": 1,
+    "price": 47900000,
+    "consumptionTaxFlg": false
+   },
+   "address": "東京都港区三田２丁目",
+   "access": [
+    "都営大江戸線「麻布十番」駅 徒歩10分",
+    "東京メトロ南北線「麻布十番」駅 徒歩10分",
+    "都営三田線「白金高輪」駅 徒歩11分"
+   ],
+   "propertyDetail": [
+    "2DK",
+    "45.36m<sup>2</sup>",
+    "1969年1月築",
+    "3階／地上6階",
+    "南向き"
+   ],
+   "detailUrl": "/mansion/C48259370/",
+   "inquiryInfo": {
+    "inquiryUrl": "/kounyu/inquiry/C48259370/",
+    "inquiryTypeFlg": true,
+    "inquiryLinkText": "詳細"
+   },
+   "labelList": [
+    {
+     "cd": "028",
+     "iconName": "物件種別",
+     "detailClass": "a-tag--type",
+     "detailText": "中古マンション",
+     "listClass": "a-tag--type",
+     "listText": "中古マンション"
+    }
+   ],
+   "otherConditionLabels": [
+    {
+     "cd": "021",
+     "iconName": "ルームデコ",
+     "detailClass": "a-tag--condition",
+     "detailText": "ルームデコ",
+     "detailPath": "/images/common/icon_roomdeco.png",
+     "listClass": "a-tag--condition",
+     "listText": "ルームデコ",
+     "listPath": "/images/common/banner_roomdeco.png",
+     "linkUrl": "/baikyaku/mansionpremium/room_decoration.html",
+     "serviceText": "物件購入後の新生活をイメージできる「家具・インテリア」配置サービス"
+    },
+    {
+     "cd": "014",
+     "iconName": "あんしん仲介保証",
+     "detailClass": "a-tag--condition",
+     "detailText": "あんしん仲介保証",
+     "detailPath": "/images/common/icon_anshin.png",
+     "listClass": "a-tag--condition",
+     "listText": "あんしん仲介保証",
+     "listPath": "/images/common/banner_anshin.png",
+     "linkUrl": "/baikyaku/anshin/",
+     "serviceText": "東急リバブルが提供する購入物件の検査・保証サービス"
+    }
+   ],
+   "thumbnailImage": [
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fphoto%2FC48259370.jpg%3F20260808115716&w=718&h=538",
+     "alt": "三田コーポラス(外観)",
+     "href": "/mansion/C48259370/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Flayout%2FC48259370.gif%3F20260808115716&w=718&h=538",
+     "alt": "三田コーポラス(間取り)",
+     "href": "/mansion/C48259370/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc22%2FC48259370.jpg%3F20260911143453&w=718&h=538",
+     "alt": "三田コーポラス",
+     "href": "/mansion/C48259370/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc21%2FC48259370.jpg%3F20260911143453&w=718&h=538",
+     "alt": "三田コーポラス",
+     "href": "/mansion/C48259370/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc20%2FC48259370.jpg%3F20260911143453&w=718&h=538",
+     "alt": "三田コーポラス",
+     "href": "/mansion/C48259370/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc19%2FC48259370.jpg%3F20260911143453&w=718&h=538",
+     "alt": "三田コーポラス",
+     "href": "/mansion/C48259370/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc18%2FC48259370.jpg%3F20260911143453&w=718&h=538",
+     "alt": "三田コーポラス",
+     "href": "/mansion/C48259370/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc17%2FC48259370.jpg%3F20260911143453&w=718&h=538",
+     "alt": "三田コーポラス",
+     "href": "/mansion/C48259370/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc16%2FC48259370.jpg%3F20260911143453&w=718&h=538",
+     "alt": "三田コーポラス",
+     "href": "/mansion/C48259370/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc15%2FC48259370.jpg%3F20260911143453&w=718&h=538",
+     "alt": "三田コーポラス",
+     "href": "/mansion/C48259370/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc14%2FC48259370.jpg%3F20260911143453&w=718&h=538",
+     "alt": "三田コーポラス",
+     "href": "/mansion/C48259370/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc13%2FC48259370.jpg%3F20260911143453&w=718&h=538",
+     "alt": "三田コーポラス",
+     "href": "/mansion/C48259370/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc12%2FC48259370.jpg%3F20260911143453&w=718&h=538",
+     "alt": "三田コーポラス",
+     "href": "/mansion/C48259370/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc11%2FC48259370.jpg%3F20260911143453&w=718&h=538",
+     "alt": "三田コーポラス",
+     "href": "/mansion/C48259370/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc10%2FC48259370.jpg%3F20260911143453&w=718&h=538",
+     "alt": "三田コーポラス",
+     "href": "/mansion/C48259370/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc9%2FC48259370.jpg%3F20260911143453&w=718&h=538",
+     "alt": "三田コーポラス",
+     "href": "/mansion/C48259370/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc7%2FC48259370.jpg%3F20260911143453&w=718&h=538",
+     "alt": "三田コーポラス",
+     "href": "/mansion/C48259370/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc6%2FC48259370.jpg%3F20260911143453&w=718&h=538",
+     "alt": "三田コーポラス",
+     "href": "/mansion/C48259370/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc5%2FC48259370.jpg%3F20260911143453&w=718&h=538",
+     "alt": "三田コーポラス",
+     "href": "/mansion/C48259370/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc4%2FC48259370.jpg%3F20260911143453&w=718&h=538",
+     "alt": "三田コーポラス",
+     "href": "/mansion/C48259370/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc8%2FC48259370.jpg%3F20260911150306&w=718&h=538",
+     "alt": "三田コーポラス",
+     "href": "/mansion/C48259370/"
+    }
+   ],
+   "layoutImageModal": {
+    "propertyTitle": "三田コーポラス",
+    "layoutImage": {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Flayout%2FC48259370.gif%3F20260808115716&w=718&h=538",
+     "alt": "三田コーポラス(間取り)"
+    },
+    "propertyDetailUrl": "/mansion/C48259370/",
+    "inquiryUrl": "/kounyu/inquiry/C48259370/"
+   },
+   "prIconFlg": false,
+   "favoriteFlg": false,
+   "favoriteType": "buy",
+   "applyingServiceList": [
+    {
+     "cd": "014",
+     "iconName": "あんしん仲介保証",
+     "detailClass": "a-tag--condition",
+     "detailText": "あんしん仲介保証",
+     "detailPath": "/images/common/icon_anshin.png",
+     "listClass": "a-tag--condition",
+     "listText": "あんしん仲介保証",
+     "listPath": "/images/common/banner_anshin.png",
+     "linkUrl": "/baikyaku/anshin/",
+     "serviceText": "東急リバブルが提供する購入物件の検査・保証サービス"
+    },
+    {
+     "cd": "021",
+     "iconName": "ルームデコ",
+     "detailClass": "a-tag--condition",
+     "detailText": "ルームデコ",
+     "detailPath": "/images/common/icon_roomdeco.png",
+     "listClass": "a-tag--condition",
+     "listText": "ルームデコ",
+     "listPath": "/images/common/banner_roomdeco.png",
+     "linkUrl": "/baikyaku/mansionpremium/room_decoration.html",
+     "serviceText": "物件購入後の新生活をイメージできる「家具・インテリア」配置サービス"
+    }
+   ],
+   "commuteInfoList": [],
+   "openHouses": [],
+   "matchingTargetFlg": true,
+   "isForeignPage": false,
+   "hasOfficialSite": false
+  },
+  {
+   "propertyCd": "C13266F96",
+   "propertyClassCd": "1",
+   "propertyName": "三田スカイハイツ",
+   "priceModel": {
+    "mstCd": 1,
+    "price": 42800000,
+    "consumptionTaxFlg": true
+   },
+   "address": "東京都港区三田２丁目",
+   "access": [
+    "東京メトロ南北線「麻布十番」駅 徒歩10分",
+    "東京メトロ南北線「白金高輪」駅 徒歩11分"
+   ],
+   "propertyDetail": [
+    "1LDK",
+    "35.58m<sup>2</sup>",
+    "1977年10月築",
+    "1階／地上7階",
+    "北向き"
+   ],
+   "detailUrl": "/mansion/C13266F96/",
+   "inquiryInfo": {
+    "inquiryUrl": "/kounyu/inquiry/C13266F96/",
+    "inquiryTypeFlg": true,
+    "inquiryLinkText": "詳細"
+   },
+   "labelList": [
+    {
+     "cd": "028",
+     "iconName": "物件種別",
+     "detailClass": "a-tag--type",
+     "detailText": "中古マンション",
+     "listClass": "a-tag--type",
+     "listText": "中古マンション"
+    },
+    {
+     "cd": "005",
+     "iconName": "新価格",
+     "detailClass": "a-tag--new-price",
+     "detailText": "新価格 10/10",
+     "listClass": "a-tag--new-price",
+     "listText": "新価格 10/10"
+    }
+   ],
+   "otherConditionLabels": [
+    {
+     "cd": "026",
+     "iconName": "リフォーム",
+     "detailClass": "a-tag--condition",
+     "detailText": "リフォーム",
+     "listClass": "a-tag--condition",
+     "listText": "リフォーム"
+    }
+   ],
+   "thumbnailImage": [
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fphoto%2FC13266F96.jpg%3F20260615170218&w=718&h=538",
+     "alt": "三田スカイハイツ(外観)",
+     "href": "/mansion/C13266F96/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Flayout%2FC13266F96.gif%3F20260615170218&w=718&h=538",
+     "alt": "三田スカイハイツ(間取り)",
+     "href": "/mansion/C13266F96/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc2%2FC13266F96.jpg%3F20260615170218&w=718&h=538",
+     "alt": "三田スカイハイツ",
+     "href": "/mansion/C13266F96/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc3%2FC13266F96.jpg%3F20260615170218&w=718&h=538",
+     "alt": "三田スカイハイツ",
+     "href": "/mansion/C13266F96/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc5%2FC13266F96.jpg%3F20260615170218&w=718&h=538",
+     "alt": "三田スカイハイツ",
+     "href": "/mansion/C13266F96/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc4%2FC13266F96.jpg%3F20260615170218&w=718&h=538",
+     "alt": "三田スカイハイツ",
+     "href": "/mansion/C13266F96/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc6%2FC13266F96.jpg%3F20260615170218&w=718&h=538",
+     "alt": "三田スカイハイツ",
+     "href": "/mansion/C13266F96/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc19%2FC13266F96.jpg%3F20260615170218&w=718&h=538",
+     "alt": "三田スカイハイツ",
+     "href": "/mansion/C13266F96/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc7%2FC13266F96.jpg%3F20260615170218&w=718&h=538",
+     "alt": "三田スカイハイツ",
+     "href": "/mansion/C13266F96/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc8%2FC13266F96.jpg%3F20260615170218&w=718&h=538",
+     "alt": "三田スカイハイツ",
+     "href": "/mansion/C13266F96/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc9%2FC13266F96.jpg%3F20260615170218&w=718&h=538",
+     "alt": "三田スカイハイツ",
+     "href": "/mansion/C13266F96/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc10%2FC13266F96.jpg%3F20260615170218&w=718&h=538",
+     "alt": "三田スカイハイツ",
+     "href": "/mansion/C13266F96/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc11%2FC13266F96.jpg%3F20260615170218&w=718&h=538",
+     "alt": "三田スカイハイツ",
+     "href": "/mansion/C13266F96/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc12%2FC13266F96.jpg%3F20260615170218&w=718&h=538",
+     "alt": "三田スカイハイツ",
+     "href": "/mansion/C13266F96/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc13%2FC13266F96.jpg%3F20260615170218&w=718&h=538",
+     "alt": "三田スカイハイツ",
+     "href": "/mansion/C13266F96/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc14%2FC13266F96.jpg%3F20260615170218&w=718&h=538",
+     "alt": "三田スカイハイツ",
+     "href": "/mansion/C13266F96/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc20%2FC13266F96.jpg%3F20260710095428&w=718&h=538",
+     "alt": "三田スカイハイツ",
+     "href": "/mansion/C13266F96/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc15%2FC13266F96.jpg%3F20260615170218&w=718&h=538",
+     "alt": "三田スカイハイツ",
+     "href": "/mansion/C13266F96/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc16%2FC13266F96.jpg%3F20260615170218&w=718&h=538",
+     "alt": "三田スカイハイツ",
+     "href": "/mansion/C13266F96/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc21%2FC13266F96.jpg%3F20260710095428&w=718&h=538",
+     "alt": "三田スカイハイツ",
+     "href": "/mansion/C13266F96/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc17%2FC13266F96.jpg%3F20260615170218&w=718&h=538",
+     "alt": "三田スカイハイツ",
+     "href": "/mansion/C13266F96/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc18%2FC13266F96.jpg%3F20260615170218&w=718&h=538",
+     "alt": "三田スカイハイツ",
+     "href": "/mansion/C13266F96/"
+    }
+   ],
+   "layoutImageModal": {
+    "propertyTitle": "三田スカイハイツ",
+    "layoutImage": {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Flayout%2FC13266F96.gif%3F20260615170218&w=718&h=538",
+     "alt": "三田スカイハイツ(間取り)"
+    },
+    "propertyDetailUrl": "/mansion/C13266F96/",
+    "inquiryUrl": "/kounyu/inquiry/C13266F96/"
+   },
+   "prIconFlg": false,
+   "favoriteFlg": false,
+   "favoriteType": "buy",
+   "applyingServiceList": [],
+   "commuteInfoList": [],
+   "openHouses": [],
+   "matchingTargetFlg": true,
+   "isForeignPage": false,
+   "hasOfficialSite": false
+  },
+  {
+   "propertyCd": "C13269199",
+   "propertyClassCd": "1",
+   "propertyName": "パークハイム三田",
+   "priceModel": {
+    "mstCd": 1,
+    "price": 77800000,
+    "consumptionTaxFlg": false
+   },
+   "address": "東京都港区三田２丁目",
+   "access": [
+    "東京メトロ南北線「麻布十番」駅 徒歩9分",
+    "都営大江戸線「麻布十番」駅 徒歩9分",
+    "東京メトロ南北線「白金高輪」駅 徒歩10分"
+   ],
+   "propertyDetail": [
+    "2LDK",
+    "55.97m<sup>2</sup>",
+    "1981年10月築",
+    "1階／地上6階",
+    "南西向き"
+   ],
+   "detailUrl": "/mansion/C13269199/",
+   "inquiryInfo": {
+    "inquiryUrl": "/kounyu/inquiry/C13269199/",
+    "inquiryTypeFlg": true,
+    "inquiryLinkText": "詳細"
+   },
+   "labelList": [
+    {
+     "cd": "028",
+     "iconName": "物件種別",
+     "detailClass": "a-tag--type",
+     "detailText": "中古マンション",
+     "listClass": "a-tag--type",
+     "listText": "中古マンション"
+    }
+   ],
+   "otherConditionLabels": [],
+   "thumbnailImage": [
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fphoto%2FC13269199.jpg%3F20260928095707&w=718&h=538",
+     "alt": "パークハイム三田(外観)",
+     "href": "/mansion/C13269199/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Flayout%2FC13269199.gif%3F20260928095707&w=718&h=538",
+     "alt": "パークハイム三田(間取り)",
+     "href": "/mansion/C13269199/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc2%2FC13269199.jpg%3F20260928095707&w=718&h=538",
+     "alt": "パークハイム三田",
+     "href": "/mansion/C13269199/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc3%2FC13269199.jpg%3F20260928095707&w=718&h=538",
+     "alt": "パークハイム三田",
+     "href": "/mansion/C13269199/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc4%2FC13269199.jpg%3F20260928095707&w=718&h=538",
+     "alt": "パークハイム三田",
+     "href": "/mansion/C13269199/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc5%2FC13269199.jpg%3F20260928095707&w=718&h=538",
+     "alt": "パークハイム三田",
+     "href": "/mansion/C13269199/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc6%2FC13269199.jpg%3F20260928095707&w=718&h=538",
+     "alt": "パークハイム三田",
+     "href": "/mansion/C13269199/"
+    }
+   ],
+   "layoutImageModal": {
+    "propertyTitle": "パークハイム三田",
+    "layoutImage": {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Flayout%2FC13269199.gif%3F20260928095707&w=718&h=538",
+     "alt": "パークハイム三田(間取り)"
+    },
+    "propertyDetailUrl": "/mansion/C13269199/",
+    "inquiryUrl": "/kounyu/inquiry/C13269199/"
+   },
+   "prIconFlg": false,
+   "favoriteFlg": false,
+   "favoriteType": "buy",
+   "applyingServiceList": [],
+   "commuteInfoList": [],
+   "openHouses": [],
+   "matchingTargetFlg": true,
+   "isForeignPage": false,
+   "hasOfficialSite": false
+  },
+  {
+   "propertyCd": "C48267W35",
+   "propertyClassCd": "1",
+   "propertyName": "ディアナコート三田",
+   "priceModel": {
+    "mstCd": 1,
+    "price": 199900000,
+    "consumptionTaxFlg": true
+   },
+   "address": "東京都港区三田２丁目",
+   "access": [
+    "都営大江戸線「赤羽橋」駅 徒歩8分"
+   ],
+   "propertyDetail": [
+    "1LDK＋納戸×1",
+    "80.23m<sup>2</sup>",
+    "1999年7月築",
+    "2階／地上8階 地下1階",
+    "南西向き"
+   ],
+   "detailUrl": "/mansion/C48267W35/",
+   "inquiryInfo": {
+    "inquiryUrl": "/kounyu/inquiry/C48267W35/",
+    "inquiryTypeFlg": true,
+    "inquiryLinkText": "詳細"
+   },
+   "labelList": [
+    {
+     "cd": "028",
+     "iconName": "物件種別",
+     "detailClass": "a-tag--type",
+     "detailText": "中古マンション",
+     "listClass": "a-tag--type",
+     "listText": "中古マンション"
+    },
+    {
+     "cd": "005",
+     "iconName": "新価格",
+     "detailClass": "a-tag--new-price",
+     "detailText": "新価格 10/1",
+     "listClass": "a-tag--new-price",
+     "listText": "新価格 10/1"
+    }
+   ],
+   "otherConditionLabels": [],
+   "thumbnailImage": [
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fphoto%2FC48267W35.jpg%3F20260808101139&w=718&h=538",
+     "alt": "ディアナコート三田(外観)",
+     "href": "/mansion/C48267W35/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Flayout%2FC48267W35.gif%3F20260828132351&w=718&h=538",
+     "alt": "ディアナコート三田(間取り)",
+     "href": "/mansion/C48267W35/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc6%2FC48267W35.jpg%3F20260808101139&w=718&h=538",
+     "alt": "ディアナコート三田",
+     "href": "/mansion/C48267W35/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc5%2FC48267W35.jpg%3F20260808101139&w=718&h=538",
+     "alt": "ディアナコート三田",
+     "href": "/mansion/C48267W35/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc4%2FC48267W35.jpg%3F20260808101139&w=718&h=538",
+     "alt": "ディアナコート三田",
+     "href": "/mansion/C48267W35/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc3%2FC48267W35.jpg%3F20260808101139&w=718&h=538",
+     "alt": "ディアナコート三田",
+     "href": "/mansion/C48267W35/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc2%2FC48267W35.jpg%3F20260808101139&w=718&h=538",
+     "alt": "ディアナコート三田",
+     "href": "/mansion/C48267W35/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc7%2FC48267W35.jpg%3F20260808101139&w=718&h=538",
+     "alt": "ディアナコート三田",
+     "href": "/mansion/C48267W35/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc8%2FC48267W35.jpg%3F20260808101139&w=718&h=538",
+     "alt": "ディアナコート三田",
+     "href": "/mansion/C48267W35/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc9%2FC48267W35.jpg%3F20260808101139&w=718&h=538",
+     "alt": "ディアナコート三田",
+     "href": "/mansion/C48267W35/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc10%2FC48267W35.jpg%3F20260808101139&w=718&h=538",
+     "alt": "ディアナコート三田",
+     "href": "/mansion/C48267W35/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc11%2FC48267W35.jpg%3F20260808101139&w=718&h=538",
+     "alt": "ディアナコート三田",
+     "href": "/mansion/C48267W35/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc12%2FC48267W35.jpg%3F20260808101139&w=718&h=538",
+     "alt": "ディアナコート三田",
+     "href": "/mansion/C48267W35/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc13%2FC48267W35.jpg%3F20260808101139&w=718&h=538",
+     "alt": "ディアナコート三田",
+     "href": "/mansion/C48267W35/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc14%2FC48267W35.jpg%3F20260808101139&w=718&h=538",
+     "alt": "ディアナコート三田",
+     "href": "/mansion/C48267W35/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc15%2FC48267W35.jpg%3F20260808101139&w=718&h=538",
+     "alt": "ディアナコート三田",
+     "href": "/mansion/C48267W35/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc16%2FC48267W35.jpg%3F20260808101139&w=718&h=538",
+     "alt": "ディアナコート三田",
+     "href": "/mansion/C48267W35/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc17%2FC48267W35.jpg%3F20260808101139&w=718&h=538",
+     "alt": "ディアナコート三田",
+     "href": "/mansion/C48267W35/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc18%2FC48267W35.jpg%3F20260808101139&w=718&h=538",
+     "alt": "ディアナコート三田",
+     "href": "/mansion/C48267W35/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc19%2FC48267W35.jpg%3F20260808101139&w=718&h=538",
+     "alt": "ディアナコート三田",
+     "href": "/mansion/C48267W35/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc20%2FC48267W35.jpg%3F20260808101139&w=718&h=538",
+     "alt": "ディアナコート三田",
+     "href": "/mansion/C48267W35/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc21%2FC48267W35.jpg%3F20260808101139&w=718&h=538",
+     "alt": "ディアナコート三田",
+     "href": "/mansion/C48267W35/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc22%2FC48267W35.jpg%3F20260808101139&w=718&h=538",
+     "alt": "ディアナコート三田",
+     "href": "/mansion/C48267W35/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc23%2FC48267W35.jpg%3F20260808101139&w=718&h=538",
+     "alt": "ディアナコート三田",
+     "href": "/mansion/C48267W35/"
+    }
+   ],
+   "layoutImageModal": {
+    "propertyTitle": "ディアナコート三田",
+    "layoutImage": {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Flayout%2FC48267W35.gif%3F20260828132351&w=718&h=538",
+     "alt": "ディアナコート三田(間取り)"
+    },
+    "propertyDetailUrl": "/mansion/C48267W35/",
+    "inquiryUrl": "/kounyu/inquiry/C48267W35/"
+   },
+   "prIconFlg": false,
+   "favoriteFlg": false,
+   "favoriteType": "buy",
+   "applyingServiceList": [],
+   "commuteInfoList": [],
+   "openHouses": [],
+   "matchingTargetFlg": true,
+   "isForeignPage": false,
+   "hasOfficialSite": false
+  },
+  {
+   "propertyCd": "C13266H11",
+   "propertyClassCd": "1",
+   "propertyName": "コンシェリア三田　ＴＯＫＹＯ　ＰＲＥＭＩＵＭ",
+   "priceModel": {
+    "mstCd": 1,
+    "price": 174800000,
+    "consumptionTaxFlg": false
+   },
+   "address": "東京都港区三田２丁目",
+   "access": [
+    "都営大江戸線「赤羽橋」駅 徒歩7分"
+   ],
+   "propertyDetail": [
+    "2LDK",
+    "51.00m<sup>2</sup>",
+    "2014年4月築",
+    "10階／地上13階",
+    "南向き"
+   ],
+   "detailUrl": "/mansion/C13266H11/",
+   "inquiryInfo": {
+    "inquiryUrl": "/kounyu/inquiry/C13266H11/",
+    "inquiryTypeFlg": true,
+    "inquiryLinkText": "詳細"
+   },
+   "labelList": [
+    {
+     "cd": "028",
+     "iconName": "物件種別",
+     "detailClass": "a-tag--type",
+     "detailText": "中古マンション",
+     "listClass": "a-tag--type",
+     "listText": "中古マンション"
+    },
+    {
+     "cd": "005",
+     "iconName": "新価格",
+     "detailClass": "a-tag--new-price",
+     "detailText": "新価格 10/9",
+     "listClass": "a-tag--new-price",
+     "listText": "新価格 10/9"
+    }
+   ],
+   "otherConditionLabels": [],
+   "thumbnailImage": [
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fphoto%2FC13266H11.jpg%3F20260829143500&w=718&h=538",
+     "alt": "コンシェリア三田　ＴＯＫＹＯ　ＰＲＥＭＩＵＭ(外観)",
+     "href": "/mansion/C13266H11/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Flayout%2FC13266H11.gif%3F20260621122814&w=718&h=538",
+     "alt": "コンシェリア三田　ＴＯＫＹＯ　ＰＲＥＭＩＵＭ(間取り)",
+     "href": "/mansion/C13266H11/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc22%2FC13266H11.jpg%3F20260829143500&w=718&h=538",
+     "alt": "コンシェリア三田　ＴＯＫＹＯ　ＰＲＥＭＩＵＭ",
+     "href": "/mansion/C13266H11/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc21%2FC13266H11.jpg%3F20260829143500&w=718&h=538",
+     "alt": "コンシェリア三田　ＴＯＫＹＯ　ＰＲＥＭＩＵＭ",
+     "href": "/mansion/C13266H11/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc20%2FC13266H11.jpg%3F20260829143500&w=718&h=538",
+     "alt": "コンシェリア三田　ＴＯＫＹＯ　ＰＲＥＭＩＵＭ",
+     "href": "/mansion/C13266H11/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc19%2FC13266H11.jpg%3F20260829143500&w=718&h=538",
+     "alt": "コンシェリア三田　ＴＯＫＹＯ　ＰＲＥＭＩＵＭ",
+     "href": "/mansion/C13266H11/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc18%2FC13266H11.jpg%3F20260829143500&w=718&h=538",
+     "alt": "コンシェリア三田　ＴＯＫＹＯ　ＰＲＥＭＩＵＭ",
+     "href": "/mansion/C13266H11/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc17%2FC13266H11.jpg%3F20260829143500&w=718&h=538",
+     "alt": "コンシェリア三田　ＴＯＫＹＯ　ＰＲＥＭＩＵＭ",
+     "href": "/mansion/C13266H11/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc16%2FC13266H11.jpg%3F20260829143500&w=718&h=538",
+     "alt": "コンシェリア三田　ＴＯＫＹＯ　ＰＲＥＭＩＵＭ",
+     "href": "/mansion/C13266H11/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc15%2FC13266H11.jpg%3F20260829143500&w=718&h=538",
+     "alt": "コンシェリア三田　ＴＯＫＹＯ　ＰＲＥＭＩＵＭ",
+     "href": "/mansion/C13266H11/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc14%2FC13266H11.jpg%3F20260829143500&w=718&h=538",
+     "alt": "コンシェリア三田　ＴＯＫＹＯ　ＰＲＥＭＩＵＭ",
+     "href": "/mansion/C13266H11/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc13%2FC13266H11.jpg%3F20260829143500&w=718&h=538",
+     "alt": "コンシェリア三田　ＴＯＫＹＯ　ＰＲＥＭＩＵＭ",
+     "href": "/mansion/C13266H11/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc12%2FC13266H11.jpg%3F20260829143500&w=718&h=538",
+     "alt": "コンシェリア三田　ＴＯＫＹＯ　ＰＲＥＭＩＵＭ",
+     "href": "/mansion/C13266H11/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc11%2FC13266H11.jpg%3F20260829143500&w=718&h=538",
+     "alt": "コンシェリア三田　ＴＯＫＹＯ　ＰＲＥＭＩＵＭ",
+     "href": "/mansion/C13266H11/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc10%2FC13266H11.jpg%3F20260829143500&w=718&h=538",
+     "alt": "コンシェリア三田　ＴＯＫＹＯ　ＰＲＥＭＩＵＭ",
+     "href": "/mansion/C13266H11/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc9%2FC13266H11.jpg%3F20260829143500&w=718&h=538",
+     "alt": "コンシェリア三田　ＴＯＫＹＯ　ＰＲＥＭＩＵＭ",
+     "href": "/mansion/C13266H11/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc8%2FC13266H11.jpg%3F20260829143500&w=718&h=538",
+     "alt": "コンシェリア三田　ＴＯＫＹＯ　ＰＲＥＭＩＵＭ",
+     "href": "/mansion/C13266H11/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc7%2FC13266H11.jpg%3F20260829143500&w=718&h=538",
+     "alt": "コンシェリア三田　ＴＯＫＹＯ　ＰＲＥＭＩＵＭ",
+     "href": "/mansion/C13266H11/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc6%2FC13266H11.jpg%3F20260829143500&w=718&h=538",
+     "alt": "コンシェリア三田　ＴＯＫＹＯ　ＰＲＥＭＩＵＭ",
+     "href": "/mansion/C13266H11/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc5%2FC13266H11.jpg%3F20260829143500&w=718&h=538",
+     "alt": "コンシェリア三田　ＴＯＫＹＯ　ＰＲＥＭＩＵＭ",
+     "href": "/mansion/C13266H11/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc4%2FC13266H11.jpg%3F20260829143500&w=718&h=538",
+     "alt": "コンシェリア三田　ＴＯＫＹＯ　ＰＲＥＭＩＵＭ",
+     "href": "/mansion/C13266H11/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc3%2FC13266H11.jpg%3F20260829143500&w=718&h=538",
+     "alt": "コンシェリア三田　ＴＯＫＹＯ　ＰＲＥＭＩＵＭ",
+     "href": "/mansion/C13266H11/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc2%2FC13266H11.jpg%3F20260829143500&w=718&h=538",
+     "alt": "コンシェリア三田　ＴＯＫＹＯ　ＰＲＥＭＩＵＭ",
+     "href": "/mansion/C13266H11/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc23%2FC13266H11.jpg%3F20260829143500&w=718&h=538",
+     "alt": "コンシェリア三田　ＴＯＫＹＯ　ＰＲＥＭＩＵＭ",
+     "href": "/mansion/C13266H11/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc24%2FC13266H11.jpg%3F20260829143500&w=718&h=538",
+     "alt": "コンシェリア三田　ＴＯＫＹＯ　ＰＲＥＭＩＵＭ",
+     "href": "/mansion/C13266H11/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc25%2FC13266H11.jpg%3F20260829143500&w=718&h=538",
+     "alt": "コンシェリア三田　ＴＯＫＹＯ　ＰＲＥＭＩＵＭ",
+     "href": "/mansion/C13266H11/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc26%2FC13266H11.jpg%3F20260829143500&w=718&h=538",
+     "alt": "コンシェリア三田　ＴＯＫＹＯ　ＰＲＥＭＩＵＭ",
+     "href": "/mansion/C13266H11/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc27%2FC13266H11.jpg%3F20260829143500&w=718&h=538",
+     "alt": "コンシェリア三田　ＴＯＫＹＯ　ＰＲＥＭＩＵＭ",
+     "href": "/mansion/C13266H11/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc28%2FC13266H11.jpg%3F20260829143500&w=718&h=538",
+     "alt": "コンシェリア三田　ＴＯＫＹＯ　ＰＲＥＭＩＵＭ",
+     "href": "/mansion/C13266H11/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc29%2FC13266H11.jpg%3F20260829143500&w=718&h=538",
+     "alt": "コンシェリア三田　ＴＯＫＹＯ　ＰＲＥＭＩＵＭ",
+     "href": "/mansion/C13266H11/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc30%2FC13266H11.jpg%3F20260829143500&w=718&h=538",
+     "alt": "コンシェリア三田　ＴＯＫＹＯ　ＰＲＥＭＩＵＭ",
+     "href": "/mansion/C13266H11/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc31%2FC13266H11.jpg%3F20260829143500&w=718&h=538",
+     "alt": "コンシェリア三田　ＴＯＫＹＯ　ＰＲＥＭＩＵＭ",
+     "href": "/mansion/C13266H11/"
+    }
+   ],
+   "layoutImageModal": {
+    "propertyTitle": "コンシェリア三田　ＴＯＫＹＯ　ＰＲＥＭＩＵＭ",
+    "layoutImage": {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Flayout%2FC13266H11.gif%3F20260621122814&w=718&h=538",
+     "alt": "コンシェリア三田　ＴＯＫＹＯ　ＰＲＥＭＩＵＭ(間取り)"
+    },
+    "propertyDetailUrl": "/mansion/C13266H11/",
+    "inquiryUrl": "/kounyu/inquiry/C13266H11/"
+   },
+   "prIconFlg": false,
+   "favoriteFlg": false,
+   "favoriteType": "buy",
+   "applyingServiceList": [],
+   "commuteInfoList": [],
+   "openHouses": [],
+   "matchingTargetFlg": true,
+   "isForeignPage": false,
+   "hasOfficialSite": false
+  },
+  {
+   "propertyCd": "C13269X75",
+   "propertyClassCd": "1",
+   "propertyName": "三田シャスターマンション",
+   "priceModel": {
+    "mstCd": 1,
+    "price": 65000000,
+    "consumptionTaxFlg": false
+   },
+   "address": "東京都港区三田４丁目",
+   "access": [
+    "都営三田線「三田」駅 徒歩8分"
+   ],
+   "propertyDetail": [
+    "4LDK",
+    "78.68m<sup>2</sup>",
+    "1973年1月築",
+    "7階／地上12階 地下1階",
+    "南東向き"
+   ],
+   "detailUrl": "/mansion/C13269X75/",
+   "inquiryInfo": {
+    "inquiryUrl": "/kounyu/inquiry/C13269X75/",
+    "inquiryTypeFlg": true,
+    "inquiryLinkText": "詳細"
+   },
+   "labelList": [
+    {
+     "cd": "028",
+     "iconName": "物件種別",
+     "detailClass": "a-tag--type",
+     "detailText": "中古マンション",
+     "listClass": "a-tag--type",
+     "listText": "中古マンション"
+    }
+   ],
+   "otherConditionLabels": [
+    {
+     "cd": "003",
+     "iconName": "OPEN",
+     "detailClass": "a-tag--condition",
+     "detailText": "OPEN",
+     "listClass": "a-tag--condition",
+     "listText": "OPEN"
+    }
+   ],
+   "thumbnailImage": [
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fphoto%2FC13269X75.jpg%3F20260920105400&w=718&h=538",
+     "alt": "三田シャスターマンション(外観)",
+     "href": "/mansion/C13269X75/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Flayout%2FC13269X75.gif%3F20260925094702&w=718&h=538",
+     "alt": "三田シャスターマンション(間取り)",
+     "href": "/mansion/C13269X75/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc1%2FC13269X75.jpg%3F20260920105400&w=718&h=538",
+     "alt": "三田シャスターマンション",
+     "href": "/mansion/C13269X75/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc2%2FC13269X75.jpg%3F20260920105400&w=718&h=538",
+     "alt": "三田シャスターマンション",
+     "href": "/mansion/C13269X75/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc13%2FC13269X75.jpg%3F20260921175554&w=718&h=538",
+     "alt": "三田シャスターマンション",
+     "href": "/mansion/C13269X75/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc11%2FC13269X75.jpg%3F20260921175554&w=718&h=538",
+     "alt": "三田シャスターマンション",
+     "href": "/mansion/C13269X75/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc3%2FC13269X75.jpg%3F20260920105400&w=718&h=538",
+     "alt": "三田シャスターマンション",
+     "href": "/mansion/C13269X75/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc4%2FC13269X75.jpg%3F20260920105400&w=718&h=538",
+     "alt": "三田シャスターマンション",
+     "href": "/mansion/C13269X75/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc5%2FC13269X75.jpg%3F20260921175554&w=718&h=538",
+     "alt": "三田シャスターマンション",
+     "href": "/mansion/C13269X75/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc8%2FC13269X75.jpg%3F20260920105400&w=718&h=538",
+     "alt": "三田シャスターマンション",
+     "href": "/mansion/C13269X75/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc6%2FC13269X75.jpg%3F20260920105400&w=718&h=538",
+     "alt": "三田シャスターマンション",
+     "href": "/mansion/C13269X75/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc12%2FC13269X75.jpg%3F20260921175554&w=718&h=538",
+     "alt": "三田シャスターマンション",
+     "href": "/mansion/C13269X75/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc15%2FC13269X75.jpg%3F20260921175554&w=718&h=538",
+     "alt": "三田シャスターマンション",
+     "href": "/mansion/C13269X75/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc14%2FC13269X75.jpg%3F20260921175554&w=718&h=538",
+     "alt": "三田シャスターマンション",
+     "href": "/mansion/C13269X75/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc9%2FC13269X75.jpg%3F20260921175554&w=718&h=538",
+     "alt": "三田シャスターマンション",
+     "href": "/mansion/C13269X75/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc10%2FC13269X75.jpg%3F20260921175554&w=718&h=538",
+     "alt": "三田シャスターマンション",
+     "href": "/mansion/C13269X75/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc7%2FC13269X75.jpg%3F20260921175554&w=718&h=538",
+     "alt": "三田シャスターマンション",
+     "href": "/mansion/C13269X75/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc16%2FC13269X75.jpg%3F20260921175554&w=718&h=538",
+     "alt": "三田シャスターマンション",
+     "href": "/mansion/C13269X75/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc17%2FC13269X75.jpg%3F20260921175554&w=718&h=538",
+     "alt": "三田シャスターマンション",
+     "href": "/mansion/C13269X75/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc18%2FC13269X75.jpg%3F20260921175554&w=718&h=538",
+     "alt": "三田シャスターマンション",
+     "href": "/mansion/C13269X75/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc19%2FC13269X75.jpg%3F20260921175554&w=718&h=538",
+     "alt": "三田シャスターマンション",
+     "href": "/mansion/C13269X75/"
+    }
+   ],
+   "layoutImageModal": {
+    "propertyTitle": "三田シャスターマンション",
+    "layoutImage": {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Flayout%2FC13269X75.gif%3F20260925094702&w=718&h=538",
+     "alt": "三田シャスターマンション(間取り)"
+    },
+    "propertyDetailUrl": "/mansion/C13269X75/",
+    "inquiryUrl": "/kounyu/inquiry/C13269X75/"
+   },
+   "prIconFlg": false,
+   "favoriteFlg": false,
+   "favoriteType": "buy",
+   "applyingServiceList": [],
+   "commuteInfoList": [],
+   "openHouses": [],
+   "matchingTargetFlg": true,
+   "isForeignPage": false,
+   "hasOfficialSite": false
+  },
+  {
+   "propertyCd": "C4825X247",
+   "propertyClassCd": "1",
+   "propertyName": "三田シャスターマンション",
+   "priceModel": {
+    "mstCd": 1,
+    "price": 89800000,
+    "consumptionTaxFlg": false
+   },
+   "address": "東京都港区三田４丁目",
+   "access": [
+    "都営三田線「三田」駅 徒歩8分",
+    "山手線「田町」駅 徒歩9分",
+    "京浜東北・根岸線「田町」駅 徒歩9分"
+   ],
+   "propertyDetail": [
+    "2LDK",
+    "78.68m<sup>2</sup>",
+    "1973年1月築",
+    "4階／地上12階 地下1階",
+    "南東向き"
+   ],
+   "detailUrl": "/mansion/C4825X247/",
+   "inquiryInfo": {
+    "inquiryUrl": "/kounyu/inquiry/C4825X247/",
+    "inquiryTypeFlg": true,
+    "inquiryLinkText": "詳細"
+   },
+   "labelList": [
+    {
+     "cd": "028",
+     "iconName": "物件種別",
+     "detailClass": "a-tag--type",
+     "detailText": "中古マンション",
+     "listClass": "a-tag--type",
+     "listText": "中古マンション"
+    }
+   ],
+   "otherConditionLabels": [
+    {
+     "cd": "026",
+     "iconName": "リフォーム",
+     "detailClass": "a-tag--condition",
+     "detailText": "リフォーム",
+     "listClass": "a-tag--condition",
+     "listText": "リフォーム"
+    },
+    {
+     "cd": "031",
+     "iconName": "CGリフォームイメージ",
+     "detailClass": "a-tag--condition",
+     "detailText": "CGリフォーム",
+     "detailPath": "/images/common/icon_cg.png",
+     "listClass": "a-tag--condition",
+     "listText": "CGリフォーム",
+     "listPath": "/images/common/banner_cg.png",
+     "linkUrl": "/kounyu/room-image-service/",
+     "serviceText": "CG画像でリフォーム後の暮らしを体験できる。リフォームイメージ掲載サービス"
+    }
+   ],
+   "thumbnailImage": [
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fphoto%2FC4825X247.jpg%3F20251110124017&w=718&h=538",
+     "alt": "三田シャスターマンション(外観)",
+     "href": "/mansion/C4825X247/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Flayout%2FC4825X247.gif%3F20251228162501&w=718&h=538",
+     "alt": "三田シャスターマンション(間取り)",
+     "href": "/mansion/C4825X247/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc2%2FC4825X247.jpg%3F20251110121626&w=718&h=538",
+     "alt": "三田シャスターマンション",
+     "href": "/mansion/C4825X247/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc22%2FC4825X247.jpg%3F20251214094036&w=718&h=538",
+     "alt": "三田シャスターマンション",
+     "href": "/mansion/C4825X247/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc23%2FC4825X247.jpg%3F20251129171511&w=718&h=538",
+     "alt": "三田シャスターマンション",
+     "href": "/mansion/C4825X247/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc24%2FC4825X247.jpg%3F20260424152609&w=718&h=538",
+     "alt": "三田シャスターマンション",
+     "href": "/mansion/C4825X247/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc34%2FC4825X247.jpg%3F20260424152609&w=718&h=538",
+     "alt": "三田シャスターマンション",
+     "href": "/mansion/C4825X247/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc25%2FC4825X247.jpg%3F20251129171511&w=718&h=538",
+     "alt": "三田シャスターマンション",
+     "href": "/mansion/C4825X247/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc33%2FC4825X247.jpg%3F20260416180637&w=718&h=538",
+     "alt": "三田シャスターマンション",
+     "href": "/mansion/C4825X247/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc26%2FC4825X247.jpg%3F20251129171511&w=718&h=538",
+     "alt": "三田シャスターマンション",
+     "href": "/mansion/C4825X247/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc27%2FC4825X247.jpg%3F20260424152609&w=718&h=538",
+     "alt": "三田シャスターマンション",
+     "href": "/mansion/C4825X247/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc32%2FC4825X247.jpg%3F20251214094036&w=718&h=538",
+     "alt": "三田シャスターマンション",
+     "href": "/mansion/C4825X247/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc28%2FC4825X247.jpg%3F20251129171511&w=718&h=538",
+     "alt": "三田シャスターマンション",
+     "href": "/mansion/C4825X247/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc29%2FC4825X247.jpg%3F20251129171511&w=718&h=538",
+     "alt": "三田シャスターマンション",
+     "href": "/mansion/C4825X247/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc31%2FC4825X247.jpg%3F20251129171511&w=718&h=538",
+     "alt": "三田シャスターマンション",
+     "href": "/mansion/C4825X247/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc6%2FC4825X247.jpg%3F20251110121626&w=718&h=538",
+     "alt": "三田シャスターマンション",
+     "href": "/mansion/C4825X247/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc5%2FC4825X247.jpg%3F20251110121626&w=718&h=538",
+     "alt": "三田シャスターマンション",
+     "href": "/mansion/C4825X247/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc1%2FC4825X247.jpg%3F20251110121626&w=718&h=538",
+     "alt": "三田シャスターマンション",
+     "href": "/mansion/C4825X247/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc4%2FC4825X247.jpg%3F20251110121626&w=718&h=538",
+     "alt": "三田シャスターマンション",
+     "href": "/mansion/C4825X247/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc7%2FC4825X247.jpg%3F20251110115059&w=718&h=538",
+     "alt": "三田シャスターマンション",
+     "href": "/mansion/C4825X247/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc8%2FC4825X247.jpg%3F20251110115059&w=718&h=538",
+     "alt": "三田シャスターマンション",
+     "href": "/mansion/C4825X247/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc9%2FC4825X247.jpg%3F20251110121626&w=718&h=538",
+     "alt": "三田シャスターマンション",
+     "href": "/mansion/C4825X247/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc12%2FC4825X247.jpg%3F20251110115059&w=718&h=538",
+     "alt": "三田シャスターマンション",
+     "href": "/mansion/C4825X247/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc14%2FC4825X247.jpg%3F20251110115059&w=718&h=538",
+     "alt": "三田シャスターマンション",
+     "href": "/mansion/C4825X247/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc13%2FC4825X247.jpg%3F20251110115059&w=718&h=538",
+     "alt": "三田シャスターマンション",
+     "href": "/mansion/C4825X247/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc11%2FC4825X247.jpg%3F20251110115059&w=718&h=538",
+     "alt": "三田シャスターマンション",
+     "href": "/mansion/C4825X247/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc10%2FC4825X247.jpg%3F20251110115059&w=718&h=538",
+     "alt": "三田シャスターマンション",
+     "href": "/mansion/C4825X247/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc15%2FC4825X247.jpg%3F20251110115059&w=718&h=538",
+     "alt": "三田シャスターマンション",
+     "href": "/mansion/C4825X247/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc17%2FC4825X247.jpg%3F20251110115059&w=718&h=538",
+     "alt": "三田シャスターマンション",
+     "href": "/mansion/C4825X247/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc18%2FC4825X247.jpg%3F20251110121626&w=718&h=538",
+     "alt": "三田シャスターマンション",
+     "href": "/mansion/C4825X247/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc16%2FC4825X247.jpg%3F20251110115059&w=718&h=538",
+     "alt": "三田シャスターマンション",
+     "href": "/mansion/C4825X247/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc20%2FC4825X247.jpg%3F20251110121626&w=718&h=538",
+     "alt": "三田シャスターマンション",
+     "href": "/mansion/C4825X247/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc21%2FC4825X247.jpg%3F20251110121626&w=718&h=538",
+     "alt": "三田シャスターマンション",
+     "href": "/mansion/C4825X247/"
+    }
+   ],
+   "layoutImageModal": {
+    "propertyTitle": "三田シャスターマンション",
+    "layoutImage": {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Flayout%2FC4825X247.gif%3F20251228162501&w=718&h=538",
+     "alt": "三田シャスターマンション(間取り)"
+    },
+    "propertyDetailUrl": "/mansion/C4825X247/",
+    "inquiryUrl": "/kounyu/inquiry/C4825X247/"
+   },
+   "prIconFlg": false,
+   "favoriteFlg": false,
+   "favoriteType": "buy",
+   "applyingServiceList": [
+    {
+     "cd": "031",
+     "iconName": "CGリフォームイメージ",
+     "detailClass": "a-tag--condition",
+     "detailText": "CGリフォーム",
+     "detailPath": "/images/common/icon_cg.png",
+     "listClass": "a-tag--condition",
+     "listText": "CGリフォーム",
+     "listPath": "/images/common/banner_cg.png",
+     "linkUrl": "/kounyu/room-image-service/",
+     "serviceText": "CG画像でリフォーム後の暮らしを体験できる。リフォームイメージ掲載サービス"
+    }
+   ],
+   "commuteInfoList": [],
+   "openHouses": [],
+   "matchingTargetFlg": true,
+   "isForeignPage": false,
+   "hasOfficialSite": false
+  },
+  {
+   "propertyCd": "C48267C19",
+   "propertyClassCd": "1",
+   "propertyName": "三田聖坂ガーデンレジデンス",
+   "priceModel": {
+    "mstCd": 1,
+    "price": 185000000,
+    "consumptionTaxFlg": true
+   },
+   "address": "東京都港区三田４丁目",
+   "access": [
+    "都営三田線「三田」駅 徒歩6分",
+    "山手線「田町」駅 徒歩8分"
+   ],
+   "propertyDetail": [
+    "2LDK",
+    "54.87m<sup>2</sup>",
+    "2023年6月築",
+    "7階／地上10階",
+    "北西向き"
+   ],
+   "detailUrl": "/mansion/C48267C19/",
+   "inquiryInfo": {
+    "inquiryUrl": "/kounyu/inquiry/C48267C19/",
+    "inquiryTypeFlg": true,
+    "inquiryLinkText": "詳細"
+   },
+   "labelList": [
+    {
+     "cd": "028",
+     "iconName": "物件種別",
+     "detailClass": "a-tag--type",
+     "detailText": "中古マンション",
+     "listClass": "a-tag--type",
+     "listText": "中古マンション"
+    }
+   ],
+   "otherConditionLabels": [
+    {
+     "cd": "026",
+     "iconName": "リフォーム",
+     "detailClass": "a-tag--condition",
+     "detailText": "リフォーム",
+     "listClass": "a-tag--condition",
+     "listText": "リフォーム"
+    }
+   ],
+   "thumbnailImage": [
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fphoto%2FC48267C19.jpg%3F20260725183047&w=718&h=538",
+     "alt": "三田聖坂ガーデンレジデンス(外観)",
+     "href": "/mansion/C48267C19/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Flayout%2FC48267C19.gif%3F20260725183047&w=718&h=538",
+     "alt": "三田聖坂ガーデンレジデンス(間取り)",
+     "href": "/mansion/C48267C19/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc7%2FC48267C19.jpg%3F20260808085157&w=718&h=538",
+     "alt": "三田聖坂ガーデンレジデンス",
+     "href": "/mansion/C48267C19/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc1%2FC48267C19.jpg%3F20260725183047&w=718&h=538",
+     "alt": "三田聖坂ガーデンレジデンス",
+     "href": "/mansion/C48267C19/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc2%2FC48267C19.jpg%3F20260725183047&w=718&h=538",
+     "alt": "三田聖坂ガーデンレジデンス",
+     "href": "/mansion/C48267C19/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc3%2FC48267C19.jpg%3F20260725183047&w=718&h=538",
+     "alt": "三田聖坂ガーデンレジデンス",
+     "href": "/mansion/C48267C19/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc4%2FC48267C19.jpg%3F20260725183047&w=718&h=538",
+     "alt": "三田聖坂ガーデンレジデンス",
+     "href": "/mansion/C48267C19/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc5%2FC48267C19.jpg%3F20260725183047&w=718&h=538",
+     "alt": "三田聖坂ガーデンレジデンス",
+     "href": "/mansion/C48267C19/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc6%2FC48267C19.jpg%3F20260725183047&w=718&h=538",
+     "alt": "三田聖坂ガーデンレジデンス",
+     "href": "/mansion/C48267C19/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc8%2FC48267C19.jpg%3F20260725183047&w=718&h=538",
+     "alt": "三田聖坂ガーデンレジデンス",
+     "href": "/mansion/C48267C19/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc9%2FC48267C19.jpg%3F20260725183047&w=718&h=538",
+     "alt": "三田聖坂ガーデンレジデンス",
+     "href": "/mansion/C48267C19/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc10%2FC48267C19.jpg%3F20260725183047&w=718&h=538",
+     "alt": "三田聖坂ガーデンレジデンス",
+     "href": "/mansion/C48267C19/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc11%2FC48267C19.jpg%3F20260725183047&w=718&h=538",
+     "alt": "三田聖坂ガーデンレジデンス",
+     "href": "/mansion/C48267C19/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc12%2FC48267C19.jpg%3F20260725183047&w=718&h=538",
+     "alt": "三田聖坂ガーデンレジデンス",
+     "href": "/mansion/C48267C19/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc13%2FC48267C19.jpg%3F20260725183047&w=718&h=538",
+     "alt": "三田聖坂ガーデンレジデンス",
+     "href": "/mansion/C48267C19/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc14%2FC48267C19.jpg%3F20260725183047&w=718&h=538",
+     "alt": "三田聖坂ガーデンレジデンス",
+     "href": "/mansion/C48267C19/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc15%2FC48267C19.jpg%3F20260725183047&w=718&h=538",
+     "alt": "三田聖坂ガーデンレジデンス",
+     "href": "/mansion/C48267C19/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc16%2FC48267C19.jpg%3F20260725183047&w=718&h=538",
+     "alt": "三田聖坂ガーデンレジデンス",
+     "href": "/mansion/C48267C19/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc17%2FC48267C19.jpg%3F20260725183047&w=718&h=538",
+     "alt": "三田聖坂ガーデンレジデンス",
+     "href": "/mansion/C48267C19/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc18%2FC48267C19.jpg%3F20260725183047&w=718&h=538",
+     "alt": "三田聖坂ガーデンレジデンス",
+     "href": "/mansion/C48267C19/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc19%2FC48267C19.jpg%3F20260725183047&w=718&h=538",
+     "alt": "三田聖坂ガーデンレジデンス",
+     "href": "/mansion/C48267C19/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc20%2FC48267C19.jpg%3F20260725183047&w=718&h=538",
+     "alt": "三田聖坂ガーデンレジデンス",
+     "href": "/mansion/C48267C19/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc21%2FC48267C19.jpg%3F20260725183047&w=718&h=538",
+     "alt": "三田聖坂ガーデンレジデンス",
+     "href": "/mansion/C48267C19/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc22%2FC48267C19.jpg%3F20260725183047&w=718&h=538",
+     "alt": "三田聖坂ガーデンレジデンス",
+     "href": "/mansion/C48267C19/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc23%2FC48267C19.jpg%3F20260725183047&w=718&h=538",
+     "alt": "三田聖坂ガーデンレジデンス",
+     "href": "/mansion/C48267C19/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc24%2FC48267C19.jpg%3F20260725183047&w=718&h=538",
+     "alt": "三田聖坂ガーデンレジデンス",
+     "href": "/mansion/C48267C19/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc25%2FC48267C19.jpg%3F20260725183047&w=718&h=538",
+     "alt": "三田聖坂ガーデンレジデンス",
+     "href": "/mansion/C48267C19/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc26%2FC48267C19.jpg%3F20260725183047&w=718&h=538",
+     "alt": "三田聖坂ガーデンレジデンス",
+     "href": "/mansion/C48267C19/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc27%2FC48267C19.jpg%3F20260725183047&w=718&h=538",
+     "alt": "三田聖坂ガーデンレジデンス",
+     "href": "/mansion/C48267C19/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc28%2FC48267C19.jpg%3F20260725183047&w=718&h=538",
+     "alt": "三田聖坂ガーデンレジデンス",
+     "href": "/mansion/C48267C19/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc29%2FC48267C19.jpg%3F20260725183047&w=718&h=538",
+     "alt": "三田聖坂ガーデンレジデンス",
+     "href": "/mansion/C48267C19/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc30%2FC48267C19.jpg%3F20260725183047&w=718&h=538",
+     "alt": "三田聖坂ガーデンレジデンス",
+     "href": "/mansion/C48267C19/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc31%2FC48267C19.jpg%3F20260725183047&w=718&h=538",
+     "alt": "三田聖坂ガーデンレジデンス",
+     "href": "/mansion/C48267C19/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc32%2FC48267C19.jpg%3F20260725183047&w=718&h=538",
+     "alt": "三田聖坂ガーデンレジデンス",
+     "href": "/mansion/C48267C19/"
+    }
+   ],
+   "layoutImageModal": {
+    "propertyTitle": "三田聖坂ガーデンレジデンス",
+    "layoutImage": {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Flayout%2FC48267C19.gif%3F20260725183047&w=718&h=538",
+     "alt": "三田聖坂ガーデンレジデンス(間取り)"
+    },
+    "propertyDetailUrl": "/mansion/C48267C19/",
+    "inquiryUrl": "/kounyu/inquiry/C48267C19/"
+   },
+   "prIconFlg": false,
+   "favoriteFlg": false,
+   "favoriteType": "buy",
+   "applyingServiceList": [],
+   "commuteInfoList": [],
+   "openHouses": [],
+   "matchingTargetFlg": true,
+   "isForeignPage": false,
+   "hasOfficialSite": false
+  }
+ ]
+}

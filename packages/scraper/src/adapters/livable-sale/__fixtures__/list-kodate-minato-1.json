@@ -1,0 +1,854 @@
+{
+ "searchedResultCounts": "  6",
+ "propertyList": [
+  {
+   "propertyCd": "C48268E83",
+   "propertyClassCd": "3",
+   "propertyName": "東京都港区南青山３丁目",
+   "priceModel": {
+    "mstCd": 1,
+    "price": 598000000,
+    "consumptionTaxFlg": true
+   },
+   "address": "東京都港区南青山３丁目",
+   "access": [
+    "東京メトロ半蔵門線「表参道」駅 徒歩7分",
+    "東京メトロ銀座線「外苑前」駅 徒歩7分",
+    "東京メトロ千代田線「明治神宮前」駅 徒歩17分"
+   ],
+   "propertyDetail": [
+    "5LDK",
+    "建物 147.93m<sup>2</sup>",
+    "土地 104.63m<sup>2</sup>",
+    "2000年11月築"
+   ],
+   "detailUrl": "/kodate/C48268E83/",
+   "inquiryInfo": {
+    "inquiryUrl": "/kounyu/inquiry/C48268E83/",
+    "inquiryTypeFlg": true,
+    "inquiryLinkText": "詳細"
+   },
+   "labelList": [
+    {
+     "cd": "028",
+     "iconName": "物件種別",
+     "detailClass": "a-tag--type",
+     "detailText": "中古一戸建て",
+     "listClass": "a-tag--type",
+     "listText": "中古一戸建て"
+    }
+   ],
+   "otherConditionLabels": [],
+   "thumbnailImage": [
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fphoto%2FC48268E83.jpg%3F20260831120801&w=718&h=538",
+     "alt": "東京都港区南青山３丁目(外観)",
+     "href": "/kodate/C48268E83/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Flayout%2FC48268E83.gif%3F20260831120801&w=718&h=538",
+     "alt": "東京都港区南青山３丁目(間取り)",
+     "href": "/kodate/C48268E83/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc2%2FC48268E83.jpg%3F20260831120801&w=718&h=538",
+     "alt": "東京都港区南青山３丁目",
+     "href": "/kodate/C48268E83/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc3%2FC48268E83.jpg%3F20260831120801&w=718&h=538",
+     "alt": "東京都港区南青山３丁目",
+     "href": "/kodate/C48268E83/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc5%2FC48268E83.jpg%3F20260831120801&w=718&h=538",
+     "alt": "東京都港区南青山３丁目",
+     "href": "/kodate/C48268E83/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc4%2FC48268E83.jpg%3F20260831120801&w=718&h=538",
+     "alt": "東京都港区南青山３丁目",
+     "href": "/kodate/C48268E83/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc6%2FC48268E83.jpg%3F20260831120801&w=718&h=538",
+     "alt": "東京都港区南青山３丁目",
+     "href": "/kodate/C48268E83/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc7%2FC48268E83.jpg%3F20260831120801&w=718&h=538",
+     "alt": "東京都港区南青山３丁目",
+     "href": "/kodate/C48268E83/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc8%2FC48268E83.jpg%3F20260831120801&w=718&h=538",
+     "alt": "東京都港区南青山３丁目",
+     "href": "/kodate/C48268E83/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc9%2FC48268E83.jpg%3F20260831120801&w=718&h=538",
+     "alt": "東京都港区南青山３丁目",
+     "href": "/kodate/C48268E83/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc10%2FC48268E83.jpg%3F20260831120801&w=718&h=538",
+     "alt": "東京都港区南青山３丁目",
+     "href": "/kodate/C48268E83/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc11%2FC48268E83.jpg%3F20260831120801&w=718&h=538",
+     "alt": "東京都港区南青山３丁目",
+     "href": "/kodate/C48268E83/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc12%2FC48268E83.jpg%3F20260831120801&w=718&h=538",
+     "alt": "東京都港区南青山３丁目",
+     "href": "/kodate/C48268E83/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc13%2FC48268E83.jpg%3F20260831120801&w=718&h=538",
+     "alt": "東京都港区南青山３丁目",
+     "href": "/kodate/C48268E83/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc14%2FC48268E83.jpg%3F20260831120801&w=718&h=538",
+     "alt": "東京都港区南青山３丁目",
+     "href": "/kodate/C48268E83/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc15%2FC48268E83.jpg%3F20260831120801&w=718&h=538",
+     "alt": "東京都港区南青山３丁目",
+     "href": "/kodate/C48268E83/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc16%2FC48268E83.jpg%3F20260831120801&w=718&h=538",
+     "alt": "東京都港区南青山３丁目",
+     "href": "/kodate/C48268E83/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc17%2FC48268E83.jpg%3F20260831120801&w=718&h=538",
+     "alt": "東京都港区南青山３丁目",
+     "href": "/kodate/C48268E83/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc18%2FC48268E83.jpg%3F20260831120801&w=718&h=538",
+     "alt": "東京都港区南青山３丁目",
+     "href": "/kodate/C48268E83/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc19%2FC48268E83.jpg%3F20260831120801&w=718&h=538",
+     "alt": "東京都港区南青山３丁目",
+     "href": "/kodate/C48268E83/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc20%2FC48268E83.jpg%3F20260831120801&w=718&h=538",
+     "alt": "東京都港区南青山３丁目",
+     "href": "/kodate/C48268E83/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc21%2FC48268E83.jpg%3F20260831120801&w=718&h=538",
+     "alt": "東京都港区南青山３丁目",
+     "href": "/kodate/C48268E83/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc22%2FC48268E83.jpg%3F20260831120801&w=718&h=538",
+     "alt": "東京都港区南青山３丁目",
+     "href": "/kodate/C48268E83/"
+    }
+   ],
+   "layoutImageModal": {
+    "propertyTitle": "東京都港区南青山３丁目",
+    "layoutImage": {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Flayout%2FC48268E83.gif%3F20260831120801&w=718&h=538",
+     "alt": "東京都港区南青山３丁目(間取り)"
+    },
+    "propertyDetailUrl": "/kodate/C48268E83/",
+    "inquiryUrl": "/kounyu/inquiry/C48268E83/"
+   },
+   "prIconFlg": false,
+   "favoriteFlg": false,
+   "favoriteType": "buy",
+   "applyingServiceList": [],
+   "commuteInfoList": [],
+   "openHouses": [],
+   "matchingTargetFlg": true,
+   "isForeignPage": false,
+   "hasOfficialSite": false
+  },
+  {
+   "propertyCd": "C13266R31",
+   "propertyClassCd": "3",
+   "propertyName": "東京都港区南青山３丁目",
+   "priceModel": {
+    "mstCd": 1,
+    "price": 980000000,
+    "consumptionTaxFlg": true
+   },
+   "address": "東京都港区南青山３丁目",
+   "access": [
+    "東京メトロ銀座線「表参道」駅 徒歩7分",
+    "東京メトロ銀座線「外苑前」駅 徒歩7分"
+   ],
+   "propertyDetail": [
+    "3LDK",
+    "建物 177.00m<sup>2</sup>",
+    "土地 151.75m<sup>2</sup>",
+    "2006年9月築"
+   ],
+   "detailUrl": "/kodate/C13266R31/",
+   "inquiryInfo": {
+    "inquiryUrl": "/kounyu/inquiry/C13266R31/",
+    "inquiryTypeFlg": true,
+    "inquiryLinkText": "詳細"
+   },
+   "labelList": [
+    {
+     "cd": "028",
+     "iconName": "物件種別",
+     "detailClass": "a-tag--type",
+     "detailText": "中古一戸建て",
+     "listClass": "a-tag--type",
+     "listText": "中古一戸建て"
+    }
+   ],
+   "otherConditionLabels": [],
+   "thumbnailImage": [
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fphoto%2FC13266R31.jpg%3F20260616144350&w=718&h=538",
+     "alt": "東京都港区南青山３丁目(外観)",
+     "href": "/kodate/C13266R31/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Flayout%2FC13266R31.gif%3F20260918174627&w=718&h=538",
+     "alt": "東京都港区南青山３丁目(間取り)",
+     "href": "/kodate/C13266R31/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc1%2FC13266R31.jpg%3F20260616144350&w=718&h=538",
+     "alt": "東京都港区南青山３丁目",
+     "href": "/kodate/C13266R31/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc2%2FC13266R31.jpg%3F20260616144350&w=718&h=538",
+     "alt": "東京都港区南青山３丁目",
+     "href": "/kodate/C13266R31/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc3%2FC13266R31.jpg%3F20260616144350&w=718&h=538",
+     "alt": "東京都港区南青山３丁目",
+     "href": "/kodate/C13266R31/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc4%2FC13266R31.jpg%3F20260616144350&w=718&h=538",
+     "alt": "東京都港区南青山３丁目",
+     "href": "/kodate/C13266R31/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc5%2FC13266R31.jpg%3F20260616144350&w=718&h=538",
+     "alt": "東京都港区南青山３丁目",
+     "href": "/kodate/C13266R31/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc6%2FC13266R31.jpg%3F20260616144350&w=718&h=538",
+     "alt": "東京都港区南青山３丁目",
+     "href": "/kodate/C13266R31/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc7%2FC13266R31.jpg%3F20260616144350&w=718&h=538",
+     "alt": "東京都港区南青山３丁目",
+     "href": "/kodate/C13266R31/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc8%2FC13266R31.jpg%3F20260616144350&w=718&h=538",
+     "alt": "東京都港区南青山３丁目",
+     "href": "/kodate/C13266R31/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc9%2FC13266R31.jpg%3F20260616144350&w=718&h=538",
+     "alt": "東京都港区南青山３丁目",
+     "href": "/kodate/C13266R31/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc10%2FC13266R31.jpg%3F20260616144350&w=718&h=538",
+     "alt": "東京都港区南青山３丁目",
+     "href": "/kodate/C13266R31/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc11%2FC13266R31.jpg%3F20260616144350&w=718&h=538",
+     "alt": "東京都港区南青山３丁目",
+     "href": "/kodate/C13266R31/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc12%2FC13266R31.jpg%3F20260616144350&w=718&h=538",
+     "alt": "東京都港区南青山３丁目",
+     "href": "/kodate/C13266R31/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc13%2FC13266R31.jpg%3F20260616144350&w=718&h=538",
+     "alt": "東京都港区南青山３丁目",
+     "href": "/kodate/C13266R31/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc14%2FC13266R31.jpg%3F20260616144350&w=718&h=538",
+     "alt": "東京都港区南青山３丁目",
+     "href": "/kodate/C13266R31/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc15%2FC13266R31.jpg%3F20260616144350&w=718&h=538",
+     "alt": "東京都港区南青山３丁目",
+     "href": "/kodate/C13266R31/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc16%2FC13266R31.jpg%3F20260616144350&w=718&h=538",
+     "alt": "東京都港区南青山３丁目",
+     "href": "/kodate/C13266R31/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc17%2FC13266R31.jpg%3F20260616144350&w=718&h=538",
+     "alt": "東京都港区南青山３丁目",
+     "href": "/kodate/C13266R31/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc18%2FC13266R31.jpg%3F20260616144350&w=718&h=538",
+     "alt": "東京都港区南青山３丁目",
+     "href": "/kodate/C13266R31/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc19%2FC13266R31.jpg%3F20260616144350&w=718&h=538",
+     "alt": "東京都港区南青山３丁目",
+     "href": "/kodate/C13266R31/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc20%2FC13266R31.jpg%3F20260616144350&w=718&h=538",
+     "alt": "東京都港区南青山３丁目",
+     "href": "/kodate/C13266R31/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc21%2FC13266R31.jpg%3F20260616144350&w=718&h=538",
+     "alt": "東京都港区南青山３丁目",
+     "href": "/kodate/C13266R31/"
+    }
+   ],
+   "layoutImageModal": {
+    "propertyTitle": "東京都港区南青山３丁目",
+    "layoutImage": {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Flayout%2FC13266R31.gif%3F20260918174627&w=718&h=538",
+     "alt": "東京都港区南青山３丁目(間取り)"
+    },
+    "propertyDetailUrl": "/kodate/C13266R31/",
+    "inquiryUrl": "/kounyu/inquiry/C13266R31/"
+   },
+   "prIconFlg": false,
+   "favoriteFlg": false,
+   "favoriteType": "buy",
+   "applyingServiceList": [],
+   "commuteInfoList": [],
+   "openHouses": [],
+   "matchingTargetFlg": true,
+   "isForeignPage": false,
+   "hasOfficialSite": false
+  },
+  {
+   "propertyCd": "C13267325",
+   "propertyClassCd": "3",
+   "propertyName": "東京都港区南青山６丁目",
+   "priceModel": {
+    "mstCd": 1,
+    "price": 748000000,
+    "consumptionTaxFlg": true
+   },
+   "address": "東京都港区南青山６丁目",
+   "access": [
+    "東京メトロ半蔵門線「表参道」駅 徒歩8分",
+    "東京メトロ副都心線「渋谷」駅 徒歩13分",
+    "東京メトロ日比谷線「広尾」駅 徒歩17分"
+   ],
+   "propertyDetail": [
+    "4DK",
+    "建物 225.02m<sup>2</sup>",
+    "土地 105.83m<sup>2</sup>",
+    "2016年6月築"
+   ],
+   "detailUrl": "/kodate/C13267325/",
+   "inquiryInfo": {
+    "inquiryUrl": "/kounyu/inquiry/C13267325/",
+    "inquiryTypeFlg": true,
+    "inquiryLinkText": "詳細"
+   },
+   "labelList": [
+    {
+     "cd": "028",
+     "iconName": "物件種別",
+     "detailClass": "a-tag--type",
+     "detailText": "中古一戸建て",
+     "listClass": "a-tag--type",
+     "listText": "中古一戸建て"
+    }
+   ],
+   "otherConditionLabels": [],
+   "thumbnailImage": [
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc2%2FC13267325.jpg%3F20260704164920&w=718&h=538",
+     "alt": "東京都港区南青山６丁目",
+     "href": "/kodate/C13267325/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Flayout%2FC13267325.gif%3F20260705131602&w=718&h=538",
+     "alt": "東京都港区南青山６丁目(間取り)",
+     "href": "/kodate/C13267325/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc3%2FC13267325.jpg%3F20260704164920&w=718&h=538",
+     "alt": "東京都港区南青山６丁目",
+     "href": "/kodate/C13267325/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc4%2FC13267325.jpg%3F20260704164920&w=718&h=538",
+     "alt": "東京都港区南青山６丁目",
+     "href": "/kodate/C13267325/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc5%2FC13267325.jpg%3F20260704164920&w=718&h=538",
+     "alt": "東京都港区南青山６丁目",
+     "href": "/kodate/C13267325/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc6%2FC13267325.jpg%3F20260704164920&w=718&h=538",
+     "alt": "東京都港区南青山６丁目",
+     "href": "/kodate/C13267325/"
+    }
+   ],
+   "layoutImageModal": {
+    "propertyTitle": "東京都港区南青山６丁目",
+    "layoutImage": {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Flayout%2FC13267325.gif%3F20260705131602&w=718&h=538",
+     "alt": "東京都港区南青山６丁目(間取り)"
+    },
+    "propertyDetailUrl": "/kodate/C13267325/",
+    "inquiryUrl": "/kounyu/inquiry/C13267325/"
+   },
+   "prIconFlg": false,
+   "favoriteFlg": false,
+   "favoriteType": "buy",
+   "applyingServiceList": [],
+   "commuteInfoList": [],
+   "openHouses": [],
+   "matchingTargetFlg": true,
+   "isForeignPage": false,
+   "hasOfficialSite": false
+  },
+  {
+   "propertyCd": "C13262F46",
+   "propertyClassCd": "3",
+   "propertyName": "東京都港区白金台２丁目",
+   "priceModel": {
+    "mstCd": 1,
+    "price": 349800000,
+    "consumptionTaxFlg": true
+   },
+   "address": "東京都港区白金台２丁目",
+   "access": [
+    "都営浅草線「高輪台」駅 徒歩5分"
+   ],
+   "propertyDetail": [
+    "3LDK＋納戸×1",
+    "建物 127.71m<sup>2</sup>",
+    "土地 81.76m<sup>2</sup>",
+    "2018年10月築"
+   ],
+   "detailUrl": "/kodate/C13262F46/",
+   "inquiryInfo": {
+    "inquiryUrl": "/kounyu/inquiry/C13262F46/",
+    "inquiryTypeFlg": true,
+    "inquiryLinkText": "詳細"
+   },
+   "labelList": [
+    {
+     "cd": "028",
+     "iconName": "物件種別",
+     "detailClass": "a-tag--type",
+     "detailText": "中古一戸建て",
+     "listClass": "a-tag--type",
+     "listText": "中古一戸建て"
+    }
+   ],
+   "otherConditionLabels": [],
+   "thumbnailImage": [
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc4%2FC13262F46.jpg%3F20260216152658&w=718&h=538",
+     "alt": "東京都港区白金台２丁目",
+     "href": "/kodate/C13262F46/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Flayout%2FC13262F46.gif%3F20260215133451&w=718&h=538",
+     "alt": "東京都港区白金台２丁目(間取り)",
+     "href": "/kodate/C13262F46/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc5%2FC13262F46.jpg%3F20260216152658&w=718&h=538",
+     "alt": "東京都港区白金台２丁目",
+     "href": "/kodate/C13262F46/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc6%2FC13262F46.jpg%3F20260216152658&w=718&h=538",
+     "alt": "東京都港区白金台２丁目",
+     "href": "/kodate/C13262F46/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc7%2FC13262F46.jpg%3F20260216152658&w=718&h=538",
+     "alt": "東京都港区白金台２丁目",
+     "href": "/kodate/C13262F46/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc8%2FC13262F46.jpg%3F20260216152658&w=718&h=538",
+     "alt": "東京都港区白金台２丁目",
+     "href": "/kodate/C13262F46/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc9%2FC13262F46.jpg%3F20260216152658&w=718&h=538",
+     "alt": "東京都港区白金台２丁目",
+     "href": "/kodate/C13262F46/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc10%2FC13262F46.jpg%3F20260216152658&w=718&h=538",
+     "alt": "東京都港区白金台２丁目",
+     "href": "/kodate/C13262F46/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc11%2FC13262F46.jpg%3F20260216152658&w=718&h=538",
+     "alt": "東京都港区白金台２丁目",
+     "href": "/kodate/C13262F46/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc12%2FC13262F46.jpg%3F20260216152658&w=718&h=538",
+     "alt": "東京都港区白金台２丁目",
+     "href": "/kodate/C13262F46/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc13%2FC13262F46.jpg%3F20260216152658&w=718&h=538",
+     "alt": "東京都港区白金台２丁目",
+     "href": "/kodate/C13262F46/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc14%2FC13262F46.jpg%3F20260216152658&w=718&h=538",
+     "alt": "東京都港区白金台２丁目",
+     "href": "/kodate/C13262F46/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc15%2FC13262F46.jpg%3F20260216152658&w=718&h=538",
+     "alt": "東京都港区白金台２丁目",
+     "href": "/kodate/C13262F46/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fphoto%2FC13262F46.jpg%3F20260214132935&w=718&h=538",
+     "alt": "東京都港区白金台２丁目(外観)",
+     "href": "/kodate/C13262F46/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc2%2FC13262F46.jpg%3F20260215144110&w=718&h=538",
+     "alt": "東京都港区白金台２丁目",
+     "href": "/kodate/C13262F46/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc1%2FC13262F46.jpg%3F20260215144110&w=718&h=538",
+     "alt": "東京都港区白金台２丁目",
+     "href": "/kodate/C13262F46/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc3%2FC13262F46.jpg%3F20260215144110&w=718&h=538",
+     "alt": "東京都港区白金台２丁目",
+     "href": "/kodate/C13262F46/"
+    }
+   ],
+   "layoutImageModal": {
+    "propertyTitle": "東京都港区白金台２丁目",
+    "layoutImage": {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Flayout%2FC13262F46.gif%3F20260215133451&w=718&h=538",
+     "alt": "東京都港区白金台２丁目(間取り)"
+    },
+    "propertyDetailUrl": "/kodate/C13262F46/",
+    "inquiryUrl": "/kounyu/inquiry/C13262F46/"
+   },
+   "prIconFlg": false,
+   "favoriteFlg": false,
+   "favoriteType": "buy",
+   "applyingServiceList": [],
+   "commuteInfoList": [],
+   "openHouses": [],
+   "matchingTargetFlg": true,
+   "isForeignPage": false,
+   "hasOfficialSite": false
+  },
+  {
+   "propertyCd": "C48268F59",
+   "propertyClassCd": "3",
+   "propertyName": "東京都港区西麻布２丁目",
+   "priceModel": {
+    "mstCd": 1,
+    "price": 318000000,
+    "consumptionTaxFlg": true
+   },
+   "address": "東京都港区西麻布２丁目",
+   "access": [
+    "東京メトロ千代田線「乃木坂」駅 徒歩9分",
+    "東京メトロ日比谷線「六本木」駅 徒歩11分",
+    "東京メトロ半蔵門線「表参道」駅 徒歩12分"
+   ],
+   "propertyDetail": [
+    "3LDK＋納戸×1",
+    "建物 90.99m<sup>2</sup>",
+    "土地 83.04m<sup>2</sup>",
+    "2000年1月築"
+   ],
+   "detailUrl": "/kodate/C48268F59/",
+   "inquiryInfo": {
+    "inquiryUrl": "/kounyu/inquiry/C48268F59/",
+    "inquiryTypeFlg": true,
+    "inquiryLinkText": "詳細"
+   },
+   "labelList": [
+    {
+     "cd": "028",
+     "iconName": "物件種別",
+     "detailClass": "a-tag--type",
+     "detailText": "中古一戸建て",
+     "listClass": "a-tag--type",
+     "listText": "中古一戸建て"
+    }
+   ],
+   "otherConditionLabels": [],
+   "thumbnailImage": [
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fphoto%2FC48268F59.jpg%3F20260831160811&w=718&h=538",
+     "alt": "東京都港区西麻布２丁目(外観)",
+     "href": "/kodate/C48268F59/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Flayout%2FC48268F59.gif%3F20260831160811&w=718&h=538",
+     "alt": "東京都港区西麻布２丁目(間取り)",
+     "href": "/kodate/C48268F59/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc2%2FC48268F59.jpg%3F20260831160811&w=718&h=538",
+     "alt": "東京都港区西麻布２丁目",
+     "href": "/kodate/C48268F59/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc3%2FC48268F59.jpg%3F20260831160811&w=718&h=538",
+     "alt": "東京都港区西麻布２丁目",
+     "href": "/kodate/C48268F59/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc4%2FC48268F59.jpg%3F20260831160811&w=718&h=538",
+     "alt": "東京都港区西麻布２丁目",
+     "href": "/kodate/C48268F59/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc5%2FC48268F59.jpg%3F20260831160811&w=718&h=538",
+     "alt": "東京都港区西麻布２丁目",
+     "href": "/kodate/C48268F59/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc6%2FC48268F59.jpg%3F20260831160811&w=718&h=538",
+     "alt": "東京都港区西麻布２丁目",
+     "href": "/kodate/C48268F59/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc7%2FC48268F59.jpg%3F20260831160811&w=718&h=538",
+     "alt": "東京都港区西麻布２丁目",
+     "href": "/kodate/C48268F59/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc8%2FC48268F59.jpg%3F20260831160811&w=718&h=538",
+     "alt": "東京都港区西麻布２丁目",
+     "href": "/kodate/C48268F59/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc9%2FC48268F59.jpg%3F20260831160811&w=718&h=538",
+     "alt": "東京都港区西麻布２丁目",
+     "href": "/kodate/C48268F59/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc10%2FC48268F59.jpg%3F20260831160811&w=718&h=538",
+     "alt": "東京都港区西麻布２丁目",
+     "href": "/kodate/C48268F59/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc11%2FC48268F59.jpg%3F20260831160811&w=718&h=538",
+     "alt": "東京都港区西麻布２丁目",
+     "href": "/kodate/C48268F59/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc12%2FC48268F59.jpg%3F20260831160811&w=718&h=538",
+     "alt": "東京都港区西麻布２丁目",
+     "href": "/kodate/C48268F59/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc13%2FC48268F59.jpg%3F20260831160811&w=718&h=538",
+     "alt": "東京都港区西麻布２丁目",
+     "href": "/kodate/C48268F59/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc14%2FC48268F59.jpg%3F20260831160811&w=718&h=538",
+     "alt": "東京都港区西麻布２丁目",
+     "href": "/kodate/C48268F59/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc15%2FC48268F59.jpg%3F20260831160811&w=718&h=538",
+     "alt": "東京都港区西麻布２丁目",
+     "href": "/kodate/C48268F59/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc16%2FC48268F59.jpg%3F20260831160811&w=718&h=538",
+     "alt": "東京都港区西麻布２丁目",
+     "href": "/kodate/C48268F59/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc17%2FC48268F59.jpg%3F20260831160811&w=718&h=538",
+     "alt": "東京都港区西麻布２丁目",
+     "href": "/kodate/C48268F59/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc18%2FC48268F59.jpg%3F20260831160811&w=718&h=538",
+     "alt": "東京都港区西麻布２丁目",
+     "href": "/kodate/C48268F59/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc19%2FC48268F59.jpg%3F20260831160811&w=718&h=538",
+     "alt": "東京都港区西麻布２丁目",
+     "href": "/kodate/C48268F59/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc20%2FC48268F59.jpg%3F20260831160811&w=718&h=538",
+     "alt": "東京都港区西麻布２丁目",
+     "href": "/kodate/C48268F59/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc21%2FC48268F59.jpg%3F20260831160811&w=718&h=538",
+     "alt": "東京都港区西麻布２丁目",
+     "href": "/kodate/C48268F59/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc22%2FC48268F59.jpg%3F20260831160811&w=718&h=538",
+     "alt": "東京都港区西麻布２丁目",
+     "href": "/kodate/C48268F59/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc23%2FC48268F59.jpg%3F20260831160811&w=718&h=538",
+     "alt": "東京都港区西麻布２丁目",
+     "href": "/kodate/C48268F59/"
+    }
+   ],
+   "layoutImageModal": {
+    "propertyTitle": "東京都港区西麻布２丁目",
+    "layoutImage": {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Flayout%2FC48268F59.gif%3F20260831160811&w=718&h=538",
+     "alt": "東京都港区西麻布２丁目(間取り)"
+    },
+    "propertyDetailUrl": "/kodate/C48268F59/",
+    "inquiryUrl": "/kounyu/inquiry/C48268F59/"
+   },
+   "prIconFlg": false,
+   "favoriteFlg": false,
+   "favoriteType": "buy",
+   "applyingServiceList": [],
+   "commuteInfoList": [],
+   "openHouses": [],
+   "matchingTargetFlg": true,
+   "isForeignPage": false,
+   "hasOfficialSite": false
+  },
+  {
+   "propertyCd": "C13262R54",
+   "propertyClassCd": "3",
+   "propertyName": "東京都港区麻布台３丁目",
+   "priceModel": {
+    "mstCd": 1,
+    "price": 589000000,
+    "consumptionTaxFlg": false
+   },
+   "address": "東京都港区麻布台３丁目",
+   "access": [
+    "東京メトロ南北線「六本木一丁目」駅 徒歩6分",
+    "都営大江戸線「麻布十番」駅 徒歩7分",
+    "東京メトロ日比谷線「六本木」駅 徒歩11分"
+   ],
+   "propertyDetail": [
+    "5LLDDK＋Rooftop＋2Storageroom",
+    "建物 209.94m<sup>2</sup>",
+    "土地 129.39m<sup>2</sup>",
+    "1989年6月築"
+   ],
+   "detailUrl": "/kodate/C13262R54/",
+   "inquiryInfo": {
+    "inquiryUrl": "/kounyu/inquiry/C13262R54/",
+    "inquiryTypeFlg": true,
+    "inquiryLinkText": "詳細"
+   },
+   "labelList": [
+    {
+     "cd": "028",
+     "iconName": "物件種別",
+     "detailClass": "a-tag--type",
+     "detailText": "中古一戸建て",
+     "listClass": "a-tag--type",
+     "listText": "中古一戸建て"
+    },
+    {
+     "cd": "005",
+     "iconName": "新価格",
+     "detailClass": "a-tag--new-price",
+     "detailText": "新価格 9/28",
+     "listClass": "a-tag--new-price",
+     "listText": "新価格 9/28"
+    }
+   ],
+   "otherConditionLabels": [],
+   "thumbnailImage": [
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fphoto%2FC13262R54.jpg%3F20260228114936&w=718&h=538",
+     "alt": "東京都港区麻布台３丁目(外観)",
+     "href": "/kodate/C13262R54/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Flayout%2FC13262R54.gif%3F20260228173836&w=718&h=538",
+     "alt": "東京都港区麻布台３丁目(間取り)",
+     "href": "/kodate/C13262R54/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc1%2FC13262R54.jpg%3F20260228114936&w=718&h=538",
+     "alt": "東京都港区麻布台３丁目",
+     "href": "/kodate/C13262R54/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc2%2FC13262R54.jpg%3F20260228114936&w=718&h=538",
+     "alt": "東京都港区麻布台３丁目",
+     "href": "/kodate/C13262R54/"
+    },
+    {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Fmisc3%2FC13262R54.jpg%3F20260228114936&w=718&h=538",
+     "alt": "東京都港区麻布台３丁目",
+     "href": "/kodate/C13262R54/"
+    }
+   ],
+   "layoutImageModal": {
+    "propertyTitle": "東京都港区麻布台３丁目",
+    "layoutImage": {
+     "src": "https://img.livable.co.jp/?url=https%3A%2F%2Fwww.livable.co.jp%2Frue_image%2Flayout%2FC13262R54.gif%3F20260228173836&w=718&h=538",
+     "alt": "東京都港区麻布台３丁目(間取り)"
+    },
+    "propertyDetailUrl": "/kodate/C13262R54/",
+    "inquiryUrl": "/kounyu/inquiry/C13262R54/"
+   },
+   "prIconFlg": false,
+   "favoriteFlg": false,
+   "favoriteType": "buy",
+   "applyingServiceList": [],
+   "commuteInfoList": [],
+   "openHouses": [],
+   "matchingTargetFlg": true,
+   "isForeignPage": false,
+   "hasOfficialSite": false
+  }
+ ]
+}

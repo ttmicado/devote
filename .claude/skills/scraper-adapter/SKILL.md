@@ -35,6 +35,9 @@ description: 不動産サイト（レインズ、業者間サイト、不動産�
 | `kencorp` | ケン・コーポレーション（賃貸＋売買＋事業用賃貸） | 一覧は内部JSON API（事業用は `search_type=office`、賃料「相談」は除外）、詳細はSSR |
 | `stepon` | 住友不動産ステップ（賃貸） | HTTP（SSR・Shift_JIS）。区ごとのマンション検索＋戸建ての1検索 |
 | `livable` | 東急リバブル（賃貸） | HTTP。一覧・詳細とも `__NEXT_DATA__` の pageProps を JSON にして読む |
+| `stepon-sale` | 住友不動産ステップ（売買） | HTTP（SSR・Shift_JIS）。中古マンション /mansion/・一戸建て /kodate/ |
+| `livable-sale` | 東急リバブル（売買） | 一覧は賃貸と同じ `__NEXT_DATA__`。詳細は通常（JSON）と高級物件の GRANTACT（SSR の表）の2種類 |
+| `mec-h-sale` | 三菱地所ハウスネット（売買） | HTTP（SSR）。マンション /buy/（売地は読み飛ばす）・一戸建 /house/ |
 | `mitsui-chintai` | 三井の賃貸（三井不動産レジデンシャルリース） | HTTP（SSR）。建物→空室。写真は `/rf/photo/{建物}/{部屋}` の JSON |
 | `mec-h` | 三菱地所ハウスネット（賃貸） | HTTP（SSR）。建物→空室 |
 | `reins` / `atbb` / `itandi-bb` | 会員サイト | Playwright（未検証。`docs/member-sites.md`） |
