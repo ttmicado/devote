@@ -45,11 +45,16 @@ export async function loadCrawlScopes(db: Db): Promise<CrawlScope[]> {
 export async function runSource(
   db: Db,
   adapter: SiteAdapter,
-  opts: { maxPages?: number; maxDetails?: number; scopes?: CrawlScope[] } = {},
+  opts: { maxPages?: number; maxDetails?: number; scopes?: CrawlScope[]; deadline?: number } = {},
 ) {
   const source = adapter.meta.id;
   const now = new Date();
   const skip = (reason: string) => ({ source, ok: true as const, skipped: reason });
+
+  // バッチの持ち時間を使い切ったら始めない（次回に回す）
+  if (opts.deadline != null && now.getTime() >= opts.deadline) {
+    return skip("バッチの持ち時間を使い切った");
+  }
 
   // 提供時間外・前回から間もない・従量課金の枠を使い切った場合は巡回しない
   if (!isWithinActiveHours(adapter.meta.schedule.activeHoursJst, jstCalendar(now).hour)) {
@@ -120,6 +125,7 @@ export async function runSource(
         budget.detail ?? Number.POSITIVE_INFINITY,
       ),
       maxListRequests: budget.list,
+      deadline: opts.deadline,
       counters,
       queryContext,
     });

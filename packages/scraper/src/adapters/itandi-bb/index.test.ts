@@ -12,7 +12,7 @@ describe("itandi-bb（2026-10-14 実画面で確認）", () => {
     expect(VERIFIED).toBe(true);
     expect(adapter.meta).toMatchObject({
       requiresLogin: true,
-      parserVersion: "1",
+      parserVersion: "2",
       incrementalList: true,
     });
     expect(adapter.meta.fetchMode).toEqual({ list: "browser", detail: "browser" });

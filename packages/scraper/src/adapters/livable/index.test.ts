@@ -46,7 +46,7 @@ describe("livable parseList", () => {
       detailUrl: `${BASE}/chintai/L132609088/`,
       price: 380_000,
     });
-    expect(r.totalCount).toBe(193);
+    expect(r.totalCount).toBeNull(); // 一棟貸しの建物ページも数に入っているので照合しない
     expect(r.nextPageUrl).toBe(`${BASE}/chintai/tokyo/a13103/?sort=address&page=2`);
   });
 
@@ -65,8 +65,19 @@ describe("livable parseList", () => {
       `${BASE}/chintai/tokyo/t13102003/?sort=address`,
     );
     expect(r.items).toHaveLength(12);
-    expect(r.totalCount).toBe(12);
     expect(r.nextPageUrl).toBeNull();
+  });
+
+  it("一棟貸しの建物ページ（/chintai/t-detail/…）は部屋ではないので読まない", () => {
+    const json = JSON.stringify({
+      searchedResultCounts: "2",
+      propertyList: [
+        { propertyCd: "L1", detailUrl: "/chintai/L1/", priceModel: { rent: 300000 } },
+        { propertyCd: "250705RC141", detailUrl: "/chintai/t-detail/250705RC141/" },
+      ],
+    });
+    const r = adapter.parseList(json, `${BASE}/chintai/tokyo/a13103/?sort=address`);
+    expect(r.items.map((i) => i.sourceListingId)).toEqual(["L1"]);
   });
 });
 

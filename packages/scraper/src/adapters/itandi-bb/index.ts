@@ -372,7 +372,7 @@ export default defineAdapter({
     incrementalList: true,
     // 検索するエリアはユーザーの希望条件から決める（希望条件がなければ巡回しない）
     scopedByConditions: true,
-    parserVersion: "1",
+    parserVersion: "2",
   },
 
   /**
@@ -520,9 +520,11 @@ export default defineAdapter({
       deposit: f.shikikin_yen ? Number(f.shikikin_yen) : parseMonthsOrYen(f.shikikin_text, price),
       keyMoney: f.reikin_yen ? Number(f.reikin_yen) : parseMonthsOrYen(f.reikin_text, price),
       layout: parseLayout(f.layout_text ?? f.room_layout),
+      // 面積 0（未入力）の物件があるので、0 以下は不明として扱う
       areaSqm:
-        parseAreaSqm(f.floor_area_text) ??
-        (f.floor_area_amount ? Number(f.floor_area_amount) : null),
+        [parseAreaSqm(f.floor_area_text), f.floor_area_amount ? Number(f.floor_area_amount) : null]
+          .filter((a): a is number => a != null && a > 0)
+          .at(0) ?? null,
       builtYearMonth: parseBuiltYearMonth(f.construction_date_text ?? f.building_age_text),
       floor,
       totalFloors,

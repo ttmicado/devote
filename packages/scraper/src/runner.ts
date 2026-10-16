@@ -43,6 +43,11 @@ export interface CrawlOptions {
   counters?: { list: number; detail: number };
   /** 1回の巡回で取得する一覧ページの上限（従量課金サイト用）。超えたら一覧の巡回を打ち切る */
   maxListRequests?: number;
+  /**
+   * この時刻（epoch ミリ秒）を過ぎたら、新しい一覧ページ・詳細ページを取りに行かない。
+   * 取得済みの分は返すので、呼び出し側で取り込める（残りは次回。バッチの時間制限で全部失うのを防ぐ）
+   */
+  deadline?: number;
   /** queries() に渡す実行時の情報（希望条件から作った検索範囲など） */
   queryContext?: QueryContext;
   /** 取得した生HTMLの保存フック（raw_snapshots） */
@@ -63,8 +68,11 @@ export async function crawlSource(
     maxPages = 100,
     maxDetails = Number.POSITIVE_INFINITY,
     maxListRequests = Number.POSITIVE_INFINITY,
+    deadline = Number.POSITIVE_INFINITY,
     onSnapshot,
   } = opts;
+  const timeUp = () => Date.now() >= deadline;
+  let timedOut = false;
   const counters = opts.counters ?? { list: 0, detail: 0 };
   const listings: NormalizedListing[] = [];
   const errors: CrawlResult["errors"] = [];
@@ -84,7 +92,8 @@ export async function crawlSource(
   const fetchDetails = async (items: Iterable<ListItem>) => {
     for (const item of items) {
       if (knownListHashes.get(item.sourceListingId) === item.listHash) continue;
-      if (detailCount >= maxDetails || abortedReason) {
+      if (detailCount >= maxDetails || abortedReason || timeUp()) {
+        if (timeUp()) timedOut = true;
         deferred++;
         continue;
       }
@@ -137,6 +146,10 @@ export async function crawlSource(
     let found = 0;
     for (let page = 0; url && page < maxPages; page++) {
       if (listRequests >= maxListRequests) break;
+      if (timeUp()) {
+        timedOut = true;
+        break;
+      }
       // ページ送りが課金・利用量に数えられないサイト（レインズ）は、検索1回（1ページ目）だけ数える
       if (page === 0 || !adapter.meta.pageTurnsAreFree) {
         listRequests++;
@@ -179,16 +192,19 @@ export async function crawlSource(
     }
     if (url) listCompleted = false; // maxPages / maxListRequests で打ち切った
     if (totalCount != null && totalCount !== found) countMismatch = true;
-    if (found === 0) emptyQueries.push(query.key);
+    if (found === 0 && !timedOut) emptyQueries.push(query.key);
   }
   if (emptyQueries.length > 0) {
     warnings.push(`一覧が0件のクエリ: ${emptyQueries.join(", ")}`);
   }
-  if (seen.size === 0) {
+  if (seen.size === 0 && !timedOut) {
     warnings.push("一覧が全体で0件（ブロック・構造変化・検索条件の誤りの可能性）");
   }
 
   if (!adapter.meta.detailsAfterEachListPage) await fetchDetails(seen.values());
+  if (timedOut) {
+    warnings.push("バッチの持ち時間を使い切ったため、残りの一覧・詳細は次回に取得");
+  }
   if (abortedReason) {
     warnings.push(
       `詳細でブロック・チャレンジが${MAX_CONSECUTIVE_DETAIL_BLOCKS}回続いたため打ち切り: ${abortedReason}`,

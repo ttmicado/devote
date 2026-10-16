@@ -26,6 +26,7 @@ import { addressInTowns, carryTowns, townsOf, withTowns } from "../../town-filte
  * - 一覧 /mansion/area_13/list_13_103/（中古マンション）・/kodate/area_13/list_13_103/（一戸建て）。
  *   部屋（物件）単位で 30件/ページ、次ページは /30_N/。総件数は「該当件数」
  * - 詳細 /mansion/detail_{物件番号}/ ・ /kodate/detail_{物件番号}/。sourceListingId は物件番号（例 158P3027）
+ * - 該当0件の一覧は HTTP 404 で返る（画面は通常の「該当件数 0」）→ fetchList で空の一覧として読む
  * - 区単位の検索しかないため、中央区・江東区は一覧の所在地で勝どき・晴海・豊洲に絞る（town-filter）
  */
 const BASE_URL = "https://www.stepon.co.jp";
@@ -63,7 +64,7 @@ export default defineAdapter({
     requiresLogin: false,
     rateLimit: { minIntervalMs: 2500, maxConcurrency: 1 },
     schedule: { listCron: "25 */3 * * *", detailRevisitHours: 48 },
-    parserVersion: "1",
+    parserVersion: "2",
   },
 
   queries: () =>
@@ -79,6 +80,14 @@ export default defineAdapter({
       .split(",")
       .filter(Boolean);
     return withTowns(`${BASE_URL}/${q.params.type}/area_13/list_${q.params.code}/`, towns);
+  },
+
+  async fetchList(ctx, url) {
+    const res = await ctx.get(url);
+    // 該当0件の一覧は「該当件数 0」の通常の画面を HTTP 404 で返す。それだけは空の一覧として読む
+    if (res.status === 404 && /id="search-count-result">\s*0\s*</.test(res.body)) return res.body;
+    if (res.status >= 400) throw new Error(`HTTP ${res.status}: ${url}`);
+    return res.body;
   },
 
   parseList(html, url) {
