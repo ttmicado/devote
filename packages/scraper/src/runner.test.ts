@@ -303,3 +303,46 @@ describe("crawlSource の詳細の取得順・差分一覧", () => {
     expect((await crawlSource(fakeAdapter({}).adapter, fakeCtx)).partialList).toBe(false);
   });
 });
+
+describe("crawlSource の持ち時間（deadline）", () => {
+  it("持ち時間を過ぎたら残りの詳細を次回に回し、取得済みの分は返す", async () => {
+    const ctx = routes({
+      "https://t.example/list/a": { body: "ids=1,2,3" },
+      "https://t.example/d/1": { body: "rent=100000" },
+      "https://t.example/d/2": { body: "rent=200000" },
+      "https://t.example/d/3": { body: "rent=300000" },
+    });
+    let now = 0;
+    const get = ctx.get;
+    // 詳細を1件取るごとに時間が進む
+    ctx.get = async (url) => {
+      if (url.includes("/d/")) now += 10;
+      return get(url);
+    };
+    const realNow = Date.now;
+    Date.now = () => now;
+    try {
+      const r = await crawlSource(testAdapter(["a"]), ctx, { deadline: 20 });
+      expect(r.listings.map((l) => l.sourceListingId)).toEqual(["1", "2"]);
+      expect(r.deferred).toBe(1);
+      expect(r.listCompleted).toBe(true);
+      expect(r.warnings).toContain(
+        "バッチの持ち時間を使い切ったため、残りの一覧・詳細は次回に取得",
+      );
+    } finally {
+      Date.now = realNow;
+    }
+  });
+
+  it("一覧の途中で持ち時間を過ぎたら、一覧は不完全扱い（掲載終了判定をさせない）", async () => {
+    const ctx = routes({
+      "https://t.example/list/a": { body: "ids=1" },
+      "https://t.example/list/b": { body: "ids=2" },
+    });
+    const r = await crawlSource(testAdapter(["a", "b"]), ctx, { deadline: Date.now() - 1 });
+    expect(r.seenIds).toEqual([]);
+    expect(r.listCompleted).toBe(false);
+    expect(ctx.calls).toEqual([]);
+    expect(r.warnings).toEqual(["バッチの持ち時間を使い切ったため、残りの一覧・詳細は次回に取得"]);
+  });
+});

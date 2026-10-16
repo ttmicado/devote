@@ -22,6 +22,26 @@ describe("stepon-sale queries", () => {
   });
 });
 
+describe("stepon-sale fetchList", () => {
+  const ctx = (status: number, body: string) => ({
+    get: async (url: string) => ({ status, body, url }),
+  });
+
+  it("該当0件の一覧（HTTP 404 で返る）は空の一覧として読む", async () => {
+    const html = fixture("list-kodate-chiyoda-empty.html");
+    const url = `${BASE}/kodate/area_13/list_13_101/`;
+    await expect(adapter.fetchList?.(ctx(404, html), url)).resolves.toBe(html);
+  });
+
+  it("ほかの HTTP エラーは失敗にする", async () => {
+    const url = `${BASE}/kodate/area_13/list_13_101/`;
+    await expect(adapter.fetchList?.(ctx(404, "<html>Not Found</html>"), url)).rejects.toThrow(
+      "HTTP 404",
+    );
+    await expect(adapter.fetchList?.(ctx(503, "busy"), url)).rejects.toThrow("HTTP 503");
+  });
+});
+
 describe("stepon-sale parseList", () => {
   it("物件番号・詳細URL・価格（億・万円）・総件数・次ページを取る", () => {
     const r = adapter.parseList(

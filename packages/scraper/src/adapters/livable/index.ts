@@ -144,7 +144,7 @@ export default defineAdapter({
     requiresLogin: false,
     rateLimit: { minIntervalMs: 2500, maxConcurrency: 1 },
     schedule: { listCron: "35 */3 * * *", detailRevisitHours: 48 },
-    parserVersion: "1",
+    parserVersion: "2",
   },
 
   queries: () => AREAS.map((a) => ({ key: a.key, params: { path: a.path } })),
@@ -159,8 +159,10 @@ export default defineAdapter({
   parseList(json, url) {
     const data = JSON.parse(json) as LivableList;
     if (!Array.isArray(data.propertyList)) throw new Error(`一覧に propertyList が無い: ${url}`);
-    const items: ListItem[] = data.propertyList.map((p) => {
+    const items: ListItem[] = data.propertyList.flatMap((p) => {
       if (!p.propertyCd || !p.detailUrl) throw new Error(`一覧の物件に番号/リンクが無い: ${url}`);
+      // 一棟貸しの建物ページ（/chintai/t-detail/…）は部屋ではない（賃料が無く、複数の部屋をまとめた案内）ので読まない
+      if (/\/t-detail\//.test(p.detailUrl)) return [];
       return {
         sourceListingId: p.propertyCd,
         detailUrl: new URL(p.detailUrl, BASE_URL).toString(),
@@ -178,7 +180,8 @@ export default defineAdapter({
       u.searchParams.set("page", String(page + 1));
       next = u.toString();
     }
-    return { items, nextPageUrl: next, totalCount: Number.isFinite(total) ? total : null };
+    // 表示の件数には一棟貸しの建物ページも含まれるので、件数照合はしない
+    return { items, nextPageUrl: next, totalCount: null };
   },
 
   async fetchDetail(ctx, item) {

@@ -7,9 +7,10 @@
  *   pnpm worker all                   巡回 → マッチング → 通知
  *   pnpm worker sources               有効なソース一覧
  */
-import { createDb } from "@devote/db";
+import { crawlRuns, createDb } from "@devote/db";
 import { enabledAdapters, noImageSourceIds, retiredSourceIds } from "@devote/scraper";
 import { runMatching, runNotifications } from "@devote/services";
+import { max } from "drizzle-orm";
 import { loadCrawlScopes, runSource } from "./crawl.js";
 import { fillPropertyImages } from "./images.js";
 import { closeRetiredSources, stripSourceImages } from "./retire.js";
@@ -17,7 +18,14 @@ import { closeRetiredSources, stripSourceImages } from "./retire.js";
 const [command = "all", ...args] = process.argv.slice(2);
 const db = createDb();
 
+/**
+ * 巡回の持ち時間（分）。過ぎたら新しい一覧・詳細を取りに行かず、取得済みの分を取り込んで終える。
+ * GitHub Actions のジョブの時間制限（55分）で途中終了すると、そのサイトの取得分がすべて失われるため
+ */
+const CRAWL_BUDGET_MINUTES = Number(process.env.DEVOTE_CRAWL_BUDGET_MINUTES ?? 40);
+
 async function crawl(ids: string[]) {
+  const deadline = Date.now() + CRAWL_BUDGET_MINUTES * 60_000;
   const all = enabledAdapters();
   const targets = ids.length > 0 ? all.filter((a) => ids.includes(a.meta.id)) : all;
   if (ids.length > 0 && targets.length !== ids.length) {
@@ -50,16 +58,24 @@ async function crawl(ids: string[]) {
   }
   // サイト間は並列（同じサイトへのアクセスは各アダプターのレート制御で直列）
   const parallel = Number(process.env.DEVOTE_CRAWL_PARALLEL ?? 3);
-  // 会員サイト（ログインあり）を先に回す。提供時間・利用枠があり、公開サイトの初回取り込みが長引いても遅らせないため
+  // 会員サイト（ログインあり）を先に回す。提供時間・利用枠があり、公開サイトの初回取り込みが長引いても遅らせないため。
+  // 同じ種類の中では前回の巡回が古い順（持ち時間で打ち切られたサイトが、次の回で先に回るように）
+  const lastRuns = await db
+    .select({ source: crawlRuns.source, at: max(crawlRuns.startedAt) })
+    .from(crawlRuns)
+    .groupBy(crawlRuns.source);
+  const lastRunAt = new Map(lastRuns.map((r) => [r.source, r.at?.getTime() ?? 0]));
   const queue = [...targets].sort(
-    (a, b) => Number(b.meta.requiresLogin) - Number(a.meta.requiresLogin),
+    (a, b) =>
+      Number(b.meta.requiresLogin) - Number(a.meta.requiresLogin) ||
+      (lastRunAt.get(a.meta.id) ?? 0) - (lastRunAt.get(b.meta.id) ?? 0),
   );
   const results: Awaited<ReturnType<typeof runSource>>[] = [];
   await Promise.all(
     Array.from({ length: Math.min(parallel, queue.length) }, async () => {
       for (let a = queue.shift(); a; a = queue.shift()) {
         console.log(`▶ crawl ${a.meta.id}`);
-        const r = await runSource(db, a, { scopes });
+        const r = await runSource(db, a, { scopes, deadline });
         console.log(JSON.stringify(r));
         results.push(r);
       }

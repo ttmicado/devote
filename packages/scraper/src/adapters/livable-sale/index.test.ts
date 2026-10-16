@@ -33,7 +33,7 @@ describe("livable-sale parseList", () => {
       price: 745_000_000,
     });
     expect(r.items.some((i) => i.detailUrl.startsWith(`${BASE}/mansion/`))).toBe(true);
-    expect(r.totalCount).toBe(545);
+    expect(r.totalCount).toBeNull(); // 新築分譲（外部サイト）も数に入っているので照合しない
     expect(r.nextPageUrl).toBe(`${BASE}/kounyu/mansion/tokyo/a13103/?sort=address&page=2`);
   });
 
@@ -52,8 +52,19 @@ describe("livable-sale parseList", () => {
       `${BASE}/kounyu/kodate/tokyo/a13103/?sort=address`,
     );
     expect(r.items).toHaveLength(6);
-    expect(r.totalCount).toBe(6);
     expect(r.items[0]?.detailUrl).toBe(`${BASE}/kodate/C48268E83/`);
+  });
+
+  it("新築分譲の外部サイトへのリンクは読まない", () => {
+    const json = JSON.stringify({
+      searchedResultCounts: "2",
+      propertyList: [
+        { detailUrl: "/mansion/C13262R30/", priceModel: { price: 100000000 } },
+        { detailUrl: "https://l-shirokanetakanawa.jp/" },
+      ],
+    });
+    const r = adapter.parseList(json, `${BASE}/kounyu/mansion/tokyo/a13103/?sort=address`);
+    expect(r.items.map((i) => i.sourceListingId)).toEqual(["C13262R30"]);
   });
 });
 
