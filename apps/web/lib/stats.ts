@@ -27,13 +27,20 @@ export async function crawlSummary(now = new Date()) {
   const [today] = await db
     .select({
       sources: sql<number>`count(distinct ${crawlRuns.source}) filter (where ${crawlRuns.status} = 'succeeded')::int`,
-      failedSources: sql<number>`count(distinct ${crawlRuns.source}) filter (where ${crawlRuns.status} = 'failed')::int`,
       checked: sql<number>`coalesce(sum(${crawlRuns.seen}) filter (where ${crawlRuns.status} = 'succeeded'), 0)::int`,
       newCount: sql<number>`coalesce(sum(${crawlRuns.newCount}), 0)::int`,
       lastFinished: sql<Date | null>`max(${crawlRuns.finishedAt})`,
     })
     .from(crawlRuns)
     .where(gte(crawlRuns.startedAt, since));
+  // 遅れているサイト: 今日の最新の巡回が失敗したままのソース（後の回で成功していれば数えない）
+  const [failed] = await db.execute<{ n: number }>(sql`
+    select count(*)::int as n from (
+      select distinct on (${crawlRuns.source}) ${crawlRuns.status} as status
+      from ${crawlRuns}
+      where ${crawlRuns.startedAt} >= ${since} and ${crawlRuns.status} <> 'running'
+      order by ${crawlRuns.source}, ${crawlRuns.startedAt} desc
+    ) latest where status = 'failed'`);
   const [inventory] = await db
     .select({
       active: sql<number>`count(*)::int`,
@@ -44,7 +51,7 @@ export async function crawlSummary(now = new Date()) {
     .where(eq(properties.status, "active"));
   return {
     sourcesToday: today?.sources ?? 0,
-    failedSourcesToday: today?.failedSources ?? 0,
+    failedSourcesToday: Number(failed?.n ?? 0),
     checkedToday: today?.checked ?? 0,
     newToday: today?.newCount ?? 0,
     lastCheckedAt: today?.lastFinished ? new Date(today.lastFinished) : null,
