@@ -53,6 +53,11 @@
 - 市区町村の選択画面（`bfcm300s002`）: 市区町村は複数選択の select（`name=sentaku1Shikugun`、選択肢は「港区(2,408件)」のように件数つき＝検索せずに件数が分かる）。【選択 >>】で町村の select（`name=sentaku1Choson`）、【条件入力画面へ】で条件入力へ（10/16 夜。条件入力画面以降は未確認）
 - ATBB 側の「ログアウト」はヘッダーのメニュー内で非表示のことがあり、click では押せない（onclick を直接発火させる）
 
+**2026-10-17 追記（条件入力画面まで確認。ここで止める）**
+- 条件入力画面（`bfcm360s004`）の項目: 賃料 `chinryoChokusetsuNyuryokuFrom/To`、専有面積 `senyuMensekiChokusetsuNyuryokuFrom/To`、間取り `madoriKubun`。該当物件数の表示欄もある
+- **【検索】は画像認証つき**（`submitActionWithImgAuthCheck`、hidden の `imgAuthCheckAriFlag=true`、cloudfront の imgCheck.js）。画像認証は自動で突破しない約束なので、**ATBB の自動巡回はこの方式では実現できない**。アダプターはこの画面で「検索に画像認証が必要」として止まる（巡回は24時間待つ）
+- 進め方の候補（人の判断が必要）: アットホームに巡回用の連携手段（API・データ提供・画像認証なしの契約）を問い合わせる／ATBB は人が検索してエクスポートした結果を取り込む／ATBB は対象から外す
+
 ### ITANDI BB（確認済み）
 - ログイン（`itandi-accounts.com/login`）→ `itandibb.com/top`。賃貸のリスト検索 `/rent_rooms/list`
 - 所在地は「所在地で絞り込み」のモーダルで都道府県→市区町村を選ぶ（たたき台の操作で動いた）

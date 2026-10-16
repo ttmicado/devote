@@ -241,13 +241,23 @@ async function runSearch(start: Page, s: AtbbSearch): Promise<Page> {
       .filter((t) => t.startsWith(s.town as string));
     if (labels.length > 0) await towns.selectOption(labels.map((l) => ({ label: l })));
   }
-  // 【条件入力画面へ】で賃料・面積などの条件入力へ
-  // TODO(verify): 条件入力画面の項目（賃料の上限・面積の下限・間取り）と【検索】ボタン
+  // 【条件入力画面へ】で賃料・面積などの条件入力へ（bfcm360s004。賃料 chinryoChokusetsuNyuryokuFrom/To、
+  //   専有面積 senyuMensekiChokusetsuNyuryokuFrom/To、間取り madoriKubun。2026-10-17 実画面で確認）
   await Promise.all([
     page.waitForNavigation({ timeout: 30_000 }).catch(() => undefined),
     page.locator("input[type=button][value='条件入力画面へ']").click(),
   ]);
   await waitSettled(page);
+  // 【検索】は画像認証つき（submitActionWithImgAuthCheck、hidden imgAuthCheckAriFlag=true。2026-10-17 実画面で確認）。
+  //   画像認証は自動で突破しない約束（docs/operations.md）なので、ここで止める（巡回は24時間待つ）
+  const imgAuth = await page
+    .locator("input[name=imgAuthCheckAriFlag]")
+    .first()
+    .getAttribute("value")
+    .catch(() => null);
+  if (imgAuth === "true") {
+    throw new Error("atbb: 検索に画像認証が必要（自動では突破しない。人が対応）");
+  }
   await step("search-filled");
   page = await clickMaybePopup(page, page.getByRole("button", { name: /検索/ }).last());
   currentSearchKey = searchKey(s);

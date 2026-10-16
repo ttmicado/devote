@@ -28,6 +28,7 @@ describe("loginHoldReason（止まったら待ってから再開する）", () =
     expect(loginHoldReason(r, minutesLater(23 * 60), {})).not.toBeNull();
     expect(loginHoldReason(r, minutesLater(24 * 60), {})).toBeNull();
     expect(classifyHold("atbb: 追加認証（確認コード）が求められました")).toBe("auth");
+    expect(classifyHold("atbb: 検索に画像認証が必要（自動では突破しない。人が対応）")).toBe("auth");
   });
 
   it("待ち時間は環境変数で変えられる", () => {

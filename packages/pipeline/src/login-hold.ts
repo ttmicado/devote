@@ -19,7 +19,7 @@ const HOLD_RULES: { kind: HoldKind; pattern: RegExp; label: string }[] = [
   { kind: "session", pattern: /セッション切れ/, label: "セッション切れ" },
   {
     kind: "auth",
-    pattern: /ログインに失敗|追加認証|reCAPTCHA|ログインを送信しない/,
+    pattern: /ログインに失敗|追加認証|画像認証|reCAPTCHA|ログインを送信しない/,
     label: "ログインに失敗",
   },
 ];
