@@ -11,6 +11,7 @@ import { createDb } from "@devote/db";
 import { enabledAdapters, noImageSourceIds, retiredSourceIds } from "@devote/scraper";
 import { runMatching, runNotifications } from "@devote/services";
 import { loadCrawlScopes, runSource } from "./crawl.js";
+import { fillPropertyImages } from "./images.js";
 import { closeRetiredSources, stripSourceImages } from "./retire.js";
 
 const [command = "all", ...args] = process.argv.slice(2);
@@ -27,6 +28,9 @@ async function crawl(ids: string[]) {
   if (retired > 0) console.log(`巡回をやめたソースの掲載を閉じました: ${retired} 件`);
   const stripped = await stripSourceImages(db, noImageSourceIds);
   if (stripped > 0) console.log(`写真を取り込まないソースの写真を消しました: ${stripped} 件`);
+  const filled = await fillPropertyImages(db, noImageSourceIds);
+  if (filled > 0)
+    console.log(`写真のない物件に、同じ部屋のほかのソースの写真を入れました: ${filled} 件`);
   // 会員サイトの検索範囲（ユーザーの希望条件から作る）。バッチの最初に1度だけ読む
   const scopes = targets.some((a) => a.meta.scopedByConditions)
     ? await loadCrawlScopes(db)

@@ -9,6 +9,7 @@ import {
 import { changeEvents, type Db, listings, properties } from "@devote/db";
 import { type CrawlResult, noImageSourceIds } from "@devote/scraper";
 import { and, eq, inArray, notInArray, sql } from "drizzle-orm";
+import { fillPropertyImages } from "./images.js";
 
 /** 同一物件とみなす名寄せスコアの閾値 */
 const SAME_UNIT_THRESHOLD = 0.8;
@@ -121,6 +122,8 @@ export async function ingestCrawl(
     warnings: [],
   };
   const now = new Date();
+  /** 代表値を書き換えた物件（写真がなければ、ほかのソースの写真で埋める） */
+  const touched = new Set<string>();
 
   for (const raw of result.listings) {
     // extra の表記から入居時期・契約形態・駐車場などを埋める（アダプター共通の後処理）
@@ -158,6 +161,7 @@ export async function ingestCrawl(
           .insert(changeEvents)
           .values({ listingId: row.id, propertyId, type: "new", after: l });
       }
+      touched.add(propertyId);
       stats.newCount++;
       continue;
     }
@@ -195,6 +199,7 @@ export async function ingestCrawl(
         updatedAt: now,
       })
       .where(eq(listings.id, existing.id));
+    touched.add(propertyId);
     const change = classifyChange(before, l);
     await db.insert(changeEvents).values({
       listingId: existing.id,
@@ -205,6 +210,9 @@ export async function ingestCrawl(
     });
     stats.updatedCount++;
   }
+
+  // 写真のない掲載（レインズなど）を代表値にした物件は、同じ部屋のほかのソースの写真を使う
+  await fillPropertyImages(db, noImageSourceIds, [...touched]);
 
   // 詳細取得を省略した（listHash が同じ）掲載も「一覧で見えた」ので生存扱い
   if (result.seenIds.length > 0) {

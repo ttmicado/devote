@@ -170,4 +170,31 @@ describe.skipIf(!db)("ingestCrawl（DB結合）", () => {
       .where(eq(listings.source, `${PREFIX}-c`));
     expect(row?.status).toBe("active");
   });
+
+  it("写真のない掲載が代表値になっても、同じ部屋のほかのソースの写真を使う", async () => {
+    const photos = ["https://example.com/ext.jpg", "https://example.com/madori.png"];
+    await ingestCrawl(
+      db!,
+      `${PREFIX}-d`,
+      result([listing("A1", { price: 290_000, imageUrls: photos }, `${PREFIX}-d`)]),
+    );
+    // 写真のない掲載（レインズなど）が後から取り込まれ、物件の代表値になる
+    await ingestCrawl(
+      db!,
+      `${PREFIX}-e`,
+      result([listing("A1", { price: 285_000 }, `${PREFIX}-e`)]),
+    );
+    const [e] = await db!
+      .select()
+      .from(listings)
+      .where(eq(listings.source, `${PREFIX}-e`));
+    const [p] = await db!
+      .select()
+      .from(properties)
+      .where(eq(properties.id, e?.propertyId ?? ""));
+    const data = p?.data as NormalizedListing;
+    expect(data.source).toBe(`${PREFIX}-e`);
+    expect(data.price).toBe(285_000);
+    expect(data.imageUrls).toEqual(photos);
+  });
 });
