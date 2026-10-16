@@ -204,24 +204,50 @@ async function runSearch(start: Page, s: AtbbSearch): Promise<Page> {
     );
   }
   await step("search-menu");
-  // TODO(verify): 種目（賃貸居住用 / 売買居住用）の選択
-  page = await clickMaybePopup(page, page.getByText(KIND_LABEL[s.deal]).first());
-  // TODO(verify): 「所在地から探す」→ 都道府県 → 市区町村のチェック
-  page = await clickMaybePopup(page, page.getByText(/所在地/).first());
-  await page.getByText(s.prefecture, { exact: true }).first().click();
+  // 物件種目（ラジオ name=atbbShumokuDaibunrui。賃貸居住用は value=06。2026-10-16 実画面で確認）
+  const kind =
+    s.deal === "rent"
+      ? page.locator("input[name=atbbShumokuDaibunrui][value='06']")
+      : // TODO(verify): 売買（売マンション）の value。表記で選ぶ
+        page.locator("label", { hasText: KIND_LABEL.sale }).locator("input[type=radio]");
+  await kind.first().check();
   await waitSettled(page);
-  await page.getByLabel(s.city, { exact: true }).check();
+  // 「所在地/沿線から探す」で都道府県（既定で東京都にチェック）→【所在地検索】で市区町村の選択へ
+  const pref = page
+    .locator("label", { hasText: new RegExp(`^\\s*${s.prefecture}\\s*$`) })
+    .locator("input[type=checkbox]");
+  if ((await pref.count()) > 0 && !(await pref.first().isChecked())) await pref.first().check();
+  await Promise.all([
+    page.waitForNavigation({ timeout: 30_000 }).catch(() => undefined),
+    page.locator("input[type=button][value='所在地検索']").click(),
+  ]);
+  await waitSettled(page);
+  // 市区町村は複数選択の select（name=sentaku1Shikugun）。選択肢は「港区(2,408件)」のように件数つき
+  const cities = page.locator("select[name=sentaku1Shikugun]:visible").first();
+  const label = (await cities.locator("option").allInnerTexts()).find((t) =>
+    new RegExp(`^${s.city}\\(`).test(t.trim()),
+  );
+  if (!label) throw new Error(`atbb: 市区町村「${s.city}」が選択肢にない`);
+  await cities.selectOption({ label });
   await step("search-area");
   if (s.town) {
-    // TODO(verify): 町名（勝どき/豊洲）まで絞る画面があるか。なければ一覧で isInTargetArea で絞る
-    const next = page.getByRole("button", { name: /町名|次へ/ });
-    if ((await next.count()) > 0) {
-      await next.first().click();
-      await waitSettled(page);
-      const towns = page.getByLabel(new RegExp(`^${s.town}`));
-      for (const t of await towns.all()) await t.check();
-    }
+    // 【選択 >>】で町村の一覧（select name=sentaku1Choson）が出る
+    // TODO(verify): 町村の選択肢の表記（「勝どき(…件)」か、丁目ごとか）
+    await page.locator("input[type=button][value='選択 >>']").first().click();
+    await waitSettled(page);
+    const towns = page.locator("select[name=sentaku1Choson]").first();
+    const labels = (await towns.locator("option").allInnerTexts())
+      .map((t) => t.trim())
+      .filter((t) => t.startsWith(s.town as string));
+    if (labels.length > 0) await towns.selectOption(labels.map((l) => ({ label: l })));
   }
+  // 【条件入力画面へ】で賃料・面積などの条件入力へ
+  // TODO(verify): 条件入力画面の項目（賃料の上限・面積の下限・間取り）と【検索】ボタン
+  await Promise.all([
+    page.waitForNavigation({ timeout: 30_000 }).catch(() => undefined),
+    page.locator("input[type=button][value='条件入力画面へ']").click(),
+  ]);
+  await waitSettled(page);
   await step("search-filled");
   page = await clickMaybePopup(page, page.getByRole("button", { name: /検索/ }).last());
   currentSearchKey = searchKey(s);
@@ -443,15 +469,23 @@ export default defineAdapter({
   //   先に ATBB のヘッダーの「ログアウト」（submitAction(…, '../j_acegi_logout')）で ATBB を抜け、次にポータルを抜ける
   async logout(ctx) {
     const pages = ctx.page ? ctx.page.context().pages() : [];
+    let atbbError: unknown = null;
     for (const p of pages) {
       if (p.isClosed() || !/atbb\.athome\.co\.jp/.test(p.url())) continue;
       const link = p.locator("a[onclick*='j_acegi_logout']").first();
       if ((await link.count()) === 0) continue;
-      await Promise.all([
-        p.waitForNavigation({ timeout: 30_000 }).catch(() => undefined),
-        link.click({ timeout: 10_000 }),
-      ]);
-      await waitSettled(p);
+      try {
+        // ヘッダーのメニュー内にあり非表示のことがある（2026-10-16 実測。click は表示待ちで時間切れになる）。
+        // onclick を直接発火させる
+        await Promise.all([
+          p.waitForNavigation({ timeout: 30_000 }).catch(() => undefined),
+          link.dispatchEvent("click", undefined, { timeout: 10_000 }),
+        ]);
+        await waitSettled(p);
+      } catch (e) {
+        // ATBB 側で失敗しても、ポータルのログアウトは必ず試す
+        atbbError = e;
+      }
     }
     const page = requirePage(ctx);
     if (!page.url().startsWith(PORTAL_URL)) {
@@ -465,6 +499,11 @@ export default defineAdapter({
     ]);
     activePage = null;
     currentSearchKey = null;
+    if (atbbError) {
+      throw new Error(
+        `atbb: ATBB 側のログアウトに失敗（ポータルからはログアウト済み）: ${atbbError instanceof Error ? atbbError.message : String(atbbError)}`,
+      );
+    }
   },
 
   async fetchList(ctx, url) {
