@@ -98,8 +98,9 @@ jobs:
   # 同時実行は concurrency で1つに絞られ、待ちの回は1つだけ残るので、起動が重なっても増え続けない
   next:
     needs: notify
-    # schedule のイベントには repository の情報が無いので、schedule は無条件（常に既定ブランチで動く）
-    if: always() && (github.event_name == 'schedule' || github.ref_name == github.event.repository.default_branch) && vars.CRAWL_SELF_SCHEDULE != '0'
+    # schedule のイベントには repository の情報が無いので、schedule は無条件（常に既定ブランチで動く）。
+    # 未設定の変数（null）を '0' と比べると、式の型変換で両方 0 になり「等しい」になるため、既定値 'on' を入れて比べる
+    if: always() && (github.event_name == 'schedule' || github.ref_name == github.event.repository.default_branch) && (vars.CRAWL_SELF_SCHEDULE || 'on') != '0'
     runs-on: ubuntu-latest
     timeout-minutes: 40
     permissions:
