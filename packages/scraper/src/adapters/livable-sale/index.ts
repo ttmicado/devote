@@ -87,7 +87,7 @@ export default defineAdapter({
     requiresLogin: false,
     rateLimit: { minIntervalMs: 2500, maxConcurrency: 1 },
     schedule: { listCron: "40 */3 * * *", detailRevisitHours: 48 },
-    parserVersion: "2",
+    parserVersion: "3",
   },
 
   queries: () =>
@@ -110,8 +110,10 @@ export default defineAdapter({
     if (!Array.isArray(data.propertyList)) throw new Error(`一覧に propertyList が無い: ${url}`);
     const items: ListItem[] = data.propertyList.flatMap((p) => {
       if (!p.detailUrl) throw new Error(`一覧の物件に詳細URLが無い: ${url}`);
-      // 新築の分譲は物件ごとの外部サイト（https://l-shirokanetakanawa.jp/ など）へのリンク。部屋の情報が無いので読まない
-      if (new URL(p.detailUrl, BASE_URL).origin !== BASE_URL) return [];
+      // 新築の分譲は物件ごとの外部サイト（https://l-shirokanetakanawa.jp/ など）か、
+      // 新築分譲の案内ページ（/kounyu/bunjou/…）へのリンク。部屋の情報が無いので読まない
+      const target = new URL(p.detailUrl, BASE_URL);
+      if (target.origin !== BASE_URL || target.pathname.startsWith("/kounyu/bunjou/")) return [];
       const key = detailKey(p.detailUrl);
       if (!key) throw new Error(`一覧の物件の詳細URLが解釈できない: ${p.detailUrl}`);
       return {

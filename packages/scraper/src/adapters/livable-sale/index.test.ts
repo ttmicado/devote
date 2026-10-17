@@ -55,12 +55,13 @@ describe("livable-sale parseList", () => {
     expect(r.items[0]?.detailUrl).toBe(`${BASE}/kodate/C48268E83/`);
   });
 
-  it("新築分譲の外部サイトへのリンクは読まない", () => {
+  it("新築分譲（外部サイト・新築分譲の案内ページ）へのリンクは読まない", () => {
     const json = JSON.stringify({
       searchedResultCounts: "2",
       propertyList: [
         { detailUrl: "/mansion/C13262R30/", priceModel: { price: 100000000 } },
         { detailUrl: "https://l-shirokanetakanawa.jp/" },
+        { detailUrl: "/kounyu/bunjou/D1325Z014/" },
       ],
     });
     const r = adapter.parseList(json, `${BASE}/kounyu/mansion/tokyo/a13103/?sort=address`);
