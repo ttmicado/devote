@@ -33,12 +33,13 @@ export async function crawlSummary(now = new Date()) {
     })
     .from(crawlRuns)
     .where(gte(crawlRuns.startedAt, since));
-  // 遅れているサイト: 今日の最新の巡回が失敗したままのソース（後の回で成功していれば数えない）
+  // 遅れているサイト: 今日の最新の巡回が失敗したままのソース（後の回で成功していれば数えない）。
+  // 生の SQL に Date をそのまま渡すと postgres-js が受け付けないので、ISO 文字列にして渡す
   const [failed] = await db.execute<{ n: number }>(sql`
     select count(*)::int as n from (
       select distinct on (${crawlRuns.source}) ${crawlRuns.status} as status
       from ${crawlRuns}
-      where ${crawlRuns.startedAt} >= ${since} and ${crawlRuns.status} <> 'running'
+      where ${crawlRuns.startedAt} >= ${since.toISOString()}::timestamptz and ${crawlRuns.status} <> 'running'
       order by ${crawlRuns.source}, ${crawlRuns.startedAt} desc
     ) latest where status = 'failed'`);
   const [inventory] = await db
