@@ -72,6 +72,16 @@ export const noImageSourceIds: readonly string[] = [
   "rf12", // REIT FIND: 社名・ロゴ（透かし含む）が入った写真が多い（2026-10-15 に巡回へ戻すときに指定）
 ];
 
+/**
+ * 一時停止中のソース。定期巡回の対象から外し、ログインもしない（掲載は閉じずにそのまま残す）。
+ * 再開するときはここから外す
+ */
+export const pausedSourceIds: readonly string[] = [
+  // ITANDI BB: 2026-10-17 18:58 にログイン失敗（パスワードは未変更。システム側の不具合の可能性）。
+  // 解決手段が決まるまでログインしない（ユーザー指示）
+  "itandi-bb",
+];
+
 export const adapters: Record<string, SiteAdapter> = Object.fromEntries(
   registrations.map((r) => [r.adapter.meta.id, r.adapter]),
 );
@@ -89,6 +99,7 @@ export const memberOnlySourceIds: readonly string[] = registrations
  * - 会員サイト（memberOnly）は既定で含める（2026-10-14 運用開始: 人と同じID・GitHub Actions で回す）。
  *   ログイン停止・セッションの奪い合いなどの弊害が出たら ENABLE_MEMBER_SOURCES=0 で止める
  * - DEVOTE_SOURCES=id1,id2 で対象を絞れる（実行環境ごとに分けるとき用）
+ * - 一時停止中（pausedSourceIds）は含めない
  */
 export function enabledAdapters(): SiteAdapter[] {
   const allowUnverified = process.env.ENABLE_UNVERIFIED_SOURCES === "1";
@@ -99,6 +110,7 @@ export function enabledAdapters(): SiteAdapter[] {
   return registrations
     .filter((r) => r.production && (r.verified || allowUnverified))
     .filter((r) => !r.memberOnly || allowMember)
+    .filter((r) => !pausedSourceIds.includes(r.adapter.meta.id))
     .map((r) => r.adapter)
     .filter((a) => !only || only.length === 0 || only.includes(a.meta.id));
 }
