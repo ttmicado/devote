@@ -111,4 +111,39 @@ describe.skipIf(!db)("stripSourceImages", () => {
     )[0];
     expect((prop?.data as { imageUrls: string[] }).imageUrls).toEqual([]);
   });
+
+  it("そのソースの写真を借りている物件（代表値は別のソース）からも写真を外す", async () => {
+    if (!db) return;
+    const borrowed = ["https://example.com/borrowed.jpg"];
+    const [p] = await db
+      .insert(properties)
+      .values({ dealType: "rent", data: { source: SRC, imageUrls: borrowed }, price: 1 })
+      .returning({ id: properties.id });
+    // 代表値はレインズ相当の写真なし掲載。写真は SRC の掲載から借りている
+    await db
+      .update(properties)
+      .set({ data: { source: `${PREFIX}-reins`, imageUrls: borrowed } })
+      .where(eq(properties.id, p?.id ?? ""));
+    const row = (source: string, id: string, imageUrls: string[]) => ({
+      source,
+      sourceListingId: id,
+      url: `https://example.com/${id}`,
+      propertyId: p?.id,
+      data: { source, imageUrls },
+      contentHash: "h",
+      price: 1,
+    });
+    await db.insert(listings).values([row(SRC, "b1", borrowed), row(`${PREFIX}-reins`, "b2", [])]);
+
+    await stripSourceImages(db, [SRC]);
+    const prop = (
+      await db
+        .select()
+        .from(properties)
+        .where(eq(properties.id, p?.id ?? ""))
+    )[0];
+    expect((prop?.data as { imageUrls: string[] }).imageUrls).toEqual([]);
+    await db.delete(listings).where(eq(listings.propertyId, p?.id ?? ""));
+    await db.delete(properties).where(eq(properties.id, p?.id ?? ""));
+  });
 });
