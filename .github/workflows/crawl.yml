@@ -38,12 +38,10 @@ jobs:
       REINS_PASSWORD: ${{ secrets.REINS_PASSWORD }}
       ATBB_USER_ID: ${{ secrets.ATBB_USER_ID }}
       ATBB_PASSWORD: ${{ secrets.ATBB_PASSWORD }}
-      ITANDI_EMAIL: ${{ secrets.ITANDI_EMAIL }}
-      ITANDI_PASSWORD: ${{ secrets.ITANDI_PASSWORD }}
       REINS_MONTHLY_SEARCH_LIMIT: ${{ vars.REINS_MONTHLY_SEARCH_LIMIT }}
       REINS_MONTHLY_DETAIL_LIMIT: ${{ vars.REINS_MONTHLY_DETAIL_LIMIT }}
       ENABLE_UNVERIFIED_SOURCES: ${{ vars.ENABLE_UNVERIFIED_SOURCES }}
-      # 会員サイト（レインズ・ITANDI BB）を止めるときだけ 0（既定は巡回する。docs/member-sites.md）
+      # 会員サイト（レインズ）を止めるときだけ 0（既定は巡回する。docs/member-sites.md）
       ENABLE_MEMBER_SOURCES: ${{ vars.ENABLE_MEMBER_SOURCES }}
       # 会員サイトで止まったときの待ち時間（分）。空なら 利用中60 / セッション切れ30 / ログイン失敗1440
       LOGIN_HOLD_IN_USE_MINUTES: ${{ vars.LOGIN_HOLD_IN_USE_MINUTES }}

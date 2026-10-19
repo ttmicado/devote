@@ -3,7 +3,7 @@ import type { SearchCondition } from "./condition";
 import type { DealType } from "./property";
 
 /**
- * 会員サイト（レインズ・ITANDI BB）の検索範囲。
+ * 会員サイト（レインズ）の検索範囲。
  *
  * 会員サイトの物件は一般公開せず、希望条件を持つユーザーへの提案にだけ使う。
  * そこで「いまいるユーザーの希望条件」から検索範囲を作り、どのユーザーにも合わない物件は最初から検索しない

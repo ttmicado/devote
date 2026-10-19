@@ -1,7 +1,7 @@
 /**
- * 会員サイト（レインズ / ATBB / ITANDI BB）の画面遷移を記録する探索スクリプト。
+ * 会員サイト（レインズ / ATBB）の画面遷移を記録する探索スクリプト。
  *
- *   npx tsx packages/scraper/src/explore.ts <reins|atbb|itandi-bb> [--headed] [--logout] [--fresh]
+ *   npx tsx packages/scraper/src/explore.ts <reins|atbb> [--headed] [--logout] [--fresh]
  *
  * ログイン → 検索画面 → 港区の賃貸で検索 → 一覧 → 詳細1件 の各ステップで、スクリーンショットと
  * HTML を storage/explore/<source>/ に保存する（captureStep）。XHR/fetch の通信一覧も
@@ -29,7 +29,6 @@ import { join } from "node:path";
 import type { Page } from "playwright";
 import type { ListItem, SiteAdapter } from "./adapter.js";
 import atbb, * as atbbModule from "./adapters/atbb/index.js";
-import itandiBb, * as itandiModule from "./adapters/itandi-bb/index.js";
 import reins, * as reinsModule from "./adapters/reins/index.js";
 import { type BrowserFetchContext, captureStep, createBrowserFetchContext } from "./browser.js";
 
@@ -84,18 +83,6 @@ const TARGETS: Record<string, Target> = {
         ctx.page.waitForNavigation({ timeout: 30_000 }).catch(() => undefined),
         ctx.page.locator(".c-util__menu__logout button").first().click({ timeout: 10_000 }),
       ]);
-    },
-  },
-  "itandi-bb": {
-    adapter: itandiBb,
-    hooks: itandiModule.hooks,
-    // 右上の会社名メニュー内の「ログアウト」ボタン（メニューは閉じていても DOM にあるので click イベントを送る）
-    logout: async (ctx) => {
-      await ctx.page
-        .locator("button", { hasText: /^ログアウト$/ })
-        .first()
-        .dispatchEvent("click", undefined, { timeout: 10_000 });
-      await ctx.page.waitForURL(/itandi-accounts\.com|\/login/, { timeout: 20_000 });
     },
   },
 };
@@ -222,7 +209,7 @@ async function finish(code: number): Promise<never> {
 }
 
 // 0) 認証情報の確認（未設定ならブラウザ操作の前に止める。ログイン試行はしない）
-const loginModule = { reins: reinsModule, atbb: atbbModule, "itandi-bb": itandiModule }[source];
+const loginModule = { reins: reinsModule, atbb: atbbModule }[source];
 try {
   loginModule?.credentials();
 } catch (e) {

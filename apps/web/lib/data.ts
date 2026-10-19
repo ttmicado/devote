@@ -15,6 +15,7 @@ import { and, desc, eq, sql } from "drizzle-orm";
  * 業者間の会員サイト（広く公開してはいけない情報源）。
  * packages/scraper/src/registry.ts の memberOnly: true と同じ並び（Web は scraper を import しないため写しを持つ）。
  */
+// itandi-bb は 2026-10-19 に除外したが、取り込み済みの掲載を一般公開しないよう残す
 export const MEMBER_ONLY_SOURCES: readonly string[] = ["reins", "atbb", "itandi-bb"];
 
 /**
