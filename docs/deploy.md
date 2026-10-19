@@ -101,10 +101,9 @@ Vercel の画面から作ると、接続情報（`DATABASE_URL` など）が Ver
 | `RESEND_API_KEY` / `MAIL_FROM` | 手順4 |
 | `REINS_USER_ID` / `REINS_PASSWORD` | レインズ |
 | `ATBB_USER_ID` / `ATBB_PASSWORD` | ATBB |
-| `ITANDI_EMAIL` / `ITANDI_PASSWORD` | ITANDI BB |
 
 **Variables**（任意）
-- `ENABLE_MEMBER_SOURCES` = `0` … 会員サイト（レインズ・ITANDI BB）の巡回を止める（空なら巡回する。弊害が出たときの停止スイッチ）
+- `ENABLE_MEMBER_SOURCES` = `0` … 会員サイト（レインズ）の巡回を止める（空なら巡回する。弊害が出たときの停止スイッチ）
 - `ENABLE_UNVERIFIED_SOURCES` = `1` … 動作確認前のアダプター（現状 ATBB）も巡回する（確認が済むまでは空のまま）
 - `DEVOTE_SOURCES` … 巡回するソースを絞る（例: 会員サイトは国内マシンで動かす場合）
 - `REINS_MONTHLY_SEARCH_LIMIT` / `REINS_MONTHLY_DETAIL_LIMIT` … レインズの巡回の月間上限（既定 4,500。無料枠 6,000 は人の利用と共有。
@@ -124,7 +123,7 @@ Devote は無料枠の範囲に収まるよう次のように制御します。
 - 件数事前確認（無課金）で 0件なら一覧を開かない
 - 実際に行った検索・詳細表示の回数は `source_usage` に記録し、管理画面の「今月の利用量」に表示
 
-### 7. 会員サイト（レインズ・ATBB・ITANDI BB）の認証情報を Claude に渡す
+### 7. 会員サイト（レインズ・ATBB）の認証情報を Claude に渡す
 ログイン後の画面構造を確認してアダプターを仕上げるため、**この開発環境（Claude Code on the web）にも**認証情報が必要です。
 claude.ai/code の環境設定 → 環境変数 に `REINS_USER_ID` などを登録してから、新しいセッションで
 「会員サイトのアダプターを仕上げて」と依頼してください。詳しくは `docs/member-sites.md` を参照してください。

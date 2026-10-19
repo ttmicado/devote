@@ -1,6 +1,5 @@
 import type { SiteAdapter } from "./adapter.js";
 import atbb, { VERIFIED as ATBB_VERIFIED } from "./adapters/atbb/index.js";
-import itandiBb, { VERIFIED as ITANDI_VERIFIED } from "./adapters/itandi-bb/index.js";
 import kencorp from "./adapters/kencorp/index.js";
 import livable from "./adapters/livable/index.js";
 import livableSale from "./adapters/livable-sale/index.js";
@@ -23,7 +22,7 @@ interface Registration {
   /** 実サイト（ログイン後の画面を含む）で動作確認済みか */
   verified: boolean;
   /**
-   * 業者間の会員サイト（レインズ・ATBB・ITANDI BB）。ここだけに載る物件は一般公開せず、
+   * 業者間の会員サイト（レインズ・ATBB）。ここだけに載る物件は一般公開せず、
    * ご提案を受けた会員にだけ見せる（apps/web/lib/data.ts の MEMBER_ONLY_SOURCES と揃える）
    */
   memberOnly?: boolean;
@@ -47,12 +46,11 @@ const registrations: Registration[] = [
   { adapter: steponSale, production: true, verified: true },
   { adapter: livableSale, production: true, verified: true },
   { adapter: mecHSale, production: true, verified: true },
-  // 業者間の会員サイト（docs/member-sites.md）。レインズ・ITANDI BB は 2026-10-14 にログイン後の実画面で確認済み。
+  // 業者間の会員サイト（docs/member-sites.md）。レインズは 2026-10-14 にログイン後の実画面で確認済み。ITANDI BB は 2026-10-19 に削除（retiredSourceIds）。
   // ATBB は同じIDを人が使用中（同時ログイン不可）で検索画面に入れず未確認。
   // 会員サイトは既定で巡回する。止めるときは ENABLE_MEMBER_SOURCES=0（下の enabledAdapters）
   { adapter: reins, production: true, verified: REINS_VERIFIED, memberOnly: true },
   { adapter: atbb, production: true, verified: ATBB_VERIFIED, memberOnly: true },
-  { adapter: itandiBb, production: true, verified: ITANDI_VERIFIED, memberOnly: true },
 ];
 
 /**
@@ -61,6 +59,9 @@ const registrations: Registration[] = [
  */
 export const retiredSourceIds: readonly string[] = [
   "axel-home", // アクセルホーム（2026-10-15）
+  // ITANDI BB（2026-10-19）: 自動ログインが不正ログインとして検知され、アカウントがロックされた。
+  // 今後は一切ログインしない（ユーザー指示）。アダプター（ログイン処理）も削除済み
+  "itandi-bb",
 ];
 
 /**
@@ -76,11 +77,7 @@ export const noImageSourceIds: readonly string[] = [
  * 一時停止中のソース。定期巡回の対象から外し、ログインもしない（掲載は閉じずにそのまま残す）。
  * 再開するときはここから外す
  */
-export const pausedSourceIds: readonly string[] = [
-  // ITANDI BB: 2026-10-17 18:58 にログイン失敗（パスワードは未変更。システム側の不具合の可能性）。
-  // 解決手段が決まるまでログインしない（ユーザー指示）
-  "itandi-bb",
-];
+export const pausedSourceIds: readonly string[] = [];
 
 export const adapters: Record<string, SiteAdapter> = Object.fromEntries(
   registrations.map((r) => [r.adapter.meta.id, r.adapter]),

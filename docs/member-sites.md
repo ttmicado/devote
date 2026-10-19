@@ -2,6 +2,10 @@
 
 2026-10-13 に認証情報なしで調べ（§1〜§4 はその時点の内容）、**2026-10-14 にログイン後の実画面で確認した（§0）**。
 レインズ・ITANDI BB は `VERIFIED = true`・`parserVersion: "1"`。ATBB は同じIDを人が使用中で検索画面に入れず未確認（`VERIFIED = false`）。
+> **ITANDI BB は 2026-10-19 に巡回から除外し、アダプターも削除した。今後は一切ログインしない。**
+> 2026-10-17 の自動ログインが不正ログインとして検知され、アカウントがロックされたため（§4 の運営の注意喚起どおりの結果）。
+> 以下の ITANDI BB の記述は調査記録として残す。
+
 **2026-10-14 から GitHub Actions で運用する**（人と同じIDのまま。弊害が出たら GitHub の Variables に `ENABLE_MEMBER_SOURCES=0` を入れて止める）。
 
 ## 0. 2026-10-14 の実画面での確認結果
@@ -84,7 +88,7 @@
 3. ITANDI BB: 運営の注意喚起（§4）は承知のうえで**運用する**。頻度・件数は1日3回・1検索最大5ページに抑える
 4. ATBB: 9:20 に再確認しても同じIDが使用中で未確認。未検証のため巡回対象外（人が使っていない時間帯に `explore.ts atbb` で仕上げる）
 5. 止めるとき: GitHub の Variables に `ENABLE_MEMBER_SOURCES=0`（`DEVOTE_SOURCES` で一部だけにもできる）。特定のサイトだけ止めておくときは `packages/scraper/src/registry.ts` の `pausedSourceIds` に入れる（ログインもしない）
-   - **ITANDI BB は 2026-10-17 から一時停止中**: 18:58 にログイン失敗（パスワードは未変更。システム側の不具合の可能性）。解決手段が決まるまでログインしない
+   - **ITANDI BB は 2026-10-19 に除外**: 2026-10-17 の自動ログインが不正ログインとして検知され、アカウントがロックされた。一切ログインしない（アダプター・認証情報の受け渡しも削除）
 6. 止まったら待ってから自動で再開する（`packages/pipeline/src/login-hold.ts`、2026-10-15）:
    - 同じIDで利用中（ATBB の同時ログイン不可）: **60分**待って再開（`LOGIN_HOLD_IN_USE_MINUTES`）
    - セッション切れ: **30分**（`LOGIN_HOLD_SESSION_MINUTES`）
@@ -168,7 +172,7 @@
 詳細の `<img>` を控える。画像 URL は cookie 必須の可能性が高い → 取り込み時に同じブラウザコンテキストで取得して Vercel Blob に再アップロードし、その URL を `imageUrls` に入れる。
 図面（元付帯/自社帯）の出力方式（PDF ダウンロード or 画像の別ウィンドウ）は未確認。
 
-## 4. ITANDI BB
+## 4. ITANDI BB（2026-10-19 に除外・アダプター削除。調査記録）
 
 ### 調べたこと
 - `https://itandibb.com/` は React の SPA。未ログインだと `itandi-accounts.com/login`（Rails。`client_id=itandi_bb` の OAuth 風）にリダイレクト。
