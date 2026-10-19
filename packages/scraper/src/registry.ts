@@ -71,6 +71,7 @@ export const retiredSourceIds: readonly string[] = [
 export const noImageSourceIds: readonly string[] = [
   "kencorp", // ケン・コーポレーション: ほぼ全ての写真の中央に「Ken Corporation Ltd.」の透かし
   "rf12", // REIT FIND: 社名・ロゴ（透かし含む）が入った写真が多い（2026-10-15 に巡回へ戻すときに指定）
+  "itandi-bb", // ITANDI BB: 2026-10-19 に巡回から除外。取り込み済みの写真も使わない（ユーザー指示）
 ];
 
 /**
