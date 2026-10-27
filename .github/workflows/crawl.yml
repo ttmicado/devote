@@ -59,6 +59,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version-file: .nvmrc
+          # 外部サイトの HTML を取り込むので、ランナーのキャッシュの古い 22 系ではなく最新の修正版を使う
+          check-latest: true
           cache: pnpm
       - run: pnpm install --frozen-lockfile
       - name: Install Chromium for Playwright
@@ -88,6 +90,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version-file: .nvmrc
+          # 外部サイトの HTML を取り込むので、ランナーのキャッシュの古い 22 系ではなく最新の修正版を使う
+          check-latest: true
           cache: pnpm
       - run: pnpm install --frozen-lockfile
       - run: pnpm worker match && pnpm worker notify
